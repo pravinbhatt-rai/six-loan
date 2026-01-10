@@ -1,0 +1,754 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ProductType {
+  LOAN
+  CREDIT_CARD
+  INSURANCE
+  APP
+}
+
+enum ApplicationStatus {
+  PENDING
+  PROCESSING
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  IN_PROGRESS
+  WITHDRAWN
+}
+
+enum LoanCategoryType {
+  PERSONAL
+  BUSINESS
+  HOME
+  VEHICLE
+  EDUCATION
+  OTHER
+}
+
+enum Role {
+  USER
+  ADMIN
+  MODERATOR
+}
+
+model User {
+  id            Int      @id @default(autoincrement())
+  name          String
+  email         String   @unique
+  phone         String   @unique
+  passwordHash  String
+  role          Role     @default(USER)
+  emailVerified Boolean  @default(false)
+  otpVerified   Boolean  @default(false)
+  
+  // Email OTP Verification Fields
+  emailOtp      String?
+  emailOtpExpiry DateTime?
+  emailVerifiedAt DateTime?
+  
+  // Basic Personal Details
+  panCard       String?
+  dob           DateTime?
+  address       String?
+  city          String?
+  state         String?
+  pincode       String?
+  
+  // Education Details
+  highestEducation String? // "10th", "12th", "Graduate", "Post-Graduate", "Doctorate"
+  
+  // Employment Details
+  employmentType String? // "SALARIED", "BUSINESS", "SELF_EMPLOYED"
+  currentEmployer String? // Company/Business name
+  annualIncome   Float?
+  monthlyIncome  Float?
+  workExperience String? // "Less than 1 Year", "1-3 Years", etc.
+  yearsInBusiness Int?   // For self-employed/business
+  professionalQualification String? // For professionals: "CA", "CS", "Doctor", etc.
+  professionRegistrationNo String?
+  
+  // Business Details (if applicable)
+  businessName    String?
+  businessType    String? // "Proprietorship", "Partnership", "LLP", "Private Limited"
+  businessPan     String?
+  gstNumber       String?
+  industryType    String? // "Manufacturing", "Service", "Trading"
+  businessTurnover Float?
+  yearsInOperation Int?
+  
+  // Financial Details
+  cibilScore      Int?
+  existingLoans   Json?  // Array of existing loan details
+  existingCards   Json?  // Array of existing credit cards
+  
+  // Property Details (for property-related loans)
+  ownedProperties Json?  // Array of property details
+  
+  // Documents (store references/URLs)
+  documents       Json?  // {panCard: "url", aadhar: "url", etc.}
+  
+  // Residence Details
+  residenceType   String? // "OWNED", "RENTED", "COMPANY_PROVIDED"
+  yearsAtAddress  Int?
+  
+  // Banking Details
+  bankName        String?
+  accountNumber   String?
+  ifscCode        String?
+  dematAccountNo  String? // For loan against securities
+  brokerName      String?
+  
+  // NRI Details (if applicable)
+  isNRI           Boolean @default(false)
+  passportNumber  String?
+  visaType        String?
+  visaValidity    DateTime?
+  overseasAddress String?
+  overseasIncome  Float?
+  nreNroAccount   String?
+  
+  // Net Worth (for HNI)
+  approximateNetWorth Float?
+  majorInvestments    Json?
+  
+  applications  Application[]
+  employment    Employment?  // One employment record per user
+  
+  // Relations for tracking who created products
+  createdLoans       LoanProduct[]
+  createdCards       CreditCardProduct[]
+  createdInsurances  InsuranceProduct[]
+  createdApps        AppProduct[]
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+}
+
+// Employment Model - Handles all employment/professional information
+model Employment {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Basic Professional Info
+  fullName    String
+  panCard     String
+  dob         DateTime
+  email       String
+  phone       String
+  
+  // Employment Classification
+  employmentType String  // "SALARIED", "SELF_EMPLOYED", "BUSINESS", "PROFESSIONAL"
+  
+  // Financial Details
+  annualIncome Float
+  monthlyIncome Float?
+  
+  // Salaried Specific
+  currentEmployer String?
+  designation     String?
+  workExperience  String? // "1-3 Years", "3-5 Years", etc.
+  
+  // Business/Self-Employed Specific
+  businessName    String?
+  businessType    String? // "Proprietorship", "Partnership", "LLP", "Private Limited"
+  yearsInBusiness Int?
+  businessTurnover Float?
+  industryType    String? // "Manufacturing", "Service", "Trading"
+  
+  // Professional Specific
+  professionalQualification String? // "CA", "CS", "Doctor", "Engineer"
+  registrationNumber String?
+  yearsOfPractice Int?
+  
+  // Education
+  highestEducation String? // "10th", "12th", "Graduate", "Post-Graduate"
+  
+  // Additional Documents
+  documents Json? // Array of document URLs/info
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Application {
+  id          Int               @id @default(autoincrement())
+  referenceNo String?           @unique  // Smart reference number: SIX-L-PL-00123-A7
+  userId      Int
+  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type        ProductType
+  
+  // Polymorphic-ish relations (only one should be set)
+  loanId      Int?
+  loan        LoanProduct?      @relation(fields: [loanId], references: [id], onDelete: Cascade)
+  
+  cardId      Int?
+  card        CreditCardProduct? @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  
+  insuranceId Int?
+  insurance   InsuranceProduct? @relation(fields: [insuranceId], references: [id], onDelete: Cascade)
+
+  // Category information
+  categoryId  Int?
+  categorySlug String?          // e.g., "personalloan", "business-loan"
+  categoryName String?          // e.g., "Personal Loan", "Business Loan"
+  loanSlug    String?          // Specific loan product slug
+
+  status      ApplicationStatus @default(PENDING)
+  amount      Float?            // Requested amount (for loans)
+  notes       String?
+  
+  // Product-Specific Details (JSON field to avoid too many columns)
+  productDetails Json?           // Stores loan/card specific fields dynamically
+  
+  // Basic Applicant Details (snapshot at time of application)
+  applicantName     String?
+  email             String?
+  phone             String?
+  panNumber         String?
+  dob               DateTime?
+  
+  // Employment Details
+  employmentType    String?     // "SALARIED", "BUSINESS", "SELF_EMPLOYED"
+  annualIncome      Float?
+  monthlyIncome     Float?
+  employerName      String?     // Company/Business name
+  workExperience    String?     // Work experience range
+  
+  // Residence Details
+  residenceType     String?     // "OWNED", "RENTED", "COMPANY_PROVIDED"
+  currentAddress    String?
+  city              String?
+  state             String?
+  pincode           String?
+  
+  // === PERSONAL LOAN SPECIFIC ===
+  education         String?     // Highest education
+  loanPurpose       String?     // Purpose of personal loan
+  
+  // === HOME LOAN SPECIFIC ===
+  propertyAddress   String?
+  propertyType      String?     // "Residential", "Commercial", "Plot"
+  constructionStatus String?    // "Ready", "Under Construction"
+  propertyValue     Float?      // Market value
+  downPayment       Float?
+  
+  // === LOAN AGAINST PROPERTY SPECIFIC ===
+  existingLoanOnProperty Boolean? // Any loan on property
+  
+  // === BUSINESS LOAN SPECIFIC ===
+  registeredBusinessName String?
+  businessType      String?     // "Proprietorship", "Partnership", "LLP", "Private Limited"
+  yearsInOperation  Int?
+  businessTurnover  Float?
+  businessPurpose   String?     // "Business Expansion", "Working Capital"
+  currentLoansAmount Float?
+  businessPan       String?
+  gstNumber         String?
+  industryType      String?     // "Manufacturing", "Service", "Trading"
+  
+  // === EDUCATION LOAN SPECIFIC ===
+  studentName       String?
+  courseName        String?
+  universityName    String?
+  courseDuration    Int?        // in years
+  totalCourseFees   Float?
+  parentIncome      Float?
+  admissionStatus   String?     // "Confirmed", "Applied"
+  admissionSecured  Boolean?
+  
+  // === VEHICLE LOAN SPECIFIC (Car/Bike - New/Used) ===
+  vehicleMake       String?     // "Honda", "Toyota", etc.
+  vehicleModel      String?
+  vehicleVariant    String?
+  exShowroomPrice   Float?
+  vehicleType       String?     // "New Car", "Used Car", "New Bike", "Used Bike"
+  vehicleUsage      String?     // "Personal", "Commercial"
+  manufactureYear   Int?
+  registrationYear  Int?
+  currentMarketValue Float?
+  kilometersDriven  Int?
+  engineCapacity    String?     // For bikes (CC)
+  engineCondition   String?     // "Good", "Fair", "Poor"
+  exchangeExisting  Boolean?    // Exchange old vehicle
+  registrationCity  String?
+  rcAvailable       Boolean?
+  sellerInfo        String?
+  vehicleCondition  String?     // "Excellent", "Good", "Fair"
+  
+  // === PROFESSIONAL LOAN SPECIFIC ===
+  professionalQualification String? // "CA", "CS", "Doctor", "Engineer"
+  yearsOfPractice   Int?
+  clinicOfficeAddress String?
+  professionalIncome Float?
+  professionalPurpose String?   // "Equipment", "Clinic Setup", "Expansion"
+  registrationNumber String?
+  
+  // === LOAN AGAINST SECURITY SPECIFIC ===
+  securityType      String?     // "Shares", "Mutual Funds", "Bonds"
+  securityValue     Float?      // Current market value
+  portfolioDetails  Json?       // List of securities
+  desiredLTV        Float?      // Loan-to-Value ratio (%)
+  dematAccountNo    String?
+  brokerName        String?
+  
+  // === TRANSFER LOAN SPECIFIC (Home/Personal) ===
+  currentLenderName String?
+  outstandingAmount Float?
+  currentInterestRate Float?
+  remainingTenure   Int?        // in months
+  currentEMI        Float?
+  cibilScore        Int?
+  transferReason    String?     // "Lower Interest", "Better Service"
+  
+  // === CREDIT CARD SPECIFIC ===
+  desiredCreditLimit Float?
+  hasExistingCreditCards Boolean?
+  existingBankingRelationship Boolean?
+  existingCreditCards Json?     // Array of existing cards
+  cardType         String?   // "standard", "premium", "secured", "student", "business", "addon", "nri", "hni"
+  
+  // Student Card Specific
+  studentId         String?
+  collegeUniversityName String?
+  courseNameForCard String?
+  collegeName       String?
+  yearOfStudy       String?
+  parentAnnualIncome Float?
+  
+  // Secured Card Specific
+  fixedDepositAmount Float?
+  fdAmount          Float?
+  fdTenure          Int?
+  fdAccountNumber   String?
+  
+  // Add-on Card Specific
+  primaryCardholderName String?
+  relationshipWithPrimary String?
+  addonApplicantDob String?
+  
+  // Business Card Specific
+  businessRegistrationNumber String?
+  businessRegistrationNo String?
+  businessTurnoverForCard Float?
+  businessAddressForCard String?
+  
+  // NRI Specific
+  passportNumber    String?
+  visaType          String?
+  visaValidity      DateTime?
+  overseasAddress   String?
+  overseasIncome    Float?
+  nreNroDetails     String?
+  nreNroAccountDetails String?
+  
+  // HNI Specific
+  approximateNetWorth Float?
+  majorInvestments  Json?
+  
+  // Loan Tenure Preferences
+  desiredTenure     Int?        // in months
+  
+  documents   Json?             // Array of { title, url, type }
+  feedback    String?           // Admin feedback to user
+
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String
+  slug        String    @unique
+  description String?
+  type        ProductType
+  
+  parentId    Int?
+  parent      Category? @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryHierarchy")
+
+  loans       LoanProduct[]
+  creditCards CreditCardProduct[] @relation("CardCategories")
+  insurances  InsuranceProduct[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model InsuranceProduct {
+  id          Int      @id @default(autoincrement())
+  name        String
+  slug        String   @unique
+  provider    String   // e.g. "HDFC Ergo", "ICICI Lombard"
+  logoUrl     String
+  type        String   // "Health", "Car", "Term", "Life"
+  description String
+  
+  // COVERAGE DETAILS
+  sumInsured   String?  // e.g. "₹5 Lakhs - ₹1 Crore"
+  minPremium   Float?   // Minimum premium amount
+  maxPremium   Float?   // Maximum premium amount
+  premiumFrequency String? // "Monthly", "Quarterly", "Annual"
+  policyTerm   String?  // e.g. "1 Year", "5 Years", "20 Years"
+  coverageType String?  // "Individual", "Family Floater", "Multi-Individual"
+  coverage     String?  // e.g. "Up to 5 Lakhs"
+  
+  // WHAT'S COVERED
+  inclusions   String?  // Major inclusions (comma-separated or JSON)
+  keyFeatures  String?  // Key coverage features
+  
+  // EXCLUSIONS & LIMITATIONS
+  exclusions   String?  // What's NOT covered
+  waitingPeriod String? // e.g. "30 days for diseases, 2 years for pre-existing"
+  roomRentLimit String? // e.g. "1% of sum insured per day"
+  coPayment    String?  // e.g. "20% co-payment for senior citizens"
+  subLimits    String?  // Sub-limits on specific treatments
+  
+  // CLAIM PROCESS
+  claimSettlementRatio Float? // e.g. 95.5 (in percentage)
+  cashlessHospitals Int?     // Number of network hospitals
+  claimProcessTime String?   // e.g. "Within 7 working days"
+  claimDocuments  String?    // Required documents for claim
+  
+  // POLICY FEATURES
+  noClaimBonus Boolean @default(false)
+  noClaimBonusDetails String? // e.g. "5% increase in sum insured per claim-free year"
+  renewalBenefits String? // Benefits on renewal
+  taxBenefits    Boolean @default(true) // Section 80D benefits
+  portability    Boolean @default(false) // Can port from another insurer
+  freeHealthCheckup Boolean @default(false)
+  
+  // ELIGIBILITY
+  entryAgeMin    Int?    // Minimum entry age
+  entryAgeMax    Int?    // Maximum entry age
+  maxRenewalAge  Int?    // Maximum age till policy can be renewed
+  preExistingCoverage Boolean @default(false) // Covers pre-existing diseases
+  medicalTestRequired Boolean @default(false)
+  
+  // CONTACT & SUPPORT
+  customerCareNumber String? // Customer care phone number
+  websiteUrl       String?   // Insurance company website
+  applicationUrl   String?   // Direct application link
+  claimNumber      String?   // Dedicated claim assistance number
+  
+  // REGULATORY & DISCLOSURES
+  irdaiRegNumber   String?   // IRDAI registration number
+  termsConditionsUrl String? // Link to policy T&C
+  prospectusUrl    String?   // Link to policy prospectus
+  coolingOffPeriod Int?      // Cooling-off period in days (usually 15-30)
+  freeLookPeriod   Int?      // Free look period in days
+  
+  // Relations
+  coverageDetails  InsuranceCoverageDetail[]
+  exclusionDetails InsuranceExclusion[]
+  claimSteps       InsuranceClaimStep[]
+  networkHospitals InsuranceNetworkHospital[]
+  eligibilityCriteria InsuranceEligibility[]
+  
+  categoryId  Int?
+  category    Category? @relation(fields: [categoryId], references: [id])
+
+  createdById Int?
+  createdBy   User? @relation(fields: [createdById], references: [id])
+
+  createdAt   DateTime @default(now())
+  applications Application[]
+}
+
+model LoanProduct {
+  id                 Int       @id @default(autoincrement())
+  title              String
+  slug               String    @unique
+  bankName           String
+  bankLogoUrl        String
+  
+  // Display fields for card UI
+  tag                String?   // e.g. "Featured", "Popular", "New"
+  feature            String?   // e.g. "Fast Processing", "Low Interest"
+  specialization     String?   // e.g. "Quick approval with minimal documentation"
+  
+  // Fields from data.ts
+  processTimeLabel   String
+  processTimeValue   String
+  chanceOfApproval   String
+  approvalScore      Int       @default(0)
+  interestRateText   String
+  aprText            String
+  emiAmount          String
+  emiValue           Float     @default(0)
+  processTypeLabel   String
+  processTypeValue   String
+  disbursalTimeHours Float     @default(0)
+
+  // KFS (Key Fact Statement) - URLs
+  kfsUrl             String?   // URL to provisional KFS document
+
+  productType        ProductType @default(LOAN)
+  
+  categoryId         Int?
+  category           Category? @relation(fields: [categoryId], references: [id])
+
+  // Short feature bullets shown in list and popup
+  bullets            LoanBullet[]
+
+  // Detailed sections for the loan details drawer
+  summaryCharges     LoanSummaryCharge[]
+  requiredDocuments  LoanRequiredDocument[]
+  processSteps       LoanProcessStep[]
+  keyStatement       String?
+  
+  // Footer checklist items for card display
+  footerItems        LoanFooterItem[]
+
+  applications       Application[]
+
+  createdById        Int?
+  createdBy          User? @relation(fields: [createdById], references: [id])
+
+  createdAt          DateTime  @default(now())
+}
+
+model LoanBullet {
+  id           Int         @id @default(autoincrement())
+  text         String
+  displayOrder Int         @default(0)
+  product      LoanProduct @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model LoanSummaryCharge {
+  id           Int         @id @default(autoincrement())
+  label        String      // e.g. "Processing Fees"
+  mainText     String      // e.g. "2%"
+  subText      String?     // e.g. "on total loan amount"
+  displayOrder Int         @default(0)
+  product      LoanProduct @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model LoanRequiredDocument {
+  id           Int         @id @default(autoincrement())
+  title        String      // e.g. "Identity Proof"
+  description  String?     // e.g. "PAN Card, Aadhaar Card"
+  displayOrder Int         @default(0)
+  product      LoanProduct @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model LoanProcessStep {
+  id           Int         @id @default(autoincrement())
+  title        String
+  description  String?
+  displayOrder Int         @default(0)
+  product      LoanProduct @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model LoanFooterItem {
+  id           Int         @id @default(autoincrement())
+  text         String      // e.g. "Admission Letter", "KYC Documents"
+  displayOrder Int         @default(0)
+  product      LoanProduct @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model CreditCardProduct {
+  id               Int       @id @default(autoincrement())
+  name             String
+  slug             String    @unique
+  bankName         String
+  bankLogoUrl      String?
+  imageUrl         String
+  categories       Category[] @relation("CardCategories")
+  
+  // CARD SPECIFICATIONS
+  annualFee        String    // e.g. "Lifetime free", "₹1,500 + GST"
+  cardNetwork      String    // e.g. "Visa", "Mastercard", "Rupay"
+  cardType         String?   // "standard", "premium", "secured", "student", "business", "addon", "nri", "hni"
+  bestSuitedFor    String?   // Legacy single description (kept for backward compatibility)
+  effectiveFree    Boolean   @default(false)
+  recommended      Boolean   @default(false)
+  rating           Float     @default(0)
+  
+  // VIDEO & LINKS
+  videoUrl         String?   // YouTube/video embed URL for "Learn about the card"
+  termsConditionsUrl String? // Link to full T&C document
+  
+  // FEE DETAILS
+  firstYearFee     String?   // e.g. "₹0", "₹499"
+  secondYearFee    String?   // e.g. "₹499 plus applicable taxes"
+  feeWaiverCondition String? // e.g. "Waived off on annual spends of Rs. 2 lakh"
+  
+  // Relations
+  bulletPoints     CreditCardBullet[]
+  keyFeatures      CreditCardKeyFeature[]
+  cardBenefits     CreditCardBenefit[]
+  specialOffers    CreditCardSpecialOffer[]    // Special offers and promotional benefits
+  benefitSections  CreditCardBenefitSection[]  // Dynamic benefit sections with sub-points
+  bestSuitedForPoints CreditCardBestSuitedFor[] // Multiple "best suited for" points
+  summaryCharges   CreditCardSummaryCharge[]
+  requiredDocuments CreditCardRequiredDocument[]
+  processSteps     CreditCardProcessStep[]
+
+  applications     Application[]
+  
+  createdById      Int?
+  createdBy        User? @relation(fields: [createdById], references: [id])
+
+  createdAt        DateTime  @default(now())
+}
+
+model CreditCardBestSuitedFor {
+  id           Int               @id @default(autoincrement())
+  text         String
+  displayOrder Int               @default(0)
+  product      CreditCardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId    Int
+}
+
+model CreditCardSummaryCharge {
+  id           Int               @id @default(autoincrement())
+  label        String
+  mainText     String
+  subText      String?
+  displayOrder Int               @default(0)
+  product      CreditCardProduct @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model CreditCardRequiredDocument {
+  id           Int               @id @default(autoincrement())
+  title        String
+  description  String?
+  displayOrder Int               @default(0)
+  product      CreditCardProduct @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model CreditCardProcessStep {
+  id           Int               @id @default(autoincrement())
+  title        String
+  description  String?
+  displayOrder Int               @default(0)
+  product      CreditCardProduct @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model AppProduct {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  downloadUrl String
+  logoUrl     String?
+  
+  createdById Int?
+  createdBy   User? @relation(fields: [createdById], references: [id])
+
+  createdAt   DateTime @default(now())
+}
+
+model CreditCardBullet {
+  id           Int               @id @default(autoincrement())
+  text         String
+  displayOrder Int               @default(0)
+  product      CreditCardProduct @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model CreditCardKeyFeature {
+  id           Int               @id @default(autoincrement())
+  feature      String            // e.g. "5% cashback on bill payments..."
+  displayOrder Int               @default(0)
+  product      CreditCardProduct @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model CreditCardBenefit {
+  id           Int               @id @default(autoincrement())
+  benefit      String            // e.g. "Unlimited 1.5% cashback on other spending"
+  displayOrder Int               @default(0)
+  product      CreditCardProduct @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model CreditCardSpecialOffer {
+  id           Int               @id @default(autoincrement())
+  text         String            // e.g. "Get 5000 bonus points on first transaction"
+  displayOrder Int               @default(0)
+  product      CreditCardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId    Int
+}
+
+// Dynamic benefit section model
+model CreditCardBenefitSection {
+  id           Int               @id @default(autoincrement())
+  heading      String            // Main heading like "Fuel Benefits", "Lounge Access"
+  displayOrder Int               @default(0)
+  product      CreditCardProduct @relation(fields: [productId], references: [id])
+  productId    Int
+  subPoints    CreditCardBenefitSubPoint[]
+}
+
+model CreditCardBenefitSubPoint {
+  id           Int                        @id @default(autoincrement())
+  text         String                     // Sub-heading text like "Low fuel charge", "4 domestic lounges"
+  displayOrder Int                        @default(0)
+  section      CreditCardBenefitSection   @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  sectionId    Int
+}
+
+model InsuranceCoverageDetail {
+  id           Int               @id @default(autoincrement())
+  coverageType String            // e.g. "Hospitalization", "Pre-Hospitalization"
+  description  String            // Detailed coverage description
+  limit        String?           // e.g. "₹50,000 per year"
+  displayOrder Int               @default(0)
+  product      InsuranceProduct  @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model InsuranceExclusion {
+  id           Int               @id @default(autoincrement())
+  exclusionType String           // e.g. "Pre-existing", "Cosmetic Surgery"
+  description  String            // Detailed exclusion description
+  displayOrder Int               @default(0)
+  product      InsuranceProduct  @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model InsuranceClaimStep {
+  id           Int               @id @default(autoincrement())
+  stepNumber   Int               // e.g. 1, 2, 3
+  title        String            // e.g. "Inform Insurer"
+  description  String            // Detailed step description
+  displayOrder Int               @default(0)
+  product      InsuranceProduct  @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model InsuranceNetworkHospital {
+  id           Int               @id @default(autoincrement())
+  hospitalName String
+  city         String
+  state        String?
+  type         String?           // e.g. "Multi-specialty", "Diagnostic Center"
+  product      InsuranceProduct  @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model InsuranceEligibility {
+  id           Int               @id @default(autoincrement())
+  criterion    String            // e.g. "Age", "Pre-existing Diseases"
+  value        String            // e.g. "18-65 years", "Covered after 4 years"
+  displayOrder Int               @default(0)
+  product      InsuranceProduct  @relation(fields: [productId], references: [id])
+  productId    Int
+}
+

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "sixloan",
+			"path": "../.."
+		},
+		{
+			"name": "prisma",
+			"path": "../../../next/sixloan/prisma"
+		}
+	],
+	"settings": {}
+}

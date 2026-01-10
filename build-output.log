@@ -1,0 +1,23 @@
+
+> six-loan@0.1.0 build
+> next build
+
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Environments: .env.local, .env
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 1779.6ms
+   Running TypeScript ...
+Failed to compile.
+
+./component/PersonalLoan/UniversalBankCard.tsx:176:13
+Type error: Object literal may only specify known properties, and 'emiExample' does not exist in type 'LoanProduct | ((prevState: LoanProduct | null) => LoanProduct | null)'.
+
+[0m [90m 174 |[39m             bankName[33m:[39m loanData[33m.[39mbankName[33m,[39m
+ [90m 175 |[39m             bankLogoUrl[33m:[39m loanData[33m.[39mbankLogoUrl [33m||[39m [32m''[39m[33m,[39m
+[31m[1m>[22m[39m[90m 176 |[39m             emiExample[33m:[39m loanData[33m.[39memiAmount [33m||[39m [32m'₹ 2,000'[39m[33m,[39m
+ [90m     |[39m             [31m[1m^[22m[39m
+ [90m 177 |[39m             interestRateText[33m:[39m loanData[33m.[39minterestRateText [33m||[39m [32m'N/A'[39m[33m,[39m
+ [90m 178 |[39m             summaryCharges[33m:[39m loanData[33m.[39msummaryCharges [33m||[39m [][33m,[39m
+ [90m 179 |[39m             requiredDocuments[33m:[39m loanData[33m.[39mrequiredDocuments [33m||[39m [][33m,[39m[0m
+Next.js build worker exited with code: 1 and signal: null
