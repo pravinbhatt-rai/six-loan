@@ -7,10 +7,8 @@ declare global {
 }
 
 function createPrismaClient() {
-  // Prisma 7 with Accelerate: Must provide accelerateUrl in constructor
-  const client = new PrismaClient({
-    accelerateUrl: process.env.DATABASE_URL,
-  } as any);
+  // Prisma v6 with Accelerate extension
+  const client = new PrismaClient();
   return client.$extends(withAccelerate());
 }
 
