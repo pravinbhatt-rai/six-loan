@@ -217,7 +217,7 @@ export default function ComparisonModal({ isOpen, onClose, cardIds, onApply }: C
                           </li>
                         ))}
                       </ul>
-                    ) : <span className="text-gray-300 italic text-xs sm:text-sm">No specific offers listed</span>
+                    ) : <span className="text-gray-300 text-xs sm:text-sm">-</span>
                   )}
                 />
 
@@ -281,12 +281,8 @@ export default function ComparisonModal({ isOpen, onClose, cardIds, onApply }: C
                                     )}
                                   </>
                                 ) : (
-                                  <div className="text-center py-2 sm:py-4">
-                                    <div className="inline-flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gray-100 mb-1 sm:mb-2">
-                                      <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
-                                    </div>
-                                    <p className="text-[10px] sm:text-sm text-gray-400">No additional feature</p>
-                                  </div>
+                                  // Empty space when no feature - changed from "No additional feature" text
+                                  <div className="h-full min-h-[60px]"></div>
                                 )}
                               </div>
 
@@ -317,12 +313,8 @@ export default function ComparisonModal({ isOpen, onClose, cardIds, onApply }: C
                                     )}
                                   </>
                                 ) : (
-                                  <div className="text-center py-2 sm:py-4">
-                                    <div className="inline-flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gray-100 mb-1 sm:mb-2">
-                                      <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
-                                    </div>
-                                    <p className="text-[10px] sm:text-sm text-gray-400">No additional feature</p>
-                                  </div>
+                                  // Empty space when no feature - changed from "No additional feature" text
+                                  <div className="h-full min-h-[60px]"></div>
                                 )}
                               </div>
                             </div>
