@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import CardItem, { CardInfo } from "@/component/creditcards/CardItem";
 import CreditCardDetailsDrawer, { CreditCardDetailsData } from "@/component/creditcards/CreditCardDetailsDrawer";
 import ComparisonModal from "@/component/creditcards/ComparisonModal";
+import CreditCardApplicationModal from "@/component/creditcards/CreditCardApplicationModal";
 import { X, ArrowRight } from "lucide-react";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
@@ -36,6 +37,10 @@ export default function CreditCardListSection() {
   // Comparison State
   const [selectedForComparison, setSelectedForComparison] = useState<string[]>([]);
   const [showComparisonModal, setShowComparisonModal] = useState(false);
+  
+  // Application Modal State
+  const [showApplicationModal, setShowApplicationModal] = useState(false);
+  const [applicationCard, setApplicationCard] = useState<CardInfo | null>(null);
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -120,41 +125,9 @@ export default function CreditCardListSection() {
   const [drawerRef] = useState<any>({ current: null });
   
   const handleApply = (card: CardInfo) => {
-    const token =
-      typeof window !== "undefined" ? localStorage.getItem("token") : null;
-
-    if (!token) {
-      // Save current page URL for redirect after login
-      if (typeof window !== "undefined") {
-        localStorage.setItem('redirectAfterLogin', window.location.pathname + window.location.search);
-      }
-      router.push("/login");
-    } else {
-      // Load card details and open application modal
-      const full = cards.find((c) => c.id === card.id);
-      if (!full) return;
-      
-      const cardDetails: CreditCardDetailsData = {
-        id: full.id,
-        name: full.name,
-        bank: full.bank,
-        image: full.image,
-        categories: full.categories,
-        fee: full.fee,
-        cardType: full.cardType,
-        bullets: full.bullets,
-      };
-      
-      setSelectedCard(cardDetails);
-      setOpenDrawer(true);
-      
-      // Trigger application modal after drawer opens
-      setTimeout(() => {
-        if (drawerRef.current) {
-          drawerRef.current.openApplicationModal();
-        }
-      }, 100);
-    }
+    console.log('Apply clicked for:', card.name);
+    setApplicationCard(card);
+    setShowApplicationModal(true);
   };
 
   const handleShowDetails = async (card: CardInfo) => {
@@ -293,36 +266,38 @@ export default function CreditCardListSection() {
         </div>
       </div>
 
-      {/* Comparison Bar */}
+      {/* Comparison Bar - Mobile Optimized */}
       {selectedForComparison.length > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-blue-600 shadow-2xl z-50 py-4">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4 flex-1">
-                <p className="text-sm font-semibold text-gray-700">
-                  You are comparing {selectedForComparison.length}/2 cards
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-blue-600 shadow-2xl z-50 py-2 sm:py-4">
+          <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-0">
+              {/* Selection Count - Mobile friendly */}
+              <div className="flex flex-col sm:flex-row items-center sm:space-x-4 flex-1 gap-2">
+                <p className="text-xs sm:text-sm font-semibold text-gray-700 text-center sm:text-left">
+                  Comparing {selectedForComparison.length}/2 cards
                 </p>
                 
-                <div className="flex space-x-3">
+                {/* Selected Cards - Horizontal scroll on mobile */}
+                <div className="flex overflow-x-auto space-x-2 sm:space-x-3 w-full sm:w-auto pb-1 scrollbar-thin scrollbar-thumb-gray-300">
                   {selectedForComparison.map(cardId => {
                     const card = cards.find(c => c.id === cardId);
                     if (!card) return null;
                     
                     return (
-                      <div key={cardId} className="flex items-center space-x-2 bg-blue-50 border border-blue-200 rounded-lg px-4 py-2">
+                      <div key={cardId} className="flex items-center space-x-1.5 sm:space-x-2 bg-blue-50 border border-blue-200 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 shrink-0">
                         <img
                           src={card.image}
                           alt={card.name}
-                          className="w-12 h-8 object-contain rounded"
+                          className="w-10 h-6 sm:w-12 sm:h-8 object-contain rounded"
                         />
-                        <span className="text-sm font-medium text-gray-900 max-w-[150px] truncate">
+                        <span className="text-xs sm:text-sm font-medium text-gray-900 max-w-[100px] sm:max-w-[150px] truncate">
                           {card.name}
                         </span>
                         <button
                           onClick={() => removeFromComparison(cardId)}
-                          className="text-gray-500 hover:text-red-600 transition"
+                          className="text-gray-500 hover:text-red-600 transition shrink-0"
                         >
-                          <X className="w-4 h-4" />
+                          <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         </button>
                       </div>
                     );
@@ -330,17 +305,18 @@ export default function CreditCardListSection() {
                 </div>
               </div>
               
+              {/* Compare Button - Full width on mobile */}
               <button
                 onClick={handleCompare}
                 disabled={selectedForComparison.length !== 2}
-                className={`flex items-center space-x-2 px-8 py-3 rounded-lg font-bold text-lg transition-all ${
+                className={`flex items-center justify-center space-x-2 px-4 sm:px-8 py-2 sm:py-3 rounded-lg font-bold text-sm sm:text-lg transition-all w-full sm:w-auto ${
                   selectedForComparison.length === 2
                     ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >
                 <span>Compare</span>
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
           </div>
@@ -368,6 +344,19 @@ export default function CreditCardListSection() {
             handleApply({ id: card.id, name: card.name, image: card.image, bullets: card.bullets });
           }
         }}
+      />
+
+      <CreditCardApplicationModal
+        isOpen={showApplicationModal}
+        onClose={() => {
+          setShowApplicationModal(false);
+          setApplicationCard(null);
+        }}
+        bankName={applicationCard?.bank}
+        bankLogo={applicationCard?.image}
+        productId={applicationCard?.id ? parseInt(applicationCard.id) : undefined}
+        categorySlug={applicationCard?.categories?.[0]}
+        categoryName={applicationCard?.name}
       />
     </section>
   );

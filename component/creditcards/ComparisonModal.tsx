@@ -141,36 +141,43 @@ export default function ComparisonModal({ isOpen, onClose, cardIds, onApply }: C
           </div>
         ) : (
           <>
-            {/* 2. Sticky Comparison Header (The Cards) */}
-            <div className="grid grid-cols-2 divide-x divide-gray-100 border-b border-gray-200 bg-white sticky top-0 z-10 shadow-sm">
-              {cards.map((card) => (
-                <div key={card.id} className="p-2 sm:p-5 flex flex-col items-center gap-2 sm:gap-4 text-center">
-                  <div className="relative group shrink-0">
-                    <div className="absolute inset-0 bg-blue-600/5 rounded-lg transform rotate-3 transition-transform group-hover:rotate-6" />
-                    <img
-                      src={card.imageUrl}
-                      alt={card.name}
-                      className="relative w-16 h-10 sm:w-32 sm:h-20 object-contain rounded-lg shadow-sm bg-white"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0 w-full">
-                    <h3 className="font-bold text-slate-800 text-xs sm:text-base leading-tight mb-1 line-clamp-2">
-                      {card.name}
-                    </h3>
-                    <div className="flex flex-col items-center gap-1.5 sm:gap-2 mt-2">
-                      <span className="text-[10px] sm:text-xs font-medium text-slate-500 bg-slate-50 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded truncate w-full">
-                        Fee: {card.firstYearFee || card.annualFee || 'Free'}
-                      </span>
-                      <button
-                        onClick={() => onApply?.(card.id)}
-                        className="text-[10px] sm:text-xs bg-blue-600 hover:bg-blue-700 text-white font-medium px-2 sm:px-4 py-1 sm:py-1.5 rounded-full transition-colors shadow-sm shadow-blue-200 w-full"
-                      >
-                        Apply Now
-                      </button>
+            {/* 2. Sticky Comparison Header (The Cards) - MOBILE OPTIMIZED */}
+            <div className="sticky top-0 z-10 bg-white border-b border-gray-200 shadow-sm">
+              <div className="grid grid-cols-2 divide-x divide-gray-100">
+                {cards.map((card) => (
+                  <div key={card.id} className="p-2 sm:p-4 md:p-5 flex flex-col items-center gap-1.5 sm:gap-3 md:gap-4 text-center">
+                    {/* Card Image Container - Responsive sizes */}
+                    <div className="relative group shrink-0 w-full max-w-[120px] sm:max-w-[160px]">
+                      <div className="absolute inset-0 bg-blue-600/5 rounded-lg transform rotate-3 transition-transform group-hover:rotate-6" />
+                      <div className="relative aspect-[16/10] w-full">
+                        <img
+                          src={card.imageUrl}
+                          alt={card.name}
+                          className="relative w-full h-full object-contain rounded-lg shadow-sm bg-white p-1"
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Card Details - Responsive typography */}
+                    <div className="flex-1 min-w-0 w-full space-y-1 sm:space-y-2">
+                      <h3 className="font-bold text-slate-800 text-xs sm:text-sm md:text-base leading-tight line-clamp-2 px-1">
+                        {card.name}
+                      </h3>
+                      <div className="flex flex-col items-center gap-1 sm:gap-1.5">
+                        <span className="text-[9px] sm:text-xs md:text-sm font-medium text-slate-600 bg-slate-50 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded truncate w-full max-w-full">
+                          Fee: {card.firstYearFee || card.annualFee || 'Free'}
+                        </span>
+                        <button
+                          onClick={() => onApply?.(card.id)}
+                          className="text-[9px] sm:text-xs md:text-sm bg-blue-600 hover:bg-blue-700 text-white font-medium px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 rounded-full transition-colors shadow-sm shadow-blue-200 w-full max-w-full"
+                        >
+                          Apply Now
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
             {/* 3. Scrollable Content Area */}

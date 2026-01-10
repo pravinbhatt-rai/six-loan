@@ -8,6 +8,7 @@ import { CardRecord } from "@/component/creditcards/cardsData";
 import { FiFilter } from "react-icons/fi";
 import { X, ArrowRight } from "lucide-react";
 import ComparisonModal from "@/component/creditcards/ComparisonModal";
+import CreditCardApplicationModal from "@/component/creditcards/CreditCardApplicationModal";
 import { useRouter } from "next/navigation";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
@@ -25,6 +26,10 @@ export default function CreditCardsPage() {
   // Comparison State
   const [selectedForComparison, setSelectedForComparison] = useState<string[]>([]);
   const [showComparisonModal, setShowComparisonModal] = useState(false);
+  
+  // Application Modal State
+  const [showApplicationModal, setShowApplicationModal] = useState(false);
+  const [applicationCard, setApplicationCard] = useState<CardInfo | null>(null);
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -114,36 +119,9 @@ export default function CreditCardsPage() {
   };
 
   const handleApply = (card: CardInfo) => {
-    // Check if user is logged in
-    const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
-    if (!token) {
-      router.push("/login");
-      return;
-    }
-    // First load card details, then open application modal
-    const full = cards.find((c) => c.id === card.id);
-    if (!full) return;
-    
-    const cardDetails: CreditCardDetailsData = {
-      id: full.id,
-      name: full.name,
-      bank: full.bank,
-      image: full.image,
-      categories: full.categories,
-      fee: full.fee,
-      cardType: full.cardType,
-      bullets: full.bullets,
-    };
-    
-    setSelectedCard(cardDetails);
-    setOpenDrawer(true);
-    
-    // Trigger application modal to open after drawer is set
-    setTimeout(() => {
-      if (drawerRef.current) {
-        drawerRef.current.openApplicationModal();
-      }
-    }, 100);
+    console.log('Apply clicked for:', card.name);
+    setApplicationCard(card);
+    setShowApplicationModal(true);
   };
 
   const handleShowDetails = async (card: CardInfo) => {
@@ -253,25 +231,23 @@ export default function CreditCardsPage() {
 
   return (
     <div className="min-h-screen w-full bg-[#F5F7FA]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 md:py-8">
-        {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Credit Cards</h1>
-        </div>
-
-        {/* Mobile filter toggle */}
-        <div className="sm:hidden mb-4 flex justify-end">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
+        {/* Header with Filter Button on Mobile */}
+        <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">Credit Cards</h1>
+          
+          {/* Mobile filter toggle - moved to header */}
           <button
             type="button"
             onClick={() => setShowFilterMobile(true)}
-            className="flex items-center gap-2 px-3 py-2 rounded-md border bg-white shadow-sm text-gray-800"
+            className="sm:hidden flex items-center justify-center gap-2 px-4 py-2.5 rounded-md border border-gray-300 bg-white shadow-sm text-gray-800 font-medium hover:bg-gray-50 transition-colors"
           >
-            <FiFilter />
-            Filter
+            <FiFilter size={18} />
+            <span>Filters</span>
           </button>
         </div>
 
-        <div className="flex gap-6">
+        <div className="flex gap-4 sm:gap-6">
           {/* Sidebar visible on >= sm */}
           <div className="hidden sm:block">
             <FilterSidebar
@@ -282,13 +258,16 @@ export default function CreditCardsPage() {
           </div>
           
           {loading ? (
-            <div className="flex-1 flex justify-center items-center">
-              <p>Loading credit cards...</p>
+            <div className="flex-1 flex justify-center items-center py-12">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                <p className="text-gray-600">Loading credit cards...</p>
+              </div>
             </div>
           ) : cards.length === 0 ? (
-            <div className="flex-1 flex flex-col justify-center items-center text-center">
-              <p className="text-gray-500 mb-4">No credit cards found</p>
-              <p className="text-sm text-gray-400">Check your API endpoint or add some credit cards from the dashboard</p>
+            <div className="flex-1 flex flex-col justify-center items-center text-center py-12">
+              <p className="text-gray-600 text-base sm:text-lg mb-2">No credit cards found</p>
+              <p className="text-xs sm:text-sm text-gray-400">Check your API endpoint or add some credit cards from the dashboard</p>
             </div>
           ) : (
             <CardList 
@@ -303,36 +282,37 @@ export default function CreditCardsPage() {
         </div>
       </div>
 
-      {/* Comparison Bar */}
+      {/* Comparison Bar - Mobile Optimized */}
       {selectedForComparison.length > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-teal-600 shadow-2xl z-50 py-4 animate-slide-up">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4 flex-1">
-                <p className="text-sm font-semibold text-gray-700">
-                  You are comparing {selectedForComparison.length}/2 cards
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-teal-600 shadow-2xl z-50 py-2 sm:py-4 animate-slide-up">
+          <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-0">
+              <div className="flex flex-col sm:flex-row items-center sm:space-x-4 flex-1 gap-2">
+                <p className="text-xs sm:text-sm font-semibold text-gray-700 text-center sm:text-left">
+                  Comparing {selectedForComparison.length}/2 cards
                 </p>
                 
-                <div className="flex space-x-3">
+                {/* Selected Cards - Horizontal scroll on mobile */}
+                <div className="flex overflow-x-auto space-x-2 sm:space-x-3 w-full sm:w-auto pb-1 scrollbar-thin scrollbar-thumb-gray-300">
                   {selectedForComparison.map(cardId => {
                     const card = cards.find(c => c.id === cardId);
                     if (!card) return null;
                     
                     return (
-                      <div key={cardId} className="flex items-center space-x-2 bg-teal-50 border border-teal-200 rounded-lg px-4 py-2">
+                      <div key={cardId} className="flex items-center space-x-1.5 sm:space-x-2 bg-teal-50 border border-teal-200 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 shrink-0">
                         <img
                           src={card.image}
                           alt={card.name}
-                          className="w-16 h-10 object-contain rounded"
+                          className="w-12 h-8 sm:w-16 sm:h-10 object-contain rounded"
                         />
-                        <span className="text-sm font-medium text-gray-900 max-w-[150px] truncate">
+                        <span className="text-xs sm:text-sm font-medium text-gray-900 max-w-[100px] sm:max-w-[150px] truncate">
                           {card.name}
                         </span>
                         <button
                           onClick={() => removeFromComparison(cardId)}
-                          className="text-red-500 hover:text-red-700"
+                          className="text-red-500 hover:text-red-700 shrink-0"
                         >
-                          <X className="w-4 h-4" />
+                          <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         </button>
                       </div>
                     );
@@ -340,27 +320,28 @@ export default function CreditCardsPage() {
                   
                   {/* Placeholder for second card */}
                   {selectedForComparison.length === 1 && (
-                    <div className="flex items-center space-x-2 bg-gray-50 border border-gray-200 border-dashed rounded-lg px-4 py-2">
-                      <div className="w-16 h-10 bg-gray-200 rounded flex items-center justify-center">
-                        <span className="text-xs text-gray-500">+</span>
+                    <div className="flex items-center space-x-1.5 sm:space-x-2 bg-gray-50 border border-gray-200 border-dashed rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 shrink-0">
+                      <div className="w-12 h-8 sm:w-16 sm:h-10 bg-gray-200 rounded flex items-center justify-center">
+                        <span className="text-xs sm:text-sm text-gray-500">+</span>
                       </div>
-                      <span className="text-sm text-gray-500">Select one more card</span>
+                      <span className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">Select one more</span>
                     </div>
                   )}
                 </div>
               </div>
               
+              {/* Compare Button - Full width on mobile */}
               <button
                 onClick={handleCompare}
                 disabled={selectedForComparison.length !== 2}
-                className={`flex items-center space-x-2 rounded-lg font-semibold transition ${
+                className={`flex items-center justify-center space-x-2 rounded-lg font-semibold transition w-full sm:w-auto ${
                   selectedForComparison.length === 2
-                    ? 'bg-teal-600 text-white hover:bg-teal-700 px-8 py-3 text-lg'
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed px-6 py-3'
+                    ? 'bg-teal-600 text-white hover:bg-teal-700 px-4 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg'
+                    : 'bg-gray-300 text-gray-500 cursor-not-allowed px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base'
                 }`}
               >
                 <span>Compare</span>
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
           </div>
@@ -374,28 +355,29 @@ export default function CreditCardsPage() {
             className="absolute inset-0 bg-black/50"
             onClick={() => setShowFilterMobile(false)}
           />
-          <div className="absolute left-0 top-0 h-full w-[85%] max-w-[340px]">
+          <div className="absolute left-0 top-0 h-full w-[85%] max-w-[340px] sm:max-w-[380px]">
             <div className="h-full w-full bg-white shadow-2xl border-r rounded-r-2xl transform transition-transform duration-300 ease-out translate-x-0">
-              <div className="p-4 border-b flex items-center justify-between">
-                <h4 className="font-semibold">Filters</h4>
-                <div className="flex gap-3 items-center">
+              <div className="p-3 sm:p-4 border-b flex items-center justify-between bg-gray-50">
+                <h4 className="font-semibold text-base sm:text-lg text-gray-900">Filters</h4>
+                <div className="flex gap-2 sm:gap-3 items-center">
                   <button
                     type="button"
                     onClick={handleClearAll}
-                    className="text-sm text-gray-600 hover:underline"
+                    className="text-xs sm:text-sm text-gray-600 hover:text-gray-900 font-medium px-2 py-1 hover:bg-gray-100 rounded transition-colors"
                   >
                     Clear All
                   </button>
                   <button
                     type="button"
                     onClick={() => setShowFilterMobile(false)}
-                    className="px-3 py-1.5 rounded-md bg-teal-600 text-white"
+                    className="px-3 py-1.5 rounded-md bg-teal-600 hover:bg-teal-700 text-white text-xs sm:text-sm font-medium transition-colors flex items-center gap-1"
                   >
-                    Close
+                    <X size={16} />
+                    <span>Close</span>
                   </button>
                 </div>
               </div>
-              <div className="p-4 overflow-y-auto h-[calc(100%-56px)]">
+              <div className="p-3 sm:p-4 overflow-y-auto h-[calc(100%-56px)] sm:h-[calc(100%-64px)]">
                 <FilterSidebar
                   active={activeFilters}
                   onToggle={(k, v) => handleToggle(k, v)}
@@ -429,6 +411,19 @@ export default function CreditCardsPage() {
             handleApply({ id: card.id, name: card.name, image: card.image, bullets: card.bullets });
           }
         }}
+      />
+
+      <CreditCardApplicationModal
+        isOpen={showApplicationModal}
+        onClose={() => {
+          setShowApplicationModal(false);
+          setApplicationCard(null);
+        }}
+        bankName={applicationCard?.bank}
+        bankLogo={applicationCard?.image}
+        productId={applicationCard?.id ? parseInt(applicationCard.id) : undefined}
+        categorySlug={applicationCard?.categories?.[0]}
+        categoryName={applicationCard?.name}
       />
     </div>
   );
