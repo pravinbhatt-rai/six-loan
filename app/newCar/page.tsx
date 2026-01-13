@@ -13,7 +13,6 @@ import { CarLoanCustomerReview } from "@/component/NewCar/CarLoanCustomerReview"
 import { CarLoanFAQSection } from "@/component/NewCar/CarLoanFAQSection";
 import EmailApply from "@/component/PersonalLoan/EmailApply";
 import NewCarCityLoanOffers from "@/component/NewCar/NewCarCityLoanOffers";
-import LoanFooter from "@/component/PersonalLoan/LoanFooter";
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import LoanInfoPage from '@/component/PersonalLoan/LoanInfoPage';
 import LoanEligibilityCriteria from '@/component/PersonalLoan/LoanEligibilityCriteria';
@@ -62,7 +61,7 @@ export default function Page() {
             <CarLoanFAQSection />
             <EmailApply />
             <NewCarCityLoanOffers />
-            <LoanFooter />
+            
         </div>
     );
 }

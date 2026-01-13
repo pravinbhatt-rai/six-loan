@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/component/HomePage/navbar";
 import { LoanTypeProvider } from "@/component/PersonalLoan/LoanTypeContext";
 import "./globals.css";
+import LoanFooter from "@/component/PersonalLoan/LoanFooter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
         <LoanTypeProvider>
           <Navbar />
           <main className="pt-[72px] lg:pt-20">{children}</main>
+          <LoanFooter />
         </LoanTypeProvider>
       </body>
     </html>

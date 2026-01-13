@@ -16,7 +16,6 @@ import ApplySection from "@/component/PersonalLoan/ApplySection";
 import HomeCustomerReview from "@/component/HomeLoan/HomeCustomerReview";
 import HomeFAQSection from "@/component/HomeLoan/HomeFAQSection";
 import HomeCityLoanOffers from "@/component/HomeLoan/HomeCityLoanOffers";
-import LoanFooter from "@/component/PersonalLoan/LoanFooter";
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import PreApprovedOffers from '@/component/PersonalLoan/PreApprovedOffers';
 import ComparisonContainer from '@/component/PersonalLoan/ComparisonContainer';
@@ -59,7 +58,6 @@ export default function Page() {
             <HomeCustomerReview />
             <HomeFAQSection />
             <HomeCityLoanOffers />
-            <LoanFooter />
         </main>
     );
 }

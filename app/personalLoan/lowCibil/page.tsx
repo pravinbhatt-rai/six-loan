@@ -1,23 +1,17 @@
 import React from "react";
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
-import RateComparisonContainer from "@/component/PersonalLoan/InterestRates/RateComparsion";
-import { Percent, Wallet, Zap, CalendarDays } from "lucide-react";
 import UniversalLoanCard from "@/component/loan/UniversalLoanCard";
-import QuickLinksContainer from "@/component/commonComponent/QuickLinksContainer";
-import LoanAmountSelector from "@/component/PersonalLoan/preApproved/LoanAmountSelector";
-import LoanTypesContainer from "@/component/PersonalLoan/LoanTypesContainer";
-import LoanAdviceSection from "@/component/PersonalLoan/InterestRates/LoanAdviceSection";
-import LoanTableSection from "@/component/PersonalLoan/InterestRates/LoanTableSection";
-import SalaryLoanOffers from "@/component/PersonalLoan/preApproved/SalaryLoanOffers";
-import InfoSection from "@/component/PersonalLoan/InterestRates/InfoSection";
+import { Percent, Wallet, Zap, CalendarDays } from "lucide-react";
+import LowCibilLoanGuide from "@/component/PersonalLoan/lowCibil/LowCibilLoanGuide";
 
-export default function InterestRatesPersonalLoanPage() {
+
+export default function LowCibilPersonalLoanPage() {
     return (
         <>
-            <PreHero id="personal-loan-interest-rates" />
-            <EMICalculator 
-            marketingContent={{
+            <PreHero id="personal-loan-low-cibil" />
+            <EMICalculator
+                marketingContent={{
                     tagline: "Personal Loan EMI Calculator",
                     headline: (
                         <>
@@ -69,8 +63,7 @@ export default function InterestRatesPersonalLoanPage() {
                 defaultApr={10.99} // Competitive starting rate
                 minApr={10.49}    // Best market rate
                 maxApr={24}       // Upper cap for NBFCs
-                />
-            <RateComparisonContainer id="personal-loan-rates"  />
+            />
             <UniversalLoanCard
                 categorySlug="personal-loan"
                 headerTitle="Personal <span class='text-teal-500'>Loan</span>"
@@ -79,16 +72,8 @@ export default function InterestRatesPersonalLoanPage() {
                 maxDisplay={4}
                 showViewAllButton={true}
             />
-            <QuickLinksContainer id="personal-loan-interest-rates" />
-            <LoanAmountSelector />
-            <LoanTypesContainer id="personal-loan" />
-            <LoanAdviceSection sectionId="loan-interest-tips" />
-            <LoanTableSection sectionId="tenure-impact"  />
-            <InfoSection sectionId="why-compare-platform" />
-            <InfoSection sectionId="why-comparing-matters" />
-            <InfoSection sectionId="how-platform-helps" />
-            <SalaryLoanOffers />
+            <LowCibilLoanGuide />
             
         </>
     );
-}
+}   

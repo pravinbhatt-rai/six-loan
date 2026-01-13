@@ -6,7 +6,6 @@ import ApplySection from '@/component/PersonalLoan/ApplySection';
 import CustomerReview from '@/component/PersonalLoan/CustomerReview';
 import FAQSection from '@/component/PersonalLoan/FaqSection';
 import EmailApply from '@/component/PersonalLoan/EmailApply';
-import LoanFooter from '@/component/PersonalLoan/LoanFooter';
 import LoanInfo from '@/component/commonComponent/LoanInfo';
 import {ExpertQuoteContainer} from '@/component/PersonalLoan/Linkdin';
 import LoanBenefits from '@/component/PersonalLoan/LoanBenefits';
@@ -67,7 +66,7 @@ export default function PersonalLoanPage() {
             <EmailApply />
             <CityLoanOffers />
             <CityLoanOffers />
-            <LoanFooter />
+            
         </>
     );
 }

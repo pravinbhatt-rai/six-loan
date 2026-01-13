@@ -52,21 +52,20 @@ const NAV_DATA: NavItem[] = [
                             { name: 'Personal Loan', href: '/personalLoan' },
                             { name: 'Pre Approved Personal Loan', href: '/personalLoan/preApproved' },
                             { name: 'Personal Loan Interest Rates', href: '/personalLoan/InterestRates' },
-                            { name: 'Personal Loan APP', href: '/personalLoan/app' },
                             { name: 'Personal Loan Low CIBIL Score', href: '/personalLoan/lowCibil' },
-                            { name: 'Personal Loan Balance Transfer', href: '/personalLoan/transfer' },
+                            { name: 'Personal Loan Balance Transfer', href: '/transferPersonalLoan' },
                         ]
                     },
                     {
                         title: 'By Amount',
                         icon: <Banknote className="w-4 h-4 text-teal-500" />,
                         items: [
-                            { name: '5 Lakh Loan', href: '/loans/personal/5-lakh' },
-                            { name: '10 Lakh Loan', href: '/loans/personal/10-lakh' },
-                            { name: '20 Lakh Loan', href: '/loans/personal/20-lakh' },
-                            { name: '30 Lakh Loan', href: '/loans/personal/30-lakh' },
-                            { name: '40 Lakh Loan', href: '/loans/personal/40-lakh' },
-                            { name: '50 Lakh Loan', href: '/loans/personal/50-lakh' },
+                            { name: '5 Lakh Loan', href: 'personalLoan/5-lakh' },
+                            { name: '10 Lakh Loan', href: 'personalLoan/10-lakh' },
+                            { name: '20 Lakh Loan', href: 'personalLoan/20-lakh' },
+                            { name: '30 Lakh Loan', href: 'personalLoan/30-lakh' },
+                            { name: '40 Lakh Loan', href: 'personalLoan/40-lakh' },
+                            { name: '50 Lakh Loan', href: 'personalLoan/50-lakh' },
                         ]
                     },
                     {
@@ -106,7 +105,7 @@ const NAV_DATA: NavItem[] = [
                         title: 'Overview',
                         icon: <FileText className="w-4 h-4 text-teal-500" />,
                         items: [
-                            { name: 'Business Loan', href: '/BusinessLoan' },
+                            { name: 'Business Loan', href: '/businessLoan' },
                             { name: 'Business Loan Interest Rates', href: '/loans/business/rates' },
                             { name: 'Business Loan low CIBIL Score', href: '/loans/business/low-cibil' },
                         ]
@@ -154,7 +153,7 @@ const NAV_DATA: NavItem[] = [
                         title: 'Overview',
                         icon: <FileText className="w-4 h-4 text-teal-500" />,
                         items: [
-                            { name: 'Home Loan', href: '/HomeLoan' },
+                            { name: 'Home Loan', href: '/homeLoan' },
                             { name: 'Home Loan Interest Rates', href: '/loans/home/rates' },
                             { name: 'Home Loan Balance Transfer', href: '/loans/home/transfer' },
                             { name: 'Home Loan Low CIBIL Score', href: '/loans/home/low-cibil' },
@@ -204,10 +203,10 @@ const NAV_DATA: NavItem[] = [
                         icon: <Coins className="w-4 h-4 text-teal-500" />,
                         items: [
                             { name: 'Loan Against Property', href: '/LoanAgainstProperty' },
-                            { name: 'Loan Against Security', href: '/LoanAgainstSecurity' },
-                            { name: 'Two Wheeler Loan', href: '/NewBike' },
-                            { name: 'Education Loan', href: '/EducationLoan' },
-                            { name: 'Car Loan', href: '/NewCar' },
+                            { name: 'Loan Against Security', href: '/loanAgainstSecurity' },
+                            { name: 'Two Wheeler Loan', href: '/newBike' },
+                            { name: 'Education Loan', href: '/educationLoan' },
+                            { name: 'Car Loan', href: '/newCar' },
                         ]
                     }
                 ]
@@ -264,53 +263,7 @@ const NAV_DATA: NavItem[] = [
             }
         ]
     },
-    {
-        name: 'Investment',
-        columns: [
-            {
-                title: 'Bonds',
-                icon: <FileText className="w-4 h-4 text-teal-500" />,
-                items: [
-                    { name: 'Bonds', href: '/invest/bonds' },
-                    { name: 'Corporate Bonds', href: '/invest/bonds/corporate' },
-                    { name: 'Government Bonds', href: '/invest/bonds/government' },
-                    { name: 'Tax Free Bonds', href: '/invest/bonds/tax-free' },
-                    { name: 'Floating Rate Bonds', href: '/invest/bonds/floating' },
-                    { name: 'Capital Gain Bonds', href: '/invest/bonds/capital-gain' },
-                    { name: 'Zero Coupon Bonds', href: '/invest/bonds/zero-coupon' },
-                    { name: 'How to Invest in Bonds', href: '/invest/bonds/guide' },
-                ]
-            },
-            {
-                title: 'Fixed Deposit',
-                icon: <Landmark className="w-4 h-4 text-teal-500" />,
-                items: [
-                    { name: 'Fixed Deposit Interest Rates', href: '/invest/fd/rates' },
-                    { name: 'Senior Citizen FD Rates', href: '/invest/fd/senior' },
-                    { name: 'Loan Against Fixed Deposit', href: '/invest/fd/loan' },
-                    { name: 'FD vs Mutual Funds', href: '/invest/fd/vs-mf' },
-                    { name: 'FD vs RD', href: '/invest/fd/vs-rd' },
-                    { name: 'Post Office FD Rates', href: '/invest/fd/post-office' },
-                    { name: 'Recurring Deposit', href: '/invest/rd' },
-                ]
-            },
-            {
-                title: 'Mutual Funds',
-                icon: <TrendingUp className="w-4 h-4 text-teal-500" />,
-                items: [
-                    { name: 'Mutual Funds', href: '/invest/mf' },
-                    { name: 'Large Cap Mutual Funds', href: '/invest/mf/large-cap' },
-                    { name: 'Mid Cap Mutual Funds', href: '/invest/mf/mid-cap' },
-                    { name: 'Small Cap Mutual Funds', href: '/invest/mf/small-cap' },
-                    { name: 'ELSS Mutual Funds', href: '/invest/mf/elss' },
-                    { name: 'Mutual Fund Investment', href: '/invest/mf/invest' },
-                    { name: 'SWP Mutual Funds', href: '/invest/mf/swp' },
-                    { name: 'Flexi Cap Funds', href: '/invest/mf/flexi-cap' },
-                    { name: 'Liquid Funds', href: '/invest/mf/liquid' },
-                ]
-            }
-        ]
-    },
+    
     {
         name: 'Calculators',
         columns: [

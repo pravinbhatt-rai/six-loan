@@ -12,7 +12,6 @@ import { BikeLoanCustomerReview } from "@/component/NewBike/BikeLoanCustomerRevi
 import { BikeLoanFAQSection } from "@/component/NewBike/BikeLoanFAQSection";
 import EmailApply from "@/component/PersonalLoan/EmailApply";
 import NewBikeCityLoanOffers from "@/component/NewBike/NewBikeCityLoanOffers";
-import LoanFooter from "@/component/PersonalLoan/LoanFooter";
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import LoanInfoPage from '@/component/PersonalLoan/LoanInfoPage';
 import LoanEligibilityCriteria from '@/component/PersonalLoan/LoanEligibilityCriteria';
@@ -61,7 +60,6 @@ export default function Page() {
             <BikeLoanFAQSection />
             <EmailApply />
             <NewBikeCityLoanOffers />
-            <LoanFooter />
         </div>
     );
 }

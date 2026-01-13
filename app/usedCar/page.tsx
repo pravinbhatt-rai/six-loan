@@ -13,7 +13,6 @@ import { UsedCarCustomerReview } from "@/component/UsedCar/UsedCarCustomerReview
 import { UsedCarFAQSection } from "@/component/UsedCar/UsedCarFAQSection";
 import EmailApply from "@/component/PersonalLoan/EmailApply";
 import UsedCarCityLoanOffers from "@/component/UsedCar/UsedCarCityLoanOffers";
-import LoanFooter from "@/component/PersonalLoan/LoanFooter";
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import LoanInfoPage from '@/component/PersonalLoan/LoanInfoPage';
 import LoanEligibilityCriteria from '@/component/PersonalLoan/LoanEligibilityCriteria';
@@ -62,7 +61,6 @@ export default function Page() {
             <UsedCarFAQSection />
             <EmailApply />
             <UsedCarCityLoanOffers />
-            <LoanFooter />
         </div>
     );
 }

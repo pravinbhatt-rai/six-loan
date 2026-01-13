@@ -13,7 +13,6 @@ import HomeLoanTransferTips from "@/component/TransferHomeLoan/HomeLoanTransferT
 import TransferFeesAndCharges from "@/component/TransferHomeLoan/TransferFeesAndCharges";
 import TransferLoanRates from "@/component/TransferHomeLoan/TransferLoanRates";
 import TransferProcessGuide from "@/component/TransferHomeLoan/TransferProcessGuide";
-import TransferVsPersonalLoan from "@/component/TransferHomeLoan/TransferVsPersonalLoan";
 import TransferSuccessStories from "@/component/TransferHomeLoan/TransferSuccessStories";
 import TransferTipsAndFacts from "@/component/TransferHomeLoan/TransferTipsAndFacts";
 import OurServices from "@/component/PersonalLoan/OurServices";
@@ -22,7 +21,6 @@ import { TransferCustomerReview } from "@/component/TransferHomeLoan/TransferCus
 import TransferFAQ from "@/component/TransferHomeLoan/TransferFAQ";
 import EmailApply from "@/component/PersonalLoan/EmailApply";
 import TransferCityLoanOffers from "@/component/TransferHomeLoan/TransferCityLoanOffers";
-import LoanFooter from "@/component/PersonalLoan/LoanFooter";
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import LoanTypesContainer from "@/component/PersonalLoan/LoanTypesContainer";
 import DocumentsRequiredContainer from "@/component/PersonalLoan/DocumentsRequiredContainer";
@@ -70,7 +68,6 @@ export default function Page() {
             <TransferFAQ />
             <EmailApply />
             <TransferCityLoanOffers />
-            <LoanFooter />
         </main>
     );
 }

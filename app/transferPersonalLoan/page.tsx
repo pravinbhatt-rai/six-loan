@@ -16,7 +16,6 @@ import TransferCustomerReview from "@/component/transferPersonalLoan/TransferCus
 import TransferFAQ from "@/component/transferPersonalLoan/TransferFAQ";
 import EmailApply from "@/component/PersonalLoan/EmailApply";
 import CityTransferOffers from "@/component/transferPersonalLoan/CityTransferOffers";
-import LoanFooter from "@/component/PersonalLoan/LoanFooter";
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import ThingsToKnow from '@/component/PersonalLoan/ThingsToKnow';
 import PreApprovedOffers from '@/component/PersonalLoan/PreApprovedOffers';
@@ -61,7 +60,7 @@ export default function Page() {
             <TransferFAQ />
             <EmailApply />
             <CityTransferOffers />
-            <LoanFooter />
+            
         </main>
     );
 }

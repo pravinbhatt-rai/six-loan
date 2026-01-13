@@ -17,7 +17,6 @@ import { SecuritiesCustomerReview } from "@/component/LoanAgainstSecurity/Securi
 import { SecuritiesFAQSection } from "@/component/LoanAgainstSecurity/SecuritiesFAQSection";
 import EmailApply from "@/component/PersonalLoan/EmailApply";
 import SecuritiesCityLoanOffers from "@/component/LoanAgainstSecurity/SecuritiesCityLoanOffers";
-import LoanFooter from "@/component/PersonalLoan/LoanFooter";
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import PreApprovedOffers from '@/component/PersonalLoan/PreApprovedOffers';
 import ComparisonContainer from '@/component/PersonalLoan/ComparisonContainer';
@@ -61,7 +60,7 @@ export default function Page() {
             <SecuritiesFAQSection />
             <EmailApply />
             <SecuritiesCityLoanOffers />
-            <LoanFooter />
+            
         </main>
     );
 }

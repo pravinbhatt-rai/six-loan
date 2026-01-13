@@ -49,6 +49,19 @@ const QUICK_LINKS_DATA: QuickLinksData[] = [
       { text: "Relationship Discounts & Offers", url: "#" }
     ]
   },
+  {
+    id: 'personal-loan-low-cibil',
+    links: [
+      { text: "Loans for CIBIL Score < 600", url: "#" },
+      { text: "How to Improve Credit Score Fast", url: "#" },
+      { text: "Apply with a Co-Applicant", url: "#" },
+      { text: "Secured vs Unsecured Loans", url: "#" },
+      { text: "Documents for Low CIBIL Loans", url: "#" },
+      { text: "Avoid Loan Application Rejection", url: "#" },
+      { text: "Small Ticket Instant Loans", url: "#" },
+      { text: "Check Your CIBIL Report for Errors", url: "#" }
+    ]
+  }
   
 ];
 

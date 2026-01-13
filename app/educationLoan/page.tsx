@@ -15,7 +15,6 @@ import OurServices from "@/component/PersonalLoan/OurServices";
 import { EducationCustomerReview } from "@/component/EducationLoan/EducationCustomerReview";
 import { EducationFAQSection } from "@/component/EducationLoan/EducationFAQSection";
 import EducationCityLoanOffers from "@/component/EducationLoan/EducationCityLoanOffers";
-import LoanFooter from "@/component/PersonalLoan/LoanFooter";
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import PreApprovedOffers from '@/component/PersonalLoan/PreApprovedOffers';
 import ComparisonContainer from '@/component/PersonalLoan/ComparisonContainer';
@@ -57,7 +56,6 @@ export default function Page() {
             <EducationCustomerReview />
             <EducationFAQSection />
             <EducationCityLoanOffers />
-            <LoanFooter />
         </main>
     );
 }

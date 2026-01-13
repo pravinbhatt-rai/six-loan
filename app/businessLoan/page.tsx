@@ -15,7 +15,6 @@ import ApplySection from '@/component/PersonalLoan/ApplySection';
 import FAQSection from '../../component/BussinessLoan/FAQSection';
 import EmailApply from '@/component/PersonalLoan/EmailApply';
 import BusinessCityLoanOffers from '@/component/BussinessLoan/BusinessCityLoanOffers';
-import LoanFooter from '@/component/PersonalLoan/LoanFooter';
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import ThingsToKnow from '@/component/PersonalLoan/ThingsToKnow';
 import PreApprovedOffers from '@/component/PersonalLoan/PreApprovedOffers';
@@ -59,7 +58,6 @@ export default function Page() {
 			<FAQSection />
 			<EmailApply />
 			<BusinessCityLoanOffers />
-			<LoanFooter />
 		</main>
 	);
 }

@@ -136,7 +136,7 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
       
       // Use AbortController for timeout
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+      const timeoutId = setTimeout(() => controller.abort(), 15000); // 5 second timeout
 
       const response = await fetch(apiUrl, {
         method: 'GET',

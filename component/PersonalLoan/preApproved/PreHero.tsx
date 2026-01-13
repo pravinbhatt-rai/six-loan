@@ -63,6 +63,22 @@ const HERO_CONTENT_DATA: HeroData[] = [
       "No impact on CIBIL Score",
       "Real-time lender comparison"
     ]
+  },
+  {
+    id: 'personal-loan-low-cibil',
+    badgeText: 'Credit Builder Program',
+    title: 'Financial Freedom with Any Credit Score',
+    highlightText: 'Any Credit Score',
+    description: 'Don’t let a past score hold you back. We partner with lenders who look beyond your CIBIL. Get approved for up to ₹3 Lakhs and rebuild your credit history.',
+    primaryCtaText: 'Check Eligibility',
+    secondaryCtaText: 'How to Improve',
+    amountDisplay: '3,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=2070", // Trust/Support theme
+    benefits: [
+      "Approval with score < 650",
+      "Boost your CIBIL Score",
+      "Flexible repayment terms"
+    ]
   }
 ];
 

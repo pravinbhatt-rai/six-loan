@@ -85,7 +85,7 @@ const RATE_DATA: RateTableData[] = [
 const TableCard: React.FC<{ data: RateTableData }> = ({ data }) => (
   <div className="w-full bg-white rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 overflow-hidden font-sans mb-8">
     {/* Header */}
-    <div className="p-6 md:p-8 border-b border-gray-100 bg-gradient-to-r from-teal-50/50 to-white">
+    <div className="p-6 md:p-8 border-b border-gray-100 bg-linear-to-r from-teal-50/50 to-white">
       <div className="flex items-start gap-3 mb-3">
         <div className="p-2 bg-teal-100 text-teal-600 rounded-lg shrink-0 mt-1">
           <TrendingUp size={20} />

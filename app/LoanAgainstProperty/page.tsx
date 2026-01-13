@@ -17,7 +17,6 @@ import PropertyCustomerReview from "@/component/LoanAgainstProperty/PropertyCust
 import PropertyFAQSection from "@/component/LoanAgainstProperty/PropertyFAQSection";
 import EmailApply from "@/component/PersonalLoan/EmailApply";
 import PropertyCityLoanOffers from "@/component/LoanAgainstProperty/PropertyCityLoanOffers";
-import LoanFooter from "@/component/PersonalLoan/LoanFooter";
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import PreApprovedOffers from '@/component/PersonalLoan/PreApprovedOffers';
 import ComparisonContainer from '@/component/PersonalLoan/ComparisonContainer';
@@ -61,7 +60,6 @@ export default function Page() {
             <PropertyFAQSection />
             <EmailApply />
             <PropertyCityLoanOffers />
-            <LoanFooter />
         </main>
     );
 }

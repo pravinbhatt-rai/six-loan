@@ -7,7 +7,6 @@ import CreditProductBenefits from "@/component/HomePage/CreditProductBenefits";
 import AboutAndCareers from "@/component/HomePage/AboutAndCareers";
 import MobileAppDownload from "@/component/HomePage/MobileAppDownload";
 import Partners from "@/component/HomePage/partners";
-import Footer from "@/component/HomePage/footer";
 import SixLoansHighlight from "@/component/HomePage/SixLoansHighlight";
 import LoanPartners from "@/component/HomePage/LoanPartners";
 
@@ -25,7 +24,6 @@ export default function Home() {
       <AboutAndCareers />
       <MobileAppDownload />
       <Partners />
-      <Footer />
     </>
   );
 }

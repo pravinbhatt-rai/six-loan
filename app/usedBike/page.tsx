@@ -13,7 +13,6 @@ import { UsedBikeCustomerReview } from "@/component/UsedBike/UsedBikeCustomerRev
 import { UsedBikeFAQSection } from "@/component/UsedBike/UsedBikeFAQSection";
 import EmailApply from "@/component/PersonalLoan/EmailApply";
 import UsedBikeCityLoanOffers from "@/component/UsedBike/UsedBikeCityLoanOffers";
-import LoanFooter from "@/component/PersonalLoan/LoanFooter";
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import LoanEligibilityCriteria from '@/component/PersonalLoan/LoanEligibilityCriteria';
 import LoanTypesContainer from "@/component/PersonalLoan/LoanTypesContainer";
@@ -61,7 +60,6 @@ export default function Page() {
             <UsedBikeFAQSection />
             <EmailApply />
             <UsedBikeCityLoanOffers />
-            <LoanFooter />
         </div>
     );
 }
