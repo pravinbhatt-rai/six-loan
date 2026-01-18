@@ -603,6 +603,7 @@ const Navbar: FC = () => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [userName, setUserName] = useState<string>('');
     const [userRole, setUserRole] = useState<string>('');
+    const [showMobileUserMenu, setShowMobileUserMenu] = useState<boolean>(false);
 
     // NEW STATE FOR EXPERT MODAL
     const [isExpertModalOpen, setIsExpertModalOpen] = useState<boolean>(false);
@@ -695,9 +696,59 @@ const Navbar: FC = () => {
 
                                 {/* User Profile Button (Mobile) */}
                                 {isLoggedIn ? (
-                                    <button onClick={() => router.push('/user/dashboard')} className="flex items-center justify-center w-8 h-8 rounded-full bg-teal-100 text-teal-700 font-bold text-xs border border-teal-200">
-                                        {userName.charAt(0).toUpperCase()}
-                                    </button>
+                                    <div className="relative">
+                                        <button 
+                                            onClick={() => setShowMobileUserMenu(!showMobileUserMenu)} 
+                                            className="flex items-center justify-center w-8 h-8 rounded-full bg-teal-100 text-teal-700 font-bold text-xs border border-teal-200"
+                                        >
+                                            {userName.charAt(0).toUpperCase()}
+                                        </button>
+                                        
+                                        {/* Mobile User Dropdown Menu */}
+                                        {showMobileUserMenu && (
+                                            <>
+                                                <div 
+                                                    className="fixed inset-0 z-40" 
+                                                    onClick={() => setShowMobileUserMenu(false)}
+                                                />
+                                                <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl z-50 border border-gray-200 overflow-hidden">
+                                                    {(userRole === 'ADMIN' || userRole === 'MODERATOR') && (
+                                                        <button 
+                                                            onClick={() => { router.push('/dashboard'); setShowMobileUserMenu(false); }} 
+                                                            className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-700"
+                                                        >
+                                                            <Shield className="w-4 h-4" /> Admin Dashboard
+                                                        </button>
+                                                    )}
+                                                    <button 
+                                                        onClick={() => { router.push('/user/dashboard'); setShowMobileUserMenu(false); }} 
+                                                        className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-teal-50 hover:text-teal-700"
+                                                    >
+                                                        <LayoutDashboard className="w-4 h-4" /> User Dashboard
+                                                    </button>
+                                                    <button 
+                                                        onClick={() => { router.push('/user/profile'); setShowMobileUserMenu(false); }} 
+                                                        className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-teal-50 hover:text-teal-700"
+                                                    >
+                                                        <UserIcon className="w-4 h-4" /> My Profile
+                                                    </button>
+                                                    <button 
+                                                        onClick={() => { router.push('/user/applications'); setShowMobileUserMenu(false); }} 
+                                                        className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-teal-50 hover:text-teal-700"
+                                                    >
+                                                        <FileText className="w-4 h-4" /> My Applications
+                                                    </button>
+                                                    <div className="border-t border-gray-100"></div>
+                                                    <button 
+                                                        onClick={() => { handleLogout(); setShowMobileUserMenu(false); }} 
+                                                        className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50"
+                                                    >
+                                                        <LogOut className="w-4 h-4" /> Logout
+                                                    </button>
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
                                 ) : (
                                     <button onClick={() => router.push('/login')} className="flex items-center gap-1 px-2 py-1.5 border border-teal-600 rounded-md text-teal-600 hover:bg-teal-50 transition-colors">
                                         <UserIcon className="w-5 h-5" />
