@@ -179,8 +179,23 @@ export async function POST(req: NextRequest) {
       // Update user details from form
       const updateData: any = {};
       if (name && name !== user.name) updateData.name = name;
-      if (email && email !== user.email) updateData.email = email;
-      if (phone && phone !== user.phone) updateData.phone = phone;
+      
+      // Only update email if it's different and not already taken by another user
+      if (email && email !== user.email) {
+        const existingEmail = await prisma.user.findUnique({ where: { email } });
+        if (!existingEmail || existingEmail.id === user.id) {
+          updateData.email = email;
+        }
+      }
+      
+      // Only update phone if it's different and not already taken by another user
+      if (phone && phone !== user.phone) {
+        const existingPhone = await prisma.user.findUnique({ where: { phone } });
+        if (!existingPhone || existingPhone.id === user.id) {
+          updateData.phone = phone;
+        }
+      }
+      
       if (panNumber && panNumber !== user.panCard) updateData.panCard = panNumber;
       if (city && city !== user.city) updateData.city = city;
       if (pincode && pincode !== user.pincode) updateData.pincode = pincode;
