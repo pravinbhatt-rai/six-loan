@@ -3,6 +3,26 @@ import React, { useState, useEffect } from 'react';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
 
+// Helper functions for date conversion
+const formatDateToDisplay = (isoDate: string) => {
+  if (!isoDate) return '';
+  const date = new Date(isoDate);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
+const parseDateFromDisplay = (displayDate: string) => {
+  if (!displayDate) return '';
+  const parts = displayDate.split('/');
+  if (parts.length === 3) {
+    const [day, month, year] = parts;
+    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+  }
+  return displayDate;
+};
+
 interface CreditCardApplicationModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -487,7 +507,7 @@ const CreditCardApplicationModal: React.FC<CreditCardApplicationModalProps> = ({
         email: email.trim(),
         phone: mobileNumber,
         panNumber: panNumber.toUpperCase(),
-        dob: dateOfBirth,
+        dob: parseDateFromDisplay(dateOfBirth),
         employmentType: employmentType.toUpperCase(),
         annualIncome: parseFloat(annualIncome) || 0,
         employerName: employerName.trim(),
@@ -535,7 +555,7 @@ const CreditCardApplicationModal: React.FC<CreditCardApplicationModalProps> = ({
         case 'addon':
           applicationData.primaryCardholderName = primaryCardholderName;
           applicationData.relationshipWithPrimary = relationshipWithPrimary;
-          applicationData.addonApplicantDob = addonDob;
+          applicationData.addonApplicantDob = parseDateFromDisplay(addonDob);
           break;
 
         case 'nri':
@@ -664,7 +684,7 @@ const CreditCardApplicationModal: React.FC<CreditCardApplicationModalProps> = ({
                 </div>
                 <div>
                   <label className="text-gray-700 text-sm font-bold mb-1 block">Date of Birth</label>
-                  <input type="date" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} className="w-full p-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-100 outline-none text-gray-900 bg-white" />
+                  <input type="text" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} placeholder="DD/MM/YYYY" maxLength={10} className="w-full p-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-100 outline-none text-gray-900 bg-white" />
                 </div>
                 <div>
                   <label className="text-gray-700 text-sm font-bold mb-1 block">PAN Card Number</label>
@@ -713,7 +733,7 @@ const CreditCardApplicationModal: React.FC<CreditCardApplicationModalProps> = ({
                 </div>
                 <div>
                   <label className="text-gray-700 text-sm font-bold mb-1 block">Date of Birth</label>
-                  <input type="date" value={addonDob} onChange={(e) => setAddonDob(e.target.value)} className="w-full p-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-100 outline-none text-gray-900 bg-white" />
+                  <input type="text" value={addonDob} onChange={(e) => setAddonDob(e.target.value)} placeholder="DD/MM/YYYY" maxLength={10} className="w-full p-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-100 outline-none text-gray-900 bg-white" />
                 </div>
                 <div>
                   <label className="text-gray-700 text-sm font-bold mb-1 block">Mobile Number</label>

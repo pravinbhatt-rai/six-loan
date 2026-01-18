@@ -65,6 +65,7 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
     effectiveFree: initialData?.effectiveFree || false,
     recommended: initialData?.recommended || false,
     cardNetwork: initialData?.cardNetwork || 'Visa',
+    category: initialData?.category || '',
     keyStatement: initialData?.keyStatement || '',
     termsConditionsUrl: initialData?.termsConditionsUrl || '',
     bulletPoints: initialData?.bulletPoints?.length > 0 ? initialData.bulletPoints.map((f: any) => ({ text: f.text })) : [{ text: '' }],
@@ -108,7 +109,7 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
     }
 
     // Auto-capitalize for specific fields
-    if (['name', 'bankName', 'cardNetwork', 'keyStatement'].includes(name)) {
+    if (['name', 'bankName', 'cardNetwork', 'category', 'keyStatement'].includes(name)) {
       formattedValue = capitalizeWords(value);
     }
 
@@ -280,6 +281,21 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
               <option value="Mastercard">Mastercard</option>
               <option value="Rupay">Rupay</option>
               <option value="American Express">American Express</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Card Category</label>
+            <select name="category" value={formData.category} onChange={handleChange} className="w-full p-2 border rounded-lg">
+              <option value="">Select Category</option>
+              <option value="Cashback Credit Cards">Cashback Credit Cards</option>
+              <option value="Rewards Credit Cards">Rewards Credit Cards</option>
+              <option value="Credit Card Lounge Access">Credit Card Lounge Access</option>
+              <option value="OneCard Credit Cards">OneCard Credit Cards</option>
+              <option value="Fuel Credit Cards">Fuel Credit Cards</option>
+              <option value="Travel Credit Cards">Travel Credit Cards</option>
+              <option value="International Credit Cards">International Credit Cards</option>
+              <option value="Zero Forex Markup Credit Cards">Zero Forex Markup Credit Cards</option>
+              <option value="Secured Credit Cards">Secured Credit Cards</option>
             </select>
           </div>
           <div>

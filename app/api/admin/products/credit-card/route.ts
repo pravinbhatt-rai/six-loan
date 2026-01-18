@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
       imageUrl,
       annualFee,
       cardNetwork,
+      category,
       categories,
       bulletPoints,
       summaryCharges,
@@ -60,6 +61,7 @@ export async function POST(request: NextRequest) {
         // Required fields with defaults - ensure annualFee is a string
         annualFee: annualFee ? String(annualFee) : 'Lifetime Free',
         cardNetwork: cardNetwork || 'Visa',
+        category: category || null,
         // Optional fields from schema
         effectiveFree: effectiveFree || false,
         recommended: recommended || false,

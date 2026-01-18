@@ -569,6 +569,7 @@ model CreditCardProduct {
   bankLogoUrl      String?
   imageUrl         String
   categories       Category[] @relation("CardCategories")
+  category         String?   // Credit card category: Cashback, Rewards, Travel, etc.
   
   // CARD SPECIFICATIONS
   annualFee        String    // e.g. "Lifetime free", "₹1,500 + GST"

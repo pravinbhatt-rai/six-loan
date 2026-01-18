@@ -4,6 +4,26 @@ import React, { useState, useEffect, useMemo } from 'react';
 // Make sure API_BASE_URL is correctly set for Next.js API routes
 const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
 
+// Helper functions for date conversion
+const formatDateToDisplay = (isoDate: string) => {
+  if (!isoDate) return '';
+  const date = new Date(isoDate);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
+const parseDateFromDisplay = (displayDate: string) => {
+  if (!displayDate) return '';
+  const parts = displayDate.split('/');
+  if (parts.length === 3) {
+    const [day, month, year] = parts;
+    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+  }
+  return displayDate;
+};
+
 // --- STATIC DATA ---
 const companyOptions = [
   "Tata Consultancy Services (TCS)", "Infosys", "Reliance Industries", "HDFC Bank",
@@ -267,7 +287,7 @@ const EmploymentTypeModal: React.FC<EmploymentTypeModalProps> = ({
           if (data.user.email) setEmail(data.user.email);
           if (data.user.panCard) setPanNumber(data.user.panCard);
           if (data.user.name) setApplicantName(data.user.name);
-          if (data.user.dob) setDateOfBirth(new Date(data.user.dob).toISOString().split('T')[0]);
+          if (data.user.dob) setDateOfBirth(formatDateToDisplay(data.user.dob));
           if (data.user.address) setCurrentAddress(data.user.address);
           
           // Pre-fill monthly income if available
@@ -403,7 +423,7 @@ const EmploymentTypeModal: React.FC<EmploymentTypeModalProps> = ({
         email: email.trim(),
         phone: mobileNumber,
         panNumber: panNumber.toUpperCase(),
-        dob: dateOfBirth || null,
+        dob: parseDateFromDisplay(dateOfBirth) || null,
         employmentType: mapEmploymentType(selectedEmployment),
         monthlyIncome: getIncomeValue(selectedIncome),
         employerName: employerName.trim(),

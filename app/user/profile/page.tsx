@@ -3,6 +3,26 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { User, Mail, Phone, CreditCard, MapPin, Briefcase, DollarSign, Save } from 'lucide-react';
 
+// Helper functions for date conversion
+const formatDateToDisplay = (isoDate: string) => {
+  if (!isoDate) return '';
+  const date = new Date(isoDate);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
+const parseDateFromDisplay = (displayDate: string) => {
+  if (!displayDate) return '';
+  const parts = displayDate.split('/');
+  if (parts.length === 3) {
+    const [day, month, year] = parts;
+    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+  }
+  return displayDate;
+};
+
 export default function ProfilePage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
@@ -64,7 +84,7 @@ export default function ProfilePage() {
             email: data.user.email || '',
             phone: data.user.phone || '',
             panCard: data.user.panCard || '',
-            dob: data.user.dob ? data.user.dob.split('T')[0] : '',
+            dob: data.user.dob ? formatDateToDisplay(data.user.dob) : '',
             address: data.user.address || '',
             city: data.user.city || '',
             state: data.user.state || '',
@@ -101,7 +121,7 @@ export default function ProfilePage() {
         name: profile.name,
         phone: profile.phone,
         panCard: profile.panCard || null,
-        dob: profile.dob || null,
+        dob: profile.dob ? parseDateFromDisplay(profile.dob) : null,
         address: profile.address || null,
         city: profile.city || null,
         state: profile.state || null,
@@ -239,10 +259,12 @@ export default function ProfilePage() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Date of Birth</label>
                   <input
-                    type="date"
+                    type="text"
                     name="dob"
                     value={profile.dob}
                     onChange={handleChange}
+                    placeholder="DD/MM/YYYY"
+                    maxLength={10}
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>

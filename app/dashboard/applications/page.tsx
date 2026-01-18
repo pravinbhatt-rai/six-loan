@@ -4,6 +4,16 @@ import { useRouter } from 'next/navigation';
 import { Search, Download, X, ExternalLink, RefreshCw } from 'lucide-react';
 import * as XLSX from 'xlsx';
 
+// Helper function to format date as DD/MM/YYYY
+const formatDateToDisplay = (isoDate: string | Date) => {
+  if (!isoDate) return '';
+  const date = new Date(isoDate);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
 export default function ApplicationsPage() {
   const router = useRouter();
   const [applications, setApplications] = useState<any[]>([]);
@@ -177,7 +187,7 @@ export default function ApplicationsPage() {
           'Feedback': app.feedback || 'N/A',
           
           // Dates
-          'Applied On': app.createdAt ? new Date(app.createdAt).toLocaleString() : 'N/A',
+          'Applied On': app.createdAt ? formatDateToDisplay(app.createdAt) : 'N/A',
           'Last Updated': app.updatedAt ? new Date(app.updatedAt).toLocaleString() : 'Never',
           
           // Additional Information
@@ -998,7 +1008,7 @@ export default function ApplicationsPage() {
                       <td className="px-6 py-4">
                         <div>
                           <p className="text-sm text-gray-800">
-                            {app.createdAt ? new Date(app.createdAt).toLocaleDateString() : 'N/A'}
+                            {app.createdAt ? formatDateToDisplay(app.createdAt) : 'N/A'}
                           </p>
                           {app.createdAt && (
                             <p className="text-xs text-gray-500 mt-1">
@@ -1126,7 +1136,7 @@ export default function ApplicationsPage() {
                   <div>
                     <label className="text-xs font-semibold text-gray-500 uppercase">Applied On</label>
                     <p className="text-gray-800 font-medium mt-1">
-                      {selectedApp.createdAt ? new Date(selectedApp.createdAt).toLocaleString() : 'N/A'}
+                      {selectedApp.createdAt ? `${formatDateToDisplay(selectedApp.createdAt)} ${new Date(selectedApp.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : 'N/A'}
                     </p>
                   </div>
                   <div>

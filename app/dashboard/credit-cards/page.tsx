@@ -20,6 +20,7 @@ interface CreditCard {
   firstYearFee?: string | number;
   secondYearFee?: string | number;
   cardNetwork: string;
+  category?: string;
   effectiveFree: boolean;
   recommended: boolean;
   rating: number;

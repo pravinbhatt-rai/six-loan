@@ -4,6 +4,16 @@ import { useRouter } from 'next/navigation';
 import Navbar from '@/component/HomePage/navbar';
 import { FileText, Clock, CheckCircle, XCircle, Eye, Calendar } from 'lucide-react';
 
+// Helper function to format date as DD/MM/YYYY
+const formatDateToDisplay = (isoDate: string | Date) => {
+  if (!isoDate) return '';
+  const date = new Date(isoDate);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
 interface Application {
   id: number;
   referenceNo?: string;
@@ -345,9 +355,7 @@ export default function ApplicationsPage() {
                             Applied on
                           </p>
                           <p className="text-sm font-medium text-gray-900">
-                            {new Date(app.createdAt).toLocaleDateString('en-IN', {
-                              day: 'numeric',
-                              month: 'short',
+                            {formatDateToDisplay(app.createdAt)}
                               year: 'numeric',
                             })}
                           </p>
@@ -485,11 +493,7 @@ export default function ApplicationsPage() {
                     </span>
                   </div>
                   <p className="text-xs sm:text-sm text-gray-600">
-                    Applied on {new Date(selectedApp.createdAt).toLocaleDateString('en-IN', {
-                      day: 'numeric',
-                      month: 'long',
-                      year: 'numeric',
-                    })}
+                    Applied on {formatDateToDisplay(selectedApp.createdAt)}
                   </p>
                 </div>
               </div>
