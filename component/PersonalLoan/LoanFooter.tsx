@@ -23,36 +23,34 @@ const Footer: React.FC = () => {
     {
       title: 'Company',
       links: [
-        { label: 'About Us', href: '#' },
-        { label: 'Contact Us', href: '#' },
-        { label: 'Support', href: '#' },
-        { label: 'Terms of Services', href: '#' },
+        { label: 'About Us', href: 'about-us' },
+        { label: 'Contact Us', href: '/contact-us' },
+        { label: 'Support', href: '/support' },
+        { label: 'Terms of Services', href: '/terms' },
       ],
     },
     {
       title: 'Group Brand',
       links: [
-        { label: 'Features', href: '#' },
-        { label: 'Pricing', href: '#' },
-        { label: 'Loan Policy', href: '#' },
-        { label: 'All Assistants', href: '#' },
+        { label: 'SIX.IND.IN', href: 'https://www.six.ind.in' },
+        { label: 'DISCONNECT', href: 'https://www.disconnect.in' },
+        { label: 'DOCTAR', href: 'https://www.doctar.in' },
       ],
     },
     {
       title: 'Help Line',
       links: [
-        { label: 'Careers', href: '#' },
-        { label: 'Terms & Conditions', href: '#' },
-        { label: 'Customer Support', href: '#' },
+        { label: 'Terms & Conditions', href: '/terms-conditions' },
+        { label: 'Customer Support', href: '/customer-support' },
       ],
     },
   ];
 
   return (
     <footer className="relative bg-[#080808] text-white pt-20 pb-10 px-6 md:px-12 font-sans border-t border-gray-900 overflow-hidden">
-      
+
       {/* Decorative Top Glow (Teal Theme) */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500/50 to-transparent"></div>
+      <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-teal-500/50 to-transparent"></div>
       <div className="absolute -top-[200px] -left-[200px] w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -62,29 +60,29 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-5 flex flex-col items-start space-y-6">
             {/* Logo Area - Using Image */}
             <div className="mb-2">
-                <img 
-                    src="/six-finance.png" 
-                    alt="Six Loan" 
-                    className="h-20 w-auto object-contain" 
-                />
+              <img
+                src="/six-finance.png"
+                alt="Six Loan"
+                className="h-20 w-auto object-contain"
+              />
             </div>
 
             {/* Description */}
             <p className="text-gray-400 text-lg leading-relaxed max-w-md font-light">
-              Smart, reliable credit options designed to fit your 
+              Smart, reliable credit options designed to fit your
               lifestyle and give you the freedom to achieve more.
             </p>
 
             {/* Contact Info */}
             <div className="flex flex-col gap-3 mt-4 text-gray-400 text-sm">
-                <div className="flex items-center gap-2 hover:text-teal-400 transition-colors cursor-pointer group">
-                    <Mail size={16} className="text-teal-500 group-hover:scale-110 transition-transform" />
-                    <span>support@sixloan.com</span>
-                </div>
-                <div className="flex items-center gap-2 hover:text-teal-400 transition-colors cursor-pointer group">
-                    <Phone size={16} className="text-teal-500 group-hover:scale-110 transition-transform" />
-                    <span>+91 1800-123-456</span>
-                </div>
+              <div className="flex items-center gap-2 hover:text-teal-400 transition-colors cursor-pointer group">
+                <Mail size={16} className="text-teal-500 group-hover:scale-110 transition-transform" />
+                <span>support@sixloan.com</span>
+              </div>
+              <div className="flex items-center gap-2 hover:text-teal-400 transition-colors cursor-pointer group">
+                <Phone size={16} className="text-teal-500 group-hover:scale-110 transition-transform" />
+                <span>+91 1800-123-456</span>
+              </div>
             </div>
 
             {/* Social Icons */}
@@ -108,12 +106,14 @@ const Footer: React.FC = () => {
                     <li key={linkIndex}>
                       <a
                         href={link.href}
+                        target={link.href.startsWith('http') ? '_blank' : '_self'}
+                        rel={link.href.startsWith('http') ? 'noopener noreferrer' : ''}
                         className="group flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-300 text-[15px]"
                       >
                         {/* Animated Dash on Hover */}
-                        <span className="w-0 overflow-hidden group-hover:w-2 h-[2px] bg-teal-500 transition-all duration-300"></span>
+                        <span className="w-0 overflow-hidden group-hover:w-2 h-0.5 bg-teal-500 transition-all duration-300"></span>
                         <span className="group-hover:translate-x-1 transition-transform duration-300">
-                            {link.label}
+                          {link.label}
                         </span>
                       </a>
                     </li>
@@ -129,10 +129,10 @@ const Footer: React.FC = () => {
           <p className="text-gray-500 text-sm">
             © 2024 Six Finance. All Rights Reserved.
           </p>
-          
+
           <div className="flex gap-6 text-sm text-gray-500">
-             <a href="#" className="hover:text-teal-400 transition-colors">Privacy Policy</a>
-             <a href="#" className="hover:text-teal-400 transition-colors">Cookie Policy</a>
+            <a href="#" className="hover:text-teal-400 transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-teal-400 transition-colors">Cookie Policy</a>
           </div>
         </div>
       </div>

@@ -65,7 +65,7 @@ export const CreditScoreHero = () => {
             {/* 1. Trust Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 lg:px-4 lg:py-2 rounded-full bg-white border border-teal-100 shadow-sm mx-auto lg:mx-0">
               <div className="flex -space-x-2">
-                 {[1,2,3].map(i => (
+                 {[1,2,3,].map(i => (
                     <div key={i} className="w-5 h-5 lg:w-6 lg:h-6 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-[8px] font-bold text-gray-500">?</div>
                  ))}
               </div>

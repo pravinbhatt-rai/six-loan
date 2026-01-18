@@ -60,38 +60,38 @@ const NAV_DATA: NavItem[] = [
                         title: 'By Amount',
                         icon: <Banknote className="w-4 h-4 text-teal-500" />,
                         items: [
-                            { name: '5 Lakh Loan', href: 'personalLoan/5-lakh' },
-                            { name: '10 Lakh Loan', href: 'personalLoan/10-lakh' },
-                            { name: '20 Lakh Loan', href: 'personalLoan/20-lakh' },
-                            { name: '30 Lakh Loan', href: 'personalLoan/30-lakh' },
-                            { name: '40 Lakh Loan', href: 'personalLoan/40-lakh' },
-                            { name: '50 Lakh Loan', href: 'personalLoan/50-lakh' },
+                            { name: '5 Lakh Loan', href: '/personalLoan/5-lakh' },
+                            { name: '10 Lakh Loan', href: '/personalLoan/10-lakh' },
+                            { name: '20 Lakh Loan', href: '/personalLoan/20-lakh' },
+                            { name: '30 Lakh Loan', href: '/personalLoan/30-lakh' },
+                            { name: '40 Lakh Loan', href: '/personalLoan/40-lakh' },
+                            { name: '50 Lakh Loan', href: '/personalLoan/50-lakh' },
                         ]
                     },
                     {
                         title: 'By Type',
                         icon: <UserIcon className="w-4 h-4 text-teal-500" />,
                         items: [
-                            { name: 'Loan for Salaried Employees', href: '/loans/personal/salaried' },
-                            { name: 'Loan for Self Employed', href: '/loans/personal/self-employed' },
-                            { name: 'Loan For Senior Citizens', href: '/loans/personal/seniors' },
-                            { name: 'Loan for Students', href: '/loans/personal/students' },
-                            { name: 'Loan for Doctors', href: '/loans/personal/doctors' },
-                            { name: 'Loan for Women', href: '/loans/personal/women' },
+                            { name: 'Loan for Salaried Employees', href: '/personalLoan/salaried' },
+                            { name: 'Loan for Self Employed', href: '/personalLoan/self-employed' },
+                            { name: 'Loan For Senior Citizens', href: '/personalLoan/seniors' },
+                            { name: 'Loan for Students', href: '/educationLoan' },
+                            { name: 'Loan for Doctors', href: '/personalLoan/doctors' },
+                            { name: 'Loan for Women', href: '/personalLoan/women' },
                         ]
                     },
                     {
                         title: 'By Need',
                         icon: <HeartHandshake className="w-4 h-4 text-teal-500" />,
                         items: [
-                            { name: 'Medical Loan', href: '/loans/personal/medical' },
-                            { name: 'Travel Loan', href: '/loans/personal/travel' },
-                            { name: 'Debit Consolidation Loan', href: '/loans/personal/consolidation' },
-                            { name: 'Wedding Loan', href: '/loans/personal/wedding' },
-                            { name: 'Overdraft Loan', href: '/loans/personal/overdraft' },
-                            { name: 'Flexi Loan', href: '/loans/personal/flexi' },
-                            { name: 'Short Term Loan', href: '/loans/personal/short-term' },
-                            { name: 'Term Loan', href: '/loans/personal/term' },
+                            { name: 'Medical Loan', href: '/personalLoan/medical' },
+                            { name: 'Travel Loan', href: '/personalLoan/travel' },
+                            { name: 'Debit Consolidation Loan', href: '/personalLoan/consolidation' },
+                            { name: 'Wedding Loan', href: '/personalLoan/wedding' },
+                            { name: 'Overdraft Loan', href: '/personalLoan/overdraft' },
+                            { name: 'Flexi Loan', href: '/personalLoan/flexi' },
+                            { name: 'Short Term Loan', href: '/personalLoan/short-term' },
+                            { name: 'Term Loan', href: '/personalLoan/term' },
                         ]
                     }
                 ]
@@ -246,23 +246,7 @@ const NAV_DATA: NavItem[] = [
             }
         ]
     },
-    {
-        name: 'Credit Score',
-        columns: [
-            {
-                title: 'Know Your Score',
-                icon: <Gauge className="w-4 h-4 text-teal-500" />,
-                items: [
-                    { name: 'Credit Score FREE', href: '/score/free' },
-                    { name: 'CIBIL Score Check by PAN Number', href: '/score/pan' },
-                    { name: 'SBI CIBIL Score', href: '/score/sbi' },
-                    { name: 'How to Increase CIBIL Score', href: '/score/increase' },
-                    { name: 'CIBIL Score for Personal Loan', href: '/score/personal-loan' },
-                    { name: 'How to Raise & Resolve CIBIL Dispute', href: '/score/dispute' },
-                ]
-            }
-        ]
-    },
+   
     
     {
         name: 'Calculators',
@@ -312,27 +296,27 @@ const NAV_DATA: NavItem[] = [
                 title: 'Learn',
                 icon: <BookOpen className="w-4 h-4 text-teal-500" />,
                 items: [
-                    { name: 'Aadhaar Card', href: '/learn/aadhaar' },
-                    { name: 'PAN Card', href: '/learn/pan' },
-                    { name: 'Debit Card', href: '/learn/debit' },
-                    { name: 'PPF (Public Provident Fund)', href: '/learn/ppf' },
-                    { name: 'NetBanking', href: '/learn/netbanking' },
-                    { name: 'EPF (Employee Provident Fund)', href: '/learn/epf' },
-                    { name: 'Income Tax', href: '/learn/income-tax' },
+                    { name: 'Aadhaar Card', href: '/aadhaar' },
+                    { name: 'PAN Card', href: '/pan' },
+                    { name: 'Debit Card', href: '/debit-card' },
+                    { name: 'PPF (Public Provident Fund)', href: '/ppf' },
+                    { name: 'NetBanking', href: '/netbanking' },
+                    { name: 'EPF (Employee Provident Fund)', href: '/epf' },
+                    { name: 'Income Tax', href: '/incometax' },
                 ]
             },
-            {
-                title: 'Insurance and Investments',
-                icon: <Shield className="w-4 h-4 text-teal-500" />,
-                items: [
-                    { name: 'Health Insurance', href: '/learn/insurance/health' },
-                    { name: 'Investment Plan', href: '/learn/investment-plan' },
-                    { name: 'NPS (National Pension Scheme)', href: '/learn/nps' },
-                    { name: 'Term Life Insurance', href: '/learn/insurance/term' },
-                    { name: 'Car Insurance', href: '/learn/insurance/car' },
-                    { name: 'Retirement Plans', href: '/learn/retirement' },
-                ]
-            }
+            // {
+            //     title: 'Insurance and Investments',
+            //     icon: <Shield className="w-4 h-4 text-teal-500" />,
+            //     items: [
+            //         { name: 'Health Insurance', href: '/learn/insurance/health' },
+            //         { name: 'Investment Plan', href: '/learn/investment-plan' },
+            //         { name: 'NPS (National Pension Scheme)', href: '/learn/nps' },
+            //         { name: 'Term Life Insurance', href: '/learn/insurance/term' },
+            //         { name: 'Car Insurance', href: '/learn/insurance/car' },
+            //         { name: 'Retirement Plans', href: '/learn/retirement' },
+            //     ]
+            // }
         ]
     }
 ];

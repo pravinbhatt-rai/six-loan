@@ -79,6 +79,195 @@ const HERO_CONTENT_DATA: HeroData[] = [
       "Boost your CIBIL Score",
       "Flexible repayment terms"
     ]
+  },
+  {
+    id: 'personal-loan-5-lakh',
+    badgeText: 'Express Disbursal',
+    title: 'Get ₹5 Lakhs in Your Account Today',
+    highlightText: '₹5 Lakhs',
+    description: 'Turn your plans into reality with our express personal loan. Perfect for home renovation, weddings, or medical emergencies with zero collateral.',
+    primaryCtaText: 'Claim Offer',
+    secondaryCtaText: 'View Repayment Plans',
+    amountDisplay: '5,00,000',
+    // Image: Professional/Success vibe (Handshake or modern office/home setting)
+    imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=2664", 
+    benefits: [
+      "Disbursal in 24 Hours",
+      "Low Processing Fee",
+      "Tenure up to 60 Months"
+    ]
+  },
+  {
+    id: 'personal-loan-10-lakh',
+    badgeText: 'Premium Selection',
+    title: 'Unlock ₹10 Lakhs for Your Big Goals',
+    highlightText: '₹10 Lakhs',
+    description: 'Whether it is a luxury home upgrade, a dream wedding, or debt consolidation, get high-value financing with priority processing and flexible repayment options.',
+    primaryCtaText: 'Unlock Offer',
+    secondaryCtaText: 'Check EMI',
+    amountDisplay: '10,00,000',
+    // Image: High-end lifestyle/Modern Architecture vibe
+    imageUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=2070", 
+    benefits: [
+      "Priority 2-Hour Disbursal",
+      "Tenure up to 72 Months",
+      "Dedicated Relationship Manager"
+    ]
+  },
+  {
+    id: 'personal-loan-20-lakh',
+    badgeText: 'Elite Banking',
+    title: 'Upgrade Your Lifestyle with ₹20 Lakhs',
+    highlightText: '₹20 Lakhs',
+    description: 'From dream weddings to luxury travel, fund your major life events without liquidating your investments. Enjoy flexible repayment structures designed for you.',
+    primaryCtaText: 'View Offer',
+    secondaryCtaText: 'Calculate EMI',
+    amountDisplay: '20,00,000',
+    // Image: Premium Lifestyle / Travel
+    imageUrl: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "No Collateral Required",
+      "Tenure up to 72 Months",
+      "Part-payment facility available"
+    ]
+  },
+  {
+    id: 'personal-loan-30-lakh',
+    badgeText: 'Business & Growth',
+    title: 'Instant Access to ₹30 Lakh Capital',
+    highlightText: '₹30 Lakh',
+    description: 'Whether you are expanding your business or consolidating high-interest debt, get approval for ₹30 Lakhs based on your financial profile, not just your salary slip.',
+    primaryCtaText: 'Check Eligibility',
+    secondaryCtaText: 'View Rates',
+    amountDisplay: '30,00,000',
+    // Image: Professional / Business Growth
+    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Competitive Rates for HNI",
+      "Digital Document Verification",
+      "Disbursal within 24 hours"
+    ]
+  },
+  {
+    id: 'personal-loan-40-lakh',
+    badgeText: 'Signature Selection',
+    title: 'Exclusive Financing up to ₹40 Lakhs',
+    highlightText: '₹40 Lakhs',
+    description: 'Join our signature program. Experience white-glove service with door-step assistance and customized interest rates tailored for high-credit individuals.',
+    primaryCtaText: 'Get Quote',
+    secondaryCtaText: 'Contact Expert',
+    amountDisplay: '40,00,000',
+    // Image: Abstract Modern Architecture / Stability
+    imageUrl: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069",
+    benefits: [
+      "Dedicated Relationship Manager",
+      "Negotiable Processing Fees",
+      "Extended Tenure Options"
+    ]
+  },
+  {
+    id: 'personal-loan-50-lakh',
+    badgeText: 'Chairman’s Circle',
+    title: 'Maximize Your Potential with ₹50 Lakhs',
+    highlightText: '₹50 Lakhs',
+    description: 'The ultimate financial power. Access our highest unsecured limit with the lowest possible interest rates. Perfect for home renovations or major asset acquisitions.',
+    primaryCtaText: 'Apply Now',
+    secondaryCtaText: 'Premium Benefits',
+    amountDisplay: '50,00,000',
+    // Image: High-rise view / Executive Success
+    imageUrl: "https://images.unsplash.com/photo-1504384308090-c54be3855833?auto=format&fit=crop&q=80&w=2662",
+    benefits: [
+      "Lowest Interest Rate Guarantee",
+      "Max Tenure up to 84 Months",
+      "Zero Pre-closure Charges"
+    ]
+  },
+  // Add these to your HERO_CONTENT_DATA array
+
+  {
+    id: 'personal-loan-salaried',
+    badgeText: 'Corporate Advantage',
+    title: 'Instant Loans for Salaried Professionals',
+    highlightText: 'Salaried Professionals',
+    description: 'Get funds credited directly to your salary account. Enjoy special reduced rates for employees of MNCs, PSUs, and Government organizations.',
+    primaryCtaText: 'Check My Limit',
+    secondaryCtaText: 'Salary Transfer',
+    amountDisplay: '15,00,000',
+    // Image: Professional office setting
+    imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=2069",
+    benefits: [
+      "Special Rates for MNC Employees",
+      "Minimal Documentation",
+      "Overdraft Facility Available"
+    ]
+  },
+  {
+    id: 'personal-loan-self-employed',
+    badgeText: 'Business Owner',
+    title: 'Fuel Your Business Vision Today',
+    highlightText: 'Business Vision',
+    description: 'Turnover-based eligibility designed for entrepreneurs. Expand your operations, buy inventory, or manage cash flow without pledging assets.',
+    primaryCtaText: 'Unlock Capital',
+    secondaryCtaText: 'Check Eligibility',
+    amountDisplay: '25,00,000',
+    // Image: Modern entrepreneur/creative workspace
+    imageUrl: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Based on ITR or Turnover",
+      "No Collateral Required",
+      "Flexible Flexi-Loan Options"
+    ]
+  },
+  {
+    id: 'personal-loan-pensioner',
+    badgeText: 'Golden Years',
+    title: 'Financial Security for Senior Citizens',
+    highlightText: 'Senior Citizens',
+    description: 'Enjoy your retirement without financial worry. Whether it is for medical needs or a dream vacation, avail loans with extended tenure up to age 75.',
+    primaryCtaText: 'View Options',
+    secondaryCtaText: 'Calculate EMI',
+    amountDisplay: '7,00,000',
+    // Image: Happy older couple/Relaxed lifestyle
+    imageUrl: "https://images.unsplash.com/photo-1563804809-58db2226eb66?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Doorstep Service Available",
+      "Preferential Interest Rates",
+      "Pension-based Approval"
+    ]
+  },
+  {
+    id: 'personal-loan-doctors',
+    badgeText: 'Medical Professional',
+    title: 'Exclusive Financing for Doctors',
+    highlightText: 'Doctors',
+    description: 'Honoring your contribution with our premium financing suite. Get high-value unsecured loans up to ₹50 Lakhs for clinic expansion or equipment.',
+    primaryCtaText: 'Claim Professional Offer',
+    secondaryCtaText: 'View Details',
+    amountDisplay: '50,00,000',
+    // Image: Doctor context
+    imageUrl: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=2128",
+    benefits: [
+      "Highest Loan Limit",
+      "Lowest Market Rates",
+      "Simple KYC Only Process"
+    ]
+  },
+  {
+    id: 'personal-loan-women',
+    badgeText: 'Women Advantage',
+    title: 'Empowering Your Financial Independence',
+    highlightText: 'Financial Independence',
+    description: 'Exclusive interest rate discounts for women applicants. Whether it is for higher education, wedding expenses, or starting a new venture.',
+    primaryCtaText: 'Apply Now',
+    secondaryCtaText: 'Check Special Rates',
+    amountDisplay: '12,00,000',
+    // Image: Confident professional woman
+    imageUrl: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "0.5% Interest Rate Discount",
+      "50% Waiver on Processing Fee",
+      "Flexible Repayment Terms"
+    ]
   }
 ];
 
@@ -103,7 +292,7 @@ const ModernHero: React.FC<PreHeroProps> = ({ data, onPrimaryClick, onSecondaryC
     return (
       <>
         {parts[0]}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-400 relative inline-block">
+        <span className="text-transparent bg-clip-text bg-linear-to-r from-teal-600 to-teal-400 relative inline-block">
           {data.highlightText}
           {/* Subtle underline decoration */}
           <svg className="absolute w-full h-2 -bottom-1 left-0 text-teal-200/50 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -211,7 +400,7 @@ const ModernHero: React.FC<PreHeroProps> = ({ data, onPrimaryClick, onSecondaryC
                  className="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-1000"
                />
                {/* Gradient Overlay for text legibility if needed */}
-               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+               <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent"></div>
             </div>
 
             {/* --- Floating Elements (Widgets) --- */}
