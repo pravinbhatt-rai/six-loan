@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Navbar from "@/component/HomePage/navbar";
 import { LoanTypeProvider } from "@/component/PersonalLoan/LoanTypeContext";
 import "./globals.css";
-import LoanFooter from "@/component/PersonalLoan/LoanFooter";
+import LayoutWrapper from "@/component/commonComponent/LayoutWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <LoanTypeProvider>
-          <Navbar />
-          <main className="pt-[72px] lg:pt-20">{children}</main>
-          <LoanFooter />
+          <LayoutWrapper>{children}</LayoutWrapper>
         </LoanTypeProvider>
       </body>
     </html>
