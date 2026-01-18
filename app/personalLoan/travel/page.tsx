@@ -10,14 +10,14 @@ import FeesAndCharges from "@/component/PersonalLoan/FeesAndCharges";
 import LoanBenefits from "@/component/PersonalLoan/LoanBenefits";
 import ComparisonContainer from "@/component/PersonalLoan/ComparisonContainer";
 
-export default function MedicalPersonalLoanPage() {
+export default function TravelPersonalLoanPage() {
     return (
         <>
-            <PreHero id="personal-loan-medical" />
+            <PreHero id="travel-personal-loan" />
             <EMICalculator
                 // 1. Left Side Content (Marketing)
                 marketingContent={{
-                    tagline: "Medical Personal Loan",
+                    tagline: "Travel Personal Loan",
                     headline: (
                         <>
                             Plan Your <br />
@@ -51,7 +51,7 @@ export default function MedicalPersonalLoanPage() {
                 }}
 
                 // 2. Right Side Content (Calculator Configuration)
-                title="Your Medical Personal Loan "
+                title="Your Travel Personal Loan "
                 currencySymbol="₹"
 
                 // Adjusted to match your "up to 50,000" hero text
@@ -75,12 +75,12 @@ export default function MedicalPersonalLoanPage() {
                 maxDisplay={4}
                 showViewAllButton={true}
             />
-            <LoanInfo loanId="medical-personal-loan" />
-            <LoanInfoPage id="medical-personal-loan" />
-            <LoanEligibilityContainer id="medical-personal-loan" />
-            <FeesAndCharges id="medical-personal-loan" />
-            <LoanBenefits id="medical-personal-loan" />
-            <ComparisonContainer id="medical-personal-loan" />
+            <LoanInfo loanId="travel-personal-loan" />
+            <LoanInfoPage id="travel-personal-loan" />
+            <LoanEligibilityContainer id="travel-personal-loan" />
+            <FeesAndCharges id="travel-personal-loan" />
+            <LoanBenefits id="travel-personal-loan" />
+            <ComparisonContainer id="travel-personal-loan" />
         </>
     );
 }

@@ -10,21 +10,21 @@ import FeesAndCharges from "@/component/PersonalLoan/FeesAndCharges";
 import LoanBenefits from "@/component/PersonalLoan/LoanBenefits";
 import ComparisonContainer from "@/component/PersonalLoan/ComparisonContainer";
 
-export default function MedicalPersonalLoanPage() {
+export default function ConsolidationPersonalLoanPage() {
     return (
         <>
-            <PreHero id="personal-loan-medical" />
+            <PreHero id="debt-consolidation-loan" />
             <EMICalculator
                 // 1. Left Side Content (Marketing)
                 marketingContent={{
-                    tagline: "Medical Personal Loan",
+                    tagline: "Consolidation Personal Loan",
                     headline: (
                         <>
                             Plan Your <br />
                             <span className="text-teal-600">Repayment Strategy</span>
                         </>
                     ),
-                    description: "Since you are already medical, simply select the amount you need and a tenure that fits your monthly budget to get started instantly.",
+                    description: "Since you are already debit consolidation, simply select the amount you need and a tenure that fits your monthly budget to get started instantly.",
 
                     features: [
                         {
@@ -51,7 +51,7 @@ export default function MedicalPersonalLoanPage() {
                 }}
 
                 // 2. Right Side Content (Calculator Configuration)
-                title="Your Medical Personal Loan "
+                title="Your Consolidation Personal Loan "
                 currencySymbol="₹"
 
                 // Adjusted to match your "up to 50,000" hero text
@@ -75,12 +75,12 @@ export default function MedicalPersonalLoanPage() {
                 maxDisplay={4}
                 showViewAllButton={true}
             />
-            <LoanInfo loanId="medical-personal-loan" />
-            <LoanInfoPage id="medical-personal-loan" />
-            <LoanEligibilityContainer id="medical-personal-loan" />
-            <FeesAndCharges id="medical-personal-loan" />
-            <LoanBenefits id="medical-personal-loan" />
-            <ComparisonContainer id="medical-personal-loan" />
+            <LoanInfo loanId="debt-consolidation-loan" />
+            <LoanInfoPage id="debt-consolidation-loan" />
+            <LoanEligibilityContainer id="debt-consolidation-loan" />
+            <FeesAndCharges id="debt-consolidation-loan" />
+            <LoanBenefits id="debt-consolidation-loan" />
+            <ComparisonContainer id="debt-consolidation-loan" />
         </>
     );
 }

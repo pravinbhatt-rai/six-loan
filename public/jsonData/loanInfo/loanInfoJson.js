@@ -86,6 +86,62 @@ export const loanData = [
     },
   },
   {
+    id: "medical-personal-loan",
+    themeColor: "teal",
+    title: "What is a Medical Loan?",
+    icon: "Stethoscope", // Represents healthcare/medical
+    sections: {
+      definition: {
+        icon: "Banknote",
+        content: `A medical loan is a specialized <span class="font-semibold text-gray-800">personal loan</span> designed to cover urgent healthcare expenses. It offers <strong>instant approval and quick disbursal</strong> to ensure that financial constraints do not delay necessary treatment.`,
+      },
+      repayment: {
+        icon: "Calendar",
+        content: `Lenders offer flexible repayment options with tenures typically ranging from <span class="font-semibold text-gray-800">1 to 5 years</span> (up to 60 months). This allows you to manage the cost of expensive procedures through affordable EMIs.`,
+      },
+      eligibility: {
+        icon: "CheckCircle",
+        title: "Standard eligibility criteria:",
+        items: [
+          "Salaried or Self-employed individuals",
+          "Credit Score (750+ preferred for speed)",
+          "Minimum monthly income (approx. ₹20,000+)",
+          "Age typically between 21 and 60 years",
+        ],
+        footerNote:
+          "These loans can cover hospitalization, surgeries, medicines, and even post-care treatments not typically covered by insurance.",
+      },
+    },
+  },
+  {
+    id: "overdraft-personal-loan",
+    themeColor: "teal",
+    title: "What is a Personal Loan Overdraft?",
+    icon: "RefreshCw", // Represents revolving/cycle
+    sections: {
+      definition: {
+        icon: "Banknote",
+        content: `A Personal Loan Overdraft (or Credit Line) is a facility where a credit limit is assigned to your account. You can withdraw funds as needed and <span class="font-semibold text-gray-800">pay interest only on the amount utilized</span>, not the total limit sanctioned.`,
+      },
+      repayment: {
+        icon: "Calendar",
+        content: `Unlike standard loans with fixed EMIs, here you can choose to pay <span class="font-semibold text-gray-800">only the interest component</span> monthly. The principal can be repaid at your convenience or at the end of the tenure.`,
+      },
+      eligibility: {
+        icon: "CheckCircle",
+        title: "Key eligibility factors:",
+        items: [
+          "Higher Credit Score (750+ is standard)",
+          "Stable Salaried/Self-employed profile",
+          "Existing relationship with bank helps",
+          "Minimum monthly salary of ₹25,000+",
+        ],
+        footerNote:
+          "This product is ideal for managing short-term cash flow mismatches or unforeseen expenses.",
+      },
+    },
+  },
+  {
     id: "pre-approved-loan",
     themeColor: "teal",
     title: "What is a Pre-Approved Loan?",
@@ -110,6 +166,90 @@ export const loanData = [
         ],
         footerNote:
           "Check your net banking dashboard or mobile app to see if you have a pre-approved offer waiting.",
+      },
+    },
+  },
+  {
+    id: "wedding-personal-loan",
+    themeColor: "teal",
+    title: "What is a Wedding Loan?",
+    icon: "HeartHandshake", // Represents marriage/partnership
+    sections: {
+      definition: {
+        icon: "Banknote",
+        content: `A wedding loan is a high-value <span class="font-semibold text-gray-800">personal loan</span> specifically used to manage marriage-related expenses. It acts as a financial cushion, covering costs like <span class="font-semibold text-gray-800">venue booking, catering, jewelry, and photography</span> without depleting your savings.`,
+      },
+      repayment: {
+        icon: "Calendar",
+        content: `Since wedding costs are significant, these loans offer <span class="font-semibold text-gray-800">flexible repayment tenures</span> ranging from <strong>1 to 6 years</strong>. This allows you to pay for the "Big Fat Indian Wedding" in small, manageable monthly installments.`,
+      },
+      eligibility: {
+        icon: "CheckCircle",
+        title: "Key eligibility factors:",
+        items: [
+          "Monthly Income (₹25,000+ preferred)",
+          "Credit Score (700+ for large amounts)",
+          "Employment Stability (Min 2 years)",
+          "Co-borrower (Spouse/Parent) improves eligibility",
+        ],
+        footerNote:
+          "Adding a co-applicant not only increases the loan amount eligibility but can also help in negotiating a better interest rate.",
+      },
+    },
+  },
+  {
+    id: "debt-consolidation-loan",
+    themeColor: "teal",
+    title: "What is a Debt Consolidation Loan?",
+    icon: "Layers", // Represents combining/stacking multiple items
+    sections: {
+      definition: {
+        icon: "Banknote",
+        content: `A debt consolidation loan is a personal loan used to pay off <span class="font-semibold text-gray-800">multiple smaller debts</span> (like credit cards or other loans). This leaves you with just <strong>one single EMI</strong> to manage, often at a lower interest rate.`,
+      },
+      repayment: {
+        icon: "Calendar",
+        content: `By consolidating, you often extend the repayment tenure to <span class="font-semibold text-gray-800">reduce the monthly burden</span>. Tenures typically range from <strong>1 to 5 years</strong>, helping you improve cash flow immediately.`,
+      },
+      eligibility: {
+        icon: "CheckCircle",
+        title: "Key eligibility factors:",
+        items: [
+          "Healthy Credit Score (700+ to get a low rate)",
+          "Debt-to-Income (DTI) ratio check",
+          "Stable income to support the new EMI",
+          "Clean repayment history on existing loans",
+        ],
+        footerNote:
+          "Consolidating high-interest credit card dues (36-40% p.a.) into a personal loan (11-15% p.a.) yields the highest savings.",
+      },
+    },
+  },
+  {
+    id: "travel-personal-loan",
+    themeColor: "teal",
+    title: "What is a Travel Loan?",
+    icon: "Plane", // Represents travel/vacation
+    sections: {
+      definition: {
+        icon: "Banknote",
+        content: `A travel loan is a specialized <span class="font-semibold text-gray-800">personal loan</span> used to fund domestic or international vacations. It is an unsecured loan that covers expenses like <span class="font-semibold text-gray-800">airfare, accommodation, visa fees</span>, and sightseeing.`,
+      },
+      repayment: {
+        icon: "Calendar",
+        content: `Instead of paying a lump sum for your trip upfront, you can repay the amount in easy <span class="font-semibold text-gray-800">monthly EMIs</span>. Tenures are flexible, typically ranging from <strong>1 to 5 years</strong>, allowing you to travel now and pay later.`,
+      },
+      eligibility: {
+        icon: "CheckCircle",
+        title: "Standard eligibility criteria:",
+        items: [
+          "Stable monthly income (Salaried/Self-employed)",
+          "Credit Score (750+ preferred)",
+          "Age between 21 and 60 years",
+          "Minimum work experience (1-2 years)",
+        ],
+        footerNote:
+          "Travel loans are often disbursed quickly, helping you lock in early-bird flight and hotel rates instantly.",
       },
     },
   },

@@ -6,7 +6,9 @@ import {
     ChevronDown, Menu, X, LayoutDashboard, User as UserIcon, FileText, LogOut,
     Shield, Crown, Calculator, TrendingUp, CreditCard, Banknote, BookOpen,
     Gauge, Landmark, Briefcase, HeartHandshake, Percent, Headset,
-    Home, Building2, Coins, MoreHorizontal, ChevronRight, Phone
+    Home, Building2, Coins, MoreHorizontal, ChevronRight, Phone,
+    Car,
+    Bike
 } from 'lucide-react';
 
 // --- DATA STRUCTURES ---
@@ -38,6 +40,7 @@ interface NavItem {
 
 const NAV_DATA: NavItem[] = [
     {
+
         name: 'Loans',
         tabs: [
             {
@@ -94,6 +97,122 @@ const NAV_DATA: NavItem[] = [
                             { name: 'Term Loan', href: '/personalLoan/term' },
                         ]
                     }
+                ]
+            },
+            {
+                id: 'loan against property',
+                label: 'Loan Against Property',
+                icon: <Home className="w-4 h-4" />,
+                columns: [
+                    {
+                        title: 'Overview',
+                        icon: <FileText className="w-4 h-4 text-teal-500" />,
+                        items: [
+                            { name: 'Loan Against Property', href: '/LoanAgainstProperty' },
+                            { name: 'Pre Approved Loan Against Property', href: '/loanAgainstProperty/preApproved' },
+                            { name: 'Loan Against Property Interest Rates', href: '/loanAgainstProperty/InterestRates' },
+                            { name: 'Loan Against Property Low CIBIL Score', href: '/loanAgainstProperty/lowCibil' },
+                            { name: 'Loan Against Property Balance Transfer', href: '/transferLoanAgainstProperty' },
+                        ]
+                    },
+                    {
+                        title: 'By Amount',
+                        icon: <Banknote className="w-4 h-4 text-teal-500" />,
+                        items: [
+                            { name: '5 Lakh Loan', href: '/personalLoan/5-lakh' },
+                            { name: '10 Lakh Loan', href: '/personalLoan/10-lakh' },
+                            { name: '20 Lakh Loan', href: '/personalLoan/20-lakh' },
+                            { name: '30 Lakh Loan', href: '/personalLoan/30-lakh' },
+                            { name: '40 Lakh Loan', href: '/personalLoan/40-lakh' },
+                            { name: '50 Lakh Loan', href: '/personalLoan/50-lakh' },
+                        ]
+                    },
+                ]
+            },
+            {
+                id: 'loan against security',
+                label: 'Loan Against Security',
+                icon: <Coins className="w-4 h-4" />,
+                columns: [
+                    {
+                        title: 'Overview',
+                        icon: <FileText className="w-4 h-4 text-teal-500" />,
+                        items: [
+                            { name: 'Loan Against Security', href: '/loanAgainstSecurity' },
+                            { name: 'Pre Approved Loan Against Security', href: '/loanAgainstSecurity/preApproved' },
+                            { name: 'Loan Against Security Interest Rates', href: '/loanAgainstSecurity/InterestRates' },
+                            { name: 'Loan Against Security Low CIBIL Score', href: '/loanAgainstSecurity/lowCibil' },
+                            { name: 'Loan Against Security Balance Transfer', href: '/transferLoanAgainstSecurity' },
+                        ]
+                    },
+                    {
+                        title: 'By Amount',
+                        icon: <Banknote className="w-4 h-4 text-teal-500" />,
+                        items: [
+                            { name: '5 Lakh Loan', href: '/personalLoan/5-lakh' },
+                            { name: '10 Lakh Loan', href: '/personalLoan/10-lakh' },
+                            { name: '20 Lakh Loan', href: '/personalLoan/20-lakh' },
+                            { name: '30 Lakh Loan', href: '/personalLoan/30-lakh' },
+                            { name: '40 Lakh Loan', href: '/personalLoan/40-lakh' },
+                            { name: '50 Lakh Loan', href: '/personalLoan/50-lakh' },
+                        ]
+                    },
+                ]
+            },
+            {
+                id: 'two wheeler',
+                label: 'Two Wheeler Loan',
+                icon: <Bike className="w-4 h-4" />,
+                columns: [
+                    {
+                        title: 'Overview',
+                        icon: <FileText className="w-4 h-4 text-teal-500" />,
+                        items: [
+                            { name: 'Used Two Wheeler Loan', href: '/usedBike' },
+                            { name: 'New Two Wheeler Loan', href: '/newBike' },
+
+                        ]
+                    },
+                    {
+                        title: 'By Amount',
+                        icon: <Banknote className="w-4 h-4 text-teal-500" />,
+                        items: [
+                            { name: '5 Lakh Loan', href: '/personalLoan/5-lakh' },
+                            { name: '10 Lakh Loan', href: '/personalLoan/10-lakh' },
+                            { name: '20 Lakh Loan', href: '/personalLoan/20-lakh' },
+                            { name: '30 Lakh Loan', href: '/personalLoan/30-lakh' },
+                            { name: '40 Lakh Loan', href: '/personalLoan/40-lakh' },
+                            { name: '50 Lakh Loan', href: '/personalLoan/50-lakh' },
+                        ]
+                    },
+                ]
+            },
+            {
+                id: 'car loan',
+                label: 'Car Loan',
+                icon: <Car className="w-4 h-4" />,
+                columns: [
+                    {
+                        title: 'Overview',
+                        icon: <FileText className="w-4 h-4 text-teal-500" />,
+                        items: [
+                            { name: 'Used Car Loan', href: '/usedCar' },
+                            { name: 'New Car Loan', href: '/newCar' },
+
+                        ]
+                    },
+                    {
+                        title: 'By Amount',
+                        icon: <Banknote className="w-4 h-4 text-teal-500" />,
+                        items: [
+                            { name: '5 Lakh Loan', href: '/personalLoan/5-lakh' },
+                            { name: '10 Lakh Loan', href: '/personalLoan/10-lakh' },
+                            { name: '20 Lakh Loan', href: '/personalLoan/20-lakh' },
+                            { name: '30 Lakh Loan', href: '/personalLoan/30-lakh' },
+                            { name: '40 Lakh Loan', href: '/personalLoan/40-lakh' },
+                            { name: '50 Lakh Loan', href: '/personalLoan/50-lakh' },
+                        ]
+                    },
                 ]
             },
             {
@@ -202,15 +321,12 @@ const NAV_DATA: NavItem[] = [
                         title: 'Loan Types',
                         icon: <Coins className="w-4 h-4 text-teal-500" />,
                         items: [
-                            { name: 'Loan Against Property', href: '/LoanAgainstProperty' },
-                            { name: 'Loan Against Security', href: '/loanAgainstSecurity' },
-                            { name: 'Two Wheeler Loan', href: '/newBike' },
                             { name: 'Education Loan', href: '/educationLoan' },
-                            { name: 'Car Loan', href: '/newCar' },
                         ]
                     }
                 ]
             }
+
         ]
     },
     {
@@ -246,8 +362,8 @@ const NAV_DATA: NavItem[] = [
             }
         ]
     },
-   
-    
+
+
     {
         name: 'Calculators',
         columns: [

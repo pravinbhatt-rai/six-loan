@@ -10,21 +10,21 @@ import FeesAndCharges from "@/component/PersonalLoan/FeesAndCharges";
 import LoanBenefits from "@/component/PersonalLoan/LoanBenefits";
 import ComparisonContainer from "@/component/PersonalLoan/ComparisonContainer";
 
-export default function MedicalPersonalLoanPage() {
+export default function ConsolidationPersonalLoanPage() {
     return (
         <>
-            <PreHero id="personal-loan-medical" />
+            <PreHero id="overdraft-personal-loan" />
             <EMICalculator
                 // 1. Left Side Content (Marketing)
                 marketingContent={{
-                    tagline: "Medical Personal Loan",
+                    tagline: "Overdraft Personal Loan",
                     headline: (
                         <>
                             Plan Your <br />
-                            <span className="text-teal-600">Repayment Strategy</span>
+                            <span className="text-teal-600">Wedding Expenses</span>
                         </>
                     ),
-                    description: "Since you are already medical, simply select the amount you need and a tenure that fits your monthly budget to get started instantly.",
+                    description: "Since you are already debit consolidation, simply select the amount you need and a tenure that fits your monthly budget to get started instantly.",
 
                     features: [
                         {
@@ -51,7 +51,7 @@ export default function MedicalPersonalLoanPage() {
                 }}
 
                 // 2. Right Side Content (Calculator Configuration)
-                title="Your Medical Personal Loan "
+                title="Your Overdraft Personal Loan "
                 currencySymbol="₹"
 
                 // Adjusted to match your "up to 50,000" hero text
@@ -75,12 +75,12 @@ export default function MedicalPersonalLoanPage() {
                 maxDisplay={4}
                 showViewAllButton={true}
             />
-            <LoanInfo loanId="medical-personal-loan" />
-            <LoanInfoPage id="medical-personal-loan" />
-            <LoanEligibilityContainer id="medical-personal-loan" />
-            <FeesAndCharges id="medical-personal-loan" />
-            <LoanBenefits id="medical-personal-loan" />
-            <ComparisonContainer id="medical-personal-loan" />
+            <LoanInfo loanId="overdraft-personal-loan" />
+            <LoanInfoPage id="overdraft-personal-loan" />
+            <LoanEligibilityContainer id="overdraft-personal-loan" />
+            <FeesAndCharges id="overdraft-personal-loan" />
+            <LoanBenefits id="overdraft-personal-loan" />
+            <ComparisonContainer id="overdraft-personal-loan" />
         </>
     );
 }

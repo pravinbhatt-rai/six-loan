@@ -2,12 +2,11 @@
 import React from 'react';
 import { 
   ArrowRight, 
-  Check, 
-  ShieldCheck, 
-  IndianRupee, 
+  Wallet, 
   Zap, 
   CheckCircle,
-  TrendingUp
+  ShieldCheck,
+  Check
 } from 'lucide-react';
 
 // ==========================================
@@ -23,7 +22,7 @@ export interface HeroData {
   primaryCtaText: string;
   secondaryCtaText: string;
   benefits: string[];
-  imageUrl: string; // Made mandatory for the visual mockup
+  imageUrl: string; 
   amountDisplay: string;
 }
 
@@ -41,7 +40,7 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'Get Funds Now',
     secondaryCtaText: 'Check Eligibility',
     amountDisplay: '5,00,000',
-    imageUrl: "https://assets-news.housing.com/news/wp-content/uploads/2020/06/05201759/All-you-need-to-know-about-pre-approved-home-loans-FB-1200x700-compressed.jpg", // Travel/Lifestyle
+    imageUrl: "https://images.unsplash.com/photo-1513118172236-00b7cc57e1fa?q=80&w=2070&auto=format&fit=crop", 
     benefits: [
       "Instant disbursal in 5 mins",
       "100% Paperless KYC",
@@ -57,11 +56,27 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'Compare Rates',
     secondaryCtaText: 'Calculate EMI',
     amountDisplay: '10,00,000',
-    imageUrl: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=2071", // Finance/Growth theme
+    imageUrl: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=2071", 
     benefits: [
       "Rates starting @ 10.49%",
       "No impact on CIBIL Score",
       "Real-time lender comparison"
+    ]
+  },
+  {
+    id: 'personal-loan-medical',
+    badgeText: 'Emergency Priority',
+    title: 'Instant Support for Medical Emergencies',
+    highlightText: 'Medical Emergencies',
+    description: 'Focus on recovery, not the bills. Cover surgeries, hospitalization, and treatments immediately with our priority health financing line.',
+    primaryCtaText: 'Get Urgent Funds',
+    secondaryCtaText: 'Check Eligibility',
+    amountDisplay: '15,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1538108149393-fbbd8189718c?auto=format&fit=crop&q=80&w=2000",
+    benefits: [
+      "Disbursal in 30 Minutes",
+      "Covers All Treatments",
+      "No Collateral Needed"
     ]
   },
   {
@@ -73,7 +88,7 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'Check Eligibility',
     secondaryCtaText: 'How to Improve',
     amountDisplay: '3,00,000',
-    imageUrl: "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=2070", // Trust/Support theme
+    imageUrl: "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&q=80&w=2070", 
     benefits: [
       "Approval with score < 650",
       "Boost your CIBIL Score",
@@ -89,7 +104,6 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'Claim Offer',
     secondaryCtaText: 'View Repayment Plans',
     amountDisplay: '5,00,000',
-    // Image: Professional/Success vibe (Handshake or modern office/home setting)
     imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=2664", 
     benefits: [
       "Disbursal in 24 Hours",
@@ -106,7 +120,6 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'Unlock Offer',
     secondaryCtaText: 'Check EMI',
     amountDisplay: '10,00,000',
-    // Image: High-end lifestyle/Modern Architecture vibe
     imageUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=2070", 
     benefits: [
       "Priority 2-Hour Disbursal",
@@ -123,7 +136,6 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'View Offer',
     secondaryCtaText: 'Calculate EMI',
     amountDisplay: '20,00,000',
-    // Image: Premium Lifestyle / Travel
     imageUrl: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=2070",
     benefits: [
       "No Collateral Required",
@@ -140,7 +152,6 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'Check Eligibility',
     secondaryCtaText: 'View Rates',
     amountDisplay: '30,00,000',
-    // Image: Professional / Business Growth
     imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070",
     benefits: [
       "Competitive Rates for HNI",
@@ -157,7 +168,6 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'Get Quote',
     secondaryCtaText: 'Contact Expert',
     amountDisplay: '40,00,000',
-    // Image: Abstract Modern Architecture / Stability
     imageUrl: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069",
     benefits: [
       "Dedicated Relationship Manager",
@@ -174,7 +184,6 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'Apply Now',
     secondaryCtaText: 'Premium Benefits',
     amountDisplay: '50,00,000',
-    // Image: High-rise view / Executive Success
     imageUrl: "https://images.unsplash.com/photo-1504384308090-c54be3855833?auto=format&fit=crop&q=80&w=2662",
     benefits: [
       "Lowest Interest Rate Guarantee",
@@ -182,8 +191,6 @@ const HERO_CONTENT_DATA: HeroData[] = [
       "Zero Pre-closure Charges"
     ]
   },
-  // Add these to your HERO_CONTENT_DATA array
-
   {
     id: 'personal-loan-salaried',
     badgeText: 'Corporate Advantage',
@@ -193,7 +200,6 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'Check My Limit',
     secondaryCtaText: 'Salary Transfer',
     amountDisplay: '15,00,000',
-    // Image: Professional office setting
     imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=2069",
     benefits: [
       "Special Rates for MNC Employees",
@@ -210,7 +216,6 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'Unlock Capital',
     secondaryCtaText: 'Check Eligibility',
     amountDisplay: '25,00,000',
-    // Image: Modern entrepreneur/creative workspace
     imageUrl: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2070",
     benefits: [
       "Based on ITR or Turnover",
@@ -227,7 +232,6 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'View Options',
     secondaryCtaText: 'Calculate EMI',
     amountDisplay: '7,00,000',
-    // Image: Happy older couple/Relaxed lifestyle
     imageUrl: "https://images.unsplash.com/photo-1563804809-58db2226eb66?auto=format&fit=crop&q=80&w=2070",
     benefits: [
       "Doorstep Service Available",
@@ -244,7 +248,6 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'Claim Professional Offer',
     secondaryCtaText: 'View Details',
     amountDisplay: '50,00,000',
-    // Image: Doctor context
     imageUrl: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=2128",
     benefits: [
       "Highest Loan Limit",
@@ -261,14 +264,78 @@ const HERO_CONTENT_DATA: HeroData[] = [
     primaryCtaText: 'Apply Now',
     secondaryCtaText: 'Check Special Rates',
     amountDisplay: '12,00,000',
-    // Image: Confident professional woman
     imageUrl: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=2070",
     benefits: [
       "0.5% Interest Rate Discount",
       "50% Waiver on Processing Fee",
       "Flexible Repayment Terms"
     ]
-  }
+  },
+  {
+    id: 'travel-personal-loan',
+    badgeText: 'Wanderlust Ready',
+    title: 'Make Your Dream Vacation a Reality',
+    highlightText: 'Dream Vacation',
+    description: 'Don’t let finances delay your travel plans. Cover flight tickets, luxury stays, and international sightseeing expenses instantly.',
+    primaryCtaText: 'Plan Your Trip',
+    secondaryCtaText: 'Calculate EMI',
+    amountDisplay: '5,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Instant Disbursal for Last-minute Plans",
+      "No Restriction on End Usage",
+      "Repay Comfortably over 60 Months"
+    ]
+  },
+  {
+    id: 'debt-consolidation-loan',
+    badgeText: 'Financial Wellness',
+    title: 'Simplify Your Finances with One EMI',
+    highlightText: 'One Single EMI',
+    description: 'Combine multiple high-interest debts like credit cards and personal loans into a single, manageable loan with a lower interest rate.',
+    primaryCtaText: 'Check Your Savings',
+    secondaryCtaText: 'View Options',
+    amountDisplay: '10,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Pay Off High-Interest Credit Cards",
+      "Reduce Your Total Monthly Outgo",
+      "Boost Credit Score by Clearing Debts"
+    ]
+  },
+  {
+    id: 'wedding-personal-loan',
+    badgeText: 'Celebrate Grandly',
+    title: 'Plan Your Dream Wedding Without Limits',
+    highlightText: 'Dream Wedding',
+    description: 'Ensure your special day is perfect. From booking the venue and catering to designer outfits and the honeymoon, finance it all with a wedding loan.',
+    primaryCtaText: 'Plan Your Wedding',
+    secondaryCtaText: 'Check Eligibility',
+    amountDisplay: '25,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "No End-Use Restrictions (Venue, Jewelry, etc.)",
+      "Quick Access to Funds for Vendor Advances",
+      "Flexible Tenures up to 60 Months"
+    ]
+  },
+  {
+  id: 'overdraft-personal-loan',
+  badgeText: 'Smart Banking',
+  title: 'Pay Interest Only When You Use It',
+  highlightText: 'Zero Usage = Zero Interest',
+  description: 'Get a credit line up to ₹10 Lakhs. Withdraw as per your need and pay interest only on the used amount. Repay and reuse the limit anytime.',
+  primaryCtaText: 'Unlock Limit',
+  secondaryCtaText: 'Learn More',
+  amountDisplay: '10,00,000',
+  imageUrl: "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&q=80&w=2070",
+  benefits: [
+    "Pay Interest Only on Usage",
+    "Unlimited Withdrawals & Repayments",
+    "No Foreclosure Charges"
+  ]
+}
+  
 ];
 
 // ==========================================
@@ -283,7 +350,7 @@ interface PreHeroProps {
 
 const ModernHero: React.FC<PreHeroProps> = ({ data, onPrimaryClick, onSecondaryClick }) => {
   
-  // Title Rendering with Gradient Highlight
+  // Title Rendering with SVG Underline Highlight
   const renderTitle = () => {
     if (!data.highlightText) return data.title;
     const parts = data.title.split(data.highlightText);
@@ -292,11 +359,11 @@ const ModernHero: React.FC<PreHeroProps> = ({ data, onPrimaryClick, onSecondaryC
     return (
       <>
         {parts[0]}
-        <span className="text-transparent bg-clip-text bg-linear-to-r from-teal-600 to-teal-400 relative inline-block">
+        <span className="text-teal-600 relative inline-block">
           {data.highlightText}
-          {/* Subtle underline decoration */}
-          <svg className="absolute w-full h-2 -bottom-1 left-0 text-teal-200/50 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
-             <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
+          {/* Underline SVG */}
+          <svg className="absolute w-full h-3 -bottom-1 left-0 text-teal-300 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+             <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
           </svg>
         </span>
         {parts[1]}
@@ -305,159 +372,152 @@ const ModernHero: React.FC<PreHeroProps> = ({ data, onPrimaryClick, onSecondaryC
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-slate-50/50 mt-8 mb-8   font-serif">
+    <div className="relative min-h-[600px] lg:min-h-[800px] w-full flex items-center justify-center overflow-hidden font-sans bg-slate-50">
       
-      {/* --- Ambient Background Effects --- */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-teal-100/60 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob" />
-        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-100/60 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-2000" />
-        {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      {/* Background: Teal Gradient Mesh + Grid Pattern */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[400px] lg:w-[600px] h-[400px] lg:h-[600px] bg-teal-200/40 rounded-full blur-[100px] lg:blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[300px] lg:w-[500px] h-[300px] lg:h-[500px] bg-teal-100/60 rounded-full blur-[80px] lg:blur-[100px] translate-y-1/3 -translate-x-1/4"></div>
+        
+        {/* Geometric Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size:[40px_40px]"></div>
       </div>
 
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-0 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          
-          {/* --- Left Column: Content --- */}
-          <div className="flex flex-col items-start space-y-8 max-w-2xl z-10">
+
+          {/* LEFT COLUMN: Text Content */}
+          <div className="flex flex-col items-start space-y-6 lg:space-y-8 lg:order-1 lg:pt-0">
             
-            {/* Modern Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-white px-4 py-1.5 shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
-              </span>
-              <span className="text-xs font-bold uppercase tracking-wider text-teal-700">
+            {/* 1. Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 border border-teal-100 shadow-sm animate-fade-in-up">
+              <span className="flex h-2 w-2 rounded-full bg-teal-500 animate-pulse"></span>
+              <span className="text-teal-800 text-xs lg:text-sm font-semibold tracking-wide uppercase">
                 {data.badgeText}
               </span>
             </div>
 
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-[1.15]">
+            {/* 2. Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-slate-900 leading-[1.1]">
               {renderTitle()}
             </h1>
-            
-            <p className="text-lg text-slate-600 leading-relaxed max-w-lg font-sans">
+
+            {/* 3. Subtext */}
+            <p className="text-base lg:text-lg text-slate-600 max-w-lg leading-relaxed">
               {data.description}
             </p>
 
-            {/* Feature Pills */}
-            <div className="flex flex-wrap gap-3 font-sans">
-              {data.benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-2 rounded-lg bg-white border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 shadow-sm">
-                  <div className="flex items-center justify-center w-5 h-5 rounded-full bg-teal-50 text-teal-600">
-                    <Check size={12} strokeWidth={3} />
-                  </div>
+            {/* Feature Pills (Mapped from data) */}
+            <div className="flex flex-wrap gap-2">
+              {data.benefits.map((benefit, i) => (
+                <span key={i} className="inline-flex items-center px-3 py-1 rounded-lg bg-white border border-slate-200 text-slate-600 text-sm font-medium shadow-sm">
+                  <Check className="w-3 h-3 text-teal-500 mr-2" strokeWidth={3} />
                   {benefit}
-                </div>
+                </span>
               ))}
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex w-full flex-col sm:flex-row gap-4 pt-4 font-sans">
-              <button
+            {/* 4. Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <button 
                 onClick={onPrimaryClick}
-                className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-xl bg-teal-600 px-8 font-medium text-white shadow-lg shadow-teal-500/20 transition-all duration-300 hover:-translate-y-1 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 cursor-pointer"
+                className="flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg shadow-teal-200 hover:shadow-teal-300 transform hover:-translate-y-1"
               >
-                <span className="mr-2">{data.primaryCtaText}</span>
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                {data.primaryCtaText}
+                <ArrowRight className="w-5 h-5" />
               </button>
               
-              <button
+              <button 
                 onClick={onSecondaryClick}
-                className="group inline-flex h-12 items-center justify-center rounded-xl border border-slate-200 bg-white px-8 font-medium text-slate-700 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-teal-300 hover:text-teal-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 cursor-pointer"
+                className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 px-8 py-4 rounded-xl font-semibold border border-slate-200 shadow-sm transition-all hover:border-teal-200"
               >
+                <Wallet className="w-5 h-5 text-teal-500" />
                 {data.secondaryCtaText}
               </button>
             </div>
 
-            {/* Trust Footer */}
-            <div className="flex items-center gap-4 pt-2 font-sans">
+            {/* 5. Trust Indicators */}
+            <div className="pt-6 border-t border-slate-200 w-full">
+              <div className="flex items-center gap-4">
                 <div className="flex -space-x-3">
-                    {[1,2,3].map((i) => (
-                        <div key={i} className="w-9 h-9 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center overflow-hidden shadow-sm">
-                             <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + data.id}`} alt="user" className="w-full h-full" />
-                        </div>
-                    ))}
-                    <div className="w-9 h-9 rounded-full border-2 border-white bg-teal-600 flex items-center justify-center text-[10px] text-white font-bold shadow-sm">
-                        +12k
-                    </div>
+                  {[1, 2, 3].map((i) => (
+                    <img key={i} src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + data.id}`} alt="Happy Customer" className="w-10 h-10 rounded-full border-2 border-white ring-1 ring-slate-100 bg-slate-100 object-cover" />
+                  ))}
                 </div>
-                <div className="text-sm text-slate-500">
-                    Trusted by <span className="font-bold text-slate-900">12,000+</span> customers
+                <div className="text-sm">
+                  <p className="font-bold text-slate-900">12,000+ Happy Users</p>
+                  <p className="text-slate-500">Rated 4.9/5 for Speed</p>
                 </div>
+              </div>
             </div>
           </div>
 
-          {/* --- Right Column: Visual Mockup with Background Image --- */}
-          <div className="hidden lg:flex relative h-[600px] w-full items-center justify-center z-10">
+          {/* RIGHT COLUMN: Visuals */}
+          <div className="hidden lg:flex relative h-[650px] w-full items-center justify-center lg:order-2">
             
-            {/* Main Image Container (Rotated & Bordered) */}
-            <div className="relative z-10 w-[90%] h-[85%] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-teal-900/10 rotate-2 border-[8px] border-white group hover:rotate-0 transition-transform duration-700 ease-out">
+            {/* Main Image Container */}
+            <div className="relative z-10 w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-teal-900/10 rotate-1 border-[6px] border-white group">
                <img 
                  src={data.imageUrl} 
                  alt={data.title} 
-                 className="w-full h-full object-cover transform scale-105 group-hover:scale-110 transition-transform duration-1000"
+                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                />
-               {/* Gradient Overlay for text legibility if needed */}
                <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent"></div>
             </div>
 
-            {/* --- Floating Elements (Widgets) --- */}
+            {/* Floating Elements */}
             
-            {/* Widget 1: Bank Alert (Top Left) */}
-            <div className="absolute left-0 top-16 z-20 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 animate-bounce-slow max-w-[240px]">
+            {/* Element 1: Bank Alert (Top Left) */}
+            <div className="absolute -left-6 top-24 z-20 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 animate-bounce-slow max-w-60">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 bg-green-50 rounded-full text-green-600 border border-green-100">
+                <div className="p-2 bg-green-100 rounded-full text-green-600">
                    <Zap size={20} fill="currentColor" />
                 </div>
-                <div className="w-full font-sans">
-                  <div className="flex justify-between items-center mb-0.5">
-                    <p className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Bank Alert</p>
-                    <span className="text-[10px] text-slate-400">Just Now</span>
+                <div className="w-full">
+                  <div className="flex justify-between items-center">
+                    <p className="text-[10px] uppercase font-bold text-slate-400">Bank Alert</p>
+                    <span className="text-[10px] text-slate-400">Now</span>
                   </div>
-                  <p className="text-sm font-bold text-slate-800 leading-tight">Limit Approved</p>
-                  <p className="text-xs font-bold text-green-600 flex items-center gap-1">
-                     + ₹{data.amountDisplay}
-                  </p>
+                  <p className="text-sm font-bold text-slate-800">Limit Approved</p>
+                  <p className="text-xs font-bold text-green-600">+ ₹{data.amountDisplay}</p>
                 </div>
               </div>
             </div>
 
-            {/* Widget 2: Status Badge (Bottom Right) */}
-            <div className="absolute right-4 bottom-24 z-20 bg-white/95 backdrop-blur-sm p-5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-100 animate-float max-w-[240px]">
-              <div className="space-y-3 font-sans">
-                <div className="flex items-start gap-3">
-                   <div className="p-2 bg-teal-50 rounded-lg text-teal-600">
-                     <ShieldCheck size={20} />
+            {/* Element 2: Status/Lifestyle (Bottom Right) */}
+            <div className="absolute -right-4 bottom-28 z-20 bg-white/95 backdrop-blur-sm p-4 rounded-2xl shadow-xl border border-slate-100 animate-float w-[220px]">
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                   <div className="p-1.5 bg-teal-100 rounded-lg text-teal-600">
+                     <ShieldCheck size={16} />
                    </div>
-                   <div>
+                   <div className="w-full">
                      <p className="text-xs text-slate-500 font-semibold uppercase">Application Status</p>
                      <p className="text-sm font-bold text-slate-900">Docs Verified</p>
                    </div>
-                   <CheckCircle size={18} className="text-teal-500 ml-auto mt-1" fill="currentColor" color="white" />
+                   <CheckCircle size={14} className="text-green-500 shrink-0" />
                 </div>
                 
-                {/* Progress Bar */}
-                <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-                   <div className="bg-teal-500 h-2 rounded-full w-[90%]"></div>
+                {/* Visual Progress Bar */}
+                <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                   <div className="bg-teal-500 h-full w-[90%] rounded-full"></div>
                 </div>
                 <div className="flex justify-between text-[10px] font-medium text-slate-400">
-                   <span>Processing</span>
-                   <span className="text-teal-600">90% Done</span>
+                    <span>Processing</span>
+                    <span className="text-teal-600">90% Done</span>
                 </div>
               </div>
             </div>
 
-            {/* Decorative Dashed Background Shape behind image */}
-            <div className="absolute top-8 right-4 w-[90%] h-[85%] border-2 border-dashed border-teal-300 rounded-[2.5rem] -rotate-1 -z-10 opacity-60"></div>
+            {/* Decorative Background Shape */}
+            <div className="absolute top-10 -right-10 w-full h-full border-2 border-dashed border-teal-300 rounded-[2.5rem] -rotate-2 -z-10"></div>
             
           </div>
-          
+
         </div>
       </div>
-
-      {/* CSS Animations (Injected styles for this component) */}
+      
+      {/* CSS Animations */}
       <style jsx>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
@@ -467,26 +527,14 @@ const ModernHero: React.FC<PreHeroProps> = ({ data, onPrimaryClick, onSecondaryC
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(8px); }
         }
-        @keyframes blob {
-          0% { transform: translate(0px, 0px) scale(1); }
-          33% { transform: translate(30px, -50px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
-          100% { transform: translate(0px, 0px) scale(1); }
-        }
         .animate-float {
           animation: float 4s ease-in-out infinite;
         }
         .animate-bounce-slow {
           animation: bounce-slow 5s ease-in-out infinite;
         }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
       `}</style>
-    </section>
+    </div>
   );
 };
 
