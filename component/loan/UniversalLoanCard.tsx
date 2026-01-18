@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import LoanDetailsDrawer, { LoanDetailsData } from '../loandetail/LoanDetailsDrawer';
 import EmploymentTypeModal from '../loandetail/EmploymentTypeModal';
+import { fastFetch, prefetch } from '@/lib/utils/ultraFastFetch';
 
 interface LoanCardData {
   id: number;
@@ -129,33 +130,20 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
 
     try {
       setLoading(true);
-      // Use the absolute URL to your Express server
-      const apiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/loans/category/${categorySlug}`;
+      const apiUrl = `/api/loans/category/${categorySlug}`;
       
-      console.log("🌐 Fetching loans from:", apiUrl);
+      console.log("🌐 Ultra-fast fetching loans from:", apiUrl);
       
-      // Use AbortController for timeout
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 15000); // 5 second timeout
-
-      const response = await fetch(apiUrl, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        mode: 'cors',
-        credentials: 'omit',
-        signal: controller.signal,
+      // Ultra-fast fetch with 3s timeout and aggressive caching
+      const data = await fastFetch<any>(apiUrl, {
+        timeout: 3000,
+        cache: true,
+        retries: 2
       });
       
-      clearTimeout(timeoutId);
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log("✅ API Response:", data);
+      if (data?.success && data?.products && Array.isArray(data.products)) {
+        console.log("✅ Loans fetched (cached):", data);
         
-        if (data.success && data.products && Array.isArray(data.products)) {
           const loanProducts = data.products;
           const mappedLoans: LoanCardData[] = loanProducts.map((loan: any) => ({
             id: loan.id,
@@ -210,17 +198,10 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
           console.warn("Unexpected API response format:", data);
           setError("Invalid response format from server");
         }
-      } else {
-        setError(`Server error: ${response.status} ${response.statusText}`);
-      }
       
     } catch (error: any) {
       console.error("❌ Failed to fetch loans:", error);
-      if (error.name === 'AbortError') {
-        setError("Request timeout. Please try again.");
-      } else {
-        setError(`Network error: ${error.message}. Please check if the backend server is running on port 4000.`);
-      }
+      setError(`Failed to load loans. Please try again.`);
     } finally {
       setLoading(false);
     }
@@ -228,24 +209,21 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
 
   const handleShowDetails = useCallback(async (loan: LoanCardData) => {
     try {
-      // Fetch full loan details FIRST before opening drawer
-      const detailsUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/loans/${loan.slug}`;
-      console.log("Fetching loan details from:", detailsUrl);
+      // Ultra-fast fetch with aggressive caching for instant load
+      const detailsUrl = `/api/loans/${loan.slug}`;
+      console.log("⚡ Ultra-fast fetching loan details:", detailsUrl);
       
-      const res = await fetch(detailsUrl, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
+      const data = await fastFetch<any>(detailsUrl, {
+        timeout: 1000, // 1 second for instant feel
+        cache: true,
+        retries: 1
       });
       
-      if (res.ok) {
-        const data = await res.json();
-        console.log("Loan details response:", data);
-        
-        if (data.success && data.loan) {
-          const loanData = data.loan;
-          // Set loan data THEN open drawer immediately with complete data
-          setSelectedLoan({
+      if (data?.success && data?.loan) {
+        console.log("✅ Loan details loaded (cached):", data);
+        const loanData = data.loan;
+        // Set loan data THEN open drawer immediately with complete data
+        setSelectedLoan({
             id: loanData.id,
             bankName: loanData.bankName,
             bankLogoUrl: loanData.bankLogoUrl || '',
@@ -261,9 +239,6 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
         } else {
           alert("Failed to load loan details. Please try again.");
         }
-      } else {
-        alert(`Failed to load loan details: ${res.status} ${res.statusText}`);
-      }
     } catch (error) {
       console.error("Failed to fetch loan details:", error);
       alert("Network error. Please check your connection.");
@@ -454,6 +429,12 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
           <div
             key={card.id || index}
             className="bg-white rounded-2xl border-b-4 border-x border-t border-teal-500/20 shadow-sm hover:shadow-xl transition-all mb-8 overflow-hidden group"
+            onMouseEnter={() => {
+              // Prefetch detail data on hover for instant loading
+              if (card.slug) {
+                prefetch(`/api/loans/${card.slug}`, { timeout: 1000, cache: true });
+              }
+            }}
           >
             {/* Upper Status Ribbon */}
             <div className="bg-teal-50 px-6 py-2 flex justify-between items-center border-b border-teal-100">

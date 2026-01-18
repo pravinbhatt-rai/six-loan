@@ -61,11 +61,14 @@ export default function CardList({
             image: card.image, 
             bullets: card.bullets,
             bankName: card.bank,
+            bank: card.bank,
             annualFee: card.fee,
             slug: card.slug,
             firstYearFee: card.firstYearFee,
             secondYearFee: card.secondYearFee,
-            cardType: card.cardType
+            cardType: card.cardType,
+            rating: card.rating,
+            categories: card.categories
           }}
           onApply={onApply}
           onDetails={onDetails}
@@ -95,11 +98,14 @@ export default function CardList({
             image: card.image, 
             bullets: card.bullets,
             bankName: card.bank,
+            bank: card.bank,
             annualFee: card.fee,
             slug: card.slug,
             firstYearFee: card.firstYearFee,
             secondYearFee: card.secondYearFee,
-            cardType: card.cardType
+            cardType: card.cardType,
+            rating: card.rating,
+            categories: card.categories
           }}
           onApply={onApply}
           onDetails={onDetails}

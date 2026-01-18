@@ -510,17 +510,7 @@ const LoginForm: React.FC = () => {
 
         {/* Right Panel (Form) */}
         <div className="w-full lg:w-7/12 flex items-start lg:items-center justify-center p-4 lg:p-12 -mt-24 lg:mt-0 relative z-20">
-          <div className="w-full max-w-2xl bg-white p-8 lg:p-12 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100 relative">
-            {/* Close Button */}
-            <button
-              onClick={() => router.push('/')}
-              className="absolute top-6 right-6 text-slate-400 hover:text-slate-600 transition-colors p-1.5 hover:bg-slate-100 rounded-full"
-              title="Close"
-              aria-label="Close login page"
-            >
-              <FiX className="w-6 h-6" />
-            </button>
-
+          <div className="w-full max-w-2xl bg-white p-8 lg:p-12 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100">
             {/* Header */}
             <div className="mb-8 lg:mb-10 text-center lg:text-left">
               <h2 className="font-serif text-3xl text-teal-950 mb-2">

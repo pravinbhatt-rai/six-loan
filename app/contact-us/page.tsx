@@ -1,8 +1,31 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Clock, MessageSquare, ArrowRight } from 'lucide-react';
 import ContactForm from '@/component/contact-us/ContactForm'; 
 
 export default function ContactPage() {
+  const [userData, setUserData] = useState<any>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Fetch user data on page mount
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch("/api/auth/session");
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.user) {
+            setIsLoggedIn(true);
+            setUserData(data.user);
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching user data:", err);
+      }
+    };
+    fetchUserData();
+  }, []);
   return (
     <div className="min-h-screen bg-gray-50 font-serif text-gray-800 overflow-x-hidden">
       

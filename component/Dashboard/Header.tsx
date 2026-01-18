@@ -9,13 +9,14 @@ interface HeaderProps {
 const Header = ({ onMenuClick }: HeaderProps) => {
   return (
     <header className="h-16 lg:h-20 bg-white shadow-sm flex items-center justify-between px-4 lg:px-8 lg:ml-64 fixed top-0 left-0 right-0 z-30">
-      {/* Mobile Menu Button */}
+
+      {/* Hamburger Menu Button (Mobile Only) */}
       <button
         onClick={onMenuClick}
         className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
         aria-label="Open menu"
       >
-        <Menu size={24} className="text-gray-600" />
+        <Menu size={24} className="text-gray-700" />
       </button>
 
       {/* Search Bar */}

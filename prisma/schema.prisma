@@ -121,6 +121,7 @@ model User {
   
   applications  Application[]
   employment    Employment?  // One employment record per user
+  eligibilityInquiries EligibilityInquiry[] // Eligibility checks by user
   
   // Relations for tracking who created products
   createdLoans       LoanProduct[]
@@ -753,3 +754,57 @@ model InsuranceEligibility {
   productId    Int
 }
 
+enum ContactMessageStatus {
+  unread
+  read
+  responded
+  archived
+}
+
+model ContactMessage {
+  id        Int                  @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String?
+  subject   String               @default("General Inquiry")
+  message   String               @db.Text
+  status    ContactMessageStatus @default(unread)
+  createdAt DateTime             @default(now())
+  updatedAt DateTime             @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+enum EligibilityStatus {
+  pending
+  reviewed
+  approved
+  rejected
+  contacted
+}
+
+model EligibilityInquiry {
+  id               Int               @id @default(autoincrement())
+  name             String
+  email            String
+  phone            String
+  panCard          String            // PAN card number
+  dateOfBirth      DateTime?
+  employment       String            @default("salaried") // salaried, self-employed, business, student
+  monthlyIncome    Float?
+  city             String?
+  creditScore      Int?
+  eligibilityScore Int               @default(0) // 0-100 calculated score
+  status           EligibilityStatus @default(pending)
+  notes            String?           @db.Text
+  userId           Int?              // Link to User if logged in
+  user             User?             @relation(fields: [userId], references: [id])
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  @@index([status])
+  @@index([userId])
+  @@index([createdAt])
+  @@index([panCard])
+}

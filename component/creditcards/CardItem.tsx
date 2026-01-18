@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import { Star } from "lucide-react";
+import { prefetch } from "@/lib/utils/ultraFastFetch";
 
 export type CardInfo = {
   id: string;
@@ -7,11 +9,14 @@ export type CardInfo = {
   image: string;
   bullets: string[];
   bankName?: string;
+  bank?: string;
   annualFee?: string;
   slug?: string;
   firstYearFee?: number | null;
   secondYearFee?: number | null;
   cardType?: string;
+  rating?: number;
+  categories?: string[];
 };
 
 export default function CardItem({
@@ -81,7 +86,15 @@ export default function CardItem({
   
   const feeDisplay = getFeeDisplay();
   return (
-    <div className="relative w-full border border-gray-100 bg-gray-50/30 rounded-md shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
+    <div 
+      className="relative w-full border border-gray-100 bg-gray-50/30 rounded-md shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden"
+      onMouseEnter={() => {
+        // Prefetch detail data on hover for instant loading
+        if (card.slug) {
+          prefetch(`/api/credit-cards/${card.slug}`, { timeout: 1000, cache: true });
+        }
+      }}
+    >
       <div className="flex flex-col p-3 sm:p-4 md:p-6 gap-3 sm:gap-4 md:gap-6">
         
         {/* TOP SECTION: Image & Compare on Mobile, Side-by-side on Desktop */}
@@ -144,9 +157,21 @@ export default function CardItem({
             
             {/* Header Section */}
             <div>
-              <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 leading-tight text-center sm:text-left">
-                {card.name}
-              </h3>
+              <div className="flex items-start justify-between gap-2 mb-2">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 leading-tight text-center sm:text-left flex-1">
+                  {card.name}
+                </h3>
+                
+                {/* Rating Display */}
+                {card.rating && (
+                  <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg border border-yellow-200 shrink-0">
+                    <Star className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500 fill-yellow-500" />
+                    <span className="text-xs sm:text-sm font-bold text-gray-900">
+                      {card.rating.toFixed(1)}
+                    </span>
+                  </div>
+                )}
+              </div>
 
               {/* Fee Badge */}
               <div className="mt-2 flex flex-col gap-1 items-center sm:items-start">

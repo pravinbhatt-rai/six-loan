@@ -220,13 +220,13 @@ const NAV_DATA: NavItem[] = [
                 title: 'Overview',
                 icon: <FileText className="w-4 h-4 text-teal-500" />,
                 items: [
-                    { name: 'Credit Card', href: '/cards/overview' },
-                    { name: 'Best Credit Cards', href: '/cards/best' },
-                    { name: 'Credit Card Interest Rate', href: '/cards/rates' },
-                    { name: 'CIBIL Score for Credit Card', href: '/cards/cibil' },
-                    { name: 'Credit Card Rewards Calculator', href: '/cards/calculator' },
-                    { name: 'Credit Card Eligibility', href: '/cards/eligibility' },
-                    { name: 'Compare Credit Cards', href: '/cards/compare' },
+                    { name: 'Credit Card', href: '/creditinfo' },
+                    { name: 'Best Credit Cards', href: '/creditinfo/25-best-credit-cards-india' },
+                    // { name: 'Credit Card Interest Rate', href: '/cards/rates' },
+                    // { name: 'CIBIL Score for Credit Card', href: '/cards/cibil' },
+                    { name: 'Credit Card Rewards Calculator', href: '/creditinfo/reward-calculator' },
+                    { name: 'Credit Card Eligibility', href: '/creditinfo/eligibility' },
+                    { name: 'Compare Credit Cards', href: '/creditcards' },
                 ]
             },
             {
@@ -735,21 +735,6 @@ const Navbar: FC = () => {
                                             <p className="text-sm font-semibold text-gray-900">
                                                 Hi, <span className="text-teal-600">{userName}</span>
                                             </p>
-                                            <div className="flex items-center gap-1.5 mt-0.5">
-                                                {userRole === 'ADMIN' ? (
-                                                    <span className="flex items-center text-[10px] font-bold text-purple-600 bg-purple-100 px-1.5 py-0.5 rounded-full">
-                                                        <Crown className="w-3 h-3 mr-1" /> ADMIN
-                                                    </span>
-                                                ) : userRole === 'MODERATOR' ? (
-                                                    <span className="flex items-center text-[10px] font-bold text-teal-600 bg-teal-100 px-1.5 py-0.5 rounded-full">
-                                                        <Shield className="w-3 h-3 mr-1" /> MOD
-                                                    </span>
-                                                ) : (
-                                                    <span className="flex items-center text-[10px] font-bold text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded-full">
-                                                        <UserIcon className="w-3 h-3 mr-1" /> USER
-                                                    </span>
-                                                )}
-                                            </div>
                                         </div>
                                         <ChevronDown className="w-4 h-4 text-gray-400 group-hover:rotate-180 transition-transform" />
                                     </button>
@@ -767,6 +752,9 @@ const Navbar: FC = () => {
                                             </button>
                                             <button onClick={() => router.push('/user/profile')} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-teal-50 hover:text-teal-700 rounded-lg">
                                                 <UserIcon className="w-4 h-4" /> Profile
+                                            </button>
+                                            <button onClick={() => router.push('/user/applications')} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-teal-50 hover:text-teal-700 rounded-lg">
+                                                <FileText className="w-4 h-4" /> My Applications
                                             </button>
                                             <div className="border-t border-gray-100 my-2"></div>
                                             <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg">

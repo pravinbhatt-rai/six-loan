@@ -14,6 +14,7 @@ export type CardRecord = {
   slug?: string; // URL slug for the card
   firstYearFee?: number | null;
   secondYearFee?: number | null;
+  rating?: number; // Star rating (0-5)
 };
 
 export const CARDS: CardRecord[] = [

@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Users, CreditCard, FileText, Settings, X } from 'lucide-react';
+import { LayoutDashboard, Users, CreditCard, FileText, Settings, X, Mail } from 'lucide-react';
+import { TbCreditCardFilled } from 'react-icons/tb';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -21,7 +22,10 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     { name: 'Insurance', href: '/dashboard/insurance', icon: FileText },
     { name: 'Applications', href: '/dashboard/applications', icon: FileText },
     { name: 'Products', href: '/dashboard/products', icon: CreditCard },
-    { name: 'Settings', href: '/dashboard/settings', icon: Settings },
+    { name: 'Messages', href: '/dashboard/contact-messages', icon: Mail },
+     { name: 'Eligibility', href: '/dashboard/eligibility', icon: TbCreditCardFilled },
+      { name: 'Settings', href: '/dashboard/settings', icon: Settings },
+
   ];
 
   // Close sidebar when clicking outside on mobile
