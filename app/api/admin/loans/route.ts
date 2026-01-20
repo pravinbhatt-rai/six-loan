@@ -80,6 +80,14 @@ export async function POST(request: NextRequest) {
       feature,
       specialization,
       keyStatement,
+      // New filter fields
+      loanType,
+      loanSubType,
+      amountRange,
+      eligibleFor,
+      loanPurpose,
+      scheme,
+      vehicleType,
     } = body;
 
     // Create loan with relations
@@ -103,6 +111,14 @@ export async function POST(request: NextRequest) {
         feature: feature || null,
         specialization: specialization || null,
         keyStatement: keyStatement || null,
+        // New filter fields (optional)
+        loanType: loanType || null,
+        loanSubType: loanSubType || null,
+        amountRange: amountRange || null,
+        eligibleFor: eligibleFor || null,
+        loanPurpose: loanPurpose || null,
+        scheme: scheme || null,
+        vehicleType: vehicleType || null,
         // Numeric fields with defaults
         approvalScore: 85,
         emiValue: 2500,

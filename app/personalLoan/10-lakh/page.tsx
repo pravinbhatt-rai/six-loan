@@ -67,7 +67,9 @@ export default function FiveLakhPersonalLoanPage() {
             />
             <UniversalLoanCard
                 categorySlug="personal-loan"
-                headerTitle="Personal <span class='text-teal-1000'>Loan</span>"
+                headerTitle="Personal <span class='text-teal-500'>Loan</span>"
+                loanType="personal"
+                amountRange="10-lakh"
                 headerSubtitle="Instant Funds for Any Need"
                 headerDescription="Quick approvals and flexible repayment tenures for all your personal needs."
                 maxDisplay={4}

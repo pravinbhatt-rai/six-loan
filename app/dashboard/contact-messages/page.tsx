@@ -92,7 +92,7 @@ export default function ContactMessagesPage() {
     return badges[status as keyof typeof badges] || badges.unread;
   };
 
-  if (loading) return <PageLoader message="Loading messages..." />;
+  if (loading) return <PageLoader />;
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">

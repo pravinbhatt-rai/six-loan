@@ -10,6 +10,12 @@ const InitialFilterState: FilterState = {
   sortBy: "approval-high-low",
   processingTime: [],
   processType: [],
+  loanSubType: [],
+  amountRange: [],
+  eligibleFor: [],
+  loanPurpose: [],
+  scheme: [],
+  vehicleType: []
 };
 
 // Get API base URL from environment or use default
@@ -22,8 +28,28 @@ function LoanDetailContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const categorySlug = searchParams.get("category");
+  
+  // Get all filter parameters from URL
+  const urlLoanSubType = searchParams.get("loanSubType");
+  const urlAmountRange = searchParams.get("amountRange");
+  const urlEligibleFor = searchParams.get("eligibleFor");
+  const urlLoanPurpose = searchParams.get("loanPurpose");
+  const urlScheme = searchParams.get("scheme");
+  const urlVehicleType = searchParams.get("vehicleType");
 
-  const [filters, setFilters] = useState<FilterState>(InitialFilterState);
+  const [filters, setFilters] = useState<FilterState>(() => {
+    // Initialize filters with URL parameters if present
+    const initialFilters = { ...InitialFilterState };
+    
+    if (urlLoanSubType) initialFilters.loanSubType = [urlLoanSubType];
+    if (urlAmountRange) initialFilters.amountRange = [urlAmountRange];
+    if (urlEligibleFor) initialFilters.eligibleFor = [urlEligibleFor];
+    if (urlLoanPurpose) initialFilters.loanPurpose = [urlLoanPurpose];
+    if (urlScheme) initialFilters.scheme = [urlScheme];
+    if (urlVehicleType) initialFilters.vehicleType = [urlVehicleType];
+    
+    return initialFilters;
+  });
   const [loans, setLoans] = useState<LoanProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [categoryInfo, setCategoryInfo] = useState<{ name: string; slug: string } | null>(null);
@@ -179,9 +205,15 @@ function LoanDetailContent() {
 
   const handleClearAll = () => {
     setFilters({
-      sortBy: null,
+      sortBy: "approval-high-low",
       processingTime: [],
       processType: [],
+      loanSubType: [],
+      amountRange: [],
+      eligibleFor: [],
+      loanPurpose: [],
+      scheme: [],
+      vehicleType: []
     });
   };
 

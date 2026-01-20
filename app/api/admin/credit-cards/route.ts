@@ -120,10 +120,13 @@ export async function POST(request: NextRequest) {
       if (filtered.length === 0) return undefined;
 
       return {
-        create: filtered.map((item: any, index: number) => ({
-          [key]: extractTextValue(item, key).trim(),
-          displayOrder: item.displayOrder ?? index,
-        })),
+        create: filtered.map((item: any, index: number) => {
+          const obj: any = {
+            displayOrder: item.displayOrder ?? index,
+          };
+          obj[key] = extractTextValue(item, key).trim();
+          return obj;
+        }),
       };
     };
 

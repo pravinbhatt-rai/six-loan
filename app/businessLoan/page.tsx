@@ -29,7 +29,7 @@ export default function Page() {
 		<main>
 			<HeroContainer id='business-loan' />
 			<FeatureSection />
-			<LoanSection />
+            <LoanSection />
 			<UniversalLoanCard
 				categorySlug="business-loan"
 				headerTitle="Business <span class='text-teal-500'>Loan</span>"
@@ -37,6 +37,7 @@ export default function Page() {
 				headerDescription="Collateral-free loans to help you expand, stock up, or manage cash flow."
 				maxDisplay={4}
 				showViewAllButton={true}
+				loanType="business"
 			/>
 			<LoanInfo loanId="business-loan"/>
 			<ExpertQuoteContainer id='business-loan'/>

@@ -40,7 +40,7 @@ export default function CategoryHero({ category, title, description, benefits, i
   const defaultGradient = categoryGradients[category.toLowerCase()] || "from-teal-50 via-blue-50 to-white";
 
   return (
-    <div className={`relative bg-gradient-to-br ${gradient || defaultGradient} py-12 md:py-16 lg:py-20 overflow-hidden`}>
+    <div className={`relative bg-linear-to-br ${gradient || defaultGradient} py-12 md:py-16 lg:py-20 overflow-hidden`}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 bg-teal-500 rounded-full blur-3xl"></div>

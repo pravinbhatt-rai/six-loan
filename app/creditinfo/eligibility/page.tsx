@@ -220,9 +220,9 @@ export default function CreditCardEligibilityPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-linear-to-b from-gray-50 to-white">
       {/* Hero Section with Parallax */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-teal-600 to-teal-800">
+      <div className="relative overflow-hidden bg-linear-to-r from-teal-600 to-teal-800">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-1/4 w-64 h-64 bg-white rounded-full animate-pulse"></div>
@@ -303,8 +303,8 @@ export default function CreditCardEligibilityPage() {
             >
               {/* Floating Card Elements */}
               <div className="relative w-full max-w-md mx-auto">
-                <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-r from-teal-500 to-green-400 rounded-full blur-xl opacity-20"></div>
-                <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-r from-cyan-500 to-teal-400 rounded-full blur-xl opacity-20"></div>
+                <div className="absolute -top-6 -right-6 w-32 h-32 bg-linear-to-r from-teal-500 to-green-400 rounded-full blur-xl opacity-20"></div>
+                <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-linear-to-r from-cyan-500 to-teal-400 rounded-full blur-xl opacity-20"></div>
                 
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-2xl">
                   <div className="text-center mb-6">
@@ -393,7 +393,7 @@ export default function CreditCardEligibilityPage() {
           className="mb-20 scroll-mt-24"
         >
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg">
+            <div className="p-2 bg-linear-to-r from-teal-500 to-teal-600 rounded-lg">
               <CheckCircle className="w-6 h-6 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
@@ -444,9 +444,9 @@ export default function CreditCardEligibilityPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 border border-gray-200 shadow-sm"
+                    className="bg-linear-to-br from-white to-gray-50 rounded-xl p-6 border border-gray-200 shadow-sm"
                   >
-                    <div className={`inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r ${criteria.color} text-white mb-4`}>
+                    <div className={`inline-flex items-center justify-center w-14 h-14 rounded-full bg-linear-to-r ${criteria.color} text-white mb-4`}>
                       {criteria.icon}
                     </div>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">{criteria.title}</h3>
@@ -456,9 +456,9 @@ export default function CreditCardEligibilityPage() {
                 ))}
               </div>
 
-              <div className="mt-8 p-6 bg-gradient-to-r from-teal-50 to-teal-100 rounded-xl border border-teal-200">
+              <div className="mt-8 p-6 bg-linear-to-r from-teal-50 to-teal-100 rounded-xl border border-teal-200">
                 <div className="flex items-start gap-4">
-                  <AlertCircle className="w-6 h-6 text-teal-600 mt-1 flex-shrink-0" />
+                  <AlertCircle className="w-6 h-6 text-teal-600 mt-1 shrink-0" />
                   <div>
                     <h4 className="font-bold text-teal-800 mb-2">Important Note</h4>
                     <p className="text-teal-700">
@@ -480,7 +480,7 @@ export default function CreditCardEligibilityPage() {
           className="mb-20 scroll-mt-24"
         >
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg">
+            <div className="p-2 bg-linear-to-r from-teal-500 to-teal-600 rounded-lg">
               <TrendingUp className="w-6 h-6 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
@@ -501,7 +501,7 @@ export default function CreditCardEligibilityPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 border border-gray-200 hover:border-teal-300 transition-colors group hover:shadow-md"
+                  className="bg-linear-to-br from-white to-gray-50 rounded-xl p-6 border border-gray-200 hover:border-teal-300 transition-colors group hover:shadow-md"
                 >
                   <div className="flex items-start gap-4 mb-4">
                     <div className="p-3 bg-teal-100 rounded-lg text-teal-600 group-hover:bg-teal-200 transition-colors">
@@ -526,7 +526,7 @@ export default function CreditCardEligibilityPage() {
 
             {/* Tips Section */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-xl p-6 border border-green-200">
+              <div className="bg-linear-to-r from-green-50 to-teal-50 rounded-xl p-6 border border-green-200">
                 <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
                   Do&apos;s for Better Eligibility
@@ -548,7 +548,7 @@ export default function CreditCardEligibilityPage() {
                 </ul>
               </div>
 
-              <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-xl p-6 border border-red-200">
+              <div className="bg-linear-to-r from-red-50 to-orange-50 rounded-xl p-6 border border-red-200">
                 <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                   <XCircle className="w-5 h-5 text-red-600" />
                   Don&apos;ts to Avoid
@@ -582,7 +582,7 @@ export default function CreditCardEligibilityPage() {
           className="mb-20 scroll-mt-24"
         >
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg">
+            <div className="p-2 bg-linear-to-r from-teal-500 to-teal-600 rounded-lg">
               <Building className="w-6 h-6 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
@@ -594,7 +594,7 @@ export default function CreditCardEligibilityPage() {
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead>
-                  <tr className="bg-gradient-to-r from-teal-600 to-teal-700">
+                  <tr className="bg-linear-to-r from-teal-600 to-teal-700">
                     <th className="px-6 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
                       Bank / Issuer
                     </th>
@@ -680,7 +680,7 @@ export default function CreditCardEligibilityPage() {
           className="mb-20 scroll-mt-24"
         >
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg">
+            <div className="p-2 bg-linear-to-r from-teal-500 to-teal-600 rounded-lg">
               <FileText className="w-6 h-6 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
@@ -722,7 +722,7 @@ export default function CreditCardEligibilityPage() {
             </div>
 
             <div className="space-y-6">
-              <div className="bg-gradient-to-r from-teal-50 to-teal-100 rounded-2xl p-8 border border-teal-200">
+              <div className="bg-linear-to-r from-teal-50 to-teal-100 rounded-2xl p-8 border border-teal-200">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
                   How to Check Your Eligibility
                 </h3>
@@ -761,8 +761,8 @@ export default function CreditCardEligibilityPage() {
                       transition={{ delay: index * 0.1 }}
                       className="flex items-start gap-4"
                     >
-                      <div className="flex-shrink-0">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 flex items-center justify-center text-white font-bold">
+                      <div className="shrink-0">
+                        <div className="w-12 h-12 rounded-full bg-linear-to-r from-teal-500 to-teal-600 flex items-center justify-center text-white font-bold">
                           {step.step.split(" ")[1]}
                         </div>
                       </div>
@@ -780,7 +780,7 @@ export default function CreditCardEligibilityPage() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200">
+              <div className="bg-linear-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Need Help?
                 </h3>
@@ -814,7 +814,7 @@ export default function CreditCardEligibilityPage() {
           className="scroll-mt-24"
         >
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2 bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg">
+            <div className="p-2 bg-linear-to-r from-teal-500 to-teal-600 rounded-lg">
               <AlertCircle className="w-6 h-6 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900">
@@ -853,7 +853,7 @@ export default function CreditCardEligibilityPage() {
           viewport={{ once: true }}
           className="mt-20 text-center"
         >
-          <div className="bg-gradient-to-r from-teal-600 to-teal-700 rounded-3xl p-12 text-white">
+          <div className="bg-linear-to-r from-teal-600 to-teal-700 rounded-3xl p-12 text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Ready to Find Your Perfect Credit Card?
             </h2>

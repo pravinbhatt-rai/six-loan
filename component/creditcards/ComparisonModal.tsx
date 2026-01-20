@@ -147,9 +147,9 @@ export default function ComparisonModal({ isOpen, onClose, cardIds, onApply }: C
                 {cards.map((card) => (
                   <div key={card.id} className="p-2 sm:p-4 md:p-5 flex flex-col items-center gap-1.5 sm:gap-3 md:gap-4 text-center">
                     {/* Card Image Container - Responsive sizes */}
-                    <div className="relative group shrink-0 w-full max-w-[120px] sm:max-w-[160px]">
+                    <div className="relative group shrink-0 w-full max-w-[120px] sm:max-w-40">
                       <div className="absolute inset-0 bg-blue-600/5 rounded-lg transform rotate-3 transition-transform group-hover:rotate-6" />
-                      <div className="relative aspect-[16/10] w-full">
+                      <div className="relative aspect-16/10 w-full">
                         <img
                           src={card.imageUrl}
                           alt={card.name}
@@ -255,7 +255,7 @@ export default function ComparisonModal({ isOpen, onClose, cardIds, onApply }: C
                           <div key={`feature-row-${index}`} className="group hover:bg-gray-50/30 transition-colors border-b border-gray-100 last:border-0">
                             <div className="grid grid-cols-2 divide-x divide-gray-100">
                               {/* Card 1 Column - Show its feature at this position */}
-                              <div className="p-2.5 sm:p-5 bg-gradient-to-br from-blue-50/50 to-indigo-50/50 border-r border-blue-100">
+                              <div className="p-2.5 sm:p-5 bg-linear-to-br from-blue-50/50 to-indigo-50/50 border-r border-blue-100">
                                 {card1Section ? (
                                   <>
                                     <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
@@ -287,7 +287,7 @@ export default function ComparisonModal({ isOpen, onClose, cardIds, onApply }: C
                               </div>
 
                               {/* Card 2 Column - Show its feature at this position */}
-                              <div className="p-2.5 sm:p-5 bg-gradient-to-br from-emerald-50/50 to-teal-50/50 border-emerald-100">
+                              <div className="p-2.5 sm:p-5 bg-linear-to-br from-emerald-50/50 to-teal-50/50 border-emerald-100">
                                 {card2Section ? (
                                   <>
                                     <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">

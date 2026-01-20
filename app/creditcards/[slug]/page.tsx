@@ -1,10 +1,17 @@
 import React from "react";
+import { notFound } from "next/navigation";
 import CategoryClientWrapper from "./CategoryClientWrapper";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
 
-export default async function CreditCardCategoryPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function CreditCardCategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  
+  // Return 404 for static file requests (images, fonts, etc.)
+  if (slug.includes('.')) {
+    notFound();
+  }
+  
   let cards = [];
   let categoryName = slug;
 

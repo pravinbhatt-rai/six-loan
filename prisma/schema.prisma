@@ -1,10 +1,11 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
 }
 
 enum ProductType {
@@ -496,6 +497,15 @@ model LoanProduct {
   
   categoryId         Int?
   category           Category? @relation(fields: [categoryId], references: [id])
+
+  // New filter fields based on navbar structure
+  loanType           String?   // "personal", "business", "home", "vehicle", "education", "property", "security"
+  loanSubType        String?   // "preApproved", "interestRates", "lowCibil", "balanceTransfer", etc.
+  amountRange        String?   // "5-lakh", "10-lakh", "20-lakh", "30-lakh", "40-lakh", "50-lakh", "60-lakh"
+  eligibleFor        String?   // "salaried", "self-employed", "seniors", "students", "doctors", "women"
+  loanPurpose        String?   // "medical", "travel", "wedding", "consolidation", "overdraft", "flexi", "short-term", "term"
+  scheme             String?   // "dairy", "small", "goat", "startup", "poultry", "renovation", "plot", "top-up", "construction", "nri", "extension"
+  vehicleType        String?   // "new-bike", "used-bike", "new-car", "used-car"
 
   // Short feature bullets shown in list and popup
   bullets            LoanBullet[]

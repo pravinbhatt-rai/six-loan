@@ -71,6 +71,14 @@ export async function PUT(
       categoryId,
       bullets,
       footerItems,
+      // New filter fields
+      loanType,
+      loanSubType,
+      amountRange,
+      eligibleFor,
+      loanPurpose,
+      scheme,
+      vehicleType,
     } = body;
 
     // Delete existing bullets and footer items if updating them
@@ -106,6 +114,14 @@ export async function PUT(
         ...(specialization !== undefined && { specialization }),
         ...(keyStatement !== undefined && { keyStatement }),
         ...(categoryId !== undefined && { categoryId: categoryId ? Number(categoryId) : null }),
+        // New filter fields
+        ...(loanType !== undefined && { loanType }),
+        ...(loanSubType !== undefined && { loanSubType }),
+        ...(amountRange !== undefined && { amountRange }),
+        ...(eligibleFor !== undefined && { eligibleFor }),
+        ...(loanPurpose !== undefined && { loanPurpose }),
+        ...(scheme !== undefined && { scheme }),
+        ...(vehicleType !== undefined && { vehicleType }),
         bullets: bullets !== undefined ? {
           create: bullets.map((bullet: any, index: number) => ({
             text: bullet.text || bullet,

@@ -78,6 +78,8 @@ export default function InterestRatesPersonalLoanPage() {
                 headerDescription="Quick approvals and flexible repayment tenures for all your personal needs."
                 maxDisplay={4}
                 showViewAllButton={true}
+                loanType="personal"
+                loanSubType="interestRates"
             />
             <QuickLinksContainer id="personal-loan-interest-rates" />
             <LoanAmountSelector />

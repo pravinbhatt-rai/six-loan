@@ -70,13 +70,21 @@ const LoanForm: React.FC<LoanFormProps> = ({ categoryId, onSubmit, initialData, 
     processTypeValue: initialData?.processTypeValue || '',
     disbursalTimeHours: initialData?.disbursalTimeHours || 0,
     keyStatement: initialData?.keyStatement || '',
+    // New filter fields
+    loanType: initialData?.loanType || '',
+    loanSubType: initialData?.loanSubType || '',
+    amountRange: initialData?.amountRange || '',
+    eligibleFor: initialData?.eligibleFor || '',
+    loanPurpose: initialData?.loanPurpose || '',
+    scheme: initialData?.scheme || '',
+    vehicleType: initialData?.vehicleType || '',
     bullets: initialData?.bullets?.length > 0 ? initialData.bullets : [{ text: '', displayOrder: 1 }],
     summaryCharges: initialData?.summaryCharges?.length > 0 ? initialData.summaryCharges : [{ label: '', mainText: '', subText: '', displayOrder: 1 }],
     requiredDocuments: initialData?.requiredDocuments?.length > 0 ? initialData.requiredDocuments : [{ title: '', description: '', displayOrder: 1 }],
     processSteps: initialData?.processSteps?.length > 0 ? initialData.processSteps : [{ title: '', description: '', displayOrder: 1 }]
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     let formattedValue = value;
 
@@ -206,6 +214,119 @@ const LoanForm: React.FC<LoanFormProps> = ({ categoryId, onSubmit, initialData, 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Disbursal Time (Hours)</label>
           <input type="number" name="disbursalTimeHours" placeholder="e.g. 24" value={formData.disbursalTimeHours} onChange={handleChange} className="w-full p-2 border rounded-lg" />
+        </div>
+      </div>
+
+      {/* Filter Fields Section */}
+      <div className="border-t pt-6">
+        <h3 className="font-semibold text-gray-800 mb-4 text-lg">🔍 Filter Options (for listing pages)</h3>
+        <p className="text-sm text-gray-600 mb-4">These fields help users find this loan through filters on listing pages</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Loan Type</label>
+            <select name="loanType" value={formData.loanType} onChange={handleChange} className="w-full p-2 border rounded-lg">
+              <option value="">Select Loan Type</option>
+              <option value="personal">Personal Loan</option>
+              <option value="business">Business Loan</option>
+              <option value="home">Home Loan</option>
+              <option value="vehicle">Vehicle Loan</option>
+              <option value="education">Education Loan</option>
+              <option value="property">Loan Against Property</option>
+              <option value="security">Loan Against Security</option>
+              <option value="professional">Professional Loan</option>
+            </select>
+            <p className="text-xs text-gray-500 mt-1">Main category of the loan</p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Loan Sub-Type</label>
+            <select name="loanSubType" value={formData.loanSubType} onChange={handleChange} className="w-full p-2 border rounded-lg">
+              <option value="">Select Sub-Type</option>
+              <option value="preApproved">Pre-Approved</option>
+              <option value="interestRates">Interest Rates</option>
+              <option value="lowCibil">Low CIBIL</option>
+              <option value="balanceTransfer">Balance Transfer</option>
+            </select>
+            <p className="text-xs text-gray-500 mt-1">Specific type or feature</p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Amount Range</label>
+            <select name="amountRange" value={formData.amountRange} onChange={handleChange} className="w-full p-2 border rounded-lg">
+              <option value="">Select Amount Range</option>
+              <option value="5-lakh">₹5 Lakh</option>
+              <option value="10-lakh">₹10 Lakh</option>
+              <option value="15-lakh">₹15 Lakh</option>
+              <option value="20-lakh">₹20 Lakh</option>
+              <option value="30-lakh">₹30 Lakh</option>
+              <option value="40-lakh">₹40 Lakh</option>
+              <option value="50-lakh">₹50 Lakh</option>
+              <option value="60-lakh">₹60 Lakh</option>
+            </select>
+            <p className="text-xs text-gray-500 mt-1">Maximum loan amount offered</p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Eligible For</label>
+            <select name="eligibleFor" value={formData.eligibleFor} onChange={handleChange} className="w-full p-2 border rounded-lg">
+              <option value="">Select Eligibility</option>
+              <option value="salaried">Salaried</option>
+              <option value="self-employed">Self-Employed</option>
+              <option value="seniors">Senior Citizens</option>
+              <option value="students">Students</option>
+              <option value="doctors">Doctors</option>
+              <option value="women">Women</option>
+            </select>
+            <p className="text-xs text-gray-500 mt-1">Who can apply for this loan</p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Loan Purpose</label>
+            <select name="loanPurpose" value={formData.loanPurpose} onChange={handleChange} className="w-full p-2 border rounded-lg">
+              <option value="">Select Purpose</option>
+              <option value="medical">Medical Emergency</option>
+              <option value="travel">Travel</option>
+              <option value="wedding">Wedding</option>
+              <option value="consolidation">Debt Consolidation</option>
+              <option value="overdraft">Overdraft</option>
+              <option value="flexi">Flexi Loan</option>
+              <option value="short-term">Short-Term</option>
+              <option value="term">Term Loan</option>
+            </select>
+            <p className="text-xs text-gray-500 mt-1">What the loan can be used for</p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Scheme (For Business Loans)</label>
+            <select name="scheme" value={formData.scheme} onChange={handleChange} className="w-full p-2 border rounded-lg">
+              <option value="">Select Scheme</option>
+              <option value="dairy">Dairy Farming</option>
+              <option value="small">Small Business</option>
+              <option value="goat">Goat Farming</option>
+              <option value="startup">Startup</option>
+              <option value="poultry">Poultry</option>
+              <option value="renovation">Home Renovation</option>
+              <option value="plot">Plot Purchase</option>
+              <option value="top-up">Top-up Loan</option>
+              <option value="construction">Construction</option>
+              <option value="nri">NRI</option>
+              <option value="extension">Extension</option>
+            </select>
+            <p className="text-xs text-gray-500 mt-1">Specific scheme or program</p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Vehicle Type (For Vehicle Loans)</label>
+            <select name="vehicleType" value={formData.vehicleType} onChange={handleChange} className="w-full p-2 border rounded-lg">
+              <option value="">Select Vehicle Type</option>
+              <option value="new-bike">New Bike</option>
+              <option value="used-bike">Used Bike</option>
+              <option value="new-car">New Car</option>
+              <option value="used-car">Used Car</option>
+            </select>
+            <p className="text-xs text-gray-500 mt-1">Type of vehicle to be financed</p>
+          </div>
         </div>
       </div>
 

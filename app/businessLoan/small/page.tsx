@@ -12,6 +12,8 @@ export default function Page() {
             <UniversalLoanCard
 				categorySlug="business-loan"
 				headerTitle="Business <span class='text-teal-500'>Loan</span>"
+				loanType="business"
+				scheme="small"
 				headerSubtitle="Fuel Your Business Growth"
 				headerDescription="Collateral-free loans to help you expand, stock up, or manage cash flow."
 				maxDisplay={4}

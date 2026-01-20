@@ -16,6 +16,8 @@ export default function Page() {
                 headerDescription="Collateral-free loans to help you expand, stock up, or manage cash flow."
                 maxDisplay={4}
                 showViewAllButton={true}
+                loanType="business"
+                loanSubType="lowCibil"
             />
             <LowCibilLoanGuide />
         </main>

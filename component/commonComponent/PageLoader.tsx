@@ -8,7 +8,7 @@ interface PageLoaderProps {
 
 export default function PageLoader({ message = "Loading..." }: PageLoaderProps) {
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white/95 backdrop-blur-sm">
+    <div className="fixed inset-0 z-9999 flex items-center justify-center bg-white/95 backdrop-blur-sm">
       <div className="flex flex-col items-center gap-6">
         {/* Animated Logo/Icon */}
         <motion.div
@@ -83,7 +83,7 @@ export default function PageLoader({ message = "Loading..." }: PageLoaderProps) 
           transition={{ delay: 0.3 }}
         >
           <motion.div
-            className="h-full bg-gradient-to-r from-teal-400 to-teal-600"
+            className="h-full bg-linear-to-r from-teal-400 to-teal-600"
             animate={{ x: ["-100%", "100%"] }}
             transition={{
               duration: 1.5,

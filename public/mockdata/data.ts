@@ -26,6 +26,13 @@ export interface FilterState {
   sortBy: SortOption;
   processingTime: string[];
   processType: string[];
+  // New comprehensive filters from navbar
+  loanSubType: string[];      // preApproved, interestRates, lowCibil, balanceTransfer
+  amountRange: string[];       // 5-lakh, 10-lakh, 20-lakh, 30-lakh, 40-lakh, 50-lakh, 60-lakh
+  eligibleFor: string[];       // salaried, self-employed, seniors, students, doctors, women
+  loanPurpose: string[];       // medical, travel, wedding, consolidation, overdraft, flexi, short-term, term
+  scheme: string[];            // dairy, small, goat, startup, poultry, renovation, plot, top-up, construction, nri, extension
+  vehicleType: string[];       // new-bike, used-bike, new-car, used-car
 }
 
 // Mock Data with variations to test filtering/sorting

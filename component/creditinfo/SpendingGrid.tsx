@@ -29,7 +29,7 @@ export default function SpendingGrid() {
           </div>
 
           {/* 2. Zero Transaction Fee */}
-          <div className="rounded-2xl bg-[#FCF3EE] shadow-sm border border-gray-200 p-4 sm:p-5 md:p-6 flex flex-col justify-between min-h-[200px] sm:min-h-[240px]">
+          <div className="rounded-2xl bg-[#FCF3EE] shadow-sm border border-gray-200 p-4 sm:p-5 md:p-6 flex flex-col justify-between min-h-[200px] sm:min-h-60">
             <div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-black leading-tight">
                 Zero Transaction
@@ -49,7 +49,7 @@ export default function SpendingGrid() {
           </div>
 
           {/* 3. We Help Boost Your Credit Score */}
-          <div className="rounded-2xl bg-[#E4E9FF] shadow-sm border border-gray-200 p-4 sm:p-5 md:p-6 min-h-[200px] sm:min-h-[240px]">
+          <div className="rounded-2xl bg-[#E4E9FF] shadow-sm border border-gray-200 p-4 sm:p-5 md:p-6 min-h-[200px] sm:min-h-60">
             <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-black text-center leading-tight">
               We Help Boost Your
               <br /> Credit Score
@@ -64,7 +64,7 @@ export default function SpendingGrid() {
           </div>
 
           {/* 4. Step Up Credit Card */}
-          <div className="rounded-2xl bg-[#E5F1F1] shadow-sm border border-gray-200 p-4 sm:p-5 md:p-6 min-h-[200px] sm:min-h-[240px]">
+          <div className="rounded-2xl bg-[#E5F1F1] shadow-sm border border-gray-200 p-4 sm:p-5 md:p-6 min-h-[200px] sm:min-h-60">
             <h3 className="text-base sm:text-lg md:text-xl font-semibold text-black">Step Up Credit Card</h3>
             <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-800">
               <li className="flex items-start gap-2">
@@ -95,7 +95,7 @@ export default function SpendingGrid() {
           </div>
 
           {/* 5. Your Transaction is Secure */}
-          <div className="rounded-2xl bg-[#BECCCC96] shadow-sm border border-gray-200 p-4 sm:p-5 md:p-6 flex flex-col min-h-[200px] sm:min-h-[240px]">
+          <div className="rounded-2xl bg-[#BECCCC96] shadow-sm border border-gray-200 p-4 sm:p-5 md:p-6 flex flex-col min-h-[200px] sm:min-h-60">
             <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-black leading-tight">
               Your Transaction
               <br /> is Secure

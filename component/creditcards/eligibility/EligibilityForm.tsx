@@ -159,7 +159,7 @@ export default function EligibilityForm({ onClose, userData: propUserData, isLog
         className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
       >
         {/* Header */}
-        <div className="sticky top-0 bg-gradient-to-r from-teal-600 to-teal-700 text-white p-6 rounded-t-2xl">
+        <div className="sticky top-0 bg-linear-to-r from-teal-600 to-teal-700 text-white p-6 rounded-t-2xl">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <CreditCard className="w-8 h-8" />
@@ -203,7 +203,7 @@ export default function EligibilityForm({ onClose, userData: propUserData, isLog
             animate={{ opacity: 1, y: 0 }}
             className="mx-8 mt-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3"
           >
-            <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+            <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
             <div>
               <p className="text-sm text-red-800">{error}</p>
             </div>
@@ -442,7 +442,7 @@ export default function EligibilityForm({ onClose, userData: propUserData, isLog
               animate={{ opacity: 1, scale: 1 }}
               className="space-y-6"
             >
-              <div className={`p-8 rounded-2xl text-center ${result.eligible ? 'bg-gradient-to-br from-green-50 to-teal-50' : 'bg-gradient-to-br from-orange-50 to-yellow-50'}`}>
+              <div className={`p-8 rounded-2xl text-center ${result.eligible ? 'bg-linear-to-br from-green-50 to-teal-50' : 'bg-linear-to-br from-orange-50 to-yellow-50'}`}>
                 {result.eligible ? (
                   <CheckCircle2 className="w-20 h-20 text-green-600 mx-auto mb-4" />
                 ) : (
@@ -487,7 +487,7 @@ export default function EligibilityForm({ onClose, userData: propUserData, isLog
                 </button>
                 <button
                   onClick={() => router.push('/dashboard')}
-                  className="px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-lg font-medium hover:from-teal-700 hover:to-teal-800 transition-colors"
+                  className="px-6 py-3 bg-linear-to-r from-teal-600 to-teal-700 text-white rounded-lg font-medium hover:from-teal-700 hover:to-teal-800 transition-colors"
                 >
                   View Dashboard
                 </button>
@@ -516,8 +516,8 @@ export default function EligibilityForm({ onClose, userData: propUserData, isLog
                   loading || (step === 2 && formData.panCard !== "" && !validatePan(formData.panCard))
                     ? 'bg-gray-400 cursor-not-allowed' 
                     : step === 3 
-                    ? 'bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800' 
-                    : 'bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700'
+                    ? 'bg-linear-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800' 
+                    : 'bg-linear-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700'
                 } text-white`}
               >
                 {loading && <InlineLoader className="w-5 h-5" />}

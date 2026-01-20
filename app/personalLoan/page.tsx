@@ -39,6 +39,7 @@ export default function PersonalLoanPage() {
             <UniversalLoanCard
                 categorySlug="personal-loan"
                 headerTitle="Personal <span class='text-teal-500'>Loan</span>"
+                loanType="personal"
                 headerSubtitle="Instant Funds for Any Need"
                 headerDescription="Quick approvals and flexible repayment tenures for all your personal needs."
                 maxDisplay={4}

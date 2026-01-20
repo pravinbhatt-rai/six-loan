@@ -1561,7 +1561,7 @@ const EmploymentTypeModal: React.FC<EmploymentTypeModalProps> = ({
                 
                 {/* Enhanced Reference Number Display */}
                 <div className="relative mb-6 px-4 w-full">
-                  <div className="bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-600 text-white px-8 py-4 rounded-xl font-bold text-lg tracking-wider shadow-2xl border-2 border-teal-400">
+                  <div className="bg-linear-to-r from-teal-500 via-teal-600 to-emerald-600 text-white px-8 py-4 rounded-xl font-bold text-lg tracking-wider shadow-2xl border-2 border-teal-400">
                     <div className="text-xs font-medium uppercase tracking-widest opacity-90 mb-1">Reference Number</div>
                     <div className="text-2xl font-extrabold tracking-wide">
                       {referenceNo || `REF${Date.now().toString().slice(-8)}`}

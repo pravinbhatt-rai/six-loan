@@ -255,7 +255,7 @@ export default function CreditCardListSection({
     return (
       <section className="w-full bg-[#F5F7FB] py-10 md:py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <SectionLoader message="Loading credit cards..." />
+          <SectionLoader />
         </div>
       </section>
     );

@@ -79,6 +79,8 @@ export default function PreApprovedPersonalLoanPage() {
                 headerDescription="Quick approvals and flexible repayment tenures for all your personal needs."
                 maxDisplay={4}
                 showViewAllButton={true}
+                loanType="personal"
+                loanSubType="preApproved"
             />
             <QuickLinksContainer id="personal-loan" />
             <LoanInfo loanId="pre-approved-loan" />

@@ -101,6 +101,14 @@ export async function PUT(
       requiredDocuments,
       processSteps,
       keyStatement,
+      // Filter fields for listing pages
+      loanType,
+      loanSubType,
+      amountRange,
+      eligibleFor,
+      loanPurpose,
+      scheme,
+      vehicleType,
     } = body;
 
     // Delete existing relations if provided new ones
@@ -154,6 +162,14 @@ export async function PUT(
         disbursalTimeHours: disbursalTimeHours ? parseFloat(disbursalTimeHours) : 24,
         categoryId: categoryId ? Number(categoryId) : null,
         keyStatement: keyStatement || null,
+        // Filter fields for listing pages
+        loanType: loanType || null,
+        loanSubType: loanSubType || null,
+        amountRange: amountRange || null,
+        eligibleFor: eligibleFor || null,
+        loanPurpose: loanPurpose || null,
+        scheme: scheme || null,
+        vehicleType: vehicleType || null,
         bullets: bullets?.length > 0 ? {
           create: bullets.map((bullet: any, index: number) => ({
             text: bullet.text || bullet,

@@ -70,6 +70,8 @@ export default function ConsolidationPersonalLoanPage() {
             <UniversalLoanCard
                 categorySlug="personal-loan"
                 headerTitle="Personal <span class='text-teal-500'>Loan</span>"
+                loanType="personal"
+                loanPurpose="overdraft"
                 headerSubtitle="Instant Funds for Any Need"
                 headerDescription="Quick approvals and flexible repayment tenures for all your personal needs."
                 maxDisplay={4}

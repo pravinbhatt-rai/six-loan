@@ -103,9 +103,9 @@ export async function fetchNamedAPIs<T extends Record<string, any>>(
     const results = await fetchMultipleAPIs(urls, options);
     
     return keys.reduce((acc, key, index) => {
-      acc[key] = results[index];
+      acc[key as keyof T] = results[index];
       return acc;
-    }, {} as Record<string, any>);
+    }, {} as Record<keyof T, any>);
   } catch (error) {
     console.error('Fetch Named APIs Error:', error);
     return {} as Record<keyof T, any>;

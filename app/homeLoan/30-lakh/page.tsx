@@ -16,6 +16,8 @@ export default function Page() {
                 headerDescription="Low interest rates and higher eligibility for buying or constructing your home."
                 maxDisplay={4}
                 showViewAllButton={true}
+                loanType="home"
+                amountRange="30-lakh"
 			/>
             <HomeLoanGuide pageId="30-lakh"/>
         </main>

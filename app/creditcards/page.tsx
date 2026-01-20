@@ -254,7 +254,7 @@ function CreditCardsContent() {
 
   return (
     <div className="min-h-screen w-full bg-[#F5F7FA]">
-      {loading && <PageLoader message="Loading credit cards..." />}
+      {loading && <PageLoader />}
       
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
         {/* Header with Filter Button on Mobile */}

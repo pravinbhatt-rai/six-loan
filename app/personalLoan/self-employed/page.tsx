@@ -65,6 +65,8 @@ export default function SalariedPersonalLoanPage() {
             <UniversalLoanCard
                 categorySlug="personal-loan"
                 headerTitle="Personal <span class='text-teal-500'>Loan</span>"
+                loanType="personal"
+                eligibleFor="self-employed"
                 headerSubtitle="Instant Funds for Any Need"
                 headerDescription="Quick approvals and flexible repayment tenures for all your personal needs."
                 maxDisplay={4}

@@ -308,10 +308,10 @@ export default function ApplicationsPage() {
                       {/* Left Side: Icon and Info */}
                       <div className="flex-1">
                         <div className="flex items-start gap-3">
-                          <div className="mt-1 flex-shrink-0">{getStatusIcon(app.status)}</div>
+                          <div className="mt-1 shrink-0">{getStatusIcon(app.status)}</div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 flex-wrap mb-1">
-                              <h3 className="text-base sm:text-lg font-semibold text-gray-900 break-words">
+                              <h3 className="text-base sm:text-lg font-semibold text-gray-900 wrap-break-word">
                                 {getProductName(app)}
                               </h3>
                               {app.referenceNo && (
@@ -406,7 +406,7 @@ export default function ApplicationsPage() {
             <div className="p-3 sm:p-4 lg:p-6 space-y-4 sm:space-y-6">
               {/* Reference Number */}
               {selectedApp.referenceNo && (
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-3 sm:p-4 rounded-lg border border-blue-200">
+                <div className="bg-linear-to-r from-blue-50 to-indigo-50 p-3 sm:p-4 rounded-lg border border-blue-200">
                   <label className="text-xs font-semibold text-gray-500 uppercase block mb-1">Reference Number</label>
                   <p className="text-base sm:text-lg font-mono font-bold text-blue-700 break-all">{selectedApp.referenceNo}</p>
                 </div>
@@ -419,7 +419,7 @@ export default function ApplicationsPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 bg-purple-50 p-3 sm:p-4 rounded-lg border border-purple-200">
                     <div>
                       <label className="text-xs font-semibold text-gray-500 uppercase">Name</label>
-                      <p className="text-sm sm:text-base text-gray-800 font-medium break-words">{selectedApp.applicantName}</p>
+                      <p className="text-sm sm:text-base text-gray-800 font-medium wrap-break-word">{selectedApp.applicantName}</p>
                     </div>
                     {selectedApp.email && (
                       <div>
@@ -449,7 +449,7 @@ export default function ApplicationsPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 bg-gray-50 p-3 sm:p-4 rounded-lg">
                   <div className="col-span-1 sm:col-span-2">
                     <label className="text-xs font-semibold text-gray-500 uppercase">Product Name</label>
-                    <p className="text-gray-800 font-medium text-base sm:text-lg break-words">
+                    <p className="text-gray-800 font-medium text-base sm:text-lg wrap-break-word">
                       {getProductName(selectedApp)}
                     </p>
                   </div>
@@ -514,7 +514,7 @@ export default function ApplicationsPage() {
                     {selectedApp.employerName && (
                       <div>
                         <label className="text-xs font-semibold text-gray-500 uppercase">Employer Name</label>
-                        <p className="text-sm sm:text-base text-gray-800 font-medium break-words">{selectedApp.employerName}</p>
+                        <p className="text-sm sm:text-base text-gray-800 font-medium wrap-break-word">{selectedApp.employerName}</p>
                       </div>
                     )}
                     {selectedApp.workExperience && (
@@ -526,7 +526,7 @@ export default function ApplicationsPage() {
                     {selectedApp.designation && (
                       <div>
                         <label className="text-xs font-semibold text-gray-500 uppercase">Designation</label>
-                        <p className="text-sm sm:text-base text-gray-800 font-medium break-words">{selectedApp.designation}</p>
+                        <p className="text-sm sm:text-base text-gray-800 font-medium wrap-break-word">{selectedApp.designation}</p>
                       </div>
                     )}
                   </div>
@@ -559,7 +559,7 @@ export default function ApplicationsPage() {
                     {selectedApp.address && (
                       <div className="col-span-1 sm:col-span-2">
                         <label className="text-xs font-semibold text-gray-500 uppercase">Full Address</label>
-                        <p className="text-sm sm:text-base text-gray-800 font-medium break-words">{selectedApp.address}</p>
+                        <p className="text-sm sm:text-base text-gray-800 font-medium wrap-break-word">{selectedApp.address}</p>
                       </div>
                     )}
                   </div>
@@ -571,7 +571,7 @@ export default function ApplicationsPage() {
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-2 sm:mb-3 text-sm sm:text-base">Admin Feedback</h3>
                   <div className="bg-yellow-50 p-3 sm:p-4 rounded-lg border border-yellow-200">
-                    <p className="text-sm sm:text-base text-gray-800 break-words">{selectedApp.feedback}</p>
+                    <p className="text-sm sm:text-base text-gray-800 wrap-break-word">{selectedApp.feedback}</p>
                   </div>
                 </div>
               )}
@@ -581,7 +581,7 @@ export default function ApplicationsPage() {
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-2 sm:mb-3 text-sm sm:text-base">Additional Information</h3>
                   <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
-                    <p className="text-sm sm:text-base text-gray-800 break-words">{selectedApp.additionalInfo}</p>
+                    <p className="text-sm sm:text-base text-gray-800 wrap-break-word">{selectedApp.additionalInfo}</p>
                   </div>
                 </div>
               )}

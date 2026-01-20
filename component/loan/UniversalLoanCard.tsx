@@ -43,6 +43,14 @@ interface UniversalLoanCardProps {
   headerDescription: string;
   maxDisplay?: number;
   showViewAllButton?: boolean;
+  // New filter props
+  loanType?: string;
+  loanSubType?: string;
+  amountRange?: string;
+  eligibleFor?: string;
+  loanPurpose?: string;
+  scheme?: string;
+  vehicleType?: string;
 }
 
 // Create a simple cache with TTL (Time To Live)
@@ -88,6 +96,13 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
   headerDescription,
   maxDisplay = 4,
   showViewAllButton = true,
+  loanType,
+  loanSubType,
+  amountRange,
+  eligibleFor,
+  loanPurpose,
+  scheme,
+  vehicleType,
 }) => {
   const router = useRouter();
   const [loans, setLoans] = useState<LoanCardData[]>([]);
@@ -110,13 +125,24 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
   }, []);
 
   const fetchLoans = useCallback(async () => {
-    // Check cache first
-    const cacheKey = `loans_${categorySlug}`;
+    // Build cache key with filters
+    const filterParams = [
+      categorySlug,
+      loanType,
+      loanSubType,
+      amountRange,
+      eligibleFor,
+      loanPurpose,
+      scheme,
+      vehicleType
+    ].filter(Boolean).join('_');
+    
+    const cacheKey = `loans_${filterParams}`;
     const cachedLoans = loansCache.get(cacheKey);
     const cachedCategory = categoryCache.get(`category_${categorySlug}`);
     
     if (cachedLoans && cachedCategory) {
-      console.log("📦 Using cached data for:", categorySlug);
+      console.log("📦 Using cached data for:", filterParams);
       setLoans(cachedLoans);
       setCategoryInfo(cachedCategory);
       setLoading(false);
@@ -130,7 +156,19 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
 
     try {
       setLoading(true);
-      const apiUrl = `/api/loans/category/${categorySlug}`;
+      
+      // Build query parameters
+      const params = new URLSearchParams();
+      if (categorySlug) params.append('category', categorySlug);
+      if (loanType) params.append('loanType', loanType);
+      if (loanSubType) params.append('loanSubType', loanSubType);
+      if (amountRange) params.append('amountRange', amountRange);
+      if (eligibleFor) params.append('eligibleFor', eligibleFor);
+      if (loanPurpose) params.append('loanPurpose', loanPurpose);
+      if (scheme) params.append('scheme', scheme);
+      if (vehicleType) params.append('vehicleType', vehicleType);
+      
+      const apiUrl = `/api/loans${params.toString() ? `?${params.toString()}` : ''}`;
       
       console.log("🌐 Ultra-fast fetching loans from:", apiUrl);
       
@@ -280,7 +318,7 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
     return () => {
       mounted = false;
     };
-  }, [fetchLoans]);
+  }, [fetchLoans, categorySlug, loanType, loanSubType, amountRange, eligibleFor, loanPurpose, scheme, vehicleType]);
 
   // Memoize display loans for performance
   const displayLoans = useMemo(() => {
@@ -582,7 +620,18 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
         {showViewAllButton && (
           <div className="mt-10 text-center">
             <Link 
-              href={`/loandetails?category=${categorySlug}`}
+              href={(() => {
+                const params = new URLSearchParams();
+                if (categorySlug) params.append('category', categorySlug);
+                if (loanType) params.append('loanType', loanType);
+                if (loanSubType) params.append('loanSubType', loanSubType);
+                if (amountRange) params.append('amountRange', amountRange);
+                if (eligibleFor) params.append('eligibleFor', eligibleFor);
+                if (loanPurpose) params.append('loanPurpose', loanPurpose);
+                if (scheme) params.append('scheme', scheme);
+                if (vehicleType) params.append('vehicleType', vehicleType);
+                return `/loandetails${params.toString() ? `?${params.toString()}` : ''}`;
+              })()}
               className="inline-flex items-center justify-center gap-2 px-10 py-3 bg-white text-teal-600 text-xs font-black uppercase tracking-widest border-2 border-teal-100 rounded-full hover:border-teal-500 hover:bg-teal-50 transition-all duration-300 shadow-sm hover:shadow-md"
             >
               View All Offers
