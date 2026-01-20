@@ -1,15 +1,18 @@
 import { PrismaClient } from '@prisma/client';
-import { withAccelerate } from '@prisma/extension-accelerate';
 
 declare global {
   // eslint-disable-next-line no-var
-  var prisma: ReturnType<typeof createPrismaClient> | undefined;
+  var prisma: PrismaClient | undefined;
 }
 
 function createPrismaClient() {
-  // Prisma v6 with Accelerate extension
-  const client = new PrismaClient();
-  return client.$extends(withAccelerate());
+  // Create a basic Prisma client without Accelerate extension
+  // Accelerate extension can cause issues on Vercel if not properly configured
+  const client = new PrismaClient({
+    log: process.env.NODE_ENV === 'development' ? ['error', 'warn'] : ['error'],
+  });
+  
+  return client;
 }
 
 // Prevent multiple Prisma instances in development (hot reload)

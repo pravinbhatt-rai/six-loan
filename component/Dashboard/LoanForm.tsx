@@ -224,9 +224,9 @@ const LoanForm: React.FC<LoanFormProps> = ({ categoryId, onSubmit, initialData, 
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Loan Type</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Category (Loan Type)</label>
             <select name="loanType" value={formData.loanType} onChange={handleChange} className="w-full p-2 border rounded-lg">
-              <option value="">Select Loan Type</option>
+              <option value="">Select Category</option>
               <option value="personal">Personal Loan</option>
               <option value="business">Business Loan</option>
               <option value="home">Home Loan</option>
@@ -236,11 +236,11 @@ const LoanForm: React.FC<LoanFormProps> = ({ categoryId, onSubmit, initialData, 
               <option value="security">Loan Against Security</option>
               <option value="professional">Professional Loan</option>
             </select>
-            <p className="text-xs text-gray-500 mt-1">Main category of the loan</p>
+            <p className="text-xs text-gray-500 mt-1">Main category - must match the section you're creating this in</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Loan Sub-Type</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Loan Sub-Type (Page Filter)</label>
             <select name="loanSubType" value={formData.loanSubType} onChange={handleChange} className="w-full p-2 border rounded-lg">
               <option value="">Select Sub-Type</option>
               <option value="preApproved">Pre-Approved</option>
@@ -248,7 +248,7 @@ const LoanForm: React.FC<LoanFormProps> = ({ categoryId, onSubmit, initialData, 
               <option value="lowCibil">Low CIBIL</option>
               <option value="balanceTransfer">Balance Transfer</option>
             </select>
-            <p className="text-xs text-gray-500 mt-1">Specific type or feature</p>
+            <p className="text-xs text-gray-500 mt-1">Filter for specific pages - e.g., /personalLoan/preApproved shows only preApproved loans</p>
           </div>
 
           <div>

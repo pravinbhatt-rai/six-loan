@@ -243,7 +243,8 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
     } finally {
       setLoading(false);
     }
-  }, [categorySlug, prefetchImages]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categorySlug, loanType, loanSubType, amountRange, eligibleFor, loanPurpose, scheme, vehicleType]);
 
   const handleShowDetails = useCallback(async (loan: LoanCardData) => {
     try {
@@ -307,6 +308,7 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
 
   useEffect(() => {
     let mounted = true;
+    let abortController = new AbortController();
     
     const loadData = async () => {
       if (!mounted) return;
@@ -317,8 +319,10 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
     
     return () => {
       mounted = false;
+      abortController.abort(); // Cancel any pending requests
     };
-  }, [fetchLoans, categorySlug, loanType, loanSubType, amountRange, eligibleFor, loanPurpose, scheme, vehicleType]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categorySlug, loanType, loanSubType, amountRange, eligibleFor, loanPurpose, scheme, vehicleType]);
 
   // Memoize display loans for performance
   const displayLoans = useMemo(() => {

@@ -109,8 +109,23 @@ export async function GET(req: NextRequest) {
     });
   } catch (err: any) {
     console.error("Loans API Error:", err);
+    
+    // More detailed error logging for debugging
+    const errorDetails = {
+      message: err.message || 'Unknown error',
+      code: err.code || 'UNKNOWN',
+      stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
+    };
+    
+    console.error("Error details:", JSON.stringify(errorDetails));
+    
     return NextResponse.json(
-      { success: false, error: "Failed to fetch loans", details: err.message },
+      { 
+        success: false, 
+        error: "Failed to fetch loans", 
+        details: err.message,
+        ...(process.env.NODE_ENV === 'development' && { debug: errorDetails })
+      },
       { status: 500 }
     );
   }
