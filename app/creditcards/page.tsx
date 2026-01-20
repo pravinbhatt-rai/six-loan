@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import FilterSidebar from "@/component/creditcards/FilterSidebar";
 import CardList from "@/component/creditcards/CardList";
 import { CardInfo } from "@/component/creditcards/CardItem";
@@ -9,14 +9,17 @@ import { FiFilter } from "react-icons/fi";
 import { X, ArrowRight } from "lucide-react";
 import ComparisonModal from "@/component/creditcards/ComparisonModal";
 import CreditCardApplicationModal from "@/component/creditcards/CreditCardApplicationModal";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { PageLoader } from "@/component/commonComponent/SixFinanceLoader";
 import { fastFetch } from "@/lib/utils/ultraFastFetch";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
 
-export default function CreditCardsPage() {
+function CreditCardsContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get('category');
+  
   const drawerRef = React.useRef<any>(null);
   const [cards, setCards] = useState<CardRecord[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,6 +35,13 @@ export default function CreditCardsPage() {
   // Application Modal State
   const [showApplicationModal, setShowApplicationModal] = useState(false);
   const [applicationCard, setApplicationCard] = useState<CardInfo | null>(null);
+  
+  // Set initial filter from URL param
+  useEffect(() => {
+    if (categoryParam) {
+      setActiveFilters({ [categoryParam]: true });
+    }
+  }, [categoryParam]);
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -86,6 +96,7 @@ export default function CreditCardsPage() {
               c.bulletPoints.map((b: any) => typeof b === 'string' ? b : (b.text || '')) : 
               c.bullets || [],
             bank: c.bankName || c.bank || 'Unknown Bank',
+            category: c.category,
             categories: c.categories ? 
               c.categories.map((cat: any) => typeof cat === 'string' ? cat : cat.name) : 
               [],
@@ -440,5 +451,12 @@ export default function CreditCardsPage() {
         categoryName={applicationCard?.name}
       />
     </div>
+  );
+}
+export default function CreditCardsPage() {
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <CreditCardsContent />
+    </Suspense>
   );
 }

@@ -11,6 +11,7 @@ export async function GET(req: NextRequest) {
         bankName: true,
         bankLogoUrl: true,
         imageUrl: true,
+        category: true,
         annualFee: true,
         cardNetwork: true,
         cardType: true,

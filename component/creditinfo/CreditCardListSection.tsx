@@ -17,6 +17,7 @@ interface CardRecord {
   image: string;
   bullets: string[];
   bank: string;
+  category?: string;
   categories: string[];
   fee: string;
   cardType: string;
@@ -25,9 +26,26 @@ interface CardRecord {
   slug?: string;
   firstYearFee?: number | null;
   secondYearFee?: number | null;
+  rating?: number;
 }
 
-export default function CreditCardListSection() {
+interface CreditCardListSectionProps {
+  categoryFilter?: string;
+  maxCards?: number;
+  title?: string;
+  description?: string;
+  showViewMore?: boolean;
+  viewMoreHref?: string;
+}
+
+export default function CreditCardListSection({ 
+  categoryFilter, 
+  maxCards, 
+  title = "Popular Credit Cards",
+  description = "Explore our curated selection of the best credit cards in India",
+  showViewMore = true,
+  viewMoreHref = "/creditcards"
+}: CreditCardListSectionProps) {
   const router = useRouter();
   const [cards, setCards] = useState<CardRecord[]>([]);
   const [loading, setLoading] = useState(true);
@@ -84,6 +102,7 @@ export default function CreditCardListSection() {
               c.bulletPoints.map((b: any) => typeof b === 'string' ? b : (b.text || '')) : 
               c.bullets || [],
             bank: c.bankName || c.bank || 'Unknown Bank',
+            category: c.category,
             categories: c.categories ? 
               c.categories.map((cat: any) => typeof cat === 'string' ? cat : cat.name) : 
               [],
@@ -97,7 +116,27 @@ export default function CreditCardListSection() {
             rating: c.rating || (Math.random() * 0.7 + 4.0) // Random rating between 4.0-4.7 if not provided
           }));
           
-          setCards(mappedCards);
+          // Filter by category if specified
+          let filteredCards = mappedCards;
+          if (categoryFilter) {
+            filteredCards = mappedCards.filter(card => {
+              // Check the single category field first
+              if (card.category && card.category.toLowerCase().includes(categoryFilter.toLowerCase())) {
+                return true;
+              }
+              // Also check the categories array
+              return card.categories.some(cat => 
+                cat.toLowerCase().includes(categoryFilter.toLowerCase())
+              );
+            });
+          }
+          
+          // Limit number of cards if maxCards is specified
+          if (maxCards && maxCards > 0) {
+            filteredCards = filteredCards.slice(0, maxCards);
+          }
+          
+          setCards(filteredCards);
       } catch (error) {
         console.error("Failed to fetch credit cards", error);
       } finally {
@@ -105,7 +144,7 @@ export default function CreditCardListSection() {
       }
     };
     fetchCards();
-  }, []);
+  }, [categoryFilter, maxCards]);
 
   const toggleCardSelection = (cardId: string) => {
     setSelectedForComparison(prev => {
@@ -228,22 +267,21 @@ export default function CreditCardListSection() {
         <div className="mb-6 md:mb-10 text-center">
           
           <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-gray-900">
-            Handpicked <span className="text-[#3469CB]">Credit Cards</span> for You
+            {title}
           </h2>
           <p className="mt-3 text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
-            Explore top and best recommended cards with rewards on shopping,
-            travel, fuel and more.
+            {description}
           </p>
         </div>
 
         {cards.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-600">No credit cards available at the moment.</p>
+            <p className="text-gray-600">No credit cards available{categoryFilter ? ` for ${categoryFilter}` : ''} at the moment.</p>
           </div>
         ) : (
           <>
           <div className="space-y-4 md:space-y-6">
-            {cards.slice(0, 4).map((card) => (
+            {cards.map((card) => (
               <CardItem
                 key={card.id}
                 card={{
@@ -256,7 +294,8 @@ export default function CreditCardListSection() {
                   slug: card.slug,
                   firstYearFee: card.firstYearFee,
                   secondYearFee: card.secondYearFee,
-                  cardType: card.cardType
+                  cardType: card.cardType,
+                  rating: card.rating
                 }}
                 onApply={handleApply}
                 onDetails={handleShowDetails}
@@ -266,14 +305,21 @@ export default function CreditCardListSection() {
             ))}
           </div>
 
-        <div className="mt-8 flex justify-center">
-          <button
-            onClick={() => router.push("/creditcards")}
-            className="rounded-lg border border-gray-400 px-6 py-2.5 text-sm md:text-base font-medium text-gray-700 hover:border-gray-700 hover:text-gray-900 transition-colors"
-          >
-            View more cards
-          </button>
-        </div>
+        {showViewMore && (
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => {
+                const href = categoryFilter 
+                  ? `${viewMoreHref}?category=${encodeURIComponent(categoryFilter)}`
+                  : viewMoreHref;
+                router.push(href);
+              }}
+              className="rounded-lg border border-gray-400 px-6 py-2.5 text-sm md:text-base font-medium text-gray-700 hover:border-gray-700 hover:text-gray-900 transition-colors"
+            >
+              View more cards
+            </button>
+          </div>
+        )}
         </>
       )}
 

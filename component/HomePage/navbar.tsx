@@ -351,15 +351,15 @@ const NAV_DATA: NavItem[] = [
                 title: 'By Category',
                 icon: <CreditCard className="w-4 h-4 text-teal-500" />,
                 items: [
-                    { name: 'Cashback Credit Cards', href: '/cards/cashback' },
-                    { name: 'Rewards Credit Cards', href: '/cards/rewards' },
-                    { name: 'Credit Card Lounge Access', href: '/cards/lounge' },
-                    { name: 'OneCard Credit Cards', href: '/cards/onecard' },
-                    { name: 'Fuel Credit Cards', href: '/cards/fuel' },
-                    { name: 'Travel Credit Cards', href: '/cards/travel' },
-                    { name: 'International Credit Cards', href: '/cards/international' },
-                    { name: 'Zero Forex Markup Credit Cards', href: '/cards/forex' },
-                    { name: 'Secured Credit Cards', href: '/cards/secured' },
+                    { name: 'Cashback Credit Cards', href: '/creditinfo/cashback' },
+                    { name: 'Rewards Credit Cards', href: '/creditinfo/rewards' },
+                    { name: 'Credit Card Lounge Access', href: '/creditinfo/lounge' },
+                    { name: 'OneCard Credit Cards', href: '/creditinfo/onecard' },
+                    { name: 'Fuel Credit Cards', href: '/creditinfo/fuel' },
+                    { name: 'Travel Credit Cards', href: '/creditinfo/travel' },
+                    { name: 'International Credit Cards', href: '/creditinfo/international' },
+                    { name: 'Zero Forex Markup Credit Cards', href: '/creditinfo/forex' },
+                    { name: 'Secured Credit Cards', href: '/creditinfo/secured' },
                 ]
             }
         ]

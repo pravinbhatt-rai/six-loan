@@ -6,6 +6,7 @@ export type CardRecord = {
   image: string;
   bullets: string[];
   bank: string;
+  category?: string; // Single category field from database
   categories: string[]; // e.g., Cashback, Online Shopping, Travel, Utilities
   fee: "Lifetime free" | "1st year free only";
   cardType: "UPI Rupay" | "Visa/Mastercard";

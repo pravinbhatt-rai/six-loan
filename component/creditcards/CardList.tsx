@@ -28,7 +28,18 @@ export default function CardList({
 
     const passes = (card: CardRecord) => {
       if (wantTrending && !card.effectiveFree) return false;
-      if (selectedCategories.length && !selectedCategories.some((c) => card.categories.includes(c))) return false;
+      
+      // Check category filter - check both category field and categories array
+      if (selectedCategories.length) {
+        const matchesCategory = card.category && selectedCategories.some((c) => 
+          card.category?.toLowerCase().includes(c.toLowerCase())
+        );
+        const matchesCategoriesArray = selectedCategories.some((c) => 
+          card.categories.some(cat => cat.toLowerCase().includes(c.toLowerCase()))
+        );
+        if (!matchesCategory && !matchesCategoriesArray) return false;
+      }
+      
       if (selectedBanks.length && !selectedBanks.includes(card.bank)) return false;
       if (selectedFees.length && !selectedFees.includes(card.fee)) return false;
       if (selectedTypes.length && !selectedTypes.includes(card.cardType)) return false;

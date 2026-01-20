@@ -356,8 +356,6 @@ export default function ApplicationsPage() {
                           </p>
                           <p className="text-sm font-medium text-gray-900">
                             {formatDateToDisplay(app.createdAt)}
-                              year: 'numeric',
-                            })}
                           </p>
                         </div>
 
