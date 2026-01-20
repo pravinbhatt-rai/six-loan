@@ -1,5 +1,5 @@
 import React from "react";
-import { ProfessionalHero } from "../../component/professionalLoan/ProfessinalHero";
+import ProfessionalLoanHero from "@/component/professionalLoan/ProfessionalLoanHero";
 import FeatureSection from "@/component/PersonalLoan/FeatureSection";
 import { LoanSection } from "@/component/PersonalLoan/LoanSection";
 import { ExpertQuoteContainer } from "@/component/PersonalLoan/Linkdin";
@@ -26,7 +26,7 @@ import LoanInformation from '@/component/PersonalLoan/LoanInformation';
 export default function Page() {
     return (
         <main>
-            <ProfessionalHero />
+            <ProfessionalLoanHero />
             <FeatureSection />
             <LoanSection />
             <UniversalLoanCard

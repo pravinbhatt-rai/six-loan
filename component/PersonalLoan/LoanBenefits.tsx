@@ -44,6 +44,20 @@ const LOAN_BENEFITS_DATA: BenefitData[] = [
       "100% digital application process",
     ]
   },
+  {
+    id: 'medical-personal-loan',
+    title: "Why Choose a Medical Personal Loan?",
+    description: "Medical loans provide immediate financial relief during health emergencies, ensuring that a lack of funds never compromises the quality of treatment. Unlike insurance, which may have caps or waiting periods, these loans offer comprehensive coverage for all medical-related expenses.",
+    benefitsHeader: "Key Benefits of Medical Loans",
+    benefits: [
+      "Quick disbursal (often within 24 hours)",
+      "Covers costs not paid by insurance (e.g., co-pays)",
+      "No collateral or security required",
+      "Flexible tenures up to 60 months to lower EMIs",
+      "Minimal documentation to speed up processing",
+      "Funds can be used for surgery, medicines, or therapy",
+    ]
+  },
   // 2. Home Loan
   {
     id: 'home-loan',
@@ -223,7 +237,63 @@ const LOAN_BENEFITS_DATA: BenefitData[] = [
       "Minimal documentation",
       "Flexible repayment options",
     ]
-  }
+  },
+  {
+    id: 'travel-personal-loan',
+    title: "Explore the World on Your Terms",
+    description: "Whether it's a solo backpacking trip through Europe or a luxury family vacation in the Maldives, our travel loans ensure you don't compromise on your experiences. Cover flights, stays, and shopping with ease.",
+    benefitsHeader: "Key Features of Travel Loans",
+    benefits: [
+      "100% financing (No down payment required)",
+      "Instant funds to lock in early-bird deals",
+      "No usage restrictions (Flights, Visa, Shopping)",
+      "Unsecured loan (No collateral needed)",
+      "Repay comfortably over 12 to 60 months",
+      "Quick digital approval process",
+    ]
+  },
+  {
+    id: 'debt-consolidation-loan',
+    title: "Regain Control of Your Finances",
+    description: "Stop juggling multiple credit card bills and high-interest payments. Combine all your debts into one manageable loan with a single, lower monthly EMI.",
+    benefitsHeader: "Advantages of Debt Consolidation",
+    benefits: [
+      "One single EMI vs multiple due dates",
+      "Lower interest rate than credit cards",
+      "Fixed tenure to become debt-free faster",
+      "Boost your credit score by clearing card utilization",
+      "No collateral or security required",
+      "Simplify your monthly financial planning",
+    ]
+  },
+  {
+    id: 'wedding-personal-loan',
+    title: "Why Take a Wedding Loan?",
+    description: "Don't compromise on your special day. Whether it's a destination wedding or a grand reception, a wedding loan ensures you have the cash flow to execute your vision.",
+    benefitsHeader: "Features of Wedding Loans",
+    benefits: [
+      "High Loan Amount (Up to ₹40 Lakhs)",
+      "No restriction on usage (Venue, Catering, Gold, Clothes)",
+      "Flexible repayment up to 60-72 months",
+      "Collateral-free (No need to pledge assets)",
+      "Quick disbursal (Ideal for last-minute vendor payments)",
+      "Overdraft facility available with select lenders",
+    ]
+  },
+  {
+    id: 'overdraft-personal-loan',
+    title: "Why Choose a Personal Overdraft?",
+    description: "Experience the ultimate financial freedom. Withdraw what you need, when you need it, and pay interest only on what you use.",
+    benefitsHeader: "Key Advantages",
+    benefits: [
+      "Pay Interest Only on Utilized Amount",
+      "Prepay & Re-borrow anytime (Revolving Credit)",
+      "No Part-payment or Foreclosure charges",
+      "24x7 Access to funds via Net Banking/ATM",
+      "Ideal for fluctuating cash flow needs",
+      "Interest calculated on daily basis",
+    ]
+  },
 ];
 
 // --- 2. The Component ---
@@ -245,7 +315,7 @@ const LoanBenefits: React.FC<LoanBenefitsProps> = ({ id, className = "" }) => {
 
   // 3. Render
   return (
-    <div 
+    <div
       className={`
         max-w-6xl mx-auto mb-8 bg-white text-gray-800
         font-serif
@@ -256,7 +326,7 @@ const LoanBenefits: React.FC<LoanBenefitsProps> = ({ id, className = "" }) => {
         ${className}
       `}
     >
-      
+
       {/* Introduction Section */}
       <section className="mb-8 md:mb-10">
         <h2 className="mb-3 text-xl font-bold font-serif text-gray-900 md:mb-4 md:text-3xl">

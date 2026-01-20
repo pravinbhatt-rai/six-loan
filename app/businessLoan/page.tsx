@@ -1,5 +1,5 @@
 import React from 'react';
-import BusinessLoanHero from '@/component/BussinessLoan/BusinessLoanHero';
+import HeroContainer from '@/component/BussinessLoan/BusinessLoanHero'
 import FeatureSection from '@/component/PersonalLoan/FeatureSection';
 import { LoanSection } from '@/component/PersonalLoan/LoanSection';
 import LoanInfo from '@/component/commonComponent/LoanInfo';
@@ -27,7 +27,7 @@ import LoanInformation from '@/component/PersonalLoan/LoanInformation';
 export default function Page() {
 	return (
 		<main>
-			<BusinessLoanHero />
+			<HeroContainer id='business-loan' />
 			<FeatureSection />
 			<LoanSection />
 			<UniversalLoanCard

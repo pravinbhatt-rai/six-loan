@@ -218,7 +218,83 @@ const LOAN_GUIDANCE_DATA: GuidanceData[] = [
       { id: 4, title: "Bundled Insurance", description: "Lenders may force you to buy insurance from them. You have the right to buy insurance externally if it's cheaper." },
       { id: 5, title: "Credit Score", description: "Even for small bike loans, CIBIL matters. A score above 700 ensures you get the lower end of the interest rate band." }
     ]
-  }
+  },
+  // 14. Medical Personal Loan
+  {
+    id: 'medical-personal-loan',
+    mainTitle: "Medical Loan Interest Rates",
+    introText: "Medical loan interest rates typically start from 10.49% p.a. Given the urgency, many lenders offer specialized 'Instant Approval' tracks for medical emergencies with minimal documentation.",
+    sectionTitle: "Navigating Medical Emergency Finance",
+    sectionDescription: "When a health crisis strikes, time is the most critical asset. Here is how to secure funds instantly without falling into a debt trap:",
+    items: [
+      { id: 1, title: "Prioritize Disbursal Speed", description: "In an emergency, speed beats interest rate. Pre-approved offers from your existing bank can often be disbursed in minutes, whereas new applications take 24-48 hours." },
+      { id: 2, title: "Check Insurance Coverage", description: "Use the loan only for the 'gap' amount—costs not covered by your health insurance (like room rent limits, co-pay, or consumables)." },
+      { id: 3, title: "Digital KYC Process", description: "Opt for lenders offering Video KYC and digital signing. Physical document collection is too slow for emergency situations." },
+      { id: 4, title: "No Collateral Needed", description: "Medical loans are unsecured. Do not waste time arranging assets for collateral unless your credit score is too low for an unsecured loan." },
+      { id: 5, title: "Tenure for Recovery", description: "Select a longer tenure (e.g., 60 months) to keep EMIs low during the recovery period. You can always prepay the loan once you are back to work." }
+    ]
+  },
+  // 15. Travel Personal Loan
+  {
+    id: 'travel-personal-loan',
+    mainTitle: "Travel Loan Interest Rates",
+    introText: "Travel loan interest rates generally start from 10.99% p.a. Many lenders offer seasonal 'Holiday Loan' schemes with lower processing fees during peak travel months.",
+    sectionTitle: "Smart Financing for Your Travels",
+    sectionDescription: "A vacation should relieve stress, not create financial anxiety. Use these tips to fund your trip without lingering debt:",
+    items: [
+      { id: 1, title: "Personal Loan vs. Credit Card", description: "Avoid using credit cards for large expenses like flights unless you can pay the full bill immediately. Personal loans (11-14%) are much cheaper than revolving credit card debt (36-42%)." },
+      { id: 2, title: "The Early Bird Savings", description: "Use the loan disbursement to book flights and hotels 3-4 months in advance. The savings on early bookings often offset the interest paid on the loan." },
+      { id: 3, title: "Keep Tenure Short", description: "Don't drag a vacation loan for 5 years. Ideally, aim to repay the cost of a holiday within 12 to 24 months to avoid paying excessive interest on a leisure expense." },
+      { id: 4, title: "Include a Buffer", description: "When calculating the loan amount, add a 10-15% buffer for unforeseen expenses like currency fluctuations, visa rejection fees, or emergency transfers." },
+      { id: 5, title: "Check for Travel Insurance", description: "Some travel-specific personal loans come with complimentary travel insurance. Check the policy details to see if it covers medical emergencies abroad." }
+    ]
+  },
+  // 16. Debt Consolidation Loan
+  {
+    id: 'debt-consolidation-loan',
+    mainTitle: "Debt Consolidation Interest Rates",
+    introText: "Consolidation loan rates typically range from 10.50% to 14.00% p.a. This is significantly lower than credit card interest rates (APR), which can be as high as 36-42%.",
+    sectionTitle: "Strategies for Effective Consolidation",
+    sectionDescription: "Combining multiple debts into one can save money and reduce stress, but only if done correctly. Follow these guidelines to become debt-free faster:",
+    items: [
+      { id: 1, title: "The 'Weighted Average' Rule", description: "Ensure the interest rate of your new consolidation loan is lower than the average interest rate of all your current debts combined. If it's higher, you will lose money." },
+      { id: 2, title: "Avoid the 'Double Jeopardy' Trap", description: "Once you pay off your credit cards with the loan, do not use those cards again until the loan is repaid. Racking up new debt while paying off the old one is a financial disaster." },
+      { id: 3, title: "Calculate Break-Even Costs", description: "Factor in the processing fee of the new loan and the foreclosure charges of your old loans. Proceed only if the interest savings outweigh these one-time costs." },
+      { id: 4, title: "Shorten the Tenure", description: "Don't just lower the EMI; try to keep the tenure as short as possible. Extending a 2-year debt to 5 years might lower the monthly payment but will increase the total interest paid." },
+      { id: 5, title: "Check for Balance Transfer Options", description: "Instead of a fresh loan, check if you can transfer your credit card balance to a personal loan or another card with a lower interest rate, often available at 0% interest for a few months." }
+    ]
+  },
+  // 17. Wedding Personal Loan
+  {
+    id: 'wedding-personal-loan',
+    mainTitle: "Wedding Loan Interest Rates",
+    introText: "Wedding loan rates typically range from 10.75% to 15% p.a. Since these are unsecured loans, the rate heavily depends on your income-to-debt ratio and credit score.",
+    sectionTitle: "Planning Your Dream Wedding Finance",
+    sectionDescription: "A wedding is an emotional event, but funding it requires logic. Here is how to manage the expenses without starting your married life in debt distress:",
+    items: [
+      { id: 1, title: "Budget First, Borrow Later", description: "Create a detailed wedding budget before applying. Only borrow what you absolutely need to cover the gap between your savings and the total cost." },
+      { id: 2, title: "Disburse in Tranches", description: "Some lenders offer a 'Flexi-Loan' or Overdraft facility where you withdraw funds as you pay vendors. You pay interest only on the amount withdrawn, not the full sanction." },
+      { id: 3, title: "Joint Application", description: "Applying jointly with your partner or parent can significantly increase your loan eligibility, allowing you to cover larger expenses like the venue or gold." },
+      { id: 4, title: "Vendor Advances", description: "Ensure the loan is disbursed at least 1-2 months before the wedding date so you have liquid cash ready for immediate vendor advances and bookings." },
+      { id: 5, title: "Prepayment Plan", description: "Plan to prepay part of the loan using the cash gifts (Shagun) received during the wedding. This drastically reduces the interest burden." }
+    ]
+  },
+  // 18. Overdraft Personal Loan
+{
+  id: 'overdraft-personal-loan',
+  mainTitle: "Overdraft Interest Rates",
+  introText: "Overdraft interest rates are typically 1-2% higher than standard term loans, starting around 12-14% p.a. However, the effective cost is often lower because interest is calculated on a daily reducing balance.",
+  sectionTitle: "Mastering the Credit Line",
+  sectionDescription: "An overdraft facility offers immense flexibility but requires financial discipline. Here is how to use it effectively:",
+  items: [
+    { id: 1, title: "Pay Principal When Possible", description: "Don't just pay the interest every month. Whenever you have surplus cash (bonus, incentives), park it in the overdraft account to reduce the outstanding principal and interest burden." },
+    { id: 2, title: "Emergency Buffer", description: "Treat this facility as an emergency fund. Keep the limit sanctioned but unutilized; you won't pay a penny in interest until you actually withdraw the money." },
+    { id: 3, title: "Watch the Annual Fees", description: "Unlike term loans, overdraft accounts often have an annual renewal fee. Ensure the utility of the flexibility justifies this recurring cost." },
+    { id: 4, title: "Avoid Maxing Out", description: "Regularly utilizing 100% of your overdraft limit indicates credit hunger to bureaus and can negatively impact your credit score over time." },
+    { id: 5, title: "Daily Interest Calculation", description: "Interest is calculated daily. If you borrow ₹1 Lakh for just 5 days and repay it, you only pay interest for those 5 days. It's perfect for very short-term needs." }
+  ]
+}
+
 ];
 
 // ==========================================
@@ -241,11 +317,11 @@ const LoanGuidanceSection: React.FC<GuidanceSectionProps> = ({
         <div className="inline-block px-3 py-1 mb-4 text-[10px] md:text-xs font-semibold tracking-wider text-teal-700 uppercase bg-teal-50 rounded-full border border-teal-100">
           Financial Guide
         </div>
-        
+
         <h1 className="text-2xl md:text-5xl font-serif font-bold text-gray-900 mb-4 md:mb-6 tracking-tight leading-tight">
           {data.mainTitle}
         </h1>
-        
+
         {data.introText && (
           <p className="text-sm md:text-xl text-gray-600 leading-relaxed max-w-4xl">
             {data.introText}
@@ -270,8 +346,8 @@ const LoanGuidanceSection: React.FC<GuidanceSectionProps> = ({
         {/* List Layout */}
         <div className="flex flex-col gap-4 md:gap-6">
           {data.items.map((item, index) => (
-            <div 
-              key={item.id} 
+            <div
+              key={item.id}
               className="flex flex-row gap-4 md:gap-6 p-4 md:p-8 rounded-2xl border border-gray-200 bg-white items-start"
             >
               {/* Number Badge */}

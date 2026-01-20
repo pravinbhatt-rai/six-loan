@@ -52,6 +52,20 @@ const COMPARISON_DATA: ComparisonData[] = [
       { col1: "Loan Amount is non-negotiable", col2: "Loan Amount can be negotiated" }
     ]
   },
+  {
+    id: 'medical-personal-loan',
+    title: "Medical Loan vs Health Insurance",
+    description: "While health insurance is your first line of defense, a medical loan is crucial when insurance limits are exhausted or for treatments not covered by your policy.",
+    col1Header: "Medical Loan",
+    col2Header: "Health Insurance",
+    rows: [
+      { col1: "Coverage: 100% of expenses (inc. consumables)", col2: "Coverage: Subject to sub-limits, co-pay & caps" },
+      { col1: "Waiting Period: None (Immediate funding)", col2: "Waiting Period: 2-4 years for pre-existing diseases" },
+      { col1: "Applicability: Any treatment (Dental, IVF, Cosmetic)", col2: "Applicability: Only medically necessary hospitalization" },
+      { col1: "Nature: Debt (Repayable via EMI)", col2: "Nature: Protection (Pre-paid Premium)" },
+      { col1: "Disbursal: Direct cash to account", col2: "Disbursal: Cashless or Reimbursement based" }
+    ]
+  },
   // 2. Home Loan (Fixed vs Floating)
   {
     id: 'home-loan',
@@ -219,7 +233,63 @@ const COMPARISON_DATA: ComparisonData[] = [
       { col1: "Processing fee applies", col2: "Processing fee + GST on interest" },
       { col1: "Lower interest rate (usually)", col2: "Higher effective rate" }
     ]
-  }
+  },
+  {
+    id: 'travel-personal-loan',
+    title: "Travel Loan vs Credit Card",
+    description: "Choosing the right funding source for your vacation can save you significant money. Here is how a travel loan stacks up against swiping your credit card.",
+    col1Header: "Travel Personal Loan",
+    col2Header: "Credit Card",
+    rows: [
+      { col1: "Lower Interest Rate (10.99% - 16%)", col2: "High Interest Rate (36% - 42% APR)" },
+      { col1: "Structured Repayment (Fixed EMIs)", col2: "Revolving Debt (Risk of Minimum Due trap)" },
+      { col1: "Longer Tenure (12 - 60 months)", col2: "Short Cycle (Interest-free for ~50 days)" },
+      { col1: "Funds credited to Bank Account", col2: "Direct usage at merchants/portals" },
+      { col1: "No impact on Credit Utilization Ratio", col2: "High usage lowers Credit Score" }
+    ]
+  },
+  {
+    id: 'debt-consolidation-loan',
+    title: "Consolidation Loan vs Paying Minimum Due",
+    description: "Many people try to manage debt by paying only the minimum amount due on their credit cards. Here is why switching to a consolidation loan is financially smarter.",
+    col1Header: "Consolidation Loan",
+    col2Header: "Credit Card (Min. Due)",
+    rows: [
+      { col1: "Interest Rate: 10.99% - 15% p.a.", col2: "Interest Rate: 36% - 42% p.a. (APR)" },
+      { col1: "Timeline: Debt-free in fixed tenure (e.g., 3 yrs)", col2: "Timeline: Can take 10+ years to clear debt" },
+      { col1: "Impact: Lowers Credit Utilization (Boosts Score)", col2: "Impact: Maintains High Utilization (Hurts Score)" },
+      { col1: "Payment: One fixed monthly EMI", col2: "Payment: Variable amount (often increases)" },
+      { col1: "Goal: Eliminates the debt completely", col2: "Goal: Only services the interest cost" }
+    ]
+  },
+  {
+    id: 'wedding-personal-loan',
+    title: "Wedding Loan vs Liquidating Investments",
+    description: "Should you break your FDs/Mutual Funds or take a loan? Here is a comparison to help you decide.",
+    col1Header: "Wedding Loan",
+    col2Header: "Breaking Investments (FD/MF)",
+    rows: [
+      { col1: "Capital remains intact & grows", col2: "Capital is depleted permanently" },
+      { col1: "Repay in small monthly parts", col2: "One-time heavy loss of liquidity" },
+      { col1: "Interest Cost: 10.5% - 15%", col2: "Opportunity Cost: Loss of compounding returns" },
+      { col1: "Builds Credit History (if paid on time)", col2: "No impact on Credit Score" },
+      { col1: "Processing time: 2-3 Days", col2: "Redemption time: 1-3 Days" }
+    ]
+  },
+  {
+    id: 'overdraft-personal-loan',
+    title: "Overdraft vs Term Personal Loan",
+    description: "Is flexibility worth the extra cost? See how the two products compare.",
+    col1Header: "Overdraft (Credit Line)",
+    col2Header: "Term Personal Loan",
+    rows: [
+      { col1: "Interest on Utilized Amount only", col2: "Interest on entire Sanctioned Amount" },
+      { col1: "Repayment: Interest-only monthly", col2: "Repayment: Fixed EMI (Principal + Interest)" },
+      { col1: "Principal repayment is flexible", col2: "Principal repayment is fixed schedule" },
+      { col1: "Interest Rate: Slightly Higher", col2: "Interest Rate: Comparatively Lower" },
+      { col1: "Best for: Short-term/Uncertain needs", col2: "Best for: One-time large expense" }
+    ]
+  },
 ];
 
 // ==========================================
@@ -241,7 +311,7 @@ const LoanComparisonTable: React.FC<ComparisonProps> = ({ data, className }) => 
       shadow-none md:shadow-sm
       ${className || ''}
     `}>
-      
+
       {/* Header Section */}
       <div className="mb-6 md:mb-8">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
@@ -267,8 +337,8 @@ const LoanComparisonTable: React.FC<ComparisonProps> = ({ data, className }) => 
           </thead>
           <tbody className="divide-y divide-gray-100">
             {data.rows.map((row, index) => (
-              <tr 
-                key={index} 
+              <tr
+                key={index}
                 className="hover:bg-teal-50/20 transition-colors duration-150"
               >
                 <td className="p-3 md:p-5 text-gray-700 align-top leading-relaxed text-sm md:text-base">
@@ -282,7 +352,7 @@ const LoanComparisonTable: React.FC<ComparisonProps> = ({ data, className }) => 
           </tbody>
         </table>
       </div>
-      
+
     </div>
   );
 };

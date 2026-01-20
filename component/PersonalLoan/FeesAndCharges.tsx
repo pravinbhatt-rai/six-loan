@@ -31,8 +31,8 @@ const FEES_DATA: FeeData[] = [
     linkText: "personal loan fees",
     rows: [
       { particulars: "Processing Fees", charges: "0.5% to 4% of loan amount + GST" },
-      { 
-        particulars: "Foreclosure Charges", 
+      {
+        particulars: "Foreclosure Charges",
         charges: (
           <div className="space-y-1">
             <p><span className="font-semibold text-gray-700">Floating Rate:</span> Nil</p>
@@ -45,6 +45,28 @@ const FEES_DATA: FeeData[] = [
       { particulars: "Cheque Bounce Charges", charges: "₹ 400 - ₹ 800 per bounce" },
     ],
     footerNote: "Other charges may include stamp duty and verification charges as per actuals."
+  },
+  {
+    id: 'medical-personal-loan',
+    title: "Medical Loan Fees and Charges",
+    description: "While medical loans are processed quickly, standard banking charges apply. Some lenders may waive processing fees for specific hospital tie-ups.",
+    linkText: "medical loan fees",
+    rows: [
+      { particulars: "Processing Fees", charges: "Up to 2% - 3% of loan amount + GST" },
+      {
+        particulars: "Foreclosure Charges",
+        charges: (
+          <div className="space-y-1">
+            <p><span className="font-semibold text-gray-700">Within Lock-in (6-12mo):</span> Not allowed</p>
+            <p><span className="font-semibold text-gray-700">After Lock-in:</span> 0% – 4% of principal outstanding</p>
+          </div>
+        )
+      },
+      { particulars: "Penal Interest", charges: "24% p.a. (2% per month) on overdue EMI" },
+      { particulars: "Loan Cancellation", charges: "₹ 1,000 - ₹ 3,000 (if cancelled post-disbursal)" },
+      { particulars: "EMI Bounce Charges", charges: "₹ 450 - ₹ 850 per instance" },
+    ],
+    footerNote: "GST @ 18% is applicable on all fees. Foreclosure charges may be waived if the loan is closed using own funds."
   },
   // *** NEW ENTRY: Pre-approved Personal Loan ***
   {
@@ -215,7 +237,55 @@ const FEES_DATA: FeeData[] = [
       { particulars: "Bounce Charges", charges: "₹ 500 per bounce" },
       { particulars: "Foreclosure", charges: "4% of outstanding principal" },
     ]
-  }
+  },
+  {
+    id: 'travel-personal-loan',
+    title: "Travel Loan Fees and Charges",
+    description: "Travel loans are essentially personal loans, so standard banking charges apply. Always factor these into your vacation budget:",
+    rows: [
+      { particulars: "Processing Fees", charges: "1% to 2.5% of loan amount + GST" },
+      { particulars: "Foreclosure Charges", charges: "2% to 4% of principal outstanding (Post lock-in)" },
+      { particulars: "Part-Payment Charges", charges: "Nil to 2% (Allowed by select lenders)" },
+      { particulars: "Penal Interest", charges: "2% per month on overdue EMI" },
+      { particulars: "Duplicate NOC", charges: "₹ 500 per instance" },
+    ]
+  },
+  {
+    id: 'debt-consolidation-loan',
+    title: "Consolidation Loan Fees and Charges",
+    description: "While the goal is to save money, be aware of the costs involved in switching your debt to a new lender:",
+    rows: [
+      { particulars: "Processing Fees", charges: "0.5% to 2% (Often negotiable for balance transfers)" },
+      { particulars: "Foreclosure Charges", charges: "Nil to 4% (Check for zero foreclosure lenders)" },
+      { particulars: "Balance Transfer Fee", charges: "Flat fee or 1% of the transfer amount (varies by bank)" },
+      { particulars: "Penal Interest", charges: "24% to 30% p.a. on overdue amounts" },
+      { particulars: "Statement Charges", charges: "₹ 200 - ₹ 500 per request" },
+    ]
+  },
+  {
+    id: 'wedding-personal-loan',
+    title: "Wedding Loan Fees and Charges",
+    description: "Wedding expenses can be unpredictable, so it's important to understand the costs associated with the loan itself:",
+    rows: [
+      { particulars: "Processing Fees", charges: "1% to 2.5% of loan amount (Max cap may apply)" },
+      { particulars: "Foreclosure Charges", charges: "Nil to 4% (Varies by bank/NBFC)" },
+      { particulars: "Part-Payment Charges", charges: "Nil to 2% (Usually allowed after 12 EMIs)" },
+      { particulars: "Overdue Interest", charges: "2% per month on unpaid EMI amount" },
+      { particulars: "Loan Cancellation", charges: "₹ 3,000 or processing fee, whichever is higher" },
+    ]
+  },
+  {
+  id: 'overdraft-personal-loan',
+  title: "Overdraft Fees and Charges",
+  description: "Overdraft facilities have a slightly different fee structure compared to standard loans:",
+  rows: [
+    { particulars: "Processing Fees", charges: "1.5% to 3% of the sanctioned limit" },
+    { particulars: "Annual Renewal Fee", charges: "₹ 1,000 - ₹ 5,000 (Charged yearly to keep the line active)" },
+    { particulars: "Foreclosure Charges", charges: "Usually Nil (You can clear the balance anytime)" },
+    { particulars: "Part-Payment Charges", charges: "Nil (This is the core feature of the product)" },
+    { particulars: "Penal Interest", charges: "2% per month on over-limit usage" },
+  ]
+},
 ];
 
 // ==========================================
@@ -237,7 +307,7 @@ const FeesAndCharges: React.FC<FeesAndChargesProps> = ({ data, className }) => {
       shadow-none md:shadow-sm
       ${className || ''}
     `}>
-      
+
       {/* Header Section */}
       <div className="mb-6 md:mb-8">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
@@ -246,18 +316,18 @@ const FeesAndCharges: React.FC<FeesAndChargesProps> = ({ data, className }) => {
         <p className="text-gray-700 leading-relaxed text-sm md:text-base">
           {data.description}
           {data.linkText && (
-             <>
-               {' '}For a detailed breakdown of{' '}
-               <a href="#" className="text-teal-500 font-medium hover:underline hover:text-teal-600 transition-colors">
-                 {data.linkText}
-               </a>
-               , see below:
-             </>
+            <>
+              {' '}For a detailed breakdown of{' '}
+              <a href="#" className="text-teal-500 font-medium hover:underline hover:text-teal-600 transition-colors">
+                {data.linkText}
+              </a>
+              , see below:
+            </>
           )}
         </p>
       </div>
 
-      
+
 
       {/* Table Section */}
       <div className="w-full overflow-x-auto rounded-lg border border-gray-100 md:border-0">
@@ -274,8 +344,8 @@ const FeesAndCharges: React.FC<FeesAndChargesProps> = ({ data, className }) => {
           </thead>
           <tbody className="divide-y divide-gray-100">
             {data.rows.map((item, index) => (
-              <tr 
-                key={index} 
+              <tr
+                key={index}
                 className="hover:bg-teal-50/20 transition-colors duration-150"
               >
                 <td className="p-3 md:p-5 text-gray-800 font-medium align-top text-sm md:text-base">

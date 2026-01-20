@@ -41,7 +41,7 @@ export default function NotFound() {
             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">Or try these popular pages</p>
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <Link href="/loans" className="group p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:border-teal-500 hover:shadow-md transition-all">
+                <Link href="/" className="group p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:border-teal-500 hover:shadow-md transition-all">
                     <div className="w-10 h-10 bg-teal-50 rounded-full flex items-center justify-center mx-auto mb-3 text-teal-600 group-hover:bg-teal-500 group-hover:text-white transition-colors">
                         <Search size={20} />
                     </div>
