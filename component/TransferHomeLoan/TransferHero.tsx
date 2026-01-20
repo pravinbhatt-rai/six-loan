@@ -23,10 +23,10 @@ export const TransferHero: React.FC = () => {
   return (
     <div className="relative min-h-[800px] w-full flex items-center justify-center overflow-hidden font-sans bg-slate-50">
       
-      {/* --- BACKGROUND: Cyan/Green Gradient Mesh (Signifying Growth/Savings) --- */}
+      {/* --- BACKGROUND: teal/Green Gradient Mesh (Signifying Growth/Savings) --- */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Orbs */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-200/40 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal-200/40 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-100/60 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4"></div>
         
         {/* Geometric Grid Pattern */}
@@ -40,9 +40,9 @@ export const TransferHero: React.FC = () => {
           <div className="flex flex-col items-start space-y-6 lg:space-y-8 lg:order-1 lg:pt-0">
             
             {/* 1. Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-50 border border-cyan-100 shadow-sm animate-fade-in-up">
-              <span className="flex h-2 w-2 rounded-full bg-cyan-500 animate-pulse"></span>
-              <span className="text-cyan-800 text-xs lg:text-sm font-semibold tracking-wide uppercase">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 border border-teal-100 shadow-sm animate-fade-in-up">
+              <span className="flex h-2 w-2 rounded-full bg-teal-500 animate-pulse"></span>
+              <span className="text-teal-800 text-xs lg:text-sm font-semibold tracking-wide uppercase">
                 Balance Transfer Special
               </span>
             </div>
@@ -50,10 +50,10 @@ export const TransferHero: React.FC = () => {
             {/* 2. Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-serif text-slate-900 leading-[1.1] tracking-tight">
               Switch to <br />
-              <span className="text-cyan-600 relative inline-block">
+              <span className="text-teal-600 relative inline-block">
                 Lower Rates
                 {/* Underline SVG */}
-                <svg className="absolute w-full h-3 -bottom-1 left-0 text-cyan-300 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <svg className="absolute w-full h-3 -bottom-1 left-0 text-teal-300 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
                 </svg>
               </span>
@@ -61,18 +61,18 @@ export const TransferHero: React.FC = () => {
 
             {/* 3. Description */}
             <p className="text-slate-600 text-lg md:text-xl max-w-lg leading-relaxed">
-              Stop overpaying on your home loan. Transfer your balance to us at <span className="font-semibold text-cyan-700">8.50% p.a.</span> and reduce your monthly EMI burden instantly.
+              Stop overpaying on your home loan. Transfer your balance to us at <span className="font-semibold text-teal-700">8.50% p.a.</span> and reduce your monthly EMI burden instantly.
             </p>
 
             {/* 4. Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <button className="flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg shadow-cyan-200 hover:shadow-cyan-300 transform hover:-translate-y-1">
+              <button className="flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg shadow-teal-200 hover:shadow-teal-300 transform hover:-translate-y-1">
                 Transfer Now
                 <ArrowRightLeft className="w-5 h-5" />
               </button>
               
-              <button className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 px-8 py-4 rounded-xl font-semibold border border-slate-200 shadow-sm transition-all hover:border-cyan-200">
-                <PiggyBank className="w-5 h-5 text-cyan-500" />
+              <button className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 px-8 py-4 rounded-xl font-semibold border border-slate-200 shadow-sm transition-all hover:border-teal-200">
+                <PiggyBank className="w-5 h-5 text-teal-500" />
                 Calculate Savings
               </button>
             </div>
@@ -84,7 +84,7 @@ export const TransferHero: React.FC = () => {
                   {[AVATAR_1, AVATAR_2, AVATAR_3, AVATAR_4].map((src, i) => (
                     <img key={i} src={src} alt="Happy Saver" className="w-12 h-12 rounded-full border-2 border-white ring-1 ring-slate-100 object-cover" />
                   ))}
-                  <div className="w-12 h-12 rounded-full bg-cyan-600 border-2 border-white flex items-center justify-center text-xs font-bold text-white ring-1 ring-slate-100">
+                  <div className="w-12 h-12 rounded-full bg-teal-600 border-2 border-white flex items-center justify-center text-xs font-bold text-white ring-1 ring-slate-100">
                     2k+
                   </div>
                 </div>
@@ -100,7 +100,7 @@ export const TransferHero: React.FC = () => {
           <div className="hidden lg:flex relative h-[700px] w-full items-center justify-center lg:order-2">
             
             {/* Main Image Container (Rotated & Bordered) */}
-            <div className="relative z-10 w-full h-[90%] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-cyan-900/10 rotate-1 border-[8px] border-white">
+            <div className="relative z-10 w-full h-[90%] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-teal-900/10 rotate-1 border-[8px] border-white">
                <img 
                  src={TRANSFER_IMAGE_URL} 
                  alt="Couple celebrating successful loan transfer" 
@@ -154,7 +154,7 @@ export const TransferHero: React.FC = () => {
             </div>
 
             {/* Decorative Dashed Background Shape */}
-            <div className="absolute top-12 -right-12 w-full h-[90%] border-2 border-dashed border-cyan-300 rounded-[2.5rem] -rotate-2 -z-10"></div>
+            <div className="absolute top-12 -right-12 w-full h-[90%] border-2 border-dashed border-teal-300 rounded-[2.5rem] -rotate-2 -z-10"></div>
             
           </div>
 

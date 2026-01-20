@@ -32,135 +32,261 @@ export interface HeroData {
 
 export const HERO_CONTENT_DATA: HeroData[] = [
   {
-    id: 'business-loan',
-    badgeText: 'MSME & Startup Friendly',
-    title: 'Capital to Scale Your Vision Without Limits',
-    highlightText: 'Scale Your Vision',
-    description: 'From working capital to machinery expansion. Get unsecured business loans up to ₹50 Lakhs with paperless approval in 24 hours.',
-    primaryCtaText: 'Check Eligibility',
-    secondaryCtaText: 'View Plans',
-    amountDisplay: '50,00,000',
-    imageUrl: "https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=2070&auto=format&fit=crop",
-    benefits: [
-      "Collateral-free loans",
-      "Minimal documentation",
-      "Flexible repayment options"
-    ]
-  },
-  {
-    id: 'business-loan-interest-rates',
-    badgeText: 'Best Rate Guarantee',
-    title: 'Compare Business Loan Interest Rates',
+    id: 'home-loan-interest-rates',
+    badgeText: 'Lowest Rates Starting @ 8.35%',
+    title: 'Compare Home Loan Interest Rates',
     highlightText: 'Interest Rates',
-    description: 'Maximize your profits by minimizing interest costs. Compare offers from 25+ top banks & NBFCs starting at just 11.99% p.a. tailored to your turnover.',
-    primaryCtaText: 'Compare Now',
+    description: 'Stop overpaying on your dream home. Compare live interest rates from 30+ top banks and NBFCs to secure the lowest monthly EMI.',
+    primaryCtaText: 'Compare Rates',
     secondaryCtaText: 'View Rate Chart',
-    amountDisplay: '75,00,000',
-    imageUrl: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=2070",
+    amountDisplay: '50,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=2070",
     benefits: [
-      "Rates starting @ 11.99%",
+      "Rates from 8.35% p.a.",
       "Fixed & Floating Options",
-      "Compare 20+ Lenders"
+      "Zero Hidden Charges"
     ]
   },
   {
-    id: 'low-cibil-business-loans',
-    badgeText: 'High Approval Rate',
-    title: 'Loans for Low CIBIL Score',
-    highlightText: 'Relaxed Eligibility',
-    description: 'Don’t let a past setback define your future. Access special funding options designed for businesses with low credit scores, often secured against collateral or daily cash flow.',
+    id: 'home-loan-low-cibil-score',
+    badgeText: 'Easy Approval',
+    title: 'Home Loan for Low CIBIL Score',
+    highlightText: 'Low CIBIL Score',
+    description: 'A low credit score shouldn’t cost you your dream home. We connect you with lenders who specialize in approvals based on income and stability.',
     primaryCtaText: 'Check Eligibility',
     secondaryCtaText: 'Read Guidelines',
-    amountDisplay: '10,00,000',
+    amountDisplay: '25,00,000',
     imageUrl: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=2070",
     benefits: [
-      "Approval with Score < 650",
-      "Collateral-based Options",
-      "Rebuild Your Credit History"
+      "Score < 650 Accepted",
+      "Co-applicant Support",
+      "Manual Income Check"
     ]
   },
   {
-    id: 'dairy-farming-loan',
-    badgeText: 'Govt. Subsidy Available',
-    title: 'Dairy Farming Business Loan',
-    highlightText: 'NABARD Support',
-    description: 'Start or expand your dairy farm with specialized funding. Cover costs for cattle purchase, shed construction, and milking machinery with subsidized interest rates under government schemes.',
-    primaryCtaText: 'Check Eligibility',
-    secondaryCtaText: 'View Subsidy Details',
-    amountDisplay: '50,00,000',
-    imageUrl: "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&q=80&w=2070",
-    benefits: [
-      "Cattle & Equipment Finance",
-      "NABARD Subsidy Support",
-      "Long Repayment Tenure"
-    ]
-  },
-  {
-    id: 'small-business-loan',
-    badgeText: 'Quick Disbursal',
-    title: 'Small Business Loan',
-    highlightText: 'Collateral Free Options',
-    description: 'Fuel your business growth with quick and easy financing. Ideal for working capital needs, inventory purchase, or small equipment upgrades with minimal documentation.',
+    id: '10-lakh-home-loan',
+    badgeText: 'Affordable Housing',
+    title: '10 Lakh Home Loan',
+    highlightText: '10 Lakh',
+    description: 'Perfect for PMAY beneficiaries and affordable housing projects. Get quick approval for smaller ticket sizes with minimal documentation.',
     primaryCtaText: 'Apply Now',
-    secondaryCtaText: 'Check Rates',
-    amountDisplay: '20,00,000',
-    imageUrl: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=2070",
+    secondaryCtaText: 'View EMI',
+    amountDisplay: '10,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&q=80&w=2070",
     benefits: [
-      "No Collateral Required",
-      "Disbursal in 48 Hours",
+      "PMAY Subsidy Eligible",
+      "90% Funding Value",
+      "Low Processing Fee"
+    ]
+  },
+  {
+    id: '15-lakh-home-loan',
+    badgeText: 'Quick Disbursal',
+    title: '15 Lakh Home Loan',
+    highlightText: '15 Lakh',
+    description: 'Finance your apartment or floor construction with ease. Tailored for budget-friendly homes in Tier 2 and Tier 3 cities.',
+    primaryCtaText: 'Check Eligibility',
+    secondaryCtaText: 'Calculate EMI',
+    amountDisplay: '15,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Long Tenure Options",
+      "Doorstep Service",
       "Minimal Documentation"
     ]
   },
   {
-    id: 'goat-farming-loan',
-    badgeText: 'Govt Subsidy Available',
-    title: 'Goat Farming Loan',
-    highlightText: 'Up to 33% Subsidy',
-    description: 'Start or expand your commercial goat farm with ease. Get financing for shed construction, purchasing high-yield breeds (Black Bengal, Sirohi), and fodder development.',
-    primaryCtaText: 'Check Subsidy',
-    secondaryCtaText: 'View Schemes',
-    amountDisplay: '10,00,000', // Typical commercial unit start
-    imageUrl: "https://images.unsplash.com/photo-1599572765660-31628d02d242?auto=format&fit=crop&q=80&w=2070",
+    id: '20-lakh-home-loan',
+    badgeText: 'Popular Choice',
+    title: '20 Lakh Home Loan',
+    highlightText: '20 Lakh',
+    description: 'The ideal loan amount for first-time homebuyers. Enjoy competitive interest rates and tax benefits under Section 80C and 24(b).',
+    primaryCtaText: 'Apply Now',
+    secondaryCtaText: 'Check Rates',
+    amountDisplay: '20,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2070",
     benefits: [
-      "NABARD Subsidy Support",
-      "Low Interest KCC Rates",
-      "Flexible Repayment"
+      "Tax Benefits Available",
+      "Flexible Repayment",
+      "Online Approval"
     ]
   },
   {
-    id: 'startup-business-loan',
-    badgeText: 'Collateral Free Options',
-    title: 'Startup Business Loan',
-    highlightText: 'Funding up to ₹1 Cr',
-    description: 'Fuel your new venture with capital for expansion, inventory, or equipment. Access government schemes like Mudra & Stand Up India with minimal documentation.',
-    primaryCtaText: 'Check Eligibility',
-    secondaryCtaText: 'View Schemes',
-    amountDisplay: '50,00,000',
-    imageUrl: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=2070",
+    id: '30-lakh-home-loan',
+    badgeText: 'Mid-Segment Homes',
+    title: '30 Lakh Home Loan',
+    highlightText: '30 Lakh',
+    description: 'Upgrade your living standards. Get funds for purchasing a 2BHK or 3BHK flat with extended repayment tenures up to 30 years.',
+    primaryCtaText: 'Check Offers',
+    secondaryCtaText: 'View EMI',
+    amountDisplay: '30,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=2070",
     benefits: [
-      "CGTMSE Cover Available",
-      "Minimal Documentation",
-      "Quick Disbursal"
+      "Up to 30 Year Tenure",
+      "Balance Transfer Option",
+      "Part-Payment Facility"
     ]
   },
   {
-    id: 'poultry-farming-loan',
-    badgeText: 'NLM Subsidy Eligible',
-    title: 'Poultry Farming Loan',
-    highlightText: 'Layer & Broiler Support',
-    description: 'Comprehensive funding for shed construction, equipment (cages, feeders), and purchasing chicks. Covers both layer farming (eggs) and broiler farming (meat) with feed cost support.',
+    id: '40-lakh-home-loan',
+    badgeText: 'Premium Finance',
+    title: '40 Lakh Home Loan',
+    highlightText: '40 Lakh',
+    description: 'Secure funding for premium apartments or independent houses. Benefit from special rates for women applicants and salaried professionals.',
     primaryCtaText: 'Check Eligibility',
-    secondaryCtaText: 'View Subsidy',
+    secondaryCtaText: 'View Plans',
+    amountDisplay: '40,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "High LTV Ratio",
+      "Quick Processing",
+      "Insurance Cover"
+    ]
+  },
+  {
+    id: '60-lakh-home-loan',
+    badgeText: 'Luxury Living',
+    title: '60 Lakh Home Loan',
+    highlightText: '60 Lakh',
+    description: 'Realize your dream of a luxury villa or a large apartment. Specialized relationship managers to handle your application priority.',
+    primaryCtaText: 'Get Quote',
+    secondaryCtaText: 'Contact Us',
+    amountDisplay: '60,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Priority Processing",
+      "Negotiable Rates",
+      "Exclusive Offers"
+    ]
+  },
+  {
+    id: 'home-renovation-loan',
+    badgeText: 'Makeover Finance',
+    title: 'Home Renovation Loan',
+    highlightText: 'Home Renovation',
+    description: 'Give your home a fresh look. Fund repairs, painting, tiling, or remodeling with a hassle-free renovation loan.',
+    primaryCtaText: 'Apply Now',
+    secondaryCtaText: 'View Ideas',
+    amountDisplay: '12,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Quick Disbursement",
+      "No Collateral Options",
+      "Tax Deductions"
+    ]
+  },
+  {
+    id: 'plot-loan',
+    badgeText: 'Land Purchase',
+    title: 'Plot Loan',
+    highlightText: 'Plot Loan',
+    description: 'Buy the perfect piece of land now and build your home later. Loans available for purchasing residential plots from statutory authorities or developers.',
+    primaryCtaText: 'Check Eligibility',
+    secondaryCtaText: 'View Rates',
+    amountDisplay: '35,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Purchase & Construct",
+      "Loans up to 75% LTV",
+      "15 Year Tenure"
+    ]
+  },
+  {
+    id: 'top-up-home-loan',
+    badgeText: 'Extra Liquidity',
+    title: 'Top Up Home Loan',
+    highlightText: 'Top Up',
+    description: 'Need extra cash? Get a top-up on your existing home loan at interest rates much lower than personal loans. Use it for any personal need.',
+    primaryCtaText: 'Get Top Up',
+    secondaryCtaText: 'Check Amount',
+    amountDisplay: '10,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1574607383476-f517f260d30b?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Low Interest Rates",
+      "Minimal Paperwork",
+      "Quick Credit"
+    ]
+  },
+  {
+    id: 'home-construction-loan',
+    badgeText: 'Self Construction',
+    title: 'Home Construction Loan',
+    highlightText: 'Construction Loan',
+    description: 'Build your home your way. Get funds disbursed in tranches based on the stage of construction of your house on a freehold plot.',
+    primaryCtaText: 'Start Building',
+    secondaryCtaText: 'View Stages',
+    amountDisplay: '55,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Tranche-based Disbursal",
+      "Interest Only Period",
+      "Custom Tenure"
+    ]
+  },
+  {
+    id: 'nri-home-loan',
+    badgeText: 'For Global Indians',
+    title: 'NRI Home Loan',
+    highlightText: 'NRI',
+    description: 'Invest in your homeland while living abroad. Specialized home loans for NRIs/PIOs with digital documentation and advisory services.',
+    primaryCtaText: 'Apply Online',
+    secondaryCtaText: 'Documentation',
+    amountDisplay: '80,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Doorstep Service Abroad",
+      "Attractive ROI",
+      "Digital Process"
+    ]
+  },
+  {
+    id: 'home-extension-loan',
+    badgeText: 'More Space',
+    title: 'Home Extension Loan',
+    highlightText: 'Extension Loan',
+    description: 'Adding a new room or a floor? Get a loan specifically designed for extending your current residential property.',
+    primaryCtaText: 'Extend Now',
+    secondaryCtaText: 'Check Eligibility',
     amountDisplay: '15,00,000',
-    imageUrl: "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&q=80&w=2070",
+    imageUrl: "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&q=80&w=2070",
     benefits: [
-      "Setup & Feed Loans",
-      "Equipment Financing",
-      "Long Repayment Terms"
+      "Cover Construction Cost",
+      "Longer Repayment",
+      "Tax Benefits"
     ]
   },
-
-  // ... Add all other data objects here (Medical, Travel, etc.) from your list
+  {
+    id: 'home-loan-for-self-employed',
+    badgeText: 'Business Owners',
+    title: 'Home Loan for Self Employed',
+    highlightText: 'Self Employed',
+    description: 'Customized eligibility programs for business owners and professionals. Approval based on turnover or bank statements if ITR is insufficient.',
+    primaryCtaText: 'Check Eligibility',
+    secondaryCtaText: 'View Criteria',
+    amountDisplay: '65,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Gross Receipt Program",
+      "Bank Statement Program",
+      "Higher Eligibility"
+    ]
+  },
+  {
+    id: 'home-loan-for-women',
+    badgeText: 'Special Rates',
+    title: 'Home Loan for Women',
+    highlightText: 'For Women',
+    description: 'Empowering women homeowners with concessional interest rates and reduced processing fees. Make the property yours, in your name.',
+    primaryCtaText: 'Apply Now',
+    secondaryCtaText: 'View Benefits',
+    amountDisplay: '40,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1584665424560-6b3a04b12571?auto=format&fit=crop&q=80&w=2070",
+    benefits: [
+      "Lower Interest Rates",
+      "Stamp Duty Concession",
+      "Simplified Process"
+    ]
+  }
 ];
 
 // ==========================================
@@ -303,7 +429,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ data, onPrimaryClick, onSeconda
                     <p className="text-[10px] uppercase font-bold text-slate-400">Bank Alert</p>
                     <span className="text-[10px] text-slate-400">Now</span>
                   </div>
-                  <p className="text-sm font-bold text-slate-800">Limit Approved</p>
+                  <p className="text-sm font-bold text-slate-800">Loan Approved</p>
                   <p className="text-xs font-bold text-green-600">+ ₹{data.amountDisplay}</p>
                 </div>
               </div>
@@ -318,7 +444,7 @@ const ModernHero: React.FC<ModernHeroProps> = ({ data, onPrimaryClick, onSeconda
                   </div>
                   <div className="w-full">
                     <p className="text-xs text-slate-500 font-semibold uppercase">Application Status</p>
-                    <p className="text-sm font-bold text-slate-900">Docs Verified</p>
+                    <p className="text-sm font-bold text-slate-900">Property Verified</p>
                   </div>
                   <CheckCircle size={14} className="text-green-500 shrink-0" />
                 </div>
