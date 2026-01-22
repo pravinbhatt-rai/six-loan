@@ -19,6 +19,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     { name: 'Categories', href: '/dashboard/categories', icon: FileText },
     { name: 'Loans', href: '/dashboard/loans', icon: FileText },
     { name: 'Credit Cards', href: '/dashboard/credit-cards', icon: CreditCard },
+     { name: 'Debit Cards', href: '/dashboard/debit-cards', icon: CreditCard },
     { name: 'Insurance', href: '/dashboard/insurance', icon: FileText },
     { name: 'Applications', href: '/dashboard/applications', icon: FileText },
     { name: 'Products', href: '/dashboard/products', icon: CreditCard },

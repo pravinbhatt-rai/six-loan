@@ -1,164 +1,113 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import { ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
+import React from 'react';
 import { useRouter } from 'next/navigation';
-import LoanForm from '@/component/Dashboard/LoanForm';
-import CreditCardForm from '@/component/Dashboard/CreditCardForm';
-import InsuranceForm from '@/component/Dashboard/InsuranceForm';
-import AppForm from '@/component/Dashboard/AppForm';
-import { API_BASE_URL } from '@/lib/api';
+import { CreditCard, Wallet, FileText, Shield, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function AddProductPage() {
   const router = useRouter();
-  const [categories, setCategories] = useState<any[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>('');
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          router.push('/login');
-          return;
-        }
+  const productTypes = [
+    {
+      title: 'Credit Card',
+      description: 'Add a new credit card product with features, fees, and benefits',
+      icon: CreditCard,
+      href: '/dashboard/credit-cards/add',
+      color: 'from-teal-500 to-cyan-600',
+      iconBg: 'bg-teal-100',
+      iconColor: 'text-teal-600',
+      borderColor: 'border-teal-500',
+    },
+    {
+      title: 'Debit Card',
+      description: 'Create a new debit card product with transaction limits and rewards',
+      icon: Wallet,
+      href: '/dashboard/debit-cards/add',
+      color: 'from-purple-500 to-pink-600',
+      iconBg: 'bg-purple-100',
+      iconColor: 'text-purple-600',
+      borderColor: 'border-purple-500',
+    },
+    {
+      title: 'Loan Product',
+      description: 'Add a new loan product with interest rates and eligibility criteria',
+      icon: FileText,
+      href: '/dashboard/loans/add',
+      color: 'from-blue-500 to-indigo-600',
+      iconBg: 'bg-blue-100',
+      iconColor: 'text-blue-600',
+      borderColor: 'border-blue-500',
+    },
+    {
+      title: 'Insurance',
+      description: 'Create a new insurance product with coverage details and premiums',
+      icon: Shield,
+      href: '/dashboard/insurance/add',
+      color: 'from-green-500 to-emerald-600',
+      iconBg: 'bg-green-100',
+      iconColor: 'text-green-600',
+      borderColor: 'border-green-500',
+    },
+  ];
 
-        const response = await fetch(`${API_BASE_URL}/api/admin/categories`, {
-          headers: { 'Authorization': `Bearer ${token}` }
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          setCategories(data);
-        } else if (response.status === 401) {
-          localStorage.removeItem('token');
-          router.push('/login');
-        }
-      } catch (error) {
-        console.error('Failed to fetch categories', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCategories();
-  }, []);
-
-  const handleSubmit = async (data: any) => {
-    try {
-      const token = localStorage.getItem('token');
-      
-      if (!token) {
-        alert('You are not logged in. Redirecting to login page...');
-        router.push('/login');
-        return;
-      }
-
-      const category = categories.find(c => c.id.toString() === selectedCategory);
-      
-      let endpoint = '';
-      let body = { ...data };
-
-        if (category?.type === 'CREDIT_CARD') {
-          endpoint = `${API_BASE_URL}/api/admin/products/credit-card`;
-          body.categoryIds = [Number(selectedCategory)];
-      } else if (category?.type === 'INSURANCE') {
-          endpoint = `${API_BASE_URL}/api/admin/products/insurance`;
-          body.categoryId = Number(selectedCategory);
-      } else if (category?.type === 'APP') {
-          endpoint = `${API_BASE_URL}/api/admin/products/app`;
-      } else {
-          endpoint = `${API_BASE_URL}/api/admin/products/loan`;
-          body.categoryId = Number(selectedCategory);
-      }
-
-      console.log('Sending request to:', endpoint);
-      console.log('With token:', token ? 'Token exists' : 'No token');
-      console.log('Request body:', body);
-
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(body)
-      });
-
-      if (response.ok) {
-        alert('Product created successfully!');
-        router.push('/dashboard/products');
-      } else {
-        const error = await response.json();
-        console.error('Backend error:', error);
-        
-        // Handle specific error cases
-        if (response.status === 409) {
-          // Duplicate slug error
-          alert(`⚠️ ${error.error}\n\n${error.details}\n\nPlease change the slug to something unique.`);
-        } else if (error.details?.includes('Unique constraint failed')) {
-          // Generic unique constraint error
-          alert(`⚠️ Duplicate Entry\n\nThis product already exists. Please use a different slug or name.`);
-        } else {
-          // Other errors
-          alert(`❌ Error: ${error.error || error.message || 'Failed to create product'}\n\n${error.details || ''}`);
-        }
-      }
-    } catch (error) {
-      console.error('Submit error:', error);
-      alert('An error occurred while creating the product. Please check your network connection.');
-    }
-  };
-
-  // Helper function - must be defined BEFORE return
-  const getCategoryType = (id: string) => {
-    const cat = categories.find(c => c.id.toString() === id);
-    return cat?.type; // Changed from cat?.name to cat?.type
-  };
-
-  // SINGLE RETURN STATEMENT
   return (
-    <div>
-      <div className="flex items-center gap-4 mb-8">
-        <Link href="/dashboard/products" className="p-2 hover:bg-gray-100 rounded-full">
-          <ArrowLeft size={20} className="text-gray-600" />
-        </Link>
-        <div>
-          <h1 className="text-2xl font-bold text-gray-800">Add New Product</h1>
-          <p className="text-gray-500">Create a new loan or credit card offering.</p>
-        </div>
+    <div className="space-y-8 animate-fadeIn">
+      {/* Header */}
+      <div className="text-center max-w-2xl mx-auto">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">Add New Product</h1>
+        <p className="text-lg text-gray-600">
+          Choose the type of product you want to add to your platform
+        </p>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <div className="mb-8 max-w-md">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Select Category</label>
-          <select 
-            value={selectedCategory} 
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          >
-            <option value="">-- Choose a Category --</option>
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.id}>
-                {cat.name} ({cat.type})
-              </option>
-            ))}
-          </select>
-        </div>
+      {/* Product Type Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {productTypes.map((product, index) => {
+          const Icon = product.icon;
+          return (
+            <Link href={product.href} key={product.title}>
+              <div
+                className={`group bg-white p-8 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border-t-4 ${product.borderColor} hover:-translate-y-2 animate-scaleIn`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="flex flex-col h-full">
+                  {/* Icon */}
+                  <div className={`${product.iconBg} w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className={`w-8 h-8 ${product.iconColor}`} />
+                  </div>
 
-        {selectedCategory && (
-          <div className="mt-8 border-t border-gray-100 pt-8">
-            {(() => {
-              const categoryType = getCategoryType(selectedCategory);
-              const catId = Number(selectedCategory);
-              if (categoryType === 'LOAN') return <LoanForm onSubmit={handleSubmit} categoryId={catId} />;
-              if (categoryType === 'CREDIT_CARD') return <CreditCardForm onSubmit={handleSubmit} categoryId={catId} />;
-              if (categoryType === 'INSURANCE') return <InsuranceForm onSubmit={handleSubmit} categoryId={catId} />;
-              if (categoryType === 'APP') return <AppForm onSubmit={handleSubmit} categoryId={catId} />;
-              return null;
-            })()}
-          </div>
-        )}
+                  {/* Title */}
+                  <h2 className="text-2xl font-bold text-gray-900 mb-3 flex items-center gap-2">
+                    {product.title}
+                    <ArrowRight className={`w-5 h-5 ${product.iconColor} opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all`} />
+                  </h2>
+
+                  {/* Description */}
+                  <p className="text-gray-600 mb-6 grow">
+                    {product.description}
+                  </p>
+
+                  {/* Action Button */}
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                    <span className={`text-sm font-medium ${product.iconColor} group-hover:underline`}>
+                      Get Started
+                    </span>
+                    <ArrowRight className={`w-5 h-5 ${product.iconColor} group-hover:translate-x-2 transition-transform`} />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* Back to Dashboard */}
+      <div className="text-center">
+        <Link href="/dashboard">
+          <button className="text-teal-600 hover:text-teal-700 font-medium hover:underline transition-all">
+            ← Back to Dashboard
+          </button>
+        </Link>
       </div>
     </div>
   );

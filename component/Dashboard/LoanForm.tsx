@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import ImageUpload from './ImageUpload';
 
 interface LoanFormProps {
-  categoryId: number;
-  onSubmit: (data: any) => void;
+  categoryId?: number;
+  onSubmit?: (data: any) => void;
   initialData?: any;
   isEditing?: boolean;
 }
@@ -128,9 +128,45 @@ const LoanForm: React.FC<LoanFormProps> = ({ categoryId, onSubmit, initialData, 
     setFormData({ ...formData, [field]: updatedArray });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({ ...formData, categoryId });
+    
+    const payload = { ...formData, categoryId };
+
+    // If onSubmit is provided, use controlled mode
+    if (onSubmit) {
+      onSubmit(payload);
+      return;
+    }
+
+    // Otherwise, handle submission directly (uncontrolled mode)
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('You must be logged in');
+        return;
+      }
+
+      const response = await fetch('/api/admin/loans', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        alert('Loan created successfully!');
+        window.location.href = '/dashboard/loans';
+      } else {
+        const error = await response.json();
+        alert(`Error: ${error.error || 'Failed to create loan'}`);
+      }
+    } catch (error) {
+      console.error('Submit error:', error);
+      alert('Failed to create loan');
+    }
   };
 
   return (

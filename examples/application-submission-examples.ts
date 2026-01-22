@@ -4,6 +4,9 @@
  * This demonstrates the unified application submission system
  */
 
+// Placeholder token - replace with actual JWT token
+const token = 'your-jwt-token-here';
+
 // Example 1: Personal Loan Application
 const submitPersonalLoan = async () => {
   const response = await fetch('/api/applications/submit', {

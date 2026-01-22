@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma/client';
-import { verifyToken } from '@/lib/auth/jwt';
+import { verifyAuth } from '@/lib/auth/jwt';
 
 /**
  * POST /api/applications/submit
@@ -8,12 +8,12 @@ import { verifyToken } from '@/lib/auth/jwt';
  */
 export async function POST(request: NextRequest) {
   try {
-    const authResult = await verifyToken(request);
+    const authResult = await verifyAuth(request);
     if (!authResult || !authResult.authenticated) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const userId = authResult.userId;
+    const userId = authResult.user.id;
     const body = await request.json();
 
     const {

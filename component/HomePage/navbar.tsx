@@ -364,7 +364,36 @@ const NAV_DATA: NavItem[] = [
             }
         ]
     },
-
+    {
+        name: 'Debit Cards',
+        columns: [
+            {
+                title: 'Overview',
+                icon: <FileText className="w-4 h-4 text-teal-500" />,
+                items: [
+                    { name: 'Debit Cards', href: '/debitinfo' },
+                    { name: 'Best Debit Cards', href: '/debitinfo/best-debit-cards' },
+                    { name: 'Debit Card Finder', href: '/debitinfo/finder' },
+                    { name: 'Live Offers', href: '/debitinfo/offers' },
+                    { name: 'ATM Finder', href: '/debitinfo/atm-finder' },
+                    { name: 'Compare Debit Cards', href: '/debitcard' },
+                    { name: 'Upgrade Card', href: '/debitinfo/upgrade' },
+                ]
+            },
+            {
+                title: 'By Category',
+                icon: <CreditCard className="w-4 h-4 text-teal-500" />,
+                items: [
+                    { name: 'Cashback Debit Cards', href: '/debitinfo/cashback' },
+                    { name: 'Zero Fee Cards', href: '/debitinfo/zero-fee' },
+                    { name: 'International Cards', href: '/debitinfo/international' },
+                    { name: 'Lounge Access Cards', href: '/debitinfo/lounge-access' },
+                    { name: 'Safety & Security', href: '/debitinfo/safety' },
+                    { name: 'Smart Spend Guide', href: '/debitinfo/smart-spend' },
+                ]
+            }
+        ]
+    },
 
     {
         name: 'Calculators',

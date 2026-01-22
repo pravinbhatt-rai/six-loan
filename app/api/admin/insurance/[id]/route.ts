@@ -57,11 +57,12 @@ export async function PUT(
       slug,
       provider,
       logoUrl,
-      coverageAmount,
-      premium,
+      sumInsured,
+      minPremium,
+      maxPremium,
       tenure,
       description,
-      isActive,
+      type,
       categoryId,
     } = body;
 
@@ -73,11 +74,12 @@ export async function PUT(
         slug,
         provider,
         logoUrl,
-        coverageAmount,
-        premium,
-        tenure,
+        sumInsured,
+        minPremium,
+        maxPremium,
+        policyTerm: tenure, // Map tenure to policyTerm
         description,
-        isActive,
+        type,
         categoryId: categoryId ? Number(categoryId) : null,
       },
       include: {

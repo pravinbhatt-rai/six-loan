@@ -11,6 +11,7 @@ datasource db {
 enum ProductType {
   LOAN
   CREDIT_CARD
+  DEBIT_CARD
   INSURANCE
   APP
 }
@@ -127,6 +128,7 @@ model User {
   // Relations for tracking who created products
   createdLoans      LoanProduct[]
   createdCards      CreditCardProduct[]
+  createdDebitCards DebitCardProduct[]
   createdInsurances InsuranceProduct[]
   createdApps       AppProduct[]
 
@@ -194,6 +196,9 @@ model Application {
 
   cardId Int?
   card   CreditCardProduct? @relation(fields: [cardId], references: [id], onDelete: Cascade)
+
+  debitCardId Int?
+  debitCard   DebitCardProduct? @relation(fields: [debitCardId], references: [id], onDelete: Cascade)
 
   insuranceId Int?
   insurance   InsuranceProduct? @relation(fields: [insuranceId], references: [id], onDelete: Cascade)
@@ -379,6 +384,7 @@ model Category {
 
   loans       LoanProduct[]
   creditCards CreditCardProduct[] @relation("CardCategories")
+  debitCards  DebitCardProduct[]  @relation("DebitCardCategories")
   insurances  InsuranceProduct[]
 
   createdAt DateTime @default(now())
@@ -818,4 +824,116 @@ model EligibilityInquiry {
   @@index([userId])
   @@index([createdAt])
   @@index([panCard])
+}
+
+// ==================== DEBIT CARD MODELS ====================
+
+model DebitCardProduct {
+  categories  Category[] @relation("DebitCardCategories")
+  id          Int        @id @default(autoincrement())
+  name        String
+  slug        String     @unique
+  bankName    String
+  imageUrl    String
+  bankLogoUrl String?
+
+  // CARD SPECIFICATIONS
+  accountType    String? // "Savings", "Salary", "Current"
+  cardNetwork    String // "Visa", "Mastercard", "Rupay"
+  cardType       String? // "classic", "platinum", "gold", "premium", "business"
+  annualFee      Float   @default(0) // Annual fee amount in rupees
+  issuanceFee    Float? // Card issuance fee amount
+  replacementFee Float? // Card replacement fee amount
+
+  // FEATURES & BENEFITS
+  atmWithdrawalLimit  Float? // Daily ATM withdrawal limit in rupees
+  posLimit            Float? // Daily POS transaction limit in rupees
+  onlineLimit         Float? // Daily online transaction limit in rupees
+  internationalUsage  Boolean @default(false)
+  contactless         Boolean @default(false)
+  loungeAccess        Boolean @default(false)
+  loungeAccessDetails String? // e.g. "4 complimentary visits per quarter"
+
+  // CASHBACK & REWARDS
+  cashbackRate  Float? // Cashback rate as percentage (e.g., 1.5 for 1.5%)
+  rewardPoints  Boolean @default(false) // Whether reward points are available
+  fuelSurcharge Boolean @default(false) // Whether fuel surcharge waiver available
+
+  // INSURANCE & SAFETY
+  accidentInsurance  Boolean @default(false) // Whether accident insurance is included
+  purchaseProtection Boolean @default(false) // Whether purchase protection is included
+  fraudProtection    Boolean @default(true)
+  zeroBilling        Boolean @default(true)
+
+  // ELIGIBILITY
+  minimumBalance Float? // Minimum account balance required in rupees
+  minimumAge     Int?   @default(18)
+  maximumAge     Int?
+
+  // RATINGS & RECOMMENDATIONS
+  rating       Float   @default(0)
+  recommended  Boolean @default(false)
+  bestFor      String? // e.g. "Shopping", "Fuel", "ATM", "International Travel"
+  keyStatement String? // Key selling point or headline statement
+
+  // VIDEO & LINKS
+  videoUrl           String?
+  termsConditionsUrl String?
+  applyUrl           String?
+
+  // Relations
+  bulletPoints   DebitCardBullet[]
+  keyFeatures    DebitCardKeyFeature[]
+  offers         DebitCardOffer[]
+  safetyFeatures DebitCardSafetyFeature[]
+  applications   Application[]
+
+  createdById Int?
+  createdBy   User? @relation(fields: [createdById], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DebitCardBullet {
+  id           Int              @id @default(autoincrement())
+  text         String
+  displayOrder Int              @default(0)
+  product      DebitCardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId    Int
+}
+
+model DebitCardKeyFeature {
+  id           Int              @id @default(autoincrement())
+  icon         String? // Icon name or emoji
+  title        String
+  description  String           @db.Text
+  displayOrder Int              @default(0)
+  product      DebitCardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId    Int
+}
+
+model DebitCardOffer {
+  id           Int              @id @default(autoincrement())
+  merchant     String // e.g. "Amazon", "Flipkart", "Swiggy"
+  offerType    String // e.g. "Cashback", "Discount", "Fuel"
+  title        String
+  description  String           @db.Text
+  offerValue   String // e.g. "10% off", "₹150 cashback"
+  validFrom    DateTime?
+  validTill    DateTime?
+  isActive     Boolean          @default(true)
+  displayOrder Int              @default(0)
+  product      DebitCardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId    Int
+}
+
+model DebitCardSafetyFeature {
+  id           Int              @id @default(autoincrement())
+  featureName  String // e.g. "SMS Alerts", "Block Card", "International Toggle"
+  description  String           @db.Text
+  howToUse     String?          @db.Text
+  displayOrder Int              @default(0)
+  product      DebitCardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId    Int
 }

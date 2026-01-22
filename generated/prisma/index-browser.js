@@ -215,6 +215,7 @@ exports.Prisma.ApplicationScalarFieldEnum = {
   type: 'type',
   loanId: 'loanId',
   cardId: 'cardId',
+  debitCardId: 'debitCardId',
   insuranceId: 'insuranceId',
   categoryId: 'categoryId',
   categorySlug: 'categorySlug',
@@ -656,6 +657,87 @@ exports.Prisma.EligibilityInquiryScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.DebitCardProductScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  bankName: 'bankName',
+  imageUrl: 'imageUrl',
+  bankLogoUrl: 'bankLogoUrl',
+  accountType: 'accountType',
+  cardNetwork: 'cardNetwork',
+  cardType: 'cardType',
+  annualFee: 'annualFee',
+  issuanceFee: 'issuanceFee',
+  replacementFee: 'replacementFee',
+  atmWithdrawalLimit: 'atmWithdrawalLimit',
+  posLimit: 'posLimit',
+  onlineLimit: 'onlineLimit',
+  internationalUsage: 'internationalUsage',
+  contactless: 'contactless',
+  loungeAccess: 'loungeAccess',
+  loungeAccessDetails: 'loungeAccessDetails',
+  cashbackRate: 'cashbackRate',
+  rewardPoints: 'rewardPoints',
+  fuelSurcharge: 'fuelSurcharge',
+  accidentInsurance: 'accidentInsurance',
+  purchaseProtection: 'purchaseProtection',
+  fraudProtection: 'fraudProtection',
+  zeroBilling: 'zeroBilling',
+  minimumBalance: 'minimumBalance',
+  minimumAge: 'minimumAge',
+  maximumAge: 'maximumAge',
+  rating: 'rating',
+  recommended: 'recommended',
+  bestFor: 'bestFor',
+  keyStatement: 'keyStatement',
+  videoUrl: 'videoUrl',
+  termsConditionsUrl: 'termsConditionsUrl',
+  applyUrl: 'applyUrl',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DebitCardBulletScalarFieldEnum = {
+  id: 'id',
+  text: 'text',
+  displayOrder: 'displayOrder',
+  productId: 'productId'
+};
+
+exports.Prisma.DebitCardKeyFeatureScalarFieldEnum = {
+  id: 'id',
+  icon: 'icon',
+  title: 'title',
+  description: 'description',
+  displayOrder: 'displayOrder',
+  productId: 'productId'
+};
+
+exports.Prisma.DebitCardOfferScalarFieldEnum = {
+  id: 'id',
+  merchant: 'merchant',
+  offerType: 'offerType',
+  title: 'title',
+  description: 'description',
+  offerValue: 'offerValue',
+  validFrom: 'validFrom',
+  validTill: 'validTill',
+  isActive: 'isActive',
+  displayOrder: 'displayOrder',
+  productId: 'productId'
+};
+
+exports.Prisma.DebitCardSafetyFeatureScalarFieldEnum = {
+  id: 'id',
+  featureName: 'featureName',
+  description: 'description',
+  howToUse: 'howToUse',
+  displayOrder: 'displayOrder',
+  productId: 'productId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -690,6 +772,7 @@ exports.Role = exports.$Enums.Role = {
 exports.ProductType = exports.$Enums.ProductType = {
   LOAN: 'LOAN',
   CREDIT_CARD: 'CREDIT_CARD',
+  DEBIT_CARD: 'DEBIT_CARD',
   INSURANCE: 'INSURANCE',
   APP: 'APP'
 };
@@ -749,7 +832,12 @@ exports.Prisma.ModelName = {
   InsuranceNetworkHospital: 'InsuranceNetworkHospital',
   InsuranceEligibility: 'InsuranceEligibility',
   ContactMessage: 'ContactMessage',
-  EligibilityInquiry: 'EligibilityInquiry'
+  EligibilityInquiry: 'EligibilityInquiry',
+  DebitCardProduct: 'DebitCardProduct',
+  DebitCardBullet: 'DebitCardBullet',
+  DebitCardKeyFeature: 'DebitCardKeyFeature',
+  DebitCardOffer: 'DebitCardOffer',
+  DebitCardSafetyFeature: 'DebitCardSafetyFeature'
 };
 
 /**

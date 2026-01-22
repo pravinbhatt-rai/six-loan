@@ -4,8 +4,8 @@ import ImageUpload from './ImageUpload';
 import { Plus, X } from 'lucide-react';
 
 interface CreditCardFormProps {
-  categoryId: number;
-  onSubmit: (data: any) => void;
+  categoryId?: number;
+  onSubmit?: (data: any) => void;
   initialData?: any;
   isEditing?: boolean;
 }
@@ -222,7 +222,7 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Filter out empty benefit sections
@@ -233,14 +233,48 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
       }))
       .filter(section => section.subPoints.length > 0);
 
-    // Pass categoryId as an array of IDs since the schema expects categories[]
-    onSubmit({ 
+    const payload = {
       ...formData, 
-      categories: [categoryId],
+      categories: categoryId ? [categoryId] : [],
       bestSuitedFor: bestSuitedFor.filter(b => b.trim() !== ''),
       specialOffers: specialOffers.filter(s => s.trim() !== ''),
       benefitSections: filteredBenefitSections
-    });
+    };
+
+    // If onSubmit is provided, use controlled mode
+    if (onSubmit) {
+      onSubmit(payload);
+      return;
+    }
+
+    // Otherwise, handle submission directly (uncontrolled mode)
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('You must be logged in');
+        return;
+      }
+
+      const response = await fetch('/api/admin/credit-cards', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        alert('Credit card created successfully!');
+        window.location.href = '/dashboard/credit-cards';
+      } else {
+        const error = await response.json();
+        alert(`Error: ${error.error || 'Failed to create credit card'}`);
+      }
+    } catch (error) {
+      console.error('Submit error:', error);
+      alert('Failed to create credit card');
+    }
   };
 
   return (

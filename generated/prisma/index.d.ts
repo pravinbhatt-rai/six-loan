@@ -163,6 +163,31 @@ export type ContactMessage = $Result.DefaultSelection<Prisma.$ContactMessagePayl
  * 
  */
 export type EligibilityInquiry = $Result.DefaultSelection<Prisma.$EligibilityInquiryPayload>
+/**
+ * Model DebitCardProduct
+ * 
+ */
+export type DebitCardProduct = $Result.DefaultSelection<Prisma.$DebitCardProductPayload>
+/**
+ * Model DebitCardBullet
+ * 
+ */
+export type DebitCardBullet = $Result.DefaultSelection<Prisma.$DebitCardBulletPayload>
+/**
+ * Model DebitCardKeyFeature
+ * 
+ */
+export type DebitCardKeyFeature = $Result.DefaultSelection<Prisma.$DebitCardKeyFeaturePayload>
+/**
+ * Model DebitCardOffer
+ * 
+ */
+export type DebitCardOffer = $Result.DefaultSelection<Prisma.$DebitCardOfferPayload>
+/**
+ * Model DebitCardSafetyFeature
+ * 
+ */
+export type DebitCardSafetyFeature = $Result.DefaultSelection<Prisma.$DebitCardSafetyFeaturePayload>
 
 /**
  * Enums
@@ -171,6 +196,7 @@ export namespace $Enums {
   export const ProductType: {
   LOAN: 'LOAN',
   CREDIT_CARD: 'CREDIT_CARD',
+  DEBIT_CARD: 'DEBIT_CARD',
   INSURANCE: 'INSURANCE',
   APP: 'APP'
 };
@@ -675,6 +701,56 @@ export class PrismaClient<
     * ```
     */
   get eligibilityInquiry(): Prisma.EligibilityInquiryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.debitCardProduct`: Exposes CRUD operations for the **DebitCardProduct** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DebitCardProducts
+    * const debitCardProducts = await prisma.debitCardProduct.findMany()
+    * ```
+    */
+  get debitCardProduct(): Prisma.DebitCardProductDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.debitCardBullet`: Exposes CRUD operations for the **DebitCardBullet** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DebitCardBullets
+    * const debitCardBullets = await prisma.debitCardBullet.findMany()
+    * ```
+    */
+  get debitCardBullet(): Prisma.DebitCardBulletDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.debitCardKeyFeature`: Exposes CRUD operations for the **DebitCardKeyFeature** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DebitCardKeyFeatures
+    * const debitCardKeyFeatures = await prisma.debitCardKeyFeature.findMany()
+    * ```
+    */
+  get debitCardKeyFeature(): Prisma.DebitCardKeyFeatureDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.debitCardOffer`: Exposes CRUD operations for the **DebitCardOffer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DebitCardOffers
+    * const debitCardOffers = await prisma.debitCardOffer.findMany()
+    * ```
+    */
+  get debitCardOffer(): Prisma.DebitCardOfferDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.debitCardSafetyFeature`: Exposes CRUD operations for the **DebitCardSafetyFeature** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DebitCardSafetyFeatures
+    * const debitCardSafetyFeatures = await prisma.debitCardSafetyFeature.findMany()
+    * ```
+    */
+  get debitCardSafetyFeature(): Prisma.DebitCardSafetyFeatureDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1145,7 +1221,12 @@ export namespace Prisma {
     InsuranceNetworkHospital: 'InsuranceNetworkHospital',
     InsuranceEligibility: 'InsuranceEligibility',
     ContactMessage: 'ContactMessage',
-    EligibilityInquiry: 'EligibilityInquiry'
+    EligibilityInquiry: 'EligibilityInquiry',
+    DebitCardProduct: 'DebitCardProduct',
+    DebitCardBullet: 'DebitCardBullet',
+    DebitCardKeyFeature: 'DebitCardKeyFeature',
+    DebitCardOffer: 'DebitCardOffer',
+    DebitCardSafetyFeature: 'DebitCardSafetyFeature'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1164,7 +1245,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "employment" | "application" | "category" | "insuranceProduct" | "loanProduct" | "loanBullet" | "loanSummaryCharge" | "loanRequiredDocument" | "loanProcessStep" | "loanFooterItem" | "creditCardProduct" | "creditCardBestSuitedFor" | "creditCardSummaryCharge" | "creditCardRequiredDocument" | "creditCardProcessStep" | "appProduct" | "creditCardBullet" | "creditCardKeyFeature" | "creditCardBenefit" | "creditCardSpecialOffer" | "creditCardBenefitSection" | "creditCardBenefitSubPoint" | "insuranceCoverageDetail" | "insuranceExclusion" | "insuranceClaimStep" | "insuranceNetworkHospital" | "insuranceEligibility" | "contactMessage" | "eligibilityInquiry"
+      modelProps: "user" | "employment" | "application" | "category" | "insuranceProduct" | "loanProduct" | "loanBullet" | "loanSummaryCharge" | "loanRequiredDocument" | "loanProcessStep" | "loanFooterItem" | "creditCardProduct" | "creditCardBestSuitedFor" | "creditCardSummaryCharge" | "creditCardRequiredDocument" | "creditCardProcessStep" | "appProduct" | "creditCardBullet" | "creditCardKeyFeature" | "creditCardBenefit" | "creditCardSpecialOffer" | "creditCardBenefitSection" | "creditCardBenefitSubPoint" | "insuranceCoverageDetail" | "insuranceExclusion" | "insuranceClaimStep" | "insuranceNetworkHospital" | "insuranceEligibility" | "contactMessage" | "eligibilityInquiry" | "debitCardProduct" | "debitCardBullet" | "debitCardKeyFeature" | "debitCardOffer" | "debitCardSafetyFeature"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3388,6 +3469,376 @@ export namespace Prisma {
           }
         }
       }
+      DebitCardProduct: {
+        payload: Prisma.$DebitCardProductPayload<ExtArgs>
+        fields: Prisma.DebitCardProductFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DebitCardProductFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardProductPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DebitCardProductFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardProductPayload>
+          }
+          findFirst: {
+            args: Prisma.DebitCardProductFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardProductPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DebitCardProductFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardProductPayload>
+          }
+          findMany: {
+            args: Prisma.DebitCardProductFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardProductPayload>[]
+          }
+          create: {
+            args: Prisma.DebitCardProductCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardProductPayload>
+          }
+          createMany: {
+            args: Prisma.DebitCardProductCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DebitCardProductCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardProductPayload>[]
+          }
+          delete: {
+            args: Prisma.DebitCardProductDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardProductPayload>
+          }
+          update: {
+            args: Prisma.DebitCardProductUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardProductPayload>
+          }
+          deleteMany: {
+            args: Prisma.DebitCardProductDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DebitCardProductUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DebitCardProductUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardProductPayload>[]
+          }
+          upsert: {
+            args: Prisma.DebitCardProductUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardProductPayload>
+          }
+          aggregate: {
+            args: Prisma.DebitCardProductAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDebitCardProduct>
+          }
+          groupBy: {
+            args: Prisma.DebitCardProductGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DebitCardProductGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DebitCardProductCountArgs<ExtArgs>
+            result: $Utils.Optional<DebitCardProductCountAggregateOutputType> | number
+          }
+        }
+      }
+      DebitCardBullet: {
+        payload: Prisma.$DebitCardBulletPayload<ExtArgs>
+        fields: Prisma.DebitCardBulletFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DebitCardBulletFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardBulletPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DebitCardBulletFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardBulletPayload>
+          }
+          findFirst: {
+            args: Prisma.DebitCardBulletFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardBulletPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DebitCardBulletFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardBulletPayload>
+          }
+          findMany: {
+            args: Prisma.DebitCardBulletFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardBulletPayload>[]
+          }
+          create: {
+            args: Prisma.DebitCardBulletCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardBulletPayload>
+          }
+          createMany: {
+            args: Prisma.DebitCardBulletCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DebitCardBulletCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardBulletPayload>[]
+          }
+          delete: {
+            args: Prisma.DebitCardBulletDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardBulletPayload>
+          }
+          update: {
+            args: Prisma.DebitCardBulletUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardBulletPayload>
+          }
+          deleteMany: {
+            args: Prisma.DebitCardBulletDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DebitCardBulletUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DebitCardBulletUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardBulletPayload>[]
+          }
+          upsert: {
+            args: Prisma.DebitCardBulletUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardBulletPayload>
+          }
+          aggregate: {
+            args: Prisma.DebitCardBulletAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDebitCardBullet>
+          }
+          groupBy: {
+            args: Prisma.DebitCardBulletGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DebitCardBulletGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DebitCardBulletCountArgs<ExtArgs>
+            result: $Utils.Optional<DebitCardBulletCountAggregateOutputType> | number
+          }
+        }
+      }
+      DebitCardKeyFeature: {
+        payload: Prisma.$DebitCardKeyFeaturePayload<ExtArgs>
+        fields: Prisma.DebitCardKeyFeatureFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DebitCardKeyFeatureFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardKeyFeaturePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DebitCardKeyFeatureFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardKeyFeaturePayload>
+          }
+          findFirst: {
+            args: Prisma.DebitCardKeyFeatureFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardKeyFeaturePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DebitCardKeyFeatureFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardKeyFeaturePayload>
+          }
+          findMany: {
+            args: Prisma.DebitCardKeyFeatureFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardKeyFeaturePayload>[]
+          }
+          create: {
+            args: Prisma.DebitCardKeyFeatureCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardKeyFeaturePayload>
+          }
+          createMany: {
+            args: Prisma.DebitCardKeyFeatureCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DebitCardKeyFeatureCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardKeyFeaturePayload>[]
+          }
+          delete: {
+            args: Prisma.DebitCardKeyFeatureDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardKeyFeaturePayload>
+          }
+          update: {
+            args: Prisma.DebitCardKeyFeatureUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardKeyFeaturePayload>
+          }
+          deleteMany: {
+            args: Prisma.DebitCardKeyFeatureDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DebitCardKeyFeatureUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DebitCardKeyFeatureUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardKeyFeaturePayload>[]
+          }
+          upsert: {
+            args: Prisma.DebitCardKeyFeatureUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardKeyFeaturePayload>
+          }
+          aggregate: {
+            args: Prisma.DebitCardKeyFeatureAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDebitCardKeyFeature>
+          }
+          groupBy: {
+            args: Prisma.DebitCardKeyFeatureGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DebitCardKeyFeatureGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DebitCardKeyFeatureCountArgs<ExtArgs>
+            result: $Utils.Optional<DebitCardKeyFeatureCountAggregateOutputType> | number
+          }
+        }
+      }
+      DebitCardOffer: {
+        payload: Prisma.$DebitCardOfferPayload<ExtArgs>
+        fields: Prisma.DebitCardOfferFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DebitCardOfferFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardOfferPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DebitCardOfferFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardOfferPayload>
+          }
+          findFirst: {
+            args: Prisma.DebitCardOfferFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardOfferPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DebitCardOfferFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardOfferPayload>
+          }
+          findMany: {
+            args: Prisma.DebitCardOfferFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardOfferPayload>[]
+          }
+          create: {
+            args: Prisma.DebitCardOfferCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardOfferPayload>
+          }
+          createMany: {
+            args: Prisma.DebitCardOfferCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DebitCardOfferCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardOfferPayload>[]
+          }
+          delete: {
+            args: Prisma.DebitCardOfferDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardOfferPayload>
+          }
+          update: {
+            args: Prisma.DebitCardOfferUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardOfferPayload>
+          }
+          deleteMany: {
+            args: Prisma.DebitCardOfferDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DebitCardOfferUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DebitCardOfferUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardOfferPayload>[]
+          }
+          upsert: {
+            args: Prisma.DebitCardOfferUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardOfferPayload>
+          }
+          aggregate: {
+            args: Prisma.DebitCardOfferAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDebitCardOffer>
+          }
+          groupBy: {
+            args: Prisma.DebitCardOfferGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DebitCardOfferGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DebitCardOfferCountArgs<ExtArgs>
+            result: $Utils.Optional<DebitCardOfferCountAggregateOutputType> | number
+          }
+        }
+      }
+      DebitCardSafetyFeature: {
+        payload: Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>
+        fields: Prisma.DebitCardSafetyFeatureFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DebitCardSafetyFeatureFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardSafetyFeaturePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DebitCardSafetyFeatureFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardSafetyFeaturePayload>
+          }
+          findFirst: {
+            args: Prisma.DebitCardSafetyFeatureFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardSafetyFeaturePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DebitCardSafetyFeatureFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardSafetyFeaturePayload>
+          }
+          findMany: {
+            args: Prisma.DebitCardSafetyFeatureFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardSafetyFeaturePayload>[]
+          }
+          create: {
+            args: Prisma.DebitCardSafetyFeatureCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardSafetyFeaturePayload>
+          }
+          createMany: {
+            args: Prisma.DebitCardSafetyFeatureCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DebitCardSafetyFeatureCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardSafetyFeaturePayload>[]
+          }
+          delete: {
+            args: Prisma.DebitCardSafetyFeatureDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardSafetyFeaturePayload>
+          }
+          update: {
+            args: Prisma.DebitCardSafetyFeatureUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardSafetyFeaturePayload>
+          }
+          deleteMany: {
+            args: Prisma.DebitCardSafetyFeatureDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DebitCardSafetyFeatureUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DebitCardSafetyFeatureUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardSafetyFeaturePayload>[]
+          }
+          upsert: {
+            args: Prisma.DebitCardSafetyFeatureUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DebitCardSafetyFeaturePayload>
+          }
+          aggregate: {
+            args: Prisma.DebitCardSafetyFeatureAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDebitCardSafetyFeature>
+          }
+          groupBy: {
+            args: Prisma.DebitCardSafetyFeatureGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DebitCardSafetyFeatureGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DebitCardSafetyFeatureCountArgs<ExtArgs>
+            result: $Utils.Optional<DebitCardSafetyFeatureCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -3514,6 +3965,11 @@ export namespace Prisma {
     insuranceEligibility?: InsuranceEligibilityOmit
     contactMessage?: ContactMessageOmit
     eligibilityInquiry?: EligibilityInquiryOmit
+    debitCardProduct?: DebitCardProductOmit
+    debitCardBullet?: DebitCardBulletOmit
+    debitCardKeyFeature?: DebitCardKeyFeatureOmit
+    debitCardOffer?: DebitCardOfferOmit
+    debitCardSafetyFeature?: DebitCardSafetyFeatureOmit
   }
 
   /* Types for Logging */
@@ -3598,6 +4054,7 @@ export namespace Prisma {
     eligibilityInquiries: number
     createdLoans: number
     createdCards: number
+    createdDebitCards: number
     createdInsurances: number
     createdApps: number
   }
@@ -3607,6 +4064,7 @@ export namespace Prisma {
     eligibilityInquiries?: boolean | UserCountOutputTypeCountEligibilityInquiriesArgs
     createdLoans?: boolean | UserCountOutputTypeCountCreatedLoansArgs
     createdCards?: boolean | UserCountOutputTypeCountCreatedCardsArgs
+    createdDebitCards?: boolean | UserCountOutputTypeCountCreatedDebitCardsArgs
     createdInsurances?: boolean | UserCountOutputTypeCountCreatedInsurancesArgs
     createdApps?: boolean | UserCountOutputTypeCountCreatedAppsArgs
   }
@@ -3653,6 +4111,13 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
+  export type UserCountOutputTypeCountCreatedDebitCardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DebitCardProductWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
   export type UserCountOutputTypeCountCreatedInsurancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InsuranceProductWhereInput
   }
@@ -3673,6 +4138,7 @@ export namespace Prisma {
     children: number
     loans: number
     creditCards: number
+    debitCards: number
     insurances: number
   }
 
@@ -3680,6 +4146,7 @@ export namespace Prisma {
     children?: boolean | CategoryCountOutputTypeCountChildrenArgs
     loans?: boolean | CategoryCountOutputTypeCountLoansArgs
     creditCards?: boolean | CategoryCountOutputTypeCountCreditCardsArgs
+    debitCards?: boolean | CategoryCountOutputTypeCountDebitCardsArgs
     insurances?: boolean | CategoryCountOutputTypeCountInsurancesArgs
   }
 
@@ -3713,6 +4180,13 @@ export namespace Prisma {
    */
   export type CategoryCountOutputTypeCountCreditCardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CreditCardProductWhereInput
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountDebitCardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DebitCardProductWhereInput
   }
 
   /**
@@ -4024,6 +4498,82 @@ export namespace Prisma {
    */
   export type CreditCardBenefitSectionCountOutputTypeCountSubPointsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CreditCardBenefitSubPointWhereInput
+  }
+
+
+  /**
+   * Count Type DebitCardProductCountOutputType
+   */
+
+  export type DebitCardProductCountOutputType = {
+    categories: number
+    bulletPoints: number
+    keyFeatures: number
+    offers: number
+    safetyFeatures: number
+    applications: number
+  }
+
+  export type DebitCardProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    categories?: boolean | DebitCardProductCountOutputTypeCountCategoriesArgs
+    bulletPoints?: boolean | DebitCardProductCountOutputTypeCountBulletPointsArgs
+    keyFeatures?: boolean | DebitCardProductCountOutputTypeCountKeyFeaturesArgs
+    offers?: boolean | DebitCardProductCountOutputTypeCountOffersArgs
+    safetyFeatures?: boolean | DebitCardProductCountOutputTypeCountSafetyFeaturesArgs
+    applications?: boolean | DebitCardProductCountOutputTypeCountApplicationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DebitCardProductCountOutputType without action
+   */
+  export type DebitCardProductCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProductCountOutputType
+     */
+    select?: DebitCardProductCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DebitCardProductCountOutputType without action
+   */
+  export type DebitCardProductCountOutputTypeCountCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
+  }
+
+  /**
+   * DebitCardProductCountOutputType without action
+   */
+  export type DebitCardProductCountOutputTypeCountBulletPointsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DebitCardBulletWhereInput
+  }
+
+  /**
+   * DebitCardProductCountOutputType without action
+   */
+  export type DebitCardProductCountOutputTypeCountKeyFeaturesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DebitCardKeyFeatureWhereInput
+  }
+
+  /**
+   * DebitCardProductCountOutputType without action
+   */
+  export type DebitCardProductCountOutputTypeCountOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DebitCardOfferWhereInput
+  }
+
+  /**
+   * DebitCardProductCountOutputType without action
+   */
+  export type DebitCardProductCountOutputTypeCountSafetyFeaturesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DebitCardSafetyFeatureWhereInput
+  }
+
+  /**
+   * DebitCardProductCountOutputType without action
+   */
+  export type DebitCardProductCountOutputTypeCountApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ApplicationWhereInput
   }
 
 
@@ -4658,6 +5208,7 @@ export namespace Prisma {
     eligibilityInquiries?: boolean | User$eligibilityInquiriesArgs<ExtArgs>
     createdLoans?: boolean | User$createdLoansArgs<ExtArgs>
     createdCards?: boolean | User$createdCardsArgs<ExtArgs>
+    createdDebitCards?: boolean | User$createdDebitCardsArgs<ExtArgs>
     createdInsurances?: boolean | User$createdInsurancesArgs<ExtArgs>
     createdApps?: boolean | User$createdAppsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -4847,6 +5398,7 @@ export namespace Prisma {
     eligibilityInquiries?: boolean | User$eligibilityInquiriesArgs<ExtArgs>
     createdLoans?: boolean | User$createdLoansArgs<ExtArgs>
     createdCards?: boolean | User$createdCardsArgs<ExtArgs>
+    createdDebitCards?: boolean | User$createdDebitCardsArgs<ExtArgs>
     createdInsurances?: boolean | User$createdInsurancesArgs<ExtArgs>
     createdApps?: boolean | User$createdAppsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -4862,6 +5414,7 @@ export namespace Prisma {
       eligibilityInquiries: Prisma.$EligibilityInquiryPayload<ExtArgs>[]
       createdLoans: Prisma.$LoanProductPayload<ExtArgs>[]
       createdCards: Prisma.$CreditCardProductPayload<ExtArgs>[]
+      createdDebitCards: Prisma.$DebitCardProductPayload<ExtArgs>[]
       createdInsurances: Prisma.$InsuranceProductPayload<ExtArgs>[]
       createdApps: Prisma.$AppProductPayload<ExtArgs>[]
     }
@@ -5321,6 +5874,7 @@ export namespace Prisma {
     eligibilityInquiries<T extends User$eligibilityInquiriesArgs<ExtArgs> = {}>(args?: Subset<T, User$eligibilityInquiriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EligibilityInquiryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     createdLoans<T extends User$createdLoansArgs<ExtArgs> = {}>(args?: Subset<T, User$createdLoansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     createdCards<T extends User$createdCardsArgs<ExtArgs> = {}>(args?: Subset<T, User$createdCardsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreditCardProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    createdDebitCards<T extends User$createdDebitCardsArgs<ExtArgs> = {}>(args?: Subset<T, User$createdDebitCardsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     createdInsurances<T extends User$createdInsurancesArgs<ExtArgs> = {}>(args?: Subset<T, User$createdInsurancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InsuranceProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     createdApps<T extends User$createdAppsArgs<ExtArgs> = {}>(args?: Subset<T, User$createdAppsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AppProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -5908,6 +6462,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CreditCardProductScalarFieldEnum | CreditCardProductScalarFieldEnum[]
+  }
+
+  /**
+   * User.createdDebitCards
+   */
+  export type User$createdDebitCardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+    where?: DebitCardProductWhereInput
+    orderBy?: DebitCardProductOrderByWithRelationInput | DebitCardProductOrderByWithRelationInput[]
+    cursor?: DebitCardProductWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DebitCardProductScalarFieldEnum | DebitCardProductScalarFieldEnum[]
   }
 
   /**
@@ -7366,6 +7944,7 @@ export namespace Prisma {
     userId: number | null
     loanId: number | null
     cardId: number | null
+    debitCardId: number | null
     insuranceId: number | null
     categoryId: number | null
     amount: number | null
@@ -7409,6 +7988,7 @@ export namespace Prisma {
     userId: number | null
     loanId: number | null
     cardId: number | null
+    debitCardId: number | null
     insuranceId: number | null
     categoryId: number | null
     amount: number | null
@@ -7454,6 +8034,7 @@ export namespace Prisma {
     type: $Enums.ProductType | null
     loanId: number | null
     cardId: number | null
+    debitCardId: number | null
     insuranceId: number | null
     categoryId: number | null
     categorySlug: string | null
@@ -7579,6 +8160,7 @@ export namespace Prisma {
     type: $Enums.ProductType | null
     loanId: number | null
     cardId: number | null
+    debitCardId: number | null
     insuranceId: number | null
     categoryId: number | null
     categorySlug: string | null
@@ -7704,6 +8286,7 @@ export namespace Prisma {
     type: number
     loanId: number
     cardId: number
+    debitCardId: number
     insuranceId: number
     categoryId: number
     categorySlug: number
@@ -7834,6 +8417,7 @@ export namespace Prisma {
     userId?: true
     loanId?: true
     cardId?: true
+    debitCardId?: true
     insuranceId?: true
     categoryId?: true
     amount?: true
@@ -7877,6 +8461,7 @@ export namespace Prisma {
     userId?: true
     loanId?: true
     cardId?: true
+    debitCardId?: true
     insuranceId?: true
     categoryId?: true
     amount?: true
@@ -7922,6 +8507,7 @@ export namespace Prisma {
     type?: true
     loanId?: true
     cardId?: true
+    debitCardId?: true
     insuranceId?: true
     categoryId?: true
     categorySlug?: true
@@ -8047,6 +8633,7 @@ export namespace Prisma {
     type?: true
     loanId?: true
     cardId?: true
+    debitCardId?: true
     insuranceId?: true
     categoryId?: true
     categorySlug?: true
@@ -8172,6 +8759,7 @@ export namespace Prisma {
     type?: true
     loanId?: true
     cardId?: true
+    debitCardId?: true
     insuranceId?: true
     categoryId?: true
     categorySlug?: true
@@ -8389,6 +8977,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     loanId: number | null
     cardId: number | null
+    debitCardId: number | null
     insuranceId: number | null
     categoryId: number | null
     categorySlug: string | null
@@ -8538,6 +9127,7 @@ export namespace Prisma {
     type?: boolean
     loanId?: boolean
     cardId?: boolean
+    debitCardId?: boolean
     insuranceId?: boolean
     categoryId?: boolean
     categorySlug?: boolean
@@ -8662,6 +9252,7 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
     loan?: boolean | Application$loanArgs<ExtArgs>
     card?: boolean | Application$cardArgs<ExtArgs>
+    debitCard?: boolean | Application$debitCardArgs<ExtArgs>
     insurance?: boolean | Application$insuranceArgs<ExtArgs>
   }, ExtArgs["result"]["application"]>
 
@@ -8672,6 +9263,7 @@ export namespace Prisma {
     type?: boolean
     loanId?: boolean
     cardId?: boolean
+    debitCardId?: boolean
     insuranceId?: boolean
     categoryId?: boolean
     categorySlug?: boolean
@@ -8796,6 +9388,7 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
     loan?: boolean | Application$loanArgs<ExtArgs>
     card?: boolean | Application$cardArgs<ExtArgs>
+    debitCard?: boolean | Application$debitCardArgs<ExtArgs>
     insurance?: boolean | Application$insuranceArgs<ExtArgs>
   }, ExtArgs["result"]["application"]>
 
@@ -8806,6 +9399,7 @@ export namespace Prisma {
     type?: boolean
     loanId?: boolean
     cardId?: boolean
+    debitCardId?: boolean
     insuranceId?: boolean
     categoryId?: boolean
     categorySlug?: boolean
@@ -8930,6 +9524,7 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
     loan?: boolean | Application$loanArgs<ExtArgs>
     card?: boolean | Application$cardArgs<ExtArgs>
+    debitCard?: boolean | Application$debitCardArgs<ExtArgs>
     insurance?: boolean | Application$insuranceArgs<ExtArgs>
   }, ExtArgs["result"]["application"]>
 
@@ -8940,6 +9535,7 @@ export namespace Prisma {
     type?: boolean
     loanId?: boolean
     cardId?: boolean
+    debitCardId?: boolean
     insuranceId?: boolean
     categoryId?: boolean
     categorySlug?: boolean
@@ -9063,23 +9659,26 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ApplicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "referenceNo" | "userId" | "type" | "loanId" | "cardId" | "insuranceId" | "categoryId" | "categorySlug" | "categoryName" | "loanSlug" | "status" | "amount" | "notes" | "productDetails" | "applicantName" | "email" | "phone" | "panNumber" | "dob" | "employmentType" | "annualIncome" | "monthlyIncome" | "employerName" | "workExperience" | "residenceType" | "currentAddress" | "city" | "state" | "pincode" | "education" | "loanPurpose" | "propertyAddress" | "propertyType" | "constructionStatus" | "propertyValue" | "downPayment" | "existingLoanOnProperty" | "registeredBusinessName" | "businessType" | "yearsInOperation" | "businessTurnover" | "businessPurpose" | "currentLoansAmount" | "businessPan" | "gstNumber" | "industryType" | "studentName" | "courseName" | "universityName" | "courseDuration" | "totalCourseFees" | "parentIncome" | "admissionStatus" | "admissionSecured" | "vehicleMake" | "vehicleModel" | "vehicleVariant" | "exShowroomPrice" | "vehicleType" | "vehicleUsage" | "manufactureYear" | "registrationYear" | "currentMarketValue" | "kilometersDriven" | "engineCapacity" | "engineCondition" | "exchangeExisting" | "registrationCity" | "rcAvailable" | "sellerInfo" | "vehicleCondition" | "professionalQualification" | "yearsOfPractice" | "clinicOfficeAddress" | "professionalIncome" | "professionalPurpose" | "registrationNumber" | "securityType" | "securityValue" | "portfolioDetails" | "desiredLTV" | "dematAccountNo" | "brokerName" | "currentLenderName" | "outstandingAmount" | "currentInterestRate" | "remainingTenure" | "currentEMI" | "cibilScore" | "transferReason" | "desiredCreditLimit" | "hasExistingCreditCards" | "existingBankingRelationship" | "existingCreditCards" | "cardType" | "studentId" | "collegeUniversityName" | "courseNameForCard" | "collegeName" | "yearOfStudy" | "parentAnnualIncome" | "fixedDepositAmount" | "fdAmount" | "fdTenure" | "fdAccountNumber" | "primaryCardholderName" | "relationshipWithPrimary" | "addonApplicantDob" | "businessRegistrationNumber" | "businessRegistrationNo" | "businessTurnoverForCard" | "businessAddressForCard" | "passportNumber" | "visaType" | "visaValidity" | "overseasAddress" | "overseasIncome" | "nreNroDetails" | "nreNroAccountDetails" | "approximateNetWorth" | "majorInvestments" | "desiredTenure" | "documents" | "feedback" | "createdAt" | "updatedAt", ExtArgs["result"]["application"]>
+  export type ApplicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "referenceNo" | "userId" | "type" | "loanId" | "cardId" | "debitCardId" | "insuranceId" | "categoryId" | "categorySlug" | "categoryName" | "loanSlug" | "status" | "amount" | "notes" | "productDetails" | "applicantName" | "email" | "phone" | "panNumber" | "dob" | "employmentType" | "annualIncome" | "monthlyIncome" | "employerName" | "workExperience" | "residenceType" | "currentAddress" | "city" | "state" | "pincode" | "education" | "loanPurpose" | "propertyAddress" | "propertyType" | "constructionStatus" | "propertyValue" | "downPayment" | "existingLoanOnProperty" | "registeredBusinessName" | "businessType" | "yearsInOperation" | "businessTurnover" | "businessPurpose" | "currentLoansAmount" | "businessPan" | "gstNumber" | "industryType" | "studentName" | "courseName" | "universityName" | "courseDuration" | "totalCourseFees" | "parentIncome" | "admissionStatus" | "admissionSecured" | "vehicleMake" | "vehicleModel" | "vehicleVariant" | "exShowroomPrice" | "vehicleType" | "vehicleUsage" | "manufactureYear" | "registrationYear" | "currentMarketValue" | "kilometersDriven" | "engineCapacity" | "engineCondition" | "exchangeExisting" | "registrationCity" | "rcAvailable" | "sellerInfo" | "vehicleCondition" | "professionalQualification" | "yearsOfPractice" | "clinicOfficeAddress" | "professionalIncome" | "professionalPurpose" | "registrationNumber" | "securityType" | "securityValue" | "portfolioDetails" | "desiredLTV" | "dematAccountNo" | "brokerName" | "currentLenderName" | "outstandingAmount" | "currentInterestRate" | "remainingTenure" | "currentEMI" | "cibilScore" | "transferReason" | "desiredCreditLimit" | "hasExistingCreditCards" | "existingBankingRelationship" | "existingCreditCards" | "cardType" | "studentId" | "collegeUniversityName" | "courseNameForCard" | "collegeName" | "yearOfStudy" | "parentAnnualIncome" | "fixedDepositAmount" | "fdAmount" | "fdTenure" | "fdAccountNumber" | "primaryCardholderName" | "relationshipWithPrimary" | "addonApplicantDob" | "businessRegistrationNumber" | "businessRegistrationNo" | "businessTurnoverForCard" | "businessAddressForCard" | "passportNumber" | "visaType" | "visaValidity" | "overseasAddress" | "overseasIncome" | "nreNroDetails" | "nreNroAccountDetails" | "approximateNetWorth" | "majorInvestments" | "desiredTenure" | "documents" | "feedback" | "createdAt" | "updatedAt", ExtArgs["result"]["application"]>
   export type ApplicationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     loan?: boolean | Application$loanArgs<ExtArgs>
     card?: boolean | Application$cardArgs<ExtArgs>
+    debitCard?: boolean | Application$debitCardArgs<ExtArgs>
     insurance?: boolean | Application$insuranceArgs<ExtArgs>
   }
   export type ApplicationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     loan?: boolean | Application$loanArgs<ExtArgs>
     card?: boolean | Application$cardArgs<ExtArgs>
+    debitCard?: boolean | Application$debitCardArgs<ExtArgs>
     insurance?: boolean | Application$insuranceArgs<ExtArgs>
   }
   export type ApplicationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     loan?: boolean | Application$loanArgs<ExtArgs>
     card?: boolean | Application$cardArgs<ExtArgs>
+    debitCard?: boolean | Application$debitCardArgs<ExtArgs>
     insurance?: boolean | Application$insuranceArgs<ExtArgs>
   }
 
@@ -9089,6 +9688,7 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
       loan: Prisma.$LoanProductPayload<ExtArgs> | null
       card: Prisma.$CreditCardProductPayload<ExtArgs> | null
+      debitCard: Prisma.$DebitCardProductPayload<ExtArgs> | null
       insurance: Prisma.$InsuranceProductPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -9098,6 +9698,7 @@ export namespace Prisma {
       type: $Enums.ProductType
       loanId: number | null
       cardId: number | null
+      debitCardId: number | null
       insuranceId: number | null
       categoryId: number | null
       categorySlug: string | null
@@ -9616,6 +10217,7 @@ export namespace Prisma {
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     loan<T extends Application$loanArgs<ExtArgs> = {}>(args?: Subset<T, Application$loanArgs<ExtArgs>>): Prisma__LoanProductClient<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     card<T extends Application$cardArgs<ExtArgs> = {}>(args?: Subset<T, Application$cardArgs<ExtArgs>>): Prisma__CreditCardProductClient<$Result.GetResult<Prisma.$CreditCardProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    debitCard<T extends Application$debitCardArgs<ExtArgs> = {}>(args?: Subset<T, Application$debitCardArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     insurance<T extends Application$insuranceArgs<ExtArgs> = {}>(args?: Subset<T, Application$insuranceArgs<ExtArgs>>): Prisma__InsuranceProductClient<$Result.GetResult<Prisma.$InsuranceProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9652,6 +10254,7 @@ export namespace Prisma {
     readonly type: FieldRef<"Application", 'ProductType'>
     readonly loanId: FieldRef<"Application", 'Int'>
     readonly cardId: FieldRef<"Application", 'Int'>
+    readonly debitCardId: FieldRef<"Application", 'Int'>
     readonly insuranceId: FieldRef<"Application", 'Int'>
     readonly categoryId: FieldRef<"Application", 'Int'>
     readonly categorySlug: FieldRef<"Application", 'String'>
@@ -10207,6 +10810,25 @@ export namespace Prisma {
   }
 
   /**
+   * Application.debitCard
+   */
+  export type Application$debitCardArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+    where?: DebitCardProductWhereInput
+  }
+
+  /**
    * Application.insurance
    */
   export type Application$insuranceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10474,6 +11096,7 @@ export namespace Prisma {
     children?: boolean | Category$childrenArgs<ExtArgs>
     loans?: boolean | Category$loansArgs<ExtArgs>
     creditCards?: boolean | Category$creditCardsArgs<ExtArgs>
+    debitCards?: boolean | Category$debitCardsArgs<ExtArgs>
     insurances?: boolean | Category$insurancesArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
@@ -10519,6 +11142,7 @@ export namespace Prisma {
     children?: boolean | Category$childrenArgs<ExtArgs>
     loans?: boolean | Category$loansArgs<ExtArgs>
     creditCards?: boolean | Category$creditCardsArgs<ExtArgs>
+    debitCards?: boolean | Category$debitCardsArgs<ExtArgs>
     insurances?: boolean | Category$insurancesArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -10536,6 +11160,7 @@ export namespace Prisma {
       children: Prisma.$CategoryPayload<ExtArgs>[]
       loans: Prisma.$LoanProductPayload<ExtArgs>[]
       creditCards: Prisma.$CreditCardProductPayload<ExtArgs>[]
+      debitCards: Prisma.$DebitCardProductPayload<ExtArgs>[]
       insurances: Prisma.$InsuranceProductPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -10945,6 +11570,7 @@ export namespace Prisma {
     children<T extends Category$childrenArgs<ExtArgs> = {}>(args?: Subset<T, Category$childrenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     loans<T extends Category$loansArgs<ExtArgs> = {}>(args?: Subset<T, Category$loansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     creditCards<T extends Category$creditCardsArgs<ExtArgs> = {}>(args?: Subset<T, Category$creditCardsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreditCardProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    debitCards<T extends Category$debitCardsArgs<ExtArgs> = {}>(args?: Subset<T, Category$debitCardsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     insurances<T extends Category$insurancesArgs<ExtArgs> = {}>(args?: Subset<T, Category$insurancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InsuranceProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -11467,6 +12093,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CreditCardProductScalarFieldEnum | CreditCardProductScalarFieldEnum[]
+  }
+
+  /**
+   * Category.debitCards
+   */
+  export type Category$debitCardsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+    where?: DebitCardProductWhereInput
+    orderBy?: DebitCardProductOrderByWithRelationInput | DebitCardProductOrderByWithRelationInput[]
+    cursor?: DebitCardProductWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DebitCardProductScalarFieldEnum | DebitCardProductScalarFieldEnum[]
   }
 
   /**
@@ -42210,6 +42860,6268 @@ export namespace Prisma {
 
 
   /**
+   * Model DebitCardProduct
+   */
+
+  export type AggregateDebitCardProduct = {
+    _count: DebitCardProductCountAggregateOutputType | null
+    _avg: DebitCardProductAvgAggregateOutputType | null
+    _sum: DebitCardProductSumAggregateOutputType | null
+    _min: DebitCardProductMinAggregateOutputType | null
+    _max: DebitCardProductMaxAggregateOutputType | null
+  }
+
+  export type DebitCardProductAvgAggregateOutputType = {
+    id: number | null
+    annualFee: number | null
+    issuanceFee: number | null
+    replacementFee: number | null
+    atmWithdrawalLimit: number | null
+    posLimit: number | null
+    onlineLimit: number | null
+    cashbackRate: number | null
+    minimumBalance: number | null
+    minimumAge: number | null
+    maximumAge: number | null
+    rating: number | null
+    createdById: number | null
+  }
+
+  export type DebitCardProductSumAggregateOutputType = {
+    id: number | null
+    annualFee: number | null
+    issuanceFee: number | null
+    replacementFee: number | null
+    atmWithdrawalLimit: number | null
+    posLimit: number | null
+    onlineLimit: number | null
+    cashbackRate: number | null
+    minimumBalance: number | null
+    minimumAge: number | null
+    maximumAge: number | null
+    rating: number | null
+    createdById: number | null
+  }
+
+  export type DebitCardProductMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    slug: string | null
+    bankName: string | null
+    imageUrl: string | null
+    bankLogoUrl: string | null
+    accountType: string | null
+    cardNetwork: string | null
+    cardType: string | null
+    annualFee: number | null
+    issuanceFee: number | null
+    replacementFee: number | null
+    atmWithdrawalLimit: number | null
+    posLimit: number | null
+    onlineLimit: number | null
+    internationalUsage: boolean | null
+    contactless: boolean | null
+    loungeAccess: boolean | null
+    loungeAccessDetails: string | null
+    cashbackRate: number | null
+    rewardPoints: boolean | null
+    fuelSurcharge: boolean | null
+    accidentInsurance: boolean | null
+    purchaseProtection: boolean | null
+    fraudProtection: boolean | null
+    zeroBilling: boolean | null
+    minimumBalance: number | null
+    minimumAge: number | null
+    maximumAge: number | null
+    rating: number | null
+    recommended: boolean | null
+    bestFor: string | null
+    keyStatement: string | null
+    videoUrl: string | null
+    termsConditionsUrl: string | null
+    applyUrl: string | null
+    createdById: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DebitCardProductMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    slug: string | null
+    bankName: string | null
+    imageUrl: string | null
+    bankLogoUrl: string | null
+    accountType: string | null
+    cardNetwork: string | null
+    cardType: string | null
+    annualFee: number | null
+    issuanceFee: number | null
+    replacementFee: number | null
+    atmWithdrawalLimit: number | null
+    posLimit: number | null
+    onlineLimit: number | null
+    internationalUsage: boolean | null
+    contactless: boolean | null
+    loungeAccess: boolean | null
+    loungeAccessDetails: string | null
+    cashbackRate: number | null
+    rewardPoints: boolean | null
+    fuelSurcharge: boolean | null
+    accidentInsurance: boolean | null
+    purchaseProtection: boolean | null
+    fraudProtection: boolean | null
+    zeroBilling: boolean | null
+    minimumBalance: number | null
+    minimumAge: number | null
+    maximumAge: number | null
+    rating: number | null
+    recommended: boolean | null
+    bestFor: string | null
+    keyStatement: string | null
+    videoUrl: string | null
+    termsConditionsUrl: string | null
+    applyUrl: string | null
+    createdById: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DebitCardProductCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    bankName: number
+    imageUrl: number
+    bankLogoUrl: number
+    accountType: number
+    cardNetwork: number
+    cardType: number
+    annualFee: number
+    issuanceFee: number
+    replacementFee: number
+    atmWithdrawalLimit: number
+    posLimit: number
+    onlineLimit: number
+    internationalUsage: number
+    contactless: number
+    loungeAccess: number
+    loungeAccessDetails: number
+    cashbackRate: number
+    rewardPoints: number
+    fuelSurcharge: number
+    accidentInsurance: number
+    purchaseProtection: number
+    fraudProtection: number
+    zeroBilling: number
+    minimumBalance: number
+    minimumAge: number
+    maximumAge: number
+    rating: number
+    recommended: number
+    bestFor: number
+    keyStatement: number
+    videoUrl: number
+    termsConditionsUrl: number
+    applyUrl: number
+    createdById: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DebitCardProductAvgAggregateInputType = {
+    id?: true
+    annualFee?: true
+    issuanceFee?: true
+    replacementFee?: true
+    atmWithdrawalLimit?: true
+    posLimit?: true
+    onlineLimit?: true
+    cashbackRate?: true
+    minimumBalance?: true
+    minimumAge?: true
+    maximumAge?: true
+    rating?: true
+    createdById?: true
+  }
+
+  export type DebitCardProductSumAggregateInputType = {
+    id?: true
+    annualFee?: true
+    issuanceFee?: true
+    replacementFee?: true
+    atmWithdrawalLimit?: true
+    posLimit?: true
+    onlineLimit?: true
+    cashbackRate?: true
+    minimumBalance?: true
+    minimumAge?: true
+    maximumAge?: true
+    rating?: true
+    createdById?: true
+  }
+
+  export type DebitCardProductMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    bankName?: true
+    imageUrl?: true
+    bankLogoUrl?: true
+    accountType?: true
+    cardNetwork?: true
+    cardType?: true
+    annualFee?: true
+    issuanceFee?: true
+    replacementFee?: true
+    atmWithdrawalLimit?: true
+    posLimit?: true
+    onlineLimit?: true
+    internationalUsage?: true
+    contactless?: true
+    loungeAccess?: true
+    loungeAccessDetails?: true
+    cashbackRate?: true
+    rewardPoints?: true
+    fuelSurcharge?: true
+    accidentInsurance?: true
+    purchaseProtection?: true
+    fraudProtection?: true
+    zeroBilling?: true
+    minimumBalance?: true
+    minimumAge?: true
+    maximumAge?: true
+    rating?: true
+    recommended?: true
+    bestFor?: true
+    keyStatement?: true
+    videoUrl?: true
+    termsConditionsUrl?: true
+    applyUrl?: true
+    createdById?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DebitCardProductMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    bankName?: true
+    imageUrl?: true
+    bankLogoUrl?: true
+    accountType?: true
+    cardNetwork?: true
+    cardType?: true
+    annualFee?: true
+    issuanceFee?: true
+    replacementFee?: true
+    atmWithdrawalLimit?: true
+    posLimit?: true
+    onlineLimit?: true
+    internationalUsage?: true
+    contactless?: true
+    loungeAccess?: true
+    loungeAccessDetails?: true
+    cashbackRate?: true
+    rewardPoints?: true
+    fuelSurcharge?: true
+    accidentInsurance?: true
+    purchaseProtection?: true
+    fraudProtection?: true
+    zeroBilling?: true
+    minimumBalance?: true
+    minimumAge?: true
+    maximumAge?: true
+    rating?: true
+    recommended?: true
+    bestFor?: true
+    keyStatement?: true
+    videoUrl?: true
+    termsConditionsUrl?: true
+    applyUrl?: true
+    createdById?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DebitCardProductCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    bankName?: true
+    imageUrl?: true
+    bankLogoUrl?: true
+    accountType?: true
+    cardNetwork?: true
+    cardType?: true
+    annualFee?: true
+    issuanceFee?: true
+    replacementFee?: true
+    atmWithdrawalLimit?: true
+    posLimit?: true
+    onlineLimit?: true
+    internationalUsage?: true
+    contactless?: true
+    loungeAccess?: true
+    loungeAccessDetails?: true
+    cashbackRate?: true
+    rewardPoints?: true
+    fuelSurcharge?: true
+    accidentInsurance?: true
+    purchaseProtection?: true
+    fraudProtection?: true
+    zeroBilling?: true
+    minimumBalance?: true
+    minimumAge?: true
+    maximumAge?: true
+    rating?: true
+    recommended?: true
+    bestFor?: true
+    keyStatement?: true
+    videoUrl?: true
+    termsConditionsUrl?: true
+    applyUrl?: true
+    createdById?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DebitCardProductAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DebitCardProduct to aggregate.
+     */
+    where?: DebitCardProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardProducts to fetch.
+     */
+    orderBy?: DebitCardProductOrderByWithRelationInput | DebitCardProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DebitCardProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardProducts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardProducts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DebitCardProducts
+    **/
+    _count?: true | DebitCardProductCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DebitCardProductAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DebitCardProductSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DebitCardProductMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DebitCardProductMaxAggregateInputType
+  }
+
+  export type GetDebitCardProductAggregateType<T extends DebitCardProductAggregateArgs> = {
+        [P in keyof T & keyof AggregateDebitCardProduct]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDebitCardProduct[P]>
+      : GetScalarType<T[P], AggregateDebitCardProduct[P]>
+  }
+
+
+
+
+  export type DebitCardProductGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DebitCardProductWhereInput
+    orderBy?: DebitCardProductOrderByWithAggregationInput | DebitCardProductOrderByWithAggregationInput[]
+    by: DebitCardProductScalarFieldEnum[] | DebitCardProductScalarFieldEnum
+    having?: DebitCardProductScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DebitCardProductCountAggregateInputType | true
+    _avg?: DebitCardProductAvgAggregateInputType
+    _sum?: DebitCardProductSumAggregateInputType
+    _min?: DebitCardProductMinAggregateInputType
+    _max?: DebitCardProductMaxAggregateInputType
+  }
+
+  export type DebitCardProductGroupByOutputType = {
+    id: number
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl: string | null
+    accountType: string | null
+    cardNetwork: string
+    cardType: string | null
+    annualFee: number
+    issuanceFee: number | null
+    replacementFee: number | null
+    atmWithdrawalLimit: number | null
+    posLimit: number | null
+    onlineLimit: number | null
+    internationalUsage: boolean
+    contactless: boolean
+    loungeAccess: boolean
+    loungeAccessDetails: string | null
+    cashbackRate: number | null
+    rewardPoints: boolean
+    fuelSurcharge: boolean
+    accidentInsurance: boolean
+    purchaseProtection: boolean
+    fraudProtection: boolean
+    zeroBilling: boolean
+    minimumBalance: number | null
+    minimumAge: number | null
+    maximumAge: number | null
+    rating: number
+    recommended: boolean
+    bestFor: string | null
+    keyStatement: string | null
+    videoUrl: string | null
+    termsConditionsUrl: string | null
+    applyUrl: string | null
+    createdById: number | null
+    createdAt: Date
+    updatedAt: Date
+    _count: DebitCardProductCountAggregateOutputType | null
+    _avg: DebitCardProductAvgAggregateOutputType | null
+    _sum: DebitCardProductSumAggregateOutputType | null
+    _min: DebitCardProductMinAggregateOutputType | null
+    _max: DebitCardProductMaxAggregateOutputType | null
+  }
+
+  type GetDebitCardProductGroupByPayload<T extends DebitCardProductGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DebitCardProductGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DebitCardProductGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DebitCardProductGroupByOutputType[P]>
+            : GetScalarType<T[P], DebitCardProductGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DebitCardProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    bankName?: boolean
+    imageUrl?: boolean
+    bankLogoUrl?: boolean
+    accountType?: boolean
+    cardNetwork?: boolean
+    cardType?: boolean
+    annualFee?: boolean
+    issuanceFee?: boolean
+    replacementFee?: boolean
+    atmWithdrawalLimit?: boolean
+    posLimit?: boolean
+    onlineLimit?: boolean
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: boolean
+    cashbackRate?: boolean
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: boolean
+    minimumAge?: boolean
+    maximumAge?: boolean
+    rating?: boolean
+    recommended?: boolean
+    bestFor?: boolean
+    keyStatement?: boolean
+    videoUrl?: boolean
+    termsConditionsUrl?: boolean
+    applyUrl?: boolean
+    createdById?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    categories?: boolean | DebitCardProduct$categoriesArgs<ExtArgs>
+    bulletPoints?: boolean | DebitCardProduct$bulletPointsArgs<ExtArgs>
+    keyFeatures?: boolean | DebitCardProduct$keyFeaturesArgs<ExtArgs>
+    offers?: boolean | DebitCardProduct$offersArgs<ExtArgs>
+    safetyFeatures?: boolean | DebitCardProduct$safetyFeaturesArgs<ExtArgs>
+    applications?: boolean | DebitCardProduct$applicationsArgs<ExtArgs>
+    createdBy?: boolean | DebitCardProduct$createdByArgs<ExtArgs>
+    _count?: boolean | DebitCardProductCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardProduct"]>
+
+  export type DebitCardProductSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    bankName?: boolean
+    imageUrl?: boolean
+    bankLogoUrl?: boolean
+    accountType?: boolean
+    cardNetwork?: boolean
+    cardType?: boolean
+    annualFee?: boolean
+    issuanceFee?: boolean
+    replacementFee?: boolean
+    atmWithdrawalLimit?: boolean
+    posLimit?: boolean
+    onlineLimit?: boolean
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: boolean
+    cashbackRate?: boolean
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: boolean
+    minimumAge?: boolean
+    maximumAge?: boolean
+    rating?: boolean
+    recommended?: boolean
+    bestFor?: boolean
+    keyStatement?: boolean
+    videoUrl?: boolean
+    termsConditionsUrl?: boolean
+    applyUrl?: boolean
+    createdById?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    createdBy?: boolean | DebitCardProduct$createdByArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardProduct"]>
+
+  export type DebitCardProductSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    bankName?: boolean
+    imageUrl?: boolean
+    bankLogoUrl?: boolean
+    accountType?: boolean
+    cardNetwork?: boolean
+    cardType?: boolean
+    annualFee?: boolean
+    issuanceFee?: boolean
+    replacementFee?: boolean
+    atmWithdrawalLimit?: boolean
+    posLimit?: boolean
+    onlineLimit?: boolean
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: boolean
+    cashbackRate?: boolean
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: boolean
+    minimumAge?: boolean
+    maximumAge?: boolean
+    rating?: boolean
+    recommended?: boolean
+    bestFor?: boolean
+    keyStatement?: boolean
+    videoUrl?: boolean
+    termsConditionsUrl?: boolean
+    applyUrl?: boolean
+    createdById?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    createdBy?: boolean | DebitCardProduct$createdByArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardProduct"]>
+
+  export type DebitCardProductSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    bankName?: boolean
+    imageUrl?: boolean
+    bankLogoUrl?: boolean
+    accountType?: boolean
+    cardNetwork?: boolean
+    cardType?: boolean
+    annualFee?: boolean
+    issuanceFee?: boolean
+    replacementFee?: boolean
+    atmWithdrawalLimit?: boolean
+    posLimit?: boolean
+    onlineLimit?: boolean
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: boolean
+    cashbackRate?: boolean
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: boolean
+    minimumAge?: boolean
+    maximumAge?: boolean
+    rating?: boolean
+    recommended?: boolean
+    bestFor?: boolean
+    keyStatement?: boolean
+    videoUrl?: boolean
+    termsConditionsUrl?: boolean
+    applyUrl?: boolean
+    createdById?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DebitCardProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "bankName" | "imageUrl" | "bankLogoUrl" | "accountType" | "cardNetwork" | "cardType" | "annualFee" | "issuanceFee" | "replacementFee" | "atmWithdrawalLimit" | "posLimit" | "onlineLimit" | "internationalUsage" | "contactless" | "loungeAccess" | "loungeAccessDetails" | "cashbackRate" | "rewardPoints" | "fuelSurcharge" | "accidentInsurance" | "purchaseProtection" | "fraudProtection" | "zeroBilling" | "minimumBalance" | "minimumAge" | "maximumAge" | "rating" | "recommended" | "bestFor" | "keyStatement" | "videoUrl" | "termsConditionsUrl" | "applyUrl" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["debitCardProduct"]>
+  export type DebitCardProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    categories?: boolean | DebitCardProduct$categoriesArgs<ExtArgs>
+    bulletPoints?: boolean | DebitCardProduct$bulletPointsArgs<ExtArgs>
+    keyFeatures?: boolean | DebitCardProduct$keyFeaturesArgs<ExtArgs>
+    offers?: boolean | DebitCardProduct$offersArgs<ExtArgs>
+    safetyFeatures?: boolean | DebitCardProduct$safetyFeaturesArgs<ExtArgs>
+    applications?: boolean | DebitCardProduct$applicationsArgs<ExtArgs>
+    createdBy?: boolean | DebitCardProduct$createdByArgs<ExtArgs>
+    _count?: boolean | DebitCardProductCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DebitCardProductIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    createdBy?: boolean | DebitCardProduct$createdByArgs<ExtArgs>
+  }
+  export type DebitCardProductIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    createdBy?: boolean | DebitCardProduct$createdByArgs<ExtArgs>
+  }
+
+  export type $DebitCardProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DebitCardProduct"
+    objects: {
+      categories: Prisma.$CategoryPayload<ExtArgs>[]
+      bulletPoints: Prisma.$DebitCardBulletPayload<ExtArgs>[]
+      keyFeatures: Prisma.$DebitCardKeyFeaturePayload<ExtArgs>[]
+      offers: Prisma.$DebitCardOfferPayload<ExtArgs>[]
+      safetyFeatures: Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>[]
+      applications: Prisma.$ApplicationPayload<ExtArgs>[]
+      createdBy: Prisma.$UserPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      slug: string
+      bankName: string
+      imageUrl: string
+      bankLogoUrl: string | null
+      accountType: string | null
+      cardNetwork: string
+      cardType: string | null
+      annualFee: number
+      issuanceFee: number | null
+      replacementFee: number | null
+      atmWithdrawalLimit: number | null
+      posLimit: number | null
+      onlineLimit: number | null
+      internationalUsage: boolean
+      contactless: boolean
+      loungeAccess: boolean
+      loungeAccessDetails: string | null
+      cashbackRate: number | null
+      rewardPoints: boolean
+      fuelSurcharge: boolean
+      accidentInsurance: boolean
+      purchaseProtection: boolean
+      fraudProtection: boolean
+      zeroBilling: boolean
+      minimumBalance: number | null
+      minimumAge: number | null
+      maximumAge: number | null
+      rating: number
+      recommended: boolean
+      bestFor: string | null
+      keyStatement: string | null
+      videoUrl: string | null
+      termsConditionsUrl: string | null
+      applyUrl: string | null
+      createdById: number | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["debitCardProduct"]>
+    composites: {}
+  }
+
+  type DebitCardProductGetPayload<S extends boolean | null | undefined | DebitCardProductDefaultArgs> = $Result.GetResult<Prisma.$DebitCardProductPayload, S>
+
+  type DebitCardProductCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DebitCardProductFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DebitCardProductCountAggregateInputType | true
+    }
+
+  export interface DebitCardProductDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DebitCardProduct'], meta: { name: 'DebitCardProduct' } }
+    /**
+     * Find zero or one DebitCardProduct that matches the filter.
+     * @param {DebitCardProductFindUniqueArgs} args - Arguments to find a DebitCardProduct
+     * @example
+     * // Get one DebitCardProduct
+     * const debitCardProduct = await prisma.debitCardProduct.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DebitCardProductFindUniqueArgs>(args: SelectSubset<T, DebitCardProductFindUniqueArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DebitCardProduct that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DebitCardProductFindUniqueOrThrowArgs} args - Arguments to find a DebitCardProduct
+     * @example
+     * // Get one DebitCardProduct
+     * const debitCardProduct = await prisma.debitCardProduct.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DebitCardProductFindUniqueOrThrowArgs>(args: SelectSubset<T, DebitCardProductFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DebitCardProduct that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardProductFindFirstArgs} args - Arguments to find a DebitCardProduct
+     * @example
+     * // Get one DebitCardProduct
+     * const debitCardProduct = await prisma.debitCardProduct.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DebitCardProductFindFirstArgs>(args?: SelectSubset<T, DebitCardProductFindFirstArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DebitCardProduct that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardProductFindFirstOrThrowArgs} args - Arguments to find a DebitCardProduct
+     * @example
+     * // Get one DebitCardProduct
+     * const debitCardProduct = await prisma.debitCardProduct.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DebitCardProductFindFirstOrThrowArgs>(args?: SelectSubset<T, DebitCardProductFindFirstOrThrowArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DebitCardProducts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardProductFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DebitCardProducts
+     * const debitCardProducts = await prisma.debitCardProduct.findMany()
+     * 
+     * // Get first 10 DebitCardProducts
+     * const debitCardProducts = await prisma.debitCardProduct.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const debitCardProductWithIdOnly = await prisma.debitCardProduct.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DebitCardProductFindManyArgs>(args?: SelectSubset<T, DebitCardProductFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DebitCardProduct.
+     * @param {DebitCardProductCreateArgs} args - Arguments to create a DebitCardProduct.
+     * @example
+     * // Create one DebitCardProduct
+     * const DebitCardProduct = await prisma.debitCardProduct.create({
+     *   data: {
+     *     // ... data to create a DebitCardProduct
+     *   }
+     * })
+     * 
+     */
+    create<T extends DebitCardProductCreateArgs>(args: SelectSubset<T, DebitCardProductCreateArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DebitCardProducts.
+     * @param {DebitCardProductCreateManyArgs} args - Arguments to create many DebitCardProducts.
+     * @example
+     * // Create many DebitCardProducts
+     * const debitCardProduct = await prisma.debitCardProduct.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DebitCardProductCreateManyArgs>(args?: SelectSubset<T, DebitCardProductCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DebitCardProducts and returns the data saved in the database.
+     * @param {DebitCardProductCreateManyAndReturnArgs} args - Arguments to create many DebitCardProducts.
+     * @example
+     * // Create many DebitCardProducts
+     * const debitCardProduct = await prisma.debitCardProduct.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DebitCardProducts and only return the `id`
+     * const debitCardProductWithIdOnly = await prisma.debitCardProduct.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DebitCardProductCreateManyAndReturnArgs>(args?: SelectSubset<T, DebitCardProductCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DebitCardProduct.
+     * @param {DebitCardProductDeleteArgs} args - Arguments to delete one DebitCardProduct.
+     * @example
+     * // Delete one DebitCardProduct
+     * const DebitCardProduct = await prisma.debitCardProduct.delete({
+     *   where: {
+     *     // ... filter to delete one DebitCardProduct
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DebitCardProductDeleteArgs>(args: SelectSubset<T, DebitCardProductDeleteArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DebitCardProduct.
+     * @param {DebitCardProductUpdateArgs} args - Arguments to update one DebitCardProduct.
+     * @example
+     * // Update one DebitCardProduct
+     * const debitCardProduct = await prisma.debitCardProduct.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DebitCardProductUpdateArgs>(args: SelectSubset<T, DebitCardProductUpdateArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DebitCardProducts.
+     * @param {DebitCardProductDeleteManyArgs} args - Arguments to filter DebitCardProducts to delete.
+     * @example
+     * // Delete a few DebitCardProducts
+     * const { count } = await prisma.debitCardProduct.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DebitCardProductDeleteManyArgs>(args?: SelectSubset<T, DebitCardProductDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DebitCardProducts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardProductUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DebitCardProducts
+     * const debitCardProduct = await prisma.debitCardProduct.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DebitCardProductUpdateManyArgs>(args: SelectSubset<T, DebitCardProductUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DebitCardProducts and returns the data updated in the database.
+     * @param {DebitCardProductUpdateManyAndReturnArgs} args - Arguments to update many DebitCardProducts.
+     * @example
+     * // Update many DebitCardProducts
+     * const debitCardProduct = await prisma.debitCardProduct.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DebitCardProducts and only return the `id`
+     * const debitCardProductWithIdOnly = await prisma.debitCardProduct.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DebitCardProductUpdateManyAndReturnArgs>(args: SelectSubset<T, DebitCardProductUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DebitCardProduct.
+     * @param {DebitCardProductUpsertArgs} args - Arguments to update or create a DebitCardProduct.
+     * @example
+     * // Update or create a DebitCardProduct
+     * const debitCardProduct = await prisma.debitCardProduct.upsert({
+     *   create: {
+     *     // ... data to create a DebitCardProduct
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DebitCardProduct we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DebitCardProductUpsertArgs>(args: SelectSubset<T, DebitCardProductUpsertArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DebitCardProducts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardProductCountArgs} args - Arguments to filter DebitCardProducts to count.
+     * @example
+     * // Count the number of DebitCardProducts
+     * const count = await prisma.debitCardProduct.count({
+     *   where: {
+     *     // ... the filter for the DebitCardProducts we want to count
+     *   }
+     * })
+    **/
+    count<T extends DebitCardProductCountArgs>(
+      args?: Subset<T, DebitCardProductCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DebitCardProductCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DebitCardProduct.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardProductAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DebitCardProductAggregateArgs>(args: Subset<T, DebitCardProductAggregateArgs>): Prisma.PrismaPromise<GetDebitCardProductAggregateType<T>>
+
+    /**
+     * Group by DebitCardProduct.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardProductGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DebitCardProductGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DebitCardProductGroupByArgs['orderBy'] }
+        : { orderBy?: DebitCardProductGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DebitCardProductGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDebitCardProductGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DebitCardProduct model
+   */
+  readonly fields: DebitCardProductFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DebitCardProduct.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DebitCardProductClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    categories<T extends DebitCardProduct$categoriesArgs<ExtArgs> = {}>(args?: Subset<T, DebitCardProduct$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bulletPoints<T extends DebitCardProduct$bulletPointsArgs<ExtArgs> = {}>(args?: Subset<T, DebitCardProduct$bulletPointsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardBulletPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    keyFeatures<T extends DebitCardProduct$keyFeaturesArgs<ExtArgs> = {}>(args?: Subset<T, DebitCardProduct$keyFeaturesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardKeyFeaturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    offers<T extends DebitCardProduct$offersArgs<ExtArgs> = {}>(args?: Subset<T, DebitCardProduct$offersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    safetyFeatures<T extends DebitCardProduct$safetyFeaturesArgs<ExtArgs> = {}>(args?: Subset<T, DebitCardProduct$safetyFeaturesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    applications<T extends DebitCardProduct$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, DebitCardProduct$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    createdBy<T extends DebitCardProduct$createdByArgs<ExtArgs> = {}>(args?: Subset<T, DebitCardProduct$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DebitCardProduct model
+   */
+  interface DebitCardProductFieldRefs {
+    readonly id: FieldRef<"DebitCardProduct", 'Int'>
+    readonly name: FieldRef<"DebitCardProduct", 'String'>
+    readonly slug: FieldRef<"DebitCardProduct", 'String'>
+    readonly bankName: FieldRef<"DebitCardProduct", 'String'>
+    readonly imageUrl: FieldRef<"DebitCardProduct", 'String'>
+    readonly bankLogoUrl: FieldRef<"DebitCardProduct", 'String'>
+    readonly accountType: FieldRef<"DebitCardProduct", 'String'>
+    readonly cardNetwork: FieldRef<"DebitCardProduct", 'String'>
+    readonly cardType: FieldRef<"DebitCardProduct", 'String'>
+    readonly annualFee: FieldRef<"DebitCardProduct", 'Float'>
+    readonly issuanceFee: FieldRef<"DebitCardProduct", 'Float'>
+    readonly replacementFee: FieldRef<"DebitCardProduct", 'Float'>
+    readonly atmWithdrawalLimit: FieldRef<"DebitCardProduct", 'Float'>
+    readonly posLimit: FieldRef<"DebitCardProduct", 'Float'>
+    readonly onlineLimit: FieldRef<"DebitCardProduct", 'Float'>
+    readonly internationalUsage: FieldRef<"DebitCardProduct", 'Boolean'>
+    readonly contactless: FieldRef<"DebitCardProduct", 'Boolean'>
+    readonly loungeAccess: FieldRef<"DebitCardProduct", 'Boolean'>
+    readonly loungeAccessDetails: FieldRef<"DebitCardProduct", 'String'>
+    readonly cashbackRate: FieldRef<"DebitCardProduct", 'Float'>
+    readonly rewardPoints: FieldRef<"DebitCardProduct", 'Boolean'>
+    readonly fuelSurcharge: FieldRef<"DebitCardProduct", 'Boolean'>
+    readonly accidentInsurance: FieldRef<"DebitCardProduct", 'Boolean'>
+    readonly purchaseProtection: FieldRef<"DebitCardProduct", 'Boolean'>
+    readonly fraudProtection: FieldRef<"DebitCardProduct", 'Boolean'>
+    readonly zeroBilling: FieldRef<"DebitCardProduct", 'Boolean'>
+    readonly minimumBalance: FieldRef<"DebitCardProduct", 'Float'>
+    readonly minimumAge: FieldRef<"DebitCardProduct", 'Int'>
+    readonly maximumAge: FieldRef<"DebitCardProduct", 'Int'>
+    readonly rating: FieldRef<"DebitCardProduct", 'Float'>
+    readonly recommended: FieldRef<"DebitCardProduct", 'Boolean'>
+    readonly bestFor: FieldRef<"DebitCardProduct", 'String'>
+    readonly keyStatement: FieldRef<"DebitCardProduct", 'String'>
+    readonly videoUrl: FieldRef<"DebitCardProduct", 'String'>
+    readonly termsConditionsUrl: FieldRef<"DebitCardProduct", 'String'>
+    readonly applyUrl: FieldRef<"DebitCardProduct", 'String'>
+    readonly createdById: FieldRef<"DebitCardProduct", 'Int'>
+    readonly createdAt: FieldRef<"DebitCardProduct", 'DateTime'>
+    readonly updatedAt: FieldRef<"DebitCardProduct", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DebitCardProduct findUnique
+   */
+  export type DebitCardProductFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardProduct to fetch.
+     */
+    where: DebitCardProductWhereUniqueInput
+  }
+
+  /**
+   * DebitCardProduct findUniqueOrThrow
+   */
+  export type DebitCardProductFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardProduct to fetch.
+     */
+    where: DebitCardProductWhereUniqueInput
+  }
+
+  /**
+   * DebitCardProduct findFirst
+   */
+  export type DebitCardProductFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardProduct to fetch.
+     */
+    where?: DebitCardProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardProducts to fetch.
+     */
+    orderBy?: DebitCardProductOrderByWithRelationInput | DebitCardProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DebitCardProducts.
+     */
+    cursor?: DebitCardProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardProducts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardProducts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DebitCardProducts.
+     */
+    distinct?: DebitCardProductScalarFieldEnum | DebitCardProductScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardProduct findFirstOrThrow
+   */
+  export type DebitCardProductFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardProduct to fetch.
+     */
+    where?: DebitCardProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardProducts to fetch.
+     */
+    orderBy?: DebitCardProductOrderByWithRelationInput | DebitCardProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DebitCardProducts.
+     */
+    cursor?: DebitCardProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardProducts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardProducts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DebitCardProducts.
+     */
+    distinct?: DebitCardProductScalarFieldEnum | DebitCardProductScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardProduct findMany
+   */
+  export type DebitCardProductFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardProducts to fetch.
+     */
+    where?: DebitCardProductWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardProducts to fetch.
+     */
+    orderBy?: DebitCardProductOrderByWithRelationInput | DebitCardProductOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DebitCardProducts.
+     */
+    cursor?: DebitCardProductWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardProducts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardProducts.
+     */
+    skip?: number
+    distinct?: DebitCardProductScalarFieldEnum | DebitCardProductScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardProduct create
+   */
+  export type DebitCardProductCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DebitCardProduct.
+     */
+    data: XOR<DebitCardProductCreateInput, DebitCardProductUncheckedCreateInput>
+  }
+
+  /**
+   * DebitCardProduct createMany
+   */
+  export type DebitCardProductCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DebitCardProducts.
+     */
+    data: DebitCardProductCreateManyInput | DebitCardProductCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DebitCardProduct createManyAndReturn
+   */
+  export type DebitCardProductCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * The data used to create many DebitCardProducts.
+     */
+    data: DebitCardProductCreateManyInput | DebitCardProductCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DebitCardProduct update
+   */
+  export type DebitCardProductUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DebitCardProduct.
+     */
+    data: XOR<DebitCardProductUpdateInput, DebitCardProductUncheckedUpdateInput>
+    /**
+     * Choose, which DebitCardProduct to update.
+     */
+    where: DebitCardProductWhereUniqueInput
+  }
+
+  /**
+   * DebitCardProduct updateMany
+   */
+  export type DebitCardProductUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DebitCardProducts.
+     */
+    data: XOR<DebitCardProductUpdateManyMutationInput, DebitCardProductUncheckedUpdateManyInput>
+    /**
+     * Filter which DebitCardProducts to update
+     */
+    where?: DebitCardProductWhereInput
+    /**
+     * Limit how many DebitCardProducts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DebitCardProduct updateManyAndReturn
+   */
+  export type DebitCardProductUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * The data used to update DebitCardProducts.
+     */
+    data: XOR<DebitCardProductUpdateManyMutationInput, DebitCardProductUncheckedUpdateManyInput>
+    /**
+     * Filter which DebitCardProducts to update
+     */
+    where?: DebitCardProductWhereInput
+    /**
+     * Limit how many DebitCardProducts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DebitCardProduct upsert
+   */
+  export type DebitCardProductUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DebitCardProduct to update in case it exists.
+     */
+    where: DebitCardProductWhereUniqueInput
+    /**
+     * In case the DebitCardProduct found by the `where` argument doesn't exist, create a new DebitCardProduct with this data.
+     */
+    create: XOR<DebitCardProductCreateInput, DebitCardProductUncheckedCreateInput>
+    /**
+     * In case the DebitCardProduct was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DebitCardProductUpdateInput, DebitCardProductUncheckedUpdateInput>
+  }
+
+  /**
+   * DebitCardProduct delete
+   */
+  export type DebitCardProductDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+    /**
+     * Filter which DebitCardProduct to delete.
+     */
+    where: DebitCardProductWhereUniqueInput
+  }
+
+  /**
+   * DebitCardProduct deleteMany
+   */
+  export type DebitCardProductDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DebitCardProducts to delete
+     */
+    where?: DebitCardProductWhereInput
+    /**
+     * Limit how many DebitCardProducts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DebitCardProduct.categories
+   */
+  export type DebitCardProduct$categoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Category
+     */
+    omit?: CategoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    cursor?: CategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardProduct.bulletPoints
+   */
+  export type DebitCardProduct$bulletPointsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletInclude<ExtArgs> | null
+    where?: DebitCardBulletWhereInput
+    orderBy?: DebitCardBulletOrderByWithRelationInput | DebitCardBulletOrderByWithRelationInput[]
+    cursor?: DebitCardBulletWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DebitCardBulletScalarFieldEnum | DebitCardBulletScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardProduct.keyFeatures
+   */
+  export type DebitCardProduct$keyFeaturesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureInclude<ExtArgs> | null
+    where?: DebitCardKeyFeatureWhereInput
+    orderBy?: DebitCardKeyFeatureOrderByWithRelationInput | DebitCardKeyFeatureOrderByWithRelationInput[]
+    cursor?: DebitCardKeyFeatureWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DebitCardKeyFeatureScalarFieldEnum | DebitCardKeyFeatureScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardProduct.offers
+   */
+  export type DebitCardProduct$offersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferInclude<ExtArgs> | null
+    where?: DebitCardOfferWhereInput
+    orderBy?: DebitCardOfferOrderByWithRelationInput | DebitCardOfferOrderByWithRelationInput[]
+    cursor?: DebitCardOfferWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DebitCardOfferScalarFieldEnum | DebitCardOfferScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardProduct.safetyFeatures
+   */
+  export type DebitCardProduct$safetyFeaturesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureInclude<ExtArgs> | null
+    where?: DebitCardSafetyFeatureWhereInput
+    orderBy?: DebitCardSafetyFeatureOrderByWithRelationInput | DebitCardSafetyFeatureOrderByWithRelationInput[]
+    cursor?: DebitCardSafetyFeatureWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DebitCardSafetyFeatureScalarFieldEnum | DebitCardSafetyFeatureScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardProduct.applications
+   */
+  export type DebitCardProduct$applicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Application
+     */
+    select?: ApplicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Application
+     */
+    omit?: ApplicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ApplicationInclude<ExtArgs> | null
+    where?: ApplicationWhereInput
+    orderBy?: ApplicationOrderByWithRelationInput | ApplicationOrderByWithRelationInput[]
+    cursor?: ApplicationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ApplicationScalarFieldEnum | ApplicationScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardProduct.createdBy
+   */
+  export type DebitCardProduct$createdByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * DebitCardProduct without action
+   */
+  export type DebitCardProductDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardProduct
+     */
+    select?: DebitCardProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardProduct
+     */
+    omit?: DebitCardProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardProductInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DebitCardBullet
+   */
+
+  export type AggregateDebitCardBullet = {
+    _count: DebitCardBulletCountAggregateOutputType | null
+    _avg: DebitCardBulletAvgAggregateOutputType | null
+    _sum: DebitCardBulletSumAggregateOutputType | null
+    _min: DebitCardBulletMinAggregateOutputType | null
+    _max: DebitCardBulletMaxAggregateOutputType | null
+  }
+
+  export type DebitCardBulletAvgAggregateOutputType = {
+    id: number | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardBulletSumAggregateOutputType = {
+    id: number | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardBulletMinAggregateOutputType = {
+    id: number | null
+    text: string | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardBulletMaxAggregateOutputType = {
+    id: number | null
+    text: string | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardBulletCountAggregateOutputType = {
+    id: number
+    text: number
+    displayOrder: number
+    productId: number
+    _all: number
+  }
+
+
+  export type DebitCardBulletAvgAggregateInputType = {
+    id?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardBulletSumAggregateInputType = {
+    id?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardBulletMinAggregateInputType = {
+    id?: true
+    text?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardBulletMaxAggregateInputType = {
+    id?: true
+    text?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardBulletCountAggregateInputType = {
+    id?: true
+    text?: true
+    displayOrder?: true
+    productId?: true
+    _all?: true
+  }
+
+  export type DebitCardBulletAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DebitCardBullet to aggregate.
+     */
+    where?: DebitCardBulletWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardBullets to fetch.
+     */
+    orderBy?: DebitCardBulletOrderByWithRelationInput | DebitCardBulletOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DebitCardBulletWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardBullets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardBullets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DebitCardBullets
+    **/
+    _count?: true | DebitCardBulletCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DebitCardBulletAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DebitCardBulletSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DebitCardBulletMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DebitCardBulletMaxAggregateInputType
+  }
+
+  export type GetDebitCardBulletAggregateType<T extends DebitCardBulletAggregateArgs> = {
+        [P in keyof T & keyof AggregateDebitCardBullet]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDebitCardBullet[P]>
+      : GetScalarType<T[P], AggregateDebitCardBullet[P]>
+  }
+
+
+
+
+  export type DebitCardBulletGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DebitCardBulletWhereInput
+    orderBy?: DebitCardBulletOrderByWithAggregationInput | DebitCardBulletOrderByWithAggregationInput[]
+    by: DebitCardBulletScalarFieldEnum[] | DebitCardBulletScalarFieldEnum
+    having?: DebitCardBulletScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DebitCardBulletCountAggregateInputType | true
+    _avg?: DebitCardBulletAvgAggregateInputType
+    _sum?: DebitCardBulletSumAggregateInputType
+    _min?: DebitCardBulletMinAggregateInputType
+    _max?: DebitCardBulletMaxAggregateInputType
+  }
+
+  export type DebitCardBulletGroupByOutputType = {
+    id: number
+    text: string
+    displayOrder: number
+    productId: number
+    _count: DebitCardBulletCountAggregateOutputType | null
+    _avg: DebitCardBulletAvgAggregateOutputType | null
+    _sum: DebitCardBulletSumAggregateOutputType | null
+    _min: DebitCardBulletMinAggregateOutputType | null
+    _max: DebitCardBulletMaxAggregateOutputType | null
+  }
+
+  type GetDebitCardBulletGroupByPayload<T extends DebitCardBulletGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DebitCardBulletGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DebitCardBulletGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DebitCardBulletGroupByOutputType[P]>
+            : GetScalarType<T[P], DebitCardBulletGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DebitCardBulletSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    text?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardBullet"]>
+
+  export type DebitCardBulletSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    text?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardBullet"]>
+
+  export type DebitCardBulletSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    text?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardBullet"]>
+
+  export type DebitCardBulletSelectScalar = {
+    id?: boolean
+    text?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+  }
+
+  export type DebitCardBulletOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "text" | "displayOrder" | "productId", ExtArgs["result"]["debitCardBullet"]>
+  export type DebitCardBulletInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }
+  export type DebitCardBulletIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }
+  export type DebitCardBulletIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }
+
+  export type $DebitCardBulletPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DebitCardBullet"
+    objects: {
+      product: Prisma.$DebitCardProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      text: string
+      displayOrder: number
+      productId: number
+    }, ExtArgs["result"]["debitCardBullet"]>
+    composites: {}
+  }
+
+  type DebitCardBulletGetPayload<S extends boolean | null | undefined | DebitCardBulletDefaultArgs> = $Result.GetResult<Prisma.$DebitCardBulletPayload, S>
+
+  type DebitCardBulletCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DebitCardBulletFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DebitCardBulletCountAggregateInputType | true
+    }
+
+  export interface DebitCardBulletDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DebitCardBullet'], meta: { name: 'DebitCardBullet' } }
+    /**
+     * Find zero or one DebitCardBullet that matches the filter.
+     * @param {DebitCardBulletFindUniqueArgs} args - Arguments to find a DebitCardBullet
+     * @example
+     * // Get one DebitCardBullet
+     * const debitCardBullet = await prisma.debitCardBullet.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DebitCardBulletFindUniqueArgs>(args: SelectSubset<T, DebitCardBulletFindUniqueArgs<ExtArgs>>): Prisma__DebitCardBulletClient<$Result.GetResult<Prisma.$DebitCardBulletPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DebitCardBullet that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DebitCardBulletFindUniqueOrThrowArgs} args - Arguments to find a DebitCardBullet
+     * @example
+     * // Get one DebitCardBullet
+     * const debitCardBullet = await prisma.debitCardBullet.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DebitCardBulletFindUniqueOrThrowArgs>(args: SelectSubset<T, DebitCardBulletFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DebitCardBulletClient<$Result.GetResult<Prisma.$DebitCardBulletPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DebitCardBullet that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardBulletFindFirstArgs} args - Arguments to find a DebitCardBullet
+     * @example
+     * // Get one DebitCardBullet
+     * const debitCardBullet = await prisma.debitCardBullet.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DebitCardBulletFindFirstArgs>(args?: SelectSubset<T, DebitCardBulletFindFirstArgs<ExtArgs>>): Prisma__DebitCardBulletClient<$Result.GetResult<Prisma.$DebitCardBulletPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DebitCardBullet that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardBulletFindFirstOrThrowArgs} args - Arguments to find a DebitCardBullet
+     * @example
+     * // Get one DebitCardBullet
+     * const debitCardBullet = await prisma.debitCardBullet.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DebitCardBulletFindFirstOrThrowArgs>(args?: SelectSubset<T, DebitCardBulletFindFirstOrThrowArgs<ExtArgs>>): Prisma__DebitCardBulletClient<$Result.GetResult<Prisma.$DebitCardBulletPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DebitCardBullets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardBulletFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DebitCardBullets
+     * const debitCardBullets = await prisma.debitCardBullet.findMany()
+     * 
+     * // Get first 10 DebitCardBullets
+     * const debitCardBullets = await prisma.debitCardBullet.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const debitCardBulletWithIdOnly = await prisma.debitCardBullet.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DebitCardBulletFindManyArgs>(args?: SelectSubset<T, DebitCardBulletFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardBulletPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DebitCardBullet.
+     * @param {DebitCardBulletCreateArgs} args - Arguments to create a DebitCardBullet.
+     * @example
+     * // Create one DebitCardBullet
+     * const DebitCardBullet = await prisma.debitCardBullet.create({
+     *   data: {
+     *     // ... data to create a DebitCardBullet
+     *   }
+     * })
+     * 
+     */
+    create<T extends DebitCardBulletCreateArgs>(args: SelectSubset<T, DebitCardBulletCreateArgs<ExtArgs>>): Prisma__DebitCardBulletClient<$Result.GetResult<Prisma.$DebitCardBulletPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DebitCardBullets.
+     * @param {DebitCardBulletCreateManyArgs} args - Arguments to create many DebitCardBullets.
+     * @example
+     * // Create many DebitCardBullets
+     * const debitCardBullet = await prisma.debitCardBullet.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DebitCardBulletCreateManyArgs>(args?: SelectSubset<T, DebitCardBulletCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DebitCardBullets and returns the data saved in the database.
+     * @param {DebitCardBulletCreateManyAndReturnArgs} args - Arguments to create many DebitCardBullets.
+     * @example
+     * // Create many DebitCardBullets
+     * const debitCardBullet = await prisma.debitCardBullet.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DebitCardBullets and only return the `id`
+     * const debitCardBulletWithIdOnly = await prisma.debitCardBullet.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DebitCardBulletCreateManyAndReturnArgs>(args?: SelectSubset<T, DebitCardBulletCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardBulletPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DebitCardBullet.
+     * @param {DebitCardBulletDeleteArgs} args - Arguments to delete one DebitCardBullet.
+     * @example
+     * // Delete one DebitCardBullet
+     * const DebitCardBullet = await prisma.debitCardBullet.delete({
+     *   where: {
+     *     // ... filter to delete one DebitCardBullet
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DebitCardBulletDeleteArgs>(args: SelectSubset<T, DebitCardBulletDeleteArgs<ExtArgs>>): Prisma__DebitCardBulletClient<$Result.GetResult<Prisma.$DebitCardBulletPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DebitCardBullet.
+     * @param {DebitCardBulletUpdateArgs} args - Arguments to update one DebitCardBullet.
+     * @example
+     * // Update one DebitCardBullet
+     * const debitCardBullet = await prisma.debitCardBullet.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DebitCardBulletUpdateArgs>(args: SelectSubset<T, DebitCardBulletUpdateArgs<ExtArgs>>): Prisma__DebitCardBulletClient<$Result.GetResult<Prisma.$DebitCardBulletPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DebitCardBullets.
+     * @param {DebitCardBulletDeleteManyArgs} args - Arguments to filter DebitCardBullets to delete.
+     * @example
+     * // Delete a few DebitCardBullets
+     * const { count } = await prisma.debitCardBullet.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DebitCardBulletDeleteManyArgs>(args?: SelectSubset<T, DebitCardBulletDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DebitCardBullets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardBulletUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DebitCardBullets
+     * const debitCardBullet = await prisma.debitCardBullet.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DebitCardBulletUpdateManyArgs>(args: SelectSubset<T, DebitCardBulletUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DebitCardBullets and returns the data updated in the database.
+     * @param {DebitCardBulletUpdateManyAndReturnArgs} args - Arguments to update many DebitCardBullets.
+     * @example
+     * // Update many DebitCardBullets
+     * const debitCardBullet = await prisma.debitCardBullet.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DebitCardBullets and only return the `id`
+     * const debitCardBulletWithIdOnly = await prisma.debitCardBullet.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DebitCardBulletUpdateManyAndReturnArgs>(args: SelectSubset<T, DebitCardBulletUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardBulletPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DebitCardBullet.
+     * @param {DebitCardBulletUpsertArgs} args - Arguments to update or create a DebitCardBullet.
+     * @example
+     * // Update or create a DebitCardBullet
+     * const debitCardBullet = await prisma.debitCardBullet.upsert({
+     *   create: {
+     *     // ... data to create a DebitCardBullet
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DebitCardBullet we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DebitCardBulletUpsertArgs>(args: SelectSubset<T, DebitCardBulletUpsertArgs<ExtArgs>>): Prisma__DebitCardBulletClient<$Result.GetResult<Prisma.$DebitCardBulletPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DebitCardBullets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardBulletCountArgs} args - Arguments to filter DebitCardBullets to count.
+     * @example
+     * // Count the number of DebitCardBullets
+     * const count = await prisma.debitCardBullet.count({
+     *   where: {
+     *     // ... the filter for the DebitCardBullets we want to count
+     *   }
+     * })
+    **/
+    count<T extends DebitCardBulletCountArgs>(
+      args?: Subset<T, DebitCardBulletCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DebitCardBulletCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DebitCardBullet.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardBulletAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DebitCardBulletAggregateArgs>(args: Subset<T, DebitCardBulletAggregateArgs>): Prisma.PrismaPromise<GetDebitCardBulletAggregateType<T>>
+
+    /**
+     * Group by DebitCardBullet.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardBulletGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DebitCardBulletGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DebitCardBulletGroupByArgs['orderBy'] }
+        : { orderBy?: DebitCardBulletGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DebitCardBulletGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDebitCardBulletGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DebitCardBullet model
+   */
+  readonly fields: DebitCardBulletFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DebitCardBullet.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DebitCardBulletClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends DebitCardProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DebitCardProductDefaultArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DebitCardBullet model
+   */
+  interface DebitCardBulletFieldRefs {
+    readonly id: FieldRef<"DebitCardBullet", 'Int'>
+    readonly text: FieldRef<"DebitCardBullet", 'String'>
+    readonly displayOrder: FieldRef<"DebitCardBullet", 'Int'>
+    readonly productId: FieldRef<"DebitCardBullet", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DebitCardBullet findUnique
+   */
+  export type DebitCardBulletFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardBullet to fetch.
+     */
+    where: DebitCardBulletWhereUniqueInput
+  }
+
+  /**
+   * DebitCardBullet findUniqueOrThrow
+   */
+  export type DebitCardBulletFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardBullet to fetch.
+     */
+    where: DebitCardBulletWhereUniqueInput
+  }
+
+  /**
+   * DebitCardBullet findFirst
+   */
+  export type DebitCardBulletFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardBullet to fetch.
+     */
+    where?: DebitCardBulletWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardBullets to fetch.
+     */
+    orderBy?: DebitCardBulletOrderByWithRelationInput | DebitCardBulletOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DebitCardBullets.
+     */
+    cursor?: DebitCardBulletWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardBullets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardBullets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DebitCardBullets.
+     */
+    distinct?: DebitCardBulletScalarFieldEnum | DebitCardBulletScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardBullet findFirstOrThrow
+   */
+  export type DebitCardBulletFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardBullet to fetch.
+     */
+    where?: DebitCardBulletWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardBullets to fetch.
+     */
+    orderBy?: DebitCardBulletOrderByWithRelationInput | DebitCardBulletOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DebitCardBullets.
+     */
+    cursor?: DebitCardBulletWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardBullets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardBullets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DebitCardBullets.
+     */
+    distinct?: DebitCardBulletScalarFieldEnum | DebitCardBulletScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardBullet findMany
+   */
+  export type DebitCardBulletFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardBullets to fetch.
+     */
+    where?: DebitCardBulletWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardBullets to fetch.
+     */
+    orderBy?: DebitCardBulletOrderByWithRelationInput | DebitCardBulletOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DebitCardBullets.
+     */
+    cursor?: DebitCardBulletWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardBullets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardBullets.
+     */
+    skip?: number
+    distinct?: DebitCardBulletScalarFieldEnum | DebitCardBulletScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardBullet create
+   */
+  export type DebitCardBulletCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DebitCardBullet.
+     */
+    data: XOR<DebitCardBulletCreateInput, DebitCardBulletUncheckedCreateInput>
+  }
+
+  /**
+   * DebitCardBullet createMany
+   */
+  export type DebitCardBulletCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DebitCardBullets.
+     */
+    data: DebitCardBulletCreateManyInput | DebitCardBulletCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DebitCardBullet createManyAndReturn
+   */
+  export type DebitCardBulletCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * The data used to create many DebitCardBullets.
+     */
+    data: DebitCardBulletCreateManyInput | DebitCardBulletCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DebitCardBullet update
+   */
+  export type DebitCardBulletUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DebitCardBullet.
+     */
+    data: XOR<DebitCardBulletUpdateInput, DebitCardBulletUncheckedUpdateInput>
+    /**
+     * Choose, which DebitCardBullet to update.
+     */
+    where: DebitCardBulletWhereUniqueInput
+  }
+
+  /**
+   * DebitCardBullet updateMany
+   */
+  export type DebitCardBulletUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DebitCardBullets.
+     */
+    data: XOR<DebitCardBulletUpdateManyMutationInput, DebitCardBulletUncheckedUpdateManyInput>
+    /**
+     * Filter which DebitCardBullets to update
+     */
+    where?: DebitCardBulletWhereInput
+    /**
+     * Limit how many DebitCardBullets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DebitCardBullet updateManyAndReturn
+   */
+  export type DebitCardBulletUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * The data used to update DebitCardBullets.
+     */
+    data: XOR<DebitCardBulletUpdateManyMutationInput, DebitCardBulletUncheckedUpdateManyInput>
+    /**
+     * Filter which DebitCardBullets to update
+     */
+    where?: DebitCardBulletWhereInput
+    /**
+     * Limit how many DebitCardBullets to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DebitCardBullet upsert
+   */
+  export type DebitCardBulletUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DebitCardBullet to update in case it exists.
+     */
+    where: DebitCardBulletWhereUniqueInput
+    /**
+     * In case the DebitCardBullet found by the `where` argument doesn't exist, create a new DebitCardBullet with this data.
+     */
+    create: XOR<DebitCardBulletCreateInput, DebitCardBulletUncheckedCreateInput>
+    /**
+     * In case the DebitCardBullet was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DebitCardBulletUpdateInput, DebitCardBulletUncheckedUpdateInput>
+  }
+
+  /**
+   * DebitCardBullet delete
+   */
+  export type DebitCardBulletDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletInclude<ExtArgs> | null
+    /**
+     * Filter which DebitCardBullet to delete.
+     */
+    where: DebitCardBulletWhereUniqueInput
+  }
+
+  /**
+   * DebitCardBullet deleteMany
+   */
+  export type DebitCardBulletDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DebitCardBullets to delete
+     */
+    where?: DebitCardBulletWhereInput
+    /**
+     * Limit how many DebitCardBullets to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DebitCardBullet without action
+   */
+  export type DebitCardBulletDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardBullet
+     */
+    select?: DebitCardBulletSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardBullet
+     */
+    omit?: DebitCardBulletOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardBulletInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DebitCardKeyFeature
+   */
+
+  export type AggregateDebitCardKeyFeature = {
+    _count: DebitCardKeyFeatureCountAggregateOutputType | null
+    _avg: DebitCardKeyFeatureAvgAggregateOutputType | null
+    _sum: DebitCardKeyFeatureSumAggregateOutputType | null
+    _min: DebitCardKeyFeatureMinAggregateOutputType | null
+    _max: DebitCardKeyFeatureMaxAggregateOutputType | null
+  }
+
+  export type DebitCardKeyFeatureAvgAggregateOutputType = {
+    id: number | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardKeyFeatureSumAggregateOutputType = {
+    id: number | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardKeyFeatureMinAggregateOutputType = {
+    id: number | null
+    icon: string | null
+    title: string | null
+    description: string | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardKeyFeatureMaxAggregateOutputType = {
+    id: number | null
+    icon: string | null
+    title: string | null
+    description: string | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardKeyFeatureCountAggregateOutputType = {
+    id: number
+    icon: number
+    title: number
+    description: number
+    displayOrder: number
+    productId: number
+    _all: number
+  }
+
+
+  export type DebitCardKeyFeatureAvgAggregateInputType = {
+    id?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardKeyFeatureSumAggregateInputType = {
+    id?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardKeyFeatureMinAggregateInputType = {
+    id?: true
+    icon?: true
+    title?: true
+    description?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardKeyFeatureMaxAggregateInputType = {
+    id?: true
+    icon?: true
+    title?: true
+    description?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardKeyFeatureCountAggregateInputType = {
+    id?: true
+    icon?: true
+    title?: true
+    description?: true
+    displayOrder?: true
+    productId?: true
+    _all?: true
+  }
+
+  export type DebitCardKeyFeatureAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DebitCardKeyFeature to aggregate.
+     */
+    where?: DebitCardKeyFeatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardKeyFeatures to fetch.
+     */
+    orderBy?: DebitCardKeyFeatureOrderByWithRelationInput | DebitCardKeyFeatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DebitCardKeyFeatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardKeyFeatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardKeyFeatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DebitCardKeyFeatures
+    **/
+    _count?: true | DebitCardKeyFeatureCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DebitCardKeyFeatureAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DebitCardKeyFeatureSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DebitCardKeyFeatureMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DebitCardKeyFeatureMaxAggregateInputType
+  }
+
+  export type GetDebitCardKeyFeatureAggregateType<T extends DebitCardKeyFeatureAggregateArgs> = {
+        [P in keyof T & keyof AggregateDebitCardKeyFeature]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDebitCardKeyFeature[P]>
+      : GetScalarType<T[P], AggregateDebitCardKeyFeature[P]>
+  }
+
+
+
+
+  export type DebitCardKeyFeatureGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DebitCardKeyFeatureWhereInput
+    orderBy?: DebitCardKeyFeatureOrderByWithAggregationInput | DebitCardKeyFeatureOrderByWithAggregationInput[]
+    by: DebitCardKeyFeatureScalarFieldEnum[] | DebitCardKeyFeatureScalarFieldEnum
+    having?: DebitCardKeyFeatureScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DebitCardKeyFeatureCountAggregateInputType | true
+    _avg?: DebitCardKeyFeatureAvgAggregateInputType
+    _sum?: DebitCardKeyFeatureSumAggregateInputType
+    _min?: DebitCardKeyFeatureMinAggregateInputType
+    _max?: DebitCardKeyFeatureMaxAggregateInputType
+  }
+
+  export type DebitCardKeyFeatureGroupByOutputType = {
+    id: number
+    icon: string | null
+    title: string
+    description: string
+    displayOrder: number
+    productId: number
+    _count: DebitCardKeyFeatureCountAggregateOutputType | null
+    _avg: DebitCardKeyFeatureAvgAggregateOutputType | null
+    _sum: DebitCardKeyFeatureSumAggregateOutputType | null
+    _min: DebitCardKeyFeatureMinAggregateOutputType | null
+    _max: DebitCardKeyFeatureMaxAggregateOutputType | null
+  }
+
+  type GetDebitCardKeyFeatureGroupByPayload<T extends DebitCardKeyFeatureGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DebitCardKeyFeatureGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DebitCardKeyFeatureGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DebitCardKeyFeatureGroupByOutputType[P]>
+            : GetScalarType<T[P], DebitCardKeyFeatureGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DebitCardKeyFeatureSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    icon?: boolean
+    title?: boolean
+    description?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardKeyFeature"]>
+
+  export type DebitCardKeyFeatureSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    icon?: boolean
+    title?: boolean
+    description?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardKeyFeature"]>
+
+  export type DebitCardKeyFeatureSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    icon?: boolean
+    title?: boolean
+    description?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardKeyFeature"]>
+
+  export type DebitCardKeyFeatureSelectScalar = {
+    id?: boolean
+    icon?: boolean
+    title?: boolean
+    description?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+  }
+
+  export type DebitCardKeyFeatureOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "icon" | "title" | "description" | "displayOrder" | "productId", ExtArgs["result"]["debitCardKeyFeature"]>
+  export type DebitCardKeyFeatureInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }
+  export type DebitCardKeyFeatureIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }
+  export type DebitCardKeyFeatureIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }
+
+  export type $DebitCardKeyFeaturePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DebitCardKeyFeature"
+    objects: {
+      product: Prisma.$DebitCardProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      icon: string | null
+      title: string
+      description: string
+      displayOrder: number
+      productId: number
+    }, ExtArgs["result"]["debitCardKeyFeature"]>
+    composites: {}
+  }
+
+  type DebitCardKeyFeatureGetPayload<S extends boolean | null | undefined | DebitCardKeyFeatureDefaultArgs> = $Result.GetResult<Prisma.$DebitCardKeyFeaturePayload, S>
+
+  type DebitCardKeyFeatureCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DebitCardKeyFeatureFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DebitCardKeyFeatureCountAggregateInputType | true
+    }
+
+  export interface DebitCardKeyFeatureDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DebitCardKeyFeature'], meta: { name: 'DebitCardKeyFeature' } }
+    /**
+     * Find zero or one DebitCardKeyFeature that matches the filter.
+     * @param {DebitCardKeyFeatureFindUniqueArgs} args - Arguments to find a DebitCardKeyFeature
+     * @example
+     * // Get one DebitCardKeyFeature
+     * const debitCardKeyFeature = await prisma.debitCardKeyFeature.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DebitCardKeyFeatureFindUniqueArgs>(args: SelectSubset<T, DebitCardKeyFeatureFindUniqueArgs<ExtArgs>>): Prisma__DebitCardKeyFeatureClient<$Result.GetResult<Prisma.$DebitCardKeyFeaturePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DebitCardKeyFeature that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DebitCardKeyFeatureFindUniqueOrThrowArgs} args - Arguments to find a DebitCardKeyFeature
+     * @example
+     * // Get one DebitCardKeyFeature
+     * const debitCardKeyFeature = await prisma.debitCardKeyFeature.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DebitCardKeyFeatureFindUniqueOrThrowArgs>(args: SelectSubset<T, DebitCardKeyFeatureFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DebitCardKeyFeatureClient<$Result.GetResult<Prisma.$DebitCardKeyFeaturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DebitCardKeyFeature that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardKeyFeatureFindFirstArgs} args - Arguments to find a DebitCardKeyFeature
+     * @example
+     * // Get one DebitCardKeyFeature
+     * const debitCardKeyFeature = await prisma.debitCardKeyFeature.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DebitCardKeyFeatureFindFirstArgs>(args?: SelectSubset<T, DebitCardKeyFeatureFindFirstArgs<ExtArgs>>): Prisma__DebitCardKeyFeatureClient<$Result.GetResult<Prisma.$DebitCardKeyFeaturePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DebitCardKeyFeature that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardKeyFeatureFindFirstOrThrowArgs} args - Arguments to find a DebitCardKeyFeature
+     * @example
+     * // Get one DebitCardKeyFeature
+     * const debitCardKeyFeature = await prisma.debitCardKeyFeature.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DebitCardKeyFeatureFindFirstOrThrowArgs>(args?: SelectSubset<T, DebitCardKeyFeatureFindFirstOrThrowArgs<ExtArgs>>): Prisma__DebitCardKeyFeatureClient<$Result.GetResult<Prisma.$DebitCardKeyFeaturePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DebitCardKeyFeatures that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardKeyFeatureFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DebitCardKeyFeatures
+     * const debitCardKeyFeatures = await prisma.debitCardKeyFeature.findMany()
+     * 
+     * // Get first 10 DebitCardKeyFeatures
+     * const debitCardKeyFeatures = await prisma.debitCardKeyFeature.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const debitCardKeyFeatureWithIdOnly = await prisma.debitCardKeyFeature.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DebitCardKeyFeatureFindManyArgs>(args?: SelectSubset<T, DebitCardKeyFeatureFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardKeyFeaturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DebitCardKeyFeature.
+     * @param {DebitCardKeyFeatureCreateArgs} args - Arguments to create a DebitCardKeyFeature.
+     * @example
+     * // Create one DebitCardKeyFeature
+     * const DebitCardKeyFeature = await prisma.debitCardKeyFeature.create({
+     *   data: {
+     *     // ... data to create a DebitCardKeyFeature
+     *   }
+     * })
+     * 
+     */
+    create<T extends DebitCardKeyFeatureCreateArgs>(args: SelectSubset<T, DebitCardKeyFeatureCreateArgs<ExtArgs>>): Prisma__DebitCardKeyFeatureClient<$Result.GetResult<Prisma.$DebitCardKeyFeaturePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DebitCardKeyFeatures.
+     * @param {DebitCardKeyFeatureCreateManyArgs} args - Arguments to create many DebitCardKeyFeatures.
+     * @example
+     * // Create many DebitCardKeyFeatures
+     * const debitCardKeyFeature = await prisma.debitCardKeyFeature.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DebitCardKeyFeatureCreateManyArgs>(args?: SelectSubset<T, DebitCardKeyFeatureCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DebitCardKeyFeatures and returns the data saved in the database.
+     * @param {DebitCardKeyFeatureCreateManyAndReturnArgs} args - Arguments to create many DebitCardKeyFeatures.
+     * @example
+     * // Create many DebitCardKeyFeatures
+     * const debitCardKeyFeature = await prisma.debitCardKeyFeature.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DebitCardKeyFeatures and only return the `id`
+     * const debitCardKeyFeatureWithIdOnly = await prisma.debitCardKeyFeature.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DebitCardKeyFeatureCreateManyAndReturnArgs>(args?: SelectSubset<T, DebitCardKeyFeatureCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardKeyFeaturePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DebitCardKeyFeature.
+     * @param {DebitCardKeyFeatureDeleteArgs} args - Arguments to delete one DebitCardKeyFeature.
+     * @example
+     * // Delete one DebitCardKeyFeature
+     * const DebitCardKeyFeature = await prisma.debitCardKeyFeature.delete({
+     *   where: {
+     *     // ... filter to delete one DebitCardKeyFeature
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DebitCardKeyFeatureDeleteArgs>(args: SelectSubset<T, DebitCardKeyFeatureDeleteArgs<ExtArgs>>): Prisma__DebitCardKeyFeatureClient<$Result.GetResult<Prisma.$DebitCardKeyFeaturePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DebitCardKeyFeature.
+     * @param {DebitCardKeyFeatureUpdateArgs} args - Arguments to update one DebitCardKeyFeature.
+     * @example
+     * // Update one DebitCardKeyFeature
+     * const debitCardKeyFeature = await prisma.debitCardKeyFeature.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DebitCardKeyFeatureUpdateArgs>(args: SelectSubset<T, DebitCardKeyFeatureUpdateArgs<ExtArgs>>): Prisma__DebitCardKeyFeatureClient<$Result.GetResult<Prisma.$DebitCardKeyFeaturePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DebitCardKeyFeatures.
+     * @param {DebitCardKeyFeatureDeleteManyArgs} args - Arguments to filter DebitCardKeyFeatures to delete.
+     * @example
+     * // Delete a few DebitCardKeyFeatures
+     * const { count } = await prisma.debitCardKeyFeature.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DebitCardKeyFeatureDeleteManyArgs>(args?: SelectSubset<T, DebitCardKeyFeatureDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DebitCardKeyFeatures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardKeyFeatureUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DebitCardKeyFeatures
+     * const debitCardKeyFeature = await prisma.debitCardKeyFeature.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DebitCardKeyFeatureUpdateManyArgs>(args: SelectSubset<T, DebitCardKeyFeatureUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DebitCardKeyFeatures and returns the data updated in the database.
+     * @param {DebitCardKeyFeatureUpdateManyAndReturnArgs} args - Arguments to update many DebitCardKeyFeatures.
+     * @example
+     * // Update many DebitCardKeyFeatures
+     * const debitCardKeyFeature = await prisma.debitCardKeyFeature.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DebitCardKeyFeatures and only return the `id`
+     * const debitCardKeyFeatureWithIdOnly = await prisma.debitCardKeyFeature.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DebitCardKeyFeatureUpdateManyAndReturnArgs>(args: SelectSubset<T, DebitCardKeyFeatureUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardKeyFeaturePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DebitCardKeyFeature.
+     * @param {DebitCardKeyFeatureUpsertArgs} args - Arguments to update or create a DebitCardKeyFeature.
+     * @example
+     * // Update or create a DebitCardKeyFeature
+     * const debitCardKeyFeature = await prisma.debitCardKeyFeature.upsert({
+     *   create: {
+     *     // ... data to create a DebitCardKeyFeature
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DebitCardKeyFeature we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DebitCardKeyFeatureUpsertArgs>(args: SelectSubset<T, DebitCardKeyFeatureUpsertArgs<ExtArgs>>): Prisma__DebitCardKeyFeatureClient<$Result.GetResult<Prisma.$DebitCardKeyFeaturePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DebitCardKeyFeatures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardKeyFeatureCountArgs} args - Arguments to filter DebitCardKeyFeatures to count.
+     * @example
+     * // Count the number of DebitCardKeyFeatures
+     * const count = await prisma.debitCardKeyFeature.count({
+     *   where: {
+     *     // ... the filter for the DebitCardKeyFeatures we want to count
+     *   }
+     * })
+    **/
+    count<T extends DebitCardKeyFeatureCountArgs>(
+      args?: Subset<T, DebitCardKeyFeatureCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DebitCardKeyFeatureCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DebitCardKeyFeature.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardKeyFeatureAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DebitCardKeyFeatureAggregateArgs>(args: Subset<T, DebitCardKeyFeatureAggregateArgs>): Prisma.PrismaPromise<GetDebitCardKeyFeatureAggregateType<T>>
+
+    /**
+     * Group by DebitCardKeyFeature.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardKeyFeatureGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DebitCardKeyFeatureGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DebitCardKeyFeatureGroupByArgs['orderBy'] }
+        : { orderBy?: DebitCardKeyFeatureGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DebitCardKeyFeatureGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDebitCardKeyFeatureGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DebitCardKeyFeature model
+   */
+  readonly fields: DebitCardKeyFeatureFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DebitCardKeyFeature.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DebitCardKeyFeatureClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends DebitCardProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DebitCardProductDefaultArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DebitCardKeyFeature model
+   */
+  interface DebitCardKeyFeatureFieldRefs {
+    readonly id: FieldRef<"DebitCardKeyFeature", 'Int'>
+    readonly icon: FieldRef<"DebitCardKeyFeature", 'String'>
+    readonly title: FieldRef<"DebitCardKeyFeature", 'String'>
+    readonly description: FieldRef<"DebitCardKeyFeature", 'String'>
+    readonly displayOrder: FieldRef<"DebitCardKeyFeature", 'Int'>
+    readonly productId: FieldRef<"DebitCardKeyFeature", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DebitCardKeyFeature findUnique
+   */
+  export type DebitCardKeyFeatureFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardKeyFeature to fetch.
+     */
+    where: DebitCardKeyFeatureWhereUniqueInput
+  }
+
+  /**
+   * DebitCardKeyFeature findUniqueOrThrow
+   */
+  export type DebitCardKeyFeatureFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardKeyFeature to fetch.
+     */
+    where: DebitCardKeyFeatureWhereUniqueInput
+  }
+
+  /**
+   * DebitCardKeyFeature findFirst
+   */
+  export type DebitCardKeyFeatureFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardKeyFeature to fetch.
+     */
+    where?: DebitCardKeyFeatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardKeyFeatures to fetch.
+     */
+    orderBy?: DebitCardKeyFeatureOrderByWithRelationInput | DebitCardKeyFeatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DebitCardKeyFeatures.
+     */
+    cursor?: DebitCardKeyFeatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardKeyFeatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardKeyFeatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DebitCardKeyFeatures.
+     */
+    distinct?: DebitCardKeyFeatureScalarFieldEnum | DebitCardKeyFeatureScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardKeyFeature findFirstOrThrow
+   */
+  export type DebitCardKeyFeatureFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardKeyFeature to fetch.
+     */
+    where?: DebitCardKeyFeatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardKeyFeatures to fetch.
+     */
+    orderBy?: DebitCardKeyFeatureOrderByWithRelationInput | DebitCardKeyFeatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DebitCardKeyFeatures.
+     */
+    cursor?: DebitCardKeyFeatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardKeyFeatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardKeyFeatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DebitCardKeyFeatures.
+     */
+    distinct?: DebitCardKeyFeatureScalarFieldEnum | DebitCardKeyFeatureScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardKeyFeature findMany
+   */
+  export type DebitCardKeyFeatureFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardKeyFeatures to fetch.
+     */
+    where?: DebitCardKeyFeatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardKeyFeatures to fetch.
+     */
+    orderBy?: DebitCardKeyFeatureOrderByWithRelationInput | DebitCardKeyFeatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DebitCardKeyFeatures.
+     */
+    cursor?: DebitCardKeyFeatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardKeyFeatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardKeyFeatures.
+     */
+    skip?: number
+    distinct?: DebitCardKeyFeatureScalarFieldEnum | DebitCardKeyFeatureScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardKeyFeature create
+   */
+  export type DebitCardKeyFeatureCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DebitCardKeyFeature.
+     */
+    data: XOR<DebitCardKeyFeatureCreateInput, DebitCardKeyFeatureUncheckedCreateInput>
+  }
+
+  /**
+   * DebitCardKeyFeature createMany
+   */
+  export type DebitCardKeyFeatureCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DebitCardKeyFeatures.
+     */
+    data: DebitCardKeyFeatureCreateManyInput | DebitCardKeyFeatureCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DebitCardKeyFeature createManyAndReturn
+   */
+  export type DebitCardKeyFeatureCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * The data used to create many DebitCardKeyFeatures.
+     */
+    data: DebitCardKeyFeatureCreateManyInput | DebitCardKeyFeatureCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DebitCardKeyFeature update
+   */
+  export type DebitCardKeyFeatureUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DebitCardKeyFeature.
+     */
+    data: XOR<DebitCardKeyFeatureUpdateInput, DebitCardKeyFeatureUncheckedUpdateInput>
+    /**
+     * Choose, which DebitCardKeyFeature to update.
+     */
+    where: DebitCardKeyFeatureWhereUniqueInput
+  }
+
+  /**
+   * DebitCardKeyFeature updateMany
+   */
+  export type DebitCardKeyFeatureUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DebitCardKeyFeatures.
+     */
+    data: XOR<DebitCardKeyFeatureUpdateManyMutationInput, DebitCardKeyFeatureUncheckedUpdateManyInput>
+    /**
+     * Filter which DebitCardKeyFeatures to update
+     */
+    where?: DebitCardKeyFeatureWhereInput
+    /**
+     * Limit how many DebitCardKeyFeatures to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DebitCardKeyFeature updateManyAndReturn
+   */
+  export type DebitCardKeyFeatureUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * The data used to update DebitCardKeyFeatures.
+     */
+    data: XOR<DebitCardKeyFeatureUpdateManyMutationInput, DebitCardKeyFeatureUncheckedUpdateManyInput>
+    /**
+     * Filter which DebitCardKeyFeatures to update
+     */
+    where?: DebitCardKeyFeatureWhereInput
+    /**
+     * Limit how many DebitCardKeyFeatures to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DebitCardKeyFeature upsert
+   */
+  export type DebitCardKeyFeatureUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DebitCardKeyFeature to update in case it exists.
+     */
+    where: DebitCardKeyFeatureWhereUniqueInput
+    /**
+     * In case the DebitCardKeyFeature found by the `where` argument doesn't exist, create a new DebitCardKeyFeature with this data.
+     */
+    create: XOR<DebitCardKeyFeatureCreateInput, DebitCardKeyFeatureUncheckedCreateInput>
+    /**
+     * In case the DebitCardKeyFeature was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DebitCardKeyFeatureUpdateInput, DebitCardKeyFeatureUncheckedUpdateInput>
+  }
+
+  /**
+   * DebitCardKeyFeature delete
+   */
+  export type DebitCardKeyFeatureDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureInclude<ExtArgs> | null
+    /**
+     * Filter which DebitCardKeyFeature to delete.
+     */
+    where: DebitCardKeyFeatureWhereUniqueInput
+  }
+
+  /**
+   * DebitCardKeyFeature deleteMany
+   */
+  export type DebitCardKeyFeatureDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DebitCardKeyFeatures to delete
+     */
+    where?: DebitCardKeyFeatureWhereInput
+    /**
+     * Limit how many DebitCardKeyFeatures to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DebitCardKeyFeature without action
+   */
+  export type DebitCardKeyFeatureDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardKeyFeature
+     */
+    select?: DebitCardKeyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardKeyFeature
+     */
+    omit?: DebitCardKeyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardKeyFeatureInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DebitCardOffer
+   */
+
+  export type AggregateDebitCardOffer = {
+    _count: DebitCardOfferCountAggregateOutputType | null
+    _avg: DebitCardOfferAvgAggregateOutputType | null
+    _sum: DebitCardOfferSumAggregateOutputType | null
+    _min: DebitCardOfferMinAggregateOutputType | null
+    _max: DebitCardOfferMaxAggregateOutputType | null
+  }
+
+  export type DebitCardOfferAvgAggregateOutputType = {
+    id: number | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardOfferSumAggregateOutputType = {
+    id: number | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardOfferMinAggregateOutputType = {
+    id: number | null
+    merchant: string | null
+    offerType: string | null
+    title: string | null
+    description: string | null
+    offerValue: string | null
+    validFrom: Date | null
+    validTill: Date | null
+    isActive: boolean | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardOfferMaxAggregateOutputType = {
+    id: number | null
+    merchant: string | null
+    offerType: string | null
+    title: string | null
+    description: string | null
+    offerValue: string | null
+    validFrom: Date | null
+    validTill: Date | null
+    isActive: boolean | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardOfferCountAggregateOutputType = {
+    id: number
+    merchant: number
+    offerType: number
+    title: number
+    description: number
+    offerValue: number
+    validFrom: number
+    validTill: number
+    isActive: number
+    displayOrder: number
+    productId: number
+    _all: number
+  }
+
+
+  export type DebitCardOfferAvgAggregateInputType = {
+    id?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardOfferSumAggregateInputType = {
+    id?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardOfferMinAggregateInputType = {
+    id?: true
+    merchant?: true
+    offerType?: true
+    title?: true
+    description?: true
+    offerValue?: true
+    validFrom?: true
+    validTill?: true
+    isActive?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardOfferMaxAggregateInputType = {
+    id?: true
+    merchant?: true
+    offerType?: true
+    title?: true
+    description?: true
+    offerValue?: true
+    validFrom?: true
+    validTill?: true
+    isActive?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardOfferCountAggregateInputType = {
+    id?: true
+    merchant?: true
+    offerType?: true
+    title?: true
+    description?: true
+    offerValue?: true
+    validFrom?: true
+    validTill?: true
+    isActive?: true
+    displayOrder?: true
+    productId?: true
+    _all?: true
+  }
+
+  export type DebitCardOfferAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DebitCardOffer to aggregate.
+     */
+    where?: DebitCardOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardOffers to fetch.
+     */
+    orderBy?: DebitCardOfferOrderByWithRelationInput | DebitCardOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DebitCardOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DebitCardOffers
+    **/
+    _count?: true | DebitCardOfferCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DebitCardOfferAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DebitCardOfferSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DebitCardOfferMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DebitCardOfferMaxAggregateInputType
+  }
+
+  export type GetDebitCardOfferAggregateType<T extends DebitCardOfferAggregateArgs> = {
+        [P in keyof T & keyof AggregateDebitCardOffer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDebitCardOffer[P]>
+      : GetScalarType<T[P], AggregateDebitCardOffer[P]>
+  }
+
+
+
+
+  export type DebitCardOfferGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DebitCardOfferWhereInput
+    orderBy?: DebitCardOfferOrderByWithAggregationInput | DebitCardOfferOrderByWithAggregationInput[]
+    by: DebitCardOfferScalarFieldEnum[] | DebitCardOfferScalarFieldEnum
+    having?: DebitCardOfferScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DebitCardOfferCountAggregateInputType | true
+    _avg?: DebitCardOfferAvgAggregateInputType
+    _sum?: DebitCardOfferSumAggregateInputType
+    _min?: DebitCardOfferMinAggregateInputType
+    _max?: DebitCardOfferMaxAggregateInputType
+  }
+
+  export type DebitCardOfferGroupByOutputType = {
+    id: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom: Date | null
+    validTill: Date | null
+    isActive: boolean
+    displayOrder: number
+    productId: number
+    _count: DebitCardOfferCountAggregateOutputType | null
+    _avg: DebitCardOfferAvgAggregateOutputType | null
+    _sum: DebitCardOfferSumAggregateOutputType | null
+    _min: DebitCardOfferMinAggregateOutputType | null
+    _max: DebitCardOfferMaxAggregateOutputType | null
+  }
+
+  type GetDebitCardOfferGroupByPayload<T extends DebitCardOfferGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DebitCardOfferGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DebitCardOfferGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DebitCardOfferGroupByOutputType[P]>
+            : GetScalarType<T[P], DebitCardOfferGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DebitCardOfferSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    merchant?: boolean
+    offerType?: boolean
+    title?: boolean
+    description?: boolean
+    offerValue?: boolean
+    validFrom?: boolean
+    validTill?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardOffer"]>
+
+  export type DebitCardOfferSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    merchant?: boolean
+    offerType?: boolean
+    title?: boolean
+    description?: boolean
+    offerValue?: boolean
+    validFrom?: boolean
+    validTill?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardOffer"]>
+
+  export type DebitCardOfferSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    merchant?: boolean
+    offerType?: boolean
+    title?: boolean
+    description?: boolean
+    offerValue?: boolean
+    validFrom?: boolean
+    validTill?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardOffer"]>
+
+  export type DebitCardOfferSelectScalar = {
+    id?: boolean
+    merchant?: boolean
+    offerType?: boolean
+    title?: boolean
+    description?: boolean
+    offerValue?: boolean
+    validFrom?: boolean
+    validTill?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+  }
+
+  export type DebitCardOfferOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "merchant" | "offerType" | "title" | "description" | "offerValue" | "validFrom" | "validTill" | "isActive" | "displayOrder" | "productId", ExtArgs["result"]["debitCardOffer"]>
+  export type DebitCardOfferInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }
+  export type DebitCardOfferIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }
+  export type DebitCardOfferIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }
+
+  export type $DebitCardOfferPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DebitCardOffer"
+    objects: {
+      product: Prisma.$DebitCardProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      merchant: string
+      offerType: string
+      title: string
+      description: string
+      offerValue: string
+      validFrom: Date | null
+      validTill: Date | null
+      isActive: boolean
+      displayOrder: number
+      productId: number
+    }, ExtArgs["result"]["debitCardOffer"]>
+    composites: {}
+  }
+
+  type DebitCardOfferGetPayload<S extends boolean | null | undefined | DebitCardOfferDefaultArgs> = $Result.GetResult<Prisma.$DebitCardOfferPayload, S>
+
+  type DebitCardOfferCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DebitCardOfferFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DebitCardOfferCountAggregateInputType | true
+    }
+
+  export interface DebitCardOfferDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DebitCardOffer'], meta: { name: 'DebitCardOffer' } }
+    /**
+     * Find zero or one DebitCardOffer that matches the filter.
+     * @param {DebitCardOfferFindUniqueArgs} args - Arguments to find a DebitCardOffer
+     * @example
+     * // Get one DebitCardOffer
+     * const debitCardOffer = await prisma.debitCardOffer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DebitCardOfferFindUniqueArgs>(args: SelectSubset<T, DebitCardOfferFindUniqueArgs<ExtArgs>>): Prisma__DebitCardOfferClient<$Result.GetResult<Prisma.$DebitCardOfferPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DebitCardOffer that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DebitCardOfferFindUniqueOrThrowArgs} args - Arguments to find a DebitCardOffer
+     * @example
+     * // Get one DebitCardOffer
+     * const debitCardOffer = await prisma.debitCardOffer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DebitCardOfferFindUniqueOrThrowArgs>(args: SelectSubset<T, DebitCardOfferFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DebitCardOfferClient<$Result.GetResult<Prisma.$DebitCardOfferPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DebitCardOffer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardOfferFindFirstArgs} args - Arguments to find a DebitCardOffer
+     * @example
+     * // Get one DebitCardOffer
+     * const debitCardOffer = await prisma.debitCardOffer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DebitCardOfferFindFirstArgs>(args?: SelectSubset<T, DebitCardOfferFindFirstArgs<ExtArgs>>): Prisma__DebitCardOfferClient<$Result.GetResult<Prisma.$DebitCardOfferPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DebitCardOffer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardOfferFindFirstOrThrowArgs} args - Arguments to find a DebitCardOffer
+     * @example
+     * // Get one DebitCardOffer
+     * const debitCardOffer = await prisma.debitCardOffer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DebitCardOfferFindFirstOrThrowArgs>(args?: SelectSubset<T, DebitCardOfferFindFirstOrThrowArgs<ExtArgs>>): Prisma__DebitCardOfferClient<$Result.GetResult<Prisma.$DebitCardOfferPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DebitCardOffers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardOfferFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DebitCardOffers
+     * const debitCardOffers = await prisma.debitCardOffer.findMany()
+     * 
+     * // Get first 10 DebitCardOffers
+     * const debitCardOffers = await prisma.debitCardOffer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const debitCardOfferWithIdOnly = await prisma.debitCardOffer.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DebitCardOfferFindManyArgs>(args?: SelectSubset<T, DebitCardOfferFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DebitCardOffer.
+     * @param {DebitCardOfferCreateArgs} args - Arguments to create a DebitCardOffer.
+     * @example
+     * // Create one DebitCardOffer
+     * const DebitCardOffer = await prisma.debitCardOffer.create({
+     *   data: {
+     *     // ... data to create a DebitCardOffer
+     *   }
+     * })
+     * 
+     */
+    create<T extends DebitCardOfferCreateArgs>(args: SelectSubset<T, DebitCardOfferCreateArgs<ExtArgs>>): Prisma__DebitCardOfferClient<$Result.GetResult<Prisma.$DebitCardOfferPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DebitCardOffers.
+     * @param {DebitCardOfferCreateManyArgs} args - Arguments to create many DebitCardOffers.
+     * @example
+     * // Create many DebitCardOffers
+     * const debitCardOffer = await prisma.debitCardOffer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DebitCardOfferCreateManyArgs>(args?: SelectSubset<T, DebitCardOfferCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DebitCardOffers and returns the data saved in the database.
+     * @param {DebitCardOfferCreateManyAndReturnArgs} args - Arguments to create many DebitCardOffers.
+     * @example
+     * // Create many DebitCardOffers
+     * const debitCardOffer = await prisma.debitCardOffer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DebitCardOffers and only return the `id`
+     * const debitCardOfferWithIdOnly = await prisma.debitCardOffer.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DebitCardOfferCreateManyAndReturnArgs>(args?: SelectSubset<T, DebitCardOfferCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardOfferPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DebitCardOffer.
+     * @param {DebitCardOfferDeleteArgs} args - Arguments to delete one DebitCardOffer.
+     * @example
+     * // Delete one DebitCardOffer
+     * const DebitCardOffer = await prisma.debitCardOffer.delete({
+     *   where: {
+     *     // ... filter to delete one DebitCardOffer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DebitCardOfferDeleteArgs>(args: SelectSubset<T, DebitCardOfferDeleteArgs<ExtArgs>>): Prisma__DebitCardOfferClient<$Result.GetResult<Prisma.$DebitCardOfferPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DebitCardOffer.
+     * @param {DebitCardOfferUpdateArgs} args - Arguments to update one DebitCardOffer.
+     * @example
+     * // Update one DebitCardOffer
+     * const debitCardOffer = await prisma.debitCardOffer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DebitCardOfferUpdateArgs>(args: SelectSubset<T, DebitCardOfferUpdateArgs<ExtArgs>>): Prisma__DebitCardOfferClient<$Result.GetResult<Prisma.$DebitCardOfferPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DebitCardOffers.
+     * @param {DebitCardOfferDeleteManyArgs} args - Arguments to filter DebitCardOffers to delete.
+     * @example
+     * // Delete a few DebitCardOffers
+     * const { count } = await prisma.debitCardOffer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DebitCardOfferDeleteManyArgs>(args?: SelectSubset<T, DebitCardOfferDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DebitCardOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardOfferUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DebitCardOffers
+     * const debitCardOffer = await prisma.debitCardOffer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DebitCardOfferUpdateManyArgs>(args: SelectSubset<T, DebitCardOfferUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DebitCardOffers and returns the data updated in the database.
+     * @param {DebitCardOfferUpdateManyAndReturnArgs} args - Arguments to update many DebitCardOffers.
+     * @example
+     * // Update many DebitCardOffers
+     * const debitCardOffer = await prisma.debitCardOffer.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DebitCardOffers and only return the `id`
+     * const debitCardOfferWithIdOnly = await prisma.debitCardOffer.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DebitCardOfferUpdateManyAndReturnArgs>(args: SelectSubset<T, DebitCardOfferUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardOfferPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DebitCardOffer.
+     * @param {DebitCardOfferUpsertArgs} args - Arguments to update or create a DebitCardOffer.
+     * @example
+     * // Update or create a DebitCardOffer
+     * const debitCardOffer = await prisma.debitCardOffer.upsert({
+     *   create: {
+     *     // ... data to create a DebitCardOffer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DebitCardOffer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DebitCardOfferUpsertArgs>(args: SelectSubset<T, DebitCardOfferUpsertArgs<ExtArgs>>): Prisma__DebitCardOfferClient<$Result.GetResult<Prisma.$DebitCardOfferPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DebitCardOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardOfferCountArgs} args - Arguments to filter DebitCardOffers to count.
+     * @example
+     * // Count the number of DebitCardOffers
+     * const count = await prisma.debitCardOffer.count({
+     *   where: {
+     *     // ... the filter for the DebitCardOffers we want to count
+     *   }
+     * })
+    **/
+    count<T extends DebitCardOfferCountArgs>(
+      args?: Subset<T, DebitCardOfferCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DebitCardOfferCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DebitCardOffer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardOfferAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DebitCardOfferAggregateArgs>(args: Subset<T, DebitCardOfferAggregateArgs>): Prisma.PrismaPromise<GetDebitCardOfferAggregateType<T>>
+
+    /**
+     * Group by DebitCardOffer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardOfferGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DebitCardOfferGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DebitCardOfferGroupByArgs['orderBy'] }
+        : { orderBy?: DebitCardOfferGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DebitCardOfferGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDebitCardOfferGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DebitCardOffer model
+   */
+  readonly fields: DebitCardOfferFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DebitCardOffer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DebitCardOfferClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends DebitCardProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DebitCardProductDefaultArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DebitCardOffer model
+   */
+  interface DebitCardOfferFieldRefs {
+    readonly id: FieldRef<"DebitCardOffer", 'Int'>
+    readonly merchant: FieldRef<"DebitCardOffer", 'String'>
+    readonly offerType: FieldRef<"DebitCardOffer", 'String'>
+    readonly title: FieldRef<"DebitCardOffer", 'String'>
+    readonly description: FieldRef<"DebitCardOffer", 'String'>
+    readonly offerValue: FieldRef<"DebitCardOffer", 'String'>
+    readonly validFrom: FieldRef<"DebitCardOffer", 'DateTime'>
+    readonly validTill: FieldRef<"DebitCardOffer", 'DateTime'>
+    readonly isActive: FieldRef<"DebitCardOffer", 'Boolean'>
+    readonly displayOrder: FieldRef<"DebitCardOffer", 'Int'>
+    readonly productId: FieldRef<"DebitCardOffer", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DebitCardOffer findUnique
+   */
+  export type DebitCardOfferFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardOffer to fetch.
+     */
+    where: DebitCardOfferWhereUniqueInput
+  }
+
+  /**
+   * DebitCardOffer findUniqueOrThrow
+   */
+  export type DebitCardOfferFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardOffer to fetch.
+     */
+    where: DebitCardOfferWhereUniqueInput
+  }
+
+  /**
+   * DebitCardOffer findFirst
+   */
+  export type DebitCardOfferFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardOffer to fetch.
+     */
+    where?: DebitCardOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardOffers to fetch.
+     */
+    orderBy?: DebitCardOfferOrderByWithRelationInput | DebitCardOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DebitCardOffers.
+     */
+    cursor?: DebitCardOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DebitCardOffers.
+     */
+    distinct?: DebitCardOfferScalarFieldEnum | DebitCardOfferScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardOffer findFirstOrThrow
+   */
+  export type DebitCardOfferFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardOffer to fetch.
+     */
+    where?: DebitCardOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardOffers to fetch.
+     */
+    orderBy?: DebitCardOfferOrderByWithRelationInput | DebitCardOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DebitCardOffers.
+     */
+    cursor?: DebitCardOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DebitCardOffers.
+     */
+    distinct?: DebitCardOfferScalarFieldEnum | DebitCardOfferScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardOffer findMany
+   */
+  export type DebitCardOfferFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardOffers to fetch.
+     */
+    where?: DebitCardOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardOffers to fetch.
+     */
+    orderBy?: DebitCardOfferOrderByWithRelationInput | DebitCardOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DebitCardOffers.
+     */
+    cursor?: DebitCardOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardOffers.
+     */
+    skip?: number
+    distinct?: DebitCardOfferScalarFieldEnum | DebitCardOfferScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardOffer create
+   */
+  export type DebitCardOfferCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DebitCardOffer.
+     */
+    data: XOR<DebitCardOfferCreateInput, DebitCardOfferUncheckedCreateInput>
+  }
+
+  /**
+   * DebitCardOffer createMany
+   */
+  export type DebitCardOfferCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DebitCardOffers.
+     */
+    data: DebitCardOfferCreateManyInput | DebitCardOfferCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DebitCardOffer createManyAndReturn
+   */
+  export type DebitCardOfferCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * The data used to create many DebitCardOffers.
+     */
+    data: DebitCardOfferCreateManyInput | DebitCardOfferCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DebitCardOffer update
+   */
+  export type DebitCardOfferUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DebitCardOffer.
+     */
+    data: XOR<DebitCardOfferUpdateInput, DebitCardOfferUncheckedUpdateInput>
+    /**
+     * Choose, which DebitCardOffer to update.
+     */
+    where: DebitCardOfferWhereUniqueInput
+  }
+
+  /**
+   * DebitCardOffer updateMany
+   */
+  export type DebitCardOfferUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DebitCardOffers.
+     */
+    data: XOR<DebitCardOfferUpdateManyMutationInput, DebitCardOfferUncheckedUpdateManyInput>
+    /**
+     * Filter which DebitCardOffers to update
+     */
+    where?: DebitCardOfferWhereInput
+    /**
+     * Limit how many DebitCardOffers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DebitCardOffer updateManyAndReturn
+   */
+  export type DebitCardOfferUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * The data used to update DebitCardOffers.
+     */
+    data: XOR<DebitCardOfferUpdateManyMutationInput, DebitCardOfferUncheckedUpdateManyInput>
+    /**
+     * Filter which DebitCardOffers to update
+     */
+    where?: DebitCardOfferWhereInput
+    /**
+     * Limit how many DebitCardOffers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DebitCardOffer upsert
+   */
+  export type DebitCardOfferUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DebitCardOffer to update in case it exists.
+     */
+    where: DebitCardOfferWhereUniqueInput
+    /**
+     * In case the DebitCardOffer found by the `where` argument doesn't exist, create a new DebitCardOffer with this data.
+     */
+    create: XOR<DebitCardOfferCreateInput, DebitCardOfferUncheckedCreateInput>
+    /**
+     * In case the DebitCardOffer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DebitCardOfferUpdateInput, DebitCardOfferUncheckedUpdateInput>
+  }
+
+  /**
+   * DebitCardOffer delete
+   */
+  export type DebitCardOfferDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferInclude<ExtArgs> | null
+    /**
+     * Filter which DebitCardOffer to delete.
+     */
+    where: DebitCardOfferWhereUniqueInput
+  }
+
+  /**
+   * DebitCardOffer deleteMany
+   */
+  export type DebitCardOfferDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DebitCardOffers to delete
+     */
+    where?: DebitCardOfferWhereInput
+    /**
+     * Limit how many DebitCardOffers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DebitCardOffer without action
+   */
+  export type DebitCardOfferDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardOffer
+     */
+    select?: DebitCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardOffer
+     */
+    omit?: DebitCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardOfferInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DebitCardSafetyFeature
+   */
+
+  export type AggregateDebitCardSafetyFeature = {
+    _count: DebitCardSafetyFeatureCountAggregateOutputType | null
+    _avg: DebitCardSafetyFeatureAvgAggregateOutputType | null
+    _sum: DebitCardSafetyFeatureSumAggregateOutputType | null
+    _min: DebitCardSafetyFeatureMinAggregateOutputType | null
+    _max: DebitCardSafetyFeatureMaxAggregateOutputType | null
+  }
+
+  export type DebitCardSafetyFeatureAvgAggregateOutputType = {
+    id: number | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardSafetyFeatureSumAggregateOutputType = {
+    id: number | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardSafetyFeatureMinAggregateOutputType = {
+    id: number | null
+    featureName: string | null
+    description: string | null
+    howToUse: string | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardSafetyFeatureMaxAggregateOutputType = {
+    id: number | null
+    featureName: string | null
+    description: string | null
+    howToUse: string | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type DebitCardSafetyFeatureCountAggregateOutputType = {
+    id: number
+    featureName: number
+    description: number
+    howToUse: number
+    displayOrder: number
+    productId: number
+    _all: number
+  }
+
+
+  export type DebitCardSafetyFeatureAvgAggregateInputType = {
+    id?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardSafetyFeatureSumAggregateInputType = {
+    id?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardSafetyFeatureMinAggregateInputType = {
+    id?: true
+    featureName?: true
+    description?: true
+    howToUse?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardSafetyFeatureMaxAggregateInputType = {
+    id?: true
+    featureName?: true
+    description?: true
+    howToUse?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type DebitCardSafetyFeatureCountAggregateInputType = {
+    id?: true
+    featureName?: true
+    description?: true
+    howToUse?: true
+    displayOrder?: true
+    productId?: true
+    _all?: true
+  }
+
+  export type DebitCardSafetyFeatureAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DebitCardSafetyFeature to aggregate.
+     */
+    where?: DebitCardSafetyFeatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardSafetyFeatures to fetch.
+     */
+    orderBy?: DebitCardSafetyFeatureOrderByWithRelationInput | DebitCardSafetyFeatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DebitCardSafetyFeatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardSafetyFeatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardSafetyFeatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DebitCardSafetyFeatures
+    **/
+    _count?: true | DebitCardSafetyFeatureCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DebitCardSafetyFeatureAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DebitCardSafetyFeatureSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DebitCardSafetyFeatureMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DebitCardSafetyFeatureMaxAggregateInputType
+  }
+
+  export type GetDebitCardSafetyFeatureAggregateType<T extends DebitCardSafetyFeatureAggregateArgs> = {
+        [P in keyof T & keyof AggregateDebitCardSafetyFeature]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDebitCardSafetyFeature[P]>
+      : GetScalarType<T[P], AggregateDebitCardSafetyFeature[P]>
+  }
+
+
+
+
+  export type DebitCardSafetyFeatureGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DebitCardSafetyFeatureWhereInput
+    orderBy?: DebitCardSafetyFeatureOrderByWithAggregationInput | DebitCardSafetyFeatureOrderByWithAggregationInput[]
+    by: DebitCardSafetyFeatureScalarFieldEnum[] | DebitCardSafetyFeatureScalarFieldEnum
+    having?: DebitCardSafetyFeatureScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DebitCardSafetyFeatureCountAggregateInputType | true
+    _avg?: DebitCardSafetyFeatureAvgAggregateInputType
+    _sum?: DebitCardSafetyFeatureSumAggregateInputType
+    _min?: DebitCardSafetyFeatureMinAggregateInputType
+    _max?: DebitCardSafetyFeatureMaxAggregateInputType
+  }
+
+  export type DebitCardSafetyFeatureGroupByOutputType = {
+    id: number
+    featureName: string
+    description: string
+    howToUse: string | null
+    displayOrder: number
+    productId: number
+    _count: DebitCardSafetyFeatureCountAggregateOutputType | null
+    _avg: DebitCardSafetyFeatureAvgAggregateOutputType | null
+    _sum: DebitCardSafetyFeatureSumAggregateOutputType | null
+    _min: DebitCardSafetyFeatureMinAggregateOutputType | null
+    _max: DebitCardSafetyFeatureMaxAggregateOutputType | null
+  }
+
+  type GetDebitCardSafetyFeatureGroupByPayload<T extends DebitCardSafetyFeatureGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DebitCardSafetyFeatureGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DebitCardSafetyFeatureGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DebitCardSafetyFeatureGroupByOutputType[P]>
+            : GetScalarType<T[P], DebitCardSafetyFeatureGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DebitCardSafetyFeatureSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    featureName?: boolean
+    description?: boolean
+    howToUse?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardSafetyFeature"]>
+
+  export type DebitCardSafetyFeatureSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    featureName?: boolean
+    description?: boolean
+    howToUse?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardSafetyFeature"]>
+
+  export type DebitCardSafetyFeatureSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    featureName?: boolean
+    description?: boolean
+    howToUse?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["debitCardSafetyFeature"]>
+
+  export type DebitCardSafetyFeatureSelectScalar = {
+    id?: boolean
+    featureName?: boolean
+    description?: boolean
+    howToUse?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+  }
+
+  export type DebitCardSafetyFeatureOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "featureName" | "description" | "howToUse" | "displayOrder" | "productId", ExtArgs["result"]["debitCardSafetyFeature"]>
+  export type DebitCardSafetyFeatureInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }
+  export type DebitCardSafetyFeatureIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }
+  export type DebitCardSafetyFeatureIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | DebitCardProductDefaultArgs<ExtArgs>
+  }
+
+  export type $DebitCardSafetyFeaturePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DebitCardSafetyFeature"
+    objects: {
+      product: Prisma.$DebitCardProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      featureName: string
+      description: string
+      howToUse: string | null
+      displayOrder: number
+      productId: number
+    }, ExtArgs["result"]["debitCardSafetyFeature"]>
+    composites: {}
+  }
+
+  type DebitCardSafetyFeatureGetPayload<S extends boolean | null | undefined | DebitCardSafetyFeatureDefaultArgs> = $Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload, S>
+
+  type DebitCardSafetyFeatureCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DebitCardSafetyFeatureFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DebitCardSafetyFeatureCountAggregateInputType | true
+    }
+
+  export interface DebitCardSafetyFeatureDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DebitCardSafetyFeature'], meta: { name: 'DebitCardSafetyFeature' } }
+    /**
+     * Find zero or one DebitCardSafetyFeature that matches the filter.
+     * @param {DebitCardSafetyFeatureFindUniqueArgs} args - Arguments to find a DebitCardSafetyFeature
+     * @example
+     * // Get one DebitCardSafetyFeature
+     * const debitCardSafetyFeature = await prisma.debitCardSafetyFeature.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DebitCardSafetyFeatureFindUniqueArgs>(args: SelectSubset<T, DebitCardSafetyFeatureFindUniqueArgs<ExtArgs>>): Prisma__DebitCardSafetyFeatureClient<$Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DebitCardSafetyFeature that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DebitCardSafetyFeatureFindUniqueOrThrowArgs} args - Arguments to find a DebitCardSafetyFeature
+     * @example
+     * // Get one DebitCardSafetyFeature
+     * const debitCardSafetyFeature = await prisma.debitCardSafetyFeature.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DebitCardSafetyFeatureFindUniqueOrThrowArgs>(args: SelectSubset<T, DebitCardSafetyFeatureFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DebitCardSafetyFeatureClient<$Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DebitCardSafetyFeature that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardSafetyFeatureFindFirstArgs} args - Arguments to find a DebitCardSafetyFeature
+     * @example
+     * // Get one DebitCardSafetyFeature
+     * const debitCardSafetyFeature = await prisma.debitCardSafetyFeature.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DebitCardSafetyFeatureFindFirstArgs>(args?: SelectSubset<T, DebitCardSafetyFeatureFindFirstArgs<ExtArgs>>): Prisma__DebitCardSafetyFeatureClient<$Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DebitCardSafetyFeature that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardSafetyFeatureFindFirstOrThrowArgs} args - Arguments to find a DebitCardSafetyFeature
+     * @example
+     * // Get one DebitCardSafetyFeature
+     * const debitCardSafetyFeature = await prisma.debitCardSafetyFeature.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DebitCardSafetyFeatureFindFirstOrThrowArgs>(args?: SelectSubset<T, DebitCardSafetyFeatureFindFirstOrThrowArgs<ExtArgs>>): Prisma__DebitCardSafetyFeatureClient<$Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DebitCardSafetyFeatures that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardSafetyFeatureFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DebitCardSafetyFeatures
+     * const debitCardSafetyFeatures = await prisma.debitCardSafetyFeature.findMany()
+     * 
+     * // Get first 10 DebitCardSafetyFeatures
+     * const debitCardSafetyFeatures = await prisma.debitCardSafetyFeature.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const debitCardSafetyFeatureWithIdOnly = await prisma.debitCardSafetyFeature.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DebitCardSafetyFeatureFindManyArgs>(args?: SelectSubset<T, DebitCardSafetyFeatureFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DebitCardSafetyFeature.
+     * @param {DebitCardSafetyFeatureCreateArgs} args - Arguments to create a DebitCardSafetyFeature.
+     * @example
+     * // Create one DebitCardSafetyFeature
+     * const DebitCardSafetyFeature = await prisma.debitCardSafetyFeature.create({
+     *   data: {
+     *     // ... data to create a DebitCardSafetyFeature
+     *   }
+     * })
+     * 
+     */
+    create<T extends DebitCardSafetyFeatureCreateArgs>(args: SelectSubset<T, DebitCardSafetyFeatureCreateArgs<ExtArgs>>): Prisma__DebitCardSafetyFeatureClient<$Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DebitCardSafetyFeatures.
+     * @param {DebitCardSafetyFeatureCreateManyArgs} args - Arguments to create many DebitCardSafetyFeatures.
+     * @example
+     * // Create many DebitCardSafetyFeatures
+     * const debitCardSafetyFeature = await prisma.debitCardSafetyFeature.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DebitCardSafetyFeatureCreateManyArgs>(args?: SelectSubset<T, DebitCardSafetyFeatureCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DebitCardSafetyFeatures and returns the data saved in the database.
+     * @param {DebitCardSafetyFeatureCreateManyAndReturnArgs} args - Arguments to create many DebitCardSafetyFeatures.
+     * @example
+     * // Create many DebitCardSafetyFeatures
+     * const debitCardSafetyFeature = await prisma.debitCardSafetyFeature.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DebitCardSafetyFeatures and only return the `id`
+     * const debitCardSafetyFeatureWithIdOnly = await prisma.debitCardSafetyFeature.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DebitCardSafetyFeatureCreateManyAndReturnArgs>(args?: SelectSubset<T, DebitCardSafetyFeatureCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DebitCardSafetyFeature.
+     * @param {DebitCardSafetyFeatureDeleteArgs} args - Arguments to delete one DebitCardSafetyFeature.
+     * @example
+     * // Delete one DebitCardSafetyFeature
+     * const DebitCardSafetyFeature = await prisma.debitCardSafetyFeature.delete({
+     *   where: {
+     *     // ... filter to delete one DebitCardSafetyFeature
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DebitCardSafetyFeatureDeleteArgs>(args: SelectSubset<T, DebitCardSafetyFeatureDeleteArgs<ExtArgs>>): Prisma__DebitCardSafetyFeatureClient<$Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DebitCardSafetyFeature.
+     * @param {DebitCardSafetyFeatureUpdateArgs} args - Arguments to update one DebitCardSafetyFeature.
+     * @example
+     * // Update one DebitCardSafetyFeature
+     * const debitCardSafetyFeature = await prisma.debitCardSafetyFeature.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DebitCardSafetyFeatureUpdateArgs>(args: SelectSubset<T, DebitCardSafetyFeatureUpdateArgs<ExtArgs>>): Prisma__DebitCardSafetyFeatureClient<$Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DebitCardSafetyFeatures.
+     * @param {DebitCardSafetyFeatureDeleteManyArgs} args - Arguments to filter DebitCardSafetyFeatures to delete.
+     * @example
+     * // Delete a few DebitCardSafetyFeatures
+     * const { count } = await prisma.debitCardSafetyFeature.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DebitCardSafetyFeatureDeleteManyArgs>(args?: SelectSubset<T, DebitCardSafetyFeatureDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DebitCardSafetyFeatures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardSafetyFeatureUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DebitCardSafetyFeatures
+     * const debitCardSafetyFeature = await prisma.debitCardSafetyFeature.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DebitCardSafetyFeatureUpdateManyArgs>(args: SelectSubset<T, DebitCardSafetyFeatureUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DebitCardSafetyFeatures and returns the data updated in the database.
+     * @param {DebitCardSafetyFeatureUpdateManyAndReturnArgs} args - Arguments to update many DebitCardSafetyFeatures.
+     * @example
+     * // Update many DebitCardSafetyFeatures
+     * const debitCardSafetyFeature = await prisma.debitCardSafetyFeature.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DebitCardSafetyFeatures and only return the `id`
+     * const debitCardSafetyFeatureWithIdOnly = await prisma.debitCardSafetyFeature.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DebitCardSafetyFeatureUpdateManyAndReturnArgs>(args: SelectSubset<T, DebitCardSafetyFeatureUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DebitCardSafetyFeature.
+     * @param {DebitCardSafetyFeatureUpsertArgs} args - Arguments to update or create a DebitCardSafetyFeature.
+     * @example
+     * // Update or create a DebitCardSafetyFeature
+     * const debitCardSafetyFeature = await prisma.debitCardSafetyFeature.upsert({
+     *   create: {
+     *     // ... data to create a DebitCardSafetyFeature
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DebitCardSafetyFeature we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DebitCardSafetyFeatureUpsertArgs>(args: SelectSubset<T, DebitCardSafetyFeatureUpsertArgs<ExtArgs>>): Prisma__DebitCardSafetyFeatureClient<$Result.GetResult<Prisma.$DebitCardSafetyFeaturePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DebitCardSafetyFeatures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardSafetyFeatureCountArgs} args - Arguments to filter DebitCardSafetyFeatures to count.
+     * @example
+     * // Count the number of DebitCardSafetyFeatures
+     * const count = await prisma.debitCardSafetyFeature.count({
+     *   where: {
+     *     // ... the filter for the DebitCardSafetyFeatures we want to count
+     *   }
+     * })
+    **/
+    count<T extends DebitCardSafetyFeatureCountArgs>(
+      args?: Subset<T, DebitCardSafetyFeatureCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DebitCardSafetyFeatureCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DebitCardSafetyFeature.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardSafetyFeatureAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DebitCardSafetyFeatureAggregateArgs>(args: Subset<T, DebitCardSafetyFeatureAggregateArgs>): Prisma.PrismaPromise<GetDebitCardSafetyFeatureAggregateType<T>>
+
+    /**
+     * Group by DebitCardSafetyFeature.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DebitCardSafetyFeatureGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DebitCardSafetyFeatureGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DebitCardSafetyFeatureGroupByArgs['orderBy'] }
+        : { orderBy?: DebitCardSafetyFeatureGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DebitCardSafetyFeatureGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDebitCardSafetyFeatureGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DebitCardSafetyFeature model
+   */
+  readonly fields: DebitCardSafetyFeatureFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DebitCardSafetyFeature.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DebitCardSafetyFeatureClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends DebitCardProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DebitCardProductDefaultArgs<ExtArgs>>): Prisma__DebitCardProductClient<$Result.GetResult<Prisma.$DebitCardProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DebitCardSafetyFeature model
+   */
+  interface DebitCardSafetyFeatureFieldRefs {
+    readonly id: FieldRef<"DebitCardSafetyFeature", 'Int'>
+    readonly featureName: FieldRef<"DebitCardSafetyFeature", 'String'>
+    readonly description: FieldRef<"DebitCardSafetyFeature", 'String'>
+    readonly howToUse: FieldRef<"DebitCardSafetyFeature", 'String'>
+    readonly displayOrder: FieldRef<"DebitCardSafetyFeature", 'Int'>
+    readonly productId: FieldRef<"DebitCardSafetyFeature", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DebitCardSafetyFeature findUnique
+   */
+  export type DebitCardSafetyFeatureFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardSafetyFeature to fetch.
+     */
+    where: DebitCardSafetyFeatureWhereUniqueInput
+  }
+
+  /**
+   * DebitCardSafetyFeature findUniqueOrThrow
+   */
+  export type DebitCardSafetyFeatureFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardSafetyFeature to fetch.
+     */
+    where: DebitCardSafetyFeatureWhereUniqueInput
+  }
+
+  /**
+   * DebitCardSafetyFeature findFirst
+   */
+  export type DebitCardSafetyFeatureFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardSafetyFeature to fetch.
+     */
+    where?: DebitCardSafetyFeatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardSafetyFeatures to fetch.
+     */
+    orderBy?: DebitCardSafetyFeatureOrderByWithRelationInput | DebitCardSafetyFeatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DebitCardSafetyFeatures.
+     */
+    cursor?: DebitCardSafetyFeatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardSafetyFeatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardSafetyFeatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DebitCardSafetyFeatures.
+     */
+    distinct?: DebitCardSafetyFeatureScalarFieldEnum | DebitCardSafetyFeatureScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardSafetyFeature findFirstOrThrow
+   */
+  export type DebitCardSafetyFeatureFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardSafetyFeature to fetch.
+     */
+    where?: DebitCardSafetyFeatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardSafetyFeatures to fetch.
+     */
+    orderBy?: DebitCardSafetyFeatureOrderByWithRelationInput | DebitCardSafetyFeatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DebitCardSafetyFeatures.
+     */
+    cursor?: DebitCardSafetyFeatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardSafetyFeatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardSafetyFeatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DebitCardSafetyFeatures.
+     */
+    distinct?: DebitCardSafetyFeatureScalarFieldEnum | DebitCardSafetyFeatureScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardSafetyFeature findMany
+   */
+  export type DebitCardSafetyFeatureFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureInclude<ExtArgs> | null
+    /**
+     * Filter, which DebitCardSafetyFeatures to fetch.
+     */
+    where?: DebitCardSafetyFeatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DebitCardSafetyFeatures to fetch.
+     */
+    orderBy?: DebitCardSafetyFeatureOrderByWithRelationInput | DebitCardSafetyFeatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DebitCardSafetyFeatures.
+     */
+    cursor?: DebitCardSafetyFeatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DebitCardSafetyFeatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DebitCardSafetyFeatures.
+     */
+    skip?: number
+    distinct?: DebitCardSafetyFeatureScalarFieldEnum | DebitCardSafetyFeatureScalarFieldEnum[]
+  }
+
+  /**
+   * DebitCardSafetyFeature create
+   */
+  export type DebitCardSafetyFeatureCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DebitCardSafetyFeature.
+     */
+    data: XOR<DebitCardSafetyFeatureCreateInput, DebitCardSafetyFeatureUncheckedCreateInput>
+  }
+
+  /**
+   * DebitCardSafetyFeature createMany
+   */
+  export type DebitCardSafetyFeatureCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DebitCardSafetyFeatures.
+     */
+    data: DebitCardSafetyFeatureCreateManyInput | DebitCardSafetyFeatureCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DebitCardSafetyFeature createManyAndReturn
+   */
+  export type DebitCardSafetyFeatureCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * The data used to create many DebitCardSafetyFeatures.
+     */
+    data: DebitCardSafetyFeatureCreateManyInput | DebitCardSafetyFeatureCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DebitCardSafetyFeature update
+   */
+  export type DebitCardSafetyFeatureUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DebitCardSafetyFeature.
+     */
+    data: XOR<DebitCardSafetyFeatureUpdateInput, DebitCardSafetyFeatureUncheckedUpdateInput>
+    /**
+     * Choose, which DebitCardSafetyFeature to update.
+     */
+    where: DebitCardSafetyFeatureWhereUniqueInput
+  }
+
+  /**
+   * DebitCardSafetyFeature updateMany
+   */
+  export type DebitCardSafetyFeatureUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DebitCardSafetyFeatures.
+     */
+    data: XOR<DebitCardSafetyFeatureUpdateManyMutationInput, DebitCardSafetyFeatureUncheckedUpdateManyInput>
+    /**
+     * Filter which DebitCardSafetyFeatures to update
+     */
+    where?: DebitCardSafetyFeatureWhereInput
+    /**
+     * Limit how many DebitCardSafetyFeatures to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DebitCardSafetyFeature updateManyAndReturn
+   */
+  export type DebitCardSafetyFeatureUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * The data used to update DebitCardSafetyFeatures.
+     */
+    data: XOR<DebitCardSafetyFeatureUpdateManyMutationInput, DebitCardSafetyFeatureUncheckedUpdateManyInput>
+    /**
+     * Filter which DebitCardSafetyFeatures to update
+     */
+    where?: DebitCardSafetyFeatureWhereInput
+    /**
+     * Limit how many DebitCardSafetyFeatures to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DebitCardSafetyFeature upsert
+   */
+  export type DebitCardSafetyFeatureUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DebitCardSafetyFeature to update in case it exists.
+     */
+    where: DebitCardSafetyFeatureWhereUniqueInput
+    /**
+     * In case the DebitCardSafetyFeature found by the `where` argument doesn't exist, create a new DebitCardSafetyFeature with this data.
+     */
+    create: XOR<DebitCardSafetyFeatureCreateInput, DebitCardSafetyFeatureUncheckedCreateInput>
+    /**
+     * In case the DebitCardSafetyFeature was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DebitCardSafetyFeatureUpdateInput, DebitCardSafetyFeatureUncheckedUpdateInput>
+  }
+
+  /**
+   * DebitCardSafetyFeature delete
+   */
+  export type DebitCardSafetyFeatureDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureInclude<ExtArgs> | null
+    /**
+     * Filter which DebitCardSafetyFeature to delete.
+     */
+    where: DebitCardSafetyFeatureWhereUniqueInput
+  }
+
+  /**
+   * DebitCardSafetyFeature deleteMany
+   */
+  export type DebitCardSafetyFeatureDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DebitCardSafetyFeatures to delete
+     */
+    where?: DebitCardSafetyFeatureWhereInput
+    /**
+     * Limit how many DebitCardSafetyFeatures to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DebitCardSafetyFeature without action
+   */
+  export type DebitCardSafetyFeatureDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DebitCardSafetyFeature
+     */
+    select?: DebitCardSafetyFeatureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DebitCardSafetyFeature
+     */
+    omit?: DebitCardSafetyFeatureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DebitCardSafetyFeatureInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -42323,6 +49235,7 @@ export namespace Prisma {
     type: 'type',
     loanId: 'loanId',
     cardId: 'cardId',
+    debitCardId: 'debitCardId',
     insuranceId: 'insuranceId',
     categoryId: 'categoryId',
     categorySlug: 'categorySlug',
@@ -42848,6 +49761,102 @@ export namespace Prisma {
   export type EligibilityInquiryScalarFieldEnum = (typeof EligibilityInquiryScalarFieldEnum)[keyof typeof EligibilityInquiryScalarFieldEnum]
 
 
+  export const DebitCardProductScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug',
+    bankName: 'bankName',
+    imageUrl: 'imageUrl',
+    bankLogoUrl: 'bankLogoUrl',
+    accountType: 'accountType',
+    cardNetwork: 'cardNetwork',
+    cardType: 'cardType',
+    annualFee: 'annualFee',
+    issuanceFee: 'issuanceFee',
+    replacementFee: 'replacementFee',
+    atmWithdrawalLimit: 'atmWithdrawalLimit',
+    posLimit: 'posLimit',
+    onlineLimit: 'onlineLimit',
+    internationalUsage: 'internationalUsage',
+    contactless: 'contactless',
+    loungeAccess: 'loungeAccess',
+    loungeAccessDetails: 'loungeAccessDetails',
+    cashbackRate: 'cashbackRate',
+    rewardPoints: 'rewardPoints',
+    fuelSurcharge: 'fuelSurcharge',
+    accidentInsurance: 'accidentInsurance',
+    purchaseProtection: 'purchaseProtection',
+    fraudProtection: 'fraudProtection',
+    zeroBilling: 'zeroBilling',
+    minimumBalance: 'minimumBalance',
+    minimumAge: 'minimumAge',
+    maximumAge: 'maximumAge',
+    rating: 'rating',
+    recommended: 'recommended',
+    bestFor: 'bestFor',
+    keyStatement: 'keyStatement',
+    videoUrl: 'videoUrl',
+    termsConditionsUrl: 'termsConditionsUrl',
+    applyUrl: 'applyUrl',
+    createdById: 'createdById',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DebitCardProductScalarFieldEnum = (typeof DebitCardProductScalarFieldEnum)[keyof typeof DebitCardProductScalarFieldEnum]
+
+
+  export const DebitCardBulletScalarFieldEnum: {
+    id: 'id',
+    text: 'text',
+    displayOrder: 'displayOrder',
+    productId: 'productId'
+  };
+
+  export type DebitCardBulletScalarFieldEnum = (typeof DebitCardBulletScalarFieldEnum)[keyof typeof DebitCardBulletScalarFieldEnum]
+
+
+  export const DebitCardKeyFeatureScalarFieldEnum: {
+    id: 'id',
+    icon: 'icon',
+    title: 'title',
+    description: 'description',
+    displayOrder: 'displayOrder',
+    productId: 'productId'
+  };
+
+  export type DebitCardKeyFeatureScalarFieldEnum = (typeof DebitCardKeyFeatureScalarFieldEnum)[keyof typeof DebitCardKeyFeatureScalarFieldEnum]
+
+
+  export const DebitCardOfferScalarFieldEnum: {
+    id: 'id',
+    merchant: 'merchant',
+    offerType: 'offerType',
+    title: 'title',
+    description: 'description',
+    offerValue: 'offerValue',
+    validFrom: 'validFrom',
+    validTill: 'validTill',
+    isActive: 'isActive',
+    displayOrder: 'displayOrder',
+    productId: 'productId'
+  };
+
+  export type DebitCardOfferScalarFieldEnum = (typeof DebitCardOfferScalarFieldEnum)[keyof typeof DebitCardOfferScalarFieldEnum]
+
+
+  export const DebitCardSafetyFeatureScalarFieldEnum: {
+    id: 'id',
+    featureName: 'featureName',
+    description: 'description',
+    howToUse: 'howToUse',
+    displayOrder: 'displayOrder',
+    productId: 'productId'
+  };
+
+  export type DebitCardSafetyFeatureScalarFieldEnum = (typeof DebitCardSafetyFeatureScalarFieldEnum)[keyof typeof DebitCardSafetyFeatureScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -43109,6 +50118,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryListRelationFilter
     createdLoans?: LoanProductListRelationFilter
     createdCards?: CreditCardProductListRelationFilter
+    createdDebitCards?: DebitCardProductListRelationFilter
     createdInsurances?: InsuranceProductListRelationFilter
     createdApps?: AppProductListRelationFilter
   }
@@ -43175,6 +50185,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryOrderByRelationAggregateInput
     createdLoans?: LoanProductOrderByRelationAggregateInput
     createdCards?: CreditCardProductOrderByRelationAggregateInput
+    createdDebitCards?: DebitCardProductOrderByRelationAggregateInput
     createdInsurances?: InsuranceProductOrderByRelationAggregateInput
     createdApps?: AppProductOrderByRelationAggregateInput
   }
@@ -43244,6 +50255,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryListRelationFilter
     createdLoans?: LoanProductListRelationFilter
     createdCards?: CreditCardProductListRelationFilter
+    createdDebitCards?: DebitCardProductListRelationFilter
     createdInsurances?: InsuranceProductListRelationFilter
     createdApps?: AppProductListRelationFilter
   }, "id" | "email" | "phone">
@@ -43541,6 +50553,7 @@ export namespace Prisma {
     type?: EnumProductTypeFilter<"Application"> | $Enums.ProductType
     loanId?: IntNullableFilter<"Application"> | number | null
     cardId?: IntNullableFilter<"Application"> | number | null
+    debitCardId?: IntNullableFilter<"Application"> | number | null
     insuranceId?: IntNullableFilter<"Application"> | number | null
     categoryId?: IntNullableFilter<"Application"> | number | null
     categorySlug?: StringNullableFilter<"Application"> | string | null
@@ -43665,6 +50678,7 @@ export namespace Prisma {
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     loan?: XOR<LoanProductNullableScalarRelationFilter, LoanProductWhereInput> | null
     card?: XOR<CreditCardProductNullableScalarRelationFilter, CreditCardProductWhereInput> | null
+    debitCard?: XOR<DebitCardProductNullableScalarRelationFilter, DebitCardProductWhereInput> | null
     insurance?: XOR<InsuranceProductNullableScalarRelationFilter, InsuranceProductWhereInput> | null
   }
 
@@ -43675,6 +50689,7 @@ export namespace Prisma {
     type?: SortOrder
     loanId?: SortOrderInput | SortOrder
     cardId?: SortOrderInput | SortOrder
+    debitCardId?: SortOrderInput | SortOrder
     insuranceId?: SortOrderInput | SortOrder
     categoryId?: SortOrderInput | SortOrder
     categorySlug?: SortOrderInput | SortOrder
@@ -43799,6 +50814,7 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
     loan?: LoanProductOrderByWithRelationInput
     card?: CreditCardProductOrderByWithRelationInput
+    debitCard?: DebitCardProductOrderByWithRelationInput
     insurance?: InsuranceProductOrderByWithRelationInput
   }
 
@@ -43812,6 +50828,7 @@ export namespace Prisma {
     type?: EnumProductTypeFilter<"Application"> | $Enums.ProductType
     loanId?: IntNullableFilter<"Application"> | number | null
     cardId?: IntNullableFilter<"Application"> | number | null
+    debitCardId?: IntNullableFilter<"Application"> | number | null
     insuranceId?: IntNullableFilter<"Application"> | number | null
     categoryId?: IntNullableFilter<"Application"> | number | null
     categorySlug?: StringNullableFilter<"Application"> | string | null
@@ -43936,6 +50953,7 @@ export namespace Prisma {
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     loan?: XOR<LoanProductNullableScalarRelationFilter, LoanProductWhereInput> | null
     card?: XOR<CreditCardProductNullableScalarRelationFilter, CreditCardProductWhereInput> | null
+    debitCard?: XOR<DebitCardProductNullableScalarRelationFilter, DebitCardProductWhereInput> | null
     insurance?: XOR<InsuranceProductNullableScalarRelationFilter, InsuranceProductWhereInput> | null
   }, "id" | "referenceNo">
 
@@ -43946,6 +50964,7 @@ export namespace Prisma {
     type?: SortOrder
     loanId?: SortOrderInput | SortOrder
     cardId?: SortOrderInput | SortOrder
+    debitCardId?: SortOrderInput | SortOrder
     insuranceId?: SortOrderInput | SortOrder
     categoryId?: SortOrderInput | SortOrder
     categorySlug?: SortOrderInput | SortOrder
@@ -44084,6 +51103,7 @@ export namespace Prisma {
     type?: EnumProductTypeWithAggregatesFilter<"Application"> | $Enums.ProductType
     loanId?: IntNullableWithAggregatesFilter<"Application"> | number | null
     cardId?: IntNullableWithAggregatesFilter<"Application"> | number | null
+    debitCardId?: IntNullableWithAggregatesFilter<"Application"> | number | null
     insuranceId?: IntNullableWithAggregatesFilter<"Application"> | number | null
     categoryId?: IntNullableWithAggregatesFilter<"Application"> | number | null
     categorySlug?: StringNullableWithAggregatesFilter<"Application"> | string | null
@@ -44223,6 +51243,7 @@ export namespace Prisma {
     children?: CategoryListRelationFilter
     loans?: LoanProductListRelationFilter
     creditCards?: CreditCardProductListRelationFilter
+    debitCards?: DebitCardProductListRelationFilter
     insurances?: InsuranceProductListRelationFilter
   }
 
@@ -44239,6 +51260,7 @@ export namespace Prisma {
     children?: CategoryOrderByRelationAggregateInput
     loans?: LoanProductOrderByRelationAggregateInput
     creditCards?: CreditCardProductOrderByRelationAggregateInput
+    debitCards?: DebitCardProductOrderByRelationAggregateInput
     insurances?: InsuranceProductOrderByRelationAggregateInput
   }
 
@@ -44258,6 +51280,7 @@ export namespace Prisma {
     children?: CategoryListRelationFilter
     loans?: LoanProductListRelationFilter
     creditCards?: CreditCardProductListRelationFilter
+    debitCards?: DebitCardProductListRelationFilter
     insurances?: InsuranceProductListRelationFilter
   }, "id" | "slug">
 
@@ -46343,6 +53366,514 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"EligibilityInquiry"> | Date | string
   }
 
+  export type DebitCardProductWhereInput = {
+    AND?: DebitCardProductWhereInput | DebitCardProductWhereInput[]
+    OR?: DebitCardProductWhereInput[]
+    NOT?: DebitCardProductWhereInput | DebitCardProductWhereInput[]
+    id?: IntFilter<"DebitCardProduct"> | number
+    name?: StringFilter<"DebitCardProduct"> | string
+    slug?: StringFilter<"DebitCardProduct"> | string
+    bankName?: StringFilter<"DebitCardProduct"> | string
+    imageUrl?: StringFilter<"DebitCardProduct"> | string
+    bankLogoUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
+    accountType?: StringNullableFilter<"DebitCardProduct"> | string | null
+    cardNetwork?: StringFilter<"DebitCardProduct"> | string
+    cardType?: StringNullableFilter<"DebitCardProduct"> | string | null
+    annualFee?: FloatFilter<"DebitCardProduct"> | number
+    issuanceFee?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    replacementFee?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    atmWithdrawalLimit?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    posLimit?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    onlineLimit?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    internationalUsage?: BoolFilter<"DebitCardProduct"> | boolean
+    contactless?: BoolFilter<"DebitCardProduct"> | boolean
+    loungeAccess?: BoolFilter<"DebitCardProduct"> | boolean
+    loungeAccessDetails?: StringNullableFilter<"DebitCardProduct"> | string | null
+    cashbackRate?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    rewardPoints?: BoolFilter<"DebitCardProduct"> | boolean
+    fuelSurcharge?: BoolFilter<"DebitCardProduct"> | boolean
+    accidentInsurance?: BoolFilter<"DebitCardProduct"> | boolean
+    purchaseProtection?: BoolFilter<"DebitCardProduct"> | boolean
+    fraudProtection?: BoolFilter<"DebitCardProduct"> | boolean
+    zeroBilling?: BoolFilter<"DebitCardProduct"> | boolean
+    minimumBalance?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    minimumAge?: IntNullableFilter<"DebitCardProduct"> | number | null
+    maximumAge?: IntNullableFilter<"DebitCardProduct"> | number | null
+    rating?: FloatFilter<"DebitCardProduct"> | number
+    recommended?: BoolFilter<"DebitCardProduct"> | boolean
+    bestFor?: StringNullableFilter<"DebitCardProduct"> | string | null
+    keyStatement?: StringNullableFilter<"DebitCardProduct"> | string | null
+    videoUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
+    termsConditionsUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
+    applyUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
+    createdById?: IntNullableFilter<"DebitCardProduct"> | number | null
+    createdAt?: DateTimeFilter<"DebitCardProduct"> | Date | string
+    updatedAt?: DateTimeFilter<"DebitCardProduct"> | Date | string
+    categories?: CategoryListRelationFilter
+    bulletPoints?: DebitCardBulletListRelationFilter
+    keyFeatures?: DebitCardKeyFeatureListRelationFilter
+    offers?: DebitCardOfferListRelationFilter
+    safetyFeatures?: DebitCardSafetyFeatureListRelationFilter
+    applications?: ApplicationListRelationFilter
+    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }
+
+  export type DebitCardProductOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    bankName?: SortOrder
+    imageUrl?: SortOrder
+    bankLogoUrl?: SortOrderInput | SortOrder
+    accountType?: SortOrderInput | SortOrder
+    cardNetwork?: SortOrder
+    cardType?: SortOrderInput | SortOrder
+    annualFee?: SortOrder
+    issuanceFee?: SortOrderInput | SortOrder
+    replacementFee?: SortOrderInput | SortOrder
+    atmWithdrawalLimit?: SortOrderInput | SortOrder
+    posLimit?: SortOrderInput | SortOrder
+    onlineLimit?: SortOrderInput | SortOrder
+    internationalUsage?: SortOrder
+    contactless?: SortOrder
+    loungeAccess?: SortOrder
+    loungeAccessDetails?: SortOrderInput | SortOrder
+    cashbackRate?: SortOrderInput | SortOrder
+    rewardPoints?: SortOrder
+    fuelSurcharge?: SortOrder
+    accidentInsurance?: SortOrder
+    purchaseProtection?: SortOrder
+    fraudProtection?: SortOrder
+    zeroBilling?: SortOrder
+    minimumBalance?: SortOrderInput | SortOrder
+    minimumAge?: SortOrderInput | SortOrder
+    maximumAge?: SortOrderInput | SortOrder
+    rating?: SortOrder
+    recommended?: SortOrder
+    bestFor?: SortOrderInput | SortOrder
+    keyStatement?: SortOrderInput | SortOrder
+    videoUrl?: SortOrderInput | SortOrder
+    termsConditionsUrl?: SortOrderInput | SortOrder
+    applyUrl?: SortOrderInput | SortOrder
+    createdById?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    categories?: CategoryOrderByRelationAggregateInput
+    bulletPoints?: DebitCardBulletOrderByRelationAggregateInput
+    keyFeatures?: DebitCardKeyFeatureOrderByRelationAggregateInput
+    offers?: DebitCardOfferOrderByRelationAggregateInput
+    safetyFeatures?: DebitCardSafetyFeatureOrderByRelationAggregateInput
+    applications?: ApplicationOrderByRelationAggregateInput
+    createdBy?: UserOrderByWithRelationInput
+  }
+
+  export type DebitCardProductWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    slug?: string
+    AND?: DebitCardProductWhereInput | DebitCardProductWhereInput[]
+    OR?: DebitCardProductWhereInput[]
+    NOT?: DebitCardProductWhereInput | DebitCardProductWhereInput[]
+    name?: StringFilter<"DebitCardProduct"> | string
+    bankName?: StringFilter<"DebitCardProduct"> | string
+    imageUrl?: StringFilter<"DebitCardProduct"> | string
+    bankLogoUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
+    accountType?: StringNullableFilter<"DebitCardProduct"> | string | null
+    cardNetwork?: StringFilter<"DebitCardProduct"> | string
+    cardType?: StringNullableFilter<"DebitCardProduct"> | string | null
+    annualFee?: FloatFilter<"DebitCardProduct"> | number
+    issuanceFee?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    replacementFee?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    atmWithdrawalLimit?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    posLimit?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    onlineLimit?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    internationalUsage?: BoolFilter<"DebitCardProduct"> | boolean
+    contactless?: BoolFilter<"DebitCardProduct"> | boolean
+    loungeAccess?: BoolFilter<"DebitCardProduct"> | boolean
+    loungeAccessDetails?: StringNullableFilter<"DebitCardProduct"> | string | null
+    cashbackRate?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    rewardPoints?: BoolFilter<"DebitCardProduct"> | boolean
+    fuelSurcharge?: BoolFilter<"DebitCardProduct"> | boolean
+    accidentInsurance?: BoolFilter<"DebitCardProduct"> | boolean
+    purchaseProtection?: BoolFilter<"DebitCardProduct"> | boolean
+    fraudProtection?: BoolFilter<"DebitCardProduct"> | boolean
+    zeroBilling?: BoolFilter<"DebitCardProduct"> | boolean
+    minimumBalance?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    minimumAge?: IntNullableFilter<"DebitCardProduct"> | number | null
+    maximumAge?: IntNullableFilter<"DebitCardProduct"> | number | null
+    rating?: FloatFilter<"DebitCardProduct"> | number
+    recommended?: BoolFilter<"DebitCardProduct"> | boolean
+    bestFor?: StringNullableFilter<"DebitCardProduct"> | string | null
+    keyStatement?: StringNullableFilter<"DebitCardProduct"> | string | null
+    videoUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
+    termsConditionsUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
+    applyUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
+    createdById?: IntNullableFilter<"DebitCardProduct"> | number | null
+    createdAt?: DateTimeFilter<"DebitCardProduct"> | Date | string
+    updatedAt?: DateTimeFilter<"DebitCardProduct"> | Date | string
+    categories?: CategoryListRelationFilter
+    bulletPoints?: DebitCardBulletListRelationFilter
+    keyFeatures?: DebitCardKeyFeatureListRelationFilter
+    offers?: DebitCardOfferListRelationFilter
+    safetyFeatures?: DebitCardSafetyFeatureListRelationFilter
+    applications?: ApplicationListRelationFilter
+    createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "id" | "slug">
+
+  export type DebitCardProductOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    bankName?: SortOrder
+    imageUrl?: SortOrder
+    bankLogoUrl?: SortOrderInput | SortOrder
+    accountType?: SortOrderInput | SortOrder
+    cardNetwork?: SortOrder
+    cardType?: SortOrderInput | SortOrder
+    annualFee?: SortOrder
+    issuanceFee?: SortOrderInput | SortOrder
+    replacementFee?: SortOrderInput | SortOrder
+    atmWithdrawalLimit?: SortOrderInput | SortOrder
+    posLimit?: SortOrderInput | SortOrder
+    onlineLimit?: SortOrderInput | SortOrder
+    internationalUsage?: SortOrder
+    contactless?: SortOrder
+    loungeAccess?: SortOrder
+    loungeAccessDetails?: SortOrderInput | SortOrder
+    cashbackRate?: SortOrderInput | SortOrder
+    rewardPoints?: SortOrder
+    fuelSurcharge?: SortOrder
+    accidentInsurance?: SortOrder
+    purchaseProtection?: SortOrder
+    fraudProtection?: SortOrder
+    zeroBilling?: SortOrder
+    minimumBalance?: SortOrderInput | SortOrder
+    minimumAge?: SortOrderInput | SortOrder
+    maximumAge?: SortOrderInput | SortOrder
+    rating?: SortOrder
+    recommended?: SortOrder
+    bestFor?: SortOrderInput | SortOrder
+    keyStatement?: SortOrderInput | SortOrder
+    videoUrl?: SortOrderInput | SortOrder
+    termsConditionsUrl?: SortOrderInput | SortOrder
+    applyUrl?: SortOrderInput | SortOrder
+    createdById?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DebitCardProductCountOrderByAggregateInput
+    _avg?: DebitCardProductAvgOrderByAggregateInput
+    _max?: DebitCardProductMaxOrderByAggregateInput
+    _min?: DebitCardProductMinOrderByAggregateInput
+    _sum?: DebitCardProductSumOrderByAggregateInput
+  }
+
+  export type DebitCardProductScalarWhereWithAggregatesInput = {
+    AND?: DebitCardProductScalarWhereWithAggregatesInput | DebitCardProductScalarWhereWithAggregatesInput[]
+    OR?: DebitCardProductScalarWhereWithAggregatesInput[]
+    NOT?: DebitCardProductScalarWhereWithAggregatesInput | DebitCardProductScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"DebitCardProduct"> | number
+    name?: StringWithAggregatesFilter<"DebitCardProduct"> | string
+    slug?: StringWithAggregatesFilter<"DebitCardProduct"> | string
+    bankName?: StringWithAggregatesFilter<"DebitCardProduct"> | string
+    imageUrl?: StringWithAggregatesFilter<"DebitCardProduct"> | string
+    bankLogoUrl?: StringNullableWithAggregatesFilter<"DebitCardProduct"> | string | null
+    accountType?: StringNullableWithAggregatesFilter<"DebitCardProduct"> | string | null
+    cardNetwork?: StringWithAggregatesFilter<"DebitCardProduct"> | string
+    cardType?: StringNullableWithAggregatesFilter<"DebitCardProduct"> | string | null
+    annualFee?: FloatWithAggregatesFilter<"DebitCardProduct"> | number
+    issuanceFee?: FloatNullableWithAggregatesFilter<"DebitCardProduct"> | number | null
+    replacementFee?: FloatNullableWithAggregatesFilter<"DebitCardProduct"> | number | null
+    atmWithdrawalLimit?: FloatNullableWithAggregatesFilter<"DebitCardProduct"> | number | null
+    posLimit?: FloatNullableWithAggregatesFilter<"DebitCardProduct"> | number | null
+    onlineLimit?: FloatNullableWithAggregatesFilter<"DebitCardProduct"> | number | null
+    internationalUsage?: BoolWithAggregatesFilter<"DebitCardProduct"> | boolean
+    contactless?: BoolWithAggregatesFilter<"DebitCardProduct"> | boolean
+    loungeAccess?: BoolWithAggregatesFilter<"DebitCardProduct"> | boolean
+    loungeAccessDetails?: StringNullableWithAggregatesFilter<"DebitCardProduct"> | string | null
+    cashbackRate?: FloatNullableWithAggregatesFilter<"DebitCardProduct"> | number | null
+    rewardPoints?: BoolWithAggregatesFilter<"DebitCardProduct"> | boolean
+    fuelSurcharge?: BoolWithAggregatesFilter<"DebitCardProduct"> | boolean
+    accidentInsurance?: BoolWithAggregatesFilter<"DebitCardProduct"> | boolean
+    purchaseProtection?: BoolWithAggregatesFilter<"DebitCardProduct"> | boolean
+    fraudProtection?: BoolWithAggregatesFilter<"DebitCardProduct"> | boolean
+    zeroBilling?: BoolWithAggregatesFilter<"DebitCardProduct"> | boolean
+    minimumBalance?: FloatNullableWithAggregatesFilter<"DebitCardProduct"> | number | null
+    minimumAge?: IntNullableWithAggregatesFilter<"DebitCardProduct"> | number | null
+    maximumAge?: IntNullableWithAggregatesFilter<"DebitCardProduct"> | number | null
+    rating?: FloatWithAggregatesFilter<"DebitCardProduct"> | number
+    recommended?: BoolWithAggregatesFilter<"DebitCardProduct"> | boolean
+    bestFor?: StringNullableWithAggregatesFilter<"DebitCardProduct"> | string | null
+    keyStatement?: StringNullableWithAggregatesFilter<"DebitCardProduct"> | string | null
+    videoUrl?: StringNullableWithAggregatesFilter<"DebitCardProduct"> | string | null
+    termsConditionsUrl?: StringNullableWithAggregatesFilter<"DebitCardProduct"> | string | null
+    applyUrl?: StringNullableWithAggregatesFilter<"DebitCardProduct"> | string | null
+    createdById?: IntNullableWithAggregatesFilter<"DebitCardProduct"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"DebitCardProduct"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"DebitCardProduct"> | Date | string
+  }
+
+  export type DebitCardBulletWhereInput = {
+    AND?: DebitCardBulletWhereInput | DebitCardBulletWhereInput[]
+    OR?: DebitCardBulletWhereInput[]
+    NOT?: DebitCardBulletWhereInput | DebitCardBulletWhereInput[]
+    id?: IntFilter<"DebitCardBullet"> | number
+    text?: StringFilter<"DebitCardBullet"> | string
+    displayOrder?: IntFilter<"DebitCardBullet"> | number
+    productId?: IntFilter<"DebitCardBullet"> | number
+    product?: XOR<DebitCardProductScalarRelationFilter, DebitCardProductWhereInput>
+  }
+
+  export type DebitCardBulletOrderByWithRelationInput = {
+    id?: SortOrder
+    text?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+    product?: DebitCardProductOrderByWithRelationInput
+  }
+
+  export type DebitCardBulletWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: DebitCardBulletWhereInput | DebitCardBulletWhereInput[]
+    OR?: DebitCardBulletWhereInput[]
+    NOT?: DebitCardBulletWhereInput | DebitCardBulletWhereInput[]
+    text?: StringFilter<"DebitCardBullet"> | string
+    displayOrder?: IntFilter<"DebitCardBullet"> | number
+    productId?: IntFilter<"DebitCardBullet"> | number
+    product?: XOR<DebitCardProductScalarRelationFilter, DebitCardProductWhereInput>
+  }, "id">
+
+  export type DebitCardBulletOrderByWithAggregationInput = {
+    id?: SortOrder
+    text?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+    _count?: DebitCardBulletCountOrderByAggregateInput
+    _avg?: DebitCardBulletAvgOrderByAggregateInput
+    _max?: DebitCardBulletMaxOrderByAggregateInput
+    _min?: DebitCardBulletMinOrderByAggregateInput
+    _sum?: DebitCardBulletSumOrderByAggregateInput
+  }
+
+  export type DebitCardBulletScalarWhereWithAggregatesInput = {
+    AND?: DebitCardBulletScalarWhereWithAggregatesInput | DebitCardBulletScalarWhereWithAggregatesInput[]
+    OR?: DebitCardBulletScalarWhereWithAggregatesInput[]
+    NOT?: DebitCardBulletScalarWhereWithAggregatesInput | DebitCardBulletScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"DebitCardBullet"> | number
+    text?: StringWithAggregatesFilter<"DebitCardBullet"> | string
+    displayOrder?: IntWithAggregatesFilter<"DebitCardBullet"> | number
+    productId?: IntWithAggregatesFilter<"DebitCardBullet"> | number
+  }
+
+  export type DebitCardKeyFeatureWhereInput = {
+    AND?: DebitCardKeyFeatureWhereInput | DebitCardKeyFeatureWhereInput[]
+    OR?: DebitCardKeyFeatureWhereInput[]
+    NOT?: DebitCardKeyFeatureWhereInput | DebitCardKeyFeatureWhereInput[]
+    id?: IntFilter<"DebitCardKeyFeature"> | number
+    icon?: StringNullableFilter<"DebitCardKeyFeature"> | string | null
+    title?: StringFilter<"DebitCardKeyFeature"> | string
+    description?: StringFilter<"DebitCardKeyFeature"> | string
+    displayOrder?: IntFilter<"DebitCardKeyFeature"> | number
+    productId?: IntFilter<"DebitCardKeyFeature"> | number
+    product?: XOR<DebitCardProductScalarRelationFilter, DebitCardProductWhereInput>
+  }
+
+  export type DebitCardKeyFeatureOrderByWithRelationInput = {
+    id?: SortOrder
+    icon?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+    product?: DebitCardProductOrderByWithRelationInput
+  }
+
+  export type DebitCardKeyFeatureWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: DebitCardKeyFeatureWhereInput | DebitCardKeyFeatureWhereInput[]
+    OR?: DebitCardKeyFeatureWhereInput[]
+    NOT?: DebitCardKeyFeatureWhereInput | DebitCardKeyFeatureWhereInput[]
+    icon?: StringNullableFilter<"DebitCardKeyFeature"> | string | null
+    title?: StringFilter<"DebitCardKeyFeature"> | string
+    description?: StringFilter<"DebitCardKeyFeature"> | string
+    displayOrder?: IntFilter<"DebitCardKeyFeature"> | number
+    productId?: IntFilter<"DebitCardKeyFeature"> | number
+    product?: XOR<DebitCardProductScalarRelationFilter, DebitCardProductWhereInput>
+  }, "id">
+
+  export type DebitCardKeyFeatureOrderByWithAggregationInput = {
+    id?: SortOrder
+    icon?: SortOrderInput | SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+    _count?: DebitCardKeyFeatureCountOrderByAggregateInput
+    _avg?: DebitCardKeyFeatureAvgOrderByAggregateInput
+    _max?: DebitCardKeyFeatureMaxOrderByAggregateInput
+    _min?: DebitCardKeyFeatureMinOrderByAggregateInput
+    _sum?: DebitCardKeyFeatureSumOrderByAggregateInput
+  }
+
+  export type DebitCardKeyFeatureScalarWhereWithAggregatesInput = {
+    AND?: DebitCardKeyFeatureScalarWhereWithAggregatesInput | DebitCardKeyFeatureScalarWhereWithAggregatesInput[]
+    OR?: DebitCardKeyFeatureScalarWhereWithAggregatesInput[]
+    NOT?: DebitCardKeyFeatureScalarWhereWithAggregatesInput | DebitCardKeyFeatureScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"DebitCardKeyFeature"> | number
+    icon?: StringNullableWithAggregatesFilter<"DebitCardKeyFeature"> | string | null
+    title?: StringWithAggregatesFilter<"DebitCardKeyFeature"> | string
+    description?: StringWithAggregatesFilter<"DebitCardKeyFeature"> | string
+    displayOrder?: IntWithAggregatesFilter<"DebitCardKeyFeature"> | number
+    productId?: IntWithAggregatesFilter<"DebitCardKeyFeature"> | number
+  }
+
+  export type DebitCardOfferWhereInput = {
+    AND?: DebitCardOfferWhereInput | DebitCardOfferWhereInput[]
+    OR?: DebitCardOfferWhereInput[]
+    NOT?: DebitCardOfferWhereInput | DebitCardOfferWhereInput[]
+    id?: IntFilter<"DebitCardOffer"> | number
+    merchant?: StringFilter<"DebitCardOffer"> | string
+    offerType?: StringFilter<"DebitCardOffer"> | string
+    title?: StringFilter<"DebitCardOffer"> | string
+    description?: StringFilter<"DebitCardOffer"> | string
+    offerValue?: StringFilter<"DebitCardOffer"> | string
+    validFrom?: DateTimeNullableFilter<"DebitCardOffer"> | Date | string | null
+    validTill?: DateTimeNullableFilter<"DebitCardOffer"> | Date | string | null
+    isActive?: BoolFilter<"DebitCardOffer"> | boolean
+    displayOrder?: IntFilter<"DebitCardOffer"> | number
+    productId?: IntFilter<"DebitCardOffer"> | number
+    product?: XOR<DebitCardProductScalarRelationFilter, DebitCardProductWhereInput>
+  }
+
+  export type DebitCardOfferOrderByWithRelationInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrderInput | SortOrder
+    validTill?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+    product?: DebitCardProductOrderByWithRelationInput
+  }
+
+  export type DebitCardOfferWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: DebitCardOfferWhereInput | DebitCardOfferWhereInput[]
+    OR?: DebitCardOfferWhereInput[]
+    NOT?: DebitCardOfferWhereInput | DebitCardOfferWhereInput[]
+    merchant?: StringFilter<"DebitCardOffer"> | string
+    offerType?: StringFilter<"DebitCardOffer"> | string
+    title?: StringFilter<"DebitCardOffer"> | string
+    description?: StringFilter<"DebitCardOffer"> | string
+    offerValue?: StringFilter<"DebitCardOffer"> | string
+    validFrom?: DateTimeNullableFilter<"DebitCardOffer"> | Date | string | null
+    validTill?: DateTimeNullableFilter<"DebitCardOffer"> | Date | string | null
+    isActive?: BoolFilter<"DebitCardOffer"> | boolean
+    displayOrder?: IntFilter<"DebitCardOffer"> | number
+    productId?: IntFilter<"DebitCardOffer"> | number
+    product?: XOR<DebitCardProductScalarRelationFilter, DebitCardProductWhereInput>
+  }, "id">
+
+  export type DebitCardOfferOrderByWithAggregationInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrderInput | SortOrder
+    validTill?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+    _count?: DebitCardOfferCountOrderByAggregateInput
+    _avg?: DebitCardOfferAvgOrderByAggregateInput
+    _max?: DebitCardOfferMaxOrderByAggregateInput
+    _min?: DebitCardOfferMinOrderByAggregateInput
+    _sum?: DebitCardOfferSumOrderByAggregateInput
+  }
+
+  export type DebitCardOfferScalarWhereWithAggregatesInput = {
+    AND?: DebitCardOfferScalarWhereWithAggregatesInput | DebitCardOfferScalarWhereWithAggregatesInput[]
+    OR?: DebitCardOfferScalarWhereWithAggregatesInput[]
+    NOT?: DebitCardOfferScalarWhereWithAggregatesInput | DebitCardOfferScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"DebitCardOffer"> | number
+    merchant?: StringWithAggregatesFilter<"DebitCardOffer"> | string
+    offerType?: StringWithAggregatesFilter<"DebitCardOffer"> | string
+    title?: StringWithAggregatesFilter<"DebitCardOffer"> | string
+    description?: StringWithAggregatesFilter<"DebitCardOffer"> | string
+    offerValue?: StringWithAggregatesFilter<"DebitCardOffer"> | string
+    validFrom?: DateTimeNullableWithAggregatesFilter<"DebitCardOffer"> | Date | string | null
+    validTill?: DateTimeNullableWithAggregatesFilter<"DebitCardOffer"> | Date | string | null
+    isActive?: BoolWithAggregatesFilter<"DebitCardOffer"> | boolean
+    displayOrder?: IntWithAggregatesFilter<"DebitCardOffer"> | number
+    productId?: IntWithAggregatesFilter<"DebitCardOffer"> | number
+  }
+
+  export type DebitCardSafetyFeatureWhereInput = {
+    AND?: DebitCardSafetyFeatureWhereInput | DebitCardSafetyFeatureWhereInput[]
+    OR?: DebitCardSafetyFeatureWhereInput[]
+    NOT?: DebitCardSafetyFeatureWhereInput | DebitCardSafetyFeatureWhereInput[]
+    id?: IntFilter<"DebitCardSafetyFeature"> | number
+    featureName?: StringFilter<"DebitCardSafetyFeature"> | string
+    description?: StringFilter<"DebitCardSafetyFeature"> | string
+    howToUse?: StringNullableFilter<"DebitCardSafetyFeature"> | string | null
+    displayOrder?: IntFilter<"DebitCardSafetyFeature"> | number
+    productId?: IntFilter<"DebitCardSafetyFeature"> | number
+    product?: XOR<DebitCardProductScalarRelationFilter, DebitCardProductWhereInput>
+  }
+
+  export type DebitCardSafetyFeatureOrderByWithRelationInput = {
+    id?: SortOrder
+    featureName?: SortOrder
+    description?: SortOrder
+    howToUse?: SortOrderInput | SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+    product?: DebitCardProductOrderByWithRelationInput
+  }
+
+  export type DebitCardSafetyFeatureWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: DebitCardSafetyFeatureWhereInput | DebitCardSafetyFeatureWhereInput[]
+    OR?: DebitCardSafetyFeatureWhereInput[]
+    NOT?: DebitCardSafetyFeatureWhereInput | DebitCardSafetyFeatureWhereInput[]
+    featureName?: StringFilter<"DebitCardSafetyFeature"> | string
+    description?: StringFilter<"DebitCardSafetyFeature"> | string
+    howToUse?: StringNullableFilter<"DebitCardSafetyFeature"> | string | null
+    displayOrder?: IntFilter<"DebitCardSafetyFeature"> | number
+    productId?: IntFilter<"DebitCardSafetyFeature"> | number
+    product?: XOR<DebitCardProductScalarRelationFilter, DebitCardProductWhereInput>
+  }, "id">
+
+  export type DebitCardSafetyFeatureOrderByWithAggregationInput = {
+    id?: SortOrder
+    featureName?: SortOrder
+    description?: SortOrder
+    howToUse?: SortOrderInput | SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+    _count?: DebitCardSafetyFeatureCountOrderByAggregateInput
+    _avg?: DebitCardSafetyFeatureAvgOrderByAggregateInput
+    _max?: DebitCardSafetyFeatureMaxOrderByAggregateInput
+    _min?: DebitCardSafetyFeatureMinOrderByAggregateInput
+    _sum?: DebitCardSafetyFeatureSumOrderByAggregateInput
+  }
+
+  export type DebitCardSafetyFeatureScalarWhereWithAggregatesInput = {
+    AND?: DebitCardSafetyFeatureScalarWhereWithAggregatesInput | DebitCardSafetyFeatureScalarWhereWithAggregatesInput[]
+    OR?: DebitCardSafetyFeatureScalarWhereWithAggregatesInput[]
+    NOT?: DebitCardSafetyFeatureScalarWhereWithAggregatesInput | DebitCardSafetyFeatureScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"DebitCardSafetyFeature"> | number
+    featureName?: StringWithAggregatesFilter<"DebitCardSafetyFeature"> | string
+    description?: StringWithAggregatesFilter<"DebitCardSafetyFeature"> | string
+    howToUse?: StringNullableWithAggregatesFilter<"DebitCardSafetyFeature"> | string | null
+    displayOrder?: IntWithAggregatesFilter<"DebitCardSafetyFeature"> | number
+    productId?: IntWithAggregatesFilter<"DebitCardSafetyFeature"> | number
+  }
+
   export type UserCreateInput = {
     name: string
     email: string
@@ -46404,6 +53935,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryCreateNestedManyWithoutUserInput
     createdLoans?: LoanProductCreateNestedManyWithoutCreatedByInput
     createdCards?: CreditCardProductCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductCreateNestedManyWithoutCreatedByInput
   }
@@ -46470,6 +54002,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUncheckedCreateNestedManyWithoutUserInput
     createdLoans?: LoanProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdCards?: CreditCardProductUncheckedCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -46535,6 +54068,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUpdateManyWithoutUserNestedInput
     createdLoans?: LoanProductUpdateManyWithoutCreatedByNestedInput
     createdCards?: CreditCardProductUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUpdateManyWithoutCreatedByNestedInput
   }
@@ -46601,6 +54135,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUncheckedUpdateManyWithoutUserNestedInput
     createdLoans?: LoanProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdCards?: CreditCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUncheckedUpdateManyWithoutCreatedByNestedInput
   }
@@ -47099,6 +54634,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutApplicationsInput
     loan?: LoanProductCreateNestedOneWithoutApplicationsInput
     card?: CreditCardProductCreateNestedOneWithoutApplicationsInput
+    debitCard?: DebitCardProductCreateNestedOneWithoutApplicationsInput
     insurance?: InsuranceProductCreateNestedOneWithoutApplicationsInput
   }
 
@@ -47109,6 +54645,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     loanId?: number | null
     cardId?: number | null
+    debitCardId?: number | null
     insuranceId?: number | null
     categoryId?: number | null
     categorySlug?: string | null
@@ -47358,6 +54895,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutApplicationsNestedInput
     loan?: LoanProductUpdateOneWithoutApplicationsNestedInput
     card?: CreditCardProductUpdateOneWithoutApplicationsNestedInput
+    debitCard?: DebitCardProductUpdateOneWithoutApplicationsNestedInput
     insurance?: InsuranceProductUpdateOneWithoutApplicationsNestedInput
   }
 
@@ -47368,6 +54906,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     loanId?: NullableIntFieldUpdateOperationsInput | number | null
     cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    debitCardId?: NullableIntFieldUpdateOperationsInput | number | null
     insuranceId?: NullableIntFieldUpdateOperationsInput | number | null
     categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47498,6 +55037,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     loanId?: number | null
     cardId?: number | null
+    debitCardId?: number | null
     insuranceId?: number | null
     categoryId?: number | null
     categorySlug?: string | null
@@ -47753,6 +55293,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     loanId?: NullableIntFieldUpdateOperationsInput | number | null
     cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    debitCardId?: NullableIntFieldUpdateOperationsInput | number | null
     insuranceId?: NullableIntFieldUpdateOperationsInput | number | null
     categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47887,6 +55428,7 @@ export namespace Prisma {
     children?: CategoryCreateNestedManyWithoutParentInput
     loans?: LoanProductCreateNestedManyWithoutCategoryInput
     creditCards?: CreditCardProductCreateNestedManyWithoutCategoriesInput
+    debitCards?: DebitCardProductCreateNestedManyWithoutCategoriesInput
     insurances?: InsuranceProductCreateNestedManyWithoutCategoryInput
   }
 
@@ -47902,6 +55444,7 @@ export namespace Prisma {
     children?: CategoryUncheckedCreateNestedManyWithoutParentInput
     loans?: LoanProductUncheckedCreateNestedManyWithoutCategoryInput
     creditCards?: CreditCardProductUncheckedCreateNestedManyWithoutCategoriesInput
+    debitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCategoriesInput
     insurances?: InsuranceProductUncheckedCreateNestedManyWithoutCategoryInput
   }
 
@@ -47916,6 +55459,7 @@ export namespace Prisma {
     children?: CategoryUpdateManyWithoutParentNestedInput
     loans?: LoanProductUpdateManyWithoutCategoryNestedInput
     creditCards?: CreditCardProductUpdateManyWithoutCategoriesNestedInput
+    debitCards?: DebitCardProductUpdateManyWithoutCategoriesNestedInput
     insurances?: InsuranceProductUpdateManyWithoutCategoryNestedInput
   }
 
@@ -47931,6 +55475,7 @@ export namespace Prisma {
     children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
     loans?: LoanProductUncheckedUpdateManyWithoutCategoryNestedInput
     creditCards?: CreditCardProductUncheckedUpdateManyWithoutCategoriesNestedInput
+    debitCards?: DebitCardProductUncheckedUpdateManyWithoutCategoriesNestedInput
     insurances?: InsuranceProductUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
@@ -50105,6 +57650,577 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type DebitCardProductCreateInput = {
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryCreateNestedManyWithoutDebitCardsInput
+    bulletPoints?: DebitCardBulletCreateNestedManyWithoutProductInput
+    keyFeatures?: DebitCardKeyFeatureCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureCreateNestedManyWithoutProductInput
+    applications?: ApplicationCreateNestedManyWithoutDebitCardInput
+    createdBy?: UserCreateNestedOneWithoutCreatedDebitCardsInput
+  }
+
+  export type DebitCardProductUncheckedCreateInput = {
+    id?: number
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdById?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryUncheckedCreateNestedManyWithoutDebitCardsInput
+    bulletPoints?: DebitCardBulletUncheckedCreateNestedManyWithoutProductInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferUncheckedCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedCreateNestedManyWithoutProductInput
+    applications?: ApplicationUncheckedCreateNestedManyWithoutDebitCardInput
+  }
+
+  export type DebitCardProductUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUpdateManyWithoutDebitCardsNestedInput
+    bulletPoints?: DebitCardBulletUpdateManyWithoutProductNestedInput
+    keyFeatures?: DebitCardKeyFeatureUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUpdateManyWithoutDebitCardNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedDebitCardsNestedInput
+  }
+
+  export type DebitCardProductUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUncheckedUpdateManyWithoutDebitCardsNestedInput
+    bulletPoints?: DebitCardBulletUncheckedUpdateManyWithoutProductNestedInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUncheckedUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUncheckedUpdateManyWithoutDebitCardNestedInput
+  }
+
+  export type DebitCardProductCreateManyInput = {
+    id?: number
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdById?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DebitCardProductUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DebitCardProductUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DebitCardBulletCreateInput = {
+    text: string
+    displayOrder?: number
+    product: DebitCardProductCreateNestedOneWithoutBulletPointsInput
+  }
+
+  export type DebitCardBulletUncheckedCreateInput = {
+    id?: number
+    text: string
+    displayOrder?: number
+    productId: number
+  }
+
+  export type DebitCardBulletUpdateInput = {
+    text?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    product?: DebitCardProductUpdateOneRequiredWithoutBulletPointsNestedInput
+  }
+
+  export type DebitCardBulletUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    text?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardBulletCreateManyInput = {
+    id?: number
+    text: string
+    displayOrder?: number
+    productId: number
+  }
+
+  export type DebitCardBulletUpdateManyMutationInput = {
+    text?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardBulletUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    text?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardKeyFeatureCreateInput = {
+    icon?: string | null
+    title: string
+    description: string
+    displayOrder?: number
+    product: DebitCardProductCreateNestedOneWithoutKeyFeaturesInput
+  }
+
+  export type DebitCardKeyFeatureUncheckedCreateInput = {
+    id?: number
+    icon?: string | null
+    title: string
+    description: string
+    displayOrder?: number
+    productId: number
+  }
+
+  export type DebitCardKeyFeatureUpdateInput = {
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    product?: DebitCardProductUpdateOneRequiredWithoutKeyFeaturesNestedInput
+  }
+
+  export type DebitCardKeyFeatureUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardKeyFeatureCreateManyInput = {
+    id?: number
+    icon?: string | null
+    title: string
+    description: string
+    displayOrder?: number
+    productId: number
+  }
+
+  export type DebitCardKeyFeatureUpdateManyMutationInput = {
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardKeyFeatureUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardOfferCreateInput = {
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+    product: DebitCardProductCreateNestedOneWithoutOffersInput
+  }
+
+  export type DebitCardOfferUncheckedCreateInput = {
+    id?: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+    productId: number
+  }
+
+  export type DebitCardOfferUpdateInput = {
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    product?: DebitCardProductUpdateOneRequiredWithoutOffersNestedInput
+  }
+
+  export type DebitCardOfferUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardOfferCreateManyInput = {
+    id?: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+    productId: number
+  }
+
+  export type DebitCardOfferUpdateManyMutationInput = {
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardOfferUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardSafetyFeatureCreateInput = {
+    featureName: string
+    description: string
+    howToUse?: string | null
+    displayOrder?: number
+    product: DebitCardProductCreateNestedOneWithoutSafetyFeaturesInput
+  }
+
+  export type DebitCardSafetyFeatureUncheckedCreateInput = {
+    id?: number
+    featureName: string
+    description: string
+    howToUse?: string | null
+    displayOrder?: number
+    productId: number
+  }
+
+  export type DebitCardSafetyFeatureUpdateInput = {
+    featureName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    howToUse?: NullableStringFieldUpdateOperationsInput | string | null
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    product?: DebitCardProductUpdateOneRequiredWithoutSafetyFeaturesNestedInput
+  }
+
+  export type DebitCardSafetyFeatureUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    featureName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    howToUse?: NullableStringFieldUpdateOperationsInput | string | null
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardSafetyFeatureCreateManyInput = {
+    id?: number
+    featureName: string
+    description: string
+    howToUse?: string | null
+    displayOrder?: number
+    productId: number
+  }
+
+  export type DebitCardSafetyFeatureUpdateManyMutationInput = {
+    featureName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    howToUse?: NullableStringFieldUpdateOperationsInput | string | null
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardSafetyFeatureUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    featureName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    howToUse?: NullableStringFieldUpdateOperationsInput | string | null
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -50254,6 +58370,12 @@ export namespace Prisma {
     none?: CreditCardProductWhereInput
   }
 
+  export type DebitCardProductListRelationFilter = {
+    every?: DebitCardProductWhereInput
+    some?: DebitCardProductWhereInput
+    none?: DebitCardProductWhereInput
+  }
+
   export type InsuranceProductListRelationFilter = {
     every?: InsuranceProductWhereInput
     some?: InsuranceProductWhereInput
@@ -50284,6 +58406,10 @@ export namespace Prisma {
   }
 
   export type CreditCardProductOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DebitCardProductOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -50807,6 +58933,11 @@ export namespace Prisma {
     isNot?: CreditCardProductWhereInput | null
   }
 
+  export type DebitCardProductNullableScalarRelationFilter = {
+    is?: DebitCardProductWhereInput | null
+    isNot?: DebitCardProductWhereInput | null
+  }
+
   export type InsuranceProductNullableScalarRelationFilter = {
     is?: InsuranceProductWhereInput | null
     isNot?: InsuranceProductWhereInput | null
@@ -50819,6 +58950,7 @@ export namespace Prisma {
     type?: SortOrder
     loanId?: SortOrder
     cardId?: SortOrder
+    debitCardId?: SortOrder
     insuranceId?: SortOrder
     categoryId?: SortOrder
     categorySlug?: SortOrder
@@ -50947,6 +59079,7 @@ export namespace Prisma {
     userId?: SortOrder
     loanId?: SortOrder
     cardId?: SortOrder
+    debitCardId?: SortOrder
     insuranceId?: SortOrder
     categoryId?: SortOrder
     amount?: SortOrder
@@ -50992,6 +59125,7 @@ export namespace Prisma {
     type?: SortOrder
     loanId?: SortOrder
     cardId?: SortOrder
+    debitCardId?: SortOrder
     insuranceId?: SortOrder
     categoryId?: SortOrder
     categorySlug?: SortOrder
@@ -51117,6 +59251,7 @@ export namespace Prisma {
     type?: SortOrder
     loanId?: SortOrder
     cardId?: SortOrder
+    debitCardId?: SortOrder
     insuranceId?: SortOrder
     categoryId?: SortOrder
     categorySlug?: SortOrder
@@ -51240,6 +59375,7 @@ export namespace Prisma {
     userId?: SortOrder
     loanId?: SortOrder
     cardId?: SortOrder
+    debitCardId?: SortOrder
     insuranceId?: SortOrder
     categoryId?: SortOrder
     amount?: SortOrder
@@ -52878,6 +61014,374 @@ export namespace Prisma {
     _max?: NestedEnumEligibilityStatusFilter<$PrismaModel>
   }
 
+  export type DebitCardBulletListRelationFilter = {
+    every?: DebitCardBulletWhereInput
+    some?: DebitCardBulletWhereInput
+    none?: DebitCardBulletWhereInput
+  }
+
+  export type DebitCardKeyFeatureListRelationFilter = {
+    every?: DebitCardKeyFeatureWhereInput
+    some?: DebitCardKeyFeatureWhereInput
+    none?: DebitCardKeyFeatureWhereInput
+  }
+
+  export type DebitCardOfferListRelationFilter = {
+    every?: DebitCardOfferWhereInput
+    some?: DebitCardOfferWhereInput
+    none?: DebitCardOfferWhereInput
+  }
+
+  export type DebitCardSafetyFeatureListRelationFilter = {
+    every?: DebitCardSafetyFeatureWhereInput
+    some?: DebitCardSafetyFeatureWhereInput
+    none?: DebitCardSafetyFeatureWhereInput
+  }
+
+  export type DebitCardBulletOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DebitCardKeyFeatureOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DebitCardOfferOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DebitCardSafetyFeatureOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DebitCardProductCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    bankName?: SortOrder
+    imageUrl?: SortOrder
+    bankLogoUrl?: SortOrder
+    accountType?: SortOrder
+    cardNetwork?: SortOrder
+    cardType?: SortOrder
+    annualFee?: SortOrder
+    issuanceFee?: SortOrder
+    replacementFee?: SortOrder
+    atmWithdrawalLimit?: SortOrder
+    posLimit?: SortOrder
+    onlineLimit?: SortOrder
+    internationalUsage?: SortOrder
+    contactless?: SortOrder
+    loungeAccess?: SortOrder
+    loungeAccessDetails?: SortOrder
+    cashbackRate?: SortOrder
+    rewardPoints?: SortOrder
+    fuelSurcharge?: SortOrder
+    accidentInsurance?: SortOrder
+    purchaseProtection?: SortOrder
+    fraudProtection?: SortOrder
+    zeroBilling?: SortOrder
+    minimumBalance?: SortOrder
+    minimumAge?: SortOrder
+    maximumAge?: SortOrder
+    rating?: SortOrder
+    recommended?: SortOrder
+    bestFor?: SortOrder
+    keyStatement?: SortOrder
+    videoUrl?: SortOrder
+    termsConditionsUrl?: SortOrder
+    applyUrl?: SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DebitCardProductAvgOrderByAggregateInput = {
+    id?: SortOrder
+    annualFee?: SortOrder
+    issuanceFee?: SortOrder
+    replacementFee?: SortOrder
+    atmWithdrawalLimit?: SortOrder
+    posLimit?: SortOrder
+    onlineLimit?: SortOrder
+    cashbackRate?: SortOrder
+    minimumBalance?: SortOrder
+    minimumAge?: SortOrder
+    maximumAge?: SortOrder
+    rating?: SortOrder
+    createdById?: SortOrder
+  }
+
+  export type DebitCardProductMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    bankName?: SortOrder
+    imageUrl?: SortOrder
+    bankLogoUrl?: SortOrder
+    accountType?: SortOrder
+    cardNetwork?: SortOrder
+    cardType?: SortOrder
+    annualFee?: SortOrder
+    issuanceFee?: SortOrder
+    replacementFee?: SortOrder
+    atmWithdrawalLimit?: SortOrder
+    posLimit?: SortOrder
+    onlineLimit?: SortOrder
+    internationalUsage?: SortOrder
+    contactless?: SortOrder
+    loungeAccess?: SortOrder
+    loungeAccessDetails?: SortOrder
+    cashbackRate?: SortOrder
+    rewardPoints?: SortOrder
+    fuelSurcharge?: SortOrder
+    accidentInsurance?: SortOrder
+    purchaseProtection?: SortOrder
+    fraudProtection?: SortOrder
+    zeroBilling?: SortOrder
+    minimumBalance?: SortOrder
+    minimumAge?: SortOrder
+    maximumAge?: SortOrder
+    rating?: SortOrder
+    recommended?: SortOrder
+    bestFor?: SortOrder
+    keyStatement?: SortOrder
+    videoUrl?: SortOrder
+    termsConditionsUrl?: SortOrder
+    applyUrl?: SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DebitCardProductMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    bankName?: SortOrder
+    imageUrl?: SortOrder
+    bankLogoUrl?: SortOrder
+    accountType?: SortOrder
+    cardNetwork?: SortOrder
+    cardType?: SortOrder
+    annualFee?: SortOrder
+    issuanceFee?: SortOrder
+    replacementFee?: SortOrder
+    atmWithdrawalLimit?: SortOrder
+    posLimit?: SortOrder
+    onlineLimit?: SortOrder
+    internationalUsage?: SortOrder
+    contactless?: SortOrder
+    loungeAccess?: SortOrder
+    loungeAccessDetails?: SortOrder
+    cashbackRate?: SortOrder
+    rewardPoints?: SortOrder
+    fuelSurcharge?: SortOrder
+    accidentInsurance?: SortOrder
+    purchaseProtection?: SortOrder
+    fraudProtection?: SortOrder
+    zeroBilling?: SortOrder
+    minimumBalance?: SortOrder
+    minimumAge?: SortOrder
+    maximumAge?: SortOrder
+    rating?: SortOrder
+    recommended?: SortOrder
+    bestFor?: SortOrder
+    keyStatement?: SortOrder
+    videoUrl?: SortOrder
+    termsConditionsUrl?: SortOrder
+    applyUrl?: SortOrder
+    createdById?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DebitCardProductSumOrderByAggregateInput = {
+    id?: SortOrder
+    annualFee?: SortOrder
+    issuanceFee?: SortOrder
+    replacementFee?: SortOrder
+    atmWithdrawalLimit?: SortOrder
+    posLimit?: SortOrder
+    onlineLimit?: SortOrder
+    cashbackRate?: SortOrder
+    minimumBalance?: SortOrder
+    minimumAge?: SortOrder
+    maximumAge?: SortOrder
+    rating?: SortOrder
+    createdById?: SortOrder
+  }
+
+  export type DebitCardProductScalarRelationFilter = {
+    is?: DebitCardProductWhereInput
+    isNot?: DebitCardProductWhereInput
+  }
+
+  export type DebitCardBulletCountOrderByAggregateInput = {
+    id?: SortOrder
+    text?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardBulletAvgOrderByAggregateInput = {
+    id?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardBulletMaxOrderByAggregateInput = {
+    id?: SortOrder
+    text?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardBulletMinOrderByAggregateInput = {
+    id?: SortOrder
+    text?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardBulletSumOrderByAggregateInput = {
+    id?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardKeyFeatureCountOrderByAggregateInput = {
+    id?: SortOrder
+    icon?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardKeyFeatureAvgOrderByAggregateInput = {
+    id?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardKeyFeatureMaxOrderByAggregateInput = {
+    id?: SortOrder
+    icon?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardKeyFeatureMinOrderByAggregateInput = {
+    id?: SortOrder
+    icon?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardKeyFeatureSumOrderByAggregateInput = {
+    id?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardOfferCountOrderByAggregateInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrder
+    validTill?: SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardOfferAvgOrderByAggregateInput = {
+    id?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardOfferMaxOrderByAggregateInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrder
+    validTill?: SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardOfferMinOrderByAggregateInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrder
+    validTill?: SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardOfferSumOrderByAggregateInput = {
+    id?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardSafetyFeatureCountOrderByAggregateInput = {
+    id?: SortOrder
+    featureName?: SortOrder
+    description?: SortOrder
+    howToUse?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardSafetyFeatureAvgOrderByAggregateInput = {
+    id?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardSafetyFeatureMaxOrderByAggregateInput = {
+    id?: SortOrder
+    featureName?: SortOrder
+    description?: SortOrder
+    howToUse?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardSafetyFeatureMinOrderByAggregateInput = {
+    id?: SortOrder
+    featureName?: SortOrder
+    description?: SortOrder
+    howToUse?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type DebitCardSafetyFeatureSumOrderByAggregateInput = {
+    id?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
   export type ApplicationCreateNestedManyWithoutUserInput = {
     create?: XOR<ApplicationCreateWithoutUserInput, ApplicationUncheckedCreateWithoutUserInput> | ApplicationCreateWithoutUserInput[] | ApplicationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ApplicationCreateOrConnectWithoutUserInput | ApplicationCreateOrConnectWithoutUserInput[]
@@ -52910,6 +61414,13 @@ export namespace Prisma {
     connectOrCreate?: CreditCardProductCreateOrConnectWithoutCreatedByInput | CreditCardProductCreateOrConnectWithoutCreatedByInput[]
     createMany?: CreditCardProductCreateManyCreatedByInputEnvelope
     connect?: CreditCardProductWhereUniqueInput | CreditCardProductWhereUniqueInput[]
+  }
+
+  export type DebitCardProductCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<DebitCardProductCreateWithoutCreatedByInput, DebitCardProductUncheckedCreateWithoutCreatedByInput> | DebitCardProductCreateWithoutCreatedByInput[] | DebitCardProductUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutCreatedByInput | DebitCardProductCreateOrConnectWithoutCreatedByInput[]
+    createMany?: DebitCardProductCreateManyCreatedByInputEnvelope
+    connect?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
   }
 
   export type InsuranceProductCreateNestedManyWithoutCreatedByInput = {
@@ -52958,6 +61469,13 @@ export namespace Prisma {
     connectOrCreate?: CreditCardProductCreateOrConnectWithoutCreatedByInput | CreditCardProductCreateOrConnectWithoutCreatedByInput[]
     createMany?: CreditCardProductCreateManyCreatedByInputEnvelope
     connect?: CreditCardProductWhereUniqueInput | CreditCardProductWhereUniqueInput[]
+  }
+
+  export type DebitCardProductUncheckedCreateNestedManyWithoutCreatedByInput = {
+    create?: XOR<DebitCardProductCreateWithoutCreatedByInput, DebitCardProductUncheckedCreateWithoutCreatedByInput> | DebitCardProductCreateWithoutCreatedByInput[] | DebitCardProductUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutCreatedByInput | DebitCardProductCreateOrConnectWithoutCreatedByInput[]
+    createMany?: DebitCardProductCreateManyCreatedByInputEnvelope
+    connect?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
   }
 
   export type InsuranceProductUncheckedCreateNestedManyWithoutCreatedByInput = {
@@ -53080,6 +61598,20 @@ export namespace Prisma {
     deleteMany?: CreditCardProductScalarWhereInput | CreditCardProductScalarWhereInput[]
   }
 
+  export type DebitCardProductUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<DebitCardProductCreateWithoutCreatedByInput, DebitCardProductUncheckedCreateWithoutCreatedByInput> | DebitCardProductCreateWithoutCreatedByInput[] | DebitCardProductUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutCreatedByInput | DebitCardProductCreateOrConnectWithoutCreatedByInput[]
+    upsert?: DebitCardProductUpsertWithWhereUniqueWithoutCreatedByInput | DebitCardProductUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: DebitCardProductCreateManyCreatedByInputEnvelope
+    set?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    disconnect?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    delete?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    connect?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    update?: DebitCardProductUpdateWithWhereUniqueWithoutCreatedByInput | DebitCardProductUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: DebitCardProductUpdateManyWithWhereWithoutCreatedByInput | DebitCardProductUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: DebitCardProductScalarWhereInput | DebitCardProductScalarWhereInput[]
+  }
+
   export type InsuranceProductUpdateManyWithoutCreatedByNestedInput = {
     create?: XOR<InsuranceProductCreateWithoutCreatedByInput, InsuranceProductUncheckedCreateWithoutCreatedByInput> | InsuranceProductCreateWithoutCreatedByInput[] | InsuranceProductUncheckedCreateWithoutCreatedByInput[]
     connectOrCreate?: InsuranceProductCreateOrConnectWithoutCreatedByInput | InsuranceProductCreateOrConnectWithoutCreatedByInput[]
@@ -53182,6 +61714,20 @@ export namespace Prisma {
     deleteMany?: CreditCardProductScalarWhereInput | CreditCardProductScalarWhereInput[]
   }
 
+  export type DebitCardProductUncheckedUpdateManyWithoutCreatedByNestedInput = {
+    create?: XOR<DebitCardProductCreateWithoutCreatedByInput, DebitCardProductUncheckedCreateWithoutCreatedByInput> | DebitCardProductCreateWithoutCreatedByInput[] | DebitCardProductUncheckedCreateWithoutCreatedByInput[]
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutCreatedByInput | DebitCardProductCreateOrConnectWithoutCreatedByInput[]
+    upsert?: DebitCardProductUpsertWithWhereUniqueWithoutCreatedByInput | DebitCardProductUpsertWithWhereUniqueWithoutCreatedByInput[]
+    createMany?: DebitCardProductCreateManyCreatedByInputEnvelope
+    set?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    disconnect?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    delete?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    connect?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    update?: DebitCardProductUpdateWithWhereUniqueWithoutCreatedByInput | DebitCardProductUpdateWithWhereUniqueWithoutCreatedByInput[]
+    updateMany?: DebitCardProductUpdateManyWithWhereWithoutCreatedByInput | DebitCardProductUpdateManyWithWhereWithoutCreatedByInput[]
+    deleteMany?: DebitCardProductScalarWhereInput | DebitCardProductScalarWhereInput[]
+  }
+
   export type InsuranceProductUncheckedUpdateManyWithoutCreatedByNestedInput = {
     create?: XOR<InsuranceProductCreateWithoutCreatedByInput, InsuranceProductUncheckedCreateWithoutCreatedByInput> | InsuranceProductCreateWithoutCreatedByInput[] | InsuranceProductUncheckedCreateWithoutCreatedByInput[]
     connectOrCreate?: InsuranceProductCreateOrConnectWithoutCreatedByInput | InsuranceProductCreateOrConnectWithoutCreatedByInput[]
@@ -53250,6 +61796,12 @@ export namespace Prisma {
     connect?: CreditCardProductWhereUniqueInput
   }
 
+  export type DebitCardProductCreateNestedOneWithoutApplicationsInput = {
+    create?: XOR<DebitCardProductCreateWithoutApplicationsInput, DebitCardProductUncheckedCreateWithoutApplicationsInput>
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutApplicationsInput
+    connect?: DebitCardProductWhereUniqueInput
+  }
+
   export type InsuranceProductCreateNestedOneWithoutApplicationsInput = {
     create?: XOR<InsuranceProductCreateWithoutApplicationsInput, InsuranceProductUncheckedCreateWithoutApplicationsInput>
     connectOrCreate?: InsuranceProductCreateOrConnectWithoutApplicationsInput
@@ -53296,6 +61848,16 @@ export namespace Prisma {
     update?: XOR<XOR<CreditCardProductUpdateToOneWithWhereWithoutApplicationsInput, CreditCardProductUpdateWithoutApplicationsInput>, CreditCardProductUncheckedUpdateWithoutApplicationsInput>
   }
 
+  export type DebitCardProductUpdateOneWithoutApplicationsNestedInput = {
+    create?: XOR<DebitCardProductCreateWithoutApplicationsInput, DebitCardProductUncheckedCreateWithoutApplicationsInput>
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutApplicationsInput
+    upsert?: DebitCardProductUpsertWithoutApplicationsInput
+    disconnect?: DebitCardProductWhereInput | boolean
+    delete?: DebitCardProductWhereInput | boolean
+    connect?: DebitCardProductWhereUniqueInput
+    update?: XOR<XOR<DebitCardProductUpdateToOneWithWhereWithoutApplicationsInput, DebitCardProductUpdateWithoutApplicationsInput>, DebitCardProductUncheckedUpdateWithoutApplicationsInput>
+  }
+
   export type InsuranceProductUpdateOneWithoutApplicationsNestedInput = {
     create?: XOR<InsuranceProductCreateWithoutApplicationsInput, InsuranceProductUncheckedCreateWithoutApplicationsInput>
     connectOrCreate?: InsuranceProductCreateOrConnectWithoutApplicationsInput
@@ -53332,6 +61894,12 @@ export namespace Prisma {
     connect?: CreditCardProductWhereUniqueInput | CreditCardProductWhereUniqueInput[]
   }
 
+  export type DebitCardProductCreateNestedManyWithoutCategoriesInput = {
+    create?: XOR<DebitCardProductCreateWithoutCategoriesInput, DebitCardProductUncheckedCreateWithoutCategoriesInput> | DebitCardProductCreateWithoutCategoriesInput[] | DebitCardProductUncheckedCreateWithoutCategoriesInput[]
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutCategoriesInput | DebitCardProductCreateOrConnectWithoutCategoriesInput[]
+    connect?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+  }
+
   export type InsuranceProductCreateNestedManyWithoutCategoryInput = {
     create?: XOR<InsuranceProductCreateWithoutCategoryInput, InsuranceProductUncheckedCreateWithoutCategoryInput> | InsuranceProductCreateWithoutCategoryInput[] | InsuranceProductUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: InsuranceProductCreateOrConnectWithoutCategoryInput | InsuranceProductCreateOrConnectWithoutCategoryInput[]
@@ -53357,6 +61925,12 @@ export namespace Prisma {
     create?: XOR<CreditCardProductCreateWithoutCategoriesInput, CreditCardProductUncheckedCreateWithoutCategoriesInput> | CreditCardProductCreateWithoutCategoriesInput[] | CreditCardProductUncheckedCreateWithoutCategoriesInput[]
     connectOrCreate?: CreditCardProductCreateOrConnectWithoutCategoriesInput | CreditCardProductCreateOrConnectWithoutCategoriesInput[]
     connect?: CreditCardProductWhereUniqueInput | CreditCardProductWhereUniqueInput[]
+  }
+
+  export type DebitCardProductUncheckedCreateNestedManyWithoutCategoriesInput = {
+    create?: XOR<DebitCardProductCreateWithoutCategoriesInput, DebitCardProductUncheckedCreateWithoutCategoriesInput> | DebitCardProductCreateWithoutCategoriesInput[] | DebitCardProductUncheckedCreateWithoutCategoriesInput[]
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutCategoriesInput | DebitCardProductCreateOrConnectWithoutCategoriesInput[]
+    connect?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
   }
 
   export type InsuranceProductUncheckedCreateNestedManyWithoutCategoryInput = {
@@ -53417,6 +61991,19 @@ export namespace Prisma {
     deleteMany?: CreditCardProductScalarWhereInput | CreditCardProductScalarWhereInput[]
   }
 
+  export type DebitCardProductUpdateManyWithoutCategoriesNestedInput = {
+    create?: XOR<DebitCardProductCreateWithoutCategoriesInput, DebitCardProductUncheckedCreateWithoutCategoriesInput> | DebitCardProductCreateWithoutCategoriesInput[] | DebitCardProductUncheckedCreateWithoutCategoriesInput[]
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutCategoriesInput | DebitCardProductCreateOrConnectWithoutCategoriesInput[]
+    upsert?: DebitCardProductUpsertWithWhereUniqueWithoutCategoriesInput | DebitCardProductUpsertWithWhereUniqueWithoutCategoriesInput[]
+    set?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    disconnect?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    delete?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    connect?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    update?: DebitCardProductUpdateWithWhereUniqueWithoutCategoriesInput | DebitCardProductUpdateWithWhereUniqueWithoutCategoriesInput[]
+    updateMany?: DebitCardProductUpdateManyWithWhereWithoutCategoriesInput | DebitCardProductUpdateManyWithWhereWithoutCategoriesInput[]
+    deleteMany?: DebitCardProductScalarWhereInput | DebitCardProductScalarWhereInput[]
+  }
+
   export type InsuranceProductUpdateManyWithoutCategoryNestedInput = {
     create?: XOR<InsuranceProductCreateWithoutCategoryInput, InsuranceProductUncheckedCreateWithoutCategoryInput> | InsuranceProductCreateWithoutCategoryInput[] | InsuranceProductUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: InsuranceProductCreateOrConnectWithoutCategoryInput | InsuranceProductCreateOrConnectWithoutCategoryInput[]
@@ -53470,6 +62057,19 @@ export namespace Prisma {
     update?: CreditCardProductUpdateWithWhereUniqueWithoutCategoriesInput | CreditCardProductUpdateWithWhereUniqueWithoutCategoriesInput[]
     updateMany?: CreditCardProductUpdateManyWithWhereWithoutCategoriesInput | CreditCardProductUpdateManyWithWhereWithoutCategoriesInput[]
     deleteMany?: CreditCardProductScalarWhereInput | CreditCardProductScalarWhereInput[]
+  }
+
+  export type DebitCardProductUncheckedUpdateManyWithoutCategoriesNestedInput = {
+    create?: XOR<DebitCardProductCreateWithoutCategoriesInput, DebitCardProductUncheckedCreateWithoutCategoriesInput> | DebitCardProductCreateWithoutCategoriesInput[] | DebitCardProductUncheckedCreateWithoutCategoriesInput[]
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutCategoriesInput | DebitCardProductCreateOrConnectWithoutCategoriesInput[]
+    upsert?: DebitCardProductUpsertWithWhereUniqueWithoutCategoriesInput | DebitCardProductUpsertWithWhereUniqueWithoutCategoriesInput[]
+    set?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    disconnect?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    delete?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    connect?: DebitCardProductWhereUniqueInput | DebitCardProductWhereUniqueInput[]
+    update?: DebitCardProductUpdateWithWhereUniqueWithoutCategoriesInput | DebitCardProductUpdateWithWhereUniqueWithoutCategoriesInput[]
+    updateMany?: DebitCardProductUpdateManyWithWhereWithoutCategoriesInput | DebitCardProductUpdateManyWithWhereWithoutCategoriesInput[]
+    deleteMany?: DebitCardProductScalarWhereInput | DebitCardProductScalarWhereInput[]
   }
 
   export type InsuranceProductUncheckedUpdateManyWithoutCategoryNestedInput = {
@@ -54890,6 +63490,326 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutEligibilityInquiriesInput, UserUpdateWithoutEligibilityInquiriesInput>, UserUncheckedUpdateWithoutEligibilityInquiriesInput>
   }
 
+  export type CategoryCreateNestedManyWithoutDebitCardsInput = {
+    create?: XOR<CategoryCreateWithoutDebitCardsInput, CategoryUncheckedCreateWithoutDebitCardsInput> | CategoryCreateWithoutDebitCardsInput[] | CategoryUncheckedCreateWithoutDebitCardsInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutDebitCardsInput | CategoryCreateOrConnectWithoutDebitCardsInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
+  export type DebitCardBulletCreateNestedManyWithoutProductInput = {
+    create?: XOR<DebitCardBulletCreateWithoutProductInput, DebitCardBulletUncheckedCreateWithoutProductInput> | DebitCardBulletCreateWithoutProductInput[] | DebitCardBulletUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardBulletCreateOrConnectWithoutProductInput | DebitCardBulletCreateOrConnectWithoutProductInput[]
+    createMany?: DebitCardBulletCreateManyProductInputEnvelope
+    connect?: DebitCardBulletWhereUniqueInput | DebitCardBulletWhereUniqueInput[]
+  }
+
+  export type DebitCardKeyFeatureCreateNestedManyWithoutProductInput = {
+    create?: XOR<DebitCardKeyFeatureCreateWithoutProductInput, DebitCardKeyFeatureUncheckedCreateWithoutProductInput> | DebitCardKeyFeatureCreateWithoutProductInput[] | DebitCardKeyFeatureUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardKeyFeatureCreateOrConnectWithoutProductInput | DebitCardKeyFeatureCreateOrConnectWithoutProductInput[]
+    createMany?: DebitCardKeyFeatureCreateManyProductInputEnvelope
+    connect?: DebitCardKeyFeatureWhereUniqueInput | DebitCardKeyFeatureWhereUniqueInput[]
+  }
+
+  export type DebitCardOfferCreateNestedManyWithoutProductInput = {
+    create?: XOR<DebitCardOfferCreateWithoutProductInput, DebitCardOfferUncheckedCreateWithoutProductInput> | DebitCardOfferCreateWithoutProductInput[] | DebitCardOfferUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardOfferCreateOrConnectWithoutProductInput | DebitCardOfferCreateOrConnectWithoutProductInput[]
+    createMany?: DebitCardOfferCreateManyProductInputEnvelope
+    connect?: DebitCardOfferWhereUniqueInput | DebitCardOfferWhereUniqueInput[]
+  }
+
+  export type DebitCardSafetyFeatureCreateNestedManyWithoutProductInput = {
+    create?: XOR<DebitCardSafetyFeatureCreateWithoutProductInput, DebitCardSafetyFeatureUncheckedCreateWithoutProductInput> | DebitCardSafetyFeatureCreateWithoutProductInput[] | DebitCardSafetyFeatureUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardSafetyFeatureCreateOrConnectWithoutProductInput | DebitCardSafetyFeatureCreateOrConnectWithoutProductInput[]
+    createMany?: DebitCardSafetyFeatureCreateManyProductInputEnvelope
+    connect?: DebitCardSafetyFeatureWhereUniqueInput | DebitCardSafetyFeatureWhereUniqueInput[]
+  }
+
+  export type ApplicationCreateNestedManyWithoutDebitCardInput = {
+    create?: XOR<ApplicationCreateWithoutDebitCardInput, ApplicationUncheckedCreateWithoutDebitCardInput> | ApplicationCreateWithoutDebitCardInput[] | ApplicationUncheckedCreateWithoutDebitCardInput[]
+    connectOrCreate?: ApplicationCreateOrConnectWithoutDebitCardInput | ApplicationCreateOrConnectWithoutDebitCardInput[]
+    createMany?: ApplicationCreateManyDebitCardInputEnvelope
+    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutCreatedDebitCardsInput = {
+    create?: XOR<UserCreateWithoutCreatedDebitCardsInput, UserUncheckedCreateWithoutCreatedDebitCardsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCreatedDebitCardsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CategoryUncheckedCreateNestedManyWithoutDebitCardsInput = {
+    create?: XOR<CategoryCreateWithoutDebitCardsInput, CategoryUncheckedCreateWithoutDebitCardsInput> | CategoryCreateWithoutDebitCardsInput[] | CategoryUncheckedCreateWithoutDebitCardsInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutDebitCardsInput | CategoryCreateOrConnectWithoutDebitCardsInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
+  export type DebitCardBulletUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<DebitCardBulletCreateWithoutProductInput, DebitCardBulletUncheckedCreateWithoutProductInput> | DebitCardBulletCreateWithoutProductInput[] | DebitCardBulletUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardBulletCreateOrConnectWithoutProductInput | DebitCardBulletCreateOrConnectWithoutProductInput[]
+    createMany?: DebitCardBulletCreateManyProductInputEnvelope
+    connect?: DebitCardBulletWhereUniqueInput | DebitCardBulletWhereUniqueInput[]
+  }
+
+  export type DebitCardKeyFeatureUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<DebitCardKeyFeatureCreateWithoutProductInput, DebitCardKeyFeatureUncheckedCreateWithoutProductInput> | DebitCardKeyFeatureCreateWithoutProductInput[] | DebitCardKeyFeatureUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardKeyFeatureCreateOrConnectWithoutProductInput | DebitCardKeyFeatureCreateOrConnectWithoutProductInput[]
+    createMany?: DebitCardKeyFeatureCreateManyProductInputEnvelope
+    connect?: DebitCardKeyFeatureWhereUniqueInput | DebitCardKeyFeatureWhereUniqueInput[]
+  }
+
+  export type DebitCardOfferUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<DebitCardOfferCreateWithoutProductInput, DebitCardOfferUncheckedCreateWithoutProductInput> | DebitCardOfferCreateWithoutProductInput[] | DebitCardOfferUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardOfferCreateOrConnectWithoutProductInput | DebitCardOfferCreateOrConnectWithoutProductInput[]
+    createMany?: DebitCardOfferCreateManyProductInputEnvelope
+    connect?: DebitCardOfferWhereUniqueInput | DebitCardOfferWhereUniqueInput[]
+  }
+
+  export type DebitCardSafetyFeatureUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<DebitCardSafetyFeatureCreateWithoutProductInput, DebitCardSafetyFeatureUncheckedCreateWithoutProductInput> | DebitCardSafetyFeatureCreateWithoutProductInput[] | DebitCardSafetyFeatureUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardSafetyFeatureCreateOrConnectWithoutProductInput | DebitCardSafetyFeatureCreateOrConnectWithoutProductInput[]
+    createMany?: DebitCardSafetyFeatureCreateManyProductInputEnvelope
+    connect?: DebitCardSafetyFeatureWhereUniqueInput | DebitCardSafetyFeatureWhereUniqueInput[]
+  }
+
+  export type ApplicationUncheckedCreateNestedManyWithoutDebitCardInput = {
+    create?: XOR<ApplicationCreateWithoutDebitCardInput, ApplicationUncheckedCreateWithoutDebitCardInput> | ApplicationCreateWithoutDebitCardInput[] | ApplicationUncheckedCreateWithoutDebitCardInput[]
+    connectOrCreate?: ApplicationCreateOrConnectWithoutDebitCardInput | ApplicationCreateOrConnectWithoutDebitCardInput[]
+    createMany?: ApplicationCreateManyDebitCardInputEnvelope
+    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+  }
+
+  export type CategoryUpdateManyWithoutDebitCardsNestedInput = {
+    create?: XOR<CategoryCreateWithoutDebitCardsInput, CategoryUncheckedCreateWithoutDebitCardsInput> | CategoryCreateWithoutDebitCardsInput[] | CategoryUncheckedCreateWithoutDebitCardsInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutDebitCardsInput | CategoryCreateOrConnectWithoutDebitCardsInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutDebitCardsInput | CategoryUpsertWithWhereUniqueWithoutDebitCardsInput[]
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutDebitCardsInput | CategoryUpdateWithWhereUniqueWithoutDebitCardsInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutDebitCardsInput | CategoryUpdateManyWithWhereWithoutDebitCardsInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
+  export type DebitCardBulletUpdateManyWithoutProductNestedInput = {
+    create?: XOR<DebitCardBulletCreateWithoutProductInput, DebitCardBulletUncheckedCreateWithoutProductInput> | DebitCardBulletCreateWithoutProductInput[] | DebitCardBulletUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardBulletCreateOrConnectWithoutProductInput | DebitCardBulletCreateOrConnectWithoutProductInput[]
+    upsert?: DebitCardBulletUpsertWithWhereUniqueWithoutProductInput | DebitCardBulletUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: DebitCardBulletCreateManyProductInputEnvelope
+    set?: DebitCardBulletWhereUniqueInput | DebitCardBulletWhereUniqueInput[]
+    disconnect?: DebitCardBulletWhereUniqueInput | DebitCardBulletWhereUniqueInput[]
+    delete?: DebitCardBulletWhereUniqueInput | DebitCardBulletWhereUniqueInput[]
+    connect?: DebitCardBulletWhereUniqueInput | DebitCardBulletWhereUniqueInput[]
+    update?: DebitCardBulletUpdateWithWhereUniqueWithoutProductInput | DebitCardBulletUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: DebitCardBulletUpdateManyWithWhereWithoutProductInput | DebitCardBulletUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: DebitCardBulletScalarWhereInput | DebitCardBulletScalarWhereInput[]
+  }
+
+  export type DebitCardKeyFeatureUpdateManyWithoutProductNestedInput = {
+    create?: XOR<DebitCardKeyFeatureCreateWithoutProductInput, DebitCardKeyFeatureUncheckedCreateWithoutProductInput> | DebitCardKeyFeatureCreateWithoutProductInput[] | DebitCardKeyFeatureUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardKeyFeatureCreateOrConnectWithoutProductInput | DebitCardKeyFeatureCreateOrConnectWithoutProductInput[]
+    upsert?: DebitCardKeyFeatureUpsertWithWhereUniqueWithoutProductInput | DebitCardKeyFeatureUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: DebitCardKeyFeatureCreateManyProductInputEnvelope
+    set?: DebitCardKeyFeatureWhereUniqueInput | DebitCardKeyFeatureWhereUniqueInput[]
+    disconnect?: DebitCardKeyFeatureWhereUniqueInput | DebitCardKeyFeatureWhereUniqueInput[]
+    delete?: DebitCardKeyFeatureWhereUniqueInput | DebitCardKeyFeatureWhereUniqueInput[]
+    connect?: DebitCardKeyFeatureWhereUniqueInput | DebitCardKeyFeatureWhereUniqueInput[]
+    update?: DebitCardKeyFeatureUpdateWithWhereUniqueWithoutProductInput | DebitCardKeyFeatureUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: DebitCardKeyFeatureUpdateManyWithWhereWithoutProductInput | DebitCardKeyFeatureUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: DebitCardKeyFeatureScalarWhereInput | DebitCardKeyFeatureScalarWhereInput[]
+  }
+
+  export type DebitCardOfferUpdateManyWithoutProductNestedInput = {
+    create?: XOR<DebitCardOfferCreateWithoutProductInput, DebitCardOfferUncheckedCreateWithoutProductInput> | DebitCardOfferCreateWithoutProductInput[] | DebitCardOfferUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardOfferCreateOrConnectWithoutProductInput | DebitCardOfferCreateOrConnectWithoutProductInput[]
+    upsert?: DebitCardOfferUpsertWithWhereUniqueWithoutProductInput | DebitCardOfferUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: DebitCardOfferCreateManyProductInputEnvelope
+    set?: DebitCardOfferWhereUniqueInput | DebitCardOfferWhereUniqueInput[]
+    disconnect?: DebitCardOfferWhereUniqueInput | DebitCardOfferWhereUniqueInput[]
+    delete?: DebitCardOfferWhereUniqueInput | DebitCardOfferWhereUniqueInput[]
+    connect?: DebitCardOfferWhereUniqueInput | DebitCardOfferWhereUniqueInput[]
+    update?: DebitCardOfferUpdateWithWhereUniqueWithoutProductInput | DebitCardOfferUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: DebitCardOfferUpdateManyWithWhereWithoutProductInput | DebitCardOfferUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: DebitCardOfferScalarWhereInput | DebitCardOfferScalarWhereInput[]
+  }
+
+  export type DebitCardSafetyFeatureUpdateManyWithoutProductNestedInput = {
+    create?: XOR<DebitCardSafetyFeatureCreateWithoutProductInput, DebitCardSafetyFeatureUncheckedCreateWithoutProductInput> | DebitCardSafetyFeatureCreateWithoutProductInput[] | DebitCardSafetyFeatureUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardSafetyFeatureCreateOrConnectWithoutProductInput | DebitCardSafetyFeatureCreateOrConnectWithoutProductInput[]
+    upsert?: DebitCardSafetyFeatureUpsertWithWhereUniqueWithoutProductInput | DebitCardSafetyFeatureUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: DebitCardSafetyFeatureCreateManyProductInputEnvelope
+    set?: DebitCardSafetyFeatureWhereUniqueInput | DebitCardSafetyFeatureWhereUniqueInput[]
+    disconnect?: DebitCardSafetyFeatureWhereUniqueInput | DebitCardSafetyFeatureWhereUniqueInput[]
+    delete?: DebitCardSafetyFeatureWhereUniqueInput | DebitCardSafetyFeatureWhereUniqueInput[]
+    connect?: DebitCardSafetyFeatureWhereUniqueInput | DebitCardSafetyFeatureWhereUniqueInput[]
+    update?: DebitCardSafetyFeatureUpdateWithWhereUniqueWithoutProductInput | DebitCardSafetyFeatureUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: DebitCardSafetyFeatureUpdateManyWithWhereWithoutProductInput | DebitCardSafetyFeatureUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: DebitCardSafetyFeatureScalarWhereInput | DebitCardSafetyFeatureScalarWhereInput[]
+  }
+
+  export type ApplicationUpdateManyWithoutDebitCardNestedInput = {
+    create?: XOR<ApplicationCreateWithoutDebitCardInput, ApplicationUncheckedCreateWithoutDebitCardInput> | ApplicationCreateWithoutDebitCardInput[] | ApplicationUncheckedCreateWithoutDebitCardInput[]
+    connectOrCreate?: ApplicationCreateOrConnectWithoutDebitCardInput | ApplicationCreateOrConnectWithoutDebitCardInput[]
+    upsert?: ApplicationUpsertWithWhereUniqueWithoutDebitCardInput | ApplicationUpsertWithWhereUniqueWithoutDebitCardInput[]
+    createMany?: ApplicationCreateManyDebitCardInputEnvelope
+    set?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    disconnect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    delete?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    update?: ApplicationUpdateWithWhereUniqueWithoutDebitCardInput | ApplicationUpdateWithWhereUniqueWithoutDebitCardInput[]
+    updateMany?: ApplicationUpdateManyWithWhereWithoutDebitCardInput | ApplicationUpdateManyWithWhereWithoutDebitCardInput[]
+    deleteMany?: ApplicationScalarWhereInput | ApplicationScalarWhereInput[]
+  }
+
+  export type UserUpdateOneWithoutCreatedDebitCardsNestedInput = {
+    create?: XOR<UserCreateWithoutCreatedDebitCardsInput, UserUncheckedCreateWithoutCreatedDebitCardsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCreatedDebitCardsInput
+    upsert?: UserUpsertWithoutCreatedDebitCardsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCreatedDebitCardsInput, UserUpdateWithoutCreatedDebitCardsInput>, UserUncheckedUpdateWithoutCreatedDebitCardsInput>
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutDebitCardsNestedInput = {
+    create?: XOR<CategoryCreateWithoutDebitCardsInput, CategoryUncheckedCreateWithoutDebitCardsInput> | CategoryCreateWithoutDebitCardsInput[] | CategoryUncheckedCreateWithoutDebitCardsInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutDebitCardsInput | CategoryCreateOrConnectWithoutDebitCardsInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutDebitCardsInput | CategoryUpsertWithWhereUniqueWithoutDebitCardsInput[]
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutDebitCardsInput | CategoryUpdateWithWhereUniqueWithoutDebitCardsInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutDebitCardsInput | CategoryUpdateManyWithWhereWithoutDebitCardsInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
+  export type DebitCardBulletUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<DebitCardBulletCreateWithoutProductInput, DebitCardBulletUncheckedCreateWithoutProductInput> | DebitCardBulletCreateWithoutProductInput[] | DebitCardBulletUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardBulletCreateOrConnectWithoutProductInput | DebitCardBulletCreateOrConnectWithoutProductInput[]
+    upsert?: DebitCardBulletUpsertWithWhereUniqueWithoutProductInput | DebitCardBulletUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: DebitCardBulletCreateManyProductInputEnvelope
+    set?: DebitCardBulletWhereUniqueInput | DebitCardBulletWhereUniqueInput[]
+    disconnect?: DebitCardBulletWhereUniqueInput | DebitCardBulletWhereUniqueInput[]
+    delete?: DebitCardBulletWhereUniqueInput | DebitCardBulletWhereUniqueInput[]
+    connect?: DebitCardBulletWhereUniqueInput | DebitCardBulletWhereUniqueInput[]
+    update?: DebitCardBulletUpdateWithWhereUniqueWithoutProductInput | DebitCardBulletUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: DebitCardBulletUpdateManyWithWhereWithoutProductInput | DebitCardBulletUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: DebitCardBulletScalarWhereInput | DebitCardBulletScalarWhereInput[]
+  }
+
+  export type DebitCardKeyFeatureUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<DebitCardKeyFeatureCreateWithoutProductInput, DebitCardKeyFeatureUncheckedCreateWithoutProductInput> | DebitCardKeyFeatureCreateWithoutProductInput[] | DebitCardKeyFeatureUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardKeyFeatureCreateOrConnectWithoutProductInput | DebitCardKeyFeatureCreateOrConnectWithoutProductInput[]
+    upsert?: DebitCardKeyFeatureUpsertWithWhereUniqueWithoutProductInput | DebitCardKeyFeatureUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: DebitCardKeyFeatureCreateManyProductInputEnvelope
+    set?: DebitCardKeyFeatureWhereUniqueInput | DebitCardKeyFeatureWhereUniqueInput[]
+    disconnect?: DebitCardKeyFeatureWhereUniqueInput | DebitCardKeyFeatureWhereUniqueInput[]
+    delete?: DebitCardKeyFeatureWhereUniqueInput | DebitCardKeyFeatureWhereUniqueInput[]
+    connect?: DebitCardKeyFeatureWhereUniqueInput | DebitCardKeyFeatureWhereUniqueInput[]
+    update?: DebitCardKeyFeatureUpdateWithWhereUniqueWithoutProductInput | DebitCardKeyFeatureUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: DebitCardKeyFeatureUpdateManyWithWhereWithoutProductInput | DebitCardKeyFeatureUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: DebitCardKeyFeatureScalarWhereInput | DebitCardKeyFeatureScalarWhereInput[]
+  }
+
+  export type DebitCardOfferUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<DebitCardOfferCreateWithoutProductInput, DebitCardOfferUncheckedCreateWithoutProductInput> | DebitCardOfferCreateWithoutProductInput[] | DebitCardOfferUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardOfferCreateOrConnectWithoutProductInput | DebitCardOfferCreateOrConnectWithoutProductInput[]
+    upsert?: DebitCardOfferUpsertWithWhereUniqueWithoutProductInput | DebitCardOfferUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: DebitCardOfferCreateManyProductInputEnvelope
+    set?: DebitCardOfferWhereUniqueInput | DebitCardOfferWhereUniqueInput[]
+    disconnect?: DebitCardOfferWhereUniqueInput | DebitCardOfferWhereUniqueInput[]
+    delete?: DebitCardOfferWhereUniqueInput | DebitCardOfferWhereUniqueInput[]
+    connect?: DebitCardOfferWhereUniqueInput | DebitCardOfferWhereUniqueInput[]
+    update?: DebitCardOfferUpdateWithWhereUniqueWithoutProductInput | DebitCardOfferUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: DebitCardOfferUpdateManyWithWhereWithoutProductInput | DebitCardOfferUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: DebitCardOfferScalarWhereInput | DebitCardOfferScalarWhereInput[]
+  }
+
+  export type DebitCardSafetyFeatureUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<DebitCardSafetyFeatureCreateWithoutProductInput, DebitCardSafetyFeatureUncheckedCreateWithoutProductInput> | DebitCardSafetyFeatureCreateWithoutProductInput[] | DebitCardSafetyFeatureUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: DebitCardSafetyFeatureCreateOrConnectWithoutProductInput | DebitCardSafetyFeatureCreateOrConnectWithoutProductInput[]
+    upsert?: DebitCardSafetyFeatureUpsertWithWhereUniqueWithoutProductInput | DebitCardSafetyFeatureUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: DebitCardSafetyFeatureCreateManyProductInputEnvelope
+    set?: DebitCardSafetyFeatureWhereUniqueInput | DebitCardSafetyFeatureWhereUniqueInput[]
+    disconnect?: DebitCardSafetyFeatureWhereUniqueInput | DebitCardSafetyFeatureWhereUniqueInput[]
+    delete?: DebitCardSafetyFeatureWhereUniqueInput | DebitCardSafetyFeatureWhereUniqueInput[]
+    connect?: DebitCardSafetyFeatureWhereUniqueInput | DebitCardSafetyFeatureWhereUniqueInput[]
+    update?: DebitCardSafetyFeatureUpdateWithWhereUniqueWithoutProductInput | DebitCardSafetyFeatureUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: DebitCardSafetyFeatureUpdateManyWithWhereWithoutProductInput | DebitCardSafetyFeatureUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: DebitCardSafetyFeatureScalarWhereInput | DebitCardSafetyFeatureScalarWhereInput[]
+  }
+
+  export type ApplicationUncheckedUpdateManyWithoutDebitCardNestedInput = {
+    create?: XOR<ApplicationCreateWithoutDebitCardInput, ApplicationUncheckedCreateWithoutDebitCardInput> | ApplicationCreateWithoutDebitCardInput[] | ApplicationUncheckedCreateWithoutDebitCardInput[]
+    connectOrCreate?: ApplicationCreateOrConnectWithoutDebitCardInput | ApplicationCreateOrConnectWithoutDebitCardInput[]
+    upsert?: ApplicationUpsertWithWhereUniqueWithoutDebitCardInput | ApplicationUpsertWithWhereUniqueWithoutDebitCardInput[]
+    createMany?: ApplicationCreateManyDebitCardInputEnvelope
+    set?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    disconnect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    delete?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    connect?: ApplicationWhereUniqueInput | ApplicationWhereUniqueInput[]
+    update?: ApplicationUpdateWithWhereUniqueWithoutDebitCardInput | ApplicationUpdateWithWhereUniqueWithoutDebitCardInput[]
+    updateMany?: ApplicationUpdateManyWithWhereWithoutDebitCardInput | ApplicationUpdateManyWithWhereWithoutDebitCardInput[]
+    deleteMany?: ApplicationScalarWhereInput | ApplicationScalarWhereInput[]
+  }
+
+  export type DebitCardProductCreateNestedOneWithoutBulletPointsInput = {
+    create?: XOR<DebitCardProductCreateWithoutBulletPointsInput, DebitCardProductUncheckedCreateWithoutBulletPointsInput>
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutBulletPointsInput
+    connect?: DebitCardProductWhereUniqueInput
+  }
+
+  export type DebitCardProductUpdateOneRequiredWithoutBulletPointsNestedInput = {
+    create?: XOR<DebitCardProductCreateWithoutBulletPointsInput, DebitCardProductUncheckedCreateWithoutBulletPointsInput>
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutBulletPointsInput
+    upsert?: DebitCardProductUpsertWithoutBulletPointsInput
+    connect?: DebitCardProductWhereUniqueInput
+    update?: XOR<XOR<DebitCardProductUpdateToOneWithWhereWithoutBulletPointsInput, DebitCardProductUpdateWithoutBulletPointsInput>, DebitCardProductUncheckedUpdateWithoutBulletPointsInput>
+  }
+
+  export type DebitCardProductCreateNestedOneWithoutKeyFeaturesInput = {
+    create?: XOR<DebitCardProductCreateWithoutKeyFeaturesInput, DebitCardProductUncheckedCreateWithoutKeyFeaturesInput>
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutKeyFeaturesInput
+    connect?: DebitCardProductWhereUniqueInput
+  }
+
+  export type DebitCardProductUpdateOneRequiredWithoutKeyFeaturesNestedInput = {
+    create?: XOR<DebitCardProductCreateWithoutKeyFeaturesInput, DebitCardProductUncheckedCreateWithoutKeyFeaturesInput>
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutKeyFeaturesInput
+    upsert?: DebitCardProductUpsertWithoutKeyFeaturesInput
+    connect?: DebitCardProductWhereUniqueInput
+    update?: XOR<XOR<DebitCardProductUpdateToOneWithWhereWithoutKeyFeaturesInput, DebitCardProductUpdateWithoutKeyFeaturesInput>, DebitCardProductUncheckedUpdateWithoutKeyFeaturesInput>
+  }
+
+  export type DebitCardProductCreateNestedOneWithoutOffersInput = {
+    create?: XOR<DebitCardProductCreateWithoutOffersInput, DebitCardProductUncheckedCreateWithoutOffersInput>
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutOffersInput
+    connect?: DebitCardProductWhereUniqueInput
+  }
+
+  export type DebitCardProductUpdateOneRequiredWithoutOffersNestedInput = {
+    create?: XOR<DebitCardProductCreateWithoutOffersInput, DebitCardProductUncheckedCreateWithoutOffersInput>
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutOffersInput
+    upsert?: DebitCardProductUpsertWithoutOffersInput
+    connect?: DebitCardProductWhereUniqueInput
+    update?: XOR<XOR<DebitCardProductUpdateToOneWithWhereWithoutOffersInput, DebitCardProductUpdateWithoutOffersInput>, DebitCardProductUncheckedUpdateWithoutOffersInput>
+  }
+
+  export type DebitCardProductCreateNestedOneWithoutSafetyFeaturesInput = {
+    create?: XOR<DebitCardProductCreateWithoutSafetyFeaturesInput, DebitCardProductUncheckedCreateWithoutSafetyFeaturesInput>
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutSafetyFeaturesInput
+    connect?: DebitCardProductWhereUniqueInput
+  }
+
+  export type DebitCardProductUpdateOneRequiredWithoutSafetyFeaturesNestedInput = {
+    create?: XOR<DebitCardProductCreateWithoutSafetyFeaturesInput, DebitCardProductUncheckedCreateWithoutSafetyFeaturesInput>
+    connectOrCreate?: DebitCardProductCreateOrConnectWithoutSafetyFeaturesInput
+    upsert?: DebitCardProductUpsertWithoutSafetyFeaturesInput
+    connect?: DebitCardProductWhereUniqueInput
+    update?: XOR<XOR<DebitCardProductUpdateToOneWithWhereWithoutSafetyFeaturesInput, DebitCardProductUpdateWithoutSafetyFeaturesInput>, DebitCardProductUncheckedUpdateWithoutSafetyFeaturesInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -55369,6 +64289,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     loan?: LoanProductCreateNestedOneWithoutApplicationsInput
     card?: CreditCardProductCreateNestedOneWithoutApplicationsInput
+    debitCard?: DebitCardProductCreateNestedOneWithoutApplicationsInput
     insurance?: InsuranceProductCreateNestedOneWithoutApplicationsInput
   }
 
@@ -55378,6 +64299,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     loanId?: number | null
     cardId?: number | null
+    debitCardId?: number | null
     insuranceId?: number | null
     categoryId?: number | null
     categorySlug?: string | null
@@ -55780,6 +64702,109 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type DebitCardProductCreateWithoutCreatedByInput = {
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryCreateNestedManyWithoutDebitCardsInput
+    bulletPoints?: DebitCardBulletCreateNestedManyWithoutProductInput
+    keyFeatures?: DebitCardKeyFeatureCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureCreateNestedManyWithoutProductInput
+    applications?: ApplicationCreateNestedManyWithoutDebitCardInput
+  }
+
+  export type DebitCardProductUncheckedCreateWithoutCreatedByInput = {
+    id?: number
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryUncheckedCreateNestedManyWithoutDebitCardsInput
+    bulletPoints?: DebitCardBulletUncheckedCreateNestedManyWithoutProductInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferUncheckedCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedCreateNestedManyWithoutProductInput
+    applications?: ApplicationUncheckedCreateNestedManyWithoutDebitCardInput
+  }
+
+  export type DebitCardProductCreateOrConnectWithoutCreatedByInput = {
+    where: DebitCardProductWhereUniqueInput
+    create: XOR<DebitCardProductCreateWithoutCreatedByInput, DebitCardProductUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type DebitCardProductCreateManyCreatedByInputEnvelope = {
+    data: DebitCardProductCreateManyCreatedByInput | DebitCardProductCreateManyCreatedByInput[]
+    skipDuplicates?: boolean
+  }
+
   export type InsuranceProductCreateWithoutCreatedByInput = {
     name: string
     slug: string
@@ -55954,6 +64979,7 @@ export namespace Prisma {
     type?: EnumProductTypeFilter<"Application"> | $Enums.ProductType
     loanId?: IntNullableFilter<"Application"> | number | null
     cardId?: IntNullableFilter<"Application"> | number | null
+    debitCardId?: IntNullableFilter<"Application"> | number | null
     insuranceId?: IntNullableFilter<"Application"> | number | null
     categoryId?: IntNullableFilter<"Application"> | number | null
     categorySlug?: StringNullableFilter<"Application"> | string | null
@@ -56276,6 +65302,67 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"CreditCardProduct"> | Date | string
   }
 
+  export type DebitCardProductUpsertWithWhereUniqueWithoutCreatedByInput = {
+    where: DebitCardProductWhereUniqueInput
+    update: XOR<DebitCardProductUpdateWithoutCreatedByInput, DebitCardProductUncheckedUpdateWithoutCreatedByInput>
+    create: XOR<DebitCardProductCreateWithoutCreatedByInput, DebitCardProductUncheckedCreateWithoutCreatedByInput>
+  }
+
+  export type DebitCardProductUpdateWithWhereUniqueWithoutCreatedByInput = {
+    where: DebitCardProductWhereUniqueInput
+    data: XOR<DebitCardProductUpdateWithoutCreatedByInput, DebitCardProductUncheckedUpdateWithoutCreatedByInput>
+  }
+
+  export type DebitCardProductUpdateManyWithWhereWithoutCreatedByInput = {
+    where: DebitCardProductScalarWhereInput
+    data: XOR<DebitCardProductUpdateManyMutationInput, DebitCardProductUncheckedUpdateManyWithoutCreatedByInput>
+  }
+
+  export type DebitCardProductScalarWhereInput = {
+    AND?: DebitCardProductScalarWhereInput | DebitCardProductScalarWhereInput[]
+    OR?: DebitCardProductScalarWhereInput[]
+    NOT?: DebitCardProductScalarWhereInput | DebitCardProductScalarWhereInput[]
+    id?: IntFilter<"DebitCardProduct"> | number
+    name?: StringFilter<"DebitCardProduct"> | string
+    slug?: StringFilter<"DebitCardProduct"> | string
+    bankName?: StringFilter<"DebitCardProduct"> | string
+    imageUrl?: StringFilter<"DebitCardProduct"> | string
+    bankLogoUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
+    accountType?: StringNullableFilter<"DebitCardProduct"> | string | null
+    cardNetwork?: StringFilter<"DebitCardProduct"> | string
+    cardType?: StringNullableFilter<"DebitCardProduct"> | string | null
+    annualFee?: FloatFilter<"DebitCardProduct"> | number
+    issuanceFee?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    replacementFee?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    atmWithdrawalLimit?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    posLimit?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    onlineLimit?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    internationalUsage?: BoolFilter<"DebitCardProduct"> | boolean
+    contactless?: BoolFilter<"DebitCardProduct"> | boolean
+    loungeAccess?: BoolFilter<"DebitCardProduct"> | boolean
+    loungeAccessDetails?: StringNullableFilter<"DebitCardProduct"> | string | null
+    cashbackRate?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    rewardPoints?: BoolFilter<"DebitCardProduct"> | boolean
+    fuelSurcharge?: BoolFilter<"DebitCardProduct"> | boolean
+    accidentInsurance?: BoolFilter<"DebitCardProduct"> | boolean
+    purchaseProtection?: BoolFilter<"DebitCardProduct"> | boolean
+    fraudProtection?: BoolFilter<"DebitCardProduct"> | boolean
+    zeroBilling?: BoolFilter<"DebitCardProduct"> | boolean
+    minimumBalance?: FloatNullableFilter<"DebitCardProduct"> | number | null
+    minimumAge?: IntNullableFilter<"DebitCardProduct"> | number | null
+    maximumAge?: IntNullableFilter<"DebitCardProduct"> | number | null
+    rating?: FloatFilter<"DebitCardProduct"> | number
+    recommended?: BoolFilter<"DebitCardProduct"> | boolean
+    bestFor?: StringNullableFilter<"DebitCardProduct"> | string | null
+    keyStatement?: StringNullableFilter<"DebitCardProduct"> | string | null
+    videoUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
+    termsConditionsUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
+    applyUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
+    createdById?: IntNullableFilter<"DebitCardProduct"> | number | null
+    createdAt?: DateTimeFilter<"DebitCardProduct"> | Date | string
+    updatedAt?: DateTimeFilter<"DebitCardProduct"> | Date | string
+  }
+
   export type InsuranceProductUpsertWithWhereUniqueWithoutCreatedByInput = {
     where: InsuranceProductWhereUniqueInput
     update: XOR<InsuranceProductUpdateWithoutCreatedByInput, InsuranceProductUncheckedUpdateWithoutCreatedByInput>
@@ -56435,6 +65522,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryCreateNestedManyWithoutUserInput
     createdLoans?: LoanProductCreateNestedManyWithoutCreatedByInput
     createdCards?: CreditCardProductCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductCreateNestedManyWithoutCreatedByInput
   }
@@ -56500,6 +65588,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUncheckedCreateNestedManyWithoutUserInput
     createdLoans?: LoanProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdCards?: CreditCardProductUncheckedCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -56580,6 +65669,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUpdateManyWithoutUserNestedInput
     createdLoans?: LoanProductUpdateManyWithoutCreatedByNestedInput
     createdCards?: CreditCardProductUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUpdateManyWithoutCreatedByNestedInput
   }
@@ -56645,6 +65735,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUncheckedUpdateManyWithoutUserNestedInput
     createdLoans?: LoanProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdCards?: CreditCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUncheckedUpdateManyWithoutCreatedByNestedInput
   }
@@ -56709,6 +65800,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryCreateNestedManyWithoutUserInput
     createdLoans?: LoanProductCreateNestedManyWithoutCreatedByInput
     createdCards?: CreditCardProductCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductCreateNestedManyWithoutCreatedByInput
   }
@@ -56774,6 +65866,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUncheckedCreateNestedManyWithoutUserInput
     createdLoans?: LoanProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdCards?: CreditCardProductUncheckedCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -56937,6 +66030,104 @@ export namespace Prisma {
   export type CreditCardProductCreateOrConnectWithoutApplicationsInput = {
     where: CreditCardProductWhereUniqueInput
     create: XOR<CreditCardProductCreateWithoutApplicationsInput, CreditCardProductUncheckedCreateWithoutApplicationsInput>
+  }
+
+  export type DebitCardProductCreateWithoutApplicationsInput = {
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryCreateNestedManyWithoutDebitCardsInput
+    bulletPoints?: DebitCardBulletCreateNestedManyWithoutProductInput
+    keyFeatures?: DebitCardKeyFeatureCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureCreateNestedManyWithoutProductInput
+    createdBy?: UserCreateNestedOneWithoutCreatedDebitCardsInput
+  }
+
+  export type DebitCardProductUncheckedCreateWithoutApplicationsInput = {
+    id?: number
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdById?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryUncheckedCreateNestedManyWithoutDebitCardsInput
+    bulletPoints?: DebitCardBulletUncheckedCreateNestedManyWithoutProductInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferUncheckedCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type DebitCardProductCreateOrConnectWithoutApplicationsInput = {
+    where: DebitCardProductWhereUniqueInput
+    create: XOR<DebitCardProductCreateWithoutApplicationsInput, DebitCardProductUncheckedCreateWithoutApplicationsInput>
   }
 
   export type InsuranceProductCreateWithoutApplicationsInput = {
@@ -57126,6 +66317,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUpdateManyWithoutUserNestedInput
     createdLoans?: LoanProductUpdateManyWithoutCreatedByNestedInput
     createdCards?: CreditCardProductUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUpdateManyWithoutCreatedByNestedInput
   }
@@ -57191,6 +66383,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUncheckedUpdateManyWithoutUserNestedInput
     createdLoans?: LoanProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdCards?: CreditCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUncheckedUpdateManyWithoutCreatedByNestedInput
   }
@@ -57363,6 +66556,110 @@ export namespace Prisma {
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
   }
 
+  export type DebitCardProductUpsertWithoutApplicationsInput = {
+    update: XOR<DebitCardProductUpdateWithoutApplicationsInput, DebitCardProductUncheckedUpdateWithoutApplicationsInput>
+    create: XOR<DebitCardProductCreateWithoutApplicationsInput, DebitCardProductUncheckedCreateWithoutApplicationsInput>
+    where?: DebitCardProductWhereInput
+  }
+
+  export type DebitCardProductUpdateToOneWithWhereWithoutApplicationsInput = {
+    where?: DebitCardProductWhereInput
+    data: XOR<DebitCardProductUpdateWithoutApplicationsInput, DebitCardProductUncheckedUpdateWithoutApplicationsInput>
+  }
+
+  export type DebitCardProductUpdateWithoutApplicationsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUpdateManyWithoutDebitCardsNestedInput
+    bulletPoints?: DebitCardBulletUpdateManyWithoutProductNestedInput
+    keyFeatures?: DebitCardKeyFeatureUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUpdateManyWithoutProductNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedDebitCardsNestedInput
+  }
+
+  export type DebitCardProductUncheckedUpdateWithoutApplicationsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUncheckedUpdateManyWithoutDebitCardsNestedInput
+    bulletPoints?: DebitCardBulletUncheckedUpdateManyWithoutProductNestedInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUncheckedUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedUpdateManyWithoutProductNestedInput
+  }
+
   export type InsuranceProductUpsertWithoutApplicationsInput = {
     update: XOR<InsuranceProductUpdateWithoutApplicationsInput, InsuranceProductUncheckedUpdateWithoutApplicationsInput>
     create: XOR<InsuranceProductCreateWithoutApplicationsInput, InsuranceProductUncheckedCreateWithoutApplicationsInput>
@@ -57495,6 +66792,7 @@ export namespace Prisma {
     parent?: CategoryCreateNestedOneWithoutChildrenInput
     loans?: LoanProductCreateNestedManyWithoutCategoryInput
     creditCards?: CreditCardProductCreateNestedManyWithoutCategoriesInput
+    debitCards?: DebitCardProductCreateNestedManyWithoutCategoriesInput
     insurances?: InsuranceProductCreateNestedManyWithoutCategoryInput
   }
 
@@ -57509,6 +66807,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     loans?: LoanProductUncheckedCreateNestedManyWithoutCategoryInput
     creditCards?: CreditCardProductUncheckedCreateNestedManyWithoutCategoriesInput
+    debitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCategoriesInput
     insurances?: InsuranceProductUncheckedCreateNestedManyWithoutCategoryInput
   }
 
@@ -57527,6 +66826,7 @@ export namespace Prisma {
     children?: CategoryCreateNestedManyWithoutParentInput
     loans?: LoanProductCreateNestedManyWithoutCategoryInput
     creditCards?: CreditCardProductCreateNestedManyWithoutCategoriesInput
+    debitCards?: DebitCardProductCreateNestedManyWithoutCategoriesInput
     insurances?: InsuranceProductCreateNestedManyWithoutCategoryInput
   }
 
@@ -57541,6 +66841,7 @@ export namespace Prisma {
     children?: CategoryUncheckedCreateNestedManyWithoutParentInput
     loans?: LoanProductUncheckedCreateNestedManyWithoutCategoryInput
     creditCards?: CreditCardProductUncheckedCreateNestedManyWithoutCategoriesInput
+    debitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCategoriesInput
     insurances?: InsuranceProductUncheckedCreateNestedManyWithoutCategoryInput
   }
 
@@ -57715,6 +67016,104 @@ export namespace Prisma {
     create: XOR<CreditCardProductCreateWithoutCategoriesInput, CreditCardProductUncheckedCreateWithoutCategoriesInput>
   }
 
+  export type DebitCardProductCreateWithoutCategoriesInput = {
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bulletPoints?: DebitCardBulletCreateNestedManyWithoutProductInput
+    keyFeatures?: DebitCardKeyFeatureCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureCreateNestedManyWithoutProductInput
+    applications?: ApplicationCreateNestedManyWithoutDebitCardInput
+    createdBy?: UserCreateNestedOneWithoutCreatedDebitCardsInput
+  }
+
+  export type DebitCardProductUncheckedCreateWithoutCategoriesInput = {
+    id?: number
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdById?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bulletPoints?: DebitCardBulletUncheckedCreateNestedManyWithoutProductInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferUncheckedCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedCreateNestedManyWithoutProductInput
+    applications?: ApplicationUncheckedCreateNestedManyWithoutDebitCardInput
+  }
+
+  export type DebitCardProductCreateOrConnectWithoutCategoriesInput = {
+    where: DebitCardProductWhereUniqueInput
+    create: XOR<DebitCardProductCreateWithoutCategoriesInput, DebitCardProductUncheckedCreateWithoutCategoriesInput>
+  }
+
   export type InsuranceProductCreateWithoutCategoryInput = {
     name: string
     slug: string
@@ -57857,6 +67256,7 @@ export namespace Prisma {
     parent?: CategoryUpdateOneWithoutChildrenNestedInput
     loans?: LoanProductUpdateManyWithoutCategoryNestedInput
     creditCards?: CreditCardProductUpdateManyWithoutCategoriesNestedInput
+    debitCards?: DebitCardProductUpdateManyWithoutCategoriesNestedInput
     insurances?: InsuranceProductUpdateManyWithoutCategoryNestedInput
   }
 
@@ -57871,6 +67271,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     loans?: LoanProductUncheckedUpdateManyWithoutCategoryNestedInput
     creditCards?: CreditCardProductUncheckedUpdateManyWithoutCategoriesNestedInput
+    debitCards?: DebitCardProductUncheckedUpdateManyWithoutCategoriesNestedInput
     insurances?: InsuranceProductUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
@@ -57934,6 +67335,22 @@ export namespace Prisma {
   export type CreditCardProductUpdateManyWithWhereWithoutCategoriesInput = {
     where: CreditCardProductScalarWhereInput
     data: XOR<CreditCardProductUpdateManyMutationInput, CreditCardProductUncheckedUpdateManyWithoutCategoriesInput>
+  }
+
+  export type DebitCardProductUpsertWithWhereUniqueWithoutCategoriesInput = {
+    where: DebitCardProductWhereUniqueInput
+    update: XOR<DebitCardProductUpdateWithoutCategoriesInput, DebitCardProductUncheckedUpdateWithoutCategoriesInput>
+    create: XOR<DebitCardProductCreateWithoutCategoriesInput, DebitCardProductUncheckedCreateWithoutCategoriesInput>
+  }
+
+  export type DebitCardProductUpdateWithWhereUniqueWithoutCategoriesInput = {
+    where: DebitCardProductWhereUniqueInput
+    data: XOR<DebitCardProductUpdateWithoutCategoriesInput, DebitCardProductUncheckedUpdateWithoutCategoriesInput>
+  }
+
+  export type DebitCardProductUpdateManyWithWhereWithoutCategoriesInput = {
+    where: DebitCardProductScalarWhereInput
+    data: XOR<DebitCardProductUpdateManyMutationInput, DebitCardProductUncheckedUpdateManyWithoutCategoriesInput>
   }
 
   export type InsuranceProductUpsertWithWhereUniqueWithoutCategoryInput = {
@@ -58084,6 +67501,7 @@ export namespace Prisma {
     children?: CategoryCreateNestedManyWithoutParentInput
     loans?: LoanProductCreateNestedManyWithoutCategoryInput
     creditCards?: CreditCardProductCreateNestedManyWithoutCategoriesInput
+    debitCards?: DebitCardProductCreateNestedManyWithoutCategoriesInput
   }
 
   export type CategoryUncheckedCreateWithoutInsurancesInput = {
@@ -58098,6 +67516,7 @@ export namespace Prisma {
     children?: CategoryUncheckedCreateNestedManyWithoutParentInput
     loans?: LoanProductUncheckedCreateNestedManyWithoutCategoryInput
     creditCards?: CreditCardProductUncheckedCreateNestedManyWithoutCategoriesInput
+    debitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCategoriesInput
   }
 
   export type CategoryCreateOrConnectWithoutInsurancesInput = {
@@ -58166,6 +67585,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryCreateNestedManyWithoutUserInput
     createdLoans?: LoanProductCreateNestedManyWithoutCreatedByInput
     createdCards?: CreditCardProductCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductCreateNestedManyWithoutCreatedByInput
   }
 
@@ -58231,6 +67651,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUncheckedCreateNestedManyWithoutUserInput
     createdLoans?: LoanProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdCards?: CreditCardProductUncheckedCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -58365,6 +67786,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutApplicationsInput
     loan?: LoanProductCreateNestedOneWithoutApplicationsInput
     card?: CreditCardProductCreateNestedOneWithoutApplicationsInput
+    debitCard?: DebitCardProductCreateNestedOneWithoutApplicationsInput
   }
 
   export type ApplicationUncheckedCreateWithoutInsuranceInput = {
@@ -58374,6 +67796,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     loanId?: number | null
     cardId?: number | null
+    debitCardId?: number | null
     categoryId?: number | null
     categorySlug?: string | null
     categoryName?: string | null
@@ -58666,6 +68089,7 @@ export namespace Prisma {
     children?: CategoryUpdateManyWithoutParentNestedInput
     loans?: LoanProductUpdateManyWithoutCategoryNestedInput
     creditCards?: CreditCardProductUpdateManyWithoutCategoriesNestedInput
+    debitCards?: DebitCardProductUpdateManyWithoutCategoriesNestedInput
   }
 
   export type CategoryUncheckedUpdateWithoutInsurancesInput = {
@@ -58680,6 +68104,7 @@ export namespace Prisma {
     children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
     loans?: LoanProductUncheckedUpdateManyWithoutCategoryNestedInput
     creditCards?: CreditCardProductUncheckedUpdateManyWithoutCategoriesNestedInput
+    debitCards?: DebitCardProductUncheckedUpdateManyWithoutCategoriesNestedInput
   }
 
   export type UserUpsertWithoutCreatedInsurancesInput = {
@@ -58754,6 +68179,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUpdateManyWithoutUserNestedInput
     createdLoans?: LoanProductUpdateManyWithoutCreatedByNestedInput
     createdCards?: CreditCardProductUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -58819,6 +68245,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUncheckedUpdateManyWithoutUserNestedInput
     createdLoans?: LoanProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdCards?: CreditCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -58848,6 +68275,7 @@ export namespace Prisma {
     parent?: CategoryCreateNestedOneWithoutChildrenInput
     children?: CategoryCreateNestedManyWithoutParentInput
     creditCards?: CreditCardProductCreateNestedManyWithoutCategoriesInput
+    debitCards?: DebitCardProductCreateNestedManyWithoutCategoriesInput
     insurances?: InsuranceProductCreateNestedManyWithoutCategoryInput
   }
 
@@ -58862,6 +68290,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     children?: CategoryUncheckedCreateNestedManyWithoutParentInput
     creditCards?: CreditCardProductUncheckedCreateNestedManyWithoutCategoriesInput
+    debitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCategoriesInput
     insurances?: InsuranceProductUncheckedCreateNestedManyWithoutCategoryInput
   }
 
@@ -59108,6 +68537,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutApplicationsInput
     card?: CreditCardProductCreateNestedOneWithoutApplicationsInput
+    debitCard?: DebitCardProductCreateNestedOneWithoutApplicationsInput
     insurance?: InsuranceProductCreateNestedOneWithoutApplicationsInput
   }
 
@@ -59117,6 +68547,7 @@ export namespace Prisma {
     userId: number
     type: $Enums.ProductType
     cardId?: number | null
+    debitCardId?: number | null
     insuranceId?: number | null
     categoryId?: number | null
     categorySlug?: string | null
@@ -59310,6 +68741,7 @@ export namespace Prisma {
     employment?: EmploymentCreateNestedOneWithoutUserInput
     eligibilityInquiries?: EligibilityInquiryCreateNestedManyWithoutUserInput
     createdCards?: CreditCardProductCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductCreateNestedManyWithoutCreatedByInput
   }
@@ -59375,6 +68807,7 @@ export namespace Prisma {
     employment?: EmploymentUncheckedCreateNestedOneWithoutUserInput
     eligibilityInquiries?: EligibilityInquiryUncheckedCreateNestedManyWithoutUserInput
     createdCards?: CreditCardProductUncheckedCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -59405,6 +68838,7 @@ export namespace Prisma {
     parent?: CategoryUpdateOneWithoutChildrenNestedInput
     children?: CategoryUpdateManyWithoutParentNestedInput
     creditCards?: CreditCardProductUpdateManyWithoutCategoriesNestedInput
+    debitCards?: DebitCardProductUpdateManyWithoutCategoriesNestedInput
     insurances?: InsuranceProductUpdateManyWithoutCategoryNestedInput
   }
 
@@ -59419,6 +68853,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
     creditCards?: CreditCardProductUncheckedUpdateManyWithoutCategoriesNestedInput
+    debitCards?: DebitCardProductUncheckedUpdateManyWithoutCategoriesNestedInput
     insurances?: InsuranceProductUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
@@ -59643,6 +69078,7 @@ export namespace Prisma {
     employment?: EmploymentUpdateOneWithoutUserNestedInput
     eligibilityInquiries?: EligibilityInquiryUpdateManyWithoutUserNestedInput
     createdCards?: CreditCardProductUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUpdateManyWithoutCreatedByNestedInput
   }
@@ -59708,6 +69144,7 @@ export namespace Prisma {
     employment?: EmploymentUncheckedUpdateOneWithoutUserNestedInput
     eligibilityInquiries?: EligibilityInquiryUncheckedUpdateManyWithoutUserNestedInput
     createdCards?: CreditCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUncheckedUpdateManyWithoutCreatedByNestedInput
   }
@@ -60592,6 +70029,7 @@ export namespace Prisma {
     parent?: CategoryCreateNestedOneWithoutChildrenInput
     children?: CategoryCreateNestedManyWithoutParentInput
     loans?: LoanProductCreateNestedManyWithoutCategoryInput
+    debitCards?: DebitCardProductCreateNestedManyWithoutCategoriesInput
     insurances?: InsuranceProductCreateNestedManyWithoutCategoryInput
   }
 
@@ -60606,6 +70044,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     children?: CategoryUncheckedCreateNestedManyWithoutParentInput
     loans?: LoanProductUncheckedCreateNestedManyWithoutCategoryInput
+    debitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCategoriesInput
     insurances?: InsuranceProductUncheckedCreateNestedManyWithoutCategoryInput
   }
 
@@ -60938,6 +70377,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutApplicationsInput
     loan?: LoanProductCreateNestedOneWithoutApplicationsInput
+    debitCard?: DebitCardProductCreateNestedOneWithoutApplicationsInput
     insurance?: InsuranceProductCreateNestedOneWithoutApplicationsInput
   }
 
@@ -60947,6 +70387,7 @@ export namespace Prisma {
     userId: number
     type: $Enums.ProductType
     loanId?: number | null
+    debitCardId?: number | null
     insuranceId?: number | null
     categoryId?: number | null
     categorySlug?: string | null
@@ -61140,6 +70581,7 @@ export namespace Prisma {
     employment?: EmploymentCreateNestedOneWithoutUserInput
     eligibilityInquiries?: EligibilityInquiryCreateNestedManyWithoutUserInput
     createdLoans?: LoanProductCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductCreateNestedManyWithoutCreatedByInput
   }
@@ -61205,6 +70647,7 @@ export namespace Prisma {
     employment?: EmploymentUncheckedCreateNestedOneWithoutUserInput
     eligibilityInquiries?: EligibilityInquiryUncheckedCreateNestedManyWithoutUserInput
     createdLoans?: LoanProductUncheckedCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -61555,6 +70998,7 @@ export namespace Prisma {
     employment?: EmploymentUpdateOneWithoutUserNestedInput
     eligibilityInquiries?: EligibilityInquiryUpdateManyWithoutUserNestedInput
     createdLoans?: LoanProductUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUpdateManyWithoutCreatedByNestedInput
   }
@@ -61620,6 +71064,7 @@ export namespace Prisma {
     employment?: EmploymentUncheckedUpdateOneWithoutUserNestedInput
     eligibilityInquiries?: EligibilityInquiryUncheckedUpdateManyWithoutUserNestedInput
     createdLoans?: LoanProductUncheckedUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUncheckedUpdateManyWithoutCreatedByNestedInput
   }
@@ -62285,6 +71730,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryCreateNestedManyWithoutUserInput
     createdLoans?: LoanProductCreateNestedManyWithoutCreatedByInput
     createdCards?: CreditCardProductCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductCreateNestedManyWithoutCreatedByInput
   }
 
@@ -62350,6 +71796,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUncheckedCreateNestedManyWithoutUserInput
     createdLoans?: LoanProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdCards?: CreditCardProductUncheckedCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductUncheckedCreateNestedManyWithoutCreatedByInput
   }
 
@@ -62430,6 +71877,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUpdateManyWithoutUserNestedInput
     createdLoans?: LoanProductUpdateManyWithoutCreatedByNestedInput
     createdCards?: CreditCardProductUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -62495,6 +71943,7 @@ export namespace Prisma {
     eligibilityInquiries?: EligibilityInquiryUncheckedUpdateManyWithoutUserNestedInput
     createdLoans?: LoanProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdCards?: CreditCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUncheckedUpdateManyWithoutCreatedByNestedInput
   }
 
@@ -64587,6 +74036,7 @@ export namespace Prisma {
     employment?: EmploymentCreateNestedOneWithoutUserInput
     createdLoans?: LoanProductCreateNestedManyWithoutCreatedByInput
     createdCards?: CreditCardProductCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductCreateNestedManyWithoutCreatedByInput
   }
@@ -64652,6 +74102,7 @@ export namespace Prisma {
     employment?: EmploymentUncheckedCreateNestedOneWithoutUserInput
     createdLoans?: LoanProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdCards?: CreditCardProductUncheckedCreateNestedManyWithoutCreatedByInput
+    createdDebitCards?: DebitCardProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdInsurances?: InsuranceProductUncheckedCreateNestedManyWithoutCreatedByInput
     createdApps?: AppProductUncheckedCreateNestedManyWithoutCreatedByInput
   }
@@ -64732,6 +74183,7 @@ export namespace Prisma {
     employment?: EmploymentUpdateOneWithoutUserNestedInput
     createdLoans?: LoanProductUpdateManyWithoutCreatedByNestedInput
     createdCards?: CreditCardProductUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUpdateManyWithoutCreatedByNestedInput
   }
@@ -64797,8 +74249,1651 @@ export namespace Prisma {
     employment?: EmploymentUncheckedUpdateOneWithoutUserNestedInput
     createdLoans?: LoanProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdCards?: CreditCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
+    createdDebitCards?: DebitCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdInsurances?: InsuranceProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUncheckedUpdateManyWithoutCreatedByNestedInput
+  }
+
+  export type CategoryCreateWithoutDebitCardsInput = {
+    name: string
+    slug: string
+    description?: string | null
+    type: $Enums.ProductType
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    parent?: CategoryCreateNestedOneWithoutChildrenInput
+    children?: CategoryCreateNestedManyWithoutParentInput
+    loans?: LoanProductCreateNestedManyWithoutCategoryInput
+    creditCards?: CreditCardProductCreateNestedManyWithoutCategoriesInput
+    insurances?: InsuranceProductCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryUncheckedCreateWithoutDebitCardsInput = {
+    id?: number
+    name: string
+    slug: string
+    description?: string | null
+    type: $Enums.ProductType
+    parentId?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    children?: CategoryUncheckedCreateNestedManyWithoutParentInput
+    loans?: LoanProductUncheckedCreateNestedManyWithoutCategoryInput
+    creditCards?: CreditCardProductUncheckedCreateNestedManyWithoutCategoriesInput
+    insurances?: InsuranceProductUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryCreateOrConnectWithoutDebitCardsInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutDebitCardsInput, CategoryUncheckedCreateWithoutDebitCardsInput>
+  }
+
+  export type DebitCardBulletCreateWithoutProductInput = {
+    text: string
+    displayOrder?: number
+  }
+
+  export type DebitCardBulletUncheckedCreateWithoutProductInput = {
+    id?: number
+    text: string
+    displayOrder?: number
+  }
+
+  export type DebitCardBulletCreateOrConnectWithoutProductInput = {
+    where: DebitCardBulletWhereUniqueInput
+    create: XOR<DebitCardBulletCreateWithoutProductInput, DebitCardBulletUncheckedCreateWithoutProductInput>
+  }
+
+  export type DebitCardBulletCreateManyProductInputEnvelope = {
+    data: DebitCardBulletCreateManyProductInput | DebitCardBulletCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DebitCardKeyFeatureCreateWithoutProductInput = {
+    icon?: string | null
+    title: string
+    description: string
+    displayOrder?: number
+  }
+
+  export type DebitCardKeyFeatureUncheckedCreateWithoutProductInput = {
+    id?: number
+    icon?: string | null
+    title: string
+    description: string
+    displayOrder?: number
+  }
+
+  export type DebitCardKeyFeatureCreateOrConnectWithoutProductInput = {
+    where: DebitCardKeyFeatureWhereUniqueInput
+    create: XOR<DebitCardKeyFeatureCreateWithoutProductInput, DebitCardKeyFeatureUncheckedCreateWithoutProductInput>
+  }
+
+  export type DebitCardKeyFeatureCreateManyProductInputEnvelope = {
+    data: DebitCardKeyFeatureCreateManyProductInput | DebitCardKeyFeatureCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DebitCardOfferCreateWithoutProductInput = {
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+  }
+
+  export type DebitCardOfferUncheckedCreateWithoutProductInput = {
+    id?: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+  }
+
+  export type DebitCardOfferCreateOrConnectWithoutProductInput = {
+    where: DebitCardOfferWhereUniqueInput
+    create: XOR<DebitCardOfferCreateWithoutProductInput, DebitCardOfferUncheckedCreateWithoutProductInput>
+  }
+
+  export type DebitCardOfferCreateManyProductInputEnvelope = {
+    data: DebitCardOfferCreateManyProductInput | DebitCardOfferCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DebitCardSafetyFeatureCreateWithoutProductInput = {
+    featureName: string
+    description: string
+    howToUse?: string | null
+    displayOrder?: number
+  }
+
+  export type DebitCardSafetyFeatureUncheckedCreateWithoutProductInput = {
+    id?: number
+    featureName: string
+    description: string
+    howToUse?: string | null
+    displayOrder?: number
+  }
+
+  export type DebitCardSafetyFeatureCreateOrConnectWithoutProductInput = {
+    where: DebitCardSafetyFeatureWhereUniqueInput
+    create: XOR<DebitCardSafetyFeatureCreateWithoutProductInput, DebitCardSafetyFeatureUncheckedCreateWithoutProductInput>
+  }
+
+  export type DebitCardSafetyFeatureCreateManyProductInputEnvelope = {
+    data: DebitCardSafetyFeatureCreateManyProductInput | DebitCardSafetyFeatureCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ApplicationCreateWithoutDebitCardInput = {
+    referenceNo?: string | null
+    type: $Enums.ProductType
+    categoryId?: number | null
+    categorySlug?: string | null
+    categoryName?: string | null
+    loanSlug?: string | null
+    status?: $Enums.ApplicationStatus
+    amount?: number | null
+    notes?: string | null
+    productDetails?: NullableJsonNullValueInput | InputJsonValue
+    applicantName?: string | null
+    email?: string | null
+    phone?: string | null
+    panNumber?: string | null
+    dob?: Date | string | null
+    employmentType?: string | null
+    annualIncome?: number | null
+    monthlyIncome?: number | null
+    employerName?: string | null
+    workExperience?: string | null
+    residenceType?: string | null
+    currentAddress?: string | null
+    city?: string | null
+    state?: string | null
+    pincode?: string | null
+    education?: string | null
+    loanPurpose?: string | null
+    propertyAddress?: string | null
+    propertyType?: string | null
+    constructionStatus?: string | null
+    propertyValue?: number | null
+    downPayment?: number | null
+    existingLoanOnProperty?: boolean | null
+    registeredBusinessName?: string | null
+    businessType?: string | null
+    yearsInOperation?: number | null
+    businessTurnover?: number | null
+    businessPurpose?: string | null
+    currentLoansAmount?: number | null
+    businessPan?: string | null
+    gstNumber?: string | null
+    industryType?: string | null
+    studentName?: string | null
+    courseName?: string | null
+    universityName?: string | null
+    courseDuration?: number | null
+    totalCourseFees?: number | null
+    parentIncome?: number | null
+    admissionStatus?: string | null
+    admissionSecured?: boolean | null
+    vehicleMake?: string | null
+    vehicleModel?: string | null
+    vehicleVariant?: string | null
+    exShowroomPrice?: number | null
+    vehicleType?: string | null
+    vehicleUsage?: string | null
+    manufactureYear?: number | null
+    registrationYear?: number | null
+    currentMarketValue?: number | null
+    kilometersDriven?: number | null
+    engineCapacity?: string | null
+    engineCondition?: string | null
+    exchangeExisting?: boolean | null
+    registrationCity?: string | null
+    rcAvailable?: boolean | null
+    sellerInfo?: string | null
+    vehicleCondition?: string | null
+    professionalQualification?: string | null
+    yearsOfPractice?: number | null
+    clinicOfficeAddress?: string | null
+    professionalIncome?: number | null
+    professionalPurpose?: string | null
+    registrationNumber?: string | null
+    securityType?: string | null
+    securityValue?: number | null
+    portfolioDetails?: NullableJsonNullValueInput | InputJsonValue
+    desiredLTV?: number | null
+    dematAccountNo?: string | null
+    brokerName?: string | null
+    currentLenderName?: string | null
+    outstandingAmount?: number | null
+    currentInterestRate?: number | null
+    remainingTenure?: number | null
+    currentEMI?: number | null
+    cibilScore?: number | null
+    transferReason?: string | null
+    desiredCreditLimit?: number | null
+    hasExistingCreditCards?: boolean | null
+    existingBankingRelationship?: boolean | null
+    existingCreditCards?: NullableJsonNullValueInput | InputJsonValue
+    cardType?: string | null
+    studentId?: string | null
+    collegeUniversityName?: string | null
+    courseNameForCard?: string | null
+    collegeName?: string | null
+    yearOfStudy?: string | null
+    parentAnnualIncome?: number | null
+    fixedDepositAmount?: number | null
+    fdAmount?: number | null
+    fdTenure?: number | null
+    fdAccountNumber?: string | null
+    primaryCardholderName?: string | null
+    relationshipWithPrimary?: string | null
+    addonApplicantDob?: string | null
+    businessRegistrationNumber?: string | null
+    businessRegistrationNo?: string | null
+    businessTurnoverForCard?: number | null
+    businessAddressForCard?: string | null
+    passportNumber?: string | null
+    visaType?: string | null
+    visaValidity?: Date | string | null
+    overseasAddress?: string | null
+    overseasIncome?: number | null
+    nreNroDetails?: string | null
+    nreNroAccountDetails?: string | null
+    approximateNetWorth?: number | null
+    majorInvestments?: NullableJsonNullValueInput | InputJsonValue
+    desiredTenure?: number | null
+    documents?: NullableJsonNullValueInput | InputJsonValue
+    feedback?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutApplicationsInput
+    loan?: LoanProductCreateNestedOneWithoutApplicationsInput
+    card?: CreditCardProductCreateNestedOneWithoutApplicationsInput
+    insurance?: InsuranceProductCreateNestedOneWithoutApplicationsInput
+  }
+
+  export type ApplicationUncheckedCreateWithoutDebitCardInput = {
+    id?: number
+    referenceNo?: string | null
+    userId: number
+    type: $Enums.ProductType
+    loanId?: number | null
+    cardId?: number | null
+    insuranceId?: number | null
+    categoryId?: number | null
+    categorySlug?: string | null
+    categoryName?: string | null
+    loanSlug?: string | null
+    status?: $Enums.ApplicationStatus
+    amount?: number | null
+    notes?: string | null
+    productDetails?: NullableJsonNullValueInput | InputJsonValue
+    applicantName?: string | null
+    email?: string | null
+    phone?: string | null
+    panNumber?: string | null
+    dob?: Date | string | null
+    employmentType?: string | null
+    annualIncome?: number | null
+    monthlyIncome?: number | null
+    employerName?: string | null
+    workExperience?: string | null
+    residenceType?: string | null
+    currentAddress?: string | null
+    city?: string | null
+    state?: string | null
+    pincode?: string | null
+    education?: string | null
+    loanPurpose?: string | null
+    propertyAddress?: string | null
+    propertyType?: string | null
+    constructionStatus?: string | null
+    propertyValue?: number | null
+    downPayment?: number | null
+    existingLoanOnProperty?: boolean | null
+    registeredBusinessName?: string | null
+    businessType?: string | null
+    yearsInOperation?: number | null
+    businessTurnover?: number | null
+    businessPurpose?: string | null
+    currentLoansAmount?: number | null
+    businessPan?: string | null
+    gstNumber?: string | null
+    industryType?: string | null
+    studentName?: string | null
+    courseName?: string | null
+    universityName?: string | null
+    courseDuration?: number | null
+    totalCourseFees?: number | null
+    parentIncome?: number | null
+    admissionStatus?: string | null
+    admissionSecured?: boolean | null
+    vehicleMake?: string | null
+    vehicleModel?: string | null
+    vehicleVariant?: string | null
+    exShowroomPrice?: number | null
+    vehicleType?: string | null
+    vehicleUsage?: string | null
+    manufactureYear?: number | null
+    registrationYear?: number | null
+    currentMarketValue?: number | null
+    kilometersDriven?: number | null
+    engineCapacity?: string | null
+    engineCondition?: string | null
+    exchangeExisting?: boolean | null
+    registrationCity?: string | null
+    rcAvailable?: boolean | null
+    sellerInfo?: string | null
+    vehicleCondition?: string | null
+    professionalQualification?: string | null
+    yearsOfPractice?: number | null
+    clinicOfficeAddress?: string | null
+    professionalIncome?: number | null
+    professionalPurpose?: string | null
+    registrationNumber?: string | null
+    securityType?: string | null
+    securityValue?: number | null
+    portfolioDetails?: NullableJsonNullValueInput | InputJsonValue
+    desiredLTV?: number | null
+    dematAccountNo?: string | null
+    brokerName?: string | null
+    currentLenderName?: string | null
+    outstandingAmount?: number | null
+    currentInterestRate?: number | null
+    remainingTenure?: number | null
+    currentEMI?: number | null
+    cibilScore?: number | null
+    transferReason?: string | null
+    desiredCreditLimit?: number | null
+    hasExistingCreditCards?: boolean | null
+    existingBankingRelationship?: boolean | null
+    existingCreditCards?: NullableJsonNullValueInput | InputJsonValue
+    cardType?: string | null
+    studentId?: string | null
+    collegeUniversityName?: string | null
+    courseNameForCard?: string | null
+    collegeName?: string | null
+    yearOfStudy?: string | null
+    parentAnnualIncome?: number | null
+    fixedDepositAmount?: number | null
+    fdAmount?: number | null
+    fdTenure?: number | null
+    fdAccountNumber?: string | null
+    primaryCardholderName?: string | null
+    relationshipWithPrimary?: string | null
+    addonApplicantDob?: string | null
+    businessRegistrationNumber?: string | null
+    businessRegistrationNo?: string | null
+    businessTurnoverForCard?: number | null
+    businessAddressForCard?: string | null
+    passportNumber?: string | null
+    visaType?: string | null
+    visaValidity?: Date | string | null
+    overseasAddress?: string | null
+    overseasIncome?: number | null
+    nreNroDetails?: string | null
+    nreNroAccountDetails?: string | null
+    approximateNetWorth?: number | null
+    majorInvestments?: NullableJsonNullValueInput | InputJsonValue
+    desiredTenure?: number | null
+    documents?: NullableJsonNullValueInput | InputJsonValue
+    feedback?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ApplicationCreateOrConnectWithoutDebitCardInput = {
+    where: ApplicationWhereUniqueInput
+    create: XOR<ApplicationCreateWithoutDebitCardInput, ApplicationUncheckedCreateWithoutDebitCardInput>
+  }
+
+  export type ApplicationCreateManyDebitCardInputEnvelope = {
+    data: ApplicationCreateManyDebitCardInput | ApplicationCreateManyDebitCardInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserCreateWithoutCreatedDebitCardsInput = {
+    name: string
+    email: string
+    phone: string
+    passwordHash: string
+    role?: $Enums.Role
+    emailVerified?: boolean
+    otpVerified?: boolean
+    emailOtp?: string | null
+    emailOtpExpiry?: Date | string | null
+    emailVerifiedAt?: Date | string | null
+    panCard?: string | null
+    dob?: Date | string | null
+    address?: string | null
+    city?: string | null
+    state?: string | null
+    pincode?: string | null
+    highestEducation?: string | null
+    employmentType?: string | null
+    currentEmployer?: string | null
+    annualIncome?: number | null
+    monthlyIncome?: number | null
+    workExperience?: string | null
+    yearsInBusiness?: number | null
+    professionalQualification?: string | null
+    professionRegistrationNo?: string | null
+    businessName?: string | null
+    businessType?: string | null
+    businessPan?: string | null
+    gstNumber?: string | null
+    industryType?: string | null
+    businessTurnover?: number | null
+    yearsInOperation?: number | null
+    cibilScore?: number | null
+    existingLoans?: NullableJsonNullValueInput | InputJsonValue
+    existingCards?: NullableJsonNullValueInput | InputJsonValue
+    ownedProperties?: NullableJsonNullValueInput | InputJsonValue
+    documents?: NullableJsonNullValueInput | InputJsonValue
+    residenceType?: string | null
+    yearsAtAddress?: number | null
+    bankName?: string | null
+    accountNumber?: string | null
+    ifscCode?: string | null
+    dematAccountNo?: string | null
+    brokerName?: string | null
+    isNRI?: boolean
+    passportNumber?: string | null
+    visaType?: string | null
+    visaValidity?: Date | string | null
+    overseasAddress?: string | null
+    overseasIncome?: number | null
+    nreNroAccount?: string | null
+    approximateNetWorth?: number | null
+    majorInvestments?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applications?: ApplicationCreateNestedManyWithoutUserInput
+    employment?: EmploymentCreateNestedOneWithoutUserInput
+    eligibilityInquiries?: EligibilityInquiryCreateNestedManyWithoutUserInput
+    createdLoans?: LoanProductCreateNestedManyWithoutCreatedByInput
+    createdCards?: CreditCardProductCreateNestedManyWithoutCreatedByInput
+    createdInsurances?: InsuranceProductCreateNestedManyWithoutCreatedByInput
+    createdApps?: AppProductCreateNestedManyWithoutCreatedByInput
+  }
+
+  export type UserUncheckedCreateWithoutCreatedDebitCardsInput = {
+    id?: number
+    name: string
+    email: string
+    phone: string
+    passwordHash: string
+    role?: $Enums.Role
+    emailVerified?: boolean
+    otpVerified?: boolean
+    emailOtp?: string | null
+    emailOtpExpiry?: Date | string | null
+    emailVerifiedAt?: Date | string | null
+    panCard?: string | null
+    dob?: Date | string | null
+    address?: string | null
+    city?: string | null
+    state?: string | null
+    pincode?: string | null
+    highestEducation?: string | null
+    employmentType?: string | null
+    currentEmployer?: string | null
+    annualIncome?: number | null
+    monthlyIncome?: number | null
+    workExperience?: string | null
+    yearsInBusiness?: number | null
+    professionalQualification?: string | null
+    professionRegistrationNo?: string | null
+    businessName?: string | null
+    businessType?: string | null
+    businessPan?: string | null
+    gstNumber?: string | null
+    industryType?: string | null
+    businessTurnover?: number | null
+    yearsInOperation?: number | null
+    cibilScore?: number | null
+    existingLoans?: NullableJsonNullValueInput | InputJsonValue
+    existingCards?: NullableJsonNullValueInput | InputJsonValue
+    ownedProperties?: NullableJsonNullValueInput | InputJsonValue
+    documents?: NullableJsonNullValueInput | InputJsonValue
+    residenceType?: string | null
+    yearsAtAddress?: number | null
+    bankName?: string | null
+    accountNumber?: string | null
+    ifscCode?: string | null
+    dematAccountNo?: string | null
+    brokerName?: string | null
+    isNRI?: boolean
+    passportNumber?: string | null
+    visaType?: string | null
+    visaValidity?: Date | string | null
+    overseasAddress?: string | null
+    overseasIncome?: number | null
+    nreNroAccount?: string | null
+    approximateNetWorth?: number | null
+    majorInvestments?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    applications?: ApplicationUncheckedCreateNestedManyWithoutUserInput
+    employment?: EmploymentUncheckedCreateNestedOneWithoutUserInput
+    eligibilityInquiries?: EligibilityInquiryUncheckedCreateNestedManyWithoutUserInput
+    createdLoans?: LoanProductUncheckedCreateNestedManyWithoutCreatedByInput
+    createdCards?: CreditCardProductUncheckedCreateNestedManyWithoutCreatedByInput
+    createdInsurances?: InsuranceProductUncheckedCreateNestedManyWithoutCreatedByInput
+    createdApps?: AppProductUncheckedCreateNestedManyWithoutCreatedByInput
+  }
+
+  export type UserCreateOrConnectWithoutCreatedDebitCardsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCreatedDebitCardsInput, UserUncheckedCreateWithoutCreatedDebitCardsInput>
+  }
+
+  export type CategoryUpsertWithWhereUniqueWithoutDebitCardsInput = {
+    where: CategoryWhereUniqueInput
+    update: XOR<CategoryUpdateWithoutDebitCardsInput, CategoryUncheckedUpdateWithoutDebitCardsInput>
+    create: XOR<CategoryCreateWithoutDebitCardsInput, CategoryUncheckedCreateWithoutDebitCardsInput>
+  }
+
+  export type CategoryUpdateWithWhereUniqueWithoutDebitCardsInput = {
+    where: CategoryWhereUniqueInput
+    data: XOR<CategoryUpdateWithoutDebitCardsInput, CategoryUncheckedUpdateWithoutDebitCardsInput>
+  }
+
+  export type CategoryUpdateManyWithWhereWithoutDebitCardsInput = {
+    where: CategoryScalarWhereInput
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutDebitCardsInput>
+  }
+
+  export type DebitCardBulletUpsertWithWhereUniqueWithoutProductInput = {
+    where: DebitCardBulletWhereUniqueInput
+    update: XOR<DebitCardBulletUpdateWithoutProductInput, DebitCardBulletUncheckedUpdateWithoutProductInput>
+    create: XOR<DebitCardBulletCreateWithoutProductInput, DebitCardBulletUncheckedCreateWithoutProductInput>
+  }
+
+  export type DebitCardBulletUpdateWithWhereUniqueWithoutProductInput = {
+    where: DebitCardBulletWhereUniqueInput
+    data: XOR<DebitCardBulletUpdateWithoutProductInput, DebitCardBulletUncheckedUpdateWithoutProductInput>
+  }
+
+  export type DebitCardBulletUpdateManyWithWhereWithoutProductInput = {
+    where: DebitCardBulletScalarWhereInput
+    data: XOR<DebitCardBulletUpdateManyMutationInput, DebitCardBulletUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type DebitCardBulletScalarWhereInput = {
+    AND?: DebitCardBulletScalarWhereInput | DebitCardBulletScalarWhereInput[]
+    OR?: DebitCardBulletScalarWhereInput[]
+    NOT?: DebitCardBulletScalarWhereInput | DebitCardBulletScalarWhereInput[]
+    id?: IntFilter<"DebitCardBullet"> | number
+    text?: StringFilter<"DebitCardBullet"> | string
+    displayOrder?: IntFilter<"DebitCardBullet"> | number
+    productId?: IntFilter<"DebitCardBullet"> | number
+  }
+
+  export type DebitCardKeyFeatureUpsertWithWhereUniqueWithoutProductInput = {
+    where: DebitCardKeyFeatureWhereUniqueInput
+    update: XOR<DebitCardKeyFeatureUpdateWithoutProductInput, DebitCardKeyFeatureUncheckedUpdateWithoutProductInput>
+    create: XOR<DebitCardKeyFeatureCreateWithoutProductInput, DebitCardKeyFeatureUncheckedCreateWithoutProductInput>
+  }
+
+  export type DebitCardKeyFeatureUpdateWithWhereUniqueWithoutProductInput = {
+    where: DebitCardKeyFeatureWhereUniqueInput
+    data: XOR<DebitCardKeyFeatureUpdateWithoutProductInput, DebitCardKeyFeatureUncheckedUpdateWithoutProductInput>
+  }
+
+  export type DebitCardKeyFeatureUpdateManyWithWhereWithoutProductInput = {
+    where: DebitCardKeyFeatureScalarWhereInput
+    data: XOR<DebitCardKeyFeatureUpdateManyMutationInput, DebitCardKeyFeatureUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type DebitCardKeyFeatureScalarWhereInput = {
+    AND?: DebitCardKeyFeatureScalarWhereInput | DebitCardKeyFeatureScalarWhereInput[]
+    OR?: DebitCardKeyFeatureScalarWhereInput[]
+    NOT?: DebitCardKeyFeatureScalarWhereInput | DebitCardKeyFeatureScalarWhereInput[]
+    id?: IntFilter<"DebitCardKeyFeature"> | number
+    icon?: StringNullableFilter<"DebitCardKeyFeature"> | string | null
+    title?: StringFilter<"DebitCardKeyFeature"> | string
+    description?: StringFilter<"DebitCardKeyFeature"> | string
+    displayOrder?: IntFilter<"DebitCardKeyFeature"> | number
+    productId?: IntFilter<"DebitCardKeyFeature"> | number
+  }
+
+  export type DebitCardOfferUpsertWithWhereUniqueWithoutProductInput = {
+    where: DebitCardOfferWhereUniqueInput
+    update: XOR<DebitCardOfferUpdateWithoutProductInput, DebitCardOfferUncheckedUpdateWithoutProductInput>
+    create: XOR<DebitCardOfferCreateWithoutProductInput, DebitCardOfferUncheckedCreateWithoutProductInput>
+  }
+
+  export type DebitCardOfferUpdateWithWhereUniqueWithoutProductInput = {
+    where: DebitCardOfferWhereUniqueInput
+    data: XOR<DebitCardOfferUpdateWithoutProductInput, DebitCardOfferUncheckedUpdateWithoutProductInput>
+  }
+
+  export type DebitCardOfferUpdateManyWithWhereWithoutProductInput = {
+    where: DebitCardOfferScalarWhereInput
+    data: XOR<DebitCardOfferUpdateManyMutationInput, DebitCardOfferUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type DebitCardOfferScalarWhereInput = {
+    AND?: DebitCardOfferScalarWhereInput | DebitCardOfferScalarWhereInput[]
+    OR?: DebitCardOfferScalarWhereInput[]
+    NOT?: DebitCardOfferScalarWhereInput | DebitCardOfferScalarWhereInput[]
+    id?: IntFilter<"DebitCardOffer"> | number
+    merchant?: StringFilter<"DebitCardOffer"> | string
+    offerType?: StringFilter<"DebitCardOffer"> | string
+    title?: StringFilter<"DebitCardOffer"> | string
+    description?: StringFilter<"DebitCardOffer"> | string
+    offerValue?: StringFilter<"DebitCardOffer"> | string
+    validFrom?: DateTimeNullableFilter<"DebitCardOffer"> | Date | string | null
+    validTill?: DateTimeNullableFilter<"DebitCardOffer"> | Date | string | null
+    isActive?: BoolFilter<"DebitCardOffer"> | boolean
+    displayOrder?: IntFilter<"DebitCardOffer"> | number
+    productId?: IntFilter<"DebitCardOffer"> | number
+  }
+
+  export type DebitCardSafetyFeatureUpsertWithWhereUniqueWithoutProductInput = {
+    where: DebitCardSafetyFeatureWhereUniqueInput
+    update: XOR<DebitCardSafetyFeatureUpdateWithoutProductInput, DebitCardSafetyFeatureUncheckedUpdateWithoutProductInput>
+    create: XOR<DebitCardSafetyFeatureCreateWithoutProductInput, DebitCardSafetyFeatureUncheckedCreateWithoutProductInput>
+  }
+
+  export type DebitCardSafetyFeatureUpdateWithWhereUniqueWithoutProductInput = {
+    where: DebitCardSafetyFeatureWhereUniqueInput
+    data: XOR<DebitCardSafetyFeatureUpdateWithoutProductInput, DebitCardSafetyFeatureUncheckedUpdateWithoutProductInput>
+  }
+
+  export type DebitCardSafetyFeatureUpdateManyWithWhereWithoutProductInput = {
+    where: DebitCardSafetyFeatureScalarWhereInput
+    data: XOR<DebitCardSafetyFeatureUpdateManyMutationInput, DebitCardSafetyFeatureUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type DebitCardSafetyFeatureScalarWhereInput = {
+    AND?: DebitCardSafetyFeatureScalarWhereInput | DebitCardSafetyFeatureScalarWhereInput[]
+    OR?: DebitCardSafetyFeatureScalarWhereInput[]
+    NOT?: DebitCardSafetyFeatureScalarWhereInput | DebitCardSafetyFeatureScalarWhereInput[]
+    id?: IntFilter<"DebitCardSafetyFeature"> | number
+    featureName?: StringFilter<"DebitCardSafetyFeature"> | string
+    description?: StringFilter<"DebitCardSafetyFeature"> | string
+    howToUse?: StringNullableFilter<"DebitCardSafetyFeature"> | string | null
+    displayOrder?: IntFilter<"DebitCardSafetyFeature"> | number
+    productId?: IntFilter<"DebitCardSafetyFeature"> | number
+  }
+
+  export type ApplicationUpsertWithWhereUniqueWithoutDebitCardInput = {
+    where: ApplicationWhereUniqueInput
+    update: XOR<ApplicationUpdateWithoutDebitCardInput, ApplicationUncheckedUpdateWithoutDebitCardInput>
+    create: XOR<ApplicationCreateWithoutDebitCardInput, ApplicationUncheckedCreateWithoutDebitCardInput>
+  }
+
+  export type ApplicationUpdateWithWhereUniqueWithoutDebitCardInput = {
+    where: ApplicationWhereUniqueInput
+    data: XOR<ApplicationUpdateWithoutDebitCardInput, ApplicationUncheckedUpdateWithoutDebitCardInput>
+  }
+
+  export type ApplicationUpdateManyWithWhereWithoutDebitCardInput = {
+    where: ApplicationScalarWhereInput
+    data: XOR<ApplicationUpdateManyMutationInput, ApplicationUncheckedUpdateManyWithoutDebitCardInput>
+  }
+
+  export type UserUpsertWithoutCreatedDebitCardsInput = {
+    update: XOR<UserUpdateWithoutCreatedDebitCardsInput, UserUncheckedUpdateWithoutCreatedDebitCardsInput>
+    create: XOR<UserCreateWithoutCreatedDebitCardsInput, UserUncheckedCreateWithoutCreatedDebitCardsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCreatedDebitCardsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCreatedDebitCardsInput, UserUncheckedUpdateWithoutCreatedDebitCardsInput>
+  }
+
+  export type UserUpdateWithoutCreatedDebitCardsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    otpVerified?: BoolFieldUpdateOperationsInput | boolean
+    emailOtp?: NullableStringFieldUpdateOperationsInput | string | null
+    emailOtpExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    panCard?: NullableStringFieldUpdateOperationsInput | string | null
+    dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    pincode?: NullableStringFieldUpdateOperationsInput | string | null
+    highestEducation?: NullableStringFieldUpdateOperationsInput | string | null
+    employmentType?: NullableStringFieldUpdateOperationsInput | string | null
+    currentEmployer?: NullableStringFieldUpdateOperationsInput | string | null
+    annualIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    monthlyIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    workExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsInBusiness?: NullableIntFieldUpdateOperationsInput | number | null
+    professionalQualification?: NullableStringFieldUpdateOperationsInput | string | null
+    professionRegistrationNo?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessType?: NullableStringFieldUpdateOperationsInput | string | null
+    businessPan?: NullableStringFieldUpdateOperationsInput | string | null
+    gstNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    industryType?: NullableStringFieldUpdateOperationsInput | string | null
+    businessTurnover?: NullableFloatFieldUpdateOperationsInput | number | null
+    yearsInOperation?: NullableIntFieldUpdateOperationsInput | number | null
+    cibilScore?: NullableIntFieldUpdateOperationsInput | number | null
+    existingLoans?: NullableJsonNullValueInput | InputJsonValue
+    existingCards?: NullableJsonNullValueInput | InputJsonValue
+    ownedProperties?: NullableJsonNullValueInput | InputJsonValue
+    documents?: NullableJsonNullValueInput | InputJsonValue
+    residenceType?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsAtAddress?: NullableIntFieldUpdateOperationsInput | number | null
+    bankName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    ifscCode?: NullableStringFieldUpdateOperationsInput | string | null
+    dematAccountNo?: NullableStringFieldUpdateOperationsInput | string | null
+    brokerName?: NullableStringFieldUpdateOperationsInput | string | null
+    isNRI?: BoolFieldUpdateOperationsInput | boolean
+    passportNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    visaType?: NullableStringFieldUpdateOperationsInput | string | null
+    visaValidity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    overseasAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    overseasIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    nreNroAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    approximateNetWorth?: NullableFloatFieldUpdateOperationsInput | number | null
+    majorInvestments?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applications?: ApplicationUpdateManyWithoutUserNestedInput
+    employment?: EmploymentUpdateOneWithoutUserNestedInput
+    eligibilityInquiries?: EligibilityInquiryUpdateManyWithoutUserNestedInput
+    createdLoans?: LoanProductUpdateManyWithoutCreatedByNestedInput
+    createdCards?: CreditCardProductUpdateManyWithoutCreatedByNestedInput
+    createdInsurances?: InsuranceProductUpdateManyWithoutCreatedByNestedInput
+    createdApps?: AppProductUpdateManyWithoutCreatedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCreatedDebitCardsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    otpVerified?: BoolFieldUpdateOperationsInput | boolean
+    emailOtp?: NullableStringFieldUpdateOperationsInput | string | null
+    emailOtpExpiry?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    emailVerifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    panCard?: NullableStringFieldUpdateOperationsInput | string | null
+    dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    pincode?: NullableStringFieldUpdateOperationsInput | string | null
+    highestEducation?: NullableStringFieldUpdateOperationsInput | string | null
+    employmentType?: NullableStringFieldUpdateOperationsInput | string | null
+    currentEmployer?: NullableStringFieldUpdateOperationsInput | string | null
+    annualIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    monthlyIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    workExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsInBusiness?: NullableIntFieldUpdateOperationsInput | number | null
+    professionalQualification?: NullableStringFieldUpdateOperationsInput | string | null
+    professionRegistrationNo?: NullableStringFieldUpdateOperationsInput | string | null
+    businessName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessType?: NullableStringFieldUpdateOperationsInput | string | null
+    businessPan?: NullableStringFieldUpdateOperationsInput | string | null
+    gstNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    industryType?: NullableStringFieldUpdateOperationsInput | string | null
+    businessTurnover?: NullableFloatFieldUpdateOperationsInput | number | null
+    yearsInOperation?: NullableIntFieldUpdateOperationsInput | number | null
+    cibilScore?: NullableIntFieldUpdateOperationsInput | number | null
+    existingLoans?: NullableJsonNullValueInput | InputJsonValue
+    existingCards?: NullableJsonNullValueInput | InputJsonValue
+    ownedProperties?: NullableJsonNullValueInput | InputJsonValue
+    documents?: NullableJsonNullValueInput | InputJsonValue
+    residenceType?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsAtAddress?: NullableIntFieldUpdateOperationsInput | number | null
+    bankName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    ifscCode?: NullableStringFieldUpdateOperationsInput | string | null
+    dematAccountNo?: NullableStringFieldUpdateOperationsInput | string | null
+    brokerName?: NullableStringFieldUpdateOperationsInput | string | null
+    isNRI?: BoolFieldUpdateOperationsInput | boolean
+    passportNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    visaType?: NullableStringFieldUpdateOperationsInput | string | null
+    visaValidity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    overseasAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    overseasIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    nreNroAccount?: NullableStringFieldUpdateOperationsInput | string | null
+    approximateNetWorth?: NullableFloatFieldUpdateOperationsInput | number | null
+    majorInvestments?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    applications?: ApplicationUncheckedUpdateManyWithoutUserNestedInput
+    employment?: EmploymentUncheckedUpdateOneWithoutUserNestedInput
+    eligibilityInquiries?: EligibilityInquiryUncheckedUpdateManyWithoutUserNestedInput
+    createdLoans?: LoanProductUncheckedUpdateManyWithoutCreatedByNestedInput
+    createdCards?: CreditCardProductUncheckedUpdateManyWithoutCreatedByNestedInput
+    createdInsurances?: InsuranceProductUncheckedUpdateManyWithoutCreatedByNestedInput
+    createdApps?: AppProductUncheckedUpdateManyWithoutCreatedByNestedInput
+  }
+
+  export type DebitCardProductCreateWithoutBulletPointsInput = {
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryCreateNestedManyWithoutDebitCardsInput
+    keyFeatures?: DebitCardKeyFeatureCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureCreateNestedManyWithoutProductInput
+    applications?: ApplicationCreateNestedManyWithoutDebitCardInput
+    createdBy?: UserCreateNestedOneWithoutCreatedDebitCardsInput
+  }
+
+  export type DebitCardProductUncheckedCreateWithoutBulletPointsInput = {
+    id?: number
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdById?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryUncheckedCreateNestedManyWithoutDebitCardsInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferUncheckedCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedCreateNestedManyWithoutProductInput
+    applications?: ApplicationUncheckedCreateNestedManyWithoutDebitCardInput
+  }
+
+  export type DebitCardProductCreateOrConnectWithoutBulletPointsInput = {
+    where: DebitCardProductWhereUniqueInput
+    create: XOR<DebitCardProductCreateWithoutBulletPointsInput, DebitCardProductUncheckedCreateWithoutBulletPointsInput>
+  }
+
+  export type DebitCardProductUpsertWithoutBulletPointsInput = {
+    update: XOR<DebitCardProductUpdateWithoutBulletPointsInput, DebitCardProductUncheckedUpdateWithoutBulletPointsInput>
+    create: XOR<DebitCardProductCreateWithoutBulletPointsInput, DebitCardProductUncheckedCreateWithoutBulletPointsInput>
+    where?: DebitCardProductWhereInput
+  }
+
+  export type DebitCardProductUpdateToOneWithWhereWithoutBulletPointsInput = {
+    where?: DebitCardProductWhereInput
+    data: XOR<DebitCardProductUpdateWithoutBulletPointsInput, DebitCardProductUncheckedUpdateWithoutBulletPointsInput>
+  }
+
+  export type DebitCardProductUpdateWithoutBulletPointsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUpdateManyWithoutDebitCardsNestedInput
+    keyFeatures?: DebitCardKeyFeatureUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUpdateManyWithoutDebitCardNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedDebitCardsNestedInput
+  }
+
+  export type DebitCardProductUncheckedUpdateWithoutBulletPointsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUncheckedUpdateManyWithoutDebitCardsNestedInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUncheckedUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUncheckedUpdateManyWithoutDebitCardNestedInput
+  }
+
+  export type DebitCardProductCreateWithoutKeyFeaturesInput = {
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryCreateNestedManyWithoutDebitCardsInput
+    bulletPoints?: DebitCardBulletCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureCreateNestedManyWithoutProductInput
+    applications?: ApplicationCreateNestedManyWithoutDebitCardInput
+    createdBy?: UserCreateNestedOneWithoutCreatedDebitCardsInput
+  }
+
+  export type DebitCardProductUncheckedCreateWithoutKeyFeaturesInput = {
+    id?: number
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdById?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryUncheckedCreateNestedManyWithoutDebitCardsInput
+    bulletPoints?: DebitCardBulletUncheckedCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferUncheckedCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedCreateNestedManyWithoutProductInput
+    applications?: ApplicationUncheckedCreateNestedManyWithoutDebitCardInput
+  }
+
+  export type DebitCardProductCreateOrConnectWithoutKeyFeaturesInput = {
+    where: DebitCardProductWhereUniqueInput
+    create: XOR<DebitCardProductCreateWithoutKeyFeaturesInput, DebitCardProductUncheckedCreateWithoutKeyFeaturesInput>
+  }
+
+  export type DebitCardProductUpsertWithoutKeyFeaturesInput = {
+    update: XOR<DebitCardProductUpdateWithoutKeyFeaturesInput, DebitCardProductUncheckedUpdateWithoutKeyFeaturesInput>
+    create: XOR<DebitCardProductCreateWithoutKeyFeaturesInput, DebitCardProductUncheckedCreateWithoutKeyFeaturesInput>
+    where?: DebitCardProductWhereInput
+  }
+
+  export type DebitCardProductUpdateToOneWithWhereWithoutKeyFeaturesInput = {
+    where?: DebitCardProductWhereInput
+    data: XOR<DebitCardProductUpdateWithoutKeyFeaturesInput, DebitCardProductUncheckedUpdateWithoutKeyFeaturesInput>
+  }
+
+  export type DebitCardProductUpdateWithoutKeyFeaturesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUpdateManyWithoutDebitCardsNestedInput
+    bulletPoints?: DebitCardBulletUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUpdateManyWithoutDebitCardNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedDebitCardsNestedInput
+  }
+
+  export type DebitCardProductUncheckedUpdateWithoutKeyFeaturesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUncheckedUpdateManyWithoutDebitCardsNestedInput
+    bulletPoints?: DebitCardBulletUncheckedUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUncheckedUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUncheckedUpdateManyWithoutDebitCardNestedInput
+  }
+
+  export type DebitCardProductCreateWithoutOffersInput = {
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryCreateNestedManyWithoutDebitCardsInput
+    bulletPoints?: DebitCardBulletCreateNestedManyWithoutProductInput
+    keyFeatures?: DebitCardKeyFeatureCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureCreateNestedManyWithoutProductInput
+    applications?: ApplicationCreateNestedManyWithoutDebitCardInput
+    createdBy?: UserCreateNestedOneWithoutCreatedDebitCardsInput
+  }
+
+  export type DebitCardProductUncheckedCreateWithoutOffersInput = {
+    id?: number
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdById?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryUncheckedCreateNestedManyWithoutDebitCardsInput
+    bulletPoints?: DebitCardBulletUncheckedCreateNestedManyWithoutProductInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedCreateNestedManyWithoutProductInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedCreateNestedManyWithoutProductInput
+    applications?: ApplicationUncheckedCreateNestedManyWithoutDebitCardInput
+  }
+
+  export type DebitCardProductCreateOrConnectWithoutOffersInput = {
+    where: DebitCardProductWhereUniqueInput
+    create: XOR<DebitCardProductCreateWithoutOffersInput, DebitCardProductUncheckedCreateWithoutOffersInput>
+  }
+
+  export type DebitCardProductUpsertWithoutOffersInput = {
+    update: XOR<DebitCardProductUpdateWithoutOffersInput, DebitCardProductUncheckedUpdateWithoutOffersInput>
+    create: XOR<DebitCardProductCreateWithoutOffersInput, DebitCardProductUncheckedCreateWithoutOffersInput>
+    where?: DebitCardProductWhereInput
+  }
+
+  export type DebitCardProductUpdateToOneWithWhereWithoutOffersInput = {
+    where?: DebitCardProductWhereInput
+    data: XOR<DebitCardProductUpdateWithoutOffersInput, DebitCardProductUncheckedUpdateWithoutOffersInput>
+  }
+
+  export type DebitCardProductUpdateWithoutOffersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUpdateManyWithoutDebitCardsNestedInput
+    bulletPoints?: DebitCardBulletUpdateManyWithoutProductNestedInput
+    keyFeatures?: DebitCardKeyFeatureUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUpdateManyWithoutDebitCardNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedDebitCardsNestedInput
+  }
+
+  export type DebitCardProductUncheckedUpdateWithoutOffersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUncheckedUpdateManyWithoutDebitCardsNestedInput
+    bulletPoints?: DebitCardBulletUncheckedUpdateManyWithoutProductNestedInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUncheckedUpdateManyWithoutDebitCardNestedInput
+  }
+
+  export type DebitCardProductCreateWithoutSafetyFeaturesInput = {
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryCreateNestedManyWithoutDebitCardsInput
+    bulletPoints?: DebitCardBulletCreateNestedManyWithoutProductInput
+    keyFeatures?: DebitCardKeyFeatureCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferCreateNestedManyWithoutProductInput
+    applications?: ApplicationCreateNestedManyWithoutDebitCardInput
+    createdBy?: UserCreateNestedOneWithoutCreatedDebitCardsInput
+  }
+
+  export type DebitCardProductUncheckedCreateWithoutSafetyFeaturesInput = {
+    id?: number
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdById?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    categories?: CategoryUncheckedCreateNestedManyWithoutDebitCardsInput
+    bulletPoints?: DebitCardBulletUncheckedCreateNestedManyWithoutProductInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedCreateNestedManyWithoutProductInput
+    offers?: DebitCardOfferUncheckedCreateNestedManyWithoutProductInput
+    applications?: ApplicationUncheckedCreateNestedManyWithoutDebitCardInput
+  }
+
+  export type DebitCardProductCreateOrConnectWithoutSafetyFeaturesInput = {
+    where: DebitCardProductWhereUniqueInput
+    create: XOR<DebitCardProductCreateWithoutSafetyFeaturesInput, DebitCardProductUncheckedCreateWithoutSafetyFeaturesInput>
+  }
+
+  export type DebitCardProductUpsertWithoutSafetyFeaturesInput = {
+    update: XOR<DebitCardProductUpdateWithoutSafetyFeaturesInput, DebitCardProductUncheckedUpdateWithoutSafetyFeaturesInput>
+    create: XOR<DebitCardProductCreateWithoutSafetyFeaturesInput, DebitCardProductUncheckedCreateWithoutSafetyFeaturesInput>
+    where?: DebitCardProductWhereInput
+  }
+
+  export type DebitCardProductUpdateToOneWithWhereWithoutSafetyFeaturesInput = {
+    where?: DebitCardProductWhereInput
+    data: XOR<DebitCardProductUpdateWithoutSafetyFeaturesInput, DebitCardProductUncheckedUpdateWithoutSafetyFeaturesInput>
+  }
+
+  export type DebitCardProductUpdateWithoutSafetyFeaturesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUpdateManyWithoutDebitCardsNestedInput
+    bulletPoints?: DebitCardBulletUpdateManyWithoutProductNestedInput
+    keyFeatures?: DebitCardKeyFeatureUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUpdateManyWithoutDebitCardNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedDebitCardsNestedInput
+  }
+
+  export type DebitCardProductUncheckedUpdateWithoutSafetyFeaturesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUncheckedUpdateManyWithoutDebitCardsNestedInput
+    bulletPoints?: DebitCardBulletUncheckedUpdateManyWithoutProductNestedInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUncheckedUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUncheckedUpdateManyWithoutDebitCardNestedInput
   }
 
   export type ApplicationCreateManyUserInput = {
@@ -64807,6 +75902,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     loanId?: number | null
     cardId?: number | null
+    debitCardId?: number | null
     insuranceId?: number | null
     categoryId?: number | null
     categorySlug?: string | null
@@ -65005,6 +76101,47 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type DebitCardProductCreateManyCreatedByInput = {
+    id?: number
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    bankLogoUrl?: string | null
+    accountType?: string | null
+    cardNetwork: string
+    cardType?: string | null
+    annualFee?: number
+    issuanceFee?: number | null
+    replacementFee?: number | null
+    atmWithdrawalLimit?: number | null
+    posLimit?: number | null
+    onlineLimit?: number | null
+    internationalUsage?: boolean
+    contactless?: boolean
+    loungeAccess?: boolean
+    loungeAccessDetails?: string | null
+    cashbackRate?: number | null
+    rewardPoints?: boolean
+    fuelSurcharge?: boolean
+    accidentInsurance?: boolean
+    purchaseProtection?: boolean
+    fraudProtection?: boolean
+    zeroBilling?: boolean
+    minimumBalance?: number | null
+    minimumAge?: number | null
+    maximumAge?: number | null
+    rating?: number
+    recommended?: boolean
+    bestFor?: string | null
+    keyStatement?: string | null
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    applyUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type InsuranceProductCreateManyCreatedByInput = {
     id?: number
     name: string
@@ -65189,6 +76326,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     loan?: LoanProductUpdateOneWithoutApplicationsNestedInput
     card?: CreditCardProductUpdateOneWithoutApplicationsNestedInput
+    debitCard?: DebitCardProductUpdateOneWithoutApplicationsNestedInput
     insurance?: InsuranceProductUpdateOneWithoutApplicationsNestedInput
   }
 
@@ -65198,6 +76336,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     loanId?: NullableIntFieldUpdateOperationsInput | number | null
     cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    debitCardId?: NullableIntFieldUpdateOperationsInput | number | null
     insuranceId?: NullableIntFieldUpdateOperationsInput | number | null
     categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65327,6 +76466,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     loanId?: NullableIntFieldUpdateOperationsInput | number | null
     cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    debitCardId?: NullableIntFieldUpdateOperationsInput | number | null
     insuranceId?: NullableIntFieldUpdateOperationsInput | number | null
     categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65706,6 +76846,140 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type DebitCardProductUpdateWithoutCreatedByInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUpdateManyWithoutDebitCardsNestedInput
+    bulletPoints?: DebitCardBulletUpdateManyWithoutProductNestedInput
+    keyFeatures?: DebitCardKeyFeatureUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUpdateManyWithoutDebitCardNestedInput
+  }
+
+  export type DebitCardProductUncheckedUpdateWithoutCreatedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUncheckedUpdateManyWithoutDebitCardsNestedInput
+    bulletPoints?: DebitCardBulletUncheckedUpdateManyWithoutProductNestedInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUncheckedUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUncheckedUpdateManyWithoutDebitCardNestedInput
+  }
+
+  export type DebitCardProductUncheckedUpdateManyWithoutCreatedByInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type InsuranceProductUpdateWithoutCreatedByInput = {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
@@ -65997,6 +77271,7 @@ export namespace Prisma {
     children?: CategoryUpdateManyWithoutParentNestedInput
     loans?: LoanProductUpdateManyWithoutCategoryNestedInput
     creditCards?: CreditCardProductUpdateManyWithoutCategoriesNestedInput
+    debitCards?: DebitCardProductUpdateManyWithoutCategoriesNestedInput
     insurances?: InsuranceProductUpdateManyWithoutCategoryNestedInput
   }
 
@@ -66011,6 +77286,7 @@ export namespace Prisma {
     children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
     loans?: LoanProductUncheckedUpdateManyWithoutCategoryNestedInput
     creditCards?: CreditCardProductUncheckedUpdateManyWithoutCategoriesNestedInput
+    debitCards?: DebitCardProductUncheckedUpdateManyWithoutCategoriesNestedInput
     insurances?: InsuranceProductUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
@@ -66228,6 +77504,141 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type DebitCardProductUpdateWithoutCategoriesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bulletPoints?: DebitCardBulletUpdateManyWithoutProductNestedInput
+    keyFeatures?: DebitCardKeyFeatureUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUpdateManyWithoutDebitCardNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedDebitCardsNestedInput
+  }
+
+  export type DebitCardProductUncheckedUpdateWithoutCategoriesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bulletPoints?: DebitCardBulletUncheckedUpdateManyWithoutProductNestedInput
+    keyFeatures?: DebitCardKeyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    offers?: DebitCardOfferUncheckedUpdateManyWithoutProductNestedInput
+    safetyFeatures?: DebitCardSafetyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUncheckedUpdateManyWithoutDebitCardNestedInput
+  }
+
+  export type DebitCardProductUncheckedUpdateManyWithoutCategoriesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    accountType?: NullableStringFieldUpdateOperationsInput | string | null
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: FloatFieldUpdateOperationsInput | number
+    issuanceFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    replacementFee?: NullableFloatFieldUpdateOperationsInput | number | null
+    atmWithdrawalLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    posLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    onlineLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    internationalUsage?: BoolFieldUpdateOperationsInput | boolean
+    contactless?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccess?: BoolFieldUpdateOperationsInput | boolean
+    loungeAccessDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    cashbackRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    rewardPoints?: BoolFieldUpdateOperationsInput | boolean
+    fuelSurcharge?: BoolFieldUpdateOperationsInput | boolean
+    accidentInsurance?: BoolFieldUpdateOperationsInput | boolean
+    purchaseProtection?: BoolFieldUpdateOperationsInput | boolean
+    fraudProtection?: BoolFieldUpdateOperationsInput | boolean
+    zeroBilling?: BoolFieldUpdateOperationsInput | boolean
+    minimumBalance?: NullableFloatFieldUpdateOperationsInput | number | null
+    minimumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    maximumAge?: NullableIntFieldUpdateOperationsInput | number | null
+    rating?: FloatFieldUpdateOperationsInput | number
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    bestFor?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    applyUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type InsuranceProductUpdateWithoutCategoryInput = {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
@@ -66434,6 +77845,7 @@ export namespace Prisma {
     type: $Enums.ProductType
     loanId?: number | null
     cardId?: number | null
+    debitCardId?: number | null
     categoryId?: number | null
     categorySlug?: string | null
     categoryName?: string | null
@@ -66791,6 +78203,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutApplicationsNestedInput
     loan?: LoanProductUpdateOneWithoutApplicationsNestedInput
     card?: CreditCardProductUpdateOneWithoutApplicationsNestedInput
+    debitCard?: DebitCardProductUpdateOneWithoutApplicationsNestedInput
   }
 
   export type ApplicationUncheckedUpdateWithoutInsuranceInput = {
@@ -66800,6 +78213,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     loanId?: NullableIntFieldUpdateOperationsInput | number | null
     cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    debitCardId?: NullableIntFieldUpdateOperationsInput | number | null
     categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
     categoryName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -66929,6 +78343,7 @@ export namespace Prisma {
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     loanId?: NullableIntFieldUpdateOperationsInput | number | null
     cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    debitCardId?: NullableIntFieldUpdateOperationsInput | number | null
     categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
     categoryName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67091,6 +78506,7 @@ export namespace Prisma {
     userId: number
     type: $Enums.ProductType
     cardId?: number | null
+    debitCardId?: number | null
     insuranceId?: number | null
     categoryId?: number | null
     categorySlug?: string | null
@@ -67436,6 +78852,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutApplicationsNestedInput
     card?: CreditCardProductUpdateOneWithoutApplicationsNestedInput
+    debitCard?: DebitCardProductUpdateOneWithoutApplicationsNestedInput
     insurance?: InsuranceProductUpdateOneWithoutApplicationsNestedInput
   }
 
@@ -67445,6 +78862,7 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    debitCardId?: NullableIntFieldUpdateOperationsInput | number | null
     insuranceId?: NullableIntFieldUpdateOperationsInput | number | null
     categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67574,6 +78992,7 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    debitCardId?: NullableIntFieldUpdateOperationsInput | number | null
     insuranceId?: NullableIntFieldUpdateOperationsInput | number | null
     categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67761,6 +79180,7 @@ export namespace Prisma {
     userId: number
     type: $Enums.ProductType
     loanId?: number | null
+    debitCardId?: number | null
     insuranceId?: number | null
     categoryId?: number | null
     categorySlug?: string | null
@@ -67894,6 +79314,7 @@ export namespace Prisma {
     parent?: CategoryUpdateOneWithoutChildrenNestedInput
     children?: CategoryUpdateManyWithoutParentNestedInput
     loans?: LoanProductUpdateManyWithoutCategoryNestedInput
+    debitCards?: DebitCardProductUpdateManyWithoutCategoriesNestedInput
     insurances?: InsuranceProductUpdateManyWithoutCategoryNestedInput
   }
 
@@ -67908,6 +79329,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
     loans?: LoanProductUncheckedUpdateManyWithoutCategoryNestedInput
+    debitCards?: DebitCardProductUncheckedUpdateManyWithoutCategoriesNestedInput
     insurances?: InsuranceProductUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
@@ -68214,6 +79636,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutApplicationsNestedInput
     loan?: LoanProductUpdateOneWithoutApplicationsNestedInput
+    debitCard?: DebitCardProductUpdateOneWithoutApplicationsNestedInput
     insurance?: InsuranceProductUpdateOneWithoutApplicationsNestedInput
   }
 
@@ -68223,6 +79646,7 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     loanId?: NullableIntFieldUpdateOperationsInput | number | null
+    debitCardId?: NullableIntFieldUpdateOperationsInput | number | null
     insuranceId?: NullableIntFieldUpdateOperationsInput | number | null
     categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68352,6 +79776,7 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
     loanId?: NullableIntFieldUpdateOperationsInput | number | null
+    debitCardId?: NullableIntFieldUpdateOperationsInput | number | null
     insuranceId?: NullableIntFieldUpdateOperationsInput | number | null
     categoryId?: NullableIntFieldUpdateOperationsInput | number | null
     categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68496,6 +79921,701 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     text?: StringFieldUpdateOperationsInput | string
     displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardBulletCreateManyProductInput = {
+    id?: number
+    text: string
+    displayOrder?: number
+  }
+
+  export type DebitCardKeyFeatureCreateManyProductInput = {
+    id?: number
+    icon?: string | null
+    title: string
+    description: string
+    displayOrder?: number
+  }
+
+  export type DebitCardOfferCreateManyProductInput = {
+    id?: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+  }
+
+  export type DebitCardSafetyFeatureCreateManyProductInput = {
+    id?: number
+    featureName: string
+    description: string
+    howToUse?: string | null
+    displayOrder?: number
+  }
+
+  export type ApplicationCreateManyDebitCardInput = {
+    id?: number
+    referenceNo?: string | null
+    userId: number
+    type: $Enums.ProductType
+    loanId?: number | null
+    cardId?: number | null
+    insuranceId?: number | null
+    categoryId?: number | null
+    categorySlug?: string | null
+    categoryName?: string | null
+    loanSlug?: string | null
+    status?: $Enums.ApplicationStatus
+    amount?: number | null
+    notes?: string | null
+    productDetails?: NullableJsonNullValueInput | InputJsonValue
+    applicantName?: string | null
+    email?: string | null
+    phone?: string | null
+    panNumber?: string | null
+    dob?: Date | string | null
+    employmentType?: string | null
+    annualIncome?: number | null
+    monthlyIncome?: number | null
+    employerName?: string | null
+    workExperience?: string | null
+    residenceType?: string | null
+    currentAddress?: string | null
+    city?: string | null
+    state?: string | null
+    pincode?: string | null
+    education?: string | null
+    loanPurpose?: string | null
+    propertyAddress?: string | null
+    propertyType?: string | null
+    constructionStatus?: string | null
+    propertyValue?: number | null
+    downPayment?: number | null
+    existingLoanOnProperty?: boolean | null
+    registeredBusinessName?: string | null
+    businessType?: string | null
+    yearsInOperation?: number | null
+    businessTurnover?: number | null
+    businessPurpose?: string | null
+    currentLoansAmount?: number | null
+    businessPan?: string | null
+    gstNumber?: string | null
+    industryType?: string | null
+    studentName?: string | null
+    courseName?: string | null
+    universityName?: string | null
+    courseDuration?: number | null
+    totalCourseFees?: number | null
+    parentIncome?: number | null
+    admissionStatus?: string | null
+    admissionSecured?: boolean | null
+    vehicleMake?: string | null
+    vehicleModel?: string | null
+    vehicleVariant?: string | null
+    exShowroomPrice?: number | null
+    vehicleType?: string | null
+    vehicleUsage?: string | null
+    manufactureYear?: number | null
+    registrationYear?: number | null
+    currentMarketValue?: number | null
+    kilometersDriven?: number | null
+    engineCapacity?: string | null
+    engineCondition?: string | null
+    exchangeExisting?: boolean | null
+    registrationCity?: string | null
+    rcAvailable?: boolean | null
+    sellerInfo?: string | null
+    vehicleCondition?: string | null
+    professionalQualification?: string | null
+    yearsOfPractice?: number | null
+    clinicOfficeAddress?: string | null
+    professionalIncome?: number | null
+    professionalPurpose?: string | null
+    registrationNumber?: string | null
+    securityType?: string | null
+    securityValue?: number | null
+    portfolioDetails?: NullableJsonNullValueInput | InputJsonValue
+    desiredLTV?: number | null
+    dematAccountNo?: string | null
+    brokerName?: string | null
+    currentLenderName?: string | null
+    outstandingAmount?: number | null
+    currentInterestRate?: number | null
+    remainingTenure?: number | null
+    currentEMI?: number | null
+    cibilScore?: number | null
+    transferReason?: string | null
+    desiredCreditLimit?: number | null
+    hasExistingCreditCards?: boolean | null
+    existingBankingRelationship?: boolean | null
+    existingCreditCards?: NullableJsonNullValueInput | InputJsonValue
+    cardType?: string | null
+    studentId?: string | null
+    collegeUniversityName?: string | null
+    courseNameForCard?: string | null
+    collegeName?: string | null
+    yearOfStudy?: string | null
+    parentAnnualIncome?: number | null
+    fixedDepositAmount?: number | null
+    fdAmount?: number | null
+    fdTenure?: number | null
+    fdAccountNumber?: string | null
+    primaryCardholderName?: string | null
+    relationshipWithPrimary?: string | null
+    addonApplicantDob?: string | null
+    businessRegistrationNumber?: string | null
+    businessRegistrationNo?: string | null
+    businessTurnoverForCard?: number | null
+    businessAddressForCard?: string | null
+    passportNumber?: string | null
+    visaType?: string | null
+    visaValidity?: Date | string | null
+    overseasAddress?: string | null
+    overseasIncome?: number | null
+    nreNroDetails?: string | null
+    nreNroAccountDetails?: string | null
+    approximateNetWorth?: number | null
+    majorInvestments?: NullableJsonNullValueInput | InputJsonValue
+    desiredTenure?: number | null
+    documents?: NullableJsonNullValueInput | InputJsonValue
+    feedback?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CategoryUpdateWithoutDebitCardsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    parent?: CategoryUpdateOneWithoutChildrenNestedInput
+    children?: CategoryUpdateManyWithoutParentNestedInput
+    loans?: LoanProductUpdateManyWithoutCategoryNestedInput
+    creditCards?: CreditCardProductUpdateManyWithoutCategoriesNestedInput
+    insurances?: InsuranceProductUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutDebitCardsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
+    loans?: LoanProductUncheckedUpdateManyWithoutCategoryNestedInput
+    creditCards?: CreditCardProductUncheckedUpdateManyWithoutCategoriesNestedInput
+    insurances?: InsuranceProductUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutDebitCardsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DebitCardBulletUpdateWithoutProductInput = {
+    text?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardBulletUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    text?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardBulletUncheckedUpdateManyWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    text?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardKeyFeatureUpdateWithoutProductInput = {
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardKeyFeatureUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardKeyFeatureUncheckedUpdateManyWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    icon?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardOfferUpdateWithoutProductInput = {
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardOfferUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardOfferUncheckedUpdateManyWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardSafetyFeatureUpdateWithoutProductInput = {
+    featureName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    howToUse?: NullableStringFieldUpdateOperationsInput | string | null
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardSafetyFeatureUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    featureName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    howToUse?: NullableStringFieldUpdateOperationsInput | string | null
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DebitCardSafetyFeatureUncheckedUpdateManyWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    featureName?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    howToUse?: NullableStringFieldUpdateOperationsInput | string | null
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type ApplicationUpdateWithoutDebitCardInput = {
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
+    categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryName?: NullableStringFieldUpdateOperationsInput | string | null
+    loanSlug?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    productDetails?: NullableJsonNullValueInput | InputJsonValue
+    applicantName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    panNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    employmentType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    monthlyIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    employerName?: NullableStringFieldUpdateOperationsInput | string | null
+    workExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    residenceType?: NullableStringFieldUpdateOperationsInput | string | null
+    currentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    pincode?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    loanPurpose?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
+    constructionStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyValue?: NullableFloatFieldUpdateOperationsInput | number | null
+    downPayment?: NullableFloatFieldUpdateOperationsInput | number | null
+    existingLoanOnProperty?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    registeredBusinessName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessType?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsInOperation?: NullableIntFieldUpdateOperationsInput | number | null
+    businessTurnover?: NullableFloatFieldUpdateOperationsInput | number | null
+    businessPurpose?: NullableStringFieldUpdateOperationsInput | string | null
+    currentLoansAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    businessPan?: NullableStringFieldUpdateOperationsInput | string | null
+    gstNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    industryType?: NullableStringFieldUpdateOperationsInput | string | null
+    studentName?: NullableStringFieldUpdateOperationsInput | string | null
+    courseName?: NullableStringFieldUpdateOperationsInput | string | null
+    universityName?: NullableStringFieldUpdateOperationsInput | string | null
+    courseDuration?: NullableIntFieldUpdateOperationsInput | number | null
+    totalCourseFees?: NullableFloatFieldUpdateOperationsInput | number | null
+    parentIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    admissionStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionSecured?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    vehicleMake?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleModel?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleVariant?: NullableStringFieldUpdateOperationsInput | string | null
+    exShowroomPrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    vehicleType?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleUsage?: NullableStringFieldUpdateOperationsInput | string | null
+    manufactureYear?: NullableIntFieldUpdateOperationsInput | number | null
+    registrationYear?: NullableIntFieldUpdateOperationsInput | number | null
+    currentMarketValue?: NullableFloatFieldUpdateOperationsInput | number | null
+    kilometersDriven?: NullableIntFieldUpdateOperationsInput | number | null
+    engineCapacity?: NullableStringFieldUpdateOperationsInput | string | null
+    engineCondition?: NullableStringFieldUpdateOperationsInput | string | null
+    exchangeExisting?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    registrationCity?: NullableStringFieldUpdateOperationsInput | string | null
+    rcAvailable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    sellerInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleCondition?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalQualification?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfPractice?: NullableIntFieldUpdateOperationsInput | number | null
+    clinicOfficeAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    professionalPurpose?: NullableStringFieldUpdateOperationsInput | string | null
+    registrationNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    securityType?: NullableStringFieldUpdateOperationsInput | string | null
+    securityValue?: NullableFloatFieldUpdateOperationsInput | number | null
+    portfolioDetails?: NullableJsonNullValueInput | InputJsonValue
+    desiredLTV?: NullableFloatFieldUpdateOperationsInput | number | null
+    dematAccountNo?: NullableStringFieldUpdateOperationsInput | string | null
+    brokerName?: NullableStringFieldUpdateOperationsInput | string | null
+    currentLenderName?: NullableStringFieldUpdateOperationsInput | string | null
+    outstandingAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    currentInterestRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    remainingTenure?: NullableIntFieldUpdateOperationsInput | number | null
+    currentEMI?: NullableFloatFieldUpdateOperationsInput | number | null
+    cibilScore?: NullableIntFieldUpdateOperationsInput | number | null
+    transferReason?: NullableStringFieldUpdateOperationsInput | string | null
+    desiredCreditLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    hasExistingCreditCards?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    existingBankingRelationship?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    existingCreditCards?: NullableJsonNullValueInput | InputJsonValue
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    studentId?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeUniversityName?: NullableStringFieldUpdateOperationsInput | string | null
+    courseNameForCard?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeName?: NullableStringFieldUpdateOperationsInput | string | null
+    yearOfStudy?: NullableStringFieldUpdateOperationsInput | string | null
+    parentAnnualIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    fixedDepositAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    fdAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    fdTenure?: NullableIntFieldUpdateOperationsInput | number | null
+    fdAccountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryCardholderName?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipWithPrimary?: NullableStringFieldUpdateOperationsInput | string | null
+    addonApplicantDob?: NullableStringFieldUpdateOperationsInput | string | null
+    businessRegistrationNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    businessRegistrationNo?: NullableStringFieldUpdateOperationsInput | string | null
+    businessTurnoverForCard?: NullableFloatFieldUpdateOperationsInput | number | null
+    businessAddressForCard?: NullableStringFieldUpdateOperationsInput | string | null
+    passportNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    visaType?: NullableStringFieldUpdateOperationsInput | string | null
+    visaValidity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    overseasAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    overseasIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    nreNroDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    nreNroAccountDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    approximateNetWorth?: NullableFloatFieldUpdateOperationsInput | number | null
+    majorInvestments?: NullableJsonNullValueInput | InputJsonValue
+    desiredTenure?: NullableIntFieldUpdateOperationsInput | number | null
+    documents?: NullableJsonNullValueInput | InputJsonValue
+    feedback?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutApplicationsNestedInput
+    loan?: LoanProductUpdateOneWithoutApplicationsNestedInput
+    card?: CreditCardProductUpdateOneWithoutApplicationsNestedInput
+    insurance?: InsuranceProductUpdateOneWithoutApplicationsNestedInput
+  }
+
+  export type ApplicationUncheckedUpdateWithoutDebitCardInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: IntFieldUpdateOperationsInput | number
+    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    loanId?: NullableIntFieldUpdateOperationsInput | number | null
+    cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    insuranceId?: NullableIntFieldUpdateOperationsInput | number | null
+    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
+    categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryName?: NullableStringFieldUpdateOperationsInput | string | null
+    loanSlug?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    productDetails?: NullableJsonNullValueInput | InputJsonValue
+    applicantName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    panNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    employmentType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    monthlyIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    employerName?: NullableStringFieldUpdateOperationsInput | string | null
+    workExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    residenceType?: NullableStringFieldUpdateOperationsInput | string | null
+    currentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    pincode?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    loanPurpose?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
+    constructionStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyValue?: NullableFloatFieldUpdateOperationsInput | number | null
+    downPayment?: NullableFloatFieldUpdateOperationsInput | number | null
+    existingLoanOnProperty?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    registeredBusinessName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessType?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsInOperation?: NullableIntFieldUpdateOperationsInput | number | null
+    businessTurnover?: NullableFloatFieldUpdateOperationsInput | number | null
+    businessPurpose?: NullableStringFieldUpdateOperationsInput | string | null
+    currentLoansAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    businessPan?: NullableStringFieldUpdateOperationsInput | string | null
+    gstNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    industryType?: NullableStringFieldUpdateOperationsInput | string | null
+    studentName?: NullableStringFieldUpdateOperationsInput | string | null
+    courseName?: NullableStringFieldUpdateOperationsInput | string | null
+    universityName?: NullableStringFieldUpdateOperationsInput | string | null
+    courseDuration?: NullableIntFieldUpdateOperationsInput | number | null
+    totalCourseFees?: NullableFloatFieldUpdateOperationsInput | number | null
+    parentIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    admissionStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionSecured?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    vehicleMake?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleModel?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleVariant?: NullableStringFieldUpdateOperationsInput | string | null
+    exShowroomPrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    vehicleType?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleUsage?: NullableStringFieldUpdateOperationsInput | string | null
+    manufactureYear?: NullableIntFieldUpdateOperationsInput | number | null
+    registrationYear?: NullableIntFieldUpdateOperationsInput | number | null
+    currentMarketValue?: NullableFloatFieldUpdateOperationsInput | number | null
+    kilometersDriven?: NullableIntFieldUpdateOperationsInput | number | null
+    engineCapacity?: NullableStringFieldUpdateOperationsInput | string | null
+    engineCondition?: NullableStringFieldUpdateOperationsInput | string | null
+    exchangeExisting?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    registrationCity?: NullableStringFieldUpdateOperationsInput | string | null
+    rcAvailable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    sellerInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleCondition?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalQualification?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfPractice?: NullableIntFieldUpdateOperationsInput | number | null
+    clinicOfficeAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    professionalPurpose?: NullableStringFieldUpdateOperationsInput | string | null
+    registrationNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    securityType?: NullableStringFieldUpdateOperationsInput | string | null
+    securityValue?: NullableFloatFieldUpdateOperationsInput | number | null
+    portfolioDetails?: NullableJsonNullValueInput | InputJsonValue
+    desiredLTV?: NullableFloatFieldUpdateOperationsInput | number | null
+    dematAccountNo?: NullableStringFieldUpdateOperationsInput | string | null
+    brokerName?: NullableStringFieldUpdateOperationsInput | string | null
+    currentLenderName?: NullableStringFieldUpdateOperationsInput | string | null
+    outstandingAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    currentInterestRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    remainingTenure?: NullableIntFieldUpdateOperationsInput | number | null
+    currentEMI?: NullableFloatFieldUpdateOperationsInput | number | null
+    cibilScore?: NullableIntFieldUpdateOperationsInput | number | null
+    transferReason?: NullableStringFieldUpdateOperationsInput | string | null
+    desiredCreditLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    hasExistingCreditCards?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    existingBankingRelationship?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    existingCreditCards?: NullableJsonNullValueInput | InputJsonValue
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    studentId?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeUniversityName?: NullableStringFieldUpdateOperationsInput | string | null
+    courseNameForCard?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeName?: NullableStringFieldUpdateOperationsInput | string | null
+    yearOfStudy?: NullableStringFieldUpdateOperationsInput | string | null
+    parentAnnualIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    fixedDepositAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    fdAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    fdTenure?: NullableIntFieldUpdateOperationsInput | number | null
+    fdAccountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryCardholderName?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipWithPrimary?: NullableStringFieldUpdateOperationsInput | string | null
+    addonApplicantDob?: NullableStringFieldUpdateOperationsInput | string | null
+    businessRegistrationNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    businessRegistrationNo?: NullableStringFieldUpdateOperationsInput | string | null
+    businessTurnoverForCard?: NullableFloatFieldUpdateOperationsInput | number | null
+    businessAddressForCard?: NullableStringFieldUpdateOperationsInput | string | null
+    passportNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    visaType?: NullableStringFieldUpdateOperationsInput | string | null
+    visaValidity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    overseasAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    overseasIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    nreNroDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    nreNroAccountDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    approximateNetWorth?: NullableFloatFieldUpdateOperationsInput | number | null
+    majorInvestments?: NullableJsonNullValueInput | InputJsonValue
+    desiredTenure?: NullableIntFieldUpdateOperationsInput | number | null
+    documents?: NullableJsonNullValueInput | InputJsonValue
+    feedback?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ApplicationUncheckedUpdateManyWithoutDebitCardInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    referenceNo?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: IntFieldUpdateOperationsInput | number
+    type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    loanId?: NullableIntFieldUpdateOperationsInput | number | null
+    cardId?: NullableIntFieldUpdateOperationsInput | number | null
+    insuranceId?: NullableIntFieldUpdateOperationsInput | number | null
+    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
+    categorySlug?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryName?: NullableStringFieldUpdateOperationsInput | string | null
+    loanSlug?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+    amount?: NullableFloatFieldUpdateOperationsInput | number | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    productDetails?: NullableJsonNullValueInput | InputJsonValue
+    applicantName?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    panNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    employmentType?: NullableStringFieldUpdateOperationsInput | string | null
+    annualIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    monthlyIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    employerName?: NullableStringFieldUpdateOperationsInput | string | null
+    workExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    residenceType?: NullableStringFieldUpdateOperationsInput | string | null
+    currentAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    state?: NullableStringFieldUpdateOperationsInput | string | null
+    pincode?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    loanPurpose?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyType?: NullableStringFieldUpdateOperationsInput | string | null
+    constructionStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    propertyValue?: NullableFloatFieldUpdateOperationsInput | number | null
+    downPayment?: NullableFloatFieldUpdateOperationsInput | number | null
+    existingLoanOnProperty?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    registeredBusinessName?: NullableStringFieldUpdateOperationsInput | string | null
+    businessType?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsInOperation?: NullableIntFieldUpdateOperationsInput | number | null
+    businessTurnover?: NullableFloatFieldUpdateOperationsInput | number | null
+    businessPurpose?: NullableStringFieldUpdateOperationsInput | string | null
+    currentLoansAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    businessPan?: NullableStringFieldUpdateOperationsInput | string | null
+    gstNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    industryType?: NullableStringFieldUpdateOperationsInput | string | null
+    studentName?: NullableStringFieldUpdateOperationsInput | string | null
+    courseName?: NullableStringFieldUpdateOperationsInput | string | null
+    universityName?: NullableStringFieldUpdateOperationsInput | string | null
+    courseDuration?: NullableIntFieldUpdateOperationsInput | number | null
+    totalCourseFees?: NullableFloatFieldUpdateOperationsInput | number | null
+    parentIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    admissionStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionSecured?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    vehicleMake?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleModel?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleVariant?: NullableStringFieldUpdateOperationsInput | string | null
+    exShowroomPrice?: NullableFloatFieldUpdateOperationsInput | number | null
+    vehicleType?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleUsage?: NullableStringFieldUpdateOperationsInput | string | null
+    manufactureYear?: NullableIntFieldUpdateOperationsInput | number | null
+    registrationYear?: NullableIntFieldUpdateOperationsInput | number | null
+    currentMarketValue?: NullableFloatFieldUpdateOperationsInput | number | null
+    kilometersDriven?: NullableIntFieldUpdateOperationsInput | number | null
+    engineCapacity?: NullableStringFieldUpdateOperationsInput | string | null
+    engineCondition?: NullableStringFieldUpdateOperationsInput | string | null
+    exchangeExisting?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    registrationCity?: NullableStringFieldUpdateOperationsInput | string | null
+    rcAvailable?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    sellerInfo?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleCondition?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalQualification?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfPractice?: NullableIntFieldUpdateOperationsInput | number | null
+    clinicOfficeAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    professionalPurpose?: NullableStringFieldUpdateOperationsInput | string | null
+    registrationNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    securityType?: NullableStringFieldUpdateOperationsInput | string | null
+    securityValue?: NullableFloatFieldUpdateOperationsInput | number | null
+    portfolioDetails?: NullableJsonNullValueInput | InputJsonValue
+    desiredLTV?: NullableFloatFieldUpdateOperationsInput | number | null
+    dematAccountNo?: NullableStringFieldUpdateOperationsInput | string | null
+    brokerName?: NullableStringFieldUpdateOperationsInput | string | null
+    currentLenderName?: NullableStringFieldUpdateOperationsInput | string | null
+    outstandingAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    currentInterestRate?: NullableFloatFieldUpdateOperationsInput | number | null
+    remainingTenure?: NullableIntFieldUpdateOperationsInput | number | null
+    currentEMI?: NullableFloatFieldUpdateOperationsInput | number | null
+    cibilScore?: NullableIntFieldUpdateOperationsInput | number | null
+    transferReason?: NullableStringFieldUpdateOperationsInput | string | null
+    desiredCreditLimit?: NullableFloatFieldUpdateOperationsInput | number | null
+    hasExistingCreditCards?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    existingBankingRelationship?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    existingCreditCards?: NullableJsonNullValueInput | InputJsonValue
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    studentId?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeUniversityName?: NullableStringFieldUpdateOperationsInput | string | null
+    courseNameForCard?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeName?: NullableStringFieldUpdateOperationsInput | string | null
+    yearOfStudy?: NullableStringFieldUpdateOperationsInput | string | null
+    parentAnnualIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    fixedDepositAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    fdAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    fdTenure?: NullableIntFieldUpdateOperationsInput | number | null
+    fdAccountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryCardholderName?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipWithPrimary?: NullableStringFieldUpdateOperationsInput | string | null
+    addonApplicantDob?: NullableStringFieldUpdateOperationsInput | string | null
+    businessRegistrationNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    businessRegistrationNo?: NullableStringFieldUpdateOperationsInput | string | null
+    businessTurnoverForCard?: NullableFloatFieldUpdateOperationsInput | number | null
+    businessAddressForCard?: NullableStringFieldUpdateOperationsInput | string | null
+    passportNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    visaType?: NullableStringFieldUpdateOperationsInput | string | null
+    visaValidity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    overseasAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    overseasIncome?: NullableFloatFieldUpdateOperationsInput | number | null
+    nreNroDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    nreNroAccountDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    approximateNetWorth?: NullableFloatFieldUpdateOperationsInput | number | null
+    majorInvestments?: NullableJsonNullValueInput | InputJsonValue
+    desiredTenure?: NullableIntFieldUpdateOperationsInput | number | null
+    documents?: NullableJsonNullValueInput | InputJsonValue
+    feedback?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

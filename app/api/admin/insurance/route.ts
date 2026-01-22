@@ -47,11 +47,12 @@ export async function POST(request: NextRequest) {
       slug,
       provider,
       logoUrl,
-      coverageAmount,
-      premium,
+      sumInsured,
+      minPremium,
+      maxPremium,
       tenure,
       description,
-      isActive,
+      type,
       categoryId,
     } = body;
 
@@ -62,11 +63,12 @@ export async function POST(request: NextRequest) {
         slug,
         provider,
         logoUrl,
-        coverageAmount,
-        premium,
-        tenure,
+        sumInsured,
+        minPremium,
+        maxPremium,
+        policyTerm: tenure, // Map tenure to policyTerm
         description,
-        isActive: isActive !== false,
+        type,
         categoryId: categoryId ? Number(categoryId) : null,
       },
       include: {
