@@ -291,15 +291,15 @@ const NAV_DATA: NavItem[] = [
                             {
                                 name: 'New Two Wheeler Loan', href: '/newBike',
                                 subItems: [
-                                    { name: '50 Thousand', href: '/usedBike/50k' },
-                                    { name: '1 Lakh', href: '/usedBike/1-lakh' },
-                                    { name: '2 Lakh', href: '/usedBike/2-lakh' },
-                                    { name: '3 Lakh', href: '/usedBike/3-lakh' },
-                                    { name: '4 Lakh', href: '/usedBike/4-lakh' },
-                                    { name: '5 Lakh', href: '/usedBike/5-lakh' },
-                                    { name: '10 Lakh', href: '/usedBike/10-lakh' },
-                                    { name: '15 Lakh', href: '/usedBike/15-lakh' },
-                                    { name: '20 Lakh', href: '/usedBike/20-lakh' },
+                                    { name: '50 Thousand', href: '/newBike/50k' },
+                                    { name: '1 Lakh', href: '/newBike/1-lakh' },
+                                    { name: '2 Lakh', href: '/newBike/2-lakh' },
+                                    { name: '3 Lakh', href: '/newBike/3-lakh' },
+                                    { name: '4 Lakh', href: '/newBike/4-lakh' },
+                                    { name: '5 Lakh', href: '/newBike/5-lakh' },
+                                    { name: '10 Lakh', href: '/newBike/10-lakh' },
+                                    { name: '15 Lakh', href: '/newBike/15-lakh' },
+                                    { name: '20 Lakh', href: '/newBike/20-lakh' },
 
                                 ]
                             },
