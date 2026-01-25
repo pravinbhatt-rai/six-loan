@@ -14,6 +14,7 @@ import {
 // --- DATA STRUCTURES ---
 
 interface SubLink {
+    subItems?: any;
     name: string;
     href: string;
 }
@@ -216,12 +217,15 @@ const NAV_DATA: NavItem[] = [
                         title: 'By Amount',
                         icon: <Banknote className="w-4 h-4 text-teal-500" />,
                         items: [
-                            { name: '5 Lakh Loan', href: '/personalLoan/5-lakh' },
-                            { name: '10 Lakh Loan', href: '/personalLoan/10-lakh' },
-                            { name: '20 Lakh Loan', href: '/personalLoan/20-lakh' },
-                            { name: '30 Lakh Loan', href: '/personalLoan/30-lakh' },
-                            { name: '40 Lakh Loan', href: '/personalLoan/40-lakh' },
-                            { name: '50 Lakh Loan', href: '/personalLoan/50-lakh' },
+                            { name: '5 Lakh Loan', href: '/LoanAgainstProperty/5-lakh' },
+                            { name: '10 Lakh Loan', href: '/LoanAgainstProperty/10-lakh' },
+                            { name: '20 Lakh Loan', href: '/LoanAgainstProperty/20-lakh' },
+                            { name: '30 Lakh Loan', href: '/LoanAgainstProperty/30-lakh' },
+                            { name: '40 Lakh Loan', href: '/LoanAgainstProperty/40-lakh' },
+                            { name: '50 Lakh Loan', href: '/LoanAgainstProperty/50-lakh' },
+                            { name: '75 Lakh Loan', href: '/LoanAgainstProperty/75-lakh' },
+                            { name: '1 Crore Loan', href: '/LoanAgainstProperty/1-crore' },
+                            { name: '2 Crore Loan', href: '/LoanAgainstProperty/2-crore' },
                         ]
                     },
                 ]
@@ -246,12 +250,16 @@ const NAV_DATA: NavItem[] = [
                         title: 'By Amount',
                         icon: <Banknote className="w-4 h-4 text-teal-500" />,
                         items: [
-                            { name: '5 Lakh Loan', href: '/personalLoan/5-lakh' },
-                            { name: '10 Lakh Loan', href: '/personalLoan/10-lakh' },
-                            { name: '20 Lakh Loan', href: '/personalLoan/20-lakh' },
-                            { name: '30 Lakh Loan', href: '/personalLoan/30-lakh' },
-                            { name: '40 Lakh Loan', href: '/personalLoan/40-lakh' },
-                            { name: '50 Lakh Loan', href: '/personalLoan/50-lakh' },
+                            { name: '5 Lakh Loan', href: '/loanAgainstSecurity/5-lakh' },
+                            { name: '10 Lakh Loan', href: '/loanAgainstSecurity/10-lakh' },
+                            { name: '20 Lakh Loan', href: '/loanAgainstSecurity/20-lakh' },
+                            { name: '30 Lakh Loan', href: '/loanAgainstSecurity/30-lakh' },
+                            { name: '40 Lakh Loan', href: '/loanAgainstSecurity/40-lakh' },
+                            { name: '50 Lakh Loan', href: '/loanAgainstSecurity/50-lakh' },
+                            { name: '75 Lakh Loan', href: '/loanAgainstSecurity/75-lakh' },
+                            { name: '1 Crore Loan', href: '/loanAgainstSecurity/1-crore' },
+                            { name: '2 Crore Loan', href: '/loanAgainstSecurity/2-crore' },
+
                         ]
                     },
                 ]
@@ -265,27 +273,42 @@ const NAV_DATA: NavItem[] = [
                         title: 'Overview',
                         icon: <FileText className="w-4 h-4 text-teal-500" />,
                         items: [
-                            { name: 'Used Two Wheeler Loan', href: '/usedBike' },
-                            { name: 'New Two Wheeler Loan', href: '/newBike' },
+                            {
+                                name: 'Used Two Wheeler Loan',
+                                href: '/usedBike',
+                                subItems: [
+                                    { name: '50 Thousand', href: '/usedBike/50k' },
+                                    { name: '1 Lakh', href: '/usedBike/1-lakh' },
+                                    { name: '2 Lakh', href: '/usedBike/2-lakh' },
+                                    { name: '3 Lakh', href: '/usedBike/3-lakh' },
+                                    { name: '4 Lakh', href: '/usedBike/4-lakh' },
+                                    { name: '5 Lakh', href: '/usedBike/5-lakh' },
+                                    { name: '10 Lakh', href: '/usedBike/10-lakh' },
+                                    { name: '15 Lakh', href: '/usedBike/15-lakh' },
+                                    { name: '20 Lakh', href: '/usedBike/20-lakh' },
+                                ]
+                            },
+                            {
+                                name: 'New Two Wheeler Loan', href: '/newBike',
+                                subItems: [
+                                    { name: '50 Thousand', href: '/usedBike/50k' },
+                                    { name: '1 Lakh', href: '/usedBike/1-lakh' },
+                                    { name: '2 Lakh', href: '/usedBike/2-lakh' },
+                                    { name: '3 Lakh', href: '/usedBike/3-lakh' },
+                                    { name: '4 Lakh', href: '/usedBike/4-lakh' },
+                                    { name: '5 Lakh', href: '/usedBike/5-lakh' },
+                                    { name: '10 Lakh', href: '/usedBike/10-lakh' },
+                                    { name: '15 Lakh', href: '/usedBike/15-lakh' },
+                                    { name: '20 Lakh', href: '/usedBike/20-lakh' },
 
+                                ]
+                            },
                         ]
-                    },
-                    {
-                        title: 'By Amount',
-                        icon: <Banknote className="w-4 h-4 text-teal-500" />,
-                        items: [
-                            { name: '5 Lakh Loan', href: '/personalLoan/5-lakh' },
-                            { name: '10 Lakh Loan', href: '/personalLoan/10-lakh' },
-                            { name: '20 Lakh Loan', href: '/personalLoan/20-lakh' },
-                            { name: '30 Lakh Loan', href: '/personalLoan/30-lakh' },
-                            { name: '40 Lakh Loan', href: '/personalLoan/40-lakh' },
-                            { name: '50 Lakh Loan', href: '/personalLoan/50-lakh' },
-                        ]
-                    },
+                    }
                 ]
             },
             {
-                id: 'car loan',
+                id: 'Car Loan',
                 label: 'Car Loan',
                 icon: <Car className="w-4 h-4" />,
                 columns: [
@@ -293,27 +316,59 @@ const NAV_DATA: NavItem[] = [
                         title: 'Overview',
                         icon: <FileText className="w-4 h-4 text-teal-500" />,
                         items: [
-                            { name: 'Used Car Loan', href: '/usedCar' },
-                            { name: 'New Car Loan', href: '/newCar' },
-
+                            {
+                                name: 'Used Car Loan',
+                                href: '/usedCar',
+                                subItems: [
+                                    { name: '3 Lakh', href: '/usedCar/3-lakh' },
+                                    { name: '4 Lakh', href: '/usedCar/4-lakh' },
+                                    { name: '5 Lakh', href: '/usedCar/5-lakh' },
+                                    { name: '6 Lakh', href: '/usedCar/6-lakh' },
+                                    { name: '7 Lakh', href: '/usedCar/7-lakh' },
+                                    { name: '8 Lakh', href: '/usedCar/8-lakh' },
+                                    { name: '9 Lakh', href: '/usedCar/9-lakh' },
+                                    { name: '10 Lakh', href: '/usedCar/10-lakh' },
+                                    { name: '15 Lakh', href: '/usedCar/15-lakh' },
+                                    { name: '20 Lakh', href: '/usedCar/20-lakh' },
+                                    { name: '25 Lakh', href: '/usedCar/25-lakh' },
+                                    { name: '30 Lakh', href: '/usedCar/30-lakh' },
+                                    { name: '35 Lakh', href: '/usedCar/35-lakh' },
+                                    { name: '40 Lakh', href: '/usedCar/40-lakh' },
+                                    { name: '45 Lakh', href: '/usedCar/45-lakh' },
+                                    { name: '50 Lakh', href: '/usedCar/50-lakh' },
+                                    { name: '75 Lakh', href: '/usedCar/75-lakh' },
+                                    { name: '1 Crore', href: '/usedCar/1-crore' },
+                                ]
+                            },
+                            {
+                                name: 'New Car Loan', href: '/newCar',
+                                subItems: [
+                                    { name: '3 Lakh', href: '/newCar/3-lakh' },
+                                    { name: '4 Lakh', href: '/newCar/4-lakh' },
+                                    { name: '5 Lakh', href: '/newCar/5-lakh' },
+                                    { name: '6 Lakh', href: '/newCar/6-lakh' },
+                                    { name: '7 Lakh', href: '/newCar/7-lakh' },
+                                    { name: '8 Lakh', href: '/newCar/8-lakh' },
+                                    { name: '9 Lakh', href: '/newCar/9-lakh' },
+                                    { name: '10 Lakh', href: '/newCar/10-lakh' },
+                                    { name: '15 Lakh', href: '/newCar/15-lakh' },
+                                    { name: '20 Lakh', href: '/newCar/20-lakh' },
+                                    { name: '25 Lakh', href: '/newCar/25-lakh' },
+                                    { name: '30 Lakh', href: '/newCar/30-lakh' },
+                                    { name: '35 Lakh', href: '/newCar/35-lakh' },
+                                    { name: '40 Lakh', href: '/newCar/40-lakh' },
+                                    { name: '45 Lakh', href: '/newCar/45-lakh' },
+                                    { name: '50 Lakh', href: '/newCar/50-lakh' },
+                                    { name: '75 Lakh', href: '/newCar/75-lakh' },
+                                    { name: '1 Crore', href: '/newCar/1-crore' },
+                                ]
+                            },
                         ]
-                    },
-                    {
-                        title: 'By Amount',
-                        icon: <Banknote className="w-4 h-4 text-teal-500" />,
-                        items: [
-                            { name: '5 Lakh Loan', href: '/personalLoan/5-lakh' },
-                            { name: '10 Lakh Loan', href: '/personalLoan/10-lakh' },
-                            { name: '20 Lakh Loan', href: '/personalLoan/20-lakh' },
-                            { name: '30 Lakh Loan', href: '/personalLoan/30-lakh' },
-                            { name: '40 Lakh Loan', href: '/personalLoan/40-lakh' },
-                            { name: '50 Lakh Loan', href: '/personalLoan/50-lakh' },
-                        ]
-                    },
+                    }
                 ]
             },
-            
-            
+
+
             {
                 id: 'other',
                 label: 'Other Loans',
@@ -630,7 +685,7 @@ const MegaMenuDropdown: FC<{ item: NavItem }> = ({ item }) => {
                                     {item.tabs.map((tab) => {
                                         if (tab.id !== activeTab) return null;
                                         return (
-                                            <div key={tab.id} className="grid grid-cols-3 gap-8 animate-in fade-in duration-200">
+                                            <div key={tab.id} className="grid grid-cols-3 gap-8">
                                                 {tab.columns.map((col, idx) => (
                                                     <div key={idx} className="flex flex-col gap-3">
                                                         <div className="flex items-center gap-2 mb-1">
@@ -639,13 +694,39 @@ const MegaMenuDropdown: FC<{ item: NavItem }> = ({ item }) => {
                                                         </div>
                                                         <div className="flex flex-col gap-2">
                                                             {col.items.map((subItem, subIdx) => (
-                                                                <Link
-                                                                    key={subIdx}
-                                                                    href={subItem.href}
-                                                                    className="text-sm text-gray-600 hover:text-teal-600 hover:underline transition-colors leading-tight"
-                                                                >
-                                                                    {subItem.name}
-                                                                </Link>
+                                                                <div key={subIdx} className="relative group/nested">
+                                                                    <Link
+                                                                        href={subItem.href}
+                                                                        className="flex items-center justify-between text-sm text-gray-600 hover:text-teal-600 hover:underline transition-colors py-1"
+                                                                    >
+                                                                        {subItem.name}
+                                                                        {subItem.subItems && <ChevronRight className="w-3 h-3 ml-2" />}
+                                                                    </Link>
+
+                                                                    {/* Nested List on Hover */}
+                                                                    {subItem.subItems && (
+                                                                        <div className="absolute left-full top-0 ml-2 w-96 bg-white border border-gray-100 shadow-2xl rounded-xl p-4 invisible group-hover/nested:visible opacity-0 group-hover/nested:opacity-100 transition-all duration-200 z-50">
+                                                                            {/* Header to help with context (Optional) */}
+                                                                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 border-b border-gray-50 pb-2">
+                                                                                Select Amount
+                                                                            </p>
+
+                                                                            {/* Grid Layout: Splitting into 2 columns */}
+                                                                            <div className="grid grid-cols-2 ">
+                                                                                {subItem.subItems.map((nested: SubLink, nIdx: number) => (
+                                                                                    <Link
+                                                                                        key={nIdx}
+                                                                                        href={nested.href}
+                                                                                        className="text-[13px] text-gray-600 hover:text-teal-600 hover:bg-teal-50  rounded-lg transition-all flex items-center gap-2 whitespace-nowrap"
+                                                                                    >
+                                                                                        <div className="w-1 h-1 rounded-full bg-teal-400" />
+                                                                                        {nested.name}
+                                                                                    </Link>
+                                                                                ))}
+                                                                            </div>
+                                                                        </div>
+                                                                    )}
+                                                                </div>
                                                             ))}
                                                         </div>
                                                     </div>
@@ -844,50 +925,50 @@ const Navbar: FC = () => {
                                 {/* User Profile Button (Mobile) */}
                                 {isLoggedIn ? (
                                     <div className="relative">
-                                        <button 
-                                            onClick={() => setShowMobileUserMenu(!showMobileUserMenu)} 
+                                        <button
+                                            onClick={() => setShowMobileUserMenu(!showMobileUserMenu)}
                                             className="flex items-center justify-center w-8 h-8 rounded-full bg-teal-100 text-teal-700 font-bold text-xs border border-teal-200"
                                         >
                                             {userName.charAt(0).toUpperCase()}
                                         </button>
-                                        
+
                                         {/* Mobile User Dropdown Menu */}
                                         {showMobileUserMenu && (
                                             <>
-                                                <div 
-                                                    className="fixed inset-0 z-40" 
+                                                <div
+                                                    className="fixed inset-0 z-40"
                                                     onClick={() => setShowMobileUserMenu(false)}
                                                 />
                                                 <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl z-50 border border-gray-200 overflow-hidden">
                                                     {(userRole === 'ADMIN' || userRole === 'MODERATOR') && (
-                                                        <button 
-                                                            onClick={() => { router.push('/dashboard'); setShowMobileUserMenu(false); }} 
+                                                        <button
+                                                            onClick={() => { router.push('/dashboard'); setShowMobileUserMenu(false); }}
                                                             className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-700"
                                                         >
                                                             <Shield className="w-4 h-4" /> Admin Dashboard
                                                         </button>
                                                     )}
-                                                    <button 
-                                                        onClick={() => { router.push('/user/dashboard'); setShowMobileUserMenu(false); }} 
+                                                    <button
+                                                        onClick={() => { router.push('/user/dashboard'); setShowMobileUserMenu(false); }}
                                                         className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-teal-50 hover:text-teal-700"
                                                     >
                                                         <LayoutDashboard className="w-4 h-4" /> User Dashboard
                                                     </button>
-                                                    <button 
-                                                        onClick={() => { router.push('/user/profile'); setShowMobileUserMenu(false); }} 
+                                                    <button
+                                                        onClick={() => { router.push('/user/profile'); setShowMobileUserMenu(false); }}
                                                         className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-teal-50 hover:text-teal-700"
                                                     >
                                                         <UserIcon className="w-4 h-4" /> My Profile
                                                     </button>
-                                                    <button 
-                                                        onClick={() => { router.push('/user/applications'); setShowMobileUserMenu(false); }} 
+                                                    <button
+                                                        onClick={() => { router.push('/user/applications'); setShowMobileUserMenu(false); }}
                                                         className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-teal-50 hover:text-teal-700"
                                                     >
                                                         <FileText className="w-4 h-4" /> My Applications
                                                     </button>
                                                     <div className="border-t border-gray-100"></div>
-                                                    <button 
-                                                        onClick={() => { handleLogout(); setShowMobileUserMenu(false); }} 
+                                                    <button
+                                                        onClick={() => { handleLogout(); setShowMobileUserMenu(false); }}
                                                         className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50"
                                                     >
                                                         <LogOut className="w-4 h-4" /> Logout
@@ -899,7 +980,7 @@ const Navbar: FC = () => {
                                 ) : (
                                     <button onClick={() => router.push('/login')} className="flex items-center gap-1 px-2 py-1.5 border border-teal-600 rounded-md text-teal-600 hover:bg-teal-50 transition-colors">
                                         <UserIcon className="w-5 h-5" />
-                                        <ChevronDown className="w-3 h-3" />
+                                        <ChevronDown className=" w-3 h-3" />
                                     </button>
                                 )}
                             </div>

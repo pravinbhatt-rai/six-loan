@@ -148,7 +148,7 @@ export default function DebitInfoPage() {
               </div>
 
               {/* Floating Alert 2: Bottom Right */}
-              <div className="absolute -right-4 bottom-20 z-20 bg-white/95 backdrop-blur-sm p-4 rounded-2xl shadow-xl border border-slate-100 animate-float w-[240px]">
+              <div className="absolute -right-4 bottom-20 z-20 bg-white/95 backdrop-blur-sm p-4 rounded-2xl shadow-xl border border-slate-100 animate-float w-60">
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="p-1.5 bg-teal-100 rounded-lg text-teal-600">
@@ -162,7 +162,7 @@ export default function DebitInfoPage() {
                   </div>
 
                   <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
-                    <div className="bg-teal-500 h-full w-[100%] rounded-full"></div>
+                    <div className="bg-teal-500 h-full w-full rounded-full"></div>
                   </div>
                   <div className="flex justify-between text-[10px] font-medium text-slate-400">
                     <span>Live Protection</span>

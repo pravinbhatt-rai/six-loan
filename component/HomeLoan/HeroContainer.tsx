@@ -286,6 +286,229 @@ export const HERO_CONTENT_DATA: HeroData[] = [
       "Stamp Duty Concession",
       "Simplified Process"
     ]
+  },
+  // ==========================================
+  // NEW BIKE LOANS (50K to 20L)
+  // ==========================================
+  {
+    id: 'new-bike-loan-50k',
+    badgeText: 'Instant Approval',
+    title: 'New Bike Loan for 50 Thousand',
+    highlightText: '50 Thousand',
+    description: 'Finance your new commuter bike or scooter with minimal documentation. Get on the road with pocket-friendly monthly EMIs.',
+    primaryCtaText: 'Apply Now',
+    secondaryCtaText: 'EMI Calculator',
+    amountDisplay: '50,000',
+    imageUrl: "https://images.unsplash.com/photo-1558981403-c5f91cbba527?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["100% On-Road Funding", "No Hidden Charges", "Instant Disbursal"]
+  },
+  {
+    id: 'new-bike-loan-1-lakh',
+    badgeText: 'Best Seller',
+    title: 'New Bike Loan for 1 Lakh',
+    highlightText: '1 Lakh',
+    description: 'Perfect for premium 150cc-200cc motorcycles. Enjoy competitive interest rates and flexible repayment tenures up to 5 years.',
+    primaryCtaText: 'Check Eligibility',
+    secondaryCtaText: 'View Rates',
+    amountDisplay: '1,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Low Processing Fee", "Flexible Tenure", "Minimal Paperwork"]
+  },
+  {
+    id: 'new-bike-loan-2-lakh',
+    badgeText: 'Performance Finance',
+    title: 'New Bike Loan for 2 Lakh',
+    highlightText: '2 Lakh',
+    description: 'Upgrade to a high-performance machine. Get customized loan plans for sports bikes and entry-level cruisers.',
+    primaryCtaText: 'Apply Now',
+    secondaryCtaText: 'Compare Banks',
+    amountDisplay: '2,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1614165933388-9b552e870e7b?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Special Interest Rates", "Quick Approval", "90% LTV Ratio"]
+  },
+  {
+    id: 'new-bike-loan-3-lakh',
+    badgeText: 'Premium Choice',
+    title: 'New Bike Loan for 3 Lakh',
+    highlightText: '3 Lakh',
+    description: 'Own that premium cruiser or adventure tourer. Specialized relationship managers to assist your application and documentation.',
+    primaryCtaText: 'Get Quote',
+    secondaryCtaText: 'View EMI Plan',
+    amountDisplay: '3,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Priority Processing", "Extended Tenure", "Easy Repayment"]
+  },
+  {
+    id: 'new-bike-loan-4-lakh',
+    badgeText: 'Touring Finance',
+    title: 'New Bike Loan for 4 Lakh',
+    highlightText: '4 Lakh',
+    description: 'Finance your mid-weight touring motorcycle. Get attractive ROI and insurance funding included in the loan.',
+    primaryCtaText: 'Apply Now',
+    secondaryCtaText: 'Check Criteria',
+    amountDisplay: '4,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1449491026613-524df48dc97d?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Doorstep Service", "Online Documentation", "Zero Prepayment Fee"]
+  },
+  {
+    id: 'new-bike-loan-5-lakh',
+    badgeText: 'Luxury Biking',
+    title: 'New Bike Loan for 5 Lakh',
+    highlightText: '5 Lakh',
+    description: 'Ready for the big leagues? Secure financing for middle-weight motorcycles with luxury segment perks and faster processing.',
+    primaryCtaText: 'Check Offers',
+    secondaryCtaText: 'Loan Details',
+    amountDisplay: '5,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1531327431556-7a5bb6ee048b?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Dedicated Support", "Customized EMI", "Fast-track Approval"]
+  },
+  {
+    id: 'new-bike-loan-10-lakh',
+    badgeText: 'Elite Finance',
+    title: 'New Bike Loan for 10 Lakh',
+    highlightText: '10 Lakh',
+    description: 'Top-tier financing for elite superbikes. Enjoy the lowest interest rates in the luxury biking category with flexible collateral.',
+    primaryCtaText: 'Get Started',
+    secondaryCtaText: 'Contact Expert',
+    amountDisplay: '10,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Premium ROI", "Minimal Documentation", "High Funding Value"]
+  },
+  {
+    id: 'new-bike-loan-15-lakh',
+    badgeText: 'Superbike Elite',
+    title: 'New Bike Loan for 15 Lakh',
+    highlightText: '15 Lakh',
+    description: 'For the ultimate riding experience. Bespoke loan solutions for high-end super sports and heavy-duty touring bikes.',
+    primaryCtaText: 'Apply Online',
+    secondaryCtaText: 'Consult Us',
+    amountDisplay: '15,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1622185135505-2d795003994a?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Bespoke Plans", "VVIP Processing", "Flexible Collateral"]
+  },
+  {
+    id: 'new-bike-loan-20-lakh',
+    badgeText: 'Ultimate Finance',
+    title: 'New Bike Loan for 20 Lakh',
+    highlightText: '20 Lakh',
+    description: 'Luxury without limits. Financing for flagship flagship motorcycles with premium banking benefits and low interest.',
+    primaryCtaText: 'Apply Now',
+    secondaryCtaText: 'View Rates',
+    amountDisplay: '20,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1525160354320-d8e92641c563?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Lowest ROI", "Digital Process", "Personal Manager"]
+  },
+
+  // ==========================================
+  // USED BIKE LOANS (50K to 20L)
+  // ==========================================
+  {
+    id: 'used-bike-loan-50k',
+    badgeText: 'Quick Pre-Owned',
+    title: 'Used Bike Loan for 50 Thousand',
+    highlightText: '50 Thousand',
+    description: 'Buy a reliable pre-owned bike today. Simple valuation process and quick loan disbursal for certified used bikes.',
+    primaryCtaText: 'Check Eligibility',
+    secondaryCtaText: 'Valuation Guide',
+    amountDisplay: '50,000',
+    imageUrl: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Free Valuation", "Quick RC Transfer", "Low EMI"]
+  },
+  {
+    id: 'used-bike-loan-1-lakh',
+    badgeText: 'Pre-Owned Deal',
+    title: 'Used Bike Loan for 1 Lakh',
+    highlightText: '1 Lakh',
+    description: 'Get financing for high-quality used motorcycles. We handle the paperwork and RC transfer while you enjoy the ride.',
+    primaryCtaText: 'Apply Now',
+    secondaryCtaText: 'How it Works',
+    amountDisplay: '1,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1558981403-c5f91cbba527?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Certified Bikes", "Paperless Process", "Loan up to 80%"]
+  },
+  {
+    id: 'used-bike-loan-2-lakh',
+    badgeText: 'Certified Used',
+    title: 'Used Bike Loan for 2 Lakh',
+    highlightText: '2 Lakh',
+    description: 'Finance a premium pre-owned machine. Competitive interest rates even for older models with verified history.',
+    primaryCtaText: 'Check Offers',
+    secondaryCtaText: 'View EMI',
+    amountDisplay: '2,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Legal Verification", "Flexible Tenure", "Fast Disbursal"]
+  },
+  {
+    id: 'used-bike-loan-3-lakh',
+    badgeText: 'Pre-Owned Premium',
+    title: 'Used Bike Loan for 3 Lakh',
+    highlightText: '3 Lakh',
+    description: 'Own a flagship used cruiser or adventure bike. Specialized valuation to ensure you pay the right price.',
+    primaryCtaText: 'Apply Now',
+    secondaryCtaText: 'Valuation Report',
+    amountDisplay: '3,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Expert Valuation", "Quick Paperwork", "Higher Loan Amount"]
+  },
+  {
+    id: 'used-bike-loan-4-lakh',
+    badgeText: 'Second Hand Luxury',
+    title: 'Used Bike Loan for 4 Lakh',
+    highlightText: '4 Lakh',
+    description: 'Finance your dream pre-owned superbike. Hassle-free hypothecation and ownership transfer assistance.',
+    primaryCtaText: 'Check Eligibility',
+    secondaryCtaText: 'Check Interest',
+    amountDisplay: '4,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1449491026613-524df48dc97d?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["RC Transfer Support", "Verified Seller Check", "Custom Plans"]
+  },
+  {
+    id: 'used-bike-loan-5-lakh',
+    badgeText: 'Used Superbike',
+    title: 'Used Bike Loan for 5 Lakh',
+    highlightText: '5 Lakh',
+    description: 'Ready for a high-end used motorcycle? Secure financing with specialized legal and mechanical verification.',
+    primaryCtaText: 'Get Quote',
+    secondaryCtaText: 'Legal Check',
+    amountDisplay: '5,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Mechanical Audit", "Title Clearance", "Competitive ROI"]
+  },
+  {
+    id: 'used-bike-loan-10-lakh',
+    badgeText: 'Elite Pre-Owned',
+    title: 'Used Bike Loan for 10 Lakh',
+    highlightText: '10 Lakh',
+    description: 'Financing for luxury pre-owned motorcycles. Professional appraisal and transparent loan-to-value assessment.',
+    primaryCtaText: 'Apply Now',
+    secondaryCtaText: 'Book Appraisal',
+    amountDisplay: '10,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Transparent Pricing", "Priority Support", "Fast Disbursement"]
+  },
+  {
+    id: 'used-bike-loan-15-lakh',
+    badgeText: 'VVIP Pre-Owned',
+    title: 'Used Bike Loan for 15 Lakh',
+    highlightText: '15 Lakh',
+    description: 'Bespoke loan solutions for high-value used superbikes. Dedicated concierge for all ownership and loan formalities.',
+    primaryCtaText: 'Apply Online',
+    secondaryCtaText: 'Contact Manager',
+    amountDisplay: '15,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Concierge Service", "Digital Process", "Insurance Assistance"]
+  },
+  {
+    id: 'used-bike-loan-20-lakh',
+    badgeText: 'Ultimate Used',
+    title: 'Used Bike Loan for 20 Lakh',
+    highlightText: '20 Lakh',
+    description: 'The highest tier of pre-owned motorcycle financing. For collectors and enthusiasts seeking premium luxury bikes.',
+    primaryCtaText: 'Check Offers',
+    secondaryCtaText: 'Expert Advice',
+    amountDisplay: '20,00,000',
+    imageUrl: "https://images.unsplash.com/photo-1525160354320-d8e92641c563?auto=format&fit=crop&q=80&w=2070",
+    benefits: ["Lowest Pre-Owned ROI", "Personal Advisor", "No Hidden Fees"]
   }
 ];
 
