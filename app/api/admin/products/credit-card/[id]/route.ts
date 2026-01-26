@@ -191,7 +191,6 @@ export async function PUT(
         name,
         slug,
         bankName,
-        bankLogoUrl: bankLogoUrl || null,
         imageUrl: imageUrl || '',
         videoUrl: videoUrl || null,
         termsConditionsUrl: termsConditionsUrl || null,

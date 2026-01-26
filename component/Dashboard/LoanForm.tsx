@@ -19,6 +19,17 @@ const capitalizeWords = (str: string): string => {
     .join(' ');
 };
 
+const offerTypeOptions = [
+  'Cashback',
+  'Reward Points',
+  'Discount',
+  'Waiver',
+  'Bonus',
+  'Interest Free',
+  'Low Interest',
+  'Free Service'
+];
+
 // Helper function to format numbers in Indian numbering system (xx,xx,xxx)
 const formatIndianNumber = (num: string | number): string => {
   if (!num) return '';
@@ -70,19 +81,66 @@ const LoanForm: React.FC<LoanFormProps> = ({ categoryId, onSubmit, initialData, 
     processTypeValue: initialData?.processTypeValue || '',
     disbursalTimeHours: initialData?.disbursalTimeHours || 0,
     keyStatement: initialData?.keyStatement || '',
-    // New filter fields
-    loanType: initialData?.loanType || '',
-    loanSubType: initialData?.loanSubType || '',
-    amountRange: initialData?.amountRange || '',
-    eligibleFor: initialData?.eligibleFor || '',
-    loanPurpose: initialData?.loanPurpose || '',
-    scheme: initialData?.scheme || '',
-    vehicleType: initialData?.vehicleType || '',
+    // New filter fields - converted from comma-separated strings to arrays for editing
+    loanType: Array.isArray(initialData?.loanType) 
+      ? initialData.loanType 
+      : (initialData?.loanType ? initialData.loanType.split(',').filter(Boolean) : []),
+    loanSubType: Array.isArray(initialData?.loanSubType) 
+      ? initialData.loanSubType 
+      : (initialData?.loanSubType ? initialData.loanSubType.split(',').filter(Boolean) : []),
+    amountRange: Array.isArray(initialData?.amountRange) 
+      ? initialData.amountRange 
+      : (initialData?.amountRange ? initialData.amountRange.split(',').filter(Boolean) : []),
+    eligibleFor: Array.isArray(initialData?.eligibleFor) 
+      ? initialData.eligibleFor 
+      : (initialData?.eligibleFor ? initialData.eligibleFor.split(',').filter(Boolean) : []),
+    loanPurpose: Array.isArray(initialData?.loanPurpose) 
+      ? initialData.loanPurpose 
+      : (initialData?.loanPurpose ? initialData.loanPurpose.split(',').filter(Boolean) : []),
+    scheme: Array.isArray(initialData?.scheme) 
+      ? initialData.scheme 
+      : (initialData?.scheme ? initialData.scheme.split(',').filter(Boolean) : []),
+    vehicleType: Array.isArray(initialData?.vehicleType) 
+      ? initialData.vehicleType 
+      : (initialData?.vehicleType ? initialData.vehicleType.split(',').filter(Boolean) : []),
     bullets: initialData?.bullets?.length > 0 ? initialData.bullets : [{ text: '', displayOrder: 1 }],
     summaryCharges: initialData?.summaryCharges?.length > 0 ? initialData.summaryCharges : [{ label: '', mainText: '', subText: '', displayOrder: 1 }],
     requiredDocuments: initialData?.requiredDocuments?.length > 0 ? initialData.requiredDocuments : [{ title: '', description: '', displayOrder: 1 }],
     processSteps: initialData?.processSteps?.length > 0 ? initialData.processSteps : [{ title: '', description: '', displayOrder: 1 }]
   });
+
+  const [offers, setOffers] = useState<Array<{
+    merchant: string;
+    offerType: string;
+    title: string;
+    description: string;
+    offerValue: string;
+    validFrom: string;
+    validTill: string;
+    isActive: boolean;
+  }>>(
+    initialData?.offers?.length > 0 
+      ? initialData.offers.map((offer: any, index: number) => ({
+          merchant: offer.merchant || '',
+          offerType: offer.offerType || 'Processing Fee Waiver',
+          title: offer.title || '',
+          description: offer.description || '',
+          offerValue: offer.offerValue || '',
+          validFrom: offer.validFrom ? new Date(offer.validFrom).toISOString().split('T')[0] : '',
+          validTill: offer.validTill ? new Date(offer.validTill).toISOString().split('T')[0] : '',
+          isActive: offer.isActive !== false
+        }))
+      : [{
+          merchant: '',
+          offerType: 'Processing Fee Waiver',
+          title: '',
+          description: '',
+          offerValue: '',
+          validFrom: '',
+          validTill: '',
+          isActive: true
+        }]
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -112,6 +170,21 @@ const LoanForm: React.FC<LoanFormProps> = ({ categoryId, onSubmit, initialData, 
     setFormData({ ...formData, [name]: formattedValue });
   };
 
+  const handleMultiSelectChange = (fieldName: string, value: string, checked: boolean) => {
+    const currentValues = Array.isArray(formData[fieldName as keyof typeof formData]) 
+      ? formData[fieldName as keyof typeof formData] as string[]
+      : [];
+    let newValues: string[];
+
+    if (checked) {
+      newValues = [...currentValues, value];
+    } else {
+      newValues = currentValues.filter(v => v !== value);
+    }
+
+    setFormData({ ...formData, [fieldName]: newValues });
+  };
+
   const handleImageChange = (url: string) => {
     setFormData({ ...formData, bankLogoUrl: url });
   };
@@ -128,10 +201,46 @@ const LoanForm: React.FC<LoanFormProps> = ({ categoryId, onSubmit, initialData, 
     setFormData({ ...formData, [field]: updatedArray });
   };
 
+  const handleOfferChange = (index: number, field: string, value: string | number) => {
+    const updatedOffers = [...offers];
+    updatedOffers[index] = { ...updatedOffers[index], [field]: value };
+    setOffers(updatedOffers);
+  };
+
+  const addOffer = () => {
+    setOffers([...offers, {
+      offerType: '',
+      merchant: '',
+      description: '',
+      validFrom: '',
+      validTill: '',
+      offerValue: '',
+      isActive: true,
+      title: ''
+    }]);
+  };
+
+  const removeOffer = (index: number) => {
+    const updatedOffers = offers.filter((_, i) => i !== index);
+    setOffers(updatedOffers);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const payload = { ...formData, categoryId };
+    // Convert arrays to comma-separated strings for database storage
+    const payload = {
+      ...formData,
+      categoryId,
+      offers,
+      loanType: formData.loanType.join(','),
+      loanSubType: formData.loanSubType.join(','),
+      amountRange: formData.amountRange.join(','),
+      eligibleFor: formData.eligibleFor.join(','),
+      loanPurpose: formData.loanPurpose.join(','),
+      scheme: formData.scheme.join(','),
+      vehicleType: formData.vehicleType.join(',')
+    };
 
     // If onSubmit is provided, use controlled mode
     if (onSubmit) {
@@ -260,108 +369,185 @@ const LoanForm: React.FC<LoanFormProps> = ({ categoryId, onSubmit, initialData, 
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Category (Loan Type)</label>
-            <select name="loanType" value={formData.loanType} onChange={handleChange} className="w-full p-2 border rounded-lg">
-              <option value="">Select Category</option>
-              <option value="personal">Personal Loan</option>
-              <option value="business">Business Loan</option>
-              <option value="home">Home Loan</option>
-              <option value="vehicle">Vehicle Loan</option>
-              <option value="education">Education Loan</option>
-              <option value="property">Loan Against Property</option>
-              <option value="security">Loan Against Security</option>
-              <option value="professional">Professional Loan</option>
-            </select>
-            <p className="text-xs text-gray-500 mt-1">Main category - must match the section you're creating this in</p>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Category (Loan Type) - Multiple Selection</label>
+            <div className="space-y-2 max-h-40 overflow-y-auto border rounded-lg p-3">
+              {[
+                { value: 'personal', label: 'Personal Loan' },
+                { value: 'business', label: 'Business Loan' },
+                { value: 'home', label: 'Home Loan' },
+                { value: 'vehicle', label: 'Vehicle Loan' },
+                { value: 'education', label: 'Education Loan' },
+                { value: 'property', label: 'Loan Against Property' },
+                { value: 'security', label: 'Loan Against Security' },
+                { value: 'professional', label: 'Professional Loan' }
+              ].map(option => (
+                <label key={option.value} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={formData.loanType.includes(option.value)}
+                    onChange={(e) => handleMultiSelectChange('loanType', option.value, e.target.checked)}
+                    className="mr-2"
+                  />
+                  {option.label}
+                </label>
+              ))}
+            </div>
+            <p className="text-xs text-gray-500 mt-1">Main categories - select all that apply</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Loan Sub-Type (Page Filter)</label>
-            <select name="loanSubType" value={formData.loanSubType} onChange={handleChange} className="w-full p-2 border rounded-lg">
-              <option value="">Select Sub-Type</option>
-              <option value="preApproved">Pre-Approved</option>
-              <option value="interestRates">Interest Rates</option>
-              <option value="lowCibil">Low CIBIL</option>
-              <option value="balanceTransfer">Balance Transfer</option>
-            </select>
-            <p className="text-xs text-gray-500 mt-1">Filter for specific pages - e.g., /personalLoan/preApproved shows only preApproved loans</p>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Loan Sub-Type (Page Filter) - Multiple Selection</label>
+            <div className="space-y-2 max-h-40 overflow-y-auto border rounded-lg p-3">
+              {[
+                { value: 'preApproved', label: 'Pre-Approved' },
+                { value: 'interestRates', label: 'Interest Rates' },
+                { value: 'lowCibil', label: 'Low CIBIL' },
+                { value: 'balanceTransfer', label: 'Balance Transfer' }
+              ].map(option => (
+                <label key={option.value} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={formData.loanSubType.includes(option.value)}
+                    onChange={(e) => handleMultiSelectChange('loanSubType', option.value, e.target.checked)}
+                    className="mr-2"
+                  />
+                  {option.label}
+                </label>
+              ))}
+            </div>
+            <p className="text-xs text-gray-500 mt-1">Filter for specific pages - select multiple</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Amount Range</label>
-            <select name="amountRange" value={formData.amountRange} onChange={handleChange} className="w-full p-2 border rounded-lg">
-              <option value="">Select Amount Range</option>
-              <option value="5-lakh">₹5 Lakh</option>
-              <option value="10-lakh">₹10 Lakh</option>
-              <option value="15-lakh">₹15 Lakh</option>
-              <option value="20-lakh">₹20 Lakh</option>
-              <option value="30-lakh">₹30 Lakh</option>
-              <option value="40-lakh">₹40 Lakh</option>
-              <option value="50-lakh">₹50 Lakh</option>
-              <option value="60-lakh">₹60 Lakh</option>
-            </select>
-            <p className="text-xs text-gray-500 mt-1">Maximum loan amount offered</p>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Amount Range - Multiple Selection</label>
+            <div className="space-y-2 max-h-40 overflow-y-auto border rounded-lg p-3">
+              {[
+                { value: '5-lakh', label: '₹5 Lakh' },
+                { value: '10-lakh', label: '₹10 Lakh' },
+                { value: '15-lakh', label: '₹15 Lakh' },
+                { value: '20-lakh', label: '₹20 Lakh' },
+                { value: '30-lakh', label: '₹30 Lakh' },
+                { value: '40-lakh', label: '₹40 Lakh' },
+                { value: '50-lakh', label: '₹50 Lakh' },
+                { value: '60-lakh', label: '₹60 Lakh' }
+              ].map(option => (
+                <label key={option.value} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={formData.amountRange.includes(option.value)}
+                    onChange={(e) => handleMultiSelectChange('amountRange', option.value, e.target.checked)}
+                    className="mr-2"
+                  />
+                  {option.label}
+                </label>
+              ))}
+            </div>
+            <p className="text-xs text-gray-500 mt-1">Maximum loan amounts offered - select multiple</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Eligible For</label>
-            <select name="eligibleFor" value={formData.eligibleFor} onChange={handleChange} className="w-full p-2 border rounded-lg">
-              <option value="">Select Eligibility</option>
-              <option value="salaried">Salaried</option>
-              <option value="self-employed">Self-Employed</option>
-              <option value="seniors">Senior Citizens</option>
-              <option value="students">Students</option>
-              <option value="doctors">Doctors</option>
-              <option value="women">Women</option>
-            </select>
-            <p className="text-xs text-gray-500 mt-1">Who can apply for this loan</p>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Eligible For - Multiple Selection</label>
+            <div className="space-y-2 max-h-40 overflow-y-auto border rounded-lg p-3">
+              {[
+                { value: 'salaried', label: 'Salaried' },
+                { value: 'self-employed', label: 'Self-Employed' },
+                { value: 'seniors', label: 'Senior Citizens' },
+                { value: 'students', label: 'Students' },
+                { value: 'doctors', label: 'Doctors' },
+                { value: 'women', label: 'Women' }
+              ].map(option => (
+                <label key={option.value} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={formData.eligibleFor.includes(option.value)}
+                    onChange={(e) => handleMultiSelectChange('eligibleFor', option.value, e.target.checked)}
+                    className="mr-2"
+                  />
+                  {option.label}
+                </label>
+              ))}
+            </div>
+            <p className="text-xs text-gray-500 mt-1">Who can apply - select multiple</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Loan Purpose</label>
-            <select name="loanPurpose" value={formData.loanPurpose} onChange={handleChange} className="w-full p-2 border rounded-lg">
-              <option value="">Select Purpose</option>
-              <option value="medical">Medical Emergency</option>
-              <option value="travel">Travel</option>
-              <option value="wedding">Wedding</option>
-              <option value="consolidation">Debt Consolidation</option>
-              <option value="overdraft">Overdraft</option>
-              <option value="flexi">Flexi Loan</option>
-              <option value="short-term">Short-Term</option>
-              <option value="term">Term Loan</option>
-            </select>
-            <p className="text-xs text-gray-500 mt-1">What the loan can be used for</p>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Loan Purpose - Multiple Selection</label>
+            <div className="space-y-2 max-h-40 overflow-y-auto border rounded-lg p-3">
+              {[
+                { value: 'medical', label: 'Medical Emergency' },
+                { value: 'travel', label: 'Travel' },
+                { value: 'wedding', label: 'Wedding' },
+                { value: 'consolidation', label: 'Debt Consolidation' },
+                { value: 'overdraft', label: 'Overdraft' },
+                { value: 'flexi', label: 'Flexi Loan' },
+                { value: 'short-term', label: 'Short-Term' },
+                { value: 'term', label: 'Term Loan' }
+              ].map(option => (
+                <label key={option.value} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={formData.loanPurpose.includes(option.value)}
+                    onChange={(e) => handleMultiSelectChange('loanPurpose', option.value, e.target.checked)}
+                    className="mr-2"
+                  />
+                  {option.label}
+                </label>
+              ))}
+            </div>
+            <p className="text-xs text-gray-500 mt-1">What the loan can be used for - select multiple</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Scheme (For Business Loans)</label>
-            <select name="scheme" value={formData.scheme} onChange={handleChange} className="w-full p-2 border rounded-lg">
-              <option value="">Select Scheme</option>
-              <option value="dairy">Dairy Farming</option>
-              <option value="small">Small Business</option>
-              <option value="goat">Goat Farming</option>
-              <option value="startup">Startup</option>
-              <option value="poultry">Poultry</option>
-              <option value="renovation">Home Renovation</option>
-              <option value="plot">Plot Purchase</option>
-              <option value="top-up">Top-up Loan</option>
-              <option value="construction">Construction</option>
-              <option value="nri">NRI</option>
-              <option value="extension">Extension</option>
-            </select>
-            <p className="text-xs text-gray-500 mt-1">Specific scheme or program</p>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Scheme (For Business Loans) - Multiple Selection</label>
+            <div className="space-y-2 max-h-40 overflow-y-auto border rounded-lg p-3">
+              {[
+                { value: 'dairy', label: 'Dairy Farming' },
+                { value: 'small', label: 'Small Business' },
+                { value: 'goat', label: 'Goat Farming' },
+                { value: 'startup', label: 'Startup' },
+                { value: 'poultry', label: 'Poultry' },
+                { value: 'renovation', label: 'Home Renovation' },
+                { value: 'plot', label: 'Plot Purchase' },
+                { value: 'top-up', label: 'Top-up Loan' },
+                { value: 'construction', label: 'Construction' },
+                { value: 'nri', label: 'NRI' },
+                { value: 'extension', label: 'Extension' }
+              ].map(option => (
+                <label key={option.value} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={formData.scheme.includes(option.value)}
+                    onChange={(e) => handleMultiSelectChange('scheme', option.value, e.target.checked)}
+                    className="mr-2"
+                  />
+                  {option.label}
+                </label>
+              ))}
+            </div>
+            <p className="text-xs text-gray-500 mt-1">Specific schemes or programs - select multiple</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Vehicle Type (For Vehicle Loans)</label>
-            <select name="vehicleType" value={formData.vehicleType} onChange={handleChange} className="w-full p-2 border rounded-lg">
-              <option value="">Select Vehicle Type</option>
-              <option value="new-bike">New Bike</option>
-              <option value="used-bike">Used Bike</option>
-              <option value="new-car">New Car</option>
-              <option value="used-car">Used Car</option>
-            </select>
-            <p className="text-xs text-gray-500 mt-1">Type of vehicle to be financed</p>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Vehicle Type (For Vehicle Loans) - Multiple Selection</label>
+            <div className="space-y-2 max-h-40 overflow-y-auto border rounded-lg p-3">
+              {[
+                { value: 'new-bike', label: 'New Bike' },
+                { value: 'used-bike', label: 'Used Bike' },
+                { value: 'new-car', label: 'New Car' },
+                { value: 'used-car', label: 'Used Car' }
+              ].map(option => (
+                <label key={option.value} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={formData.vehicleType.includes(option.value)}
+                    onChange={(e) => handleMultiSelectChange('vehicleType', option.value, e.target.checked)}
+                    className="mr-2"
+                  />
+                  {option.label}
+                </label>
+              ))}
+            </div>
+            <p className="text-xs text-gray-500 mt-1">Types of vehicles to be financed - select multiple</p>
           </div>
         </div>
       </div>
@@ -418,6 +604,85 @@ const LoanForm: React.FC<LoanFormProps> = ({ categoryId, onSubmit, initialData, 
           </div>
         ))}
         <button type="button" onClick={() => addArrayItem('processSteps', { title: '', description: '' })} className="text-sm text-blue-600 hover:underline">+ Add Step</button>
+      </div>
+
+      <div className="border-t pt-4">
+        <h3 className="font-medium text-gray-800 mb-2">Offers</h3>
+        {offers.map((offer, index) => (
+          <div key={index} className="border rounded-lg p-4 mb-4 bg-gray-50">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <select
+                value={offer.offerType}
+                onChange={(e) => handleOfferChange(index, 'offerType', e.target.value)}
+                className="p-2 border rounded-lg capitalize"
+                
+              >
+                <option value="">Select Offer Type</option>
+                {offerTypeOptions.map(type => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
+              </select>
+              <input
+                type="text"
+                placeholder="Merchant Name"
+                value={offer.merchant}
+                onChange={(e) => handleOfferChange(index, 'merchant', e.target.value)}
+                className="p-2 border rounded-lg capitalize"
+                
+              />
+            </div>
+            <textarea
+              placeholder="Offer Description"
+              value={offer.description}
+              onChange={(e) => handleOfferChange(index, 'description', e.target.value)}
+              className="w-full p-2 border rounded-lg mb-4 capitalize"
+              rows={3}
+              
+            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <input
+                type="date"
+                placeholder="Valid From"
+                value={offer.validFrom}
+                onChange={(e) => handleOfferChange(index, 'validFrom', e.target.value)}
+                className="p-2 border rounded-lg"
+                
+              />
+              <input
+                type="date"
+                placeholder="Valid Till"
+                value={offer.validTill}
+                onChange={(e) => handleOfferChange(index, 'validTill', e.target.value)}
+                className="p-2 border rounded-lg"
+              
+              />
+            </div>
+            <input
+              type="text"
+              placeholder="Offer Value"
+              value={offer.offerValue}
+              onChange={(e) => handleOfferChange(index, 'offerValue', e.target.value)}
+              className="w-full p-2 border rounded-lg mb-4"
+              
+            />
+            <input
+              type="text"
+              placeholder="Title"
+              value={offer.title}
+              onChange={(e) => handleOfferChange(index, 'title', e.target.value)}
+              className="w-full p-2 border rounded-lg mb-4"
+              
+            />
+            <button
+              type="button"
+              onClick={() => removeOffer(index)}
+              className="text-red-600 hover:text-red-800 text-sm"
+            >
+              Remove Offer
+            </button>
+          </div>
+        ))}
+        <button type="button" onClick={addOffer} className="text-sm text-blue-600 hover:underline">+ Add Offer</button>
       </div>
 
       <div className="flex justify-end pt-6">

@@ -19,7 +19,6 @@ export default function DebitCardForm({ initialData, isEdit = false }: DebitCard
     slug: '',
     bankName: '',
     imageUrl: '',
-    bankLogoUrl: '',
     
     // Card Specifications
     accountType: '', // "Savings", "Salary", "Current", "" (optional)
@@ -92,6 +91,20 @@ export default function DebitCardForm({ initialData, isEdit = false }: DebitCard
     {featureName: '', description: '', displayOrder: 0}
   ]);
 
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(
+    initialData?.categories?.length > 0 ? initialData.categories.map((c: any) => c.slug) : []
+  );
+
+  // Hardcoded debit card categories
+  const [categoryOptions, setCategoryOptions] = useState<Array<{id: number, name: string, slug: string}>>([
+    { id: 10, name: 'Cashback Debit Cards', slug: 'debit-cashback' },
+    { id: 11, name: 'Zero Fee Cards', slug: 'zero-fee' },
+    { id: 12, name: 'International Cards', slug: 'debit-international' },
+    { id: 13, name: 'Lounge Access Cards', slug: 'lounge-access' }
+  ]);
+
+  // No need to fetch categories - using hardcoded values
+
   // Populate form with initial data for editing
   useEffect(() => {
     if (initialData && isEdit) {
@@ -100,7 +113,6 @@ export default function DebitCardForm({ initialData, isEdit = false }: DebitCard
         slug: initialData.slug || '',
         bankName: initialData.bankName || '',
         imageUrl: initialData.imageUrl || '',
-        bankLogoUrl: initialData.bankLogoUrl || '',
         accountType: initialData.accountType || '',
         cardNetwork: initialData.cardNetwork || 'Visa',
         cardType: initialData.cardType || '',
@@ -197,6 +209,16 @@ export default function DebitCardForm({ initialData, isEdit = false }: DebitCard
         .replace(/-+/g, '-')
         .trim();
       setFormData(prev => ({ ...prev, slug }));
+    }
+  };
+
+  const handleMultiSelectChange = (field: string, value: string, checked: boolean) => {
+    if (field === 'categories') {
+      if (checked) {
+        setSelectedCategories(prev => [...prev, value]);
+      } else {
+        setSelectedCategories(prev => prev.filter(slug => slug !== value));
+      }
     }
   };
 
@@ -321,7 +343,8 @@ export default function DebitCardForm({ initialData, isEdit = false }: DebitCard
           description: s.description,
           howToUse: s.howToUse || undefined,
           displayOrder: idx
-        }))
+        })),
+        categories: selectedCategories
       };
 
       // Remove undefined values from formData
@@ -462,6 +485,23 @@ export default function DebitCardForm({ initialData, isEdit = false }: DebitCard
         </div>
 
         <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">Card Categories (Select multiple)</label>
+          <div className="grid grid-cols-2 gap-2">
+            {categoryOptions.map((cat) => (
+              <label key={cat.slug} className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  checked={selectedCategories.includes(cat.slug)}
+                  onChange={(e) => handleMultiSelectChange('categories', cat.slug, e.target.checked)}
+                  className="rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+                />
+                <span className="text-sm text-gray-700">{cat.name}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">Key Statement</label>
           <textarea
             name="keyStatement"
@@ -499,24 +539,6 @@ export default function DebitCardForm({ initialData, isEdit = false }: DebitCard
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Bank Logo URL</label>
-            <div className="flex gap-2">
-              <input
-                type="url"
-                name="bankLogoUrl"
-                value={formData.bankLogoUrl}
-                onChange={handleChange}
-                className="flex-1 px-4 py-2 border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 rounded"
-                placeholder="https://example.com/bank-logo.png"
-              />
-             <ImageUpload
-  label="Card Image"
-  value={formData.bankLogoUrl}
-  onChange={(url) => setFormData(prev => ({ ...prev, bankLogoUrl: url }))}
- />
-            </div>
-          </div>
         </div>
       </div>
 

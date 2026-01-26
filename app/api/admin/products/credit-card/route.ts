@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
         bankName,
         // Required field - use imageUrl or cardImageUrl or default
         imageUrl: imageUrl || cardImageUrl || bankLogoUrl || '',
-        bankLogoUrl: bankLogoUrl || null,
+        // bankLogoUrl: bankLogoUrl || null,
         // Required fields with defaults - ensure annualFee is a string
         annualFee: annualFee ? String(annualFee) : 'Lifetime Free',
         cardNetwork: cardNetwork || 'Visa',

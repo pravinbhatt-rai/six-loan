@@ -124,7 +124,7 @@ export default function InternationalCreditCardsPage() {
 
             {/* Card Listing */}
             <CreditCardListSection 
-              categoryFilter="International"
+              categorySlug="international"
               maxCards={6}
               title="Top International Credit Cards"
               description="Best credit cards for international travel and overseas spending"

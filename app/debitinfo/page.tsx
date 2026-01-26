@@ -3,10 +3,15 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Search, Wallet, Gift, Shield, MapPin, TrendingUp, CreditCard, Award, Zap, ChevronRight } from 'lucide-react';
 import { API_BASE_URL } from '@/lib/api';
+import UniversalCardItem, { UniversalCardInfo } from '@/component/creditcards/UniversalCardItem';
+import DebitCardComparisonModal from '@/component/creditcards/DebitCardComparisonModal';
+import BottomComparisonBar from '@/component/creditcards/BottomComparisonBar';
 
 export default function DebitInfoPage() {
   const [debitCards, setDebitCards] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedCards, setSelectedCards] = useState<string[]>([]);
+  const [showComparison, setShowComparison] = useState(false);
 
   useEffect(() => {
     const fetchDebitCards = async () => {
@@ -24,6 +29,55 @@ export default function DebitInfoPage() {
     };
     fetchDebitCards();
   }, []);
+
+  const handleApply = (card: UniversalCardInfo) => {
+    // Redirect to the apply URL if available, otherwise to the card's detail page
+    if (card.applyUrl) {
+      window.open(card.applyUrl, '_blank');
+    } else {
+      window.location.href = `/debitcard/${card.slug}`;
+    }
+  };
+
+  const handleCompare = (cardId: string) => {
+    setSelectedCards(prev => {
+      if (prev.includes(cardId)) {
+        return prev.filter(id => id !== cardId);
+      } else if (prev.length < 2) {
+        return [...prev, cardId];
+      }
+      return prev;
+    });
+  };
+
+  const handleCompareNow = () => {
+    if (selectedCards.length >= 2) {
+      setShowComparison(true);
+    }
+  };
+
+  // Get selected card objects for display
+  const getSelectedCardObjects = (): UniversalCardInfo[] => {
+    return selectedCards.map(id => {
+      const card = debitCards.find(c => c.id === id);
+      return card ? mapToUniversalCardInfo(card) : null;
+    }).filter((card): card is UniversalCardInfo => card !== null);
+  };
+
+  const mapToUniversalCardInfo = (card: any): UniversalCardInfo => ({
+    id: card.id,
+    name: card.name,
+    imageUrl: card.imageUrl,
+    bankName: card.bankName,
+    annualFee: card.annualFee,
+    slug: card.slug,
+    rating: card.rating,
+    applyUrl: card.applyUrl,
+    keyFeatures: card.keyFeatures || [],
+    safetyFeatures: card.safetyFeatures || [],
+    offers: card.offers || [],
+    bulletPoints: card.bulletPoints || [],
+  });
 
   const categories = [
     {
@@ -227,39 +281,27 @@ export default function DebitInfoPage() {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {debitCards.map((card) => (
-                <Link href={`/debitcard/${card.slug}`} key={card.id}>
-                  <div className="bg-white border-2 border-gray-200 hover:border-teal-500 p-6 shadow-md hover:shadow-xl transition-all cursor-pointer group">
-                    {card.imageUrl ? (
-                      <img 
-                        src={card.imageUrl} 
-                        alt={card.name}
-                        className="w-full h-40 object-cover mb-4 group-hover:scale-105 transition-transform"
-                      />
-                    ) : (
-                      <div className="w-full h-40 bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center mb-4">
-                        <Wallet className="w-16 h-16 text-white" />
-                      </div>
-                    )}
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{card.name}</h3>
-                    <p className="text-gray-600 text-sm mb-4">{card.bankName}</p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="text-yellow-500">⭐</span>
-                        <span className="font-semibold text-gray-900">{card.rating?.toFixed(1)}</span>
-                      </div>
-                      {card.annualFee === 0 ? (
-                        <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-semibold">
-                          Zero Fee
-                        </span>
-                      ) : (
-                        <span className="text-sm text-gray-600">₹{card.annualFee} fee</span>
-                      )}
-                    </div>
-                  </div>
-                </Link>
+            <div className=" gap-x-4">
+              {debitCards.slice(0, 6).map((card) => (
+                <UniversalCardItem
+                  key={card.id}
+                  card={mapToUniversalCardInfo(card)}
+                  onApply={handleApply}
+                  onCompare={handleCompare}
+                  isSelected={selectedCards.includes(card.id)}
+                />
               ))}
+            </div>
+          )}
+
+          {selectedCards.length >= 2 && (
+            <div className="text-center mt-8">
+              <button
+                onClick={handleCompareNow}
+                className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 shadow-lg hover:shadow-xl transition-all font-semibold"
+              >
+                Compare Selected Cards ({selectedCards.length})
+              </button>
             </div>
           )}
 
@@ -307,6 +349,22 @@ export default function DebitInfoPage() {
           </div>
         </div>
       </div>
+
+      {/* Debit Card Comparison Modal */}
+      <DebitCardComparisonModal
+        isOpen={showComparison}
+        onClose={() => setShowComparison(false)}
+        selectedCards={debitCards.filter(card => selectedCards.includes(card.id)).map(mapToUniversalCardInfo)}
+        allCards={debitCards.map(mapToUniversalCardInfo)}
+        showAllCards={true}
+      />
+
+      {/* Bottom Comparison Bar */}
+      <BottomComparisonBar
+        selectedCards={getSelectedCardObjects()}
+        onCompare={handleCompareNow}
+        onRemoveCard={handleCompare}
+      />
     </div>
   );
 }

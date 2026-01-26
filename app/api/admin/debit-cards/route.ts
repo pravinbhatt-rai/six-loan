@@ -51,6 +51,7 @@ export async function POST(req: NextRequest) {
       keyFeatures = [],
       offers = [],
       safetyFeatures = [],
+      categories = [],
       ...cardData
     } = body;
     const processedCardData = {
@@ -94,6 +95,9 @@ export async function POST(req: NextRequest) {
             howToUse: feature.howToUse,
             displayOrder: index
           }))
+        },
+        categories: {
+          connect: categories.map((slug: string) => ({ slug }))
         }
       },
       include: {

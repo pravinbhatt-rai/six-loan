@@ -120,7 +120,7 @@ export default function TravelCreditCardsPage() {
 
             {/* Card Listing */}
             <CreditCardListSection 
-              categoryFilter="Travel"
+              categorySlug="travel"
               maxCards={6}
               title="Top Travel Credit Cards"
               description="Explore premium travel cards with air miles and exclusive benefits"

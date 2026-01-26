@@ -41,7 +41,7 @@ export async function GET(
             id: true,
             name: true,
             bankName: true,
-            bankLogoUrl: true,
+            // bankLogoUrl: true, // CreditCardProduct doesn't have bankLogoUrl
             annualFee: true,
             cardNetwork: true,
           },
@@ -54,6 +54,15 @@ export async function GET(
             logoUrl: true,
             minPremium: true,
             coverage: true,
+          },
+        },
+        debitCard: {
+          select: {
+            id: true,
+            name: true,
+            bankName: true,
+            annualFee: true,
+            cardNetwork: true,
           },
         },
       },
@@ -96,6 +105,8 @@ export async function GET(
           ? application.loan
           : application.type === 'CREDIT_CARD'
           ? application.card
+          : application.type === 'DEBIT_CARD'
+          ? application.debitCard
           : application.type === 'INSURANCE'
           ? application.insurance
           : null,

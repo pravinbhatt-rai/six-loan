@@ -19,6 +19,9 @@ export async function GET(
       include: {
         category: true,
         bullets: { orderBy: { displayOrder: 'asc' } },
+        summaryCharges: { orderBy: { displayOrder: 'asc' } },
+        requiredDocuments: { orderBy: { displayOrder: 'asc' } },
+        processSteps: { orderBy: { displayOrder: 'asc' } },
         footerItems: { orderBy: { displayOrder: 'asc' } },
       },
     });
@@ -70,6 +73,9 @@ export async function PUT(
       keyStatement,
       categoryId,
       bullets,
+      summaryCharges,
+      requiredDocuments,
+      processSteps,
       footerItems,
       // New filter fields
       loanType,
@@ -84,6 +90,21 @@ export async function PUT(
     // Delete existing bullets and footer items if updating them
     if (bullets !== undefined) {
       await prisma.loanBullet.deleteMany({
+        where: { productId: Number(id) },
+      });
+    }
+    if (summaryCharges !== undefined) {
+      await prisma.loanSummaryCharge.deleteMany({
+        where: { productId: Number(id) },
+      });
+    }
+    if (requiredDocuments !== undefined) {
+      await prisma.loanRequiredDocument.deleteMany({
+        where: { productId: Number(id) },
+      });
+    }
+    if (processSteps !== undefined) {
+      await prisma.loanProcessStep.deleteMany({
         where: { productId: Number(id) },
       });
     }
@@ -124,13 +145,41 @@ export async function PUT(
         ...(vehicleType !== undefined && { vehicleType }),
         bullets: bullets !== undefined ? {
           create: bullets.map((bullet: any, index: number) => ({
-            text: bullet.text || bullet,
+            text: typeof bullet.text === 'string' ? bullet.text : (bullet.text?.text !== undefined ? bullet.text.text : bullet),
             displayOrder: bullet.displayOrder ?? index,
           })),
         } : undefined,
+        summaryCharges: summaryCharges !== undefined ? {
+          create: summaryCharges
+            .filter((charge: any) => charge.label || charge.mainText)
+            .map((charge: any, index: number) => ({
+              label: charge.label || 'Fee',
+              mainText: charge.mainText || charge.text || '0',
+              subText: charge.subText || null,
+              displayOrder: charge.displayOrder ?? index,
+            })),
+        } : undefined,
+        requiredDocuments: requiredDocuments !== undefined ? {
+          create: requiredDocuments
+            .filter((doc: any) => doc.title)
+            .map((doc: any, index: number) => ({
+              title: doc.title,
+              description: doc.description || null,
+              displayOrder: doc.displayOrder ?? index,
+            })),
+        } : undefined,
+        processSteps: processSteps !== undefined ? {
+          create: processSteps
+            .filter((step: any) => step.title)
+            .map((step: any, index: number) => ({
+              title: step.title,
+              description: step.description || null,
+              displayOrder: step.displayOrder ?? index,
+            })),
+        } : undefined,
         footerItems: footerItems !== undefined ? {
           create: footerItems.map((item: any, index: number) => ({
-            text: item.text || item,
+            text: typeof item.text === 'string' ? item.text : (item.text?.text !== undefined ? item.text.text : item),
             displayOrder: item.displayOrder ?? index,
           })),
         } : undefined,
@@ -138,6 +187,9 @@ export async function PUT(
       include: {
         category: true,
         bullets: true,
+        summaryCharges: true,
+        requiredDocuments: true,
+        processSteps: true,
         footerItems: true,
       },
     });

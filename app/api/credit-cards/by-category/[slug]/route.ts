@@ -12,9 +12,48 @@ export async function GET(
       where: { slug },
       include: {
         creditCards: {
-          include: {
-            bulletPoints: { orderBy: { displayOrder: "asc" } },
-            categories: true
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            bankName: true,
+            imageUrl: true,
+            category: true,
+            annualFee: true,
+            cardNetwork: true,
+            cardType: true,
+            bestSuitedFor: true,
+            effectiveFree: true,
+            recommended: true,
+            rating: true,
+            firstYearFee: true,
+            secondYearFee: true,
+            bestSuitedForPoints: {
+              select: {
+                text: true,
+              },
+              orderBy: { displayOrder: "asc" },
+              take: 5,
+            },
+            categories: {
+              select: {
+                name: true,
+              }
+            },
+            bulletPoints: {
+              select: {
+                text: true,
+              },
+              orderBy: { displayOrder: "asc" },
+              take: 5,
+            },
+            keyFeatures: {
+              select: {
+                feature: true,
+              },
+              orderBy: { displayOrder: "asc" },
+              take: 5,
+            },
           },
           orderBy: { createdAt: "desc" },
         },

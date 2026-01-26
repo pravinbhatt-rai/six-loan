@@ -9,6 +9,7 @@ import { FiFilter } from "react-icons/fi";
 import { X, ArrowRight } from "lucide-react";
 import ComparisonModal from "@/component/creditcards/ComparisonModal";
 import CreditCardApplicationModal from "@/component/creditcards/CreditCardApplicationModal";
+import BottomComparisonBar from "@/component/creditcards/BottomComparisonBar";
 import { useRouter, useSearchParams } from "next/navigation";
 import { PageLoader } from "@/component/commonComponent/SixFinanceLoader";
 import { fastFetch } from "@/lib/utils/ultraFastFetch";
@@ -29,7 +30,7 @@ function CreditCardsContent() {
   const [showFilterMobile, setShowFilterMobile] = useState(false);
 
   // Comparison State
-  const [selectedForComparison, setSelectedForComparison] = useState<string[]>([]);
+  const [selectedForComparison, setSelectedForComparison] = useState<CardRecord[]>([]);
   const [showComparisonModal, setShowComparisonModal] = useState(false);
   
   // Application Modal State
@@ -48,12 +49,34 @@ function CreditCardsContent() {
       try {
         setLoading(true);
         
-        // Ultra-fast fetch with aggressive caching
-        const data = await fastFetch<any>('/api/credit-cards', {
-          timeout: 3000,
-          cache: true,
-          retries: 2
-        });
+        let data;
+        
+        // If category is specified in URL, use category-specific API
+        if (categoryParam) {
+          const categoryData = await fastFetch<any>(`/api/credit-cards/by-category/${categoryParam}`, {
+            timeout: 3000,
+            cache: true,
+            retries: 2
+          });
+          
+          if (categoryData && categoryData.category && categoryData.category.creditCards) {
+            data = categoryData.category.creditCards;
+          } else {
+            // Fallback to all cards if category API fails
+            data = await fastFetch<any>('/api/credit-cards', {
+              timeout: 3000,
+              cache: true,
+              retries: 2
+            });
+          }
+        } else {
+          // Fetch all cards
+          data = await fastFetch<any>('/api/credit-cards', {
+            timeout: 3000,
+            cache: true,
+            retries: 2
+          });
+        }
         
         if (!data) {
           console.error('Failed to fetch cards: No data returned');
@@ -68,7 +91,7 @@ function CreditCardsContent() {
           let cardsArray: any[] = [];
           
           if (Array.isArray(data)) {
-            // If response is directly an array
+            // If response is directly an array (from main API)
             cardsArray = data;
           } else if (data && typeof data === 'object') {
             // If response is an object, check for common property names
@@ -80,6 +103,9 @@ function CreditCardsContent() {
               cardsArray = data.creditCards;
             } else if (Array.isArray(data.products)) {
               cardsArray = data.products;
+            } else if (data.category && Array.isArray(data.category.creditCards)) {
+              // Handle category API response: { category: { creditCards: [...] } }
+              cardsArray = data.category.creditCards;
             } else {
               // If no array found, log error and set empty
               console.error('No array found in API response:', data);
@@ -111,7 +137,17 @@ function CreditCardsContent() {
             slug: c.slug,
             firstYearFee: c.firstYearFee,
             secondYearFee: c.secondYearFee,
-            rating: c.rating || (Math.random() * 0.7 + 4.0) // Random rating between 4.0-4.7 if not provided
+            rating: c.rating || (Math.random() * 0.7 + 4.0), // Random rating between 4.0-4.7 if not provided
+            // New detailed fields from enhanced API
+            summaryCharges: c.summaryCharges || [],
+            requiredDocuments: c.requiredDocuments || [],
+            processSteps: c.processSteps || [],
+            cardBenefits: c.cardBenefits || [],
+            benefitSections: c.benefitSections || [],
+            keyFeatures: c.keyFeatures || [],
+            bestSuitedForPoints: c.bestSuitedForPoints || [],
+            specialOffers: c.specialOffers || [],
+            offers: c.offers || [],
           }));
           
           console.log('Mapped cards:', mappedCards);
@@ -152,56 +188,10 @@ function CreditCardsContent() {
     console.log('Found full card:', full);
     if (!full) return;
 
-    // Ultra-fast fetch for full details with caching
-    if (full.slug) {
-        try {
-            const data = await fastFetch<any>(`/api/credit-cards/${full.slug}`, {
-              timeout: 2000,
-              cache: true,
-              retries: 1
-            });
-            if (data?.card) {
-                    const fullDetails: CreditCardDetailsData = {
-                        id: full.id,
-                        name: full.name,
-                        bank: full.bank,
-                        image: full.image,
-                        categories: full.categories,
-                        fee: full.fee,
-                        cardType: full.cardType,
-                        bullets: full.bullets,
-                        ...data.card,
-                        videoUrl: data.card.videoUrl,
-                        keyFeatures: data.card.keyFeatures?.map((kf: any) => kf.feature || kf) || [],
-                        cardBenefits: data.card.cardBenefits?.map((cb: any) => cb.benefit || cb) || [],
-                        benefitSections: data.card.benefitSections || [],
-                        bestSuitedForPoints: data.card.bestSuitedForPoints || [],
-                        firstYearFee: data.card.firstYearFee,
-                        secondYearFee: data.card.secondYearFee,
-                        feeWaiverCondition: data.card.feeWaiverCondition,
-                        summaryCharges: data.card.summaryCharges,
-                        requiredDocuments: data.card.requiredDocuments,
-                        processSteps: data.card.processSteps,
-                        bulletPoints: data.card.bulletPoints,
-                        termsConditionsUrl: data.card.termsConditionsUrl,
-                        cardNetwork: data.card.cardNetwork,
-                        annualFee: data.card.annualFee,
-                        bankName: data.card.bankName,
-                        bankLogoUrl: data.card.bankLogoUrl,
-                        imageUrl: data.card.imageUrl,
-                    };
-                    console.log('Setting full details and opening drawer:', fullDetails);
-                    setSelectedCard(fullDetails);
-                    setOpenDrawer(true);
-                    return;
-            }
-        } catch (err) {
-            console.error("Failed to fetch card details", err);
-        }
-    }
-    
-    // Fallback: open with basic details if API call fails
-    const initialDetails: CreditCardDetailsData = {
+    // Use the already fetched detailed data instead of making another API call
+    console.log('✅ Using cached card details for drawer:', full.slug);
+
+    const fullDetails: CreditCardDetailsData = {
       id: full.id,
       name: full.name,
       bank: full.bank,
@@ -210,9 +200,32 @@ function CreditCardsContent() {
       fee: full.fee,
       cardType: full.cardType,
       bullets: full.bullets,
+      // Include all the detailed data from the enhanced API
+      summaryCharges: full.summaryCharges || [],
+      requiredDocuments: full.requiredDocuments || [],
+      processSteps: full.processSteps || [],
+      cardBenefits: full.cardBenefits?.map((benefit: any) => benefit.benefit || benefit) || [],
+      benefitSections: full.benefitSections?.map((section: any) => ({
+        heading: section.heading,
+        subPoints: section.subPoints?.map((point: any) => ({
+          text: point.text,
+        })) || [],
+      })) || [],
+      keyFeatures: full.keyFeatures?.map((feature: any) => feature.feature || feature) || [],
+      bestSuitedForPoints: full.bestSuitedForPoints?.map((point: any) => point.text || point) || [],
+      specialOffers: full.specialOffers?.map((offer: any) => offer.text || offer) || [],
+      // offers: full.offers || [], // Commented out since offers are not included in API
+      firstYearFee: full.firstYearFee?.toString(),
+      secondYearFee: full.secondYearFee?.toString(),
+      bankName: full.bank,
+      bankLogoUrl: full.image,
+      imageUrl: full.image,
+      annualFee: full.fee,
+      cardNetwork: full.cardType,
     };
-    console.log('Setting initial details and opening drawer:', initialDetails);
-    setSelectedCard(initialDetails);
+
+    console.log('Setting full details and opening drawer:', fullDetails);
+    setSelectedCard(fullDetails);
     setOpenDrawer(true);
   };
   
@@ -225,20 +238,24 @@ function CreditCardsContent() {
   };
 
   const toggleCardSelection = (cardId: string) => {
+    const card = cards.find(c => c.id === cardId);
+    if (!card) return;
+    
     setSelectedForComparison(prev => {
-      if (prev.includes(cardId)) {
-        return prev.filter(id => id !== cardId);
+      const isSelected = prev.some(c => c.id === cardId);
+      if (isSelected) {
+        return prev.filter(c => c.id !== cardId);
       } else {
         if (prev.length >= 2) {
-          return [prev[1], cardId]; // Replace first with new selection
+          return [prev[1], card]; // Replace first with new selection
         }
-        return [...prev, cardId];
+        return [...prev, card];
       }
     });
   };
 
   const handleCompare = () => {
-    if (selectedForComparison.length === 2) {
+    if (selectedForComparison.length >= 2) {
       setShowComparisonModal(true);
     }
   };
@@ -246,10 +263,6 @@ function CreditCardsContent() {
   const handleCloseComparison = () => {
     setShowComparisonModal(false);
     setSelectedForComparison([]);
-  };
-
-  const removeFromComparison = (cardId: string) => {
-    setSelectedForComparison(prev => prev.filter(id => id !== cardId));
   };
 
   return (
@@ -307,71 +320,17 @@ function CreditCardsContent() {
         </div>
       </div>
 
-      {/* Comparison Bar - Mobile Optimized */}
-      {selectedForComparison.length > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-teal-600 shadow-2xl z-50 py-2 sm:py-4 animate-slide-up">
-          <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-0">
-              <div className="flex flex-col sm:flex-row items-center sm:space-x-4 flex-1 gap-2">
-                <p className="text-xs sm:text-sm font-semibold text-gray-700 text-center sm:text-left">
-                  Comparing {selectedForComparison.length}/2 cards
-                </p>
-                
-                {/* Selected Cards - Horizontal scroll on mobile */}
-                <div className="flex overflow-x-auto space-x-2 sm:space-x-3 w-full sm:w-auto pb-1 scrollbar-thin scrollbar-thumb-gray-300">
-                  {selectedForComparison.map(cardId => {
-                    const card = cards.find(c => c.id === cardId);
-                    if (!card) return null;
-                    
-                    return (
-                      <div key={cardId} className="flex items-center space-x-1.5 sm:space-x-2 bg-teal-50 border border-teal-200 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 shrink-0">
-                        <img
-                          src={card.image}
-                          alt={card.name}
-                          className="w-12 h-8 sm:w-16 sm:h-10 object-contain rounded"
-                        />
-                        <span className="text-xs sm:text-sm font-medium text-gray-900 max-w-[100px] sm:max-w-[150px] truncate">
-                          {card.name}
-                        </span>
-                        <button
-                          onClick={() => removeFromComparison(cardId)}
-                          className="text-red-500 hover:text-red-700 shrink-0"
-                        >
-                          <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                        </button>
-                      </div>
-                    );
-                  })}
-                  
-                  {/* Placeholder for second card */}
-                  {selectedForComparison.length === 1 && (
-                    <div className="flex items-center space-x-1.5 sm:space-x-2 bg-gray-50 border border-gray-200 border-dashed rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 shrink-0">
-                      <div className="w-12 h-8 sm:w-16 sm:h-10 bg-gray-200 rounded flex items-center justify-center">
-                        <span className="text-xs sm:text-sm text-gray-500">+</span>
-                      </div>
-                      <span className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">Select one more</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-              
-              {/* Compare Button - Full width on mobile */}
-              <button
-                onClick={handleCompare}
-                disabled={selectedForComparison.length !== 2}
-                className={`flex items-center justify-center space-x-2 rounded-lg font-semibold transition w-full sm:w-auto ${
-                  selectedForComparison.length === 2
-                    ? 'bg-teal-600 text-white hover:bg-teal-700 px-4 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg'
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base'
-                }`}
-              >
-                <span>Compare</span>
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <BottomComparisonBar
+        selectedCards={selectedForComparison.map(card => ({
+          id: card.id,
+          name: card.name,
+          imageUrl: card.image,
+          bankName: card.bank
+        }))}
+        onCompare={handleCompare}
+        onRemoveCard={(cardId) => setSelectedForComparison(prev => prev.filter(c => c.id !== cardId))}
+        maxCards={2}
+      />
 
       {/* Mobile filter overlay (left slide-in) */}
       {showFilterMobile && (
@@ -425,12 +384,53 @@ function CreditCardsContent() {
         categoryName={selectedCard?.name}
       />
 
+      <BottomComparisonBar
+        selectedCards={selectedForComparison.map(card => ({
+          id: card.id,
+          name: card.name,
+          imageUrl: card.image,
+          bankName: card.bank
+        }))}
+        onCompare={() => setShowComparisonModal(true)}
+        onRemoveCard={(cardId) => setSelectedForComparison(prev => prev.filter(c => c.id !== cardId))}
+        maxCards={2}
+      />
+
       <ComparisonModal
         isOpen={showComparisonModal}
         onClose={handleCloseComparison}
-        cardIds={selectedForComparison}
+        cards={selectedForComparison.map(card => ({
+          id: card.id,
+          name: card.name,
+          slug: card.slug,
+          imageUrl: card.image,
+          bankName: card.bank,
+          bankLogoUrl: undefined,
+          category: card.category,
+          annualFee: card.fee,
+          cardNetwork: card.cardType,
+          cardType: card.cardType,
+          bestSuitedFor: card.bullets || [],
+          effectiveFree: card.effectiveFree,
+          recommended: card.recommended,
+          rating: card.rating,
+          firstYearFee: card.firstYearFee?.toString(),
+          secondYearFee: card.secondYearFee?.toString(),
+          bestSuitedForPoints: card.bestSuitedForPoints || [],
+          categories: card.categories?.map(cat => ({ name: cat, slug: cat.toLowerCase().replace(/\s+/g, '-') })) || [],
+          bulletPoints: card.bullets || [],
+          keyFeatures: card.keyFeatures || [],
+          offers: card.offers || [],
+          summaryCharges: card.summaryCharges || [],
+          requiredDocuments: card.requiredDocuments || [],
+          processSteps: card.processSteps || [],
+          cardBenefits: card.cardBenefits || [],
+          benefitSections: card.benefitSections || [],
+          feeWaiverCondition: card.fee,
+          specialOffers: card.specialOffers || [],
+        }))}
         onApply={(cardId) => {
-          const card = cards.find(c => c.id === cardId);
+          const card = selectedForComparison.find(c => c.id === cardId);
           if (card) {
             setShowComparisonModal(false);
             handleApply({ id: card.id, name: card.name, image: card.image, bullets: card.bullets });

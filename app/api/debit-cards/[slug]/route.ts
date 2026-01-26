@@ -84,7 +84,7 @@ export async function GET(
         slug: debitCard.slug,
         bankName: debitCard.bankName,
         imageUrl: debitCard.imageUrl,
-        bankLogoUrl: debitCard.bankLogoUrl,
+        // bankLogoUrl: debitCard.bankLogoUrl,
         accountType: debitCard.accountType,
         cardNetwork: debitCard.cardNetwork,
         cardType: debitCard.cardType,

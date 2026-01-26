@@ -62,6 +62,7 @@ export async function PUT(
       keyFeatures = [],
       offers = [],
       safetyFeatures = [],
+      categories = [],
       ...cardData
     } = body;
 
@@ -80,6 +81,16 @@ export async function PUT(
     
     await prisma.debitCardSafetyFeature.deleteMany({
       where: { productId: parseInt(id) }
+    });
+
+    // Disconnect existing categories
+    await prisma.debitCardProduct.update({
+      where: { id: parseInt(id) },
+      data: {
+        categories: {
+          set: []
+        }
+      }
     });
 
     // Update debit card with new data
@@ -121,6 +132,9 @@ export async function PUT(
             howToUse: feature.howToUse,
             displayOrder: index
           }))
+        },
+        categories: {
+          connect: categories.map((slug: string) => ({ slug }))
         }
       },
       include: {

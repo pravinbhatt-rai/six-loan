@@ -7,25 +7,64 @@ interface BenefitSection {
   subPoints: { text: string }[];
 }
 
+interface SummaryCharge {
+  label: string;
+  mainText: string;
+  subText?: string;
+}
+
+interface RequiredDocument {
+  title: string;
+  description: string;
+}
+
+interface ProcessStep {
+  title: string;
+  description: string;
+}
+
+interface Category {
+  name: string;
+  slug: string;
+}
+
 interface CreditCard {
   id: string;
   name: string;
+  slug?: string;
   imageUrl: string;
   bankName: string;
+  bankLogoUrl?: string;
+  category?: any;
   annualFee: string;
-  joiningFee?: string;
+  cardNetwork?: string;
+  cardType?: string;
+  bestSuitedFor?: string;
+  effectiveFree?: boolean;
+  recommended?: boolean;
+  rating?: number;
   firstYearFee?: string;
   secondYearFee?: string;
-  feeWaiverCondition?: string;
-  bestSuitedFor?: string[];
-  specialOffers?: string[];
+  bestSuitedForPoints?: { text: string }[];
+  categories?: Category[];
+  bulletPoints?: string[];
+  keyFeatures?: string[];
+  offers?: any[];
+  summaryCharges?: SummaryCharge[];
+  requiredDocuments?: RequiredDocument[];
+  processSteps?: ProcessStep[];
+  cardBenefits?: string[];
   benefitSections?: BenefitSection[];
+  joiningFee?: string;
+  feeWaiverCondition?: string;
+  specialOffers?: string[];
 }
 
 interface ComparisonModalProps {
   isOpen: boolean;
   onClose: () => void;
-  cardIds: string[];
+  cardIds?: string[];
+  cards?: CreditCard[];
   onApply?: (cardId: string) => void;
 }
 
@@ -47,22 +86,33 @@ const getIconForHeading = (heading: string) => {
   return <Zap className="w-4 h-4" />;
 };
 
-export default function ComparisonModal({ isOpen, onClose, cardIds, onApply }: ComparisonModalProps) {
+export default function ComparisonModal({ isOpen, onClose, cardIds, cards: passedCards, onApply }: ComparisonModalProps) {
   const [cards, setCards] = useState<CreditCard[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (isOpen && cardIds.length === 2) {
-      fetchCards();
-    } else if (!isOpen) {
+    if (!isOpen) {
       setCards([]);
+      return;
     }
-  }, [isOpen, cardIds]);
+
+    // If cards are passed directly, use them
+    if (passedCards && passedCards.length > 0) {
+      setCards(passedCards);
+      setLoading(false);
+      return;
+    }
+
+    // Otherwise, fetch cards by IDs
+    if (cardIds && cardIds.length === 2) {
+      fetchCards();
+    }
+  }, [isOpen, cardIds, passedCards]);
 
   const fetchCards = async () => {
     setLoading(true);
     try {
-      const promises = cardIds.map(async (id) => {
+      const promises = cardIds!.map(async (id) => {
         const listResponse = await fetch(`${API_BASE_URL}/api/credit-cards`);
         const listData = await listResponse.json();
         
@@ -81,15 +131,32 @@ export default function ComparisonModal({ isOpen, onClose, cardIds, onApply }: C
           return {
             id: card.id,
             name: card.name,
+            slug: card.slug,
             imageUrl: card.imageUrl,
             bankName: card.bankName,
+            bankLogoUrl: card.bankLogoUrl,
+            category: card.category,
             annualFee: card.annualFee,
+            cardNetwork: card.cardNetwork,
+            cardType: card.cardType,
+            bestSuitedFor: card.bestSuitedFor,
+            effectiveFree: card.effectiveFree,
+            recommended: card.recommended,
+            rating: card.rating,
             firstYearFee: card.firstYearFee,
             secondYearFee: card.secondYearFee,
+            bestSuitedForPoints: card.bestSuitedForPoints,
+            categories: card.categories,
+            bulletPoints: card.bulletPoints,
+            keyFeatures: card.keyFeatures,
+            offers: card.offers,
+            summaryCharges: card.summaryCharges,
+            requiredDocuments: card.requiredDocuments,
+            processSteps: card.processSteps,
+            cardBenefits: card.cardBenefits,
+            benefitSections: card.benefitSections,
             feeWaiverCondition: card.feeWaiverCondition,
-            bestSuitedFor: card.bestSuitedForPoints?.map((p: any) => p.text || p) || [],
             specialOffers: card.specialOffers?.map((s: any) => s.text || s) || [],
-            benefitSections: card.benefitSections || [],
           };
         }
         return null;
@@ -99,13 +166,39 @@ export default function ComparisonModal({ isOpen, onClose, cardIds, onApply }: C
       const selectedCards = results.filter((card) => card !== null) as CreditCard[];
       setCards(selectedCards);
     } catch (error) {
-      console.error('Failed to fetch cards for comparison:', error);
+      console.error('Error fetching cards for comparison:', error);
     } finally {
       setLoading(false);
     }
   };
 
-  if (!isOpen) return null;
+  if (!isOpen || (!passedCards && (!cardIds || cardIds.length < 2))) return null;
+
+  if (loading) {
+    return (
+      <div className="fixed inset-0 z-100 overflow-hidden flex justify-center items-end sm:items-center">
+        {/* Backdrop with Blur */}
+        <div 
+          className="absolute inset-0 bg-slate-900/40 backdrop-blur-md"
+          onClick={onClose}
+        />
+        
+        {/* Loading Modal */}
+        <div className="relative w-full max-w-6xl h-[95vh] sm:h-[90vh] bg-white sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="flex-1 flex items-center justify-center">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+              <p className="text-slate-500 text-sm animate-pulse">Loading comparison...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!cards || cards.length === 0) {
+    return null;
+  }
 
   return (
     <div className="fixed inset-0 z-100 overflow-hidden flex justify-center items-end sm:items-center">
@@ -191,10 +284,10 @@ export default function ComparisonModal({ isOpen, onClose, cardIds, onApply }: C
                   cards={cards}
                   render={(card) => (
                     <div className="flex flex-wrap gap-1 sm:gap-2">
-                      {card.bestSuitedFor?.length ? (
-                        card.bestSuitedFor.map((tag, i) => (
+                      {card.bestSuitedForPoints?.length ? (
+                        card.bestSuitedForPoints.map((point, i) => (
                           <span key={i} className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-violet-50 text-violet-700 text-[10px] sm:text-xs font-medium rounded border border-violet-100">
-                            {tag}
+                            {point.text}
                           </span>
                         ))
                       ) : <span className="text-gray-300 text-xs sm:text-sm">-</span>}
@@ -324,6 +417,163 @@ export default function ComparisonModal({ isOpen, onClose, cardIds, onApply }: C
                     </>
                   );
                 })()}
+
+                {/* Section: Rating */}
+                <ComparisonRow 
+                  title="Rating" 
+                  icon={<ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4" />}
+                  cards={cards}
+                  render={(card) => (
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center">
+                        {[1,2,3,4,5].map((star) => (
+                          <span key={star} className={`text-sm ${star <= (card.rating || 0) ? 'text-yellow-400' : 'text-gray-300'}`}>★</span>
+                        ))}
+                      </div>
+                      <span className="text-xs sm:text-sm font-medium text-slate-700">{card.rating || 'N/A'}</span>
+                    </div>
+                  )}
+                />
+
+                {/* Section: Key Features */}
+                <ComparisonRow 
+                  title="Key Features" 
+                  icon={<Zap className="w-3 h-3 sm:w-4 sm:h-4" />}
+                  cards={cards}
+                  render={(card) => (
+                    card.keyFeatures?.length ? (
+                      <ul className="space-y-1 sm:space-y-2">
+                        {card.keyFeatures.map((feature, i) => (
+                          <li key={i} className="flex items-start gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-600">
+                            <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 shrink-0 mt-0.5" />
+                            <span className="leading-relaxed">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : <span className="text-gray-300 text-xs sm:text-sm">-</span>
+                  )}
+                />
+
+                {/* Section: Bullet Points */}
+                <ComparisonRow 
+                  title="Highlights" 
+                  icon={<Check className="w-3 h-3 sm:w-4 sm:h-4" />}
+                  cards={cards}
+                  render={(card) => (
+                    card.bulletPoints?.length ? (
+                      <ul className="space-y-1 sm:space-y-2">
+                        {card.bulletPoints.map((point, i) => (
+                          <li key={i} className="flex items-start gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-600">
+                            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full shrink-0 mt-2"></span>
+                            <span className="leading-relaxed">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : <span className="text-gray-300 text-xs sm:text-sm">-</span>
+                  )}
+                />
+
+                {/* Section: Categories */}
+                <ComparisonRow 
+                  title="Categories" 
+                  icon={<ShoppingBag className="w-3 h-3 sm:w-4 sm:h-4" />}
+                  cards={cards}
+                  render={(card) => (
+                    card.categories?.length ? (
+                      <div className="flex flex-wrap gap-1 sm:gap-2">
+                        {card.categories.map((cat, i) => (
+                          <span key={i} className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-blue-50 text-blue-700 text-[10px] sm:text-xs font-medium rounded border border-blue-100">
+                            {cat.name}
+                          </span>
+                        ))}
+                      </div>
+                    ) : <span className="text-gray-300 text-xs sm:text-sm">-</span>
+                  )}
+                />
+
+                {/* Section: Summary Charges */}
+                <ComparisonRow 
+                  title="Charges & Fees" 
+                  icon={<DollarSign className="w-3 h-3 sm:w-4 sm:h-4" />}
+                  cards={cards}
+                  render={(card) => (
+                    card.summaryCharges?.length ? (
+                      <div className="space-y-2 sm:space-y-3">
+                        {card.summaryCharges.map((charge, i) => (
+                          <div key={i} className="flex justify-between items-center py-1">
+                            <span className="text-xs sm:text-sm text-slate-600">{charge.label}</span>
+                            <div className="text-right">
+                              <div className="text-xs sm:text-sm font-bold text-slate-900">{charge.mainText}</div>
+                              {charge.subText && <div className="text-[10px] sm:text-xs text-slate-500">{charge.subText}</div>}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : <span className="text-gray-300 text-xs sm:text-sm">-</span>
+                  )}
+                />
+
+                {/* Section: Required Documents */}
+                <ComparisonRow 
+                  title="Required Documents" 
+                  icon={<ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4" />}
+                  cards={cards}
+                  render={(card) => (
+                    card.requiredDocuments?.length ? (
+                      <div className="space-y-2 sm:space-y-3">
+                        {card.requiredDocuments.map((doc, i) => (
+                          <div key={i} className="border border-gray-100 rounded p-2 sm:p-3">
+                            <div className="font-medium text-xs sm:text-sm text-slate-800 mb-1">{doc.title}</div>
+                            <div className="text-[10px] sm:text-xs text-slate-600">{doc.description}</div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : <span className="text-gray-300 text-xs sm:text-sm">-</span>
+                  )}
+                />
+
+                {/* Section: Process Steps */}
+                <ComparisonRow 
+                  title="Application Process" 
+                  icon={<ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />}
+                  cards={cards}
+                  render={(card) => (
+                    card.processSteps?.length ? (
+                      <div className="space-y-2 sm:space-y-3">
+                        {card.processSteps.map((step, i) => (
+                          <div key={i} className="flex items-start gap-2 sm:gap-3">
+                            <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold">
+                              {i + 1}
+                            </div>
+                            <div>
+                              <div className="font-medium text-xs sm:text-sm text-slate-800">{step.title}</div>
+                              <div className="text-[10px] sm:text-xs text-slate-600 mt-0.5">{step.description}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : <span className="text-gray-300 text-xs sm:text-sm">-</span>
+                  )}
+                />
+
+                {/* Section: Card Benefits */}
+                <ComparisonRow 
+                  title="Card Benefits" 
+                  icon={<CardIcon className="w-3 h-3 sm:w-4 sm:h-4" />}
+                  cards={cards}
+                  render={(card) => (
+                    card.cardBenefits?.length ? (
+                      <ul className="space-y-1 sm:space-y-2">
+                        {card.cardBenefits.map((benefit, i) => (
+                          <li key={i} className="flex items-start gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-600">
+                            <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 shrink-0 mt-0.5" />
+                            <span className="leading-relaxed">{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : <span className="text-gray-300 text-xs sm:text-sm">-</span>
+                  )}
+                />
 
                 {/* Section: Fee Structure */}
                 <div className="bg-slate-50/50 py-3 sm:py-4 px-3 sm:px-6 border-y border-gray-100">

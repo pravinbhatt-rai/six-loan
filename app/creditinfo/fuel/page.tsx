@@ -115,7 +115,7 @@ export default function FuelCreditCardsPage() {
 
             {/* Card Listing */}
             <CreditCardListSection 
-              categoryFilter="Fuel"
+              categorySlug="fuel"
               maxCards={6}
               title="Top Fuel Credit Cards"
               description="Compare credit cards with maximum fuel benefits and savings"

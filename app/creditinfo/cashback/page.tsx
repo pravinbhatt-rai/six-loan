@@ -103,7 +103,7 @@ export default function CashbackCreditCardsPage() {
 
             {/* Card Listing */}
             <CreditCardListSection 
-              categoryFilter="Cashback"
+              categorySlug="cashback"
               maxCards={6}
               title="Top Cashback Credit Cards"
               description="Compare and apply for the best cashback credit cards in India"

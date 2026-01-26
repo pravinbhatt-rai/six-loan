@@ -13,7 +13,7 @@ interface CreditCard {
   title?: string;
   slug: string;
   bankName: string;
-  bankLogoUrl?: string;
+  // bankLogoUrl?: string;
   imageUrl?: string;
   annualFee: string | number;
   joiningFee?: string | number;
@@ -222,6 +222,39 @@ export default function CreditCardsPage() {
   // Handle close details modal
   const handleCloseDetails = () => {
     setSelectedCard(null);
+  };
+
+  // Handle toggle active status
+  const handleToggleActive = async (cardId: string | number, currentStatus: boolean) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        router.push('/login');
+        return;
+      }
+
+      const response = await fetch(`${API_BASE_URL}/api/admin/credit-cards/${cardId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ isActive: !currentStatus })
+      });
+
+      if (response.ok) {
+        // Update card in state
+        setCards(prev => prev.map(card => 
+          card.id === cardId ? { ...card, isActive: !currentStatus } : card
+        ));
+      } else {
+        const errorData = await response.json().catch(() => ({ message: 'Failed to update status' }));
+        alert(`❌ Error: ${errorData.message || 'Failed to update card status'}`);
+      }
+    } catch (error) {
+      console.error('Toggle active error:', error);
+      alert('❌ An error occurred while updating the card status.');
+    }
   };
 
   // Get card network color
@@ -476,9 +509,9 @@ export default function CreditCardsPage() {
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
                           <div className="w-12 h-12 bg-linear-to-br from-purple-100 to-pink-100 rounded-lg flex items-center justify-center overflow-hidden border border-purple-100">
-                            {card.bankLogoUrl ? (
+                            {card.imageUrl ? (
                               <img 
-                                src={card.bankLogoUrl} 
+                                src={card.imageUrl} 
                                 alt={card.bankName}
                                 className="w-8 h-8 object-contain"
                               />
@@ -539,6 +572,17 @@ export default function CreditCardsPage() {
                             title="View Details"
                           >
                             <Eye size={16} />
+                          </button>
+                          <button
+                            onClick={() => handleToggleActive(card.id, card.isActive || false)}
+                            className={`p-2 rounded-lg transition-colors ${
+                              card.isActive 
+                                ? 'text-orange-500 hover:bg-orange-50' 
+                                : 'text-green-500 hover:bg-green-50'
+                            }`}
+                            title={card.isActive ? 'Deactivate' : 'Activate'}
+                          >
+                            {card.isActive ? '⏸️' : '▶️'}
                           </button>
                           <button
                             onClick={() => {
@@ -608,9 +652,9 @@ export default function CreditCardsPage() {
             <div className="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white z-10">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-linear-to-br from-purple-100 to-pink-100 rounded-lg flex items-center justify-center">
-                  {selectedCard.bankLogoUrl ? (
+                  {selectedCard.imageUrl ? (
                     <img 
-                      src={selectedCard.bankLogoUrl} 
+                      src={selectedCard.imageUrl} 
                       alt={selectedCard.bankName}
                       className="w-8 h-8 object-contain"
                     />
