@@ -20,8 +20,8 @@ const CarLoanGuide = memo(({ pageId }: { pageId: string }) => {
                 title: `Why Opt for a ${type === 'new' ? 'New' : 'Used'} Car Loan of Rs. ${label}?`,
                 description: `A Rs. ${label} ${type} car loan allows you to drive home your ${type === 'new' ? 'latest dream model' : 'premium pre-owned vehicle'} with affordable monthly payments.`,
                 items: [
-                  type === 'new' 
-                    ? `Funding for latest models from top brands` 
+                  type === 'new'
+                    ? `Funding for latest models from top brands`
                     : `Quick valuation and funding for certified pre-owned cars`,
                   `Flexible repayment tenures up to ${type === 'new' ? '7' : '5'} years`,
                   `Competitive interest rates starting from ${type === 'new' ? '8.75%' : '11.50%'} p.a.`,
@@ -74,7 +74,7 @@ const CarLoanGuide = memo(({ pageId }: { pageId: string }) => {
         })
       );
     };
-    
+
     return generateLoanData();
   }, []);
   const content = loanData.find((data) => data.id === pageId);
@@ -100,19 +100,19 @@ const CarLoanGuide = memo(({ pageId }: { pageId: string }) => {
               {section.items.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3">
                   <div className="shrink-0 mt-1">
-                    <svg 
-                      className="w-6 h-6 text-teal-600 fill-current" 
-                      viewBox="0 0 20 20" 
+                    <svg
+                      className="w-6 h-6 text-teal-600 fill-current"
+                      viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path 
-                        fillRule="evenodd" 
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
-                        clipRule="evenodd" 
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
                       />
                     </svg>
                   </div>
-                  
+
                   <span className="text-lg leading-relaxed text-gray-700">
                     {item.includes(':') ? (
                       <>

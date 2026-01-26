@@ -1,193 +1,205 @@
-'use client';
-
 import React from 'react';
-import { FileText, Shield, Scale, AlertTriangle, Calendar, Download, CheckCircle } from 'lucide-react';
+import { 
+  ShieldCheck, 
+  Scale, 
+  Database, 
+  UserCheck, 
+  AlertCircle, 
+  FileText, 
+  Mail, 
+  ArrowRight,
+  Info
+} from 'lucide-react';
 
-export default function TermsConditionsPage() {
-  
-  const handlePrint = () => {
-    window.print();
-  };
-
+/**
+ * Six Finance Terms of Service - Server Side Component
+ * Theme: teal-500
+ */
+export default function TermsOfService() {
   return (
-    <div className="min-h-screen bg-gray-50 font-serif text-gray-800">
-      
-      {/* --- Hero Section --- */}
-      <section className="relative w-full bg-teal-900 text-white py-16 md:py-24 overflow-hidden print:hidden">
-        {/* Abstract Background */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-            <div className="absolute right-0 top-0 w-64 h-64 md:w-96 md:h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-20"></div>
-            <div className="absolute left-10 bottom-0 w-64 h-64 md:w-80 md:h-80 bg-teal-400 rounded-full mix-blend-overlay filter blur-3xl opacity-20"></div>
+    <div className="min-h-screen bg-white font-sans text-slate-900 leading-relaxed">
+      {/* Hero Header */}
+      <header className="bg-teal-500 py-16 px-6 text-center text-white">
+        <h1 className="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tight">Terms of Service</h1>
+        <p className="max-w-2xl mx-auto text-teal-50 opacity-90 text-lg">
+          Governing your use of Six Finance's digital aggregator and financial suggestion platform.
+        </p>
+        <div className="mt-6 inline-block bg-teal-600 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+          Last updated: 24th January 2026
         </div>
+      </header>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 italic leading-tight">
-            Terms & Conditions
-          </h1>
-          <p className="text-teal-100 text-base md:text-lg max-w-2xl font-light leading-relaxed">
-            These conditions outline the rules and regulations for the use of Six Finance's Website and Mobile Application.
+      <main className="max-w-5xl mx-auto px-6 py-16">
+        
+        {/* Core Acknowledgment */}
+        <section className="bg-slate-50 border-l-8 border-teal-500 p-8 rounded-r-2xl mb-12">
+          <p className="text-lg text-slate-700">
+            By accessing our services, you acknowledge and accept these terms in their entirety. 
+            These terms govern your use of our digital aggregator and financial suggestion platform.
           </p>
-          
-          <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 text-sm text-teal-200">
-             <div className="flex items-center gap-2">
-                <Calendar size={16} />
-                <span>Last Updated: January 16, 2026</span>
-             </div>
-             
-             <button 
-                onClick={handlePrint}
-                className="flex items-center gap-2 hover:text-white transition-colors underline decoration-teal-500 underline-offset-4 font-serif cursor-pointer"
-             >
-                <Download size={16} />
-                Download as PDF
-             </button>
+        </section>
+
+        {/* Section 1: Understanding Our Role */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <ShieldCheck className="text-teal-500" size={32} />
+            <h2 className="text-3xl font-bold">Understanding Our Role</h2>
           </div>
-        </div>
-      </section>
+          <p className="mb-6 text-slate-600">
+            Six Finance operates as a digital aggregator and financial suggestion platform, serving as an intermediary between consumers and banking institutions. 
+            We provide comprehensive comparisons and personalized recommendations for various banking products.
+          </p>
+          <div className="bg-amber-50 border border-amber-200 p-6 rounded-2xl">
+            <h3 className="text-lg font-bold text-amber-800 mb-2 flex items-center gap-2">
+              <AlertCircle size={20} /> Critical Distinction
+            </h3>
+            <p className="text-amber-900">
+              Six Finance is <strong>not a bank</strong>, lending institution, or financial services provider. 
+              We do not issue credit cards, open accounts directly, or process financial transactions. 
+              The final contractual agreement is established exclusively between you and your chosen banking partner.
+            </p>
+          </div>
+        </section>
 
-      {/* --- Main Content with Sidebar --- */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid lg:grid-cols-12 gap-8 md:gap-12">
-            
-            {/* Sidebar Navigation (Sticky) - Hidden on Mobile/Print */}
-            <aside className="hidden lg:block lg:col-span-3 print:hidden">
-                <div className="sticky top-24 space-y-1">
-                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 pl-4">Table of Contents</p>
-                    <nav className="space-y-1 border-l border-gray-200">
-                        <NavLink href="#acceptance" label="1. Acceptance" active />
-                        <NavLink href="#accounts" label="2. Accounts & Security" />
-                        <NavLink href="#intellectual" label="3. Intellectual Property" />
-                        <NavLink href="#restrictions" label="4. Restrictions" />
-                        <NavLink href="#disclaimer" label="5. Disclaimers" />
-                        <NavLink href="#governing" label="6. Governing Law" />
-                    </nav>
-                </div>
-            </aside>
+        {/* Section 2: The Suggestion Engine */}
+        <section className="mb-16 bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+          <h2 className="text-2xl font-bold mb-8">How Our "Better Suggestion" Engine Works</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="space-y-2">
+              <span className="text-teal-500 font-black text-2xl">01</span>
+              <h4 className="font-bold">Data Collection</h4>
+              <p className="text-xs text-slate-500">You provide income, age, and location indicators through our secure platform.</p>
+            </div>
+            <div className="space-y-2">
+              <span className="text-teal-500 font-black text-2xl">02</span>
+              <h4 className="font-bold">Algorithm Analysis</h4>
+              <p className="text-xs text-slate-500">Our system evaluates thousands of products against your requirements.</p>
+            </div>
+            <div className="space-y-2">
+              <span className="text-teal-500 font-black text-2xl">03</span>
+              <h4 className="font-bold">Personalization</h4>
+              <p className="text-xs text-slate-500">Tailored suggestions ranked by suitability with transparent comparisons.</p>
+            </div>
+            <div className="space-y-2">
+              <span className="text-teal-500 font-black text-2xl">04</span>
+              <h4 className="font-bold">Bank Selection</h4>
+              <p className="text-xs text-slate-500">We facilitate the connection with your chosen partner for application completion.</p>
+            </div>
+          </div>
+        </section>
 
-            {/* Legal Text Content */}
-            <main className="lg:col-span-9 space-y-12 md:space-y-16">
-                
-                {/* Section 1 */}
-                <section id="acceptance" className="scroll-mt-28">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="p-2 bg-teal-50 text-teal-600 rounded-lg print:hidden">
-                            <CheckCircle size={24} />
-                        </div>
-                        <h2 className="text-xl md:text-2xl font-bold text-gray-900">1. Acceptance of Terms</h2>
-                    </div>
-                    <div className="prose prose-lg text-gray-600 font-serif leading-relaxed text-sm md:text-base">
-                        <p>
-                            By accessing this website, we assume you accept these terms and conditions. Do not continue to use <strong>Six Finance</strong> if you do not agree to take all of the terms and conditions stated on this page.
-                        </p>
-                        <p className="mt-4">
-                            The following terminology applies to these Terms and Conditions: "Client", "You" and "Your" refers to you, the person logged on this website. "The Company", "Ourselves", "We", "Our" and "Us", refers to Six Finance.
-                        </p>
-                    </div>
-                </section>
+        {/* Section 3: Consent & Lead Generation */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <UserCheck className="text-teal-500" size={32} />
+            <h2 className="text-3xl font-bold">Consent & Lead Generation</h2>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-10">
+            <div className="space-y-4">
+              <p className="text-slate-600">
+                Six Finance operates in full compliance with **India's Digital Personal Data Protection (DPDP) Act 2023**.
+              </p>
+              <div className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+                <h4 className="font-bold text-teal-600 mb-2">Partner Sharing Authorization</h4>
+                <p className="text-sm text-slate-500 leading-relaxed">
+                  You authorize us to share your lead profile with verified partner banks (including but not limited to Kotak Mahindra Bank and HDFC Bank) to fulfill your request.
+                </p>
+              </div>
+            </div>
+            <div className="bg-slate-900 text-white p-8 rounded-3xl">
+              <h4 className="font-bold text-teal-400 mb-4 uppercase tracking-widest text-xs">Communication Consent</h4>
+              <p className="text-sm opacity-90 mb-4">
+                You agree to receive calls, SMS, WhatsApp, and emails from Six Finance and our partners, even if you are on the **National Do Not Disturb (DND) registry**.
+              </p>
+              <div className="h-1 w-20 bg-teal-500 rounded" />
+            </div>
+          </div>
+        </section>
 
-                {/* Section 2 */}
-                <section id="accounts" className="scroll-mt-28">
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">2. Accounts & Security</h2>
-                    <div className="prose prose-lg text-gray-600 font-serif leading-relaxed text-sm md:text-base">
-                        <p>
-                            When you create an account with us, you must provide us with information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.
-                        </p>
-                        <ul className="list-disc pl-5 space-y-2 my-4 marker:text-teal-500">
-                            <li>You are responsible for safeguarding the password that you use to access the Service.</li>
-                            <li>You agree not to disclose your password to any third party.</li>
-                            <li>You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.</li>
-                        </ul>
-                    </div>
-                </section>
+        {/* Section 4: Critical Disclaimers */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold mb-8 flex items-center gap-2">
+            <Scale className="text-teal-500" /> Limitation of Liability & Disclaimers
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="p-6 border border-slate-100 rounded-2xl bg-white">
+              <h4 className="font-bold mb-2">No Guarantee of Approval</h4>
+              <p className="text-sm text-slate-500">
+                "High Chance of Approval" is a predictive assessment and not a guarantee. The final decision rests entirely with the banking institution following their internal KYC and credit checks.
+              </p>
+            </div>
+            <div className="p-6 border border-slate-100 rounded-2xl bg-white">
+              <h4 className="font-bold mb-2">Market Fluctuations</h4>
+              <p className="text-sm text-slate-500">
+                Interest rates, fees, and promotional offers can change without advance notice. We are not liable for discrepancies between our platform and official bank terms.
+              </p>
+            </div>
+            <div className="p-6 border border-slate-100 rounded-2xl bg-white">
+              <h4 className="font-bold mb-2">Financial Outcomes</h4>
+              <p className="text-sm text-slate-500">
+                Six Finance is not liable for financial loss or unfavorable terms. All financial decisions remain your sole responsibility.
+              </p>
+            </div>
+            <div className="p-6 border border-slate-100 rounded-2xl bg-white">
+              <h4 className="font-bold mb-2">User Data Accuracy</h4>
+              <p className="text-sm text-slate-500">
+                Providing false information may result in application rejection and potential legal consequences. You must be at least 18 and an Indian resident.
+              </p>
+            </div>
+          </div>
+        </section>
 
-                {/* Section 3 */}
-                <section id="intellectual" className="scroll-mt-28">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="p-2 bg-teal-50 text-teal-600 rounded-lg print:hidden">
-                            <Shield size={24} />
-                        </div>
-                        <h2 className="text-xl md:text-2xl font-bold text-gray-900">3. Intellectual Property</h2>
-                    </div>
-                    <div className="prose prose-lg text-gray-600 font-serif leading-relaxed text-sm md:text-base">
-                        <p>
-                            Unless otherwise stated, Six Finance and/or its licensors own the intellectual property rights for all material on this website. All intellectual property rights are reserved. You may access this from Six Finance for your own personal use subjected to restrictions set in these terms and conditions.
-                        </p>
-                    </div>
-                </section>
+        {/* Section 5: DPDP Act Rights */}
+        <section className="mb-16 bg-teal-600 text-white p-10 rounded-3xl">
+          <h2 className="text-2xl font-bold mb-8 flex items-center gap-2">
+            <Database className="text-teal-300" /> Your Data Rights (DPDP Act 2023)
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8 mb-10">
+            <ul className="space-y-4 text-sm opacity-90">
+              <li className="flex gap-2"><span>•</span> **Right to Access:** Request a complete copy of your data.</li>
+              <li className="flex gap-2"><span>•</span> **Right to Correction:** Update inaccurate information.</li>
+            </ul>
+            <ul className="space-y-4 text-sm opacity-90">
+              <li className="flex gap-2"><span>•</span> **Right to Erasure:** Request data deletion at any time.</li>
+              <li className="flex gap-2"><span>•</span> **Right to Portability:** Receive data in structured formats.</li>
+            </ul>
+          </div>
+          <div className="bg-teal-700/50 p-6 rounded-2xl border border-teal-400/30">
+            <p className="text-sm">
+              <strong>Data Withdrawal:</strong> Use the "Data Withdrawal" button in your profile settings. 
+              We process requests within 30 days. This action is irreversible and terminates access to our services.
+            </p>
+          </div>
+        </section>
 
-                {/* Section 4 */}
-                <section id="restrictions" className="scroll-mt-28">
-                     <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">4. Restrictions</h2>
-                     <div className="bg-red-50 border-l-4 border-red-500 p-4 md:p-6 rounded-r-lg mb-6 print:border-gray-300 print:bg-white">
-                        <p className="text-red-900 font-medium italic print:text-black text-sm md:text-base">
-                            You are specifically restricted from all of the following:
-                        </p>
-                    </div>
-                    <div className="prose prose-lg text-gray-600 font-serif leading-relaxed text-sm md:text-base">
-                        <ul className="list-disc pl-5 space-y-2 marker:text-red-500">
-                            <li>Publishing any website material in any other media without prior consent.</li>
-                            <li>Selling, sublicensing, and/or otherwise commercializing any website material.</li>
-                            <li>Using this website in any way that is or may be damaging to this website.</li>
-                            <li>Using this website in any way that impacts user access to this website.</li>
-                            <li>Engaging in any data mining, data harvesting, data extracting, or any other similar activity.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                {/* Section 5 */}
-                <section id="disclaimer" className="scroll-mt-28">
-                    <div className="flex items-center gap-3 mb-4">
-                         <div className="p-2 bg-teal-50 text-teal-600 rounded-lg print:hidden">
-                            <AlertTriangle size={24} />
-                        </div>
-                        <h2 className="text-xl md:text-2xl font-bold text-gray-900">5. Disclaimers</h2>
-                    </div>
-                    <div className="prose prose-lg text-gray-600 font-serif leading-relaxed text-sm md:text-base">
-                        <p>
-                            This Website is provided "as is," with all faults, and Six Finance expresses no representations or warranties, of any kind related to this Website or the materials contained on this Website. Also, nothing contained on this Website shall be interpreted as advising you.
-                        </p>
-                    </div>
-                </section>
-
-                {/* Section 6 */}
-                <section id="governing" className="scroll-mt-28">
-                     <div className="flex items-center gap-3 mb-4">
-                         <div className="p-2 bg-teal-50 text-teal-600 rounded-lg print:hidden">
-                            <Scale size={24} />
-                        </div>
-                        <h2 className="text-xl md:text-2xl font-bold text-gray-900">6. Governing Law & Jurisdiction</h2>
-                    </div>
-                    <div className="prose prose-lg text-gray-600 font-serif leading-relaxed text-sm md:text-base">
-                        <p>
-                            These Terms will be governed by and interpreted in accordance with the laws of the State of India, and you submit to the non-exclusive jurisdiction of the state and federal courts located in India for the resolution of any disputes.
-                        </p>
-                    </div>
-                </section>
-
-                {/* Footer of the content */}
-                <div className="pt-8 md:pt-12 border-t border-gray-200">
-                    <p className="text-gray-500 italic text-sm md:text-base">
-                        For any legal inquiries, please reach out to <a href="mailto:legal@sixfinance.com" className="text-teal-600 hover:underline">legal@sixfinance.com</a>.
-                    </p>
-                </div>
-
-            </main>
-        </div>
-      </div>
+        {/* Footer Contact */}
+        <footer className="pt-12 border-t border-slate-200">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h4 className="font-bold mb-3 uppercase text-xs tracking-widest text-teal-600">Legal Team</h4>
+              <p className="text-sm text-slate-500 flex items-center gap-2">
+                <Mail size={14} /> legal@sixfinance.in
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-3 uppercase text-xs tracking-widest text-teal-600">Privacy Officer</h4>
+              <p className="text-sm text-slate-500 flex items-center gap-2">
+                <Mail size={14} /> privacy@sixfinance.in
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-3 uppercase text-xs tracking-widest text-teal-600">Jurisdiction</h4>
+              <p className="text-sm text-slate-500">Mumbai, Maharashtra, India</p>
+            </div>
+          </div>
+          <div className="mt-12 text-center text-slate-400 text-xs">
+            <p>
+              These Terms of Service constitute a legally binding agreement. 
+              Six Finance reserves the right to modify these terms at any time.
+            </p>
+          </div>
+        </footer>
+      </main>
     </div>
   );
 }
-
-// Helper Component for Sidebar Links
-const NavLink = ({ href, label, active = false }: { href: string, label: string, active?: boolean }) => (
-    <a 
-        href={href} 
-        className={`block pl-4 py-2 text-sm transition-colors border-l-2 ${
-            active 
-            ? 'border-teal-500 text-teal-600 font-bold bg-teal-50/50' 
-            : 'border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300'
-        }`}
-    >
-        {label}
-    </a>
-);

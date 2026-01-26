@@ -1,215 +1,357 @@
-import React from 'react';
-import { ShieldCheck, TrendingUp, Users, Target, ArrowRight, Linkedin, Twitter } from 'lucide-react';
-import Link from 'next/link';
+import React from "react";
+import {
+  Users,
+  TrendingUp,
+  ShieldCheck,
+  Zap,
+  MapPin,
+  Building2,
+  Target,
+  Briefcase,
+  Globe,
+  Award,
+  ChevronRight,
+  Linkedin,
+  Twitter,
+  ExternalLink,
+} from "lucide-react";
 
-// Interface for Team Member data
-interface TeamMember {
-  id: number;
-  name: string;
-  role: string;
-  image: string;
-}
-
-// Mock Data
-const teamMembers: TeamMember[] = [
-  {
-    id: 1,
-    name: "Aditya Singh Rajput",
-    role: "Founder & CEO",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: 2,
-    name: "Rajan Singh",
-    role: "Tech Lead",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: 3,
-    name: "Pravin Bhattarai",
-    role: "Tech Lead",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    id: 4,
-    name: "Sarang Sang",
-    role: "Marketing Head",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  },
-];
-
-const AboutUs: React.FC = () => {
+export default function AboutUsPage() {
   return (
-    <div className="min-h-screen bg-gray-50 font-serif text-gray-800 overflow-x-hidden">
-      
-      {/* --- Hero Section --- */}
-      <section className="relative w-full bg-white overflow-hidden">
-        {/* Background Blobs - Adjusted for mobile opacity/size */}
+    <div className="min-h-screen bg-white font-sans text-slate-900 leading-relaxed">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-teal-400 via-teal-500 to-teal-600 text-white py-28 px-6 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-            <div className="absolute right-0 top-0 w-64 h-64 md:w-96 md:h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-            <div className="absolute left-0 bottom-0 w-64 h-64 md:w-96 md:h-96 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+          <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-white rounded-full blur-[120px]" />
+          <div className="absolute bottom-[-10%] left-[-5%] w-[300px] h-[300px] bg-teal-200 rounded-full blur-[100px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16 md:pt-20 md:pb-24 text-center relative z-10">
-          <h2 className="text-teal-600 font-semibold tracking-wider uppercase text-xs mb-4 font-sans">
-            Our Story
-          </h2>
-          {/* Responsive Heading Sizes */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-            Democratizing Finance for <br className="hidden md:block" />
-            <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-700">
-              Every Indian Dreamer
-            </span>
+        <div className="max-w-7xl mx-auto relative z-10 text-center lg:text-left">
+          <h1 className="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tight leading-tight">
+            Six Finance: Your Trusted <br className="hidden lg:block" />
+            Financial Partner
           </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-600 mb-8 md:mb-10 leading-relaxed px-2">
-            We are building India's most transparent financial marketplace. From personal loans to credit building, we simplify the complex world of finance.
+          <p className="max-w-2xl text-lg md:text-xl text-teal-50 font-medium mb-10 mx-auto lg:mx-0 opacity-90">
+            Experience-driven financial services built on transparency,
+            innovation, and over 20 years of banking expertise.
           </p>
-          
-          {/* Stack buttons on mobile, side-by-side on tablet+ */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4 font-sans px-4 sm:px-0">
-            <Link href={'/'}><button className="w-full sm:w-auto px-8 py-3 bg-teal-500 hover:bg-teal-600 text-white font-medium rounded-full transition-all shadow-lg hover:shadow-teal-500/30 flex items-center justify-center gap-2">
-               Explore Products <ArrowRight size={18} />
-             </button></Link>
-            <Link href={'/contact-us'}><button className="w-full sm:w-auto px-8 py-3 bg-white border border-gray-200 hover:border-teal-500 text-gray-700 hover:text-teal-500 font-medium rounded-full transition-all">
-               Contact Support
-             </button></Link>
+          <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+            <button className="bg-white text-teal-600 hover:bg-teal-50 font-bold py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl">
+              Start Your Journey
+            </button>
+            <button className="bg-teal-700/30 border-2 border-white/40 hover:border-white text-white font-bold py-4 px-10 rounded-full transition-all">
+              Learn More
+            </button>
           </div>
         </div>
       </section>
 
-      {/* --- Stats / Trust Section --- */}
-      <section className="py-8 md:py-12 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 md:gap-8 text-center divide-x divide-gray-100">
-                {[
-                    { label: "Happy Customers", value: "2M+" },
-                    { label: "Loan Disbursed", value: "₹500Cr+" },
-                    { label: "Banking Partners", value: "50+" },
-                    { label: "Cities Covered", value: "100+" },
-                ].map((stat, idx) => (
-                    <div key={idx} className="p-2 md:p-4">
-                        <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1 md:mb-2 italic">{stat.value}</div>
-                        <div className="text-[10px] md:text-xs font-sans text-gray-400 uppercase tracking-widest">{stat.label}</div>
-                    </div>
-                ))}
-            </div>
-        </div>
-      </section>
+      {/* Impact Across India (Statistics) */}
+      <section className="py-20 px-6 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-800 mb-4">
+              Our Impact Across India
+            </h2>
+            <p className="text-slate-500 max-w-2xl mx-auto font-medium">
+              Our numbers tell the story of trust, reach, and commitment to
+              financial empowerment.
+            </p>
+          </div>
 
-      {/* --- Mission & Vision Grid --- */}
-      <section className="py-16 md:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-            
-            {/* Text Content */}
-            <div className="space-y-8 md:space-y-10 order-2 md:order-1">
-                <div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                        <Target className="text-teal-500 shrink-0" size={28} />
-                        Our Mission
-                    </h3>
-                    <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                        To make financial products accessible, affordable, and transparent for everyone. We believe that getting a loan or checking your credit score shouldn't be a hassle.
-                    </p>
-                </div>
-                <div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                        <TrendingUp className="text-teal-500 shrink-0" size={28} />
-                        Our Vision
-                    </h3>
-                    <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                        We envision a future where financial literacy is universal and every individual has the power to choose the right financial product without hidden terms.
-                    </p>
-                </div>
-            </div>
-
-            {/* Feature Card */}
-            <div className="relative font-sans order-1 md:order-2"> 
-                <div className="absolute inset-0 bg-teal-500 transform rotate-2 rounded-2xl opacity-10"></div>
-                <div className="relative bg-white p-6 md:p-10 rounded-2xl shadow-xl border border-gray-100">
-                    <div className="grid grid-cols-1 gap-6 md:gap-8">
-                        <FeatureRow icon={<ShieldCheck className="text-teal-500" />} title="100% Secure" desc="Bank-grade security protocols to keep your data safe." />
-                        <FeatureRow icon={<Users className="text-teal-500" />} title="Customer First" desc="Dedicated support to guide you through every EMI calculation." />
-                        <FeatureRow icon={<TrendingUp className="text-teal-500" />} title="Data Driven" desc="Smart algorithms to find the best interest rates for you." />
-                    </div>
-                </div>
-            </div>
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-8">
+            {[
+              {
+                label: "Happy Customers",
+                val: "250+",
+                desc: "Individuals empowered",
+              },
+              {
+                label: "Capital Deployed",
+                val: "50Cr+",
+                desc: "Fueling dreams",
+              },
+              {
+                label: "Banking Partners",
+                val: "50+",
+                desc: "Leading banks & NBFCs",
+              },
+              {
+                label: "Cities Covered",
+                val: "250+",
+                desc: "Pan-India presence",
+              },
+              {
+                label: "DSA Partners",
+                val: "1K+",
+                desc: "Nationwide agent network",
+              },
+            ].map((stat, i) => (
+              <div
+                key={i}
+                className="text-center group p-4 hover:bg-white hover:shadow-md rounded-2xl transition-all"
+              >
+                <p className="text-4xl font-black text-teal-500 mb-2">
+                  {stat.val}
+                </p>
+                <p className="text-sm font-bold text-slate-800 mb-1">
+                  {stat.label}
+                </p>
+                <p className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">
+                  {stat.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* --- Team Section --- */}
-      <section className="py-16 md:py-24 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 md:mb-16">
-                <h2 className="text-teal-600 font-sans font-semibold tracking-wider uppercase text-xs mb-3">The Minds Behind</h2>
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 italic">Meet Our Leadership</h3>
-                <div className="w-24 h-1 bg-teal-500 mx-auto mt-6"></div>
-            </div>
-
-            {/* Grid responds: 1 col (mobile) -> 2 col (tablet) -> 4 col (desktop) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-8">
-                {teamMembers.map((member) => (
-                    <div key={member.id} className="group relative">
-                        {/* Image Container */}
-                        <div className="relative h-80 md:h-96 w-full overflow-hidden rounded-xl shadow-lg bg-gray-100">
-                            <img 
-                                src={member.image} 
-                                alt={member.name} 
-                                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
-                            {/* Overlay Gradient (Hover) */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-teal-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            
-                            {/* Social Icons */}
-                            <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-4 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-                                <button className="bg-white/20 hover:bg-white text-white hover:text-teal-600 p-2 rounded-full backdrop-blur-sm transition-colors">
-                                    <Linkedin size={20} />
-                                </button>
-                                <button className="bg-white/20 hover:bg-white text-white hover:text-teal-600 p-2 rounded-full backdrop-blur-sm transition-colors">
-                                    <Twitter size={20} />
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* Text Content */}
-                        <div className="text-center mt-6">
-                            <h4 className="text-xl font-bold text-gray-900">{member.name}</h4>
-                            <p className="text-teal-600 font-sans text-sm font-medium uppercase tracking-wide mt-1">{member.role}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
+      {/* Our Story Section */}
+      <section className="py-24 px-6 max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        <div className="order-2 lg:order-1">
+          <div className="inline-block px-4 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+            Democratizing Finance
+          </div>
+          <h2 className="text-4xl font-black text-slate-800 mb-6 leading-tight uppercase tracking-tight">
+            Building India's Most Transparent Marketplace
+          </h2>
+          <div className="space-y-6 text-slate-600 font-medium">
+            <p>
+              Six Finance is transforming India's financial landscape for every
+              dreamer. We understand that navigating finance can be
+              overwhelming, so we've made it our mission to simplify every step.
+            </p>
+            <p>
+              Founded by experienced banking professionals with deep roots in
+              the sector, we combine two decades of industry expertise with a
+              customer-centric approach.
+            </p>
+          </div>
+        </div>
+        <div className="order-1 lg:order-2 bg-slate-100 rounded-[3rem] h-[450px] shadow-inner flex items-center justify-center text-slate-300">
+          <Users size={80} className="opacity-20" />
         </div>
       </section>
 
-      {/* --- CTA Section --- */}
-      <section className="py-16 md:py-24 bg-teal-900 text-white">
-          <div className="max-w-4xl mx-auto text-center px-4">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 italic leading-tight">Ready to start your financial journey?</h2>
-              <p className="text-teal-100 mb-8 md:mb-10 text-lg md:text-xl font-light font-sans">
-                  Join thousands of users who have simplified their finances with us today.
+      {/* Leadership Section - UPDATED DESIGN */}
+      <section className="py-28 px-6 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-teal-50 rounded-full blur-3xl opacity-50 -z-10" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-slate-100 rounded-full blur-3xl opacity-50 -z-10" />
+
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <span className="text-teal-600 font-bold tracking-[0.3em] uppercase text-xs">
+              The Visionaries
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black mt-3 text-slate-900 uppercase tracking-tighter">
+              The Minds Behind{" "}
+              <span className="text-teal-500">Six Finance</span>
+            </h2>
+            <div className="w-20 h-1.5 bg-teal-500 mx-auto mt-6 rounded-full" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {[
+              {
+                name: "Aditya Singh Rajput",
+                role: "Founder & CEO",
+                detail: "20+ years of banking expertise",
+                img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400",
+                linkedin: "#",
+                twitter: "#",
+              },
+              {
+                name: "Narender Rapeta",
+                role: "Co-Founder & Channel Head",
+                detail: "Building India's largest DSA network",
+                img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400",
+                linkedin: "#",
+                twitter: "#",
+              },
+              {
+                name: "Brij Bhushan Upadhyay",
+                role: "CFO",
+                detail: "Managing fiscal operations & growth",
+                img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400",
+                linkedin: "#",
+                twitter: "#",
+              },
+              {
+                name: "Rajan Singh",
+                role: "Tech Lead",
+                detail: "Architecting scalable systems",
+                img: "/rajan2.jpeg",
+                linkedin: "#",
+                twitter: "#",
+              },
+              {
+                name: "Pravin Bhattarai",
+                role: "Tech Lead",
+                detail: "Ensuring seamless user experiences",
+                img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400",
+                linkedin: "#",
+                twitter: "#",
+              },
+              {
+                name: "Ashish Jha",
+                role: "IT Head",
+                detail: "Building secure, reliable technology",
+                img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=400",
+                linkedin: "#",
+                twitter: "#",
+              },
+            ].map((leader, i) => (
+              <div key={i} className="group relative">
+                <div className="relative h-[480px] w-full overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-200">
+                  {/* Image zoom is also slowed down to match */}
+                  <img
+                    src={leader.img}
+                    alt={leader.name}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
+                  />
+
+                  {/* Glassmorphism Info Overlay */}
+                  <div className="absolute inset-x-4 bottom-4 bg-slate-900/90 backdrop-blur-xl p-7 rounded-4xl border border-white/10 transform translate-y-[calc(100%+20px)] group-hover:translate-y-0 transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                    <div className="relative z-10">
+                      <p className="text-teal-400 text-[10px] font-black uppercase tracking-[0.4em] mb-1">
+                        {leader.role}
+                      </p>
+                      <h4 className="text-white text-xl font-bold mb-3 tracking-tight">
+                        {leader.name}
+                      </h4>
+
+                      <p className="text-slate-400 text-xs font-medium leading-relaxed mb-6">
+                        {leader.detail}
+                      </p>
+
+                      <div className="flex gap-3 pt-5 border-t border-white/10">
+                        <a
+                          href={leader.linkedin}
+                          className="flex-1 bg-white/5 hover:bg-teal-500 text-white py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-colors duration-300"
+                        >
+                          <Linkedin size={12} /> LinkedIn
+                        </a>
+                        <a
+                          href={leader.twitter}
+                          className="w-12 bg-white/5 hover:bg-white hover:text-slate-900 text-white rounded-xl flex items-center justify-center transition-colors duration-300"
+                        >
+                          <Twitter size={12} />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute -z-10 inset-0 bg-teal-500/5 blur-3xl rounded-full scale-0 group-hover:scale-100 transition-transform duration-1000" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Service Offerings */}
+      <section className="py-24 px-6 max-w-7xl mx-auto">
+        <h2 className="text-3xl font-black mb-16 uppercase text-center tracking-tighter">
+          Comprehensive Services
+        </h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {[
+            {
+              title: "Personal Loans",
+              desc: "Flexible products tailored to your professional and personal goals.",
+            },
+            {
+              title: "Product Comparison",
+              desc: "Evaluate multiple financial products side-by-side easily.",
+            },
+            {
+              title: "Credit Building",
+              desc: "Guidance to improve and maintain a healthy credit score.",
+            },
+            {
+              title: "Quick Approvals",
+              desc: "Streamlined tech for rapid disbursal when you need funds urgently.",
+            },
+            {
+              title: "EMI Calculators",
+              desc: "Easy tools to plan finances effectively before committing.",
+            },
+            {
+              title: "Expert Support",
+              desc: "Experienced professionals available at every step of your journey.",
+            },
+          ].map((service, idx) => (
+            <div key={idx} className="flex gap-6 items-start">
+              <div className="bg-teal-500 text-white p-3 rounded-2xl flex-shrink-0">
+                <Briefcase size={20} />
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-800 mb-2 uppercase text-sm tracking-wide">
+                  {service.title}
+                </h4>
+                <p className="text-slate-500 text-xs leading-relaxed font-medium">
+                  {service.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Mission Section */}
+      <section className="py-24 px-6 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 text-center md:text-left">
+          {[
+            {
+              icon: <Globe />,
+              title: "Accessible",
+              desc: "Breaking down barriers so every Indian can access financial products regardless of location.",
+            },
+            {
+              icon: <TrendingUp />,
+              title: "Affordable",
+              desc: "Using smart partner networks to identify the best interest rates and cost-effective terms.",
+            },
+            {
+              icon: <ShieldCheck />,
+              title: "Transparent",
+              desc: "No hidden terms, no confusing jargon. Complete clarity at every stage.",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 hover:border-white/20 transition-all"
+            >
+              <div className="text-teal-400 mb-6 flex justify-center md:justify-start">
+                {item.icon}
+              </div>
+              <h3 className="text-2xl font-bold mb-4 uppercase">
+                {item.title}
+              </h3>
+              <p className="text-slate-400 text-sm leading-relaxed">
+                {item.desc}
               </p>
-              <button className="w-full sm:w-auto font-sans bg-teal-500 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-teal-400 transition-colors shadow-lg shadow-teal-900/50">
-                  Get Started Now
-              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Final Call to Action Section */}
+      <section className="py-24 px-6 bg-gradient-to-r from-teal-500 to-teal-600 text-white text-center shadow-2xl">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-4xl font-black mb-8 uppercase tracking-tight leading-tight">
+            Ready to Experience the <br /> Six Finance Difference?
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button className="bg-slate-900 text-white font-bold py-5 px-14 rounded-full transition-all hover:bg-slate-800 uppercase tracking-widest text-sm shadow-xl">
+              Apply Now
+            </button>
+            <button className="bg-white text-teal-600 font-bold py-5 px-14 rounded-full transition-all hover:bg-teal-50 uppercase tracking-widest text-sm shadow-xl">
+              Contact Team
+            </button>
           </div>
+        </div>
       </section>
     </div>
   );
-};
-
-// Helper component for the feature list
-const FeatureRow = ({ icon, title, desc }: { icon: React.ReactNode, title: string, desc: string }) => (
-    <div className="flex items-start gap-4 md:gap-5">
-        <div className="p-3 bg-teal-50 rounded-lg shrink-0">
-            {icon}
-        </div>
-        <div>
-            <h4 className="font-bold text-base md:text-lg text-gray-900">{title}</h4>
-            <p className="text-sm text-gray-500 mt-1 leading-relaxed font-sans">{desc}</p>
-        </div>
-    </div>
-);
-
-export default AboutUs;
+}
