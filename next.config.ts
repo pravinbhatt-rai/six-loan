@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Performance optimizations
+  // SWC minification is enabled by default in Next.js 16
+  productionBrowserSourceMaps: false,
+  // Optimized images
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
   async rewrites() {
     return [
       {

@@ -48,17 +48,17 @@ const SixLoansHighlight: React.FC = () => {
     <section className="w-full py-8 px-2 md:px-0 font-sans">
       {/* Header Section */}
       <div className="flex items-center justify-center gap-4 md:gap-6 mb-8 md:mb-12">
-        <div className="w-2 h-2 md:w-3 md:h-3 bg-[#3B82F6] rotate-45 transform" />
+        <div className="w-2 h-2 md:w-3 md:h-3 bg-teal-500 rotate-45 transform" />
         <h2 className="text-2xl md:text-4xl font-cartis font-bold text-gray-900 text-center">
           Six Loans{' '}
-          <span className="text-[#3B82F6] relative inline-block">
+          <span className="text-teal-500 relative inline-block">
             Highlight
             <svg className="absolute left-0 -bottom-2 md:-bottom-3 w-full h-auto" viewBox="0 0 100 15" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              <path d="M2 8 C 20 15, 40 15, 50 10 C 55 7, 55 3, 50 5 C 45 8, 55 12, 70 12 C 85 12, 98 5, 98 5" stroke="#3B82F6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M2 8 C 20 15, 40 15, 50 10 C 55 7, 55 3, 50 5 C 45 8, 55 12, 70 12 C 85 12, 98 5, 98 5" stroke="#01baa7" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
         </h2>
-        <div className="w-2 h-2 md:w-3 md:h-3 bg-[#3B82F6] rotate-45 transform" />
+        <div className="w-2 h-2 md:w-3 md:h-3 bg-teal-500 rotate-45 transform" />
       </div>
 
       <div className="max-w-6xl mx-auto flex flex-col gap-4 md:gap-4">

@@ -1,9 +1,9 @@
 'use client';
-import React from 'react';
+import React, { memo } from 'react';
 import { ChevronRight } from 'lucide-react';
 import LoanCalculator from '@/component/PersonalLoan/LoanCalculator';
 
-const LoanSection = () => {
+const LoanSection = memo(() => {
     return (
         <section className="bg-white min-h-screen w-full flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8 lg:py-0">
             <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
@@ -43,6 +43,8 @@ const LoanSection = () => {
             </div>
         </section>
     );
-};
+});
+
+LoanSection.displayName = 'LoanSection';
 
 export { LoanSection };
