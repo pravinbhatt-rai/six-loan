@@ -525,14 +525,14 @@ model LoanProduct {
 
   // Footer checklist items for card display
   footerItems LoanFooterItem[]
-  offers      LoanOffer[]
 
   applications Application[]
 
   createdById Int?
   createdBy   User? @relation(fields: [createdById], references: [id])
 
-  createdAt DateTime @default(now())
+  createdAt  DateTime    @default(now())
+  loanOffers LoanOffer[]
 }
 
 model LoanBullet {
@@ -595,13 +595,14 @@ model LoanOffer {
 }
 
 model CreditCardProduct {
-  id         Int        @id @default(autoincrement())
-  name       String
-  slug       String     @unique
-  bankName   String
-  imageUrl   String
-  categories Category[] @relation("CardCategories")
-  category   String? // Credit card category: Cashback, Rewards, Travel, etc.
+  id          Int        @id @default(autoincrement())
+  name        String
+  slug        String     @unique
+  bankName    String
+  bankLogoUrl String?
+  imageUrl    String
+  categories  Category[] @relation("CardCategories")
+  category    String? // Credit card category: Cashback, Rewards, Travel, etc.
 
   // CARD SPECIFICATIONS
   annualFee     String // e.g. "Lifetime free", "₹1,500 + GST"
@@ -611,7 +612,6 @@ model CreditCardProduct {
   effectiveFree Boolean @default(false)
   recommended   Boolean @default(false)
   rating        Float   @default(0)
-  isActive      Boolean @default(true)
 
   // VIDEO & LINKS
   videoUrl           String? // YouTube/video embed URL for "Learn about the card"
@@ -632,14 +632,14 @@ model CreditCardProduct {
   summaryCharges      CreditCardSummaryCharge[]
   requiredDocuments   CreditCardRequiredDocument[]
   processSteps        CreditCardProcessStep[]
-  offers              CreditCardOffer[]
 
   applications Application[]
 
   createdById Int?
   createdBy   User? @relation(fields: [createdById], references: [id])
 
-  createdAt DateTime @default(now())
+  createdAt        DateTime          @default(now())
+  creditCardOffers CreditCardOffer[]
 }
 
 model CreditCardBestSuitedFor {
@@ -862,12 +862,13 @@ model EligibilityInquiry {
 // ==================== DEBIT CARD MODELS ====================
 
 model DebitCardProduct {
-  categories Category[] @relation("DebitCardCategories")
-  id         Int        @id @default(autoincrement())
-  name       String
-  slug       String     @unique
-  bankName   String
-  imageUrl   String
+  categories  Category[] @relation("DebitCardCategories")
+  id          Int        @id @default(autoincrement())
+  name        String
+  slug        String     @unique
+  bankName    String
+  imageUrl    String
+  bankLogoUrl String?
 
   // CARD SPECIFICATIONS
   accountType    String? // "Savings", "Salary", "Current"
