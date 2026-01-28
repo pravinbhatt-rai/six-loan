@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { CreditCard, Shield, Zap, Globe, Sparkles, ArrowRight } from "lucide-react";
-import UniversalCardItem, { UniversalCardInfo } from '../../component/creditcards/UniversalCardItem';
-import DebitCardComparisonModal from '../../component/creditcards/DebitCardComparisonModal';
-import BottomComparisonBar from '../../component/creditcards/BottomComparisonBar';
+import UniversalCardItem, { UniversalCardInfo } from '@/component/creditcards/UniversalCardItem';
+import DebitCardComparisonModal from '@/component/creditcards/DebitCardComparisonModal';
+import BottomComparisonBar from '@/component/creditcards/BottomComparisonBar';
 
 export default function DebitCardsPage() {
   const [debitCards, setDebitCards] = useState<any[]>([]);
@@ -127,7 +127,7 @@ export default function DebitCardsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-linear-to-r from-teal-600 to-teal-700 text-white py-16">
+      <div className="bg-gradient-to-r from-teal-600 to-teal-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Find Your Perfect Debit Card
@@ -178,7 +178,7 @@ export default function DebitCardsPage() {
               className="group"
             >
               <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all p-6 h-full border border-gray-200 hover:border-teal-300">
-                <div className={`w-12 h-12 rounded-lg bg-linear-to-r ${category.color} flex items-center justify-center text-white mb-4`}>
+                <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center text-white mb-4`}>
                   {category.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">

@@ -411,19 +411,18 @@ const NAV_DATA: NavItem[] = [
         ]
     },
 {
-    name: 'Blogs',
+    name: 'Blog',
     columns: [
         {
             title: 'Latest Posts',
             icon: <FileText className="w-4 h-4 text-teal-500" />,
             items: [
-                { name: 'All Blogs', href: '/blogs' },
-                { name: 'Personal Finance', href: '/blogs/personal-loan' },
-                { name: 'Business Loan', href: '/blogs/business-loan' },
-                { name: 'Home Loan', href: '/blogs/home-loan' },
-                { name: 'Loan against Property', href: '/blogs/loan-against-property' },
-                { name: 'Credit Cards blogs', href: '/blogs/credit-cards' },
-                { name: 'Debit Cards', href: '/blogs/debit-cards' },
+                { name: 'All Blogs', href: '/blog' },
+                { name: 'Personal Finance', href: '/blog/personal-finance' },
+                { name: 'Credit Cards', href: '/blog/credit-cards' },
+                { name: 'Loans', href: '/blog/loans' },
+                { name: 'Tax & Compliance', href: '/blog/tax-compliance' },
+                { name: 'Banking', href: '/blog/banking' },
             ]
         }
     ]

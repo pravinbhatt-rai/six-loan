@@ -6,8 +6,27 @@ import { FiInfo } from "react-icons/fi";
 import { ChevronRight } from "lucide-react";
 import CreditCardApplicationModal from "@/component/creditcards/CreditCardApplicationModal";
 import Link from "next/link";
-import { allCategories } from "@/lib/creditCardCategories";
+import { useRouter, useSearchParams } from 'next/navigation';
 import CardItem, { CardInfo } from "@/component/creditcards/CardItem";
+import CreditCardListSection from '@/component/creditinfo/CreditCardListSection';
+
+const TEAL_THEME = {
+  color: 'from-teal-500 to-teal-600',
+  bgColor: 'bg-teal-50',
+  borderColor: 'border-teal-200',
+};
+
+const CREDIT_CARD_CATEGORIES = [
+  { slug: "cashback", title: "Cashback Credit Cards", description: "Best cards for cashback on your spends." },
+  { slug: "rewards", title: "Rewards Credit Cards", description: "Earn reward points on every purchase." },
+  { slug: "lounge", title: "Credit Card Lounge Access", description: "Cards with complimentary airport lounge access." },
+  { slug: "onecard", title: "OneCard Credit Cards", description: "Popular OneCard credit cards in India." },
+  { slug: "fuel", title: "Fuel Credit Cards", description: "Save on your fuel expenses with these cards." },
+  { slug: "travel", title: "Travel Credit Cards", description: "Travel smart with exclusive travel benefits." },
+  { slug: "international", title: "International Credit Cards", description: "Cards for global usage and forex savings." },
+  { slug: "forex", title: "Zero Forex Markup Credit Cards", description: "Cards with zero forex markup for international spends." },
+  { slug: "secured", title: "Secured Credit Cards", description: "Build credit with secured credit cards." },
+];
 
 export default function BestCreditCardsPage() {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -16,20 +35,21 @@ export default function BestCreditCardsPage() {
   const [applicationCard, setApplicationCard] = useState<any>(null);
   const [creditCards, setCreditCards] = useState<CardInfo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [groupedCards, setGroupedCards] = useState<Record<string, CardInfo>>({});
+  const [categoryOrder, setCategoryOrder] = useState<string[]>([]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     const fetchCards = async () => {
       try {
         const response = await fetch('/api/credit-cards');
         const data = await response.json();
-        
-        const formattedCards: CardInfo[] = (data.cards || []).map((c: any) => ({
+        const formattedCards: CardInfo[] = (data.products || []).map((c: any) => ({
           id: c.id?.toString() || '',
           name: c.name || '',
           image: c.imageUrl || c.bankLogoUrl || "/creditcard/image 666.png",
-          bullets: c.bulletPoints?.map((b: any) => 
-            typeof b === 'string' ? b : b?.text || ''
-          ).filter(Boolean) || [],
+          bullets: c.bulletPoints?.map((b: any) => typeof b === 'string' ? b : b?.text || '').filter(Boolean) || [],
           bankName: c.bankName || '',
           bank: c.bankName || '',
           annualFee: c.annualFee || '',
@@ -39,18 +59,38 @@ export default function BestCreditCardsPage() {
           cardType: c.cardType || '',
           rating: c.rating || 0,
           categories: c.categories?.map((cat: any) => cat.name) || [],
+          keyFeatures: Array.isArray(c.keyFeatures) ? c.keyFeatures : [], // Ensure always array
         }));
-        
         setCreditCards(formattedCards);
+        // Group cards by their first category (or 'Other' if none)
+        const groups: Record<string, CardInfo[]> = {};
+        formattedCards.forEach(card => {
+          const cat = card.categories && card.categories.length > 0 ? card.categories[0] : 'Other';
+          if (!groups[cat]) groups[cat] = [];
+          groups[cat].push(card);
+        });
+        setGroupedCards(groups);
+        setCategoryOrder(Object.keys(groups));
       } catch (error) {
         console.error('Error fetching cards:', error);
       } finally {
         setLoading(false);
       }
     };
-
     fetchCards();
   }, []);
+
+  useEffect(() => {
+    // If a category is specified in the query, redirect to that section
+    const category = searchParams.get('category');
+    if (category) {
+      // Scroll to the category section or handle as needed
+      const el = document.getElementById(`category-${category}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [searchParams]);
 
   const handleApply = (card: any) => {
     console.log('Apply clicked for:', card.name);
@@ -81,16 +121,6 @@ export default function BestCreditCardsPage() {
     setSelectedCard(details);
     setOpenDrawer(true);
   };
-
-  // Category navigation links
-  const categoryLinks = allCategories.map(category => {
-    const IconComp = category.iconComponent;
-    return {
-      id: category.id,
-      label: category.title.replace("Best ", "").replace(" in India", ""),
-      icon: <IconComp className="w-5 h-5" />
-    };
-  });
 
   return (
     <div className="min-h-screen w-full bg-gray-50">
@@ -138,19 +168,19 @@ export default function BestCreditCardsPage() {
                   Quick Navigation
                 </h3>
                 <nav className="space-y-2">
-                  {categoryLinks.map((category) => (
+                  {Object.keys(groupedCards).map((category) => (
                     <a
-                      key={category.id}
-                      href={`#${category.id}`}
+                      key={category}
+                      href={`#${category}`}
                       className="flex items-center gap-3 p-3 hover:bg-gray-50 transition-all group shadow-sm"
                     >
                       <div className="p-2 bg-gray-100 group-hover:bg-teal-100 transition-colors shadow">
                         <div className="text-gray-600 group-hover:text-teal-500">
-                          {category.icon}
+                          {/* Icon can be added here if needed */}
                         </div>
                       </div>
                       <span className="font-medium text-gray-700 group-hover:text-teal-500 transition-colors">
-                        {category.label}
+                        {category}
                       </span>
                     </a>
                   ))}
@@ -178,42 +208,26 @@ export default function BestCreditCardsPage() {
             {/* Mobile Categories Filter */}
             <div className="lg:hidden mb-8">
               <div className="flex overflow-x-auto pb-2 gap-2 scrollbar-hide">
-                {categoryLinks.map((category) => (
+                {Object.keys(groupedCards).map((category) => (
                   <a
-                    key={category.id}
-                    href={`#${category.id}`}
+                    key={category}
+                    href={`#${category}`}
                     className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 shadow-md hover:shadow-lg transition-all whitespace-nowrap"
                   >
-                    <div className="text-teal-500">
-                      {category.icon}
-                    </div>
-                    <span className="font-medium text-gray-700">{category.label}</span>
+                    {/* Icon can be added here if needed */}
+                    <span className="font-medium text-gray-700">{category}</span>
                   </a>
                 ))}
               </div>
             </div>
 
             {/* Featured Credit Cards from API */}
-            {!loading && creditCards.length > 0 && (
+            {!loading && (
               <div className="mb-12">
-                <div className="bg-white shadow-lg p-6 border border-gray-200">
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-teal-500 flex items-center justify-center shadow-md">
-                      <FiInfo className="w-5 h-5 text-white" />
-                    </div>
-                    Featured Credit Cards
-                  </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {creditCards.slice(0, 4).map((card) => (
-                      <CardItem
-                        key={card.id}
-                        card={card}
-                        onApply={handleApply}
-                        onDetails={handleShowDetails}
-                      />
-                    ))}
-                  </div>
-                </div>
+                <CreditCardListSection
+                
+                  viewMoreHref="/creditinfo"
+                />
               </div>
             )}
             {/* How to Choose Section */}
@@ -269,6 +283,21 @@ export default function BestCreditCardsPage() {
                   </p>
                 </div>
               </div>
+            </div>
+
+            {/* Render all credit card categories */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+              {CREDIT_CARD_CATEGORIES.map((cat) => (
+                <div key={cat.slug} className="mb-12">
+                  <CreditCardListSection
+                    categorySlug={cat.slug}
+                    title={cat.title}
+                    description={cat.description}
+                    showViewMore={true}
+                    viewMoreHref={`/creditinfo/${cat.slug}`}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>

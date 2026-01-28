@@ -4,9 +4,10 @@ import prisma from '@/lib/prisma/client';
 // GET /api/blogs/[slug] - Get single blog by slug
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  paramsPromise: Promise<{ params: { slug: string } }>
 ) {
   try {
+    const { params } = await paramsPromise;
     const blog = await prisma.blog.findFirst({
       where: {
         slug: params.slug,
