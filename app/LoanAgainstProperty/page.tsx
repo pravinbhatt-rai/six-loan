@@ -24,6 +24,64 @@ import LoanGuide from '@/component/PersonalLoan/LoanGuide';
 import LoanComparisonGuide from '@/component/PersonalLoan/LoanComparisonGuide';
 import SuccessStories from '@/component/PersonalLoan/SuccessStories';
 import LoanInformation from '@/component/PersonalLoan/LoanInformation';
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/LoanAgainstProperty";
+
+  return {
+    title:
+      "Loan Against Property | Interest Rates, EMI & Eligibility – Six Finance",
+    description:
+      "Apply for a loan against property with Six Finance. Compare interest rates, calculate EMI, check eligibility, documents required, and get high-value loans by pledging residential or commercial property.",
+
+    keywords: [
+      "loan against property",
+      "lap loan",
+      "property loan",
+      "loan on property",
+      "loan against property interest rate",
+      "loan against property emi calculator",
+      "loan against property eligibility",
+      "loan against property documents required",
+      "loan against residential property",
+      "loan against commercial property",
+      "lap loan india",
+      "property loan india",
+      "loan against property for business",
+      "loan against property for self employed",
+      "high value property loan",
+      "six finance loan against property",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Loan Against Property | EMI, Rates & Eligibility – Six Finance",
+      description:
+        "Unlock your property’s value with a loan against property. Compare EMI, interest rates, and eligibility from top lenders with Six Finance.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Loan Against Property | Six Finance",
+      description:
+        "Get high-value loans against your residential or commercial property with low interest rates and flexible tenure.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 
 export default function Page() {
     return (

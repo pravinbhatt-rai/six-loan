@@ -10,6 +10,55 @@ import {
   ArrowRight,
   Info
 } from 'lucide-react';
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/terms-conditions";
+
+  return {
+    title: "Terms of Service | Six Finance",
+
+    description:
+      "Read the Terms of Service governing your use of Six Finance’s digital financial aggregator platform, including user rights, liabilities, and data protection compliance.",
+
+    keywords: [
+      "six finance terms of service",
+      "six finance terms",
+      "financial aggregator terms",
+      "loan aggregator terms and conditions",
+      "financial services website terms",
+      "user agreement six finance",
+      "digital lending platform terms",
+      "india dpdp act compliance",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Terms of Service | Six Finance",
+      description:
+        "Understand the rules, responsibilities, and limitations governing the use of Six Finance’s platform.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary",
+      title: "Terms of Service | Six Finance",
+      description:
+        "Official Terms of Service for using the Six Finance platform.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 /**
  * Six Finance Terms of Service - Server Side Component

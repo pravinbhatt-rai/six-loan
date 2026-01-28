@@ -1,5 +1,59 @@
-import InfoPageTemplate, { PageData } from '@/component/InfoPageTemplate/InfoPageTemplate';
-import { Briefcase, Umbrella, Building, Users } from 'lucide-react';
+import type { Metadata } from "next";
+import InfoPageTemplate, { PageData } from "@/component/InfoPageTemplate/InfoPageTemplate";
+import { Briefcase, Umbrella, Building, Users } from "lucide-react";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/epf";
+
+  return {
+    title:
+      "EPF (Employee Provident Fund) Guide | UAN, Balance, Withdrawal – Six Finance",
+    description:
+      "Complete guide to Employee Provident Fund (EPF). Learn about UAN activation, PF balance check, withdrawal rules, contribution structure, tax benefits, and EPFO services.",
+
+    keywords: [
+      "epf",
+      "employee provident fund",
+      "epf full form",
+      "uan number",
+      "uan activation",
+      "pf balance check",
+      "epf withdrawal rules",
+      "epf interest rate",
+      "epf contribution",
+      "epf tax benefits",
+      "epfo services",
+      "provident fund india",
+      "six finance epf guide",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Employee Provident Fund (EPF) Guide | Six Finance",
+      description:
+        "Understand EPF, UAN, PF contributions, withdrawals, and tax benefits in one simple guide by Six Finance.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "article",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "EPF (Employee Provident Fund) Guide",
+      description:
+        "Everything you need to know about EPF—UAN, balance check, withdrawals, and tax benefits.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 const epfData: PageData = {
   hero: {

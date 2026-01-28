@@ -3,6 +3,64 @@ import HeroContainer from '@/component/HomeLoan/HeroContainer';
 import { LoanSection } from '@/component/PersonalLoan/LoanSection';
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import BikeLoanGuide from "@/component/UsedBike/BikeLoanGuide";
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/usedBike/5-lakh";
+
+  return {
+    title:
+      "₹5 Lakh Used Bike Loan | Second Hand Two Wheeler Loan – Six Finance",
+
+    description:
+      "Apply for a ₹5 lakh used bike loan with Six Finance. Get affordable financing for second-hand bikes and scooters with low EMIs, flexible tenure, and quick approval.",
+
+    keywords: [
+      "5 lakh used bike loan",
+      "₹5 lakh second hand bike loan",
+      "used bike loan 5 lakh",
+      "second hand two wheeler loan 5 lakh",
+      "used motorcycle loan india",
+      "used scooter loan 5 lakh",
+      "pre owned bike loan",
+      "old bike loan interest rate",
+      "used bike loan EMI calculator",
+      "used bike loan eligibility",
+      "used bike loan documents",
+      "two wheeler loan for used bike",
+      "six finance used bike loan",
+      "used bike finance up to 5 lakh",
+      "loan for old bike",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "₹5 Lakh Used Bike Loan | Six Finance",
+      description:
+        "Finance your second-hand bike or scooter with a ₹5 lakh used bike loan at competitive interest rates.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "₹5 Lakh Used Bike Loan | Six Finance",
+      description:
+        "Get a ₹5 lakh loan for used bikes and scooters with easy EMIs and fast approval.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 
 export default function Page() {
     return (

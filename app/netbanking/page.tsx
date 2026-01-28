@@ -1,5 +1,67 @@
 import InfoPageTemplate, { PageData } from '@/component/InfoPageTemplate/InfoPageTemplate';
 import { Laptop, Smartphone, Wifi, Zap, Lock } from 'lucide-react';
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/net-banking";
+  const ogImage = "https://sixfinance.app/og/net-banking.jpg"; 
+  // One common OG image for digital banking pages
+
+  return {
+    title: "Internet Banking (NetBanking) – Features, Benefits & Security | Six Finance",
+
+    description:
+      "Learn how Internet Banking works. Transfer funds, pay bills, manage accounts, and access banking services online securely with NetBanking.",
+
+    keywords: [
+      "internet banking",
+      "net banking",
+      "online banking India",
+      "net banking services",
+      "fund transfer net banking",
+      "IMPS NEFT RTGS",
+      "net banking security",
+      "online bank account management",
+      "digital banking India"
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+
+    openGraph: {
+      type: "article",
+      url: canonicalUrl,
+      title: "Internet Banking – Online Fund Transfer & Account Management",
+      description:
+        "Access banking services anytime with Internet Banking. Learn about fund transfers, bill payments, security features, and benefits.",
+      siteName: "Six Finance",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: "Internet Banking Services – Six Finance",
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Internet Banking – Safe & Secure Online Banking",
+      description:
+        "Manage your bank account online with Internet Banking. Transfer money, pay bills, and access services securely.",
+      images: [ogImage],
+      site: "@sixfinance", // optional
+    },
+  };
+}
+
 
 const netData: PageData = {
   hero: {

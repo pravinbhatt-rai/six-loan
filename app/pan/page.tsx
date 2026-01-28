@@ -1,5 +1,64 @@
 import InfoPageTemplate, { PageData } from '@/component/InfoPageTemplate/InfoPageTemplate';
 import { CreditCard, FileText, UserPlus, FileEdit } from 'lucide-react';
+import type { Metadata } from "next";
+import React from "react";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/pan";
+
+  return {
+    title:
+      "PAN Card India | Apply, Update, Link Aadhaar & e-PAN – Six Finance",
+
+    description:
+      "Learn everything about PAN Card in India. Apply for new PAN, update details, link Aadhaar, download e-PAN, and understand PAN usage for tax & banking.",
+
+    keywords: [
+      "pan card",
+      "pan card india",
+      "apply pan card online",
+      "new pan card apply",
+      "pan card correction",
+      "pan card update",
+      "pan card link aadhaar",
+      "pan aadhaar linking",
+      "instant e pan",
+      "download e pan",
+      "pan card reprint",
+      "pan card for income tax",
+      "pan card for bank account",
+      "pan card for stock market",
+      "six finance pan services",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "PAN Card Services | Apply, Update & Link Aadhaar – Six Finance",
+      description:
+        "Apply for PAN card, update details, link Aadhaar, or generate instant e-PAN. Trusted PAN services explained simply by Six Finance.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "PAN Card India | Six Finance",
+      description:
+        "Complete guide to PAN Card in India – application, correction, Aadhaar linking & instant e-PAN.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 
 const panData: PageData = {
   hero: {

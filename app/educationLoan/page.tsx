@@ -1,4 +1,3 @@
-import React from "react";
 import EduHero from "../../component/EducationLoan/EduHero";
 import FeatureSection from "@/component/PersonalLoan/FeatureSection";
 import { LoanSection } from "@/component/PersonalLoan/LoanSection";
@@ -22,6 +21,61 @@ import LoanGuide from '@/component/PersonalLoan/LoanGuide';
 import LoanComparisonGuide from '@/component/PersonalLoan/LoanComparisonGuide';
 import SuccessStories from '@/component/PersonalLoan/SuccessStories';
 import LoanInformation from '@/component/PersonalLoan/LoanInformation';
+import type { Metadata } from "next";
+import React from "react";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/educationLoan";
+
+  return {
+    title:
+      "Education Loan in India | Study in India & Abroad – Six Finance",
+    description:
+      "Apply for education loans in India with Six Finance. Compare study loans for India and abroad, get low interest rates, flexible repayment, and fast approvals.",
+
+    keywords: [
+      "education loan",
+      "education loan india",
+      "study loan india",
+      "student loan india",
+      "education loan for abroad studies",
+      "study abroad loan",
+      "education loan without collateral",
+      "education loan interest rate",
+      "education loan eligibility",
+      "education loan documents required",
+      "education loan six finance",
+      "student loan apply online",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Education Loan in India | Study Loans – Six Finance",
+      description:
+        "Compare and apply for education loans for India and abroad. Get student loans with low interest rates and flexible repayment options with Six Finance.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Education Loan in India | Six Finance",
+      description:
+        "Apply online for education loans with easy eligibility, low interest rates, and expert guidance.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 
 export default function Page() {
     return (

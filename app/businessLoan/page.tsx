@@ -1,4 +1,3 @@
-import React from 'react';
 import HeroContainer from '@/component/BussinessLoan/BusinessLoanHero'
 import FeatureSection from '@/component/PersonalLoan/FeatureSection';
 import { LoanSection } from '@/component/PersonalLoan/LoanSection';
@@ -23,6 +22,61 @@ import LoanGuide from '@/component/PersonalLoan/LoanGuide';
 import LoanComparisonGuide from '@/component/PersonalLoan/LoanComparisonGuide';
 import SuccessStories from '@/component/PersonalLoan/SuccessStories';
 import LoanInformation from '@/component/PersonalLoan/LoanInformation';
+import type { Metadata } from "next";
+import React from "react";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/businessLoan";
+
+  return {
+    title:
+      "Business Loan in India | Apply Online for MSME & SME Loans – Six Finance",
+    description:
+      "Apply online for business loans in India with Six Finance. Compare MSME, SME, startup, working capital, low CIBIL, and collateral-free business loan options with fast approvals.",
+
+    keywords: [
+      "business loan",
+      "business loan india",
+      "msme business loan",
+      "sme business loan",
+      "collateral free business loan",
+      "working capital loan",
+      "startup business loan",
+      "low cibil business loan",
+      "small business loan",
+      "merchant business loan",
+      "online business loan apply",
+      "compare business loans",
+      "six finance business loan",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Business Loan in India | MSME & SME Loans – Six Finance",
+      description:
+        "Compare and apply for business loans in India. Get MSME, startup, working capital, and low CIBIL business loans with Six Finance.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Business Loan in India | Six Finance",
+      description:
+        "Apply online for business loans with fast approval, flexible repayment, and expert support.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default function Page() {
 	return (

@@ -1,5 +1,59 @@
 import React from 'react';
 import { Phone, Mail, MessageSquare, Handshake, Clock, ShieldCheck, HelpCircle, Users, Globe, ExternalLink } from 'lucide-react';
+import type { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/contact-us";
+
+  return {
+    title:
+      "Support & Contact Six Finance | Customer Care, Complaints & DSA Help",
+    description:
+      "Get in touch with Six Finance support. Contact customer care, raise complaints, connect with DSA partners, or get expert help for all financial services.",
+
+    keywords: [
+      "six finance support",
+      "six finance contact",
+      "six finance customer care",
+      "financial services support india",
+      "loan customer support",
+      "six finance complaints",
+      "six finance email support",
+      "dsa partner support",
+      "financial help desk",
+      "contact six finance",
+      "six finance helpline number",
+      "business loan support",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Support & Contact Six Finance",
+      description:
+        "Reach Six Finance customer support for assistance, complaints, partnerships, and financial service queries.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Six Finance Support & Contact",
+      description:
+        "Need help? Contact Six Finance customer care, complaints team, or DSA support.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 /**
  * Six Finance - Comprehensive Support & Contact Page
@@ -139,7 +193,7 @@ const SixFinanceFullSupport: React.FC = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button className="bg-teal-500 text-white font-bold py-4 px-12 rounded-full hover:bg-teal-600 transition-all shadow-lg flex items-center gap-2">
-             <a href="https://sixfinance.com">Visit Website</a> <ExternalLink size={18} />
+             <a href="https://sixfinance.app">Visit Website</a> <ExternalLink size={18} />
             </button>
             <button className="bg-slate-800 text-white font-bold py-4 px-12 rounded-full hover:bg-slate-900 transition-all shadow-lg">
               Contact Support

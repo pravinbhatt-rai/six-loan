@@ -88,8 +88,8 @@ const LinksSection = memo<{ sections: FooterSection[] }>(({ sections }) => (
                 {link.logo ? (
                   <img 
                     src={link.logo} 
-                    alt={link.label}
-                    className="w-5 h-5 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                    
+                    className=" h-5 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                   />
                 ) : (
                   /* Show the teal animated dash if no logo is provided */
@@ -141,17 +141,17 @@ const Footer = memo(() => {
         { 
           label: 'SIX.IND.IN', 
           href: 'https://www.six.ind.in',
-          logo: '/logos/six-ind-logo.png' // Update with your actual asset path
+          logo: '/sixlogo1.png' // Update with your actual asset path
         },
         { 
           label: 'DISCONNECT', 
           href: 'https://www.disconnect.in',
-          logo: '/logos/disconnect-logo.png' 
+          
         },
         { 
           label: 'DOCTAR', 
           href: 'https://www.doctar.in',
-          logo: '/logos/doctar-logo.png' 
+          logo: '/Doctor.png' 
         },
       ],
     },
