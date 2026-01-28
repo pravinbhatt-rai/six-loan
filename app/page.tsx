@@ -19,10 +19,10 @@ export default function Home() {
       <CreditProduct />
       <FinancialHealthSection />
       <CardsList />
-      <InsuranceQuoteCard />
+      
       <CreditProductBenefits />
       <AboutAndCareers />
-      <MobileAppDownload />
+     
       <Partners />
     </>
   );
