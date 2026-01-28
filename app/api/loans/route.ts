@@ -83,7 +83,7 @@ export async function GET(req: NextRequest) {
           },
           orderBy: { displayOrder: 'asc' },
         },
-        offers: {
+        loanOffers: {
           where: {
             isActive: true,
             OR: [
@@ -147,7 +147,9 @@ export async function GET(req: NextRequest) {
       loanPurpose: loan.loanPurpose,
       scheme: loan.scheme,
       vehicleType: loan.vehicleType,
-      category: loan.category
+      category: loan.category,
+      // Expose offers for compatibility
+      offers: loan.loanOffers || [],
     }));
 
     return NextResponse.json({
