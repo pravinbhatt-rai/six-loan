@@ -131,6 +131,7 @@ model User {
   createdDebitCards DebitCardProduct[]
   createdInsurances InsuranceProduct[]
   createdApps       AppProduct[]
+  createdBlogs      Blog[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
@@ -936,4 +937,25 @@ model DebitCardSafetyFeature {
   displayOrder Int              @default(0)
   product      DebitCardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId    Int
+}
+
+// ==================== BLOG MODELS ====================
+
+model Blog {
+  id          Int     @id @default(autoincrement())
+  title       String
+  slug        String  @unique
+  description String  @db.Text // Rich text content
+  imageUrl    String? // Cloudinary image URL
+  category    String? // e.g. "Finance", "Loans", "Credit Cards"
+  subcategory String? // e.g. "Personal Loan", "Home Loan"
+  keywords    String? @db.Text // Comma-separated or JSON array of keywords for SEO
+  published   Boolean @default(false)
+
+  // Author/Creator
+  createdById Int?
+  createdBy   User? @relation(fields: [createdById], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
