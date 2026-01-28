@@ -113,7 +113,7 @@ export default function BlogDetailPage() {
 
   if (error || !blog) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center font-serif italic">
+      <div className="min-h-screen fixed bg-white flex items-center justify-center font-serif italic ">
         <div className="text-center">
           <h1 className="text-3xl text-slate-400 mb-6">{error || 'Blog not found'}</h1>
           <Link href="/blogs" className="font-sans text-xs font-bold uppercase tracking-widest text-teal-600 hover:text-teal-700 underline underline-offset-8">
@@ -127,8 +127,8 @@ export default function BlogDetailPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900 font-serif selection:bg-teal-50">
       {/* Breadcrumb Header */}
-      <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+      <nav className="bg-white/80 backdrop-blur-md top-0 z-50 border-b border-slate-100 ">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400  fixed">
           <div className="flex items-center gap-2">
             <Link href="/blogs" className="hover:text-teal-600 transition-colors">Journal</Link>
             <ChevronRight size={10} className="text-slate-300" />
@@ -192,12 +192,14 @@ export default function BlogDetailPage() {
               </div>
             </header>
 
+
             {blog.imageUrl && (
-              <figure className="mb-16 -mx-6 lg:-mx-0">
+              <figure className="mb-8 flex justify-center">
                 <img
                   src={blog.imageUrl}
                   alt={blog.title}
-                  className="w-full h-auto shadow-sm grayscale-[0.2] hover:grayscale-0 transition-all duration-1000 ease-in-out"
+                  className="w-full max-w-2xl h-auto rounded-xl shadow-md grayscale-[0.2] hover:grayscale-0 transition-all duration-700 ease-in-out border border-slate-100"
+                  style={{ objectFit: 'cover', maxHeight: '340px' }}
                 />
               </figure>
             )}
@@ -205,10 +207,11 @@ export default function BlogDetailPage() {
             <div 
               className="prose prose-slate prose-lg max-w-none font-serif
               prose-headings:font-serif prose-headings:font-normal prose-headings:italic
-              prose-p:text-slate-600 prose-p:leading-relaxed prose-p:font-light
+              prose-p:text-slate-700 prose-p:leading-relaxed prose-p:font-light
               prose-blockquote:border-teal-500 prose-blockquote:bg-teal-50/30 prose-blockquote:font-light
               prose-strong:text-slate-900 prose-strong:font-medium
-              prose-a:text-teal-600 prose-a:underline-offset-4 hover:prose-a:text-teal-700 transition-colors"
+              prose-a:text-teal-600 prose-a:underline-offset-4 hover:prose-a:text-teal-700 transition-colors
+              mt-8"
               dangerouslySetInnerHTML={{ __html: blog.description }}
             />
 

@@ -97,8 +97,8 @@ export default function CategoryBlogsPage() {
   return (
     <div className="min-h-screen bg-[#fafafa] font-serif text-slate-900 selection:bg-teal-50">
       {/* Navigation Header */}
-      <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <nav className="bg-white/80 backdrop-blur-md top-0  border-b border-slate-100 ">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center ">
           <Link 
             href="/blogs" 
             className="group flex items-center text-xs font-sans font-bold uppercase tracking-widest text-slate-400 hover:text-teal-600 transition-colors"
