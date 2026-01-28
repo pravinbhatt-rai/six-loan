@@ -292,6 +292,7 @@ export default function CreditCardListSection({
         })) || [],
       })) || [],
       specialOffers: fullCard.specialOffers || [],
+      offers: fullCard.offers || [],
       // Add video and terms URLs
       videoUrl: fullCard.videoUrl,
       termsConditionsUrl: fullCard.termsConditionsUrl,
@@ -323,10 +324,10 @@ export default function CreditCardListSection({
                 id: card.id,
                 name: card.name,
                 image: card.image,
-                bullets: Array.isArray(card.bullets) ? card.bullets : [],
+                bullets: card.bullets,
                 bankName: card.bankName || card.bank,
                 bank: card.bank,
-                annualFee: typeof card.fee === 'string' ? card.fee : (card.fee != null ? String(card.fee) : ''),
+                annualFee: card.fee,
                 slug: card.slug,
                 firstYearFee: card.firstYearFee,
                 secondYearFee: card.secondYearFee,
@@ -334,12 +335,13 @@ export default function CreditCardListSection({
                 rating: card.rating,
                 categories: card.categories.map(cat => cat.name),
               }}
+              onSelect={handleCardSelect}
+              isSelected={selectedForComparison.includes(card.id)}
               onApply={handleApply}
               onDetails={handleViewDetails}
               onCompare={handleCardSelect}
-              recommended={!!card.recommended && card.recommended === "best"}
-              recommendedType={card.recommended === "best" ? "best" : undefined}
-              isSelected={selectedForComparison.includes(card.id)}
+              recommended={card.recommended === "best"}
+              recommendedType={card.recommended === "best" ? "best" : null}
             />
           ))}
         </div>
@@ -435,7 +437,6 @@ export default function CreditCardListSection({
             setOpenDrawer(false);
             setSelectedCard(null);
           }}
-          onApply={() => {}}
         />
       )}
     </div>

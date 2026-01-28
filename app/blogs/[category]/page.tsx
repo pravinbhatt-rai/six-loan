@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { ArrowLeft, Calendar, User } from 'lucide-react';
+import { ArrowLeft, Calendar, User, BookOpen } from 'lucide-react';
 
 interface Blog {
   id: number;
@@ -21,35 +21,35 @@ interface Blog {
 const CATEGORY_INFO: Record<string, { title: string; description: string }> = {
   'personal-loan': {
     title: 'Personal Loan Articles',
-    description: 'Comprehensive guides on personal loans, eligibility criteria, interest rates, and application tips',
+    description: 'Comprehensive guides on personal loans, eligibility criteria, and smart financial application tips.',
   },
   'business-loan': {
     title: 'Business Loan Insights',
-    description: 'Expert advice on business financing, loan types, and growth strategies',
+    description: 'Expert advice on business financing, modern loan types, and sustainable growth strategies.',
   },
   'home-loan': {
     title: 'Home Loan Guides',
-    description: 'Everything you need to know about home loans, EMI calculations, and property financing',
+    description: 'Everything you need to know about home loans, EMI calculations, and property financing.',
   },
   'loan-against-property': {
     title: 'Loan Against Property',
-    description: 'Learn how to leverage your property for better loan rates and higher amounts',
+    description: 'Learn how to leverage your existing property assets for better rates and higher amounts.',
   },
   'loan-against-security': {
     title: 'Loan Against Securities',
-    description: 'Detailed information on loans against shares, mutual funds, and other securities',
+    description: 'Detailed information on secured loans against shares, mutual funds, and other securities.',
   },
   'vehicle-loan': {
     title: 'Vehicle Loan Resources',
-    description: 'Complete guide to car loans, bike loans, and vehicle financing options',
+    description: 'A complete guide to car loans, bike loans, and modern vehicle financing options.',
   },
   'credit-card': {
-    title: 'Credit Card Reviews & Tips',
-    description: 'Latest credit card offers, rewards programs, and smart usage strategies',
+    title: 'Credit Card Reviews',
+    description: 'Latest credit card offers, rewards programs, and strategies for smart credit usage.',
   },
   'debit-card': {
     title: 'Debit Card Features',
-    description: 'Explore debit card benefits, offers, and banking solutions',
+    description: 'Explore curated debit card benefits, security offers, and banking solutions.',
   },
 };
 
@@ -61,8 +61,8 @@ export default function CategoryBlogsPage() {
   const [error, setError] = useState<string | null>(null);
 
   const categoryInfo = CATEGORY_INFO[category] || {
-    title: 'Blog Articles',
-    description: 'Explore our collection of articles',
+    title: 'Journal Articles',
+    description: 'Thoughtful analysis and guides on the modern financial landscape.',
   };
 
   useEffect(() => {
@@ -74,9 +74,7 @@ export default function CategoryBlogsPage() {
   const fetchCategoryBlogs = async () => {
     try {
       setLoading(true);
-      const normalizedCategory = category?.replace(/-/g, ' ') || category;
       const response = await fetch(`/api/blogs?category=${encodeURIComponent(category)}`);
-      
       if (response.ok) {
         const data = await response.json();
         setBlogs(data);
@@ -91,125 +89,121 @@ export default function CategoryBlogsPage() {
     }
   };
 
-  const getExcerpt = (html: string, length: number = 200) => {
+  const getExcerpt = (html: string, length: number = 160) => {
     const text = html.replace(/<[^>]*>/g, '');
     return text.length > length ? text.substring(0, length) + '...' : text;
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Breadcrumb */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div className="min-h-screen bg-[#fafafa] font-serif text-slate-900 selection:bg-teal-50">
+      {/* Navigation Header */}
+      <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link 
             href="/blogs" 
-            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+            className="group flex items-center text-xs font-sans font-bold uppercase tracking-widest text-slate-400 hover:text-teal-600 transition-colors"
           >
-            <ArrowLeft size={20} className="mr-2" />
-            Back to All Categories
+            <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" />
+            Back to Journal
           </Link>
+          <div className="font-sans text-[10px] font-bold uppercase tracking-[0.3em] text-slate-300">
+            {category?.replace(/-/g, ' ')}
+          </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Category Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-3">{categoryInfo.title}</h1>
-          <p className="text-xl text-blue-100 max-w-3xl">
+      {/* Hero Header */}
+      <header className="bg-white pt-20 pb-16 border-b border-slate-100">
+        <div className="max-w-4xl mx-auto px-6">
+          <h1 className="text-4xl md:text-6xl font-normal mb-6 italic leading-tight text-slate-900">
+            {categoryInfo.title}
+          </h1>
+          <p className="text-lg md:text-xl text-slate-500 font-light leading-relaxed max-w-2xl">
             {categoryInfo.description}
           </p>
-          <div className="mt-4">
-            <span className="inline-block px-4 py-2 bg-white/20 rounded-full text-sm">
-              {blogs.length} {blogs.length === 1 ? 'Article' : 'Articles'}
+          <div className="mt-10 flex items-center gap-4">
+            <span className="font-sans text-[10px] font-bold uppercase tracking-widest bg-teal-50 text-teal-600 px-4 py-2 rounded-full">
+              {blogs.length} {blogs.length === 1 ? 'Article' : 'Articles'} Available
             </span>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Blogs Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-6 py-20">
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="bg-white rounded-lg shadow-sm overflow-hidden animate-pulse">
-                <div className="w-full h-56 bg-gray-200"></div>
-                <div className="p-6">
-                  <div className="h-6 bg-gray-200 rounded mb-3"></div>
-                  <div className="h-4 bg-gray-200 rounded mb-2"></div>
-                  <div className="h-4 bg-gray-200 rounded mb-4"></div>
-                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                </div>
+              <div key={i} className="animate-pulse">
+                <div className="aspect-[4/5] bg-slate-200/60 rounded-sm mb-6" />
+                <div className="h-6 bg-slate-200 w-3/4 mb-4" />
+                <div className="h-4 bg-slate-200 w-full mb-2" />
+                <div className="h-4 bg-slate-200 w-1/2" />
               </div>
             ))}
           </div>
         ) : error ? (
-          <div className="text-center py-12">
-            <p className="text-red-600 text-lg">{error}</p>
+          <div className="text-center py-20 bg-white rounded-2xl border border-slate-100 shadow-sm">
+            <p className="text-slate-400 font-sans uppercase tracking-widest text-xs">{error}</p>
           </div>
         ) : blogs.length === 0 ? (
-          <div className="text-center py-12 bg-white rounded-lg shadow-sm">
-            <div className="text-gray-400 mb-4">
-              <svg className="mx-auto h-24 w-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No articles yet</h3>
-            <p className="text-gray-600">Check back soon for articles in this category</p>
+          <div className="max-w-xl mx-auto text-center py-24 italic text-slate-400">
+            <BookOpen size={40} className="mx-auto mb-6 opacity-20 text-slate-900 not-italic" />
+            <p className="text-xl">The archives for this category are currently empty.</p>
+            <p className="font-sans text-xs uppercase tracking-widest mt-4 not-italic">Check back later</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
             {blogs.map((blog) => (
               <Link
                 key={blog.id}
                 href={`/blogs/${category}/${blog.slug}`}
-                className="group bg-white rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
+                className="group flex flex-col"
               >
-                {blog.imageUrl ? (
-                  <div className="relative h-56 overflow-hidden bg-gray-200">
+                <div className="relative aspect-[4/5] overflow-hidden bg-slate-100 mb-8 shadow-inner rounded-sm">
+                  {blog.imageUrl ? (
                     <img
                       src={blog.imageUrl}
                       alt={blog.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover sepia-[0.1] grayscale-[0.2] group-hover:sepia-0 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-in-out"
                     />
-                  </div>
-                ) : (
-                  <div className="h-56 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
-                    <span className="text-white text-6xl font-bold opacity-20">
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-slate-200 text-8xl font-bold opacity-40">
                       {blog.title.charAt(0)}
-                    </span>
-                  </div>
-                )}
+                    </div>
+                  )}
+                </div>
                 
-                <div className="p-6 flex-1 flex flex-col">
+                <div className="space-y-4 flex-1 flex flex-col">
                   {blog.subcategory && (
-                    <span className="inline-block px-3 py-1 text-xs font-semibold text-blue-600 bg-blue-50 rounded-full mb-3 self-start">
+                    <span className="font-sans text-[9px] font-bold uppercase tracking-[0.3em] text-teal-600 italic">
                       {blog.subcategory}
                     </span>
                   )}
                   
-                  <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                  <h2 className="text-2xl font-medium leading-tight text-slate-900 group-hover:text-teal-700 group-hover:italic transition-all duration-300">
                     {blog.title}
                   </h2>
                   
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">
+                  <p className="text-slate-500 text-sm font-sans font-light leading-relaxed line-clamp-3 opacity-80">
                     {getExcerpt(blog.description)}
                   </p>
                   
-                  <div className="flex items-center justify-between text-sm text-gray-500 pt-4 border-t">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-1">
-                        <Calendar size={16} />
-                        <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
-                      </div>
+                  <div className="pt-6 mt-auto border-t border-slate-100 flex items-center justify-between">
+                    <div className="flex items-center gap-6 font-sans text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                      <span className="flex items-center gap-1.5">
+                        <Calendar size={12} className="text-teal-500" />
+                        {new Date(blog.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
                       {blog.createdBy && (
-                        <div className="flex items-center gap-1">
-                          <User size={16} />
-                          <span>{blog.createdBy.name}</span>
-                        </div>
+                        <span className="flex items-center gap-1.5">
+                          <User size={12} className="text-teal-500" />
+                          {blog.createdBy.name}
+                        </span>
                       )}
                     </div>
-                    <span className="text-blue-600 group-hover:translate-x-1 transition-transform font-medium">
-                      Read →
+                    <span className="text-teal-600 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
+                      →
                     </span>
                   </div>
                 </div>
@@ -217,7 +211,7 @@ export default function CategoryBlogsPage() {
             ))}
           </div>
         )}
-      </div>
+      </main>
     </div>
   );
 }

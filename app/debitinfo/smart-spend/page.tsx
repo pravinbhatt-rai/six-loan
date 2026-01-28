@@ -72,53 +72,43 @@ export default function SmartSpendGuidePage() {
         // Process products from the combined API
         data.products.forEach((product: any) => {
           if (product.offers && product.offers.length > 0) {
-              // Coerce annualFee to string if needed, then extract number
-              const getAnnualFeeNumber = (fee: any): number => {
-                if (fee === undefined || fee === null) return 0;
-                if (typeof fee === 'number') return fee;
-                if (typeof fee === 'string') {
-                  const num = parseFloat(fee.replace(/[^\d.]/g, ''));
-                  return isNaN(num) ? 0 : num;
-                }
-                return 0;
-              };
-              if (product.type === 'credit-card') {
-                creditCardsData.push({
-                  id: product.id,
-                  name: product.name,
-                  bankName: product.bankName,
-                  offers: product.offers,
-                  bestFor: product.bestFor,
-                  cardType: 'credit',
-                  annualFee: getAnnualFeeNumber(product.annualFee),
-                  internationalUsage: product.internationalUsage,
-                  loungeAccess: product.loungeAccess
-                });
-              } else if (product.type === 'debit-card') {
-                debitCardsData.push({
-                  id: product.id,
-                  name: product.name,
-                  bankName: product.bankName,
-                  offers: product.offers,
-                  bestFor: product.bestFor,
-                  cardType: 'debit',
-                  annualFee: getAnnualFeeNumber(product.annualFee),
-                  internationalUsage: product.internationalUsage,
-                  loungeAccess: product.loungeAccess
-                });
-              } else if (product.type === 'loan') {
-                loansData.push({
-                  id: product.id,
-                  name: product.name,
-                  bankName: product.bankName,
-                  offers: product.offers,
-                  bestFor: product.loanType,
-                  cardType: 'loan',
-                  annualFee: 0, // Loans don't have annual fees
-                  internationalUsage: false,
-                  loungeAccess: false
-                });
-              }
+            if (product.type === 'credit-card') {
+              creditCardsData.push({
+                id: product.id,
+                name: product.name,
+                bankName: product.bankName,
+                offers: product.offers,
+                bestFor: product.bestFor,
+                cardType: 'credit',
+                annualFee: product.annualFee ? parseFloat(product.annualFee.replace(/[^\d.]/g, '')) : 0,
+                internationalUsage: product.internationalUsage,
+                loungeAccess: product.loungeAccess
+              });
+            } else if (product.type === 'debit-card') {
+              debitCardsData.push({
+                id: product.id,
+                name: product.name,
+                bankName: product.bankName,
+                offers: product.offers,
+                bestFor: product.bestFor,
+                cardType: 'debit',
+                annualFee: product.annualFee ? parseFloat(product.annualFee.replace(/[^\d.]/g, '')) : 0,
+                internationalUsage: product.internationalUsage,
+                loungeAccess: product.loungeAccess
+              });
+            } else if (product.type === 'loan') {
+              loansData.push({
+                id: product.id,
+                name: product.name,
+                bankName: product.bankName,
+                offers: product.offers,
+                bestFor: product.loanType,
+                cardType: 'loan',
+                annualFee: 0, // Loans don't have annual fees
+                internationalUsage: false,
+                loungeAccess: false
+              });
+            }
           }
         });
 
