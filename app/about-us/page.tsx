@@ -92,9 +92,9 @@ export default function AboutUsPage() {
             innovation, and over 20 years of banking expertise.
           </p>
           <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-            <button className="bg-white text-teal-600 hover:bg-teal-50 font-bold py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl">
+            <a href="/"><button className="bg-white text-teal-600 hover:bg-teal-50 font-bold py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl">
               Start Your Journey
-            </button>
+            </button></a>
             <button className="bg-teal-700/30 border-2 border-white/40 hover:border-white text-white font-bold py-4 px-10 rounded-full transition-all">
               Learn More
             </button>
