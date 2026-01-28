@@ -499,7 +499,7 @@ const TalkToExpertDropdown: FC = () => {
                             <p className="text-sm text-gray-500 mb-0.5">Sales Enquiry</p>
                             <div className="flex items-center gap-1">
                                 <span className="font-semibold text-gray-900 text-sm">Call Us:</span>
-                                <a href="tel:18005703888" className="font-bold text-teal-600 hover:underline">1800 570 3888</a>
+                                <a href="tel:+91-887772277" className="font-bold text-teal-600 hover:underline">+91-887772277</a>
                             </div>
                         </div>
 
@@ -507,7 +507,7 @@ const TalkToExpertDropdown: FC = () => {
                             <p className="text-sm text-gray-500 mb-0.5">Service Helpline</p>
                             <div className="flex items-center gap-1">
                                 <span className="font-semibold text-gray-900 text-sm">Call Us:</span>
-                                <a href="tel:18002585616" className="font-bold text-teal-600 hover:underline">1800 258 5616</a>
+                                <a href="tel:+91887772277" className="font-bold text-teal-600 hover:underline">+91-887772277</a>
                             </div>
                         </div>
 

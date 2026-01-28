@@ -49,14 +49,14 @@ const BrandSection = memo(() => (
       lifestyle and give you the freedom to achieve more.
     </p>
     <div className="flex flex-col gap-3 mt-4 text-gray-400 text-sm">
-      <div className="flex items-center gap-2 hover:text-teal-400 transition-colors cursor-pointer group">
+      <a href="mailto:@verification@sixfinance.app" className="flex items-center gap-2 hover:text-teal-400 transition-colors cursor-pointer group">
         <Mail size={16} className="text-teal-500 group-hover:scale-110 transition-transform" />
-        <span>support@sixloan.com</span>
-      </div>
-      <div className="flex items-center gap-2 hover:text-teal-400 transition-colors cursor-pointer group">
+        <span>@verification@sixfinance.app</span>
+      </a>
+      <a href="tel:+918877772277" className="flex items-center gap-2 hover:text-teal-400 transition-colors cursor-pointer group">
         <Phone size={16} className="text-teal-500 group-hover:scale-110 transition-transform" />
-        <span>+91 1800-123-456</span>
-      </div>
+        <span>+91 8877772277</span>
+      </a>
     </div>
     <div className="flex gap-4 pt-4">
       <SocialButton icon={<Facebook size={20} />} href="#" />
@@ -86,16 +86,16 @@ const LinksSection = memo<{ sections: FooterSection[] }>(({ sections }) => (
               >
                 {/* Logo rendering: Only shows if the 'logo' property exists */}
                 {link.logo ? (
-                  <img 
-                    src={link.logo} 
-                    
+                  <img
+                    src={link.logo}
+
                     className=" h-5 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                   />
                 ) : (
                   /* Show the teal animated dash if no logo is provided */
                   <span className="w-0 overflow-hidden group-hover:w-2 h-0.5 bg-teal-500 transition-all duration-300"></span>
                 )}
-                
+
                 <span className="group-hover:translate-x-1 transition-transform duration-300">
                   {link.label}
                 </span>
@@ -130,7 +130,7 @@ const Footer = memo(() => {
       title: 'Six Finance',
       links: [
         { label: 'About Us', href: '/about-us' },
-        {label: 'Blogs', href: '/blogs' },
+        { label: 'Blogs', href: '/blogs' },
         { label: 'Contact Us & Support', href: '/contact-us' },
         { label: 'Terms & Conditions', href: '/terms-conditions' }
       ],
@@ -138,20 +138,20 @@ const Footer = memo(() => {
     {
       title: 'Group Brand',
       links: [
-        { 
-          label: 'SIX.IND.IN', 
+        {
+          label: 'SIX.IND.IN',
           href: 'https://www.six.ind.in',
           logo: '/sixlogo1.png' // Update with your actual asset path
         },
-        { 
-          label: 'DISCONNECT', 
+        {
+          label: 'DISCONNECT',
           href: 'https://www.disconnect.in',
-          
+
         },
-        { 
-          label: 'DOCTAR', 
+        {
+          label: 'DOCTAR',
           href: 'https://www.doctar.in',
-          logo: '/Doctor.png' 
+          logo: '/Doctor.png'
         },
       ],
     },
@@ -167,7 +167,7 @@ const Footer = memo(() => {
     <footer className="relative bg-[#080808] text-white pt-20 pb-10 px-6 md:px-12 font-sans border-t border-gray-900 overflow-hidden">
       {/* Decorative Gradient Line */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500/50 to-transparent"></div>
-      
+
       {/* Glow Effect */}
       <div className="absolute -top-[200px] -left-[200px] w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
