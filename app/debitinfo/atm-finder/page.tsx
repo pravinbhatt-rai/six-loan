@@ -21,6 +21,9 @@ import {
   Lock,
   Clock
 } from 'lucide-react';
+import UniversalCardItem, { UniversalCardInfo } from '@/component/creditcards/UniversalCardItem';
+import DebitCardComparisonModal from '@/component/creditcards/DebitCardComparisonModal';
+import BottomComparisonBar from '@/component/creditcards/BottomComparisonBar';
 
 // Extended Mock Data for Multiple Cards
 const CARDS_DATA = [
@@ -179,6 +182,8 @@ export default function DebitCardCalculator() {
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
+  const [selectedCards, setSelectedCards] = useState<string[]>([]);
+  const [showComparison, setShowComparison] = useState(false);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
 
   // Filter cards based on selections
@@ -239,6 +244,58 @@ export default function DebitCardCalculator() {
       setCurrentPage(prev => prev + 1);
     }
   };
+
+  const handleApply = (card: UniversalCardInfo) => {
+    // Redirect to the apply URL if available, otherwise to the card's detail page
+    if (card.applyUrl) {
+      window.open(card.applyUrl, '_blank');
+    } else {
+      window.location.href = `/debitcard/${card.slug}`;
+    }
+  };
+
+  const handleCompare = (cardId: string) => {
+    setSelectedCards(prev => {
+      if (prev.includes(cardId)) {
+        return prev.filter(id => id !== cardId);
+      } else if (prev.length < 2) {
+        return [...prev, cardId];
+      }
+      return prev;
+    });
+  };
+
+  const handleCompareNow = () => {
+    if (selectedCards.length >= 2) {
+      setShowComparison(true);
+    }
+  };
+
+  // Get selected card objects for display
+  const getSelectedCardObjects = (): UniversalCardInfo[] => {
+    return selectedCards.map(id => {
+      const card = recommendedCards.find(c => c.id.toString() === id);
+      return card ? mapToUniversalCardInfo(card) : null;
+    }).filter((card): card is UniversalCardInfo => card !== null);
+  };
+
+  const mapToUniversalCardInfo = (card: any): UniversalCardInfo => ({
+    id: card.id.toString(),
+    name: card.name,
+    imageUrl: '', // No image in this database
+    bankName: card.bank,
+    annualFee: card.annualFee === '₹1,000 (Waived on spends > ₹1L)' ? 1000 : 
+               card.annualFee === '₹300 + GST' ? 300 : 
+               card.annualFee === '₹999 + GST' ? 999 : 
+               card.annualFee === '₹750 + GST' ? 750 : 0,
+    slug: card.id.toString(),
+    rating: card.rating,
+    applyUrl: card.applyUrl,
+    keyFeatures: card.perks || [],
+    safetyFeatures: card.features?.includes('security') ? ['Zero Fraud Liability'] : [],
+    offers: [],
+    bulletPoints: card.bulletPoints || [],
+  });
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
@@ -386,62 +443,28 @@ export default function DebitCardCalculator() {
                   </div>
 
                   {/* Cards Grid */}
-                  <div 
-                    ref={cardsContainerRef}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-4"
-                  >
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {visibleCards.map((card) => (
-                      <div 
-                        key={card.id} 
-                        className="border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow"
-                      >
-                        {/* Card Header with Gradient */}
-                        <div className={`h-32 bg-gradient-to-br ${card.color} p-4 text-white relative overflow-hidden`}>
-                          <div className="absolute -right-8 -top-8 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
-                          <div className="flex justify-between items-start">
-                            <div>
-                              <div className="text-xs font-medium opacity-80">{card.bank}</div>
-                              <div className="text-lg font-bold mt-1">{card.name.split(' ')[0]}</div>
-                            </div>
-                            <CreditCard className="opacity-30" size={24} />
-                          </div>
-                          <div className="absolute bottom-4 left-4 flex items-center gap-1">
-                            <Star size={12} className="fill-yellow-400 text-yellow-400" />
-                            <span className="text-xs font-bold">{card.rating}</span>
-                          </div>
-                        </div>
-
-                        {/* Card Content */}
-                        <div className="p-4 bg-white">
-                          <h3 className="font-bold text-gray-900 mb-2">{card.name}</h3>
-                          <p className="text-xs text-gray-600 mb-3">Best for: {card.bestFor}</p>
-                          
-                          <div className="space-y-2 mb-4">
-                            {card.perks.slice(0, 2).map((perk, i) => (
-                              <div key={i} className="flex items-start gap-2">
-                                <ShieldCheck className="text-teal-500 w-3 h-3 mt-0.5 flex-shrink-0" />
-                                <span className="text-xs text-gray-700">{perk}</span>
-                              </div>
-                            ))}
-                          </div>
-
-                          <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
-                            <div className="flex items-center gap-1">
-                              <Clock size={12} />
-                              <span>{card.processingTime}</span>
-                            </div>
-                            <div className="font-semibold text-gray-900">
-                              {card.annualFee}
-                            </div>
-                          </div>
-
-                          <button className="w-full bg-gradient-to-r from-gray-900 to-slate-800 text-white py-2 text-sm font-medium rounded-lg hover:opacity-90 transition">
-                            Apply Now
-                          </button>
-                        </div>
-                      </div>
+                      <UniversalCardItem
+                        key={card.id}
+                        card={mapToUniversalCardInfo(card)}
+                        onApply={handleApply}
+                        onCompare={handleCompare}
+                        isSelected={selectedCards.includes(card.id.toString())}
+                      />
                     ))}
                   </div>
+
+                  {selectedCards.length >= 2 && (
+                    <div className="text-center mt-8">
+                      <button
+                        onClick={handleCompareNow}
+                        className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 shadow-lg hover:shadow-xl transition-all font-semibold"
+                      >
+                        Compare Selected Cards ({selectedCards.length})
+                      </button>
+                    </div>
+                  )}
 
                   {/* Features Summary */}
                   <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-teal-50 border border-blue-100 rounded-lg">
@@ -512,6 +535,22 @@ export default function DebitCardCalculator() {
           </section>
         </div>
       </main>
+
+      {/* Debit Card Comparison Modal */}
+      <DebitCardComparisonModal
+        isOpen={showComparison}
+        onClose={() => setShowComparison(false)}
+        selectedCards={recommendedCards.filter(card => selectedCards.includes(card.id.toString())).map(mapToUniversalCardInfo)}
+        allCards={recommendedCards.map(mapToUniversalCardInfo)}
+        showAllCards={true}
+      />
+
+      {/* Bottom Comparison Bar */}
+      <BottomComparisonBar
+        selectedCards={getSelectedCardObjects()}
+        onCompare={handleCompareNow}
+        onRemoveCard={handleCompare}
+      />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback, useMemo, memo } from "react";
 import { useRouter } from "next/navigation";
 import { Pencil, MousePointer2 } from "lucide-react";
 
@@ -15,7 +15,7 @@ type SliderProps = {
   thumbColorClass?: string;
 };
 
-const Slider: React.FC<SliderProps> = ({
+const Slider: React.FC<SliderProps> = memo(({
   value,
   min,
   max,
@@ -55,11 +55,11 @@ const Slider: React.FC<SliderProps> = ({
       </div>
     </div>
   );
-};
+});
 
 // --- Shared LoanCalculator ---
 
-const LoanCalculator = () => {
+const LoanCalculator = memo(() => {
   const router = useRouter();
   const [amount, setAmount] = useState(4000);
   const [months, setMonths] = useState(12);
@@ -99,8 +99,8 @@ const LoanCalculator = () => {
   useEffect(() => {
     if (isEditingApr && aprInputRef.current) aprInputRef.current.focus();
   }, [isEditingApr]);
-  // Derived repayment details (computed directly from state)
-  const calculateRepayment = (p: number, n: number, rate: number) => {
+  // Memoized repayment calculation
+  const calculateRepayment = useCallback((p: number, n: number, rate: number) => {
     const r = rate / 100 / 12;
     if (p <= 0 || n <= 0 || r <= 0) {
       return { monthlyEmi: 0, totalAmount: 0, totalInterest: 0 };
@@ -115,16 +115,15 @@ const LoanCalculator = () => {
       totalAmount: Number(totalAmount.toFixed(2)),
       totalInterest: Number(totalInterest.toFixed(2)),
     };
-  };
+  }, []);
 
-  const { monthlyEmi, totalAmount, totalInterest } = calculateRepayment(
-    amount,
-    months,
-    apr
+  const { monthlyEmi, totalAmount, totalInterest } = useMemo(
+    () => calculateRepayment(amount, months, apr),
+    [amount, months, apr, calculateRepayment]
   );
 
   // Handlers for Amount Edit
-  const handleAmountBlur = () => {
+  const handleAmountBlur = useCallback(() => {
     let newVal = Number(tempAmount);
     if (isNaN(newVal)) newVal = minAmount;
     if (newVal < minAmount) newVal = minAmount;
@@ -132,14 +131,14 @@ const LoanCalculator = () => {
 
     setAmount(newVal);
     setIsEditingAmount(false);
-  };
+  }, [tempAmount]);
 
-  const handleAmountKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleAmountKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleAmountBlur();
-  };
+  }, [handleAmountBlur]);
 
   // Handlers for Months Edit
-  const handleMonthsBlur = () => {
+  const handleMonthsBlur = useCallback(() => {
     let newVal = Number(tempMonths);
     if (isNaN(newVal)) newVal = minMonths;
     if (newVal < minMonths) newVal = minMonths;
@@ -147,14 +146,14 @@ const LoanCalculator = () => {
 
     setMonths(newVal);
     setIsEditingMonths(false);
-  };
+  }, [tempMonths]);
 
-  const handleMonthsKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleMonthsKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleMonthsBlur();
-  };
+  }, [handleMonthsBlur]);
 
   // Handlers for APR Edit
-  const handleAprBlur = () => {
+  const handleAprBlur = useCallback(() => {
     let newVal = Number(tempApr);
     if (isNaN(newVal)) newVal = minApr;
     if (newVal < minApr) newVal = minApr;
@@ -162,11 +161,11 @@ const LoanCalculator = () => {
 
     setApr(newVal);
     setIsEditingApr(false);
-  };
+  }, [tempApr]);
 
-  const handleAprKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleAprKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') handleAprBlur();
-  };
+  }, [handleAprBlur]);
 
   return (
     <div className="bg-white p-5 md:p-8 rounded-2xl shadow-sm border border-gray-100 max-w-md w-full mx-auto transition-all">
@@ -360,6 +359,8 @@ const LoanCalculator = () => {
       </button>
     </div>
   );
-};
+});
+
+LoanCalculator.displayName = 'LoanCalculator';
 
 export default LoanCalculator;

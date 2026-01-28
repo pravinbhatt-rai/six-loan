@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import LoanDetailsDrawer, { LoanDetailsData } from '../loandetail/LoanDetailsDrawer';
 import EmploymentTypeModal from '../loandetail/EmploymentTypeModal';
-import { fastFetch, prefetch } from '@/lib/utils/ultraFastFetch';
+import { fastFetch } from '@/lib/utils/ultraFastFetch';
 
 interface LoanCardData {
   id: number;
@@ -34,6 +34,20 @@ interface LoanCardData {
   keyStatement?: string;
   bullets?: Array<{ text: string; displayOrder: number }>;
   aprText?: string;
+  // New detailed fields from enhanced API
+  summaryCharges?: Array<{
+    label: string;
+    mainText: string;
+    subText?: string;
+  }>;
+  requiredDocuments?: Array<{
+    title: string;
+    description?: string;
+  }>;
+  processSteps?: Array<{
+    title: string;
+    description?: string;
+  }>;
 }
 
 interface UniversalLoanCardProps {
@@ -211,6 +225,10 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
             keyStatement: loan.keyStatement,
             bullets: loan.bullets || [],
             aprText: loan.aprText,
+            // New detailed fields from enhanced API
+            summaryCharges: loan.summaryCharges || [],
+            requiredDocuments: loan.requiredDocuments || [],
+            processSteps: loan.processSteps || [],
           }));
 
           // Cache the results
@@ -248,21 +266,42 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
 
   const handleShowDetails = useCallback(async (loan: LoanCardData) => {
     try {
-      // Ultra-fast fetch with aggressive caching for instant load
-      const detailsUrl = `/api/loans/${loan.slug}`;
-      console.log("⚡ Ultra-fast fetching loan details:", detailsUrl);
-      
-      const data = await fastFetch<any>(detailsUrl, {
-        timeout: 1000, // 1 second for instant feel
-        cache: true,
-        retries: 1
-      });
-      
-      if (data?.success && data?.loan) {
-        console.log("✅ Loan details loaded (cached):", data);
-        const loanData = data.loan;
-        // Set loan data THEN open drawer immediately with complete data
+      // Find the complete loan data from the already fetched loans array
+      const completeLoanData = loans.find(l => l.id === loan.id);
+
+      if (completeLoanData) {
+        console.log("✅ Using cached loan details for drawer:", completeLoanData.slug);
+
+        // Map the complete data to drawer format
         setSelectedLoan({
+          id: completeLoanData.id,
+          bankName: completeLoanData.bankName,
+          bankLogoUrl: completeLoanData.bankLogoUrl || '',
+          emiExample: completeLoanData.emiAmount || '₹ 2,000',
+          interestRateText: completeLoanData.interestRateText || 'N/A',
+          summaryCharges: completeLoanData.summaryCharges || [],
+          requiredDocuments: completeLoanData.requiredDocuments || [],
+          processSteps: completeLoanData.processSteps || [],
+          keyStatement: completeLoanData.keyStatement,
+          emiAmount: completeLoanData.emiAmount,
+        });
+        setIsDrawerOpen(true);
+      } else {
+        // Fallback to API call if data not found (shouldn't happen)
+        console.warn("Loan data not found in cache, falling back to API call");
+        const detailsUrl = `/api/loans/${loan.slug}`;
+        console.log("⚡ Ultra-fast fetching loan details:", detailsUrl);
+
+        const data = await fastFetch<any>(detailsUrl, {
+          timeout: 1000,
+          cache: true,
+          retries: 1
+        });
+
+        if (data?.success && data?.loan) {
+          console.log("✅ Loan details loaded (fallback):", data);
+          const loanData = data.loan;
+          setSelectedLoan({
             id: loanData.id,
             bankName: loanData.bankName,
             bankLogoUrl: loanData.bankLogoUrl || '',
@@ -278,11 +317,12 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
         } else {
           alert("Failed to load loan details. Please try again.");
         }
+      }
     } catch (error) {
       console.error("Failed to fetch loan details:", error);
       alert("Network error. Please check your connection.");
     }
-  }, []);
+  }, [loans]);
 
   const handleApplyClick = useCallback((loan: LoanCardData) => {
     // Check if user is logged in
@@ -471,12 +511,6 @@ const UniversalLoanCard: React.FC<UniversalLoanCardProps> = ({
           <div
             key={card.id || index}
             className="bg-white rounded-2xl border-b-4 border-x border-t border-teal-500/20 shadow-sm hover:shadow-xl transition-all mb-8 overflow-hidden group"
-            onMouseEnter={() => {
-              // Prefetch detail data on hover for instant loading
-              if (card.slug) {
-                prefetch(`/api/loans/${card.slug}`, { timeout: 1000, cache: true });
-              }
-            }}
           >
             {/* Upper Status Ribbon */}
             <div className="bg-teal-50 px-6 py-2 flex justify-between items-center border-b border-teal-100">

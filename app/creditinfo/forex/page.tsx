@@ -139,7 +139,7 @@ export default function ForexCreditCardsPage() {
 
             {/* Card Listing */}
             <CreditCardListSection 
-              categoryFilter="Forex"
+              categorySlug="forex"
               maxCards={6}
               title="Best Zero Forex Markup Credit Cards"
               description="Save money on international transactions with 0% forex markup"

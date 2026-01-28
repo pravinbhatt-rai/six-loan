@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { Star } from "lucide-react";
-import { prefetch } from "@/lib/utils/ultraFastFetch";
 
 export type CardInfo = {
   id: string;
@@ -88,12 +87,6 @@ export default function CardItem({
   return (
     <div 
       className="relative w-full border border-gray-100 bg-gray-50/30 rounded-md shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden"
-      onMouseEnter={() => {
-        // Prefetch detail data on hover for instant loading
-        if (card.slug) {
-          prefetch(`/api/credit-cards/${card.slug}`, { timeout: 1000, cache: true });
-        }
-      }}
     >
       <div className="flex flex-col p-3 sm:p-4 md:p-6 gap-3 sm:gap-4 md:gap-6">
         

@@ -475,12 +475,25 @@ exports.Prisma.LoanFooterItemScalarFieldEnum = {
   productId: 'productId'
 };
 
+exports.Prisma.LoanOfferScalarFieldEnum = {
+  id: 'id',
+  merchant: 'merchant',
+  offerType: 'offerType',
+  title: 'title',
+  description: 'description',
+  offerValue: 'offerValue',
+  validFrom: 'validFrom',
+  validTill: 'validTill',
+  isActive: 'isActive',
+  displayOrder: 'displayOrder',
+  productId: 'productId'
+};
+
 exports.Prisma.CreditCardProductScalarFieldEnum = {
   id: 'id',
   name: 'name',
   slug: 'slug',
   bankName: 'bankName',
-  bankLogoUrl: 'bankLogoUrl',
   imageUrl: 'imageUrl',
   category: 'category',
   annualFee: 'annualFee',
@@ -490,6 +503,7 @@ exports.Prisma.CreditCardProductScalarFieldEnum = {
   effectiveFree: 'effectiveFree',
   recommended: 'recommended',
   rating: 'rating',
+  isActive: 'isActive',
   videoUrl: 'videoUrl',
   termsConditionsUrl: 'termsConditionsUrl',
   firstYearFee: 'firstYearFee',
@@ -565,6 +579,20 @@ exports.Prisma.CreditCardBenefitScalarFieldEnum = {
 exports.Prisma.CreditCardSpecialOfferScalarFieldEnum = {
   id: 'id',
   text: 'text',
+  displayOrder: 'displayOrder',
+  productId: 'productId'
+};
+
+exports.Prisma.CreditCardOfferScalarFieldEnum = {
+  id: 'id',
+  merchant: 'merchant',
+  offerType: 'offerType',
+  title: 'title',
+  description: 'description',
+  offerValue: 'offerValue',
+  validFrom: 'validFrom',
+  validTill: 'validTill',
+  isActive: 'isActive',
   displayOrder: 'displayOrder',
   productId: 'productId'
 };
@@ -663,7 +691,6 @@ exports.Prisma.DebitCardProductScalarFieldEnum = {
   slug: 'slug',
   bankName: 'bankName',
   imageUrl: 'imageUrl',
-  bankLogoUrl: 'bankLogoUrl',
   accountType: 'accountType',
   cardNetwork: 'cardNetwork',
   cardType: 'cardType',
@@ -829,6 +856,7 @@ exports.Prisma.ModelName = {
   LoanRequiredDocument: 'LoanRequiredDocument',
   LoanProcessStep: 'LoanProcessStep',
   LoanFooterItem: 'LoanFooterItem',
+  LoanOffer: 'LoanOffer',
   CreditCardProduct: 'CreditCardProduct',
   CreditCardBestSuitedFor: 'CreditCardBestSuitedFor',
   CreditCardSummaryCharge: 'CreditCardSummaryCharge',
@@ -839,6 +867,7 @@ exports.Prisma.ModelName = {
   CreditCardKeyFeature: 'CreditCardKeyFeature',
   CreditCardBenefit: 'CreditCardBenefit',
   CreditCardSpecialOffer: 'CreditCardSpecialOffer',
+  CreditCardOffer: 'CreditCardOffer',
   CreditCardBenefitSection: 'CreditCardBenefitSection',
   CreditCardBenefitSubPoint: 'CreditCardBenefitSubPoint',
   InsuranceCoverageDetail: 'InsuranceCoverageDetail',

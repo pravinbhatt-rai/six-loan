@@ -58,7 +58,6 @@ export async function PUT(
       name,
       slug,
       bankName,
-      bankLogoUrl,
       imageUrl,
       annualFee,
       cardNetwork,
@@ -67,6 +66,7 @@ export async function PUT(
       effectiveFree,
       recommended,
       rating,
+      isActive,
       videoUrl,
       termsConditionsUrl,
       firstYearFee,
@@ -142,7 +142,6 @@ export async function PUT(
         ...(name && { name }),
         ...(slug && { slug }),
         ...(bankName && { bankName }),
-        ...(bankLogoUrl !== undefined && { bankLogoUrl }),
         ...(imageUrl !== undefined && { imageUrl }),
         ...(annualFee !== undefined && { annualFee: String(annualFee) }),
         ...(cardNetwork && { cardNetwork }),
@@ -151,6 +150,7 @@ export async function PUT(
         ...(effectiveFree !== undefined && { effectiveFree }),
         ...(recommended !== undefined && { recommended }),
         ...(rating !== undefined && { rating: parseFloat(rating) }),
+        ...(isActive !== undefined && { isActive }),
         ...(videoUrl !== undefined && { videoUrl }),
         ...(termsConditionsUrl !== undefined && { termsConditionsUrl }),
         ...(firstYearFee !== undefined && { firstYearFee }),
@@ -158,13 +158,13 @@ export async function PUT(
         ...(feeWaiverCondition !== undefined && { feeWaiverCondition }),
         categories: categories !== undefined ? {
           set: [],
-          connect: categories.map((catId: number) => ({ id: Number(catId) })),
+          connect: categories.map((slug: string) => ({ slug })),
         } : undefined,
         bulletPoints: bulletPoints !== undefined ? {
           create: bulletPoints
             .filter((point: any) => point.text || point)
             .map((point: any, index: number) => ({
-              text: point.text || point,
+              text: typeof point.text === 'string' ? point.text : (point.text?.text !== undefined ? point.text.text : point),
               displayOrder: point.displayOrder ?? index,
             })),
         } : undefined,
@@ -172,7 +172,7 @@ export async function PUT(
           create: keyFeatures
             .filter((feat: any) => feat.feature || feat.text || feat)
             .map((feat: any, index: number) => ({
-              feature: feat.feature || feat.text || feat,
+              feature: typeof feat.feature === 'string' ? feat.feature : (feat.feature?.feature !== undefined ? feat.feature.feature : (feat.text !== undefined ? feat.text : feat)),
               displayOrder: feat.displayOrder ?? index,
             })),
         } : undefined,
@@ -180,7 +180,7 @@ export async function PUT(
           create: cardBenefits
             .filter((ben: any) => ben.benefit || ben.text || ben)
             .map((ben: any, index: number) => ({
-              benefit: ben.benefit || ben.text || ben,
+              benefit: typeof ben.benefit === 'string' ? ben.benefit : (ben.benefit?.benefit !== undefined ? ben.benefit.benefit : (ben.text !== undefined ? ben.text : ben)),
               displayOrder: ben.displayOrder ?? index,
             })),
         } : undefined,
@@ -188,7 +188,7 @@ export async function PUT(
           create: bestSuitedForPoints
             .filter((point: any) => point.text || point)
             .map((point: any, index: number) => ({
-              text: point.text || point,
+              text: typeof point.text === 'string' ? point.text : (point.text?.text !== undefined ? point.text.text : point),
               displayOrder: point.displayOrder ?? index,
             })),
         } : undefined,

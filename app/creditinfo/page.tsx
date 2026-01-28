@@ -13,7 +13,10 @@ export default function CreditInfoPage() {
       <LoanPartners />
       <SpendingGrid />
       <CreditCardSection />
+      <div className="w-10/11 mx-auto">
+
       <CreditCardListSection />
+      </div>
       <AboutAndCareers />
       <div className="bg-[#DAF3FFA8]  h-[350px] md:h-[460px] w-full mt-4 md:mt-12 pb-1 mb-3  items-center  hidden md:block">
         <div >

@@ -67,15 +67,10 @@ function LoanDetailContent() {
   useEffect(() => {
     const fetchLoans = async () => {
       try {
-        // Construct the correct URL
-        let apiUrl = `${apiBaseUrl}/api/loans`;
+        // Always use the main loans endpoint, ignore category filtering
+        const apiUrl = `${apiBaseUrl}/api/loans`;
 
-        // If category is specified, use the category-specific endpoint
-        if (categorySlug) {
-          apiUrl = `${apiBaseUrl}/api/loans/category/${categorySlug}`;
-        }
-
-        console.log("📡 Fetching loans from:", apiUrl, "for category:", categorySlug);
+        console.log("📡 Fetching all loans from:", apiUrl);
         
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 10000);
@@ -102,19 +97,11 @@ function LoanDetailContent() {
           // Extract products and category info
           const backendLoans = data.products || data.loans || [];
 
-          // Store category information
-          if (data.category) {
-            setCategoryInfo({
-              name: data.category.name,
-              slug: data.category.slug,
-            });
-          } else if (categorySlug) {
-            // If no category data returned, use the slug
-            setCategoryInfo({
-              name: categorySlug.replace(/-/g, ' ').toUpperCase(),
-              slug: categorySlug,
-            });
-          }
+          // Store category information - use default for all loans
+          setCategoryInfo({
+            name: "All Loans",
+            slug: "all-loans",
+          });
 
           const mappedLoans = backendLoans.map((l: any) => ({
             id: l.id,
@@ -140,7 +127,7 @@ function LoanDetailContent() {
             footerItems: l.footerItems || [],
           }));
 
-          console.log("✅ Mapped loans:", mappedLoans.length, "for category:", categorySlug);
+          console.log("✅ Mapped loans:", mappedLoans.length, "total loans loaded");
           setLoans(mappedLoans);
           setError(null);
         } else {
@@ -164,13 +151,9 @@ function LoanDetailContent() {
       }
     };
     
-    if (categorySlug) {
-      fetchLoans();
-    } else {
-      setLoading(false);
-      setError("No category specified");
-    }
-  }, [categorySlug, apiBaseUrl]);
+    // Always fetch loans regardless of category
+    fetchLoans();
+  }, [apiBaseUrl]);
 
   const filteredLoans = React.useMemo(() => {
     let result = [...loans];
@@ -277,7 +260,7 @@ function LoanDetailContent() {
 
   // Test the API directly
   const testApiConnection = () => {
-    const testUrl = `${apiBaseUrl}/api/loans/category/${categorySlug}`;
+    const testUrl = `${apiBaseUrl}/api/loans`;
     window.open(testUrl, '_blank');
   };
 
@@ -303,8 +286,9 @@ function LoanDetailContent() {
             <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded">
               <h4 className="font-bold text-yellow-800 mb-2">Debug Information:</h4>
               <p className="text-sm mb-2">API Base URL: <code className="bg-gray-100 px-2 py-1 rounded">{apiBaseUrl}</code></p>
-              <p className="text-sm mb-2">Category Slug: <code className="bg-gray-100 px-2 py-1 rounded">{categorySlug}</code></p>
-              <p className="text-sm mb-2">Constructed URL: <code className="bg-gray-100 px-2 py-1 rounded">{apiBaseUrl}/loans/category/{categorySlug}</code></p>
+              <p className="text-sm mb-2">URL Query Category: <code className="bg-gray-100 px-2 py-1 rounded">{categorySlug || 'none'}</code></p>
+              <p className="text-sm mb-2">API Endpoint Used: <code className="bg-gray-100 px-2 py-1 rounded">{apiBaseUrl}/api/loans</code></p>
+              <p className="text-sm mb-2">Filtering: <code className="bg-gray-100 px-2 py-1 rounded">All loans (no category filtering)</code></p>
             </div>
             
             <div className="flex flex-wrap gap-3 mt-4">
@@ -337,7 +321,7 @@ function LoanDetailContent() {
             onClose={handleCloseModal}
             productId={applyingLoan.id}
             productType="LOAN"
-            categorySlug={categorySlug || undefined}
+            categorySlug={undefined}
             categoryName={categoryInfo?.name}
             loanSlug={applyingLoan.slug}
             bankName={applyingLoan.bankName}
@@ -377,7 +361,7 @@ function LoanDetailContent() {
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-500 mx-auto mb-4"></div>
                   <p className="text-gray-600">Loading loans...</p>
                   <p className="text-sm text-gray-400 mt-2">
-                    From: {apiBaseUrl}/loans/category/{categorySlug}
+                    From: {apiBaseUrl}/api/loans
                   </p>
                 </div>
               ) : filteredLoans.length > 0 ? (

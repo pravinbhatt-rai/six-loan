@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useMemo, memo } from 'react';
 import {
   ArrowRight,
   Wallet,
@@ -47,6 +47,58 @@ export const HERO_CONTENT_DATA: HeroData[] = [
       "Zero Hidden Charges"
     ]
   },
+  // ==========================================
+  // NEW CAR LOANS (3L to 1 Crore)
+  // ==========================================
+  ...[3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100].map(amount => {
+    const isCrore = amount === 100;
+    const label = isCrore ? "1 Crore" : `${amount} Lakh`;
+    const amountVal = isCrore ? "1,00,00,00,000" : `${amount},00,000`;
+
+    return {
+      id: `new-car-loan-${amount}${isCrore ? 'cr' : 'lakh'}`,
+      badgeText: amount > 40 ? 'Luxury Car Finance' : 'New Car Offer',
+      title: `New Car Loan for ${label}`,
+      highlightText: label,
+      description: `Drive home your dream car with our tailored ${label} financing. enjoy low interest rates, 100% on-road funding, and flexible tenures up to 7 years.`,
+      primaryCtaText: 'Check Eligibility',
+      secondaryCtaText: 'Calculate EMI',
+      amountDisplay: amountVal,
+      imageUrl: amount > 40
+        ? "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=2070" // Luxury car
+        : "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=2070", // Standard car
+      benefits: [
+        "Zero Down Payment Options",
+        "Instant Paperless Approval",
+        "7-Year Flexible Tenure"
+      ]
+    };
+  }),
+  // ==========================================
+  // USED CAR LOANS (3L to 1 Crore)
+  // ==========================================
+  ...[3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100].map(amount => {
+    const isCrore = amount === 100;
+    const label = isCrore ? "1 Crore" : `${amount} Lakh`;
+    const amountVal = isCrore ? "1,00,00,00,000" : `${amount},00,000`;
+
+    return {
+      id: `used-car-loan-${amount}${isCrore ? 'cr' : 'lakh'}`,
+      badgeText: 'Pre-Owned Finance',
+      title: `Used Car Loan for ${label}`,
+      highlightText: label,
+      description: `Own a premium pre-owned vehicle with a ${label} loan. We offer quick valuation, easy RC transfer, and funding up to 90% of the car's value.`,
+      primaryCtaText: 'Get Valuation',
+      secondaryCtaText: 'View Rates',
+      amountDisplay: amountVal,
+      imageUrl: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=2070",
+      benefits: [
+        "Up to 90% Funding",
+        "Quick RC Transfer",
+        "Verified History Check"
+      ]
+    };
+  }),
   {
     id: 'home-loan-low-cibil-score',
     badgeText: 'Easy Approval',
@@ -522,28 +574,30 @@ interface ModernHeroProps {
   onSecondaryClick?: () => void;
 }
 
-const ModernHero: React.FC<ModernHeroProps> = ({ data, onPrimaryClick, onSecondaryClick }) => {
+const ModernHero: React.FC<ModernHeroProps> = memo(({ data, onPrimaryClick, onSecondaryClick }) => {
 
-  // Title Rendering logic
-  const renderTitle = () => {
-    if (!data.highlightText) return data.title;
-    const parts = data.title.split(data.highlightText);
-    if (parts.length < 2) return data.title;
+  // Title Rendering logic - Memoized
+  const renderTitle = useMemo(() => {
+    return () => {
+      if (!data.highlightText) return data.title;
+      const parts = data.title.split(data.highlightText);
+      if (parts.length < 2) return data.title;
 
-    return (
-      <>
-        {parts[0]}
-        <span className="text-teal-600 relative inline-block">
-          {data.highlightText}
-          {/* Underline SVG */}
-          <svg className="absolute w-full h-3 -bottom-1 left-0 text-teal-300 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
-            <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
-          </svg>
-        </span>
-        {parts[1]}
-      </>
-    );
-  };
+      return (
+        <>
+          {parts[0]}
+          <span className="text-teal-600 relative inline-block">
+            {data.highlightText}
+            {/* Underline SVG */}
+            <svg className="absolute w-full h-3 -bottom-1 left-0 text-teal-300 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+              <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
+            </svg>
+          </span>
+          {parts[1]}
+        </>
+      );
+    };
+  }, [data.highlightText, data.title]);
 
   return (
     <div className="relative min-h-[600px] lg:min-h-[800px] w-full flex items-center justify-center overflow-hidden font-sans bg-slate-50">
@@ -710,7 +764,9 @@ const ModernHero: React.FC<ModernHeroProps> = ({ data, onPrimaryClick, onSeconda
       `}</style>
     </div>
   );
-};
+});
+
+ModernHero.displayName = 'ModernHero';
 
 // ==========================================
 // 4. The Container Component (Logic Only)
@@ -722,8 +778,11 @@ interface HeroContainerProps {
   onSecondaryClick?: () => void;
 }
 
-const HeroContainer: React.FC<HeroContainerProps> = ({ id, onPrimaryClick, onSecondaryClick }) => {
-  const heroData = HERO_CONTENT_DATA.find((item) => item.id === id);
+const HeroContainer: React.FC<HeroContainerProps> = memo(({ id, onPrimaryClick, onSecondaryClick }) => {
+  // Memoized data lookup
+  const heroData = useMemo(() => {
+    return HERO_CONTENT_DATA.find((item) => item.id === id);
+  }, [id]);
 
   if (!heroData) {
     // Optional: Return a default fallback or null
@@ -738,6 +797,8 @@ const HeroContainer: React.FC<HeroContainerProps> = ({ id, onPrimaryClick, onSec
       onSecondaryClick={onSecondaryClick}
     />
   );
-};
+});
+
+HeroContainer.displayName = 'HeroContainer';
 
 export default HeroContainer;

@@ -3,20 +3,20 @@
 import React, { useEffect, useState } from 'react';
 
 export interface LoanDetailsSummaryCharge {
-    id: number;
+    id?: number;
     label: string;
     mainText: string;
     subText?: string | null;
 }
 
 export interface LoanDetailsRequiredDocument {
-    id: number;
+    id?: number;
     title: string;
     description?: string | null;
 }
 
 export interface LoanDetailsProcessStep {
-    id: number;
+    id?: number;
     title: string;
     description?: string | null;
 }

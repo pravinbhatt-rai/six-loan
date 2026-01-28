@@ -103,7 +103,7 @@ export default function RewardsCreditCardsPage() {
 
             {/* Card Listing */}
             <CreditCardListSection 
-              categoryFilter="Rewards"
+              categorySlug="rewards"
               maxCards={6}
               title="Top Rewards Credit Cards"
               description="Discover credit cards with the best reward point programs in India"

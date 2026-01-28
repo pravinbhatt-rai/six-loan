@@ -56,6 +56,7 @@ export interface CreditCardDetailsData {
   summaryCharges?: any[];
   requiredDocuments?: any[];
   processSteps?: any[];
+  specialOffers?: string[];
 }
 
 interface CreditCardDetailsDrawerProps {
@@ -273,18 +274,18 @@ const CreditCardDetailsDrawer = forwardRef<CreditCardDetailsDrawerHandle, Credit
             
             {/* NEW: Dynamic Benefit Sections */}
             {card.benefitSections && card.benefitSections.length > 0 ? (
-              card.benefitSections.map((section, sectionIndex) => (
+              card.benefitSections.filter(section => section && section.heading).map((section, sectionIndex) => (
                 <div key={section.id || sectionIndex} className="mb-3 sm:mb-4 md:mb-5 last:mb-0">
                   <div className="inline-block bg-green-50 text-green-700 px-2 sm:px-2.5 md:px-3 py-0.5 sm:py-1 rounded text-[10px] sm:text-xs md:text-sm font-medium mb-2 sm:mb-2.5 md:mb-3">
                     {section.heading}
                   </div>
                   <ul className="space-y-1.5 sm:space-y-2">
-                    {section.subPoints.map((subPoint, subIndex) => (
+                    {section.subPoints && section.subPoints.length > 0 ? section.subPoints.map((subPoint, subIndex) => (
                       <li key={subPoint.id || subIndex} className="flex items-start gap-1.5 sm:gap-2">
                         <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-black mt-2 shrink-0"></span>
                         <span className="text-gray-700 text-xs sm:text-sm">{subPoint.text}</span>
                       </li>
-                    ))}
+                    )) : null}
                   </ul>
                 </div>
               ))

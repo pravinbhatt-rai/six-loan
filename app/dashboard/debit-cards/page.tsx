@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import Link from 'next/link';
@@ -11,6 +11,8 @@ export default function DebitCardsPage() {
   const { user, loading: authLoading, isAdminOrModerator } = useAuth();
   const [debitCards, setDebitCards] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [hasFetched, setHasFetched] = useState(false);
+  const isFetching = useRef(false);
 
   useEffect(() => {
     if (!authLoading) {
@@ -27,40 +29,47 @@ export default function DebitCardsPage() {
     }
   }, [user, authLoading, isAdminOrModerator, router]);
 
-  useEffect(() => {
-    const fetchDebitCards = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          router.push('/login');
-          return;
-        }
-
-        const response = await fetch(`${API_BASE_URL}/api/admin/debit-cards`, {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          setDebitCards(data.debitCards || []);
-        } else if (response.status === 401 || response.status === 403) {
-          localStorage.removeItem('token');
-          localStorage.removeItem('user');
-          router.push('/login');
-        }
-      } catch (error) {
-        console.error('Failed to fetch debit cards:', error);
-      } finally {
-        setLoading(false);
+  const fetchDebitCards = useCallback(async () => {
+    // Prevent multiple simultaneous fetches
+    if (isFetching.current || hasFetched) return;
+    
+    isFetching.current = true;
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        router.push('/login');
+        return;
       }
-    };
 
-    if (user && isAdminOrModerator()) {
+      const response = await fetch(`${API_BASE_URL}/api/admin/debit-cards`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        setDebitCards(data.debitCards || []);
+        setHasFetched(true);
+      } else if (response.status === 401 || response.status === 403) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        router.push('/login');
+      }
+    } catch (error) {
+      console.error('Failed to fetch debit cards:', error);
+    } finally {
+      setLoading(false);
+      isFetching.current = false;
+    }
+  }, [hasFetched, router]);
+
+  useEffect(() => {
+    // Only fetch if user is authenticated and we haven't fetched yet
+    if (user && isAdminOrModerator() && !hasFetched && !authLoading) {
       fetchDebitCards();
     }
-  }, [user, isAdminOrModerator, router]);
+  }, [user, isAdminOrModerator, hasFetched, authLoading, fetchDebitCards]);
 
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this debit card?')) return;
@@ -76,7 +85,8 @@ export default function DebitCardsPage() {
 
       if (response.ok) {
         alert('Debit card deleted successfully!');
-        setDebitCards(debitCards.filter(card => card.id !== id));
+        // Update local state instead of refetching
+        setDebitCards(prev => prev.filter(card => card.id !== id));
       } else {
         alert('Failed to delete debit card');
       }

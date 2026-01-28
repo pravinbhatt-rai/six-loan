@@ -160,7 +160,7 @@ export default function SecuredCreditCardsPage() {
 
             {/* Card Listing */}
             <CreditCardListSection 
-              categoryFilter="Secured"
+              categorySlug="secured"
               maxCards={6}
               title="Best Secured Credit Cards"
               description="Start building your credit score with these secured credit cards"

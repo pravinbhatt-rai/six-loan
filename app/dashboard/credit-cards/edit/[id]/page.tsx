@@ -36,9 +36,9 @@ export default function EditCreditCardPage() {
         }
 
         console.log('Fetching credit card with ID:', id);
-        console.log('API URL:', `${API_BASE_URL}/api/admin/products/credit-card/${id}`);
+        console.log('API URL:', `${API_BASE_URL}/api/admin/credit-cards/${id}`);
         
-        const response = await fetch(`${API_BASE_URL}/api/admin/products/credit-card/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/api/admin/credit-cards/${id}`, {
           headers: { 
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -89,9 +89,9 @@ export default function EditCreditCardPage() {
       }
 
       console.log('Updating credit card with data:', data);
-      console.log('Update URL:', `${API_BASE_URL}/api/admin/products/credit-card/${id}`);
+      console.log('Update URL:', `${API_BASE_URL}/api/admin/credit-cards/${id}`);
       
-      const response = await fetch(`${API_BASE_URL}/api/admin/products/credit-card/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/admin/credit-cards/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

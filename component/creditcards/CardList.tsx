@@ -17,7 +17,7 @@ export default function CardList({
   onDetails?: (card: CardInfo) => void; 
   activeFilters: { [key: string]: boolean };
   onCompare?: (cardId: string) => void;
-  selectedForComparison?: string[];
+  selectedForComparison?: CardRecord[];
 }) {
   const filteredSorted: CardRecord[] = useMemo(() => {
     const selectedCategories = ["Cashback", "Online Shopping", "Travel", "Utilities"].filter((c) => activeFilters[c]);
@@ -84,7 +84,7 @@ export default function CardList({
           onApply={onApply}
           onDetails={onDetails}
           onCompare={onCompare}
-          isSelected={selectedForComparison?.includes(card.id)}
+          isSelected={selectedForComparison?.some(c => c.id === card.id)}
           recommended={!!card.recommended}
           recommendedType={card.recommended}
         />
@@ -121,7 +121,7 @@ export default function CardList({
           onApply={onApply}
           onDetails={onDetails}
           onCompare={onCompare}
-          isSelected={selectedForComparison?.includes(card.id)}
+          isSelected={selectedForComparison?.some(c => c.id === card.id)}
         />
       ))}
 

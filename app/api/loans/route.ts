@@ -21,18 +21,19 @@ export async function GET(req: NextRequest) {
     };
 
     // Apply filters if provided
-    if (loanType) where.loanType = loanType;
-    if (loanSubType) where.loanSubType = loanSubType;
-    if (amountRange) where.amountRange = amountRange;
-    if (eligibleFor) where.eligibleFor = eligibleFor;
-    if (loanPurpose) where.loanPurpose = loanPurpose;
-    if (scheme) where.scheme = scheme;
-    if (vehicleType) where.vehicleType = vehicleType;
+    if (loanType) where.loanType = { contains: loanType };
+    if (loanSubType) where.loanSubType = { contains: loanSubType };
+    if (amountRange) where.amountRange = { contains: amountRange };
+    if (eligibleFor) where.eligibleFor = { contains: eligibleFor };
+    if (loanPurpose) where.loanPurpose = { contains: loanPurpose };
+    if (scheme) where.scheme = { contains: scheme };
+    if (vehicleType) where.vehicleType = { contains: vehicleType };
     
     // Category filter
     if (categorySlug) {
+      const normalizedSlug = categorySlug.replace(/-/g, '');
       const category = await prisma.category.findFirst({
-        where: { slug: categorySlug, type: 'LOAN' }
+        where: { slug: normalizedSlug, type: 'LOAN' }
       });
       if (category) {
         where.categoryId = category.id;
@@ -54,6 +55,50 @@ export async function GET(req: NextRequest) {
           select: {
             text: true,
             displayOrder: true
+          },
+          orderBy: { displayOrder: "asc" },
+        },
+        summaryCharges: {
+          select: {
+            label: true,
+            mainText: true,
+            subText: true,
+            displayOrder: true,
+          },
+          orderBy: { displayOrder: 'asc' },
+        },
+        requiredDocuments: {
+          select: {
+            title: true,
+            description: true,
+            displayOrder: true,
+          },
+          orderBy: { displayOrder: 'asc' },
+        },
+        processSteps: {
+          select: {
+            title: true,
+            description: true,
+            displayOrder: true,
+          },
+          orderBy: { displayOrder: 'asc' },
+        },
+        offers: {
+          where: {
+            isActive: true,
+            OR: [
+              { validTill: null },
+              { validTill: { gte: new Date() } }
+            ]
+          },
+          select: {
+            merchant: true,
+            offerType: true,
+            title: true,
+            description: true,
+            offerValue: true,
+            validFrom: true,
+            validTill: true,
           },
           orderBy: { displayOrder: "asc" },
         }
@@ -81,6 +126,19 @@ export async function GET(req: NextRequest) {
       keyStatement: loan.keyStatement || '',
       bullets: loan.bullets || [],
       footerItems: loan.footerItems || [],
+      summaryCharges: loan.summaryCharges?.map((charge: any) => ({
+        label: charge.label,
+        mainText: charge.mainText,
+        subText: charge.subText,
+      })) || [],
+      requiredDocuments: loan.requiredDocuments?.map((doc: any) => ({
+        title: doc.title,
+        description: doc.description,
+      })) || [],
+      processSteps: loan.processSteps?.map((step: any) => ({
+        title: step.title,
+        description: step.description,
+      })) || [],
       // Filter fields
       loanType: loan.loanType,
       loanSubType: loan.loanSubType,

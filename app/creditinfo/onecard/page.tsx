@@ -107,7 +107,7 @@ export default function OneCardCreditCardsPage() {
 
             {/* Card Listing */}
             <CreditCardListSection 
-              categoryFilter="OneCard"
+              categorySlug="onecard"
               maxCards={6}
               title="OneCard Credit Cards"
               description="Discover India's smart metal credit cards with 5X rewards"

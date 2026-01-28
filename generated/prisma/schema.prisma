@@ -525,6 +525,7 @@ model LoanProduct {
 
   // Footer checklist items for card display
   footerItems LoanFooterItem[]
+  offers      LoanOffer[]
 
   applications Application[]
 
@@ -578,15 +579,29 @@ model LoanFooterItem {
   productId    Int
 }
 
+model LoanOffer {
+  id           Int         @id @default(autoincrement())
+  merchant     String // e.g. "Partner Bank", "Third Party Service"
+  offerType    String // e.g. "Processing Fee Waiver", "Interest Discount", "Cashback"
+  title        String
+  description  String      @db.Text
+  offerValue   String // e.g. "₹5,000 off", "1% interest reduction", "₹2,000 cashback"
+  validFrom    DateTime?
+  validTill    DateTime?
+  isActive     Boolean     @default(true)
+  displayOrder Int         @default(0)
+  product      LoanProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId    Int
+}
+
 model CreditCardProduct {
-  id          Int        @id @default(autoincrement())
-  name        String
-  slug        String     @unique
-  bankName    String
-  bankLogoUrl String?
-  imageUrl    String
-  categories  Category[] @relation("CardCategories")
-  category    String? // Credit card category: Cashback, Rewards, Travel, etc.
+  id         Int        @id @default(autoincrement())
+  name       String
+  slug       String     @unique
+  bankName   String
+  imageUrl   String
+  categories Category[] @relation("CardCategories")
+  category   String? // Credit card category: Cashback, Rewards, Travel, etc.
 
   // CARD SPECIFICATIONS
   annualFee     String // e.g. "Lifetime free", "₹1,500 + GST"
@@ -596,6 +611,7 @@ model CreditCardProduct {
   effectiveFree Boolean @default(false)
   recommended   Boolean @default(false)
   rating        Float   @default(0)
+  isActive      Boolean @default(true)
 
   // VIDEO & LINKS
   videoUrl           String? // YouTube/video embed URL for "Learn about the card"
@@ -616,6 +632,7 @@ model CreditCardProduct {
   summaryCharges      CreditCardSummaryCharge[]
   requiredDocuments   CreditCardRequiredDocument[]
   processSteps        CreditCardProcessStep[]
+  offers              CreditCardOffer[]
 
   applications Application[]
 
@@ -701,6 +718,21 @@ model CreditCardBenefit {
 model CreditCardSpecialOffer {
   id           Int               @id @default(autoincrement())
   text         String // e.g. "Get 5000 bonus points on first transaction"
+  displayOrder Int               @default(0)
+  product      CreditCardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId    Int
+}
+
+model CreditCardOffer {
+  id           Int               @id @default(autoincrement())
+  merchant     String // e.g. "Amazon", "Flipkart", "Swiggy"
+  offerType    String // e.g. "Cashback", "Discount", "Reward Points"
+  title        String
+  description  String            @db.Text
+  offerValue   String // e.g. "10% off", "₹150 cashback", "500 reward points"
+  validFrom    DateTime?
+  validTill    DateTime?
+  isActive     Boolean           @default(true)
   displayOrder Int               @default(0)
   product      CreditCardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId    Int
@@ -830,13 +862,12 @@ model EligibilityInquiry {
 // ==================== DEBIT CARD MODELS ====================
 
 model DebitCardProduct {
-  categories  Category[] @relation("DebitCardCategories")
-  id          Int        @id @default(autoincrement())
-  name        String
-  slug        String     @unique
-  bankName    String
-  imageUrl    String
-  bankLogoUrl String?
+  categories Category[] @relation("DebitCardCategories")
+  id         Int        @id @default(autoincrement())
+  name       String
+  slug       String     @unique
+  bankName   String
+  imageUrl   String
 
   // CARD SPECIFICATIONS
   accountType    String? // "Savings", "Salary", "Current"

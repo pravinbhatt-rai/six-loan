@@ -16,6 +16,16 @@ export type CardRecord = {
   firstYearFee?: number | null;
   secondYearFee?: number | null;
   rating?: number; // Star rating (0-5)
+  // Additional properties from API for drawer details
+  summaryCharges?: any[];
+  requiredDocuments?: any[];
+  processSteps?: any[];
+  cardBenefits?: any[];
+  benefitSections?: any[];
+  keyFeatures?: any[];
+  bestSuitedForPoints?: any[];
+  specialOffers?: any[];
+  offers?: any[];
 };
 
 export const CARDS: CardRecord[] = [

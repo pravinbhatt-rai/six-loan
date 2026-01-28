@@ -84,6 +84,39 @@ export async function GET(req: NextRequest) {
           },
           orderBy: { displayOrder: "asc" },
         },
+        categories: {
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+          },
+        },
+        // DebitCardProduct doesn't have summaryCharges, requiredDocuments, processSteps
+        // summaryCharges: {
+        //   select: {
+        //     id: true,
+        //     label: true,
+        //     mainText: true,
+        //     subText: true,
+        //   },
+        //   orderBy: { displayOrder: "asc" },
+        // },
+        // requiredDocuments: {
+        //   select: {
+        //     id: true,
+        //     title: true,
+        //     description: true,
+        //   },
+        //   orderBy: { displayOrder: "asc" },
+        // },
+        // processSteps: {
+        //   select: {
+        //     id: true,
+        //     title: true,
+        //     description: true,
+        //   },
+        //   orderBy: { displayOrder: "asc" },
+        // },
       },
       orderBy: [
         { recommended: "desc" },
@@ -99,7 +132,7 @@ export async function GET(req: NextRequest) {
       slug: card.slug,
       bankName: card.bankName,
       imageUrl: card.imageUrl || '',
-      bankLogoUrl: card.bankLogoUrl || '',
+      // bankLogoUrl: card.bankLogoUrl || '', // DebitCardProduct doesn't have bankLogoUrl
       accountType: card.accountType,
       cardNetwork: card.cardNetwork,
       cardType: card.cardType,
@@ -119,10 +152,25 @@ export async function GET(req: NextRequest) {
       rating: card.rating,
       recommended: card.recommended,
       bestFor: card.bestFor,
+      applyUrl: card.applyUrl,
+      categories: card.categories || [],
       bulletPoints: card.bulletPoints || [],
       keyFeatures: card.keyFeatures || [],
       offers: card.offers || [],
       safetyFeatures: card.safetyFeatures || [],
+      summaryCharges: card.summaryCharges?.map((charge: any) => ({
+        label: charge.label,
+        mainText: charge.mainText,
+        subText: charge.subText,
+      })) || [],
+      requiredDocuments: card.requiredDocuments?.map((doc: any) => ({
+        title: doc.title,
+        description: doc.description,
+      })) || [],
+      processSteps: card.processSteps?.map((step: any) => ({
+        title: step.title,
+        description: step.description,
+      })) || [],
     }));
 
     return NextResponse.json({

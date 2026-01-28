@@ -531,7 +531,8 @@ model LoanProduct {
   createdById Int?
   createdBy   User? @relation(fields: [createdById], references: [id])
 
-  createdAt DateTime @default(now())
+  createdAt  DateTime    @default(now())
+  loanOffers LoanOffer[]
 }
 
 model LoanBullet {
@@ -575,6 +576,21 @@ model LoanFooterItem {
   text         String // e.g. "Admission Letter", "KYC Documents"
   displayOrder Int         @default(0)
   product      LoanProduct @relation(fields: [productId], references: [id])
+  productId    Int
+}
+
+model LoanOffer {
+  id           Int         @id @default(autoincrement())
+  merchant     String // e.g. "Partner Bank", "Third Party Service"
+  offerType    String // e.g. "Processing Fee Waiver", "Interest Discount", "Cashback"
+  title        String
+  description  String      @db.Text
+  offerValue   String // e.g. "₹5,000 off", "1% interest reduction", "₹2,000 cashback"
+  validFrom    DateTime?
+  validTill    DateTime?
+  isActive     Boolean     @default(true)
+  displayOrder Int         @default(0)
+  product      LoanProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId    Int
 }
 
@@ -622,7 +638,8 @@ model CreditCardProduct {
   createdById Int?
   createdBy   User? @relation(fields: [createdById], references: [id])
 
-  createdAt DateTime @default(now())
+  createdAt        DateTime          @default(now())
+  creditCardOffers CreditCardOffer[]
 }
 
 model CreditCardBestSuitedFor {
@@ -701,6 +718,21 @@ model CreditCardBenefit {
 model CreditCardSpecialOffer {
   id           Int               @id @default(autoincrement())
   text         String // e.g. "Get 5000 bonus points on first transaction"
+  displayOrder Int               @default(0)
+  product      CreditCardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId    Int
+}
+
+model CreditCardOffer {
+  id           Int               @id @default(autoincrement())
+  merchant     String // e.g. "Amazon", "Flipkart", "Swiggy"
+  offerType    String // e.g. "Cashback", "Discount", "Reward Points"
+  title        String
+  description  String            @db.Text
+  offerValue   String // e.g. "10% off", "₹150 cashback", "500 reward points"
+  validFrom    DateTime?
+  validTill    DateTime?
+  isActive     Boolean           @default(true)
   displayOrder Int               @default(0)
   product      CreditCardProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId    Int

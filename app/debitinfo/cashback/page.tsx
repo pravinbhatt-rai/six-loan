@@ -1,33 +1,10 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Gift, Sparkles, ShoppingBag, TrendingUp, CheckCircle, Wallet } from 'lucide-react';
-import { API_BASE_URL } from '@/lib/api';
+import DebitCardListSection from '@/component/debitinfo/DebitCardListSection';
 
 export default function CashbackDebitCardsPage() {
-  const [debitCards, setDebitCards] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchDebitCards = async () => {
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/debit-cards`);
-        if (response.ok) {
-          const data = await response.json();
-          const cashbackCards = (data.products || []).filter((card: any) => 
-            card.cashbackRate && card.cashbackRate > 0
-          );
-          setDebitCards(cashbackCards.sort((a: any, b: any) => b.cashbackRate - a.cashbackRate));
-        }
-      } catch (error) {
-        console.error('Failed to fetch debit cards:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchDebitCards();
-  }, []);
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -40,7 +17,7 @@ export default function CashbackDebitCardsPage() {
             <span className="mx-2">/</span>
             <span>Cashback Cards</span>
           </nav>
-          
+
           <div className="text-center animate-slideUp">
             <div className="flex justify-center mb-6">
               <div className="w-20 h-20 bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-xl">
@@ -93,110 +70,13 @@ export default function CashbackDebitCardsPage() {
         </div>
 
         {/* Debit Cards List */}
-        <div>
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Best Cashback Debit Cards</h2>
-              <p className="text-gray-600">Compare {debitCards.length} cashback debit cards from top banks</p>
-            </div>
-          </div>
-
-          {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="bg-white shadow-md p-6 animate-pulse">
-                  <div className="h-40 bg-gray-200 mb-4"></div>
-                  <div className="h-6 bg-gray-200 mb-2"></div>
-                  <div className="h-4 bg-gray-200"></div>
-                </div>
-              ))}
-            </div>
-          ) : debitCards.length === 0 ? (
-            <div className="bg-white shadow-lg p-12 text-center">
-              <Wallet className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">No cashback cards found</h3>
-              <p className="text-gray-600 mb-6">Check back later for updated card listings</p>
-              <Link href="/debitcard">
-                <button className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 shadow-lg transition-all">
-                  View All Debit Cards
-                </button>
-              </Link>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {debitCards.map((card, index) => (
-                <div 
-                  key={card.id}
-                  className="bg-white border-2 border-gray-200 hover:border-purple-500 p-6 shadow-md hover:shadow-xl transition-all animate-scaleIn"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {card.imageUrl ? (
-                    <img 
-                      src={card.imageUrl} 
-                      alt={card.name}
-                      className="w-full h-40 object-cover mb-4"
-                    />
-                  ) : (
-                    <div className="w-full h-40 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mb-4">
-                      <Wallet className="w-16 h-16 text-white" />
-                    </div>
-                  )}
-
-                  <div className="mb-4">
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">{card.name}</h3>
-                    <p className="text-gray-600 text-sm">{card.bankName}</p>
-                  </div>
-
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-yellow-500">⭐</span>
-                    <span className="font-semibold text-gray-900">{card.rating?.toFixed(1)}</span>
-                    <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-semibold ml-auto">
-                      {card.cashbackRate}% Cashback
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3 mb-4 text-sm">
-                    <div className="bg-gray-50 p-2">
-                      <p className="text-gray-600 text-xs">Annual Fee</p>
-                      <p className="font-semibold text-gray-900">
-                        {card.annualFee === 0 ? 'Free' : `₹${card.annualFee}`}
-                      </p>
-                    </div>
-                    <div className="bg-gray-50 p-2">
-                      <p className="text-gray-600 text-xs">Cashback</p>
-                      <p className="font-semibold text-purple-600">{card.cashbackRate}%</p>
-                    </div>
-                    <div className="bg-gray-50 p-2">
-                      <p className="text-gray-600 text-xs">ATM Limit</p>
-                      <p className="font-semibold text-gray-900">₹{(card.atmWithdrawalLimit || 0).toLocaleString('en-IN')}</p>
-                    </div>
-                    <div className="bg-gray-50 p-2">
-                      <p className="text-gray-600 text-xs">Rewards</p>
-                      <p className="font-semibold text-gray-900">{card.rewardPoints ? 'Yes' : 'No'}</p>
-                    </div>
-                  </div>
-
-                  {card.bulletPoints && card.bulletPoints.length > 0 && (
-                    <ul className="space-y-1 mb-4">
-                      {card.bulletPoints.slice(0, 3).map((point: any, idx: number) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
-                          <CheckCircle className="w-4 h-4 text-purple-600 shrink-0 mt-0.5" />
-                          <span>{point.text}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  <Link href={`/debitcard/${card.slug}`}>
-                    <button className="w-full bg-purple-500 hover:bg-purple-600 text-white py-2 shadow-md hover:shadow-lg transition-all font-semibold">
-                      View Details
-                    </button>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        <DebitCardListSection
+          categorySlug="debit-cashback"
+          title="Best Cashback Debit Cards"
+          description="Compare top cashback debit cards from leading banks"
+          showViewMore={true}
+          viewMoreHref="/debitinfo"
+        />
       </div>
 
       {/* Cashback Calculator */}

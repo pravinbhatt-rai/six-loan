@@ -107,7 +107,7 @@ export default function LoungeCreditCardsPage() {
 
             {/* Card Listing */}
             <CreditCardListSection 
-              categoryFilter="Lounge"
+              categorySlug="lounge"
               maxCards={6}
               title="Best Lounge Access Credit Cards"
               description="Get complimentary airport lounge access with these premium credit cards"

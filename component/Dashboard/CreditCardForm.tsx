@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ImageUpload from './ImageUpload';
 import { Plus, X } from 'lucide-react';
 
@@ -14,6 +14,21 @@ interface BenefitSection {
   heading: string;
   subPoints: Array<{ text: string }>;
 }
+
+const offerTypeOptions = [
+  'Cashback',
+  'Reward Points',
+  'Discount',
+  'Fuel',
+  'Movie',
+  'Dining',
+  'Grocery',
+  'Travel',
+  'International',
+  'Forex',
+  'Subscription',
+  'Welcome Bonus'
+];
 
 // Helper function to capitalize each word properly
 const capitalizeWords = (str: string): string => {
@@ -53,7 +68,6 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
     slug: initialData?.slug || '',
     bankName: initialData?.bankName || '',
     cardType: initialData?.cardType || 'standard',
-    bankLogoUrl: initialData?.bankLogoUrl || '',
     imageUrl: initialData?.imageUrl || '',
     videoUrl: initialData?.videoUrl || '',
     annualFee: initialData?.annualFee || '',
@@ -64,11 +78,11 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
     rating: initialData?.rating || 0,
     effectiveFree: initialData?.effectiveFree || false,
     recommended: initialData?.recommended || false,
+    isActive: initialData?.isActive !== undefined ? initialData.isActive : true,
     cardNetwork: initialData?.cardNetwork || 'Visa',
-    category: initialData?.category || '',
     keyStatement: initialData?.keyStatement || '',
     termsConditionsUrl: initialData?.termsConditionsUrl || '',
-    bulletPoints: initialData?.bulletPoints?.length > 0 ? initialData.bulletPoints.map((f: any) => ({ text: f.text })) : [{ text: '' }],
+    bulletPoints: initialData?.bulletPoints?.length > 0 ? initialData.bulletPoints.map((f: any) => ({ text: typeof f.text === 'string' ? f.text : f.text?.text || '' })) : [{ text: '' }],
     summaryCharges: initialData?.summaryCharges?.length > 0 ? initialData.summaryCharges : [{ label: '', mainText: '', subText: '', displayOrder: 1 }],
     requiredDocuments: initialData?.requiredDocuments?.length > 0 ? initialData.requiredDocuments : [{ title: '', description: '', displayOrder: 1 }],
     processSteps: initialData?.processSteps?.length > 0 ? initialData.processSteps : [{ title: '', description: '', displayOrder: 1 }]
@@ -80,10 +94,61 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
       : ['']
   );
 
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(
+    initialData?.categories?.length > 0 ? initialData.categories.map((c: any) => c.slug) : []
+  );
+
+  const [categoryOptions, setCategoryOptions] = useState<Array<{id: number, name: string, slug: string}>>([
+    { id: 1, name: 'Cashback Credit Cards', slug: 'cashback' },
+    { id: 2, name: 'Rewards Credit Cards', slug: 'rewards' },
+    { id: 3, name: 'Credit Card Lounge Access', slug: 'lounge' },
+    { id: 4, name: 'OneCard Credit Cards', slug: 'onecard' },
+    { id: 5, name: 'Fuel Credit Cards', slug: 'fuel' },
+    { id: 6, name: 'Travel Credit Cards', slug: 'travel' },
+    { id: 7, name: 'International Credit Cards', slug: 'international' },
+    { id: 8, name: 'Zero Forex Markup Credit Cards', slug: 'forex' },
+    { id: 9, name: 'Secured Credit Cards', slug: 'secured' }
+  ]);
+
+  // No need to fetch categories - using hardcoded values
+
   const [specialOffers, setSpecialOffers] = useState<string[]>(
     initialData?.specialOffers?.length > 0 
       ? initialData.specialOffers.map((s: any) => s.text || s) 
       : ['']
+  );
+
+  const [offers, setOffers] = useState<Array<{
+    merchant: string;
+    offerType: string;
+    title: string;
+    description: string;
+    offerValue: string;
+    validFrom: string;
+    validTill: string;
+    isActive: boolean;
+  }>>(
+    initialData?.offers?.length > 0 
+      ? initialData.offers.map((offer: any, index: number) => ({
+          merchant: offer.merchant || '',
+          offerType: offer.offerType || 'Cashback',
+          title: offer.title || '',
+          description: offer.description || '',
+          offerValue: offer.offerValue || '',
+          validFrom: offer.validFrom ? new Date(offer.validFrom).toISOString().split('T')[0] : '',
+          validTill: offer.validTill ? new Date(offer.validTill).toISOString().split('T')[0] : '',
+          isActive: offer.isActive !== false
+        }))
+      : [{
+          merchant: '',
+          offerType: 'Cashback',
+          title: '',
+          description: '',
+          offerValue: '',
+          validFrom: '',
+          validTill: '',
+          isActive: true
+        }]
   );
 
   const [benefitSections, setBenefitSections] = useState<BenefitSection[]>(
@@ -109,14 +174,24 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
     }
 
     // Auto-capitalize for specific fields
-    if (['name', 'bankName', 'cardNetwork', 'category', 'keyStatement'].includes(name)) {
+    if (['name', 'bankName', 'cardNetwork', 'keyStatement'].includes(name)) {
       formattedValue = capitalizeWords(value);
     }
 
     setFormData({ ...formData, [name]: formattedValue });
   };
 
-  const handleImageChange = (field: 'bankLogoUrl' | 'imageUrl', url: string) => {
+  const handleMultiSelectChange = (field: string, value: string, checked: boolean) => {
+    if (field === 'categories') {
+      if (checked) {
+        setSelectedCategories(prev => [...prev, value]);
+      } else {
+        setSelectedCategories(prev => prev.filter(slug => slug !== value));
+      }
+    }
+  };
+
+  const handleImageChange = (field: 'imageUrl', url: string) => {
     setFormData({ ...formData, [field]: url });
   };
 
@@ -185,6 +260,32 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
     }
   };
 
+  // Offers handlers
+  const addOffer = () => {
+    setOffers([...offers, {
+      merchant: '',
+      offerType: 'Cashback',
+      title: '',
+      description: '',
+      offerValue: '',
+      validFrom: '',
+      validTill: '',
+      isActive: true
+    }]);
+  };
+
+  const removeOffer = (index: number) => {
+    if (offers.length > 1) {
+      setOffers(offers.filter((_, i) => i !== index));
+    }
+  };
+
+  const updateOffer = (index: number, field: string, value: string | boolean) => {
+    const updated = [...offers];
+    updated[index] = { ...updated[index], [field]: value };
+    setOffers(updated);
+  };
+
   // Benefit Sections handlers
   const handleBenefitHeadingChange = (sectionIndex: number, value: string) => {
     const updated = [...benefitSections];
@@ -235,9 +336,20 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
 
     const payload = {
       ...formData, 
-      categories: categoryId ? [categoryId] : [],
-      bestSuitedFor: bestSuitedFor.filter(b => b.trim() !== ''),
+      categories: selectedCategories,
+      bestSuitedForPoints: bestSuitedFor.filter(b => b.trim() !== ''),
       specialOffers: specialOffers.filter(s => s.trim() !== ''),
+      offers: offers.filter(o => o.title.trim() !== '').map((o, idx) => ({
+        merchant: o.merchant,
+        offerType: o.offerType,
+        title: o.title,
+        description: o.description,
+        offerValue: o.offerValue,
+        validFrom: o.validFrom ? new Date(o.validFrom) : null,
+        validTill: o.validTill ? new Date(o.validTill) : null,
+        isActive: o.isActive,
+        displayOrder: idx + 1
+      })),
       benefitSections: filteredBenefitSections
     };
 
@@ -318,19 +430,20 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Card Category</label>
-            <select name="category" value={formData.category} onChange={handleChange} className="w-full p-2 border rounded-lg">
-              <option value="">Select Category</option>
-              <option value="Cashback Credit Cards">Cashback Credit Cards</option>
-              <option value="Rewards Credit Cards">Rewards Credit Cards</option>
-              <option value="Credit Card Lounge Access">Credit Card Lounge Access</option>
-              <option value="OneCard Credit Cards">OneCard Credit Cards</option>
-              <option value="Fuel Credit Cards">Fuel Credit Cards</option>
-              <option value="Travel Credit Cards">Travel Credit Cards</option>
-              <option value="International Credit Cards">International Credit Cards</option>
-              <option value="Zero Forex Markup Credit Cards">Zero Forex Markup Credit Cards</option>
-              <option value="Secured Credit Cards">Secured Credit Cards</option>
-            </select>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Card Categories (Select multiple)</label>
+            <div className="grid grid-cols-2 gap-2">
+              {categoryOptions.map((cat) => (
+                <label key={cat.slug} className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={selectedCategories.includes(cat.slug)}
+                    onChange={(e) => handleMultiSelectChange('categories', cat.slug, e.target.checked)}
+                    className="rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+                  />
+                  <span className="text-sm text-gray-700">{cat.name}</span>
+                </label>
+              ))}
+            </div>
           </div>
           <div>
             <ImageUpload label="Card Image" value={formData.imageUrl} onChange={(url) => handleImageChange('imageUrl', url)} />
@@ -382,6 +495,10 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
             <div className="flex items-center gap-2">
               <input type="checkbox" id="recommended" name="recommended" checked={formData.recommended} onChange={handleChange} className="w-4 h-4" />
               <label htmlFor="recommended" className="text-sm font-medium text-gray-700">Recommended</label>
+            </div>
+            <div className="flex items-center gap-2">
+              <input type="checkbox" id="isActive" name="isActive" checked={formData.isActive} onChange={handleChange} className="w-4 h-4" />
+              <label htmlFor="isActive" className="text-sm font-medium text-gray-700">Active</label>
             </div>
           </div>
         </div>
@@ -437,6 +554,104 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ categoryId, onSubmit, i
         <button type="button" onClick={addSpecialOffer} className="flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm">
           <Plus className="w-4 h-4" /> Add Special Offer
         </button>
+      </div>
+
+      {/* Offers */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-semibold text-gray-900">Special Offers</h2>
+          <button
+            type="button"
+            onClick={addOffer}
+            className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded transition-colors text-sm"
+          >
+            <Plus className="w-4 h-4" />
+            Add Offer
+          </button>
+        </div>
+        
+        {offers.map((offer, index) => (
+          <div key={index} className="border border-gray-200 p-4 space-y-3 rounded">
+            <div className="flex justify-between items-start">
+              <span className="text-sm font-medium text-gray-700">Offer {index + 1}</span>
+              {offers.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => removeOffer(index)}
+                  className="text-red-600 hover:text-red-700"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <input
+                type="text"
+                value={offer.merchant}
+                onChange={(e) => updateOffer(index, 'merchant', e.target.value)}
+                className="px-4 py-2 border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 rounded"
+                placeholder="Merchant name"
+              />
+              <select
+                value={offer.offerType}
+                onChange={(e) => updateOffer(index, 'offerType', e.target.value)}
+                className="px-4 py-2 border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 rounded"
+              >
+                {offerTypeOptions.map(type => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
+              </select>
+              <input
+                type="text"
+                value={offer.title}
+                onChange={(e) => updateOffer(index, 'title', e.target.value)}
+                className="px-4 py-2 border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 rounded"
+                placeholder="Offer title"
+              />
+              <input
+                type="text"
+                value={offer.offerValue}
+                onChange={(e) => updateOffer(index, 'offerValue', e.target.value)}
+                className="px-4 py-2 border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 rounded"
+                placeholder="Offer value (e.g., 10% off)"
+              />
+              <input
+                type="date"
+                value={offer.validFrom}
+                onChange={(e) => updateOffer(index, 'validFrom', e.target.value)}
+                className="px-4 py-2 border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 rounded"
+                placeholder="Valid from"
+              />
+              <input
+                type="date"
+                value={offer.validTill}
+                onChange={(e) => updateOffer(index, 'validTill', e.target.value)}
+                className="px-4 py-2 border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 rounded"
+                placeholder="Valid till"
+              />
+            </div>
+            <div>
+              <textarea
+                value={offer.description}
+                onChange={(e) => updateOffer(index, 'description', e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 rounded"
+                rows={2}
+                placeholder="Offer description"
+              />
+            </div>
+            <div>
+              <label className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={offer.isActive}
+                  onChange={(e) => updateOffer(index, 'isActive', e.target.checked)}
+                  className="w-4 h-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
+                />
+                <span className="text-sm text-gray-700">Active offer</span>
+              </label>
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Benefit Sections */}

@@ -69,6 +69,11 @@ export type LoanProcessStep = $Result.DefaultSelection<Prisma.$LoanProcessStepPa
  */
 export type LoanFooterItem = $Result.DefaultSelection<Prisma.$LoanFooterItemPayload>
 /**
+ * Model LoanOffer
+ * 
+ */
+export type LoanOffer = $Result.DefaultSelection<Prisma.$LoanOfferPayload>
+/**
  * Model CreditCardProduct
  * 
  */
@@ -118,6 +123,11 @@ export type CreditCardBenefit = $Result.DefaultSelection<Prisma.$CreditCardBenef
  * 
  */
 export type CreditCardSpecialOffer = $Result.DefaultSelection<Prisma.$CreditCardSpecialOfferPayload>
+/**
+ * Model CreditCardOffer
+ * 
+ */
+export type CreditCardOffer = $Result.DefaultSelection<Prisma.$CreditCardOfferPayload>
 /**
  * Model CreditCardBenefitSection
  * 
@@ -518,6 +528,16 @@ export class PrismaClient<
   get loanFooterItem(): Prisma.LoanFooterItemDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.loanOffer`: Exposes CRUD operations for the **LoanOffer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LoanOffers
+    * const loanOffers = await prisma.loanOffer.findMany()
+    * ```
+    */
+  get loanOffer(): Prisma.LoanOfferDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.creditCardProduct`: Exposes CRUD operations for the **CreditCardProduct** model.
     * Example usage:
     * ```ts
@@ -616,6 +636,16 @@ export class PrismaClient<
     * ```
     */
   get creditCardSpecialOffer(): Prisma.CreditCardSpecialOfferDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.creditCardOffer`: Exposes CRUD operations for the **CreditCardOffer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CreditCardOffers
+    * const creditCardOffers = await prisma.creditCardOffer.findMany()
+    * ```
+    */
+  get creditCardOffer(): Prisma.CreditCardOfferDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.creditCardBenefitSection`: Exposes CRUD operations for the **CreditCardBenefitSection** model.
@@ -1218,6 +1248,7 @@ export namespace Prisma {
     LoanRequiredDocument: 'LoanRequiredDocument',
     LoanProcessStep: 'LoanProcessStep',
     LoanFooterItem: 'LoanFooterItem',
+    LoanOffer: 'LoanOffer',
     CreditCardProduct: 'CreditCardProduct',
     CreditCardBestSuitedFor: 'CreditCardBestSuitedFor',
     CreditCardSummaryCharge: 'CreditCardSummaryCharge',
@@ -1228,6 +1259,7 @@ export namespace Prisma {
     CreditCardKeyFeature: 'CreditCardKeyFeature',
     CreditCardBenefit: 'CreditCardBenefit',
     CreditCardSpecialOffer: 'CreditCardSpecialOffer',
+    CreditCardOffer: 'CreditCardOffer',
     CreditCardBenefitSection: 'CreditCardBenefitSection',
     CreditCardBenefitSubPoint: 'CreditCardBenefitSubPoint',
     InsuranceCoverageDetail: 'InsuranceCoverageDetail',
@@ -1261,7 +1293,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "employment" | "application" | "category" | "insuranceProduct" | "loanProduct" | "loanBullet" | "loanSummaryCharge" | "loanRequiredDocument" | "loanProcessStep" | "loanFooterItem" | "creditCardProduct" | "creditCardBestSuitedFor" | "creditCardSummaryCharge" | "creditCardRequiredDocument" | "creditCardProcessStep" | "appProduct" | "creditCardBullet" | "creditCardKeyFeature" | "creditCardBenefit" | "creditCardSpecialOffer" | "creditCardBenefitSection" | "creditCardBenefitSubPoint" | "insuranceCoverageDetail" | "insuranceExclusion" | "insuranceClaimStep" | "insuranceNetworkHospital" | "insuranceEligibility" | "contactMessage" | "eligibilityInquiry" | "debitCardProduct" | "debitCardBullet" | "debitCardKeyFeature" | "debitCardOffer" | "debitCardSafetyFeature" | "blog"
+      modelProps: "user" | "employment" | "application" | "category" | "insuranceProduct" | "loanProduct" | "loanBullet" | "loanSummaryCharge" | "loanRequiredDocument" | "loanProcessStep" | "loanFooterItem" | "loanOffer" | "creditCardProduct" | "creditCardBestSuitedFor" | "creditCardSummaryCharge" | "creditCardRequiredDocument" | "creditCardProcessStep" | "appProduct" | "creditCardBullet" | "creditCardKeyFeature" | "creditCardBenefit" | "creditCardSpecialOffer" | "creditCardOffer" | "creditCardBenefitSection" | "creditCardBenefitSubPoint" | "insuranceCoverageDetail" | "insuranceExclusion" | "insuranceClaimStep" | "insuranceNetworkHospital" | "insuranceEligibility" | "contactMessage" | "eligibilityInquiry" | "debitCardProduct" | "debitCardBullet" | "debitCardKeyFeature" | "debitCardOffer" | "debitCardSafetyFeature"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2079,6 +2111,80 @@ export namespace Prisma {
           }
         }
       }
+      LoanOffer: {
+        payload: Prisma.$LoanOfferPayload<ExtArgs>
+        fields: Prisma.LoanOfferFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LoanOfferFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoanOfferPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LoanOfferFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoanOfferPayload>
+          }
+          findFirst: {
+            args: Prisma.LoanOfferFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoanOfferPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LoanOfferFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoanOfferPayload>
+          }
+          findMany: {
+            args: Prisma.LoanOfferFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoanOfferPayload>[]
+          }
+          create: {
+            args: Prisma.LoanOfferCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoanOfferPayload>
+          }
+          createMany: {
+            args: Prisma.LoanOfferCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LoanOfferCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoanOfferPayload>[]
+          }
+          delete: {
+            args: Prisma.LoanOfferDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoanOfferPayload>
+          }
+          update: {
+            args: Prisma.LoanOfferUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoanOfferPayload>
+          }
+          deleteMany: {
+            args: Prisma.LoanOfferDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LoanOfferUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LoanOfferUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoanOfferPayload>[]
+          }
+          upsert: {
+            args: Prisma.LoanOfferUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LoanOfferPayload>
+          }
+          aggregate: {
+            args: Prisma.LoanOfferAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLoanOffer>
+          }
+          groupBy: {
+            args: Prisma.LoanOfferGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LoanOfferGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LoanOfferCountArgs<ExtArgs>
+            result: $Utils.Optional<LoanOfferCountAggregateOutputType> | number
+          }
+        }
+      }
       CreditCardProduct: {
         payload: Prisma.$CreditCardProductPayload<ExtArgs>
         fields: Prisma.CreditCardProductFieldRefs
@@ -2816,6 +2922,80 @@ export namespace Prisma {
           count: {
             args: Prisma.CreditCardSpecialOfferCountArgs<ExtArgs>
             result: $Utils.Optional<CreditCardSpecialOfferCountAggregateOutputType> | number
+          }
+        }
+      }
+      CreditCardOffer: {
+        payload: Prisma.$CreditCardOfferPayload<ExtArgs>
+        fields: Prisma.CreditCardOfferFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CreditCardOfferFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditCardOfferPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CreditCardOfferFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditCardOfferPayload>
+          }
+          findFirst: {
+            args: Prisma.CreditCardOfferFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditCardOfferPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CreditCardOfferFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditCardOfferPayload>
+          }
+          findMany: {
+            args: Prisma.CreditCardOfferFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditCardOfferPayload>[]
+          }
+          create: {
+            args: Prisma.CreditCardOfferCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditCardOfferPayload>
+          }
+          createMany: {
+            args: Prisma.CreditCardOfferCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CreditCardOfferCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditCardOfferPayload>[]
+          }
+          delete: {
+            args: Prisma.CreditCardOfferDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditCardOfferPayload>
+          }
+          update: {
+            args: Prisma.CreditCardOfferUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditCardOfferPayload>
+          }
+          deleteMany: {
+            args: Prisma.CreditCardOfferDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CreditCardOfferUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CreditCardOfferUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditCardOfferPayload>[]
+          }
+          upsert: {
+            args: Prisma.CreditCardOfferUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreditCardOfferPayload>
+          }
+          aggregate: {
+            args: Prisma.CreditCardOfferAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCreditCardOffer>
+          }
+          groupBy: {
+            args: Prisma.CreditCardOfferGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CreditCardOfferGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CreditCardOfferCountArgs<ExtArgs>
+            result: $Utils.Optional<CreditCardOfferCountAggregateOutputType> | number
           }
         }
       }
@@ -4036,6 +4216,7 @@ export namespace Prisma {
     loanRequiredDocument?: LoanRequiredDocumentOmit
     loanProcessStep?: LoanProcessStepOmit
     loanFooterItem?: LoanFooterItemOmit
+    loanOffer?: LoanOfferOmit
     creditCardProduct?: CreditCardProductOmit
     creditCardBestSuitedFor?: CreditCardBestSuitedForOmit
     creditCardSummaryCharge?: CreditCardSummaryChargeOmit
@@ -4046,6 +4227,7 @@ export namespace Prisma {
     creditCardKeyFeature?: CreditCardKeyFeatureOmit
     creditCardBenefit?: CreditCardBenefitOmit
     creditCardSpecialOffer?: CreditCardSpecialOfferOmit
+    creditCardOffer?: CreditCardOfferOmit
     creditCardBenefitSection?: CreditCardBenefitSectionOmit
     creditCardBenefitSubPoint?: CreditCardBenefitSubPointOmit
     insuranceCoverageDetail?: InsuranceCoverageDetailOmit
@@ -4383,6 +4565,7 @@ export namespace Prisma {
     requiredDocuments: number
     processSteps: number
     footerItems: number
+    offers: number
     applications: number
   }
 
@@ -4392,6 +4575,7 @@ export namespace Prisma {
     requiredDocuments?: boolean | LoanProductCountOutputTypeCountRequiredDocumentsArgs
     processSteps?: boolean | LoanProductCountOutputTypeCountProcessStepsArgs
     footerItems?: boolean | LoanProductCountOutputTypeCountFooterItemsArgs
+    offers?: boolean | LoanProductCountOutputTypeCountOffersArgs
     applications?: boolean | LoanProductCountOutputTypeCountApplicationsArgs
   }
 
@@ -4444,6 +4628,13 @@ export namespace Prisma {
   /**
    * LoanProductCountOutputType without action
    */
+  export type LoanProductCountOutputTypeCountOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LoanOfferWhereInput
+  }
+
+  /**
+   * LoanProductCountOutputType without action
+   */
   export type LoanProductCountOutputTypeCountApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ApplicationWhereInput
   }
@@ -4464,6 +4655,7 @@ export namespace Prisma {
     summaryCharges: number
     requiredDocuments: number
     processSteps: number
+    offers: number
     applications: number
   }
 
@@ -4478,6 +4670,7 @@ export namespace Prisma {
     summaryCharges?: boolean | CreditCardProductCountOutputTypeCountSummaryChargesArgs
     requiredDocuments?: boolean | CreditCardProductCountOutputTypeCountRequiredDocumentsArgs
     processSteps?: boolean | CreditCardProductCountOutputTypeCountProcessStepsArgs
+    offers?: boolean | CreditCardProductCountOutputTypeCountOffersArgs
     applications?: boolean | CreditCardProductCountOutputTypeCountApplicationsArgs
   }
 
@@ -4560,6 +4753,13 @@ export namespace Prisma {
    */
   export type CreditCardProductCountOutputTypeCountProcessStepsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CreditCardProcessStepWhereInput
+  }
+
+  /**
+   * CreditCardProductCountOutputType without action
+   */
+  export type CreditCardProductCountOutputTypeCountOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CreditCardOfferWhereInput
   }
 
   /**
@@ -14641,6 +14841,7 @@ export namespace Prisma {
     requiredDocuments?: boolean | LoanProduct$requiredDocumentsArgs<ExtArgs>
     processSteps?: boolean | LoanProduct$processStepsArgs<ExtArgs>
     footerItems?: boolean | LoanProduct$footerItemsArgs<ExtArgs>
+    offers?: boolean | LoanProduct$offersArgs<ExtArgs>
     applications?: boolean | LoanProduct$applicationsArgs<ExtArgs>
     createdBy?: boolean | LoanProduct$createdByArgs<ExtArgs>
     _count?: boolean | LoanProductCountOutputTypeDefaultArgs<ExtArgs>
@@ -14763,6 +14964,7 @@ export namespace Prisma {
     requiredDocuments?: boolean | LoanProduct$requiredDocumentsArgs<ExtArgs>
     processSteps?: boolean | LoanProduct$processStepsArgs<ExtArgs>
     footerItems?: boolean | LoanProduct$footerItemsArgs<ExtArgs>
+    offers?: boolean | LoanProduct$offersArgs<ExtArgs>
     applications?: boolean | LoanProduct$applicationsArgs<ExtArgs>
     createdBy?: boolean | LoanProduct$createdByArgs<ExtArgs>
     _count?: boolean | LoanProductCountOutputTypeDefaultArgs<ExtArgs>
@@ -14785,6 +14987,7 @@ export namespace Prisma {
       requiredDocuments: Prisma.$LoanRequiredDocumentPayload<ExtArgs>[]
       processSteps: Prisma.$LoanProcessStepPayload<ExtArgs>[]
       footerItems: Prisma.$LoanFooterItemPayload<ExtArgs>[]
+      offers: Prisma.$LoanOfferPayload<ExtArgs>[]
       applications: Prisma.$ApplicationPayload<ExtArgs>[]
       createdBy: Prisma.$UserPayload<ExtArgs> | null
     }
@@ -15221,6 +15424,7 @@ export namespace Prisma {
     requiredDocuments<T extends LoanProduct$requiredDocumentsArgs<ExtArgs> = {}>(args?: Subset<T, LoanProduct$requiredDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LoanRequiredDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     processSteps<T extends LoanProduct$processStepsArgs<ExtArgs> = {}>(args?: Subset<T, LoanProduct$processStepsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LoanProcessStepPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     footerItems<T extends LoanProduct$footerItemsArgs<ExtArgs> = {}>(args?: Subset<T, LoanProduct$footerItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LoanFooterItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    offers<T extends LoanProduct$offersArgs<ExtArgs> = {}>(args?: Subset<T, LoanProduct$offersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LoanOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     applications<T extends LoanProduct$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, LoanProduct$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     createdBy<T extends LoanProduct$createdByArgs<ExtArgs> = {}>(args?: Subset<T, LoanProduct$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
@@ -15816,6 +16020,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: LoanFooterItemScalarFieldEnum | LoanFooterItemScalarFieldEnum[]
+  }
+
+  /**
+   * LoanProduct.offers
+   */
+  export type LoanProduct$offersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferInclude<ExtArgs> | null
+    where?: LoanOfferWhereInput
+    orderBy?: LoanOfferOrderByWithRelationInput | LoanOfferOrderByWithRelationInput[]
+    cursor?: LoanOfferWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LoanOfferScalarFieldEnum | LoanOfferScalarFieldEnum[]
   }
 
   /**
@@ -21368,6 +21596,1184 @@ export namespace Prisma {
 
 
   /**
+   * Model LoanOffer
+   */
+
+  export type AggregateLoanOffer = {
+    _count: LoanOfferCountAggregateOutputType | null
+    _avg: LoanOfferAvgAggregateOutputType | null
+    _sum: LoanOfferSumAggregateOutputType | null
+    _min: LoanOfferMinAggregateOutputType | null
+    _max: LoanOfferMaxAggregateOutputType | null
+  }
+
+  export type LoanOfferAvgAggregateOutputType = {
+    id: number | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type LoanOfferSumAggregateOutputType = {
+    id: number | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type LoanOfferMinAggregateOutputType = {
+    id: number | null
+    merchant: string | null
+    offerType: string | null
+    title: string | null
+    description: string | null
+    offerValue: string | null
+    validFrom: Date | null
+    validTill: Date | null
+    isActive: boolean | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type LoanOfferMaxAggregateOutputType = {
+    id: number | null
+    merchant: string | null
+    offerType: string | null
+    title: string | null
+    description: string | null
+    offerValue: string | null
+    validFrom: Date | null
+    validTill: Date | null
+    isActive: boolean | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type LoanOfferCountAggregateOutputType = {
+    id: number
+    merchant: number
+    offerType: number
+    title: number
+    description: number
+    offerValue: number
+    validFrom: number
+    validTill: number
+    isActive: number
+    displayOrder: number
+    productId: number
+    _all: number
+  }
+
+
+  export type LoanOfferAvgAggregateInputType = {
+    id?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type LoanOfferSumAggregateInputType = {
+    id?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type LoanOfferMinAggregateInputType = {
+    id?: true
+    merchant?: true
+    offerType?: true
+    title?: true
+    description?: true
+    offerValue?: true
+    validFrom?: true
+    validTill?: true
+    isActive?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type LoanOfferMaxAggregateInputType = {
+    id?: true
+    merchant?: true
+    offerType?: true
+    title?: true
+    description?: true
+    offerValue?: true
+    validFrom?: true
+    validTill?: true
+    isActive?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type LoanOfferCountAggregateInputType = {
+    id?: true
+    merchant?: true
+    offerType?: true
+    title?: true
+    description?: true
+    offerValue?: true
+    validFrom?: true
+    validTill?: true
+    isActive?: true
+    displayOrder?: true
+    productId?: true
+    _all?: true
+  }
+
+  export type LoanOfferAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LoanOffer to aggregate.
+     */
+    where?: LoanOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LoanOffers to fetch.
+     */
+    orderBy?: LoanOfferOrderByWithRelationInput | LoanOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LoanOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LoanOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LoanOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LoanOffers
+    **/
+    _count?: true | LoanOfferCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LoanOfferAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LoanOfferSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LoanOfferMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LoanOfferMaxAggregateInputType
+  }
+
+  export type GetLoanOfferAggregateType<T extends LoanOfferAggregateArgs> = {
+        [P in keyof T & keyof AggregateLoanOffer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLoanOffer[P]>
+      : GetScalarType<T[P], AggregateLoanOffer[P]>
+  }
+
+
+
+
+  export type LoanOfferGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LoanOfferWhereInput
+    orderBy?: LoanOfferOrderByWithAggregationInput | LoanOfferOrderByWithAggregationInput[]
+    by: LoanOfferScalarFieldEnum[] | LoanOfferScalarFieldEnum
+    having?: LoanOfferScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LoanOfferCountAggregateInputType | true
+    _avg?: LoanOfferAvgAggregateInputType
+    _sum?: LoanOfferSumAggregateInputType
+    _min?: LoanOfferMinAggregateInputType
+    _max?: LoanOfferMaxAggregateInputType
+  }
+
+  export type LoanOfferGroupByOutputType = {
+    id: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom: Date | null
+    validTill: Date | null
+    isActive: boolean
+    displayOrder: number
+    productId: number
+    _count: LoanOfferCountAggregateOutputType | null
+    _avg: LoanOfferAvgAggregateOutputType | null
+    _sum: LoanOfferSumAggregateOutputType | null
+    _min: LoanOfferMinAggregateOutputType | null
+    _max: LoanOfferMaxAggregateOutputType | null
+  }
+
+  type GetLoanOfferGroupByPayload<T extends LoanOfferGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LoanOfferGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LoanOfferGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LoanOfferGroupByOutputType[P]>
+            : GetScalarType<T[P], LoanOfferGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LoanOfferSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    merchant?: boolean
+    offerType?: boolean
+    title?: boolean
+    description?: boolean
+    offerValue?: boolean
+    validFrom?: boolean
+    validTill?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | LoanProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["loanOffer"]>
+
+  export type LoanOfferSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    merchant?: boolean
+    offerType?: boolean
+    title?: boolean
+    description?: boolean
+    offerValue?: boolean
+    validFrom?: boolean
+    validTill?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | LoanProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["loanOffer"]>
+
+  export type LoanOfferSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    merchant?: boolean
+    offerType?: boolean
+    title?: boolean
+    description?: boolean
+    offerValue?: boolean
+    validFrom?: boolean
+    validTill?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | LoanProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["loanOffer"]>
+
+  export type LoanOfferSelectScalar = {
+    id?: boolean
+    merchant?: boolean
+    offerType?: boolean
+    title?: boolean
+    description?: boolean
+    offerValue?: boolean
+    validFrom?: boolean
+    validTill?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+  }
+
+  export type LoanOfferOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "merchant" | "offerType" | "title" | "description" | "offerValue" | "validFrom" | "validTill" | "isActive" | "displayOrder" | "productId", ExtArgs["result"]["loanOffer"]>
+  export type LoanOfferInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | LoanProductDefaultArgs<ExtArgs>
+  }
+  export type LoanOfferIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | LoanProductDefaultArgs<ExtArgs>
+  }
+  export type LoanOfferIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | LoanProductDefaultArgs<ExtArgs>
+  }
+
+  export type $LoanOfferPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LoanOffer"
+    objects: {
+      product: Prisma.$LoanProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      merchant: string
+      offerType: string
+      title: string
+      description: string
+      offerValue: string
+      validFrom: Date | null
+      validTill: Date | null
+      isActive: boolean
+      displayOrder: number
+      productId: number
+    }, ExtArgs["result"]["loanOffer"]>
+    composites: {}
+  }
+
+  type LoanOfferGetPayload<S extends boolean | null | undefined | LoanOfferDefaultArgs> = $Result.GetResult<Prisma.$LoanOfferPayload, S>
+
+  type LoanOfferCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LoanOfferFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LoanOfferCountAggregateInputType | true
+    }
+
+  export interface LoanOfferDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LoanOffer'], meta: { name: 'LoanOffer' } }
+    /**
+     * Find zero or one LoanOffer that matches the filter.
+     * @param {LoanOfferFindUniqueArgs} args - Arguments to find a LoanOffer
+     * @example
+     * // Get one LoanOffer
+     * const loanOffer = await prisma.loanOffer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LoanOfferFindUniqueArgs>(args: SelectSubset<T, LoanOfferFindUniqueArgs<ExtArgs>>): Prisma__LoanOfferClient<$Result.GetResult<Prisma.$LoanOfferPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one LoanOffer that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LoanOfferFindUniqueOrThrowArgs} args - Arguments to find a LoanOffer
+     * @example
+     * // Get one LoanOffer
+     * const loanOffer = await prisma.loanOffer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LoanOfferFindUniqueOrThrowArgs>(args: SelectSubset<T, LoanOfferFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LoanOfferClient<$Result.GetResult<Prisma.$LoanOfferPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LoanOffer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoanOfferFindFirstArgs} args - Arguments to find a LoanOffer
+     * @example
+     * // Get one LoanOffer
+     * const loanOffer = await prisma.loanOffer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LoanOfferFindFirstArgs>(args?: SelectSubset<T, LoanOfferFindFirstArgs<ExtArgs>>): Prisma__LoanOfferClient<$Result.GetResult<Prisma.$LoanOfferPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LoanOffer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoanOfferFindFirstOrThrowArgs} args - Arguments to find a LoanOffer
+     * @example
+     * // Get one LoanOffer
+     * const loanOffer = await prisma.loanOffer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LoanOfferFindFirstOrThrowArgs>(args?: SelectSubset<T, LoanOfferFindFirstOrThrowArgs<ExtArgs>>): Prisma__LoanOfferClient<$Result.GetResult<Prisma.$LoanOfferPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more LoanOffers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoanOfferFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LoanOffers
+     * const loanOffers = await prisma.loanOffer.findMany()
+     * 
+     * // Get first 10 LoanOffers
+     * const loanOffers = await prisma.loanOffer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const loanOfferWithIdOnly = await prisma.loanOffer.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LoanOfferFindManyArgs>(args?: SelectSubset<T, LoanOfferFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LoanOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a LoanOffer.
+     * @param {LoanOfferCreateArgs} args - Arguments to create a LoanOffer.
+     * @example
+     * // Create one LoanOffer
+     * const LoanOffer = await prisma.loanOffer.create({
+     *   data: {
+     *     // ... data to create a LoanOffer
+     *   }
+     * })
+     * 
+     */
+    create<T extends LoanOfferCreateArgs>(args: SelectSubset<T, LoanOfferCreateArgs<ExtArgs>>): Prisma__LoanOfferClient<$Result.GetResult<Prisma.$LoanOfferPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many LoanOffers.
+     * @param {LoanOfferCreateManyArgs} args - Arguments to create many LoanOffers.
+     * @example
+     * // Create many LoanOffers
+     * const loanOffer = await prisma.loanOffer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LoanOfferCreateManyArgs>(args?: SelectSubset<T, LoanOfferCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many LoanOffers and returns the data saved in the database.
+     * @param {LoanOfferCreateManyAndReturnArgs} args - Arguments to create many LoanOffers.
+     * @example
+     * // Create many LoanOffers
+     * const loanOffer = await prisma.loanOffer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many LoanOffers and only return the `id`
+     * const loanOfferWithIdOnly = await prisma.loanOffer.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LoanOfferCreateManyAndReturnArgs>(args?: SelectSubset<T, LoanOfferCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LoanOfferPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a LoanOffer.
+     * @param {LoanOfferDeleteArgs} args - Arguments to delete one LoanOffer.
+     * @example
+     * // Delete one LoanOffer
+     * const LoanOffer = await prisma.loanOffer.delete({
+     *   where: {
+     *     // ... filter to delete one LoanOffer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LoanOfferDeleteArgs>(args: SelectSubset<T, LoanOfferDeleteArgs<ExtArgs>>): Prisma__LoanOfferClient<$Result.GetResult<Prisma.$LoanOfferPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one LoanOffer.
+     * @param {LoanOfferUpdateArgs} args - Arguments to update one LoanOffer.
+     * @example
+     * // Update one LoanOffer
+     * const loanOffer = await prisma.loanOffer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LoanOfferUpdateArgs>(args: SelectSubset<T, LoanOfferUpdateArgs<ExtArgs>>): Prisma__LoanOfferClient<$Result.GetResult<Prisma.$LoanOfferPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more LoanOffers.
+     * @param {LoanOfferDeleteManyArgs} args - Arguments to filter LoanOffers to delete.
+     * @example
+     * // Delete a few LoanOffers
+     * const { count } = await prisma.loanOffer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LoanOfferDeleteManyArgs>(args?: SelectSubset<T, LoanOfferDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LoanOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoanOfferUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LoanOffers
+     * const loanOffer = await prisma.loanOffer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LoanOfferUpdateManyArgs>(args: SelectSubset<T, LoanOfferUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LoanOffers and returns the data updated in the database.
+     * @param {LoanOfferUpdateManyAndReturnArgs} args - Arguments to update many LoanOffers.
+     * @example
+     * // Update many LoanOffers
+     * const loanOffer = await prisma.loanOffer.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more LoanOffers and only return the `id`
+     * const loanOfferWithIdOnly = await prisma.loanOffer.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LoanOfferUpdateManyAndReturnArgs>(args: SelectSubset<T, LoanOfferUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LoanOfferPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one LoanOffer.
+     * @param {LoanOfferUpsertArgs} args - Arguments to update or create a LoanOffer.
+     * @example
+     * // Update or create a LoanOffer
+     * const loanOffer = await prisma.loanOffer.upsert({
+     *   create: {
+     *     // ... data to create a LoanOffer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LoanOffer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LoanOfferUpsertArgs>(args: SelectSubset<T, LoanOfferUpsertArgs<ExtArgs>>): Prisma__LoanOfferClient<$Result.GetResult<Prisma.$LoanOfferPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of LoanOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoanOfferCountArgs} args - Arguments to filter LoanOffers to count.
+     * @example
+     * // Count the number of LoanOffers
+     * const count = await prisma.loanOffer.count({
+     *   where: {
+     *     // ... the filter for the LoanOffers we want to count
+     *   }
+     * })
+    **/
+    count<T extends LoanOfferCountArgs>(
+      args?: Subset<T, LoanOfferCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LoanOfferCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LoanOffer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoanOfferAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LoanOfferAggregateArgs>(args: Subset<T, LoanOfferAggregateArgs>): Prisma.PrismaPromise<GetLoanOfferAggregateType<T>>
+
+    /**
+     * Group by LoanOffer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LoanOfferGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LoanOfferGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LoanOfferGroupByArgs['orderBy'] }
+        : { orderBy?: LoanOfferGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LoanOfferGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLoanOfferGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LoanOffer model
+   */
+  readonly fields: LoanOfferFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LoanOffer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LoanOfferClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends LoanProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LoanProductDefaultArgs<ExtArgs>>): Prisma__LoanProductClient<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the LoanOffer model
+   */
+  interface LoanOfferFieldRefs {
+    readonly id: FieldRef<"LoanOffer", 'Int'>
+    readonly merchant: FieldRef<"LoanOffer", 'String'>
+    readonly offerType: FieldRef<"LoanOffer", 'String'>
+    readonly title: FieldRef<"LoanOffer", 'String'>
+    readonly description: FieldRef<"LoanOffer", 'String'>
+    readonly offerValue: FieldRef<"LoanOffer", 'String'>
+    readonly validFrom: FieldRef<"LoanOffer", 'DateTime'>
+    readonly validTill: FieldRef<"LoanOffer", 'DateTime'>
+    readonly isActive: FieldRef<"LoanOffer", 'Boolean'>
+    readonly displayOrder: FieldRef<"LoanOffer", 'Int'>
+    readonly productId: FieldRef<"LoanOffer", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LoanOffer findUnique
+   */
+  export type LoanOfferFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which LoanOffer to fetch.
+     */
+    where: LoanOfferWhereUniqueInput
+  }
+
+  /**
+   * LoanOffer findUniqueOrThrow
+   */
+  export type LoanOfferFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which LoanOffer to fetch.
+     */
+    where: LoanOfferWhereUniqueInput
+  }
+
+  /**
+   * LoanOffer findFirst
+   */
+  export type LoanOfferFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which LoanOffer to fetch.
+     */
+    where?: LoanOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LoanOffers to fetch.
+     */
+    orderBy?: LoanOfferOrderByWithRelationInput | LoanOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LoanOffers.
+     */
+    cursor?: LoanOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LoanOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LoanOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LoanOffers.
+     */
+    distinct?: LoanOfferScalarFieldEnum | LoanOfferScalarFieldEnum[]
+  }
+
+  /**
+   * LoanOffer findFirstOrThrow
+   */
+  export type LoanOfferFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which LoanOffer to fetch.
+     */
+    where?: LoanOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LoanOffers to fetch.
+     */
+    orderBy?: LoanOfferOrderByWithRelationInput | LoanOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LoanOffers.
+     */
+    cursor?: LoanOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LoanOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LoanOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LoanOffers.
+     */
+    distinct?: LoanOfferScalarFieldEnum | LoanOfferScalarFieldEnum[]
+  }
+
+  /**
+   * LoanOffer findMany
+   */
+  export type LoanOfferFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which LoanOffers to fetch.
+     */
+    where?: LoanOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LoanOffers to fetch.
+     */
+    orderBy?: LoanOfferOrderByWithRelationInput | LoanOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LoanOffers.
+     */
+    cursor?: LoanOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LoanOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LoanOffers.
+     */
+    skip?: number
+    distinct?: LoanOfferScalarFieldEnum | LoanOfferScalarFieldEnum[]
+  }
+
+  /**
+   * LoanOffer create
+   */
+  export type LoanOfferCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferInclude<ExtArgs> | null
+    /**
+     * The data needed to create a LoanOffer.
+     */
+    data: XOR<LoanOfferCreateInput, LoanOfferUncheckedCreateInput>
+  }
+
+  /**
+   * LoanOffer createMany
+   */
+  export type LoanOfferCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LoanOffers.
+     */
+    data: LoanOfferCreateManyInput | LoanOfferCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LoanOffer createManyAndReturn
+   */
+  export type LoanOfferCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * The data used to create many LoanOffers.
+     */
+    data: LoanOfferCreateManyInput | LoanOfferCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * LoanOffer update
+   */
+  export type LoanOfferUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferInclude<ExtArgs> | null
+    /**
+     * The data needed to update a LoanOffer.
+     */
+    data: XOR<LoanOfferUpdateInput, LoanOfferUncheckedUpdateInput>
+    /**
+     * Choose, which LoanOffer to update.
+     */
+    where: LoanOfferWhereUniqueInput
+  }
+
+  /**
+   * LoanOffer updateMany
+   */
+  export type LoanOfferUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LoanOffers.
+     */
+    data: XOR<LoanOfferUpdateManyMutationInput, LoanOfferUncheckedUpdateManyInput>
+    /**
+     * Filter which LoanOffers to update
+     */
+    where?: LoanOfferWhereInput
+    /**
+     * Limit how many LoanOffers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * LoanOffer updateManyAndReturn
+   */
+  export type LoanOfferUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * The data used to update LoanOffers.
+     */
+    data: XOR<LoanOfferUpdateManyMutationInput, LoanOfferUncheckedUpdateManyInput>
+    /**
+     * Filter which LoanOffers to update
+     */
+    where?: LoanOfferWhereInput
+    /**
+     * Limit how many LoanOffers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * LoanOffer upsert
+   */
+  export type LoanOfferUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferInclude<ExtArgs> | null
+    /**
+     * The filter to search for the LoanOffer to update in case it exists.
+     */
+    where: LoanOfferWhereUniqueInput
+    /**
+     * In case the LoanOffer found by the `where` argument doesn't exist, create a new LoanOffer with this data.
+     */
+    create: XOR<LoanOfferCreateInput, LoanOfferUncheckedCreateInput>
+    /**
+     * In case the LoanOffer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LoanOfferUpdateInput, LoanOfferUncheckedUpdateInput>
+  }
+
+  /**
+   * LoanOffer delete
+   */
+  export type LoanOfferDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferInclude<ExtArgs> | null
+    /**
+     * Filter which LoanOffer to delete.
+     */
+    where: LoanOfferWhereUniqueInput
+  }
+
+  /**
+   * LoanOffer deleteMany
+   */
+  export type LoanOfferDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LoanOffers to delete
+     */
+    where?: LoanOfferWhereInput
+    /**
+     * Limit how many LoanOffers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * LoanOffer without action
+   */
+  export type LoanOfferDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LoanOffer
+     */
+    select?: LoanOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LoanOffer
+     */
+    omit?: LoanOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LoanOfferInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model CreditCardProduct
    */
 
@@ -21396,7 +22802,6 @@ export namespace Prisma {
     name: string | null
     slug: string | null
     bankName: string | null
-    bankLogoUrl: string | null
     imageUrl: string | null
     category: string | null
     annualFee: string | null
@@ -21406,6 +22811,7 @@ export namespace Prisma {
     effectiveFree: boolean | null
     recommended: boolean | null
     rating: number | null
+    isActive: boolean | null
     videoUrl: string | null
     termsConditionsUrl: string | null
     firstYearFee: string | null
@@ -21420,7 +22826,6 @@ export namespace Prisma {
     name: string | null
     slug: string | null
     bankName: string | null
-    bankLogoUrl: string | null
     imageUrl: string | null
     category: string | null
     annualFee: string | null
@@ -21430,6 +22835,7 @@ export namespace Prisma {
     effectiveFree: boolean | null
     recommended: boolean | null
     rating: number | null
+    isActive: boolean | null
     videoUrl: string | null
     termsConditionsUrl: string | null
     firstYearFee: string | null
@@ -21444,7 +22850,6 @@ export namespace Prisma {
     name: number
     slug: number
     bankName: number
-    bankLogoUrl: number
     imageUrl: number
     category: number
     annualFee: number
@@ -21454,6 +22859,7 @@ export namespace Prisma {
     effectiveFree: number
     recommended: number
     rating: number
+    isActive: number
     videoUrl: number
     termsConditionsUrl: number
     firstYearFee: number
@@ -21482,7 +22888,6 @@ export namespace Prisma {
     name?: true
     slug?: true
     bankName?: true
-    bankLogoUrl?: true
     imageUrl?: true
     category?: true
     annualFee?: true
@@ -21492,6 +22897,7 @@ export namespace Prisma {
     effectiveFree?: true
     recommended?: true
     rating?: true
+    isActive?: true
     videoUrl?: true
     termsConditionsUrl?: true
     firstYearFee?: true
@@ -21506,7 +22912,6 @@ export namespace Prisma {
     name?: true
     slug?: true
     bankName?: true
-    bankLogoUrl?: true
     imageUrl?: true
     category?: true
     annualFee?: true
@@ -21516,6 +22921,7 @@ export namespace Prisma {
     effectiveFree?: true
     recommended?: true
     rating?: true
+    isActive?: true
     videoUrl?: true
     termsConditionsUrl?: true
     firstYearFee?: true
@@ -21530,7 +22936,6 @@ export namespace Prisma {
     name?: true
     slug?: true
     bankName?: true
-    bankLogoUrl?: true
     imageUrl?: true
     category?: true
     annualFee?: true
@@ -21540,6 +22945,7 @@ export namespace Prisma {
     effectiveFree?: true
     recommended?: true
     rating?: true
+    isActive?: true
     videoUrl?: true
     termsConditionsUrl?: true
     firstYearFee?: true
@@ -21641,7 +23047,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl: string | null
     imageUrl: string
     category: string | null
     annualFee: string
@@ -21651,6 +23056,7 @@ export namespace Prisma {
     effectiveFree: boolean
     recommended: boolean
     rating: number
+    isActive: boolean
     videoUrl: string | null
     termsConditionsUrl: string | null
     firstYearFee: string | null
@@ -21684,7 +23090,6 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     bankName?: boolean
-    bankLogoUrl?: boolean
     imageUrl?: boolean
     category?: boolean
     annualFee?: boolean
@@ -21694,6 +23099,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: boolean
+    isActive?: boolean
     videoUrl?: boolean
     termsConditionsUrl?: boolean
     firstYearFee?: boolean
@@ -21711,6 +23117,7 @@ export namespace Prisma {
     summaryCharges?: boolean | CreditCardProduct$summaryChargesArgs<ExtArgs>
     requiredDocuments?: boolean | CreditCardProduct$requiredDocumentsArgs<ExtArgs>
     processSteps?: boolean | CreditCardProduct$processStepsArgs<ExtArgs>
+    offers?: boolean | CreditCardProduct$offersArgs<ExtArgs>
     applications?: boolean | CreditCardProduct$applicationsArgs<ExtArgs>
     createdBy?: boolean | CreditCardProduct$createdByArgs<ExtArgs>
     _count?: boolean | CreditCardProductCountOutputTypeDefaultArgs<ExtArgs>
@@ -21721,7 +23128,6 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     bankName?: boolean
-    bankLogoUrl?: boolean
     imageUrl?: boolean
     category?: boolean
     annualFee?: boolean
@@ -21731,6 +23137,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: boolean
+    isActive?: boolean
     videoUrl?: boolean
     termsConditionsUrl?: boolean
     firstYearFee?: boolean
@@ -21746,7 +23153,6 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     bankName?: boolean
-    bankLogoUrl?: boolean
     imageUrl?: boolean
     category?: boolean
     annualFee?: boolean
@@ -21756,6 +23162,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: boolean
+    isActive?: boolean
     videoUrl?: boolean
     termsConditionsUrl?: boolean
     firstYearFee?: boolean
@@ -21771,7 +23178,6 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     bankName?: boolean
-    bankLogoUrl?: boolean
     imageUrl?: boolean
     category?: boolean
     annualFee?: boolean
@@ -21781,6 +23187,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: boolean
+    isActive?: boolean
     videoUrl?: boolean
     termsConditionsUrl?: boolean
     firstYearFee?: boolean
@@ -21790,7 +23197,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type CreditCardProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "bankName" | "bankLogoUrl" | "imageUrl" | "category" | "annualFee" | "cardNetwork" | "cardType" | "bestSuitedFor" | "effectiveFree" | "recommended" | "rating" | "videoUrl" | "termsConditionsUrl" | "firstYearFee" | "secondYearFee" | "feeWaiverCondition" | "createdById" | "createdAt", ExtArgs["result"]["creditCardProduct"]>
+  export type CreditCardProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "bankName" | "imageUrl" | "category" | "annualFee" | "cardNetwork" | "cardType" | "bestSuitedFor" | "effectiveFree" | "recommended" | "rating" | "isActive" | "videoUrl" | "termsConditionsUrl" | "firstYearFee" | "secondYearFee" | "feeWaiverCondition" | "createdById" | "createdAt", ExtArgs["result"]["creditCardProduct"]>
   export type CreditCardProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     categories?: boolean | CreditCardProduct$categoriesArgs<ExtArgs>
     bulletPoints?: boolean | CreditCardProduct$bulletPointsArgs<ExtArgs>
@@ -21802,6 +23209,7 @@ export namespace Prisma {
     summaryCharges?: boolean | CreditCardProduct$summaryChargesArgs<ExtArgs>
     requiredDocuments?: boolean | CreditCardProduct$requiredDocumentsArgs<ExtArgs>
     processSteps?: boolean | CreditCardProduct$processStepsArgs<ExtArgs>
+    offers?: boolean | CreditCardProduct$offersArgs<ExtArgs>
     applications?: boolean | CreditCardProduct$applicationsArgs<ExtArgs>
     createdBy?: boolean | CreditCardProduct$createdByArgs<ExtArgs>
     _count?: boolean | CreditCardProductCountOutputTypeDefaultArgs<ExtArgs>
@@ -21826,6 +23234,7 @@ export namespace Prisma {
       summaryCharges: Prisma.$CreditCardSummaryChargePayload<ExtArgs>[]
       requiredDocuments: Prisma.$CreditCardRequiredDocumentPayload<ExtArgs>[]
       processSteps: Prisma.$CreditCardProcessStepPayload<ExtArgs>[]
+      offers: Prisma.$CreditCardOfferPayload<ExtArgs>[]
       applications: Prisma.$ApplicationPayload<ExtArgs>[]
       createdBy: Prisma.$UserPayload<ExtArgs> | null
     }
@@ -21834,7 +23243,6 @@ export namespace Prisma {
       name: string
       slug: string
       bankName: string
-      bankLogoUrl: string | null
       imageUrl: string
       category: string | null
       annualFee: string
@@ -21844,6 +23252,7 @@ export namespace Prisma {
       effectiveFree: boolean
       recommended: boolean
       rating: number
+      isActive: boolean
       videoUrl: string | null
       termsConditionsUrl: string | null
       firstYearFee: string | null
@@ -22255,6 +23664,7 @@ export namespace Prisma {
     summaryCharges<T extends CreditCardProduct$summaryChargesArgs<ExtArgs> = {}>(args?: Subset<T, CreditCardProduct$summaryChargesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreditCardSummaryChargePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     requiredDocuments<T extends CreditCardProduct$requiredDocumentsArgs<ExtArgs> = {}>(args?: Subset<T, CreditCardProduct$requiredDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreditCardRequiredDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     processSteps<T extends CreditCardProduct$processStepsArgs<ExtArgs> = {}>(args?: Subset<T, CreditCardProduct$processStepsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreditCardProcessStepPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    offers<T extends CreditCardProduct$offersArgs<ExtArgs> = {}>(args?: Subset<T, CreditCardProduct$offersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreditCardOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     applications<T extends CreditCardProduct$applicationsArgs<ExtArgs> = {}>(args?: Subset<T, CreditCardProduct$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     createdBy<T extends CreditCardProduct$createdByArgs<ExtArgs> = {}>(args?: Subset<T, CreditCardProduct$createdByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
@@ -22290,7 +23700,6 @@ export namespace Prisma {
     readonly name: FieldRef<"CreditCardProduct", 'String'>
     readonly slug: FieldRef<"CreditCardProduct", 'String'>
     readonly bankName: FieldRef<"CreditCardProduct", 'String'>
-    readonly bankLogoUrl: FieldRef<"CreditCardProduct", 'String'>
     readonly imageUrl: FieldRef<"CreditCardProduct", 'String'>
     readonly category: FieldRef<"CreditCardProduct", 'String'>
     readonly annualFee: FieldRef<"CreditCardProduct", 'String'>
@@ -22300,6 +23709,7 @@ export namespace Prisma {
     readonly effectiveFree: FieldRef<"CreditCardProduct", 'Boolean'>
     readonly recommended: FieldRef<"CreditCardProduct", 'Boolean'>
     readonly rating: FieldRef<"CreditCardProduct", 'Float'>
+    readonly isActive: FieldRef<"CreditCardProduct", 'Boolean'>
     readonly videoUrl: FieldRef<"CreditCardProduct", 'String'>
     readonly termsConditionsUrl: FieldRef<"CreditCardProduct", 'String'>
     readonly firstYearFee: FieldRef<"CreditCardProduct", 'String'>
@@ -22940,6 +24350,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CreditCardProcessStepScalarFieldEnum | CreditCardProcessStepScalarFieldEnum[]
+  }
+
+  /**
+   * CreditCardProduct.offers
+   */
+  export type CreditCardProduct$offersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferInclude<ExtArgs> | null
+    where?: CreditCardOfferWhereInput
+    orderBy?: CreditCardOfferOrderByWithRelationInput | CreditCardOfferOrderByWithRelationInput[]
+    cursor?: CreditCardOfferWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CreditCardOfferScalarFieldEnum | CreditCardOfferScalarFieldEnum[]
   }
 
   /**
@@ -32890,6 +34324,1184 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CreditCardSpecialOfferInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CreditCardOffer
+   */
+
+  export type AggregateCreditCardOffer = {
+    _count: CreditCardOfferCountAggregateOutputType | null
+    _avg: CreditCardOfferAvgAggregateOutputType | null
+    _sum: CreditCardOfferSumAggregateOutputType | null
+    _min: CreditCardOfferMinAggregateOutputType | null
+    _max: CreditCardOfferMaxAggregateOutputType | null
+  }
+
+  export type CreditCardOfferAvgAggregateOutputType = {
+    id: number | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type CreditCardOfferSumAggregateOutputType = {
+    id: number | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type CreditCardOfferMinAggregateOutputType = {
+    id: number | null
+    merchant: string | null
+    offerType: string | null
+    title: string | null
+    description: string | null
+    offerValue: string | null
+    validFrom: Date | null
+    validTill: Date | null
+    isActive: boolean | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type CreditCardOfferMaxAggregateOutputType = {
+    id: number | null
+    merchant: string | null
+    offerType: string | null
+    title: string | null
+    description: string | null
+    offerValue: string | null
+    validFrom: Date | null
+    validTill: Date | null
+    isActive: boolean | null
+    displayOrder: number | null
+    productId: number | null
+  }
+
+  export type CreditCardOfferCountAggregateOutputType = {
+    id: number
+    merchant: number
+    offerType: number
+    title: number
+    description: number
+    offerValue: number
+    validFrom: number
+    validTill: number
+    isActive: number
+    displayOrder: number
+    productId: number
+    _all: number
+  }
+
+
+  export type CreditCardOfferAvgAggregateInputType = {
+    id?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type CreditCardOfferSumAggregateInputType = {
+    id?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type CreditCardOfferMinAggregateInputType = {
+    id?: true
+    merchant?: true
+    offerType?: true
+    title?: true
+    description?: true
+    offerValue?: true
+    validFrom?: true
+    validTill?: true
+    isActive?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type CreditCardOfferMaxAggregateInputType = {
+    id?: true
+    merchant?: true
+    offerType?: true
+    title?: true
+    description?: true
+    offerValue?: true
+    validFrom?: true
+    validTill?: true
+    isActive?: true
+    displayOrder?: true
+    productId?: true
+  }
+
+  export type CreditCardOfferCountAggregateInputType = {
+    id?: true
+    merchant?: true
+    offerType?: true
+    title?: true
+    description?: true
+    offerValue?: true
+    validFrom?: true
+    validTill?: true
+    isActive?: true
+    displayOrder?: true
+    productId?: true
+    _all?: true
+  }
+
+  export type CreditCardOfferAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CreditCardOffer to aggregate.
+     */
+    where?: CreditCardOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CreditCardOffers to fetch.
+     */
+    orderBy?: CreditCardOfferOrderByWithRelationInput | CreditCardOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CreditCardOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CreditCardOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CreditCardOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CreditCardOffers
+    **/
+    _count?: true | CreditCardOfferCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CreditCardOfferAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CreditCardOfferSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CreditCardOfferMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CreditCardOfferMaxAggregateInputType
+  }
+
+  export type GetCreditCardOfferAggregateType<T extends CreditCardOfferAggregateArgs> = {
+        [P in keyof T & keyof AggregateCreditCardOffer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCreditCardOffer[P]>
+      : GetScalarType<T[P], AggregateCreditCardOffer[P]>
+  }
+
+
+
+
+  export type CreditCardOfferGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CreditCardOfferWhereInput
+    orderBy?: CreditCardOfferOrderByWithAggregationInput | CreditCardOfferOrderByWithAggregationInput[]
+    by: CreditCardOfferScalarFieldEnum[] | CreditCardOfferScalarFieldEnum
+    having?: CreditCardOfferScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CreditCardOfferCountAggregateInputType | true
+    _avg?: CreditCardOfferAvgAggregateInputType
+    _sum?: CreditCardOfferSumAggregateInputType
+    _min?: CreditCardOfferMinAggregateInputType
+    _max?: CreditCardOfferMaxAggregateInputType
+  }
+
+  export type CreditCardOfferGroupByOutputType = {
+    id: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom: Date | null
+    validTill: Date | null
+    isActive: boolean
+    displayOrder: number
+    productId: number
+    _count: CreditCardOfferCountAggregateOutputType | null
+    _avg: CreditCardOfferAvgAggregateOutputType | null
+    _sum: CreditCardOfferSumAggregateOutputType | null
+    _min: CreditCardOfferMinAggregateOutputType | null
+    _max: CreditCardOfferMaxAggregateOutputType | null
+  }
+
+  type GetCreditCardOfferGroupByPayload<T extends CreditCardOfferGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CreditCardOfferGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CreditCardOfferGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CreditCardOfferGroupByOutputType[P]>
+            : GetScalarType<T[P], CreditCardOfferGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CreditCardOfferSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    merchant?: boolean
+    offerType?: boolean
+    title?: boolean
+    description?: boolean
+    offerValue?: boolean
+    validFrom?: boolean
+    validTill?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | CreditCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["creditCardOffer"]>
+
+  export type CreditCardOfferSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    merchant?: boolean
+    offerType?: boolean
+    title?: boolean
+    description?: boolean
+    offerValue?: boolean
+    validFrom?: boolean
+    validTill?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | CreditCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["creditCardOffer"]>
+
+  export type CreditCardOfferSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    merchant?: boolean
+    offerType?: boolean
+    title?: boolean
+    description?: boolean
+    offerValue?: boolean
+    validFrom?: boolean
+    validTill?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+    product?: boolean | CreditCardProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["creditCardOffer"]>
+
+  export type CreditCardOfferSelectScalar = {
+    id?: boolean
+    merchant?: boolean
+    offerType?: boolean
+    title?: boolean
+    description?: boolean
+    offerValue?: boolean
+    validFrom?: boolean
+    validTill?: boolean
+    isActive?: boolean
+    displayOrder?: boolean
+    productId?: boolean
+  }
+
+  export type CreditCardOfferOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "merchant" | "offerType" | "title" | "description" | "offerValue" | "validFrom" | "validTill" | "isActive" | "displayOrder" | "productId", ExtArgs["result"]["creditCardOffer"]>
+  export type CreditCardOfferInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | CreditCardProductDefaultArgs<ExtArgs>
+  }
+  export type CreditCardOfferIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | CreditCardProductDefaultArgs<ExtArgs>
+  }
+  export type CreditCardOfferIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | CreditCardProductDefaultArgs<ExtArgs>
+  }
+
+  export type $CreditCardOfferPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CreditCardOffer"
+    objects: {
+      product: Prisma.$CreditCardProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      merchant: string
+      offerType: string
+      title: string
+      description: string
+      offerValue: string
+      validFrom: Date | null
+      validTill: Date | null
+      isActive: boolean
+      displayOrder: number
+      productId: number
+    }, ExtArgs["result"]["creditCardOffer"]>
+    composites: {}
+  }
+
+  type CreditCardOfferGetPayload<S extends boolean | null | undefined | CreditCardOfferDefaultArgs> = $Result.GetResult<Prisma.$CreditCardOfferPayload, S>
+
+  type CreditCardOfferCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CreditCardOfferFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CreditCardOfferCountAggregateInputType | true
+    }
+
+  export interface CreditCardOfferDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CreditCardOffer'], meta: { name: 'CreditCardOffer' } }
+    /**
+     * Find zero or one CreditCardOffer that matches the filter.
+     * @param {CreditCardOfferFindUniqueArgs} args - Arguments to find a CreditCardOffer
+     * @example
+     * // Get one CreditCardOffer
+     * const creditCardOffer = await prisma.creditCardOffer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CreditCardOfferFindUniqueArgs>(args: SelectSubset<T, CreditCardOfferFindUniqueArgs<ExtArgs>>): Prisma__CreditCardOfferClient<$Result.GetResult<Prisma.$CreditCardOfferPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CreditCardOffer that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CreditCardOfferFindUniqueOrThrowArgs} args - Arguments to find a CreditCardOffer
+     * @example
+     * // Get one CreditCardOffer
+     * const creditCardOffer = await prisma.creditCardOffer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CreditCardOfferFindUniqueOrThrowArgs>(args: SelectSubset<T, CreditCardOfferFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CreditCardOfferClient<$Result.GetResult<Prisma.$CreditCardOfferPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CreditCardOffer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditCardOfferFindFirstArgs} args - Arguments to find a CreditCardOffer
+     * @example
+     * // Get one CreditCardOffer
+     * const creditCardOffer = await prisma.creditCardOffer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CreditCardOfferFindFirstArgs>(args?: SelectSubset<T, CreditCardOfferFindFirstArgs<ExtArgs>>): Prisma__CreditCardOfferClient<$Result.GetResult<Prisma.$CreditCardOfferPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CreditCardOffer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditCardOfferFindFirstOrThrowArgs} args - Arguments to find a CreditCardOffer
+     * @example
+     * // Get one CreditCardOffer
+     * const creditCardOffer = await prisma.creditCardOffer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CreditCardOfferFindFirstOrThrowArgs>(args?: SelectSubset<T, CreditCardOfferFindFirstOrThrowArgs<ExtArgs>>): Prisma__CreditCardOfferClient<$Result.GetResult<Prisma.$CreditCardOfferPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CreditCardOffers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditCardOfferFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CreditCardOffers
+     * const creditCardOffers = await prisma.creditCardOffer.findMany()
+     * 
+     * // Get first 10 CreditCardOffers
+     * const creditCardOffers = await prisma.creditCardOffer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const creditCardOfferWithIdOnly = await prisma.creditCardOffer.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CreditCardOfferFindManyArgs>(args?: SelectSubset<T, CreditCardOfferFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreditCardOfferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CreditCardOffer.
+     * @param {CreditCardOfferCreateArgs} args - Arguments to create a CreditCardOffer.
+     * @example
+     * // Create one CreditCardOffer
+     * const CreditCardOffer = await prisma.creditCardOffer.create({
+     *   data: {
+     *     // ... data to create a CreditCardOffer
+     *   }
+     * })
+     * 
+     */
+    create<T extends CreditCardOfferCreateArgs>(args: SelectSubset<T, CreditCardOfferCreateArgs<ExtArgs>>): Prisma__CreditCardOfferClient<$Result.GetResult<Prisma.$CreditCardOfferPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CreditCardOffers.
+     * @param {CreditCardOfferCreateManyArgs} args - Arguments to create many CreditCardOffers.
+     * @example
+     * // Create many CreditCardOffers
+     * const creditCardOffer = await prisma.creditCardOffer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CreditCardOfferCreateManyArgs>(args?: SelectSubset<T, CreditCardOfferCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CreditCardOffers and returns the data saved in the database.
+     * @param {CreditCardOfferCreateManyAndReturnArgs} args - Arguments to create many CreditCardOffers.
+     * @example
+     * // Create many CreditCardOffers
+     * const creditCardOffer = await prisma.creditCardOffer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CreditCardOffers and only return the `id`
+     * const creditCardOfferWithIdOnly = await prisma.creditCardOffer.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CreditCardOfferCreateManyAndReturnArgs>(args?: SelectSubset<T, CreditCardOfferCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreditCardOfferPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CreditCardOffer.
+     * @param {CreditCardOfferDeleteArgs} args - Arguments to delete one CreditCardOffer.
+     * @example
+     * // Delete one CreditCardOffer
+     * const CreditCardOffer = await prisma.creditCardOffer.delete({
+     *   where: {
+     *     // ... filter to delete one CreditCardOffer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CreditCardOfferDeleteArgs>(args: SelectSubset<T, CreditCardOfferDeleteArgs<ExtArgs>>): Prisma__CreditCardOfferClient<$Result.GetResult<Prisma.$CreditCardOfferPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CreditCardOffer.
+     * @param {CreditCardOfferUpdateArgs} args - Arguments to update one CreditCardOffer.
+     * @example
+     * // Update one CreditCardOffer
+     * const creditCardOffer = await prisma.creditCardOffer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CreditCardOfferUpdateArgs>(args: SelectSubset<T, CreditCardOfferUpdateArgs<ExtArgs>>): Prisma__CreditCardOfferClient<$Result.GetResult<Prisma.$CreditCardOfferPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CreditCardOffers.
+     * @param {CreditCardOfferDeleteManyArgs} args - Arguments to filter CreditCardOffers to delete.
+     * @example
+     * // Delete a few CreditCardOffers
+     * const { count } = await prisma.creditCardOffer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CreditCardOfferDeleteManyArgs>(args?: SelectSubset<T, CreditCardOfferDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CreditCardOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditCardOfferUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CreditCardOffers
+     * const creditCardOffer = await prisma.creditCardOffer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CreditCardOfferUpdateManyArgs>(args: SelectSubset<T, CreditCardOfferUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CreditCardOffers and returns the data updated in the database.
+     * @param {CreditCardOfferUpdateManyAndReturnArgs} args - Arguments to update many CreditCardOffers.
+     * @example
+     * // Update many CreditCardOffers
+     * const creditCardOffer = await prisma.creditCardOffer.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CreditCardOffers and only return the `id`
+     * const creditCardOfferWithIdOnly = await prisma.creditCardOffer.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CreditCardOfferUpdateManyAndReturnArgs>(args: SelectSubset<T, CreditCardOfferUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreditCardOfferPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CreditCardOffer.
+     * @param {CreditCardOfferUpsertArgs} args - Arguments to update or create a CreditCardOffer.
+     * @example
+     * // Update or create a CreditCardOffer
+     * const creditCardOffer = await prisma.creditCardOffer.upsert({
+     *   create: {
+     *     // ... data to create a CreditCardOffer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CreditCardOffer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CreditCardOfferUpsertArgs>(args: SelectSubset<T, CreditCardOfferUpsertArgs<ExtArgs>>): Prisma__CreditCardOfferClient<$Result.GetResult<Prisma.$CreditCardOfferPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CreditCardOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditCardOfferCountArgs} args - Arguments to filter CreditCardOffers to count.
+     * @example
+     * // Count the number of CreditCardOffers
+     * const count = await prisma.creditCardOffer.count({
+     *   where: {
+     *     // ... the filter for the CreditCardOffers we want to count
+     *   }
+     * })
+    **/
+    count<T extends CreditCardOfferCountArgs>(
+      args?: Subset<T, CreditCardOfferCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CreditCardOfferCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CreditCardOffer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditCardOfferAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CreditCardOfferAggregateArgs>(args: Subset<T, CreditCardOfferAggregateArgs>): Prisma.PrismaPromise<GetCreditCardOfferAggregateType<T>>
+
+    /**
+     * Group by CreditCardOffer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CreditCardOfferGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CreditCardOfferGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CreditCardOfferGroupByArgs['orderBy'] }
+        : { orderBy?: CreditCardOfferGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CreditCardOfferGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCreditCardOfferGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CreditCardOffer model
+   */
+  readonly fields: CreditCardOfferFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CreditCardOffer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CreditCardOfferClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends CreditCardProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CreditCardProductDefaultArgs<ExtArgs>>): Prisma__CreditCardProductClient<$Result.GetResult<Prisma.$CreditCardProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CreditCardOffer model
+   */
+  interface CreditCardOfferFieldRefs {
+    readonly id: FieldRef<"CreditCardOffer", 'Int'>
+    readonly merchant: FieldRef<"CreditCardOffer", 'String'>
+    readonly offerType: FieldRef<"CreditCardOffer", 'String'>
+    readonly title: FieldRef<"CreditCardOffer", 'String'>
+    readonly description: FieldRef<"CreditCardOffer", 'String'>
+    readonly offerValue: FieldRef<"CreditCardOffer", 'String'>
+    readonly validFrom: FieldRef<"CreditCardOffer", 'DateTime'>
+    readonly validTill: FieldRef<"CreditCardOffer", 'DateTime'>
+    readonly isActive: FieldRef<"CreditCardOffer", 'Boolean'>
+    readonly displayOrder: FieldRef<"CreditCardOffer", 'Int'>
+    readonly productId: FieldRef<"CreditCardOffer", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CreditCardOffer findUnique
+   */
+  export type CreditCardOfferFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which CreditCardOffer to fetch.
+     */
+    where: CreditCardOfferWhereUniqueInput
+  }
+
+  /**
+   * CreditCardOffer findUniqueOrThrow
+   */
+  export type CreditCardOfferFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which CreditCardOffer to fetch.
+     */
+    where: CreditCardOfferWhereUniqueInput
+  }
+
+  /**
+   * CreditCardOffer findFirst
+   */
+  export type CreditCardOfferFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which CreditCardOffer to fetch.
+     */
+    where?: CreditCardOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CreditCardOffers to fetch.
+     */
+    orderBy?: CreditCardOfferOrderByWithRelationInput | CreditCardOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CreditCardOffers.
+     */
+    cursor?: CreditCardOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CreditCardOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CreditCardOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CreditCardOffers.
+     */
+    distinct?: CreditCardOfferScalarFieldEnum | CreditCardOfferScalarFieldEnum[]
+  }
+
+  /**
+   * CreditCardOffer findFirstOrThrow
+   */
+  export type CreditCardOfferFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which CreditCardOffer to fetch.
+     */
+    where?: CreditCardOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CreditCardOffers to fetch.
+     */
+    orderBy?: CreditCardOfferOrderByWithRelationInput | CreditCardOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CreditCardOffers.
+     */
+    cursor?: CreditCardOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CreditCardOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CreditCardOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CreditCardOffers.
+     */
+    distinct?: CreditCardOfferScalarFieldEnum | CreditCardOfferScalarFieldEnum[]
+  }
+
+  /**
+   * CreditCardOffer findMany
+   */
+  export type CreditCardOfferFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferInclude<ExtArgs> | null
+    /**
+     * Filter, which CreditCardOffers to fetch.
+     */
+    where?: CreditCardOfferWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CreditCardOffers to fetch.
+     */
+    orderBy?: CreditCardOfferOrderByWithRelationInput | CreditCardOfferOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CreditCardOffers.
+     */
+    cursor?: CreditCardOfferWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CreditCardOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CreditCardOffers.
+     */
+    skip?: number
+    distinct?: CreditCardOfferScalarFieldEnum | CreditCardOfferScalarFieldEnum[]
+  }
+
+  /**
+   * CreditCardOffer create
+   */
+  export type CreditCardOfferCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CreditCardOffer.
+     */
+    data: XOR<CreditCardOfferCreateInput, CreditCardOfferUncheckedCreateInput>
+  }
+
+  /**
+   * CreditCardOffer createMany
+   */
+  export type CreditCardOfferCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CreditCardOffers.
+     */
+    data: CreditCardOfferCreateManyInput | CreditCardOfferCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CreditCardOffer createManyAndReturn
+   */
+  export type CreditCardOfferCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * The data used to create many CreditCardOffers.
+     */
+    data: CreditCardOfferCreateManyInput | CreditCardOfferCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CreditCardOffer update
+   */
+  export type CreditCardOfferUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CreditCardOffer.
+     */
+    data: XOR<CreditCardOfferUpdateInput, CreditCardOfferUncheckedUpdateInput>
+    /**
+     * Choose, which CreditCardOffer to update.
+     */
+    where: CreditCardOfferWhereUniqueInput
+  }
+
+  /**
+   * CreditCardOffer updateMany
+   */
+  export type CreditCardOfferUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CreditCardOffers.
+     */
+    data: XOR<CreditCardOfferUpdateManyMutationInput, CreditCardOfferUncheckedUpdateManyInput>
+    /**
+     * Filter which CreditCardOffers to update
+     */
+    where?: CreditCardOfferWhereInput
+    /**
+     * Limit how many CreditCardOffers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CreditCardOffer updateManyAndReturn
+   */
+  export type CreditCardOfferUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * The data used to update CreditCardOffers.
+     */
+    data: XOR<CreditCardOfferUpdateManyMutationInput, CreditCardOfferUncheckedUpdateManyInput>
+    /**
+     * Filter which CreditCardOffers to update
+     */
+    where?: CreditCardOfferWhereInput
+    /**
+     * Limit how many CreditCardOffers to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CreditCardOffer upsert
+   */
+  export type CreditCardOfferUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CreditCardOffer to update in case it exists.
+     */
+    where: CreditCardOfferWhereUniqueInput
+    /**
+     * In case the CreditCardOffer found by the `where` argument doesn't exist, create a new CreditCardOffer with this data.
+     */
+    create: XOR<CreditCardOfferCreateInput, CreditCardOfferUncheckedCreateInput>
+    /**
+     * In case the CreditCardOffer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CreditCardOfferUpdateInput, CreditCardOfferUncheckedUpdateInput>
+  }
+
+  /**
+   * CreditCardOffer delete
+   */
+  export type CreditCardOfferDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferInclude<ExtArgs> | null
+    /**
+     * Filter which CreditCardOffer to delete.
+     */
+    where: CreditCardOfferWhereUniqueInput
+  }
+
+  /**
+   * CreditCardOffer deleteMany
+   */
+  export type CreditCardOfferDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CreditCardOffers to delete
+     */
+    where?: CreditCardOfferWhereInput
+    /**
+     * Limit how many CreditCardOffers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CreditCardOffer without action
+   */
+  export type CreditCardOfferDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreditCardOffer
+     */
+    select?: CreditCardOfferSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CreditCardOffer
+     */
+    omit?: CreditCardOfferOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CreditCardOfferInclude<ExtArgs> | null
   }
 
 
@@ -43037,7 +45649,6 @@ export namespace Prisma {
     slug: string | null
     bankName: string | null
     imageUrl: string | null
-    bankLogoUrl: string | null
     accountType: string | null
     cardNetwork: string | null
     cardType: string | null
@@ -43079,7 +45690,6 @@ export namespace Prisma {
     slug: string | null
     bankName: string | null
     imageUrl: string | null
-    bankLogoUrl: string | null
     accountType: string | null
     cardNetwork: string | null
     cardType: string | null
@@ -43121,7 +45731,6 @@ export namespace Prisma {
     slug: number
     bankName: number
     imageUrl: number
-    bankLogoUrl: number
     accountType: number
     cardNetwork: number
     cardType: number
@@ -43197,7 +45806,6 @@ export namespace Prisma {
     slug?: true
     bankName?: true
     imageUrl?: true
-    bankLogoUrl?: true
     accountType?: true
     cardNetwork?: true
     cardType?: true
@@ -43239,7 +45847,6 @@ export namespace Prisma {
     slug?: true
     bankName?: true
     imageUrl?: true
-    bankLogoUrl?: true
     accountType?: true
     cardNetwork?: true
     cardType?: true
@@ -43281,7 +45888,6 @@ export namespace Prisma {
     slug?: true
     bankName?: true
     imageUrl?: true
-    bankLogoUrl?: true
     accountType?: true
     cardNetwork?: true
     cardType?: true
@@ -43410,7 +46016,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl: string | null
     accountType: string | null
     cardNetwork: string
     cardType: string | null
@@ -43471,7 +46076,6 @@ export namespace Prisma {
     slug?: boolean
     bankName?: boolean
     imageUrl?: boolean
-    bankLogoUrl?: boolean
     accountType?: boolean
     cardNetwork?: boolean
     cardType?: boolean
@@ -43521,7 +46125,6 @@ export namespace Prisma {
     slug?: boolean
     bankName?: boolean
     imageUrl?: boolean
-    bankLogoUrl?: boolean
     accountType?: boolean
     cardNetwork?: boolean
     cardType?: boolean
@@ -43564,7 +46167,6 @@ export namespace Prisma {
     slug?: boolean
     bankName?: boolean
     imageUrl?: boolean
-    bankLogoUrl?: boolean
     accountType?: boolean
     cardNetwork?: boolean
     cardType?: boolean
@@ -43607,7 +46209,6 @@ export namespace Prisma {
     slug?: boolean
     bankName?: boolean
     imageUrl?: boolean
-    bankLogoUrl?: boolean
     accountType?: boolean
     cardNetwork?: boolean
     cardType?: boolean
@@ -43643,7 +46244,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type DebitCardProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "bankName" | "imageUrl" | "bankLogoUrl" | "accountType" | "cardNetwork" | "cardType" | "annualFee" | "issuanceFee" | "replacementFee" | "atmWithdrawalLimit" | "posLimit" | "onlineLimit" | "internationalUsage" | "contactless" | "loungeAccess" | "loungeAccessDetails" | "cashbackRate" | "rewardPoints" | "fuelSurcharge" | "accidentInsurance" | "purchaseProtection" | "fraudProtection" | "zeroBilling" | "minimumBalance" | "minimumAge" | "maximumAge" | "rating" | "recommended" | "bestFor" | "keyStatement" | "videoUrl" | "termsConditionsUrl" | "applyUrl" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["debitCardProduct"]>
+  export type DebitCardProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "bankName" | "imageUrl" | "accountType" | "cardNetwork" | "cardType" | "annualFee" | "issuanceFee" | "replacementFee" | "atmWithdrawalLimit" | "posLimit" | "onlineLimit" | "internationalUsage" | "contactless" | "loungeAccess" | "loungeAccessDetails" | "cashbackRate" | "rewardPoints" | "fuelSurcharge" | "accidentInsurance" | "purchaseProtection" | "fraudProtection" | "zeroBilling" | "minimumBalance" | "minimumAge" | "maximumAge" | "rating" | "recommended" | "bestFor" | "keyStatement" | "videoUrl" | "termsConditionsUrl" | "applyUrl" | "createdById" | "createdAt" | "updatedAt", ExtArgs["result"]["debitCardProduct"]>
   export type DebitCardProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     categories?: boolean | DebitCardProduct$categoriesArgs<ExtArgs>
     bulletPoints?: boolean | DebitCardProduct$bulletPointsArgs<ExtArgs>
@@ -43678,7 +46279,6 @@ export namespace Prisma {
       slug: string
       bankName: string
       imageUrl: string
-      bankLogoUrl: string | null
       accountType: string | null
       cardNetwork: string
       cardType: string | null
@@ -44147,7 +46747,6 @@ export namespace Prisma {
     readonly slug: FieldRef<"DebitCardProduct", 'String'>
     readonly bankName: FieldRef<"DebitCardProduct", 'String'>
     readonly imageUrl: FieldRef<"DebitCardProduct", 'String'>
-    readonly bankLogoUrl: FieldRef<"DebitCardProduct", 'String'>
     readonly accountType: FieldRef<"DebitCardProduct", 'String'>
     readonly cardNetwork: FieldRef<"DebitCardProduct", 'String'>
     readonly cardType: FieldRef<"DebitCardProduct", 'String'>
@@ -50856,12 +53455,28 @@ export namespace Prisma {
   export type LoanFooterItemScalarFieldEnum = (typeof LoanFooterItemScalarFieldEnum)[keyof typeof LoanFooterItemScalarFieldEnum]
 
 
+  export const LoanOfferScalarFieldEnum: {
+    id: 'id',
+    merchant: 'merchant',
+    offerType: 'offerType',
+    title: 'title',
+    description: 'description',
+    offerValue: 'offerValue',
+    validFrom: 'validFrom',
+    validTill: 'validTill',
+    isActive: 'isActive',
+    displayOrder: 'displayOrder',
+    productId: 'productId'
+  };
+
+  export type LoanOfferScalarFieldEnum = (typeof LoanOfferScalarFieldEnum)[keyof typeof LoanOfferScalarFieldEnum]
+
+
   export const CreditCardProductScalarFieldEnum: {
     id: 'id',
     name: 'name',
     slug: 'slug',
     bankName: 'bankName',
-    bankLogoUrl: 'bankLogoUrl',
     imageUrl: 'imageUrl',
     category: 'category',
     annualFee: 'annualFee',
@@ -50871,6 +53486,7 @@ export namespace Prisma {
     effectiveFree: 'effectiveFree',
     recommended: 'recommended',
     rating: 'rating',
+    isActive: 'isActive',
     videoUrl: 'videoUrl',
     termsConditionsUrl: 'termsConditionsUrl',
     firstYearFee: 'firstYearFee',
@@ -50978,6 +53594,23 @@ export namespace Prisma {
   };
 
   export type CreditCardSpecialOfferScalarFieldEnum = (typeof CreditCardSpecialOfferScalarFieldEnum)[keyof typeof CreditCardSpecialOfferScalarFieldEnum]
+
+
+  export const CreditCardOfferScalarFieldEnum: {
+    id: 'id',
+    merchant: 'merchant',
+    offerType: 'offerType',
+    title: 'title',
+    description: 'description',
+    offerValue: 'offerValue',
+    validFrom: 'validFrom',
+    validTill: 'validTill',
+    isActive: 'isActive',
+    displayOrder: 'displayOrder',
+    productId: 'productId'
+  };
+
+  export type CreditCardOfferScalarFieldEnum = (typeof CreditCardOfferScalarFieldEnum)[keyof typeof CreditCardOfferScalarFieldEnum]
 
 
   export const CreditCardBenefitSectionScalarFieldEnum: {
@@ -51101,7 +53734,6 @@ export namespace Prisma {
     slug: 'slug',
     bankName: 'bankName',
     imageUrl: 'imageUrl',
-    bankLogoUrl: 'bankLogoUrl',
     accountType: 'accountType',
     cardNetwork: 'cardNetwork',
     cardType: 'cardType',
@@ -53004,6 +55636,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentListRelationFilter
     processSteps?: LoanProcessStepListRelationFilter
     footerItems?: LoanFooterItemListRelationFilter
+    offers?: LoanOfferListRelationFilter
     applications?: ApplicationListRelationFilter
     createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
@@ -53047,6 +55680,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentOrderByRelationAggregateInput
     processSteps?: LoanProcessStepOrderByRelationAggregateInput
     footerItems?: LoanFooterItemOrderByRelationAggregateInput
+    offers?: LoanOfferOrderByRelationAggregateInput
     applications?: ApplicationOrderByRelationAggregateInput
     createdBy?: UserOrderByWithRelationInput
   }
@@ -53093,6 +55727,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentListRelationFilter
     processSteps?: LoanProcessStepListRelationFilter
     footerItems?: LoanFooterItemListRelationFilter
+    offers?: LoanOfferListRelationFilter
     applications?: ApplicationListRelationFilter
     createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id" | "slug">
@@ -53455,6 +56090,93 @@ export namespace Prisma {
     productId?: IntWithAggregatesFilter<"LoanFooterItem"> | number
   }
 
+  export type LoanOfferWhereInput = {
+    AND?: LoanOfferWhereInput | LoanOfferWhereInput[]
+    OR?: LoanOfferWhereInput[]
+    NOT?: LoanOfferWhereInput | LoanOfferWhereInput[]
+    id?: IntFilter<"LoanOffer"> | number
+    merchant?: StringFilter<"LoanOffer"> | string
+    offerType?: StringFilter<"LoanOffer"> | string
+    title?: StringFilter<"LoanOffer"> | string
+    description?: StringFilter<"LoanOffer"> | string
+    offerValue?: StringFilter<"LoanOffer"> | string
+    validFrom?: DateTimeNullableFilter<"LoanOffer"> | Date | string | null
+    validTill?: DateTimeNullableFilter<"LoanOffer"> | Date | string | null
+    isActive?: BoolFilter<"LoanOffer"> | boolean
+    displayOrder?: IntFilter<"LoanOffer"> | number
+    productId?: IntFilter<"LoanOffer"> | number
+    product?: XOR<LoanProductScalarRelationFilter, LoanProductWhereInput>
+  }
+
+  export type LoanOfferOrderByWithRelationInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrderInput | SortOrder
+    validTill?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+    product?: LoanProductOrderByWithRelationInput
+  }
+
+  export type LoanOfferWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: LoanOfferWhereInput | LoanOfferWhereInput[]
+    OR?: LoanOfferWhereInput[]
+    NOT?: LoanOfferWhereInput | LoanOfferWhereInput[]
+    merchant?: StringFilter<"LoanOffer"> | string
+    offerType?: StringFilter<"LoanOffer"> | string
+    title?: StringFilter<"LoanOffer"> | string
+    description?: StringFilter<"LoanOffer"> | string
+    offerValue?: StringFilter<"LoanOffer"> | string
+    validFrom?: DateTimeNullableFilter<"LoanOffer"> | Date | string | null
+    validTill?: DateTimeNullableFilter<"LoanOffer"> | Date | string | null
+    isActive?: BoolFilter<"LoanOffer"> | boolean
+    displayOrder?: IntFilter<"LoanOffer"> | number
+    productId?: IntFilter<"LoanOffer"> | number
+    product?: XOR<LoanProductScalarRelationFilter, LoanProductWhereInput>
+  }, "id">
+
+  export type LoanOfferOrderByWithAggregationInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrderInput | SortOrder
+    validTill?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+    _count?: LoanOfferCountOrderByAggregateInput
+    _avg?: LoanOfferAvgOrderByAggregateInput
+    _max?: LoanOfferMaxOrderByAggregateInput
+    _min?: LoanOfferMinOrderByAggregateInput
+    _sum?: LoanOfferSumOrderByAggregateInput
+  }
+
+  export type LoanOfferScalarWhereWithAggregatesInput = {
+    AND?: LoanOfferScalarWhereWithAggregatesInput | LoanOfferScalarWhereWithAggregatesInput[]
+    OR?: LoanOfferScalarWhereWithAggregatesInput[]
+    NOT?: LoanOfferScalarWhereWithAggregatesInput | LoanOfferScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"LoanOffer"> | number
+    merchant?: StringWithAggregatesFilter<"LoanOffer"> | string
+    offerType?: StringWithAggregatesFilter<"LoanOffer"> | string
+    title?: StringWithAggregatesFilter<"LoanOffer"> | string
+    description?: StringWithAggregatesFilter<"LoanOffer"> | string
+    offerValue?: StringWithAggregatesFilter<"LoanOffer"> | string
+    validFrom?: DateTimeNullableWithAggregatesFilter<"LoanOffer"> | Date | string | null
+    validTill?: DateTimeNullableWithAggregatesFilter<"LoanOffer"> | Date | string | null
+    isActive?: BoolWithAggregatesFilter<"LoanOffer"> | boolean
+    displayOrder?: IntWithAggregatesFilter<"LoanOffer"> | number
+    productId?: IntWithAggregatesFilter<"LoanOffer"> | number
+  }
+
   export type CreditCardProductWhereInput = {
     AND?: CreditCardProductWhereInput | CreditCardProductWhereInput[]
     OR?: CreditCardProductWhereInput[]
@@ -53463,7 +56185,6 @@ export namespace Prisma {
     name?: StringFilter<"CreditCardProduct"> | string
     slug?: StringFilter<"CreditCardProduct"> | string
     bankName?: StringFilter<"CreditCardProduct"> | string
-    bankLogoUrl?: StringNullableFilter<"CreditCardProduct"> | string | null
     imageUrl?: StringFilter<"CreditCardProduct"> | string
     category?: StringNullableFilter<"CreditCardProduct"> | string | null
     annualFee?: StringFilter<"CreditCardProduct"> | string
@@ -53473,6 +56194,7 @@ export namespace Prisma {
     effectiveFree?: BoolFilter<"CreditCardProduct"> | boolean
     recommended?: BoolFilter<"CreditCardProduct"> | boolean
     rating?: FloatFilter<"CreditCardProduct"> | number
+    isActive?: BoolFilter<"CreditCardProduct"> | boolean
     videoUrl?: StringNullableFilter<"CreditCardProduct"> | string | null
     termsConditionsUrl?: StringNullableFilter<"CreditCardProduct"> | string | null
     firstYearFee?: StringNullableFilter<"CreditCardProduct"> | string | null
@@ -53490,6 +56212,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeListRelationFilter
     requiredDocuments?: CreditCardRequiredDocumentListRelationFilter
     processSteps?: CreditCardProcessStepListRelationFilter
+    offers?: CreditCardOfferListRelationFilter
     applications?: ApplicationListRelationFilter
     createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
@@ -53499,7 +56222,6 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     bankName?: SortOrder
-    bankLogoUrl?: SortOrderInput | SortOrder
     imageUrl?: SortOrder
     category?: SortOrderInput | SortOrder
     annualFee?: SortOrder
@@ -53509,6 +56231,7 @@ export namespace Prisma {
     effectiveFree?: SortOrder
     recommended?: SortOrder
     rating?: SortOrder
+    isActive?: SortOrder
     videoUrl?: SortOrderInput | SortOrder
     termsConditionsUrl?: SortOrderInput | SortOrder
     firstYearFee?: SortOrderInput | SortOrder
@@ -53526,6 +56249,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeOrderByRelationAggregateInput
     requiredDocuments?: CreditCardRequiredDocumentOrderByRelationAggregateInput
     processSteps?: CreditCardProcessStepOrderByRelationAggregateInput
+    offers?: CreditCardOfferOrderByRelationAggregateInput
     applications?: ApplicationOrderByRelationAggregateInput
     createdBy?: UserOrderByWithRelationInput
   }
@@ -53538,7 +56262,6 @@ export namespace Prisma {
     NOT?: CreditCardProductWhereInput | CreditCardProductWhereInput[]
     name?: StringFilter<"CreditCardProduct"> | string
     bankName?: StringFilter<"CreditCardProduct"> | string
-    bankLogoUrl?: StringNullableFilter<"CreditCardProduct"> | string | null
     imageUrl?: StringFilter<"CreditCardProduct"> | string
     category?: StringNullableFilter<"CreditCardProduct"> | string | null
     annualFee?: StringFilter<"CreditCardProduct"> | string
@@ -53548,6 +56271,7 @@ export namespace Prisma {
     effectiveFree?: BoolFilter<"CreditCardProduct"> | boolean
     recommended?: BoolFilter<"CreditCardProduct"> | boolean
     rating?: FloatFilter<"CreditCardProduct"> | number
+    isActive?: BoolFilter<"CreditCardProduct"> | boolean
     videoUrl?: StringNullableFilter<"CreditCardProduct"> | string | null
     termsConditionsUrl?: StringNullableFilter<"CreditCardProduct"> | string | null
     firstYearFee?: StringNullableFilter<"CreditCardProduct"> | string | null
@@ -53565,6 +56289,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeListRelationFilter
     requiredDocuments?: CreditCardRequiredDocumentListRelationFilter
     processSteps?: CreditCardProcessStepListRelationFilter
+    offers?: CreditCardOfferListRelationFilter
     applications?: ApplicationListRelationFilter
     createdBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id" | "slug">
@@ -53574,7 +56299,6 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     bankName?: SortOrder
-    bankLogoUrl?: SortOrderInput | SortOrder
     imageUrl?: SortOrder
     category?: SortOrderInput | SortOrder
     annualFee?: SortOrder
@@ -53584,6 +56308,7 @@ export namespace Prisma {
     effectiveFree?: SortOrder
     recommended?: SortOrder
     rating?: SortOrder
+    isActive?: SortOrder
     videoUrl?: SortOrderInput | SortOrder
     termsConditionsUrl?: SortOrderInput | SortOrder
     firstYearFee?: SortOrderInput | SortOrder
@@ -53606,7 +56331,6 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"CreditCardProduct"> | string
     slug?: StringWithAggregatesFilter<"CreditCardProduct"> | string
     bankName?: StringWithAggregatesFilter<"CreditCardProduct"> | string
-    bankLogoUrl?: StringNullableWithAggregatesFilter<"CreditCardProduct"> | string | null
     imageUrl?: StringWithAggregatesFilter<"CreditCardProduct"> | string
     category?: StringNullableWithAggregatesFilter<"CreditCardProduct"> | string | null
     annualFee?: StringWithAggregatesFilter<"CreditCardProduct"> | string
@@ -53616,6 +56340,7 @@ export namespace Prisma {
     effectiveFree?: BoolWithAggregatesFilter<"CreditCardProduct"> | boolean
     recommended?: BoolWithAggregatesFilter<"CreditCardProduct"> | boolean
     rating?: FloatWithAggregatesFilter<"CreditCardProduct"> | number
+    isActive?: BoolWithAggregatesFilter<"CreditCardProduct"> | boolean
     videoUrl?: StringNullableWithAggregatesFilter<"CreditCardProduct"> | string | null
     termsConditionsUrl?: StringNullableWithAggregatesFilter<"CreditCardProduct"> | string | null
     firstYearFee?: StringNullableWithAggregatesFilter<"CreditCardProduct"> | string | null
@@ -54126,6 +56851,93 @@ export namespace Prisma {
     text?: StringWithAggregatesFilter<"CreditCardSpecialOffer"> | string
     displayOrder?: IntWithAggregatesFilter<"CreditCardSpecialOffer"> | number
     productId?: IntWithAggregatesFilter<"CreditCardSpecialOffer"> | number
+  }
+
+  export type CreditCardOfferWhereInput = {
+    AND?: CreditCardOfferWhereInput | CreditCardOfferWhereInput[]
+    OR?: CreditCardOfferWhereInput[]
+    NOT?: CreditCardOfferWhereInput | CreditCardOfferWhereInput[]
+    id?: IntFilter<"CreditCardOffer"> | number
+    merchant?: StringFilter<"CreditCardOffer"> | string
+    offerType?: StringFilter<"CreditCardOffer"> | string
+    title?: StringFilter<"CreditCardOffer"> | string
+    description?: StringFilter<"CreditCardOffer"> | string
+    offerValue?: StringFilter<"CreditCardOffer"> | string
+    validFrom?: DateTimeNullableFilter<"CreditCardOffer"> | Date | string | null
+    validTill?: DateTimeNullableFilter<"CreditCardOffer"> | Date | string | null
+    isActive?: BoolFilter<"CreditCardOffer"> | boolean
+    displayOrder?: IntFilter<"CreditCardOffer"> | number
+    productId?: IntFilter<"CreditCardOffer"> | number
+    product?: XOR<CreditCardProductScalarRelationFilter, CreditCardProductWhereInput>
+  }
+
+  export type CreditCardOfferOrderByWithRelationInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrderInput | SortOrder
+    validTill?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+    product?: CreditCardProductOrderByWithRelationInput
+  }
+
+  export type CreditCardOfferWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: CreditCardOfferWhereInput | CreditCardOfferWhereInput[]
+    OR?: CreditCardOfferWhereInput[]
+    NOT?: CreditCardOfferWhereInput | CreditCardOfferWhereInput[]
+    merchant?: StringFilter<"CreditCardOffer"> | string
+    offerType?: StringFilter<"CreditCardOffer"> | string
+    title?: StringFilter<"CreditCardOffer"> | string
+    description?: StringFilter<"CreditCardOffer"> | string
+    offerValue?: StringFilter<"CreditCardOffer"> | string
+    validFrom?: DateTimeNullableFilter<"CreditCardOffer"> | Date | string | null
+    validTill?: DateTimeNullableFilter<"CreditCardOffer"> | Date | string | null
+    isActive?: BoolFilter<"CreditCardOffer"> | boolean
+    displayOrder?: IntFilter<"CreditCardOffer"> | number
+    productId?: IntFilter<"CreditCardOffer"> | number
+    product?: XOR<CreditCardProductScalarRelationFilter, CreditCardProductWhereInput>
+  }, "id">
+
+  export type CreditCardOfferOrderByWithAggregationInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrderInput | SortOrder
+    validTill?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+    _count?: CreditCardOfferCountOrderByAggregateInput
+    _avg?: CreditCardOfferAvgOrderByAggregateInput
+    _max?: CreditCardOfferMaxOrderByAggregateInput
+    _min?: CreditCardOfferMinOrderByAggregateInput
+    _sum?: CreditCardOfferSumOrderByAggregateInput
+  }
+
+  export type CreditCardOfferScalarWhereWithAggregatesInput = {
+    AND?: CreditCardOfferScalarWhereWithAggregatesInput | CreditCardOfferScalarWhereWithAggregatesInput[]
+    OR?: CreditCardOfferScalarWhereWithAggregatesInput[]
+    NOT?: CreditCardOfferScalarWhereWithAggregatesInput | CreditCardOfferScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"CreditCardOffer"> | number
+    merchant?: StringWithAggregatesFilter<"CreditCardOffer"> | string
+    offerType?: StringWithAggregatesFilter<"CreditCardOffer"> | string
+    title?: StringWithAggregatesFilter<"CreditCardOffer"> | string
+    description?: StringWithAggregatesFilter<"CreditCardOffer"> | string
+    offerValue?: StringWithAggregatesFilter<"CreditCardOffer"> | string
+    validFrom?: DateTimeNullableWithAggregatesFilter<"CreditCardOffer"> | Date | string | null
+    validTill?: DateTimeNullableWithAggregatesFilter<"CreditCardOffer"> | Date | string | null
+    isActive?: BoolWithAggregatesFilter<"CreditCardOffer"> | boolean
+    displayOrder?: IntWithAggregatesFilter<"CreditCardOffer"> | number
+    productId?: IntWithAggregatesFilter<"CreditCardOffer"> | number
   }
 
   export type CreditCardBenefitSectionWhereInput = {
@@ -54730,7 +57542,6 @@ export namespace Prisma {
     slug?: StringFilter<"DebitCardProduct"> | string
     bankName?: StringFilter<"DebitCardProduct"> | string
     imageUrl?: StringFilter<"DebitCardProduct"> | string
-    bankLogoUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
     accountType?: StringNullableFilter<"DebitCardProduct"> | string | null
     cardNetwork?: StringFilter<"DebitCardProduct"> | string
     cardType?: StringNullableFilter<"DebitCardProduct"> | string | null
@@ -54779,7 +57590,6 @@ export namespace Prisma {
     slug?: SortOrder
     bankName?: SortOrder
     imageUrl?: SortOrder
-    bankLogoUrl?: SortOrderInput | SortOrder
     accountType?: SortOrderInput | SortOrder
     cardNetwork?: SortOrder
     cardType?: SortOrderInput | SortOrder
@@ -54831,7 +57641,6 @@ export namespace Prisma {
     name?: StringFilter<"DebitCardProduct"> | string
     bankName?: StringFilter<"DebitCardProduct"> | string
     imageUrl?: StringFilter<"DebitCardProduct"> | string
-    bankLogoUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
     accountType?: StringNullableFilter<"DebitCardProduct"> | string | null
     cardNetwork?: StringFilter<"DebitCardProduct"> | string
     cardType?: StringNullableFilter<"DebitCardProduct"> | string | null
@@ -54880,7 +57689,6 @@ export namespace Prisma {
     slug?: SortOrder
     bankName?: SortOrder
     imageUrl?: SortOrder
-    bankLogoUrl?: SortOrderInput | SortOrder
     accountType?: SortOrderInput | SortOrder
     cardNetwork?: SortOrder
     cardType?: SortOrderInput | SortOrder
@@ -54930,7 +57738,6 @@ export namespace Prisma {
     slug?: StringWithAggregatesFilter<"DebitCardProduct"> | string
     bankName?: StringWithAggregatesFilter<"DebitCardProduct"> | string
     imageUrl?: StringWithAggregatesFilter<"DebitCardProduct"> | string
-    bankLogoUrl?: StringNullableWithAggregatesFilter<"DebitCardProduct"> | string | null
     accountType?: StringNullableWithAggregatesFilter<"DebitCardProduct"> | string | null
     cardNetwork?: StringWithAggregatesFilter<"DebitCardProduct"> | string
     cardType?: StringNullableWithAggregatesFilter<"DebitCardProduct"> | string | null
@@ -57373,6 +60180,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemCreateNestedManyWithoutProductInput
+    offers?: LoanOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutLoanInput
     createdBy?: UserCreateNestedOneWithoutCreatedLoansInput
   }
@@ -57415,6 +60223,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepUncheckedCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemUncheckedCreateNestedManyWithoutProductInput
+    offers?: LoanOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutLoanInput
   }
 
@@ -57454,6 +60263,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutLoanNestedInput
     createdBy?: UserUpdateOneWithoutCreatedLoansNestedInput
   }
@@ -57496,6 +60306,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUncheckedUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUncheckedUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutLoanNestedInput
   }
 
@@ -57854,11 +60665,104 @@ export namespace Prisma {
     productId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type LoanOfferCreateInput = {
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+    product: LoanProductCreateNestedOneWithoutOffersInput
+  }
+
+  export type LoanOfferUncheckedCreateInput = {
+    id?: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+    productId: number
+  }
+
+  export type LoanOfferUpdateInput = {
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    product?: LoanProductUpdateOneRequiredWithoutOffersNestedInput
+  }
+
+  export type LoanOfferUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LoanOfferCreateManyInput = {
+    id?: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+    productId: number
+  }
+
+  export type LoanOfferUpdateManyMutationInput = {
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LoanOfferUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type CreditCardProductCreateInput = {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -57868,6 +60772,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -57884,6 +60789,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutCardInput
     createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
   }
@@ -57893,7 +60799,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -57903,6 +60808,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -57920,6 +60826,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -57927,7 +60834,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -57937,6 +60843,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57953,6 +60860,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutCardNestedInput
     createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
   }
@@ -57962,7 +60870,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -57972,6 +60879,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57989,6 +60897,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -57997,7 +60906,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -58007,6 +60915,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -58020,7 +60929,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -58030,6 +60938,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58043,7 +60952,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -58053,6 +60961,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58512,6 +61421,100 @@ export namespace Prisma {
   export type CreditCardSpecialOfferUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     text?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CreditCardOfferCreateInput = {
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+    product: CreditCardProductCreateNestedOneWithoutOffersInput
+  }
+
+  export type CreditCardOfferUncheckedCreateInput = {
+    id?: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+    productId: number
+  }
+
+  export type CreditCardOfferUpdateInput = {
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    product?: CreditCardProductUpdateOneRequiredWithoutOffersNestedInput
+  }
+
+  export type CreditCardOfferUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+    productId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CreditCardOfferCreateManyInput = {
+    id?: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+    productId: number
+  }
+
+  export type CreditCardOfferUpdateManyMutationInput = {
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CreditCardOfferUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     displayOrder?: IntFieldUpdateOperationsInput | number
     productId?: IntFieldUpdateOperationsInput | number
   }
@@ -59106,7 +62109,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -59154,7 +62156,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -59201,7 +62202,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59249,7 +62249,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59297,7 +62296,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -59338,7 +62336,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59379,7 +62376,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -61330,6 +64326,12 @@ export namespace Prisma {
     none?: LoanFooterItemWhereInput
   }
 
+  export type LoanOfferListRelationFilter = {
+    every?: LoanOfferWhereInput
+    some?: LoanOfferWhereInput
+    none?: LoanOfferWhereInput
+  }
+
   export type LoanBulletOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -61347,6 +64349,10 @@ export namespace Prisma {
   }
 
   export type LoanFooterItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type LoanOfferOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -61655,6 +64661,60 @@ export namespace Prisma {
     productId?: SortOrder
   }
 
+  export type LoanOfferCountOrderByAggregateInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrder
+    validTill?: SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type LoanOfferAvgOrderByAggregateInput = {
+    id?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type LoanOfferMaxOrderByAggregateInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrder
+    validTill?: SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type LoanOfferMinOrderByAggregateInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrder
+    validTill?: SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type LoanOfferSumOrderByAggregateInput = {
+    id?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
   export type CreditCardBulletListRelationFilter = {
     every?: CreditCardBulletWhereInput
     some?: CreditCardBulletWhereInput
@@ -61709,6 +64769,12 @@ export namespace Prisma {
     none?: CreditCardProcessStepWhereInput
   }
 
+  export type CreditCardOfferListRelationFilter = {
+    every?: CreditCardOfferWhereInput
+    some?: CreditCardOfferWhereInput
+    none?: CreditCardOfferWhereInput
+  }
+
   export type CreditCardBulletOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -61745,12 +64811,15 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type CreditCardOfferOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type CreditCardProductCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
     bankName?: SortOrder
-    bankLogoUrl?: SortOrder
     imageUrl?: SortOrder
     category?: SortOrder
     annualFee?: SortOrder
@@ -61760,6 +64829,7 @@ export namespace Prisma {
     effectiveFree?: SortOrder
     recommended?: SortOrder
     rating?: SortOrder
+    isActive?: SortOrder
     videoUrl?: SortOrder
     termsConditionsUrl?: SortOrder
     firstYearFee?: SortOrder
@@ -61780,7 +64850,6 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     bankName?: SortOrder
-    bankLogoUrl?: SortOrder
     imageUrl?: SortOrder
     category?: SortOrder
     annualFee?: SortOrder
@@ -61790,6 +64859,7 @@ export namespace Prisma {
     effectiveFree?: SortOrder
     recommended?: SortOrder
     rating?: SortOrder
+    isActive?: SortOrder
     videoUrl?: SortOrder
     termsConditionsUrl?: SortOrder
     firstYearFee?: SortOrder
@@ -61804,7 +64874,6 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     bankName?: SortOrder
-    bankLogoUrl?: SortOrder
     imageUrl?: SortOrder
     category?: SortOrder
     annualFee?: SortOrder
@@ -61814,6 +64883,7 @@ export namespace Prisma {
     effectiveFree?: SortOrder
     recommended?: SortOrder
     rating?: SortOrder
+    isActive?: SortOrder
     videoUrl?: SortOrder
     termsConditionsUrl?: SortOrder
     firstYearFee?: SortOrder
@@ -62145,6 +65215,60 @@ export namespace Prisma {
   }
 
   export type CreditCardSpecialOfferSumOrderByAggregateInput = {
+    id?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type CreditCardOfferCountOrderByAggregateInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrder
+    validTill?: SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type CreditCardOfferAvgOrderByAggregateInput = {
+    id?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type CreditCardOfferMaxOrderByAggregateInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrder
+    validTill?: SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type CreditCardOfferMinOrderByAggregateInput = {
+    id?: SortOrder
+    merchant?: SortOrder
+    offerType?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    offerValue?: SortOrder
+    validFrom?: SortOrder
+    validTill?: SortOrder
+    isActive?: SortOrder
+    displayOrder?: SortOrder
+    productId?: SortOrder
+  }
+
+  export type CreditCardOfferSumOrderByAggregateInput = {
     id?: SortOrder
     displayOrder?: SortOrder
     productId?: SortOrder
@@ -62622,7 +65746,6 @@ export namespace Prisma {
     slug?: SortOrder
     bankName?: SortOrder
     imageUrl?: SortOrder
-    bankLogoUrl?: SortOrder
     accountType?: SortOrder
     cardNetwork?: SortOrder
     cardType?: SortOrder
@@ -62680,7 +65803,6 @@ export namespace Prisma {
     slug?: SortOrder
     bankName?: SortOrder
     imageUrl?: SortOrder
-    bankLogoUrl?: SortOrder
     accountType?: SortOrder
     cardNetwork?: SortOrder
     cardType?: SortOrder
@@ -62722,7 +65844,6 @@ export namespace Prisma {
     slug?: SortOrder
     bankName?: SortOrder
     imageUrl?: SortOrder
-    bankLogoUrl?: SortOrder
     accountType?: SortOrder
     cardNetwork?: SortOrder
     cardType?: SortOrder
@@ -64070,6 +67191,13 @@ export namespace Prisma {
     connect?: LoanFooterItemWhereUniqueInput | LoanFooterItemWhereUniqueInput[]
   }
 
+  export type LoanOfferCreateNestedManyWithoutProductInput = {
+    create?: XOR<LoanOfferCreateWithoutProductInput, LoanOfferUncheckedCreateWithoutProductInput> | LoanOfferCreateWithoutProductInput[] | LoanOfferUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: LoanOfferCreateOrConnectWithoutProductInput | LoanOfferCreateOrConnectWithoutProductInput[]
+    createMany?: LoanOfferCreateManyProductInputEnvelope
+    connect?: LoanOfferWhereUniqueInput | LoanOfferWhereUniqueInput[]
+  }
+
   export type ApplicationCreateNestedManyWithoutLoanInput = {
     create?: XOR<ApplicationCreateWithoutLoanInput, ApplicationUncheckedCreateWithoutLoanInput> | ApplicationCreateWithoutLoanInput[] | ApplicationUncheckedCreateWithoutLoanInput[]
     connectOrCreate?: ApplicationCreateOrConnectWithoutLoanInput | ApplicationCreateOrConnectWithoutLoanInput[]
@@ -64116,6 +67244,13 @@ export namespace Prisma {
     connectOrCreate?: LoanFooterItemCreateOrConnectWithoutProductInput | LoanFooterItemCreateOrConnectWithoutProductInput[]
     createMany?: LoanFooterItemCreateManyProductInputEnvelope
     connect?: LoanFooterItemWhereUniqueInput | LoanFooterItemWhereUniqueInput[]
+  }
+
+  export type LoanOfferUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<LoanOfferCreateWithoutProductInput, LoanOfferUncheckedCreateWithoutProductInput> | LoanOfferCreateWithoutProductInput[] | LoanOfferUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: LoanOfferCreateOrConnectWithoutProductInput | LoanOfferCreateOrConnectWithoutProductInput[]
+    createMany?: LoanOfferCreateManyProductInputEnvelope
+    connect?: LoanOfferWhereUniqueInput | LoanOfferWhereUniqueInput[]
   }
 
   export type ApplicationUncheckedCreateNestedManyWithoutLoanInput = {
@@ -64203,6 +67338,20 @@ export namespace Prisma {
     update?: LoanFooterItemUpdateWithWhereUniqueWithoutProductInput | LoanFooterItemUpdateWithWhereUniqueWithoutProductInput[]
     updateMany?: LoanFooterItemUpdateManyWithWhereWithoutProductInput | LoanFooterItemUpdateManyWithWhereWithoutProductInput[]
     deleteMany?: LoanFooterItemScalarWhereInput | LoanFooterItemScalarWhereInput[]
+  }
+
+  export type LoanOfferUpdateManyWithoutProductNestedInput = {
+    create?: XOR<LoanOfferCreateWithoutProductInput, LoanOfferUncheckedCreateWithoutProductInput> | LoanOfferCreateWithoutProductInput[] | LoanOfferUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: LoanOfferCreateOrConnectWithoutProductInput | LoanOfferCreateOrConnectWithoutProductInput[]
+    upsert?: LoanOfferUpsertWithWhereUniqueWithoutProductInput | LoanOfferUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: LoanOfferCreateManyProductInputEnvelope
+    set?: LoanOfferWhereUniqueInput | LoanOfferWhereUniqueInput[]
+    disconnect?: LoanOfferWhereUniqueInput | LoanOfferWhereUniqueInput[]
+    delete?: LoanOfferWhereUniqueInput | LoanOfferWhereUniqueInput[]
+    connect?: LoanOfferWhereUniqueInput | LoanOfferWhereUniqueInput[]
+    update?: LoanOfferUpdateWithWhereUniqueWithoutProductInput | LoanOfferUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: LoanOfferUpdateManyWithWhereWithoutProductInput | LoanOfferUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: LoanOfferScalarWhereInput | LoanOfferScalarWhereInput[]
   }
 
   export type ApplicationUpdateManyWithoutLoanNestedInput = {
@@ -64299,6 +67448,20 @@ export namespace Prisma {
     deleteMany?: LoanFooterItemScalarWhereInput | LoanFooterItemScalarWhereInput[]
   }
 
+  export type LoanOfferUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<LoanOfferCreateWithoutProductInput, LoanOfferUncheckedCreateWithoutProductInput> | LoanOfferCreateWithoutProductInput[] | LoanOfferUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: LoanOfferCreateOrConnectWithoutProductInput | LoanOfferCreateOrConnectWithoutProductInput[]
+    upsert?: LoanOfferUpsertWithWhereUniqueWithoutProductInput | LoanOfferUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: LoanOfferCreateManyProductInputEnvelope
+    set?: LoanOfferWhereUniqueInput | LoanOfferWhereUniqueInput[]
+    disconnect?: LoanOfferWhereUniqueInput | LoanOfferWhereUniqueInput[]
+    delete?: LoanOfferWhereUniqueInput | LoanOfferWhereUniqueInput[]
+    connect?: LoanOfferWhereUniqueInput | LoanOfferWhereUniqueInput[]
+    update?: LoanOfferUpdateWithWhereUniqueWithoutProductInput | LoanOfferUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: LoanOfferUpdateManyWithWhereWithoutProductInput | LoanOfferUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: LoanOfferScalarWhereInput | LoanOfferScalarWhereInput[]
+  }
+
   export type ApplicationUncheckedUpdateManyWithoutLoanNestedInput = {
     create?: XOR<ApplicationCreateWithoutLoanInput, ApplicationUncheckedCreateWithoutLoanInput> | ApplicationCreateWithoutLoanInput[] | ApplicationUncheckedCreateWithoutLoanInput[]
     connectOrCreate?: ApplicationCreateOrConnectWithoutLoanInput | ApplicationCreateOrConnectWithoutLoanInput[]
@@ -64383,6 +67546,20 @@ export namespace Prisma {
     update?: XOR<XOR<LoanProductUpdateToOneWithWhereWithoutFooterItemsInput, LoanProductUpdateWithoutFooterItemsInput>, LoanProductUncheckedUpdateWithoutFooterItemsInput>
   }
 
+  export type LoanProductCreateNestedOneWithoutOffersInput = {
+    create?: XOR<LoanProductCreateWithoutOffersInput, LoanProductUncheckedCreateWithoutOffersInput>
+    connectOrCreate?: LoanProductCreateOrConnectWithoutOffersInput
+    connect?: LoanProductWhereUniqueInput
+  }
+
+  export type LoanProductUpdateOneRequiredWithoutOffersNestedInput = {
+    create?: XOR<LoanProductCreateWithoutOffersInput, LoanProductUncheckedCreateWithoutOffersInput>
+    connectOrCreate?: LoanProductCreateOrConnectWithoutOffersInput
+    upsert?: LoanProductUpsertWithoutOffersInput
+    connect?: LoanProductWhereUniqueInput
+    update?: XOR<XOR<LoanProductUpdateToOneWithWhereWithoutOffersInput, LoanProductUpdateWithoutOffersInput>, LoanProductUncheckedUpdateWithoutOffersInput>
+  }
+
   export type CategoryCreateNestedManyWithoutCreditCardsInput = {
     create?: XOR<CategoryCreateWithoutCreditCardsInput, CategoryUncheckedCreateWithoutCreditCardsInput> | CategoryCreateWithoutCreditCardsInput[] | CategoryUncheckedCreateWithoutCreditCardsInput[]
     connectOrCreate?: CategoryCreateOrConnectWithoutCreditCardsInput | CategoryCreateOrConnectWithoutCreditCardsInput[]
@@ -64450,6 +67627,13 @@ export namespace Prisma {
     connectOrCreate?: CreditCardProcessStepCreateOrConnectWithoutProductInput | CreditCardProcessStepCreateOrConnectWithoutProductInput[]
     createMany?: CreditCardProcessStepCreateManyProductInputEnvelope
     connect?: CreditCardProcessStepWhereUniqueInput | CreditCardProcessStepWhereUniqueInput[]
+  }
+
+  export type CreditCardOfferCreateNestedManyWithoutProductInput = {
+    create?: XOR<CreditCardOfferCreateWithoutProductInput, CreditCardOfferUncheckedCreateWithoutProductInput> | CreditCardOfferCreateWithoutProductInput[] | CreditCardOfferUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: CreditCardOfferCreateOrConnectWithoutProductInput | CreditCardOfferCreateOrConnectWithoutProductInput[]
+    createMany?: CreditCardOfferCreateManyProductInputEnvelope
+    connect?: CreditCardOfferWhereUniqueInput | CreditCardOfferWhereUniqueInput[]
   }
 
   export type ApplicationCreateNestedManyWithoutCardInput = {
@@ -64532,6 +67716,13 @@ export namespace Prisma {
     connectOrCreate?: CreditCardProcessStepCreateOrConnectWithoutProductInput | CreditCardProcessStepCreateOrConnectWithoutProductInput[]
     createMany?: CreditCardProcessStepCreateManyProductInputEnvelope
     connect?: CreditCardProcessStepWhereUniqueInput | CreditCardProcessStepWhereUniqueInput[]
+  }
+
+  export type CreditCardOfferUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<CreditCardOfferCreateWithoutProductInput, CreditCardOfferUncheckedCreateWithoutProductInput> | CreditCardOfferCreateWithoutProductInput[] | CreditCardOfferUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: CreditCardOfferCreateOrConnectWithoutProductInput | CreditCardOfferCreateOrConnectWithoutProductInput[]
+    createMany?: CreditCardOfferCreateManyProductInputEnvelope
+    connect?: CreditCardOfferWhereUniqueInput | CreditCardOfferWhereUniqueInput[]
   }
 
   export type ApplicationUncheckedCreateNestedManyWithoutCardInput = {
@@ -64678,6 +67869,20 @@ export namespace Prisma {
     update?: CreditCardProcessStepUpdateWithWhereUniqueWithoutProductInput | CreditCardProcessStepUpdateWithWhereUniqueWithoutProductInput[]
     updateMany?: CreditCardProcessStepUpdateManyWithWhereWithoutProductInput | CreditCardProcessStepUpdateManyWithWhereWithoutProductInput[]
     deleteMany?: CreditCardProcessStepScalarWhereInput | CreditCardProcessStepScalarWhereInput[]
+  }
+
+  export type CreditCardOfferUpdateManyWithoutProductNestedInput = {
+    create?: XOR<CreditCardOfferCreateWithoutProductInput, CreditCardOfferUncheckedCreateWithoutProductInput> | CreditCardOfferCreateWithoutProductInput[] | CreditCardOfferUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: CreditCardOfferCreateOrConnectWithoutProductInput | CreditCardOfferCreateOrConnectWithoutProductInput[]
+    upsert?: CreditCardOfferUpsertWithWhereUniqueWithoutProductInput | CreditCardOfferUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: CreditCardOfferCreateManyProductInputEnvelope
+    set?: CreditCardOfferWhereUniqueInput | CreditCardOfferWhereUniqueInput[]
+    disconnect?: CreditCardOfferWhereUniqueInput | CreditCardOfferWhereUniqueInput[]
+    delete?: CreditCardOfferWhereUniqueInput | CreditCardOfferWhereUniqueInput[]
+    connect?: CreditCardOfferWhereUniqueInput | CreditCardOfferWhereUniqueInput[]
+    update?: CreditCardOfferUpdateWithWhereUniqueWithoutProductInput | CreditCardOfferUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: CreditCardOfferUpdateManyWithWhereWithoutProductInput | CreditCardOfferUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: CreditCardOfferScalarWhereInput | CreditCardOfferScalarWhereInput[]
   }
 
   export type ApplicationUpdateManyWithoutCardNestedInput = {
@@ -64843,6 +68048,20 @@ export namespace Prisma {
     deleteMany?: CreditCardProcessStepScalarWhereInput | CreditCardProcessStepScalarWhereInput[]
   }
 
+  export type CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<CreditCardOfferCreateWithoutProductInput, CreditCardOfferUncheckedCreateWithoutProductInput> | CreditCardOfferCreateWithoutProductInput[] | CreditCardOfferUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: CreditCardOfferCreateOrConnectWithoutProductInput | CreditCardOfferCreateOrConnectWithoutProductInput[]
+    upsert?: CreditCardOfferUpsertWithWhereUniqueWithoutProductInput | CreditCardOfferUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: CreditCardOfferCreateManyProductInputEnvelope
+    set?: CreditCardOfferWhereUniqueInput | CreditCardOfferWhereUniqueInput[]
+    disconnect?: CreditCardOfferWhereUniqueInput | CreditCardOfferWhereUniqueInput[]
+    delete?: CreditCardOfferWhereUniqueInput | CreditCardOfferWhereUniqueInput[]
+    connect?: CreditCardOfferWhereUniqueInput | CreditCardOfferWhereUniqueInput[]
+    update?: CreditCardOfferUpdateWithWhereUniqueWithoutProductInput | CreditCardOfferUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: CreditCardOfferUpdateManyWithWhereWithoutProductInput | CreditCardOfferUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: CreditCardOfferScalarWhereInput | CreditCardOfferScalarWhereInput[]
+  }
+
   export type ApplicationUncheckedUpdateManyWithoutCardNestedInput = {
     create?: XOR<ApplicationCreateWithoutCardInput, ApplicationUncheckedCreateWithoutCardInput> | ApplicationCreateWithoutCardInput[] | ApplicationUncheckedCreateWithoutCardInput[]
     connectOrCreate?: ApplicationCreateOrConnectWithoutCardInput | ApplicationCreateOrConnectWithoutCardInput[]
@@ -64983,6 +68202,20 @@ export namespace Prisma {
     upsert?: CreditCardProductUpsertWithoutSpecialOffersInput
     connect?: CreditCardProductWhereUniqueInput
     update?: XOR<XOR<CreditCardProductUpdateToOneWithWhereWithoutSpecialOffersInput, CreditCardProductUpdateWithoutSpecialOffersInput>, CreditCardProductUncheckedUpdateWithoutSpecialOffersInput>
+  }
+
+  export type CreditCardProductCreateNestedOneWithoutOffersInput = {
+    create?: XOR<CreditCardProductCreateWithoutOffersInput, CreditCardProductUncheckedCreateWithoutOffersInput>
+    connectOrCreate?: CreditCardProductCreateOrConnectWithoutOffersInput
+    connect?: CreditCardProductWhereUniqueInput
+  }
+
+  export type CreditCardProductUpdateOneRequiredWithoutOffersNestedInput = {
+    create?: XOR<CreditCardProductCreateWithoutOffersInput, CreditCardProductUncheckedCreateWithoutOffersInput>
+    connectOrCreate?: CreditCardProductCreateOrConnectWithoutOffersInput
+    upsert?: CreditCardProductUpsertWithoutOffersInput
+    connect?: CreditCardProductWhereUniqueInput
+    update?: XOR<XOR<CreditCardProductUpdateToOneWithWhereWithoutOffersInput, CreditCardProductUpdateWithoutOffersInput>, CreditCardProductUncheckedUpdateWithoutOffersInput>
   }
 
   export type CreditCardProductCreateNestedOneWithoutBenefitSectionsInput = {
@@ -66247,6 +69480,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemCreateNestedManyWithoutProductInput
+    offers?: LoanOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutLoanInput
   }
 
@@ -66287,6 +69521,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepUncheckedCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemUncheckedCreateNestedManyWithoutProductInput
+    offers?: LoanOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutLoanInput
   }
 
@@ -66304,7 +69539,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -66314,6 +69548,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -66330,6 +69565,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutCardInput
   }
 
@@ -66338,7 +69574,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -66348,6 +69583,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -66364,6 +69600,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -66382,7 +69619,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -66429,7 +69665,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -66995,7 +70230,6 @@ export namespace Prisma {
     name?: StringFilter<"CreditCardProduct"> | string
     slug?: StringFilter<"CreditCardProduct"> | string
     bankName?: StringFilter<"CreditCardProduct"> | string
-    bankLogoUrl?: StringNullableFilter<"CreditCardProduct"> | string | null
     imageUrl?: StringFilter<"CreditCardProduct"> | string
     category?: StringNullableFilter<"CreditCardProduct"> | string | null
     annualFee?: StringFilter<"CreditCardProduct"> | string
@@ -67005,6 +70239,7 @@ export namespace Prisma {
     effectiveFree?: BoolFilter<"CreditCardProduct"> | boolean
     recommended?: BoolFilter<"CreditCardProduct"> | boolean
     rating?: FloatFilter<"CreditCardProduct"> | number
+    isActive?: BoolFilter<"CreditCardProduct"> | boolean
     videoUrl?: StringNullableFilter<"CreditCardProduct"> | string | null
     termsConditionsUrl?: StringNullableFilter<"CreditCardProduct"> | string | null
     firstYearFee?: StringNullableFilter<"CreditCardProduct"> | string | null
@@ -67039,7 +70274,6 @@ export namespace Prisma {
     slug?: StringFilter<"DebitCardProduct"> | string
     bankName?: StringFilter<"DebitCardProduct"> | string
     imageUrl?: StringFilter<"DebitCardProduct"> | string
-    bankLogoUrl?: StringNullableFilter<"DebitCardProduct"> | string | null
     accountType?: StringNullableFilter<"DebitCardProduct"> | string | null
     cardNetwork?: StringFilter<"DebitCardProduct"> | string
     cardType?: StringNullableFilter<"DebitCardProduct"> | string | null
@@ -67664,6 +70898,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemCreateNestedManyWithoutProductInput
+    offers?: LoanOfferCreateNestedManyWithoutProductInput
     createdBy?: UserCreateNestedOneWithoutCreatedLoansInput
   }
 
@@ -67705,6 +70940,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepUncheckedCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemUncheckedCreateNestedManyWithoutProductInput
+    offers?: LoanOfferUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type LoanProductCreateOrConnectWithoutApplicationsInput = {
@@ -67716,7 +70952,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -67726,6 +70961,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -67742,6 +70978,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
   }
 
@@ -67750,7 +70987,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -67760,6 +70996,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -67777,6 +71014,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type CreditCardProductCreateOrConnectWithoutApplicationsInput = {
@@ -67789,7 +71027,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -67836,7 +71073,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -68189,6 +71425,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUpdateManyWithoutProductNestedInput
     createdBy?: UserUpdateOneWithoutCreatedLoansNestedInput
   }
 
@@ -68230,6 +71467,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUncheckedUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUncheckedUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type CreditCardProductUpsertWithoutApplicationsInput = {
@@ -68247,7 +71485,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -68257,6 +71494,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68273,6 +71511,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
   }
 
@@ -68281,7 +71520,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -68291,6 +71529,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68308,6 +71547,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type DebitCardProductUpsertWithoutApplicationsInput = {
@@ -68326,7 +71566,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68373,7 +71612,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68644,6 +71882,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemCreateNestedManyWithoutProductInput
+    offers?: LoanOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutLoanInput
     createdBy?: UserCreateNestedOneWithoutCreatedLoansInput
   }
@@ -68685,6 +71924,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepUncheckedCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemUncheckedCreateNestedManyWithoutProductInput
+    offers?: LoanOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutLoanInput
   }
 
@@ -68702,7 +71942,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -68712,6 +71951,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -68727,6 +71967,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutCardInput
     createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
   }
@@ -68736,7 +71977,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -68746,6 +71986,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -68762,6 +72003,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -68775,7 +72017,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -68822,7 +72063,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -70170,6 +73410,41 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type LoanOfferCreateWithoutProductInput = {
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+  }
+
+  export type LoanOfferUncheckedCreateWithoutProductInput = {
+    id?: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+  }
+
+  export type LoanOfferCreateOrConnectWithoutProductInput = {
+    where: LoanOfferWhereUniqueInput
+    create: XOR<LoanOfferCreateWithoutProductInput, LoanOfferUncheckedCreateWithoutProductInput>
+  }
+
+  export type LoanOfferCreateManyProductInputEnvelope = {
+    data: LoanOfferCreateManyProductInput | LoanOfferCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ApplicationCreateWithoutLoanInput = {
     referenceNo?: string | null
     type: $Enums.ProductType
@@ -70751,6 +74026,39 @@ export namespace Prisma {
     productId?: IntFilter<"LoanFooterItem"> | number
   }
 
+  export type LoanOfferUpsertWithWhereUniqueWithoutProductInput = {
+    where: LoanOfferWhereUniqueInput
+    update: XOR<LoanOfferUpdateWithoutProductInput, LoanOfferUncheckedUpdateWithoutProductInput>
+    create: XOR<LoanOfferCreateWithoutProductInput, LoanOfferUncheckedCreateWithoutProductInput>
+  }
+
+  export type LoanOfferUpdateWithWhereUniqueWithoutProductInput = {
+    where: LoanOfferWhereUniqueInput
+    data: XOR<LoanOfferUpdateWithoutProductInput, LoanOfferUncheckedUpdateWithoutProductInput>
+  }
+
+  export type LoanOfferUpdateManyWithWhereWithoutProductInput = {
+    where: LoanOfferScalarWhereInput
+    data: XOR<LoanOfferUpdateManyMutationInput, LoanOfferUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type LoanOfferScalarWhereInput = {
+    AND?: LoanOfferScalarWhereInput | LoanOfferScalarWhereInput[]
+    OR?: LoanOfferScalarWhereInput[]
+    NOT?: LoanOfferScalarWhereInput | LoanOfferScalarWhereInput[]
+    id?: IntFilter<"LoanOffer"> | number
+    merchant?: StringFilter<"LoanOffer"> | string
+    offerType?: StringFilter<"LoanOffer"> | string
+    title?: StringFilter<"LoanOffer"> | string
+    description?: StringFilter<"LoanOffer"> | string
+    offerValue?: StringFilter<"LoanOffer"> | string
+    validFrom?: DateTimeNullableFilter<"LoanOffer"> | Date | string | null
+    validTill?: DateTimeNullableFilter<"LoanOffer"> | Date | string | null
+    isActive?: BoolFilter<"LoanOffer"> | boolean
+    displayOrder?: IntFilter<"LoanOffer"> | number
+    productId?: IntFilter<"LoanOffer"> | number
+  }
+
   export type ApplicationUpsertWithWhereUniqueWithoutLoanInput = {
     where: ApplicationWhereUniqueInput
     update: XOR<ApplicationUpdateWithoutLoanInput, ApplicationUncheckedUpdateWithoutLoanInput>
@@ -70946,6 +74254,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemCreateNestedManyWithoutProductInput
+    offers?: LoanOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutLoanInput
     createdBy?: UserCreateNestedOneWithoutCreatedLoansInput
   }
@@ -70987,6 +74296,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepUncheckedCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemUncheckedCreateNestedManyWithoutProductInput
+    offers?: LoanOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutLoanInput
   }
 
@@ -71041,6 +74351,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutLoanNestedInput
     createdBy?: UserUpdateOneWithoutCreatedLoansNestedInput
   }
@@ -71082,6 +74393,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUncheckedUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUncheckedUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutLoanNestedInput
   }
 
@@ -71120,6 +74432,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemCreateNestedManyWithoutProductInput
+    offers?: LoanOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutLoanInput
     createdBy?: UserCreateNestedOneWithoutCreatedLoansInput
   }
@@ -71161,6 +74474,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepUncheckedCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemUncheckedCreateNestedManyWithoutProductInput
+    offers?: LoanOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutLoanInput
   }
 
@@ -71215,6 +74529,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutLoanNestedInput
     createdBy?: UserUpdateOneWithoutCreatedLoansNestedInput
   }
@@ -71256,6 +74571,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUncheckedUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUncheckedUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutLoanNestedInput
   }
 
@@ -71294,6 +74610,7 @@ export namespace Prisma {
     summaryCharges?: LoanSummaryChargeCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemCreateNestedManyWithoutProductInput
+    offers?: LoanOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutLoanInput
     createdBy?: UserCreateNestedOneWithoutCreatedLoansInput
   }
@@ -71335,6 +74652,7 @@ export namespace Prisma {
     summaryCharges?: LoanSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepUncheckedCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemUncheckedCreateNestedManyWithoutProductInput
+    offers?: LoanOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutLoanInput
   }
 
@@ -71389,6 +74707,7 @@ export namespace Prisma {
     summaryCharges?: LoanSummaryChargeUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutLoanNestedInput
     createdBy?: UserUpdateOneWithoutCreatedLoansNestedInput
   }
@@ -71430,6 +74749,7 @@ export namespace Prisma {
     summaryCharges?: LoanSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUncheckedUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUncheckedUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutLoanNestedInput
   }
 
@@ -71468,6 +74788,7 @@ export namespace Prisma {
     summaryCharges?: LoanSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: LoanRequiredDocumentCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemCreateNestedManyWithoutProductInput
+    offers?: LoanOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutLoanInput
     createdBy?: UserCreateNestedOneWithoutCreatedLoansInput
   }
@@ -71509,6 +74830,7 @@ export namespace Prisma {
     summaryCharges?: LoanSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: LoanRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     footerItems?: LoanFooterItemUncheckedCreateNestedManyWithoutProductInput
+    offers?: LoanOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutLoanInput
   }
 
@@ -71563,6 +74885,7 @@ export namespace Prisma {
     summaryCharges?: LoanSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: LoanRequiredDocumentUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutLoanNestedInput
     createdBy?: UserUpdateOneWithoutCreatedLoansNestedInput
   }
@@ -71604,6 +74927,7 @@ export namespace Prisma {
     summaryCharges?: LoanSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: LoanRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUncheckedUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutLoanNestedInput
   }
 
@@ -71642,6 +74966,7 @@ export namespace Prisma {
     summaryCharges?: LoanSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: LoanRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepCreateNestedManyWithoutProductInput
+    offers?: LoanOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutLoanInput
     createdBy?: UserCreateNestedOneWithoutCreatedLoansInput
   }
@@ -71683,6 +75008,7 @@ export namespace Prisma {
     summaryCharges?: LoanSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: LoanRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: LoanProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: LoanOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutLoanInput
   }
 
@@ -71737,6 +75063,7 @@ export namespace Prisma {
     summaryCharges?: LoanSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: LoanRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutLoanNestedInput
     createdBy?: UserUpdateOneWithoutCreatedLoansNestedInput
   }
@@ -71778,6 +75105,185 @@ export namespace Prisma {
     summaryCharges?: LoanSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: LoanRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUncheckedUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUncheckedUpdateManyWithoutLoanNestedInput
+  }
+
+  export type LoanProductCreateWithoutOffersInput = {
+    title: string
+    slug: string
+    bankName: string
+    bankLogoUrl: string
+    tag?: string | null
+    feature?: string | null
+    specialization?: string | null
+    processTimeLabel: string
+    processTimeValue: string
+    chanceOfApproval: string
+    approvalScore?: number
+    interestRateText: string
+    aprText: string
+    emiAmount: string
+    emiValue?: number
+    processTypeLabel: string
+    processTypeValue: string
+    disbursalTimeHours?: number
+    kfsUrl?: string | null
+    productType?: $Enums.ProductType
+    loanType?: string | null
+    loanSubType?: string | null
+    amountRange?: string | null
+    eligibleFor?: string | null
+    loanPurpose?: string | null
+    scheme?: string | null
+    vehicleType?: string | null
+    keyStatement?: string | null
+    createdAt?: Date | string
+    category?: CategoryCreateNestedOneWithoutLoansInput
+    bullets?: LoanBulletCreateNestedManyWithoutProductInput
+    summaryCharges?: LoanSummaryChargeCreateNestedManyWithoutProductInput
+    requiredDocuments?: LoanRequiredDocumentCreateNestedManyWithoutProductInput
+    processSteps?: LoanProcessStepCreateNestedManyWithoutProductInput
+    footerItems?: LoanFooterItemCreateNestedManyWithoutProductInput
+    applications?: ApplicationCreateNestedManyWithoutLoanInput
+    createdBy?: UserCreateNestedOneWithoutCreatedLoansInput
+  }
+
+  export type LoanProductUncheckedCreateWithoutOffersInput = {
+    id?: number
+    title: string
+    slug: string
+    bankName: string
+    bankLogoUrl: string
+    tag?: string | null
+    feature?: string | null
+    specialization?: string | null
+    processTimeLabel: string
+    processTimeValue: string
+    chanceOfApproval: string
+    approvalScore?: number
+    interestRateText: string
+    aprText: string
+    emiAmount: string
+    emiValue?: number
+    processTypeLabel: string
+    processTypeValue: string
+    disbursalTimeHours?: number
+    kfsUrl?: string | null
+    productType?: $Enums.ProductType
+    categoryId?: number | null
+    loanType?: string | null
+    loanSubType?: string | null
+    amountRange?: string | null
+    eligibleFor?: string | null
+    loanPurpose?: string | null
+    scheme?: string | null
+    vehicleType?: string | null
+    keyStatement?: string | null
+    createdById?: number | null
+    createdAt?: Date | string
+    bullets?: LoanBulletUncheckedCreateNestedManyWithoutProductInput
+    summaryCharges?: LoanSummaryChargeUncheckedCreateNestedManyWithoutProductInput
+    requiredDocuments?: LoanRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
+    processSteps?: LoanProcessStepUncheckedCreateNestedManyWithoutProductInput
+    footerItems?: LoanFooterItemUncheckedCreateNestedManyWithoutProductInput
+    applications?: ApplicationUncheckedCreateNestedManyWithoutLoanInput
+  }
+
+  export type LoanProductCreateOrConnectWithoutOffersInput = {
+    where: LoanProductWhereUniqueInput
+    create: XOR<LoanProductCreateWithoutOffersInput, LoanProductUncheckedCreateWithoutOffersInput>
+  }
+
+  export type LoanProductUpsertWithoutOffersInput = {
+    update: XOR<LoanProductUpdateWithoutOffersInput, LoanProductUncheckedUpdateWithoutOffersInput>
+    create: XOR<LoanProductCreateWithoutOffersInput, LoanProductUncheckedCreateWithoutOffersInput>
+    where?: LoanProductWhereInput
+  }
+
+  export type LoanProductUpdateToOneWithWhereWithoutOffersInput = {
+    where?: LoanProductWhereInput
+    data: XOR<LoanProductUpdateWithoutOffersInput, LoanProductUncheckedUpdateWithoutOffersInput>
+  }
+
+  export type LoanProductUpdateWithoutOffersInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: StringFieldUpdateOperationsInput | string
+    tag?: NullableStringFieldUpdateOperationsInput | string | null
+    feature?: NullableStringFieldUpdateOperationsInput | string | null
+    specialization?: NullableStringFieldUpdateOperationsInput | string | null
+    processTimeLabel?: StringFieldUpdateOperationsInput | string
+    processTimeValue?: StringFieldUpdateOperationsInput | string
+    chanceOfApproval?: StringFieldUpdateOperationsInput | string
+    approvalScore?: IntFieldUpdateOperationsInput | number
+    interestRateText?: StringFieldUpdateOperationsInput | string
+    aprText?: StringFieldUpdateOperationsInput | string
+    emiAmount?: StringFieldUpdateOperationsInput | string
+    emiValue?: FloatFieldUpdateOperationsInput | number
+    processTypeLabel?: StringFieldUpdateOperationsInput | string
+    processTypeValue?: StringFieldUpdateOperationsInput | string
+    disbursalTimeHours?: FloatFieldUpdateOperationsInput | number
+    kfsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    productType?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    loanType?: NullableStringFieldUpdateOperationsInput | string | null
+    loanSubType?: NullableStringFieldUpdateOperationsInput | string | null
+    amountRange?: NullableStringFieldUpdateOperationsInput | string | null
+    eligibleFor?: NullableStringFieldUpdateOperationsInput | string | null
+    loanPurpose?: NullableStringFieldUpdateOperationsInput | string | null
+    scheme?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleType?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: CategoryUpdateOneWithoutLoansNestedInput
+    bullets?: LoanBulletUpdateManyWithoutProductNestedInput
+    summaryCharges?: LoanSummaryChargeUpdateManyWithoutProductNestedInput
+    requiredDocuments?: LoanRequiredDocumentUpdateManyWithoutProductNestedInput
+    processSteps?: LoanProcessStepUpdateManyWithoutProductNestedInput
+    footerItems?: LoanFooterItemUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUpdateManyWithoutLoanNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedLoansNestedInput
+  }
+
+  export type LoanProductUncheckedUpdateWithoutOffersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    bankLogoUrl?: StringFieldUpdateOperationsInput | string
+    tag?: NullableStringFieldUpdateOperationsInput | string | null
+    feature?: NullableStringFieldUpdateOperationsInput | string | null
+    specialization?: NullableStringFieldUpdateOperationsInput | string | null
+    processTimeLabel?: StringFieldUpdateOperationsInput | string
+    processTimeValue?: StringFieldUpdateOperationsInput | string
+    chanceOfApproval?: StringFieldUpdateOperationsInput | string
+    approvalScore?: IntFieldUpdateOperationsInput | number
+    interestRateText?: StringFieldUpdateOperationsInput | string
+    aprText?: StringFieldUpdateOperationsInput | string
+    emiAmount?: StringFieldUpdateOperationsInput | string
+    emiValue?: FloatFieldUpdateOperationsInput | number
+    processTypeLabel?: StringFieldUpdateOperationsInput | string
+    processTypeValue?: StringFieldUpdateOperationsInput | string
+    disbursalTimeHours?: FloatFieldUpdateOperationsInput | number
+    kfsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    productType?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    categoryId?: NullableIntFieldUpdateOperationsInput | number | null
+    loanType?: NullableStringFieldUpdateOperationsInput | string | null
+    loanSubType?: NullableStringFieldUpdateOperationsInput | string | null
+    amountRange?: NullableStringFieldUpdateOperationsInput | string | null
+    eligibleFor?: NullableStringFieldUpdateOperationsInput | string | null
+    loanPurpose?: NullableStringFieldUpdateOperationsInput | string | null
+    scheme?: NullableStringFieldUpdateOperationsInput | string | null
+    vehicleType?: NullableStringFieldUpdateOperationsInput | string | null
+    keyStatement?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bullets?: LoanBulletUncheckedUpdateManyWithoutProductNestedInput
+    summaryCharges?: LoanSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
+    requiredDocuments?: LoanRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
+    processSteps?: LoanProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    footerItems?: LoanFooterItemUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutLoanNestedInput
   }
 
@@ -72011,6 +75517,41 @@ export namespace Prisma {
 
   export type CreditCardProcessStepCreateManyProductInputEnvelope = {
     data: CreditCardProcessStepCreateManyProductInput | CreditCardProcessStepCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CreditCardOfferCreateWithoutProductInput = {
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+  }
+
+  export type CreditCardOfferUncheckedCreateWithoutProductInput = {
+    id?: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+  }
+
+  export type CreditCardOfferCreateOrConnectWithoutProductInput = {
+    where: CreditCardOfferWhereUniqueInput
+    create: XOR<CreditCardOfferCreateWithoutProductInput, CreditCardOfferUncheckedCreateWithoutProductInput>
+  }
+
+  export type CreditCardOfferCreateManyProductInputEnvelope = {
+    data: CreditCardOfferCreateManyProductInput | CreditCardOfferCreateManyProductInput[]
     skipDuplicates?: boolean
   }
 
@@ -72675,6 +76216,39 @@ export namespace Prisma {
     productId?: IntFilter<"CreditCardProcessStep"> | number
   }
 
+  export type CreditCardOfferUpsertWithWhereUniqueWithoutProductInput = {
+    where: CreditCardOfferWhereUniqueInput
+    update: XOR<CreditCardOfferUpdateWithoutProductInput, CreditCardOfferUncheckedUpdateWithoutProductInput>
+    create: XOR<CreditCardOfferCreateWithoutProductInput, CreditCardOfferUncheckedCreateWithoutProductInput>
+  }
+
+  export type CreditCardOfferUpdateWithWhereUniqueWithoutProductInput = {
+    where: CreditCardOfferWhereUniqueInput
+    data: XOR<CreditCardOfferUpdateWithoutProductInput, CreditCardOfferUncheckedUpdateWithoutProductInput>
+  }
+
+  export type CreditCardOfferUpdateManyWithWhereWithoutProductInput = {
+    where: CreditCardOfferScalarWhereInput
+    data: XOR<CreditCardOfferUpdateManyMutationInput, CreditCardOfferUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type CreditCardOfferScalarWhereInput = {
+    AND?: CreditCardOfferScalarWhereInput | CreditCardOfferScalarWhereInput[]
+    OR?: CreditCardOfferScalarWhereInput[]
+    NOT?: CreditCardOfferScalarWhereInput | CreditCardOfferScalarWhereInput[]
+    id?: IntFilter<"CreditCardOffer"> | number
+    merchant?: StringFilter<"CreditCardOffer"> | string
+    offerType?: StringFilter<"CreditCardOffer"> | string
+    title?: StringFilter<"CreditCardOffer"> | string
+    description?: StringFilter<"CreditCardOffer"> | string
+    offerValue?: StringFilter<"CreditCardOffer"> | string
+    validFrom?: DateTimeNullableFilter<"CreditCardOffer"> | Date | string | null
+    validTill?: DateTimeNullableFilter<"CreditCardOffer"> | Date | string | null
+    isActive?: BoolFilter<"CreditCardOffer"> | boolean
+    displayOrder?: IntFilter<"CreditCardOffer"> | number
+    productId?: IntFilter<"CreditCardOffer"> | number
+  }
+
   export type ApplicationUpsertWithWhereUniqueWithoutCardInput = {
     where: ApplicationWhereUniqueInput
     update: XOR<ApplicationUpdateWithoutCardInput, ApplicationUncheckedUpdateWithoutCardInput>
@@ -72839,7 +76413,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -72849,6 +76422,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -72864,6 +76438,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutCardInput
     createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
   }
@@ -72873,7 +76448,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -72883,6 +76457,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -72899,6 +76474,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -72922,7 +76498,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -72932,6 +76507,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72947,6 +76523,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutCardNestedInput
     createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
   }
@@ -72956,7 +76533,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -72966,6 +76542,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72982,6 +76559,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -72989,7 +76567,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -72999,6 +76576,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -73014,6 +76592,7 @@ export namespace Prisma {
     bestSuitedForPoints?: CreditCardBestSuitedForCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutCardInput
     createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
   }
@@ -73023,7 +76602,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -73033,6 +76611,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -73049,6 +76628,7 @@ export namespace Prisma {
     bestSuitedForPoints?: CreditCardBestSuitedForUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -73072,7 +76652,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -73082,6 +76661,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73097,6 +76677,7 @@ export namespace Prisma {
     bestSuitedForPoints?: CreditCardBestSuitedForUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutCardNestedInput
     createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
   }
@@ -73106,7 +76687,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -73116,6 +76696,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73132,6 +76713,7 @@ export namespace Prisma {
     bestSuitedForPoints?: CreditCardBestSuitedForUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -73139,7 +76721,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -73149,6 +76730,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -73164,6 +76746,7 @@ export namespace Prisma {
     bestSuitedForPoints?: CreditCardBestSuitedForCreateNestedManyWithoutProductInput
     summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutCardInput
     createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
   }
@@ -73173,7 +76756,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -73183,6 +76765,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -73199,6 +76782,7 @@ export namespace Prisma {
     bestSuitedForPoints?: CreditCardBestSuitedForUncheckedCreateNestedManyWithoutProductInput
     summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -73222,7 +76806,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -73232,6 +76815,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73247,6 +76831,7 @@ export namespace Prisma {
     bestSuitedForPoints?: CreditCardBestSuitedForUpdateManyWithoutProductNestedInput
     summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutCardNestedInput
     createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
   }
@@ -73256,7 +76841,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -73266,6 +76850,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73282,6 +76867,7 @@ export namespace Prisma {
     bestSuitedForPoints?: CreditCardBestSuitedForUncheckedUpdateManyWithoutProductNestedInput
     summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -73289,7 +76875,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -73299,6 +76884,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -73314,6 +76900,7 @@ export namespace Prisma {
     bestSuitedForPoints?: CreditCardBestSuitedForCreateNestedManyWithoutProductInput
     summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutCardInput
     createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
   }
@@ -73323,7 +76910,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -73333,6 +76919,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -73349,6 +76936,7 @@ export namespace Prisma {
     bestSuitedForPoints?: CreditCardBestSuitedForUncheckedCreateNestedManyWithoutProductInput
     summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -73372,7 +76960,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -73382,6 +76969,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73397,6 +76985,7 @@ export namespace Prisma {
     bestSuitedForPoints?: CreditCardBestSuitedForUpdateManyWithoutProductNestedInput
     summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutCardNestedInput
     createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
   }
@@ -73406,7 +76995,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -73416,6 +77004,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73432,6 +77021,7 @@ export namespace Prisma {
     bestSuitedForPoints?: CreditCardBestSuitedForUncheckedUpdateManyWithoutProductNestedInput
     summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -73721,7 +77311,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -73731,6 +77320,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -73746,6 +77336,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutCardInput
     createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
   }
@@ -73755,7 +77346,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -73765,6 +77355,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -73781,6 +77372,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -73804,7 +77396,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -73814,6 +77405,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73829,6 +77421,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutCardNestedInput
     createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
   }
@@ -73838,7 +77431,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -73848,6 +77440,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73864,6 +77457,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -73871,7 +77465,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -73881,6 +77474,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -73896,6 +77490,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutCardInput
     createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
   }
@@ -73905,7 +77500,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -73915,6 +77509,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -73931,6 +77526,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -73954,7 +77550,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -73964,6 +77559,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -73979,6 +77575,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutCardNestedInput
     createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
   }
@@ -73988,7 +77585,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -73998,6 +77594,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -74014,6 +77611,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -74021,7 +77619,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -74031,6 +77628,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -74046,6 +77644,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutCardInput
     createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
   }
@@ -74055,7 +77654,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -74065,6 +77663,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -74081,6 +77680,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -74104,7 +77704,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -74114,6 +77713,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -74129,6 +77729,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutCardNestedInput
     createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
   }
@@ -74138,7 +77739,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -74148,6 +77748,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -74164,6 +77765,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -74171,7 +77773,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -74181,6 +77782,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -74196,6 +77798,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutCardInput
     createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
   }
@@ -74205,7 +77808,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -74215,6 +77817,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -74231,6 +77834,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -74254,7 +77858,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -74264,6 +77867,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -74279,6 +77883,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutCardNestedInput
     createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
   }
@@ -74288,7 +77893,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -74298,6 +77902,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -74314,14 +77919,14 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
   }
 
-  export type CreditCardProductCreateWithoutBenefitSectionsInput = {
+  export type CreditCardProductCreateWithoutOffersInput = {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -74331,6 +77936,161 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    firstYearFee?: string | null
+    secondYearFee?: string | null
+    feeWaiverCondition?: string | null
+    createdAt?: Date | string
+    categories?: CategoryCreateNestedManyWithoutCreditCardsInput
+    bulletPoints?: CreditCardBulletCreateNestedManyWithoutProductInput
+    keyFeatures?: CreditCardKeyFeatureCreateNestedManyWithoutProductInput
+    cardBenefits?: CreditCardBenefitCreateNestedManyWithoutProductInput
+    specialOffers?: CreditCardSpecialOfferCreateNestedManyWithoutProductInput
+    benefitSections?: CreditCardBenefitSectionCreateNestedManyWithoutProductInput
+    bestSuitedForPoints?: CreditCardBestSuitedForCreateNestedManyWithoutProductInput
+    summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
+    requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
+    processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    applications?: ApplicationCreateNestedManyWithoutCardInput
+    createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
+  }
+
+  export type CreditCardProductUncheckedCreateWithoutOffersInput = {
+    id?: number
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    category?: string | null
+    annualFee: string
+    cardNetwork: string
+    cardType?: string | null
+    bestSuitedFor?: string | null
+    effectiveFree?: boolean
+    recommended?: boolean
+    rating?: number
+    isActive?: boolean
+    videoUrl?: string | null
+    termsConditionsUrl?: string | null
+    firstYearFee?: string | null
+    secondYearFee?: string | null
+    feeWaiverCondition?: string | null
+    createdById?: number | null
+    createdAt?: Date | string
+    categories?: CategoryUncheckedCreateNestedManyWithoutCreditCardsInput
+    bulletPoints?: CreditCardBulletUncheckedCreateNestedManyWithoutProductInput
+    keyFeatures?: CreditCardKeyFeatureUncheckedCreateNestedManyWithoutProductInput
+    cardBenefits?: CreditCardBenefitUncheckedCreateNestedManyWithoutProductInput
+    specialOffers?: CreditCardSpecialOfferUncheckedCreateNestedManyWithoutProductInput
+    benefitSections?: CreditCardBenefitSectionUncheckedCreateNestedManyWithoutProductInput
+    bestSuitedForPoints?: CreditCardBestSuitedForUncheckedCreateNestedManyWithoutProductInput
+    summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
+    requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
+    processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
+  }
+
+  export type CreditCardProductCreateOrConnectWithoutOffersInput = {
+    where: CreditCardProductWhereUniqueInput
+    create: XOR<CreditCardProductCreateWithoutOffersInput, CreditCardProductUncheckedCreateWithoutOffersInput>
+  }
+
+  export type CreditCardProductUpsertWithoutOffersInput = {
+    update: XOR<CreditCardProductUpdateWithoutOffersInput, CreditCardProductUncheckedUpdateWithoutOffersInput>
+    create: XOR<CreditCardProductCreateWithoutOffersInput, CreditCardProductUncheckedCreateWithoutOffersInput>
+    where?: CreditCardProductWhereInput
+  }
+
+  export type CreditCardProductUpdateToOneWithWhereWithoutOffersInput = {
+    where?: CreditCardProductWhereInput
+    data: XOR<CreditCardProductUpdateWithoutOffersInput, CreditCardProductUncheckedUpdateWithoutOffersInput>
+  }
+
+  export type CreditCardProductUpdateWithoutOffersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: StringFieldUpdateOperationsInput | string
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    bestSuitedFor?: NullableStringFieldUpdateOperationsInput | string | null
+    effectiveFree?: BoolFieldUpdateOperationsInput | boolean
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
+    secondYearFee?: NullableStringFieldUpdateOperationsInput | string | null
+    feeWaiverCondition?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUpdateManyWithoutCreditCardsNestedInput
+    bulletPoints?: CreditCardBulletUpdateManyWithoutProductNestedInput
+    keyFeatures?: CreditCardKeyFeatureUpdateManyWithoutProductNestedInput
+    cardBenefits?: CreditCardBenefitUpdateManyWithoutProductNestedInput
+    specialOffers?: CreditCardSpecialOfferUpdateManyWithoutProductNestedInput
+    benefitSections?: CreditCardBenefitSectionUpdateManyWithoutProductNestedInput
+    bestSuitedForPoints?: CreditCardBestSuitedForUpdateManyWithoutProductNestedInput
+    summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
+    requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
+    processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUpdateManyWithoutCardNestedInput
+    createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
+  }
+
+  export type CreditCardProductUncheckedUpdateWithoutOffersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    annualFee?: StringFieldUpdateOperationsInput | string
+    cardNetwork?: StringFieldUpdateOperationsInput | string
+    cardType?: NullableStringFieldUpdateOperationsInput | string | null
+    bestSuitedFor?: NullableStringFieldUpdateOperationsInput | string | null
+    effectiveFree?: BoolFieldUpdateOperationsInput | boolean
+    recommended?: BoolFieldUpdateOperationsInput | boolean
+    rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
+    secondYearFee?: NullableStringFieldUpdateOperationsInput | string | null
+    feeWaiverCondition?: NullableStringFieldUpdateOperationsInput | string | null
+    createdById?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    categories?: CategoryUncheckedUpdateManyWithoutCreditCardsNestedInput
+    bulletPoints?: CreditCardBulletUncheckedUpdateManyWithoutProductNestedInput
+    keyFeatures?: CreditCardKeyFeatureUncheckedUpdateManyWithoutProductNestedInput
+    cardBenefits?: CreditCardBenefitUncheckedUpdateManyWithoutProductNestedInput
+    specialOffers?: CreditCardSpecialOfferUncheckedUpdateManyWithoutProductNestedInput
+    benefitSections?: CreditCardBenefitSectionUncheckedUpdateManyWithoutProductNestedInput
+    bestSuitedForPoints?: CreditCardBestSuitedForUncheckedUpdateManyWithoutProductNestedInput
+    summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
+    requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
+    processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
+  }
+
+  export type CreditCardProductCreateWithoutBenefitSectionsInput = {
+    name: string
+    slug: string
+    bankName: string
+    imageUrl: string
+    category?: string | null
+    annualFee: string
+    cardNetwork: string
+    cardType?: string | null
+    bestSuitedFor?: string | null
+    effectiveFree?: boolean
+    recommended?: boolean
+    rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -74346,6 +78106,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferCreateNestedManyWithoutProductInput
     applications?: ApplicationCreateNestedManyWithoutCardInput
     createdBy?: UserCreateNestedOneWithoutCreatedCardsInput
   }
@@ -74355,7 +78116,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -74365,6 +78125,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -74381,6 +78142,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedCreateNestedManyWithoutProductInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedCreateNestedManyWithoutProductInput
     processSteps?: CreditCardProcessStepUncheckedCreateNestedManyWithoutProductInput
+    offers?: CreditCardOfferUncheckedCreateNestedManyWithoutProductInput
     applications?: ApplicationUncheckedCreateNestedManyWithoutCardInput
   }
 
@@ -74425,7 +78187,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -74435,6 +78196,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -74450,6 +78212,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutCardNestedInput
     createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
   }
@@ -74459,7 +78222,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -74469,6 +78231,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -74485,6 +78248,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -76871,7 +80635,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -76918,7 +80681,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -76980,7 +80742,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -77027,7 +80788,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -77073,7 +80833,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -77120,7 +80879,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -77182,7 +80940,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -77229,7 +80986,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -77275,7 +81031,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -77322,7 +81077,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -77384,7 +81138,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -77431,7 +81184,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -77477,7 +81229,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -77524,7 +81275,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -77586,7 +81336,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -77633,7 +81382,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -78143,7 +81891,6 @@ export namespace Prisma {
     name: string
     slug: string
     bankName: string
-    bankLogoUrl?: string | null
     imageUrl: string
     category?: string | null
     annualFee: string
@@ -78153,6 +81900,7 @@ export namespace Prisma {
     effectiveFree?: boolean
     recommended?: boolean
     rating?: number
+    isActive?: boolean
     videoUrl?: string | null
     termsConditionsUrl?: string | null
     firstYearFee?: string | null
@@ -78167,7 +81915,6 @@ export namespace Prisma {
     slug: string
     bankName: string
     imageUrl: string
-    bankLogoUrl?: string | null
     accountType?: string | null
     cardNetwork: string
     cardType?: string | null
@@ -78753,6 +82500,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutLoanNestedInput
   }
 
@@ -78793,6 +82541,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUncheckedUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUncheckedUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutLoanNestedInput
   }
 
@@ -78834,7 +82583,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -78844,6 +82592,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -78860,6 +82609,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutCardNestedInput
   }
 
@@ -78868,7 +82618,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -78878,6 +82627,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -78894,6 +82644,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -78902,7 +82653,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -78912,6 +82662,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -78925,7 +82676,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -78972,7 +82722,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79019,7 +82768,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79450,6 +83198,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutLoanNestedInput
     createdBy?: UserUpdateOneWithoutCreatedLoansNestedInput
   }
@@ -79491,6 +83240,7 @@ export namespace Prisma {
     requiredDocuments?: LoanRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: LoanProcessStepUncheckedUpdateManyWithoutProductNestedInput
     footerItems?: LoanFooterItemUncheckedUpdateManyWithoutProductNestedInput
+    offers?: LoanOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutLoanNestedInput
   }
 
@@ -79532,7 +83282,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -79542,6 +83291,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79557,6 +83307,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUpdateManyWithoutProductNestedInput
     applications?: ApplicationUpdateManyWithoutCardNestedInput
     createdBy?: UserUpdateOneWithoutCreatedCardsNestedInput
   }
@@ -79566,7 +83317,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -79576,6 +83326,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79592,6 +83343,7 @@ export namespace Prisma {
     summaryCharges?: CreditCardSummaryChargeUncheckedUpdateManyWithoutProductNestedInput
     requiredDocuments?: CreditCardRequiredDocumentUncheckedUpdateManyWithoutProductNestedInput
     processSteps?: CreditCardProcessStepUncheckedUpdateManyWithoutProductNestedInput
+    offers?: CreditCardOfferUncheckedUpdateManyWithoutProductNestedInput
     applications?: ApplicationUncheckedUpdateManyWithoutCardNestedInput
   }
 
@@ -79600,7 +83352,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     imageUrl?: StringFieldUpdateOperationsInput | string
     category?: NullableStringFieldUpdateOperationsInput | string | null
     annualFee?: StringFieldUpdateOperationsInput | string
@@ -79610,6 +83361,7 @@ export namespace Prisma {
     effectiveFree?: BoolFieldUpdateOperationsInput | boolean
     recommended?: BoolFieldUpdateOperationsInput | boolean
     rating?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     termsConditionsUrl?: NullableStringFieldUpdateOperationsInput | string | null
     firstYearFee?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79624,7 +83376,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79671,7 +83422,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -79718,7 +83468,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     bankName?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
-    bankLogoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     accountType?: NullableStringFieldUpdateOperationsInput | string | null
     cardNetwork?: StringFieldUpdateOperationsInput | string
     cardType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80615,6 +84364,19 @@ export namespace Prisma {
     displayOrder?: number
   }
 
+  export type LoanOfferCreateManyProductInput = {
+    id?: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+  }
+
   export type ApplicationCreateManyLoanInput = {
     id?: number
     referenceNo?: string | null
@@ -80839,6 +84601,44 @@ export namespace Prisma {
   export type LoanFooterItemUncheckedUpdateManyWithoutProductInput = {
     id?: IntFieldUpdateOperationsInput | number
     text?: StringFieldUpdateOperationsInput | string
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LoanOfferUpdateWithoutProductInput = {
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LoanOfferUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LoanOfferUncheckedUpdateManyWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     displayOrder?: IntFieldUpdateOperationsInput | number
   }
 
@@ -81289,6 +85089,19 @@ export namespace Prisma {
     displayOrder?: number
   }
 
+  export type CreditCardOfferCreateManyProductInput = {
+    id?: number
+    merchant: string
+    offerType: string
+    title: string
+    description: string
+    offerValue: string
+    validFrom?: Date | string | null
+    validTill?: Date | string | null
+    isActive?: boolean
+    displayOrder?: number
+  }
+
   export type ApplicationCreateManyCardInput = {
     id?: number
     referenceNo?: string | null
@@ -81623,6 +85436,44 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CreditCardOfferUpdateWithoutProductInput = {
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CreditCardOfferUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    displayOrder?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CreditCardOfferUncheckedUpdateManyWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    merchant?: StringFieldUpdateOperationsInput | string
+    offerType?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    offerValue?: StringFieldUpdateOperationsInput | string
+    validFrom?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    validTill?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     displayOrder?: IntFieldUpdateOperationsInput | number
   }
 
