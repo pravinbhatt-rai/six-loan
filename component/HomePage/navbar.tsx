@@ -410,6 +410,24 @@ const NAV_DATA: NavItem[] = [
             }
         ]
     },
+{
+    name: 'Blogs',
+    columns: [
+        {
+            title: 'Latest Posts',
+            icon: <FileText className="w-4 h-4 text-teal-500" />,
+            items: [
+                { name: 'All Blogs', href: '/blogs' },
+                { name: 'Personal Finance', href: '/blogs/personal-loan' },
+                { name: 'Business Loan', href: '/blogs/business-loan' },
+                { name: 'Home Loan', href: '/blogs/home-loan' },
+                { name: 'Loan against Property', href: '/blogs/loan-against-property' },
+                { name: 'Credit Cards blogs', href: '/blogs/credit-cards' },
+                { name: 'Debit Cards', href: '/blogs/debit-cards' },
+            ]
+        }
+    ]
+},
     {
         name: 'Learn & Resources',
         columns: [
@@ -640,7 +658,7 @@ const MegaMenuDropdown: FC<{ item: NavItem }> = ({ item }) => {
                                     <h3 className="font-semibold text-gray-900 text-sm">{col.title}</h3>
                                 </div>
                                 <div className="flex flex-col gap-2">
-                                    {col.items.map((subItem, subIdx) => (
+                                    {(Array.isArray(col.items) ? col.items : []).map((subItem, subIdx) => (
                                         <Link
                                             key={subIdx}
                                             href={subItem.href}
@@ -765,8 +783,8 @@ const Navbar: FC = () => {
         { label: 'Business Loan', icon: <Briefcase className="w-5 h-5" />, data: getLoansTab('business') },
         { label: 'Home Loan', icon: <Home className="w-5 h-5" />, data: getLoansTab('home') },
         { label: 'Other Loans', icon: <Coins className="w-5 h-5" />, data: getLoansTab('other') },
+        { label: 'Blog', icon: <FileText className="w-5 h-5" />, data: getSection('Blog') },
         { label: 'Learn & Resources', icon: <BookOpen className="w-5 h-5" />, data: getSection('Learn & Resources') },
-        
     ];
 
     return (
@@ -941,7 +959,7 @@ const Navbar: FC = () => {
 
             {/* --- Mobile Talk to Expert Modal --- */}
             {isExpertModalOpen && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+                <div className="fixed inset-0 z-60 flex items-center justify-center p-4">
                     <div className="absolute inset-0 bg-gray-900/60 backdrop-blur-sm" onClick={() => setIsExpertModalOpen(false)} />
                     <div className="relative bg-white w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95">
                         <div className="flex items-center justify-between p-5 border-b border-gray-100">

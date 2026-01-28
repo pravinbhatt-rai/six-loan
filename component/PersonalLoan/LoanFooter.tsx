@@ -130,6 +130,7 @@ const Footer = memo(() => {
       title: 'Six Finance',
       links: [
         { label: 'About Us', href: '/about-us' },
+        {label: 'Blogs', href: '/blogs' },
         { label: 'Contact Us & Support', href: '/contact-us' },
         { label: 'Terms & Conditions', href: '/terms-conditions' }
       ],
