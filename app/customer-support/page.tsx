@@ -254,12 +254,10 @@ export default function CustomerSupportPage() {
             Your feedback and partnership are invaluable to our continued growth.
           </p>
           <div className="flex flex-wrap justify-center gap-6">
-            <button className="bg-teal-500 text-white font-bold py-5 px-14 rounded-full hover:bg-teal-600 transition-all shadow-lg uppercase tracking-widest text-sm flex items-center gap-2">
+            <a href="/"><button className="bg-teal-500 text-white font-bold py-5 px-14 rounded-full hover:bg-teal-600 transition-all shadow-lg uppercase tracking-widest text-sm flex items-center gap-2">
               Visit Website <ExternalLink size={16} />
-            </button>
-            <button className="bg-slate-800 text-white font-bold py-5 px-14 rounded-full hover:bg-slate-900 transition-all shadow-lg uppercase tracking-widest text-sm">
-              Contact Support
-            </button>
+            </button></a>
+            
           </div>
           <p className="mt-16 text-teal-600 font-black uppercase tracking-[0.3em] text-xs">
             Always Here to Support Your Financial Journey

@@ -195,9 +195,6 @@ const SixFinanceFullSupport: React.FC = () => {
             <button className="bg-teal-500 text-white font-bold py-4 px-12 rounded-full hover:bg-teal-600 transition-all shadow-lg flex items-center gap-2">
              <a href="https://sixfinance.app">Visit Website</a> <ExternalLink size={18} />
             </button>
-            <button className="bg-slate-800 text-white font-bold py-4 px-12 rounded-full hover:bg-slate-900 transition-all shadow-lg">
-              Contact Support
-            </button>
           </div>
           <p className="mt-12 text-teal-600 font-bold uppercase tracking-widest text-xs">
             Always Here to Support Your Financial Journey
