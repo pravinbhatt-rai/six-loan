@@ -860,7 +860,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\rajan\\OneDrive\\Documents\\new-six-loan\\six-loan\\generated\\prisma",
+      "value": "/Users/pravinbhattarai/Desktop/sixloan/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -869,12 +869,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin-arm64",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\rajan\\OneDrive\\Documents\\new-six-loan\\six-loan\\prisma\\schema.prisma",
+    "sourceFilePath": "/Users/pravinbhattarai/Desktop/sixloan/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

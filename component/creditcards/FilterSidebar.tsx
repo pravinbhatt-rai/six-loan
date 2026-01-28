@@ -6,13 +6,29 @@ export default function FilterSidebar({
   onToggle,
   onClearAll,
   className,
+  categories,
+  banks,
+  fees,
+  cardTypes,
+  trendingLabel,
 }: {
   active: { [key: string]: boolean };
   onToggle: (key: string, value: boolean) => void;
   onClearAll?: () => void;
   className?: string;
+  categories?: string[];
+  banks?: string[];
+  fees?: string[];
+  cardTypes?: string[];
+  trendingLabel?: string;
 }) {
   const [showMoreBanks, setShowMoreBanks] = useState(false);
+
+  const defaultCategories = ["Cashback", "Online Shopping", "Travel", "Utilities"];
+  const defaultBanks = ["HDFC Bank", "Axis Bank", "ICICI Bank", "SBI", "Kotak", "PNB"];
+  const defaultFees = ["Lifetime free", "1st year free only"];
+  const defaultCardTypes = ["UPI Rupay", "Visa/Mastercard"];
+  const trendLabel = trendingLabel || "Effective Free Card";
 
   return (
     <aside className={`w-full md:w-64 shrink-0 rounded-xl border border-gray-200 bg-white p-4 ${className ?? ""}`}>
@@ -36,13 +52,13 @@ export default function FilterSidebar({
             onChange={(e) => onToggle("trending", e.target.checked)}
             className="accent-green-600"
           />
-          Effective Free Card
+          {trendLabel}
         </label>
       </div>
 
       <div className="mt-4">
         <p className="text-xs font-semibold text-gray-700">Categories</p>
-        {["Cashback", "Online Shopping", "Travel", "Utilities"].map((label) => (
+        {(categories ?? defaultCategories).map((label) => (
           <label
             key={label}
             className={`mt-2 flex items-center gap-2 text-sm ${active[label] ? "text-green-600" : "text-gray-800"}`}
@@ -60,7 +76,7 @@ export default function FilterSidebar({
 
       <div className="mt-4">
         <p className="text-xs font-semibold text-gray-700">Banks</p>
-        {["HDFC Bank", "Axis Bank", "ICICI Bank", "SBI", "Kotak", "PNB"]
+        {(banks ?? defaultBanks)
           .slice(0, showMoreBanks ? undefined : 2)
           .map((label) => (
             <label
@@ -86,7 +102,7 @@ export default function FilterSidebar({
 
       <div className="mt-4">
         <p className="text-xs font-semibold text-gray-700">Fees</p>
-        {["Lifetime free", "1st year free only"].map((label) => (
+        {(fees ?? defaultFees).map((label) => (
           <label
             key={label}
             className={`mt-2 flex items-center gap-2 text-sm ${active[label] ? "text-green-600" : "text-gray-800"}`}
@@ -104,7 +120,7 @@ export default function FilterSidebar({
 
       <div className="mt-4">
         <p className="text-xs font-semibold text-gray-700">Card type</p>
-        {["UPI Rupay", "Visa/Mastercard"].map((label) => (
+        {(cardTypes ?? defaultCardTypes).map((label) => (
           <label
             key={label}
             className={`mt-2 flex items-center gap-2 text-sm ${active[label] ? "text-green-600" : "text-gray-800"}`}

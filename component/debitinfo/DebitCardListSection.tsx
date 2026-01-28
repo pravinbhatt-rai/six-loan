@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import UniversalCardItem, { UniversalCardInfo } from "@/component/creditcards/UniversalCardItem";
 import DebitCardComparisonModal from "@/component/creditcards/DebitCardComparisonModal";
 import CreditCardApplicationModal from "@/component/creditcards/CreditCardApplicationModal";
+import BottomComparisonBar from '@/component/creditcards/BottomComparisonBar';
 import { X, ArrowRight } from "lucide-react";
 import { SectionLoader } from "@/component/commonComponent/SixFinanceLoader";
 import { fastFetch } from "@/lib/utils/ultraFastFetch";
@@ -259,8 +260,8 @@ export default function DebitCardListSection({
               name: card.name,
               bankName: card.bank,
               imageUrl: card.image,
-              bulletPoints: card.bullets,
-              annualFee: card.annualFee || 0,
+              bulletPoints: Array.isArray(card.bullets) ? card.bullets.map(b => typeof b === 'string' ? { text: b } : b) : [],
+              annualFee: typeof card.annualFee === 'number' ? card.annualFee : (typeof card.annualFee === 'string' ? parseFloat(card.annualFee.replace(/[^\d.]/g, '')) || 0 : 0),
               slug: card.slug || '',
               rating: card.rating || 4.0,
               applyUrl: card.applyUrl,
@@ -272,41 +273,24 @@ export default function DebitCardListSection({
               offers: card.offers || [],
               safetyFeatures: card.safetyFeatures || []
             }}
-            onCompare={() => toggleCardSelection(card.id)}
-            onApply={() => handleApply(card as UniversalCardInfo)}
+            onCompare={toggleCardSelection}
+            onApply={handleApply}
             isSelected={selectedForComparison.includes(card.id)}
-            showCompareButton={true}
             cardType="debit-card"
           />
         ))}
       </div>
 
       {/* Comparison Bar */}
-      {selectedForComparison.length > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-lg z-50">
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <span className="text-sm font-medium text-gray-700">
-                {selectedForComparison.length} card{selectedForComparison.length > 1 ? 's' : ''} selected
-              </span>
-              <button
-                onClick={clearSelection}
-                className="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1"
-              >
-                <X className="w-4 h-4" />
-                Clear
-              </button>
-            </div>
-            <button
-              onClick={handleCompare}
-              disabled={selectedForComparison.length < 2}
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
-            >
-              Compare Cards
-            </button>
-          </div>
-        </div>
-      )}
+      <BottomComparisonBar
+        selectedCards={selectedForComparison.map(id => {
+          const found = allCards.find(c => c.id === id);
+          return found ? { id: found.id, name: found.name, imageUrl: found.image, bankName: found.bank } : { id, name: 'Card', imageUrl: '/debitcard/default.png', bankName: '' };
+        })}
+        onCompare={handleCompare}
+        onRemoveCard={(cardId) => toggleCardSelection(cardId)}
+        maxCards={2}
+      />
 
       {/* Comparison Modal */}
       {showComparisonModal && (
@@ -315,6 +299,19 @@ export default function DebitCardListSection({
           onClose={() => setShowComparisonModal(false)}
           selectedCardIds={selectedForComparison}
           onClearSelection={clearSelection}
+          allCards={allCards.map(card => ({
+            id: card.id,
+            name: card.name,
+            imageUrl: card.image,
+            bankName: card.bank,
+            annualFee: typeof card.annualFee === 'number' ? card.annualFee : (typeof card.annualFee === 'string' ? parseFloat(card.annualFee.replace(/[^\d.]/g, '')) || 0 : 0),
+            slug: card.slug || '',
+            rating: card.rating || 4.0,
+            keyFeatures: card.keyFeatures || [],
+            safetyFeatures: card.safetyFeatures || [],
+            bulletPoints: Array.isArray(card.bullets) ? card.bullets.map(b => typeof b === 'string' ? { text: b } : b) : [],
+            offers: card.offers || [],
+          }))}
         />
       )}
 
