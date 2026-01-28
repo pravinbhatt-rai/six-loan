@@ -1,257 +1,358 @@
 "use client";
-import React, { useState, useEffect, useMemo } from "react";
-import Link from "next/link";
-import { CreditCard, Shield, Zap, Globe, Sparkles, ArrowRight } from "lucide-react";
-import UniversalCardItem, { UniversalCardInfo } from '@/component/creditcards/UniversalCardItem';
-import DebitCardComparisonModal from '@/component/creditcards/DebitCardComparisonModal';
-import BottomComparisonBar from '@/component/creditcards/BottomComparisonBar';
+import React, { useEffect, useState, Suspense } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { X, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
-export default function DebitCardsPage() {
-  const [debitCards, setDebitCards] = useState<any[]>([]);
+const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+
+interface DebitCard {
+  id: string | number;
+  name: string;
+  bankName: string;
+  imageUrl: string;
+  bankLogoUrl?: string;
+  annualFee: string;
+  accountType?: string;
+  cardNetwork?: string;
+  cardType?: string;
+
+  // Key Features
+  keyFeatures?: string[];
+
+  // Safety Features
+  safetyFeatures?: string[];
+
+  // Offers
+  offers?: string[];
+
+  // Bullet Points
+  bulletPoints?: string[];
+
+  // Additional Info
+  atmWithdrawalLimit?: number;
+  posLimit?: number;
+  internationalUsage?: boolean;
+  contactless?: boolean;
+  loungeAccess?: boolean;
+  cashbackRate?: number;
+}
+
+function ComparePageContent() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const [cards, setCards] = useState<[DebitCard | null, DebitCard | null]>([null, null]);
   const [loading, setLoading] = useState(true);
-  const [selectedCards, setSelectedCards] = useState<string[]>([]);
-  const [showComparison, setShowComparison] = useState(false);
 
   useEffect(() => {
-    const fetchCards = async () => {
-      try {
-        const response = await fetch('/api/debit-cards?limit=12');
-        const data = await response.json();
-        if (data.success) {
-          setDebitCards(data.products);
-        }
-      } catch (error) {
-        console.error('Error fetching debit cards:', error);
-      } finally {
-        setLoading(false);
+    const card1Id = searchParams.get('card1');
+    const card2Id = searchParams.get('card2');
+
+    if (!card1Id || !card2Id) {
+      router.push('/debitcard');
+      return;
+    }
+
+    fetchCards(card1Id, card2Id);
+  }, [searchParams]);
+
+  const fetchCards = async (id1: string, id2: string) => {
+    try {
+      setLoading(true);
+      const [res1, res2] = await Promise.all([
+        fetch(`${API_BASE_URL}/api/debit-cards/${id1}`),
+        fetch(`${API_BASE_URL}/api/debit-cards/${id2}`)
+      ]);
+
+      if (res1.ok && res2.ok) {
+        const data1 = await res1.json();
+        const data2 = await res2.json();
+        setCards([data1.card || data1, data2.card || data2]);
       }
-    };
-
-    fetchCards();
-  }, []);
-
-  const handleApply = (card: UniversalCardInfo) => {
-    // Redirect to the apply URL if available, otherwise to the card's detail page
-    if (card.applyUrl) {
-      window.open(card.applyUrl, '_blank');
-    } else {
-      window.location.href = `/debitcard/${card.slug}`;
+    } catch (error) {
+      console.error('Failed to fetch cards:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleCompare = (cardId: string) => {
-    setSelectedCards(prev => {
-      if (prev.includes(cardId)) {
-        return prev.filter(id => id !== cardId);
-      } else if (prev.length < 2) {
-        return [...prev, cardId];
-      }
-      return prev;
-    });
-  };
-
-  const handleCompareNow = () => {
-    if (selectedCards.length >= 2) {
-      setShowComparison(true);
+  const removeCard = (index: 0 | 1) => {
+    const otherCard = cards[index === 0 ? 1 : 0];
+    if (otherCard) {
+      router.push(`/debitcard`);
     }
   };
 
-  // Get selected card objects for display
-  const getSelectedCardObjects = (): UniversalCardInfo[] => {
-    return selectedCards.map(id => {
-      const card = debitCards.find(c => c.id === id);
-      return card ? mapToUniversalCardInfo(card) : null;
-    }).filter((card): card is UniversalCardInfo => card !== null);
+  const formatFee = (card: DebitCard | null) => {
+    if (!card) return '';
+    return card.annualFee || 'Free';
   };
 
-  const mapToUniversalCardInfo = (card: any): UniversalCardInfo => ({
-    id: card.id,
-    name: card.name,
-    imageUrl: card.imageUrl,
-    bankName: card.bankName,
-    annualFee: card.annualFee,
-    slug: card.slug,
-    rating: card.rating,
-    applyUrl: card.applyUrl,
-    keyFeatures: card.keyFeatures || [],
-    safetyFeatures: card.safetyFeatures || [],
-    offers: card.offers || [],
-    bulletPoints: card.bulletPoints || [],
-  });
-
-  const categories = [
-    {
-      title: "Best Debit Cards",
-      slug: "best-debit-cards",
-      icon: <Sparkles className="w-6 h-6" />,
-      description: "Top-rated debit cards in India",
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      title: "Zero Fee Cards",
-      slug: "zero-fee",
-      icon: <Zap className="w-6 h-6" />,
-      description: "Lifetime free debit cards",
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      title: "Cashback Cards",
-      slug: "cashback",
-      icon: <CreditCard className="w-6 h-6" />,
-      description: "High cashback on every spend",
-      color: "from-green-500 to-emerald-500"
-    },
-    {
-      title: "International Usage",
-      slug: "international",
-      icon: <Globe className="w-6 h-6" />,
-      description: "Best for overseas transactions",
-      color: "from-orange-500 to-red-500"
-    },
-    {
-      title: "Lounge Access",
-      slug: "lounge-access",
-      icon: <Sparkles className="w-6 h-6" />,
-      description: "Airport lounge benefits",
-      color: "from-indigo-500 to-purple-500"
-    },
-    {
-      title: "Safety Features",
-      slug: "safety",
-      icon: <Shield className="w-6 h-6" />,
-      description: "Enhanced security & insurance",
-      color: "from-teal-500 to-green-500"
-    },
-  ];
-
-  const allCardsMemo = useMemo(() => debitCards.map(mapToUniversalCardInfo), [debitCards]);
-
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-teal-600 to-teal-700 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Find Your Perfect Debit Card
-          </h1>
-          <p className="text-xl text-teal-100 mb-8">
-            Compare features, cashback, and benefits to choose the best debit card for your needs
-          </p>
-          
-          {/* Quick Finder */}
-          <div className="bg-white rounded-lg shadow-xl p-6 text-gray-800">
-            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-              <CreditCard className="w-5 h-5 text-teal-600" />
-              Best Debit Card Finder
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500">
-                <option value="">Select Your Bank</option>
-                <option value="hdfc">HDFC Bank</option>
-                <option value="sbi">State Bank of India</option>
-                <option value="icici">ICICI Bank</option>
-                <option value="axis">Axis Bank</option>
-                <option value="kotak">Kotak Mahindra Bank</option>
-              </select>
-              
-              <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500">
-                <option value="">Account Type</option>
-                <option value="savings">Savings Account</option>
-                <option value="salary">Salary Account</option>
-                <option value="current">Current Account</option>
-              </select>
-              
-              <button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
-                Find Best Card
-              </button>
-            </div>
-          </div>
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading comparison...</p>
         </div>
       </div>
+    );
+  }
 
-      {/* Categories Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Browse by Category</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {categories.map((category) => (
-            <Link
-              key={category.slug}
-              href={`/debitinfo/${category.slug}`}
-              className="group"
-            >
-              <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all p-6 h-full border border-gray-200 hover:border-teal-300">
-                <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center text-white mb-4`}>
-                  {category.icon}
+  return (
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mb-8">
+          <Link
+            href="/debitcard"
+            className="inline-flex items-center text-teal-600 hover:text-teal-800 mb-4"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Debit Cards
+          </Link>
+          <h1 className="text-3xl font-bold text-gray-900">Compare Debit Cards</h1>
+        </div>
+
+        {/* Comparison Cards Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {cards.map((card, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 relative">
+              <button
+                onClick={() => removeCard(index as 0 | 1)}
+                className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition"
+              >
+                <X className="w-5 h-5 text-gray-500" />
+              </button>
+
+              {card ? (
+                <div>
+                  <div className="flex items-start space-x-4 mb-4">
+                    <img
+                      src={card.imageUrl || card.bankLogoUrl || '/placeholder-card.png'}
+                      alt={card.name}
+                      className="w-24 h-16 object-contain rounded-lg"
+                    />
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-900">{card.name}</h3>
+                      <p className="text-sm text-gray-600">Annual Fee: {formatFee(card)}</p>
+                    </div>
+                  </div>
+                  <button className="w-full bg-teal-600 text-white py-3 rounded-lg font-semibold hover:bg-teal-700 transition">
+                    Apply Now
+                  </button>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
-                  {category.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{category.description}</p>
-                <div className="flex items-center text-teal-600 font-semibold group-hover:gap-2 transition-all">
-                  Explore <ArrowRight className="w-4 h-4 ml-1" />
+              ) : (
+                <div className="text-center py-12 text-gray-400">
+                  <p>No card selected</p>
                 </div>
-              </div>
-            </Link>
+              )}
+            </div>
           ))}
         </div>
 
-        {/* Featured Debit Cards */}
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Featured Debit Cards</h2>
-        {loading ? (
-          <div className="grid  gap-6">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white rounded-xl shadow-md p-6 animate-pulse">
-                <div className="h-40 bg-gray-200 rounded-lg mb-4"></div>
-                <div className="h-6 bg-gray-200 rounded mb-2"></div>
-                <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-              </div>
-            ))}
-          </div>
-        ) : debitCards.length > 0 ? (
-          <div className="grid gap-6">
-            {debitCards.map((card) => (
-              <UniversalCardItem
-                key={card.id}
-                card={mapToUniversalCardInfo(card)}
-                onApply={handleApply}
-                onCompare={handleCompare}
-                isSelected={selectedCards.includes(card.id)}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12 text-gray-500">
-            No debit cards available yet. Check back soon!
-          </div>
-        )}
-
-        {selectedCards.length >= 2 && (
-          <div className="text-center mt-8">
-            <button
-              onClick={handleCompareNow}
-              className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 shadow-lg hover:shadow-xl transition-all font-semibold"
-            >
-              Compare Selected Cards ({selectedCards.length})
+        {/* Compare Button */}
+        {cards[0] && cards[1] && (
+          <div className="mb-8 text-center">
+            <button className="bg-teal-600 text-white px-12 py-4 rounded-lg text-lg font-bold hover:bg-teal-700 transition shadow-lg">
+              Compare
             </button>
           </div>
         )}
+
+        {/* Comparison Content */}
+        {cards[0] && cards[1] && (
+          <div className="space-y-6">
+            {/* You are comparing */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h2 className="text-xl font-bold mb-6">You are comparing</h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {cards.map((card, index) => (
+                  <div key={index} className="bg-gray-50 rounded-lg p-6 relative">
+                    <button
+                      onClick={() => removeCard(index as 0 | 1)}
+                      className="absolute top-4 right-4 p-1 hover:bg-gray-200 rounded-full transition"
+                    >
+                      <X className="w-4 h-4 text-gray-500" />
+                    </button>
+
+                    {card && (
+                      <div>
+                        <div className="flex items-center space-x-4 mb-4">
+                          <img
+                            src={card.imageUrl || '/placeholder-card.png'}
+                            alt={card.name}
+                            className="w-20 h-14 object-contain rounded"
+                          />
+                          <div>
+                            <h3 className="font-semibold text-gray-900">{card.name}</h3>
+                            <p className="text-sm text-gray-600">Annual Fee: {formatFee(card)}</p>
+                          </div>
+                        </div>
+                        <button className="w-full bg-teal-600 text-white py-2.5 rounded-lg font-semibold hover:bg-teal-700 transition">
+                          Apply Now
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Key Features */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h2 className="text-xl font-bold mb-6 text-center bg-gray-50 py-3 rounded-lg">Key Features</h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {cards.map((card, index) => (
+                  <div key={index}>
+                    {card?.keyFeatures && card.keyFeatures.length > 0 ? (
+                      <ul className="space-y-2">
+                        {card.keyFeatures.map((feature, i) => (
+                          <li key={i} className="flex items-start">
+                            <span className="text-teal-600 mr-2">•</span>
+                            <span className="text-gray-700">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-gray-400">No key features available</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Safety Features */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h2 className="text-xl font-bold mb-6 text-center bg-gray-50 py-3 rounded-lg">Security Features</h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {cards.map((card, index) => (
+                  <div key={index}>
+                    {card?.safetyFeatures && card.safetyFeatures.length > 0 ? (
+                      <ul className="space-y-2">
+                        {card.safetyFeatures.map((feature, i) => (
+                          <li key={i} className="flex items-start">
+                            <span className="text-teal-600 mr-2">•</span>
+                            <span className="text-gray-700">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-gray-400">No security features available</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Offers */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h2 className="text-xl font-bold mb-6 text-center bg-gray-50 py-3 rounded-lg">Offers & Rewards</h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {cards.map((card, index) => (
+                  <div key={index}>
+                    {card?.offers && card.offers.length > 0 ? (
+                      <ul className="space-y-2">
+                        {card.offers.map((offer, i) => (
+                          <li key={i} className="flex items-start">
+                            <span className="text-teal-600 mr-2">•</span>
+                            <span className="text-gray-700">{offer}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-gray-400">No offers available</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Fee Details */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h2 className="text-xl font-bold mb-6 text-center bg-gray-50 py-3 rounded-lg">Fee Details</h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {cards.map((card, index) => (
+                  <div key={index} className="space-y-4">
+                    <div>
+                      <p className="text-sm text-gray-600 mb-1">Annual Fee</p>
+                      <p className="text-lg font-semibold text-gray-900">
+                        {card?.annualFee || 'Free'}
+                      </p>
+                    </div>
+                    {card?.accountType && (
+                      <div>
+                        <p className="text-sm text-gray-600 mb-1">Account Type</p>
+                        <p className="text-lg font-semibold text-gray-900">{card.accountType}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Additional Benefits */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h2 className="text-xl font-bold mb-6 text-center bg-gray-50 py-3 rounded-lg">Additional Benefits</h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {cards.map((card, index) => (
+                  <div key={index} className="space-y-3">
+                    {card?.atmWithdrawalLimit && (
+                      <div>
+                        <p className="text-sm text-gray-600">ATM Withdrawal Limit</p>
+                        <p className="font-semibold text-gray-900">₹{card.atmWithdrawalLimit.toLocaleString()}</p>
+                      </div>
+                    )}
+                    {card?.posLimit && (
+                      <div>
+                        <p className="text-sm text-gray-600">POS Limit</p>
+                        <p className="font-semibold text-gray-900">₹{card.posLimit.toLocaleString()}</p>
+                      </div>
+                    )}
+                    <div className="grid grid-cols-2 gap-4">
+                      {card?.internationalUsage && (
+                        <div className="text-center">
+                          <span className="inline-block w-3 h-3 bg-green-500 rounded-full"></span>
+                          <p className="text-xs text-gray-600 mt-1">International</p>
+                        </div>
+                      )}
+                      {card?.contactless && (
+                        <div className="text-center">
+                          <span className="inline-block w-3 h-3 bg-green-500 rounded-full"></span>
+                          <p className="text-xs text-gray-600 mt-1">Contactless</p>
+                        </div>
+                      )}
+                      {card?.loungeAccess && (
+                        <div className="text-center">
+                          <span className="inline-block w-3 h-3 bg-green-500 rounded-full"></span>
+                          <p className="text-xs text-gray-600 mt-1">Lounge Access</p>
+                        </div>
+                      )}
+                      {card?.cashbackRate && (
+                        <div className="text-center">
+                          <span className="inline-block w-3 h-3 bg-green-500 rounded-full"></span>
+                          <p className="text-xs text-gray-600 mt-1">{card.cashbackRate}% Cashback</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-
-      {/* Debit Card Comparison Modal */}
-      <DebitCardComparisonModal
-        isOpen={showComparison}
-        onClose={() => setShowComparison(false)}
-        selectedCards={debitCards.filter(card => selectedCards.includes(card.id)).map(mapToUniversalCardInfo)}
-        allCards={allCardsMemo}
-        showAllCards={true}
-      />
-
-      {/* Bottom Comparison Bar */}
-      <BottomComparisonBar
-        selectedCards={getSelectedCardObjects()}
-        onCompare={handleCompareNow}
-        onRemoveCard={handleCompare}
-      />
     </div>
+  );
+}
+
+// Wrap with Suspense
+export default function DebitCardComparePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600"></div>
+    </div>}>
+      <ComparePageContent />
+    </Suspense>
   );
 }

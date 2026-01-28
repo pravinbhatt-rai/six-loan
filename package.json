@@ -12,10 +12,6 @@
   "dependencies": {
     "@prisma/client": "^6.19.1",
     "@prisma/extension-accelerate": "^1.2.1",
-    "@tiptap/extension-image": "^3.17.1",
-    "@tiptap/extension-link": "^3.17.1",
-    "@tiptap/react": "^3.17.1",
-    "@tiptap/starter-kit": "^3.17.1",
     "bcryptjs": "^3.0.3",
     "exceljs": "^4.4.0",
     "firebase": "^11.0.0",

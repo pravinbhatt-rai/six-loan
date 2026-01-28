@@ -7,7 +7,6 @@ import {
   ShieldCheck, Check, CheckCircle
 } from 'lucide-react';
 import { API_BASE_URL } from '@/lib/api';
-import DebitCardListSection from '@/component/debitinfo/DebitCardListSection';
 
 export default function DebitInfoPage() {
   const [debitCards, setDebitCards] = useState<any[]>([]);
@@ -229,16 +228,54 @@ export default function DebitInfoPage() {
         </div>
       </div>
 
-      {/* Featured Cards Section - use shared DebitCardListSection which includes comparison and bottom bar */}
+      {/* Featured Cards Section */}
       <div className="bg-slate-100 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <DebitCardListSection
-            title="Featured Debit Cards"
-            description="Handpicked for exceptional value and security."
-            maxCards={6}
-            showViewMore={true}
-            viewMoreHref="/debitinfo"
-          />
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-900">Featured Debit Cards</h2>
+            <p className="text-slate-500 mt-4">Handpicked for exceptional value and security.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {loading ? (
+              [1, 2, 3].map((i) => <div key={i} className="h-80 bg-white rounded-3xl animate-pulse" />)
+            ) : (
+              debitCards.map((card) => (
+                <Link href={`/debitcard/${card.slug}`} key={card.id} className="group">
+                  <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-teal-500/20">
+                    <div className="relative h-48 overflow-hidden bg-slate-200">
+                      {card.imageUrl ? (
+                        <img src={card.imageUrl} alt={card.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
+                          <Wallet className="w-12 h-12 text-slate-700" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-6">
+                      <div className="flex justify-between items-start mb-2">
+                        <div>
+                          <p className="text-xs font-bold text-teal-600 uppercase tracking-wider mb-1">{card.bankName}</p>
+                          <h3 className="text-lg font-bold text-slate-900 line-clamp-1">{card.name}</h3>
+                        </div>
+                        <div className="flex items-center gap-1 bg-amber-50 px-2 py-1 rounded-lg">
+                          <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                          <span className="text-xs font-bold text-amber-700">{card.rating?.toFixed(1)}</span>
+                        </div>
+                      </div>
+                      <hr className="my-4 border-slate-100" />
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-slate-500">Annual Fee</span>
+                        <span className={`text-sm font-bold ${card.annualFee === 0 ? 'text-green-600' : 'text-slate-900'}`}>
+                          {card.annualFee === 0 ? 'FREE' : `₹${card.annualFee}`}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))
+            )}
+          </div>
         </div>
       </div>
 

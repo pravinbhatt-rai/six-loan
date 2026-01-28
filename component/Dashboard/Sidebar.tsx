@@ -17,7 +17,6 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
     { name: 'Users', href: '/dashboard/users', icon: Users },
     { name: 'Categories', href: '/dashboard/categories', icon: FileText },
-    {name: 'Blogs', href: '/dashboard/blogs', icon: FileText },
     { name: 'Loans', href: '/dashboard/loans', icon: FileText },
     { name: 'Credit Cards', href: '/dashboard/credit-cards', icon: CreditCard },
      { name: 'Debit Cards', href: '/dashboard/debit-cards', icon: CreditCard },

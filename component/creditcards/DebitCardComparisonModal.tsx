@@ -30,90 +30,41 @@ interface ComparisonModalProps {
   selectedCards?: UniversalCardInfo[];
   allCards?: UniversalCardInfo[];
   cardIds?: string[]; // Keep for backward compatibility
-  selectedCardIds?: string[]; // alias some callers use
   onApply?: (cardId: string) => void;
-  onClearSelection?: () => void;
   showAllCards?: boolean;
 }
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
 
-export default function DebitCardComparisonModal({ isOpen, onClose, selectedCards = [], allCards = [], cardIds = [], selectedCardIds: propSelectedCardIds = [], onApply, showAllCards = false }: ComparisonModalProps) {
+export default function DebitCardComparisonModal({ isOpen, onClose, selectedCards = [], allCards = [], cardIds = [], onApply, showAllCards = false }: ComparisonModalProps) {
   const [cards, setCards] = useState<UniversalCardInfo[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedCardIds, setSelectedCardIds] = useState<string[]>(propSelectedCardIds.length > 0 ? propSelectedCardIds.map(String) : selectedCards.map(card => String(card.id)));
+  const [selectedCardIds, setSelectedCardIds] = useState<string[]>(selectedCards.map(card => card.id));
   const [showCardSelector, setShowCardSelector] = useState(false);
-  const lastRequestedRef = React.useRef<string | null>(null);
-
-  const sameIdSet = (a: UniversalCardInfo[] = [], b: UniversalCardInfo[] = []) => {
-    if (a.length !== b.length) return false;
-    const sa = new Set(a.map(x => String(x.id)));
-    for (const item of b) {
-      if (!sa.has(String(item.id))) return false;
-    }
-    return true;
-  };
-
-  const idsEqual = (a: string[] = [], b: string[] = []) => {
-    if (a.length !== b.length) return false;
-    const sa = new Set(a.map(String));
-    for (const id of b) if (!sa.has(String(id))) return false;
-    return true;
-  };
 
   useEffect(() => {
-    if (!isOpen) {
-      // When modal is closed, avoid calling setState (prevents update loops).
-      // Reset the lastRequestedRef so reopening will fetch fresh data.
-      lastRequestedRef.current = null;
-      return;
-    }
-
-    // If parent provided full card objects, use them directly
-    if (allCards && allCards.length > 0) {
-      // Only update local state if the provided cards differ from current state
-      if (!sameIdSet(cards, allCards)) {
+    if (isOpen) {
+      // Use provided cards if available, otherwise fetch them
+      if (allCards.length > 0) {
         setCards(allCards);
+        setSelectedCardIds(selectedCards.map(card => card.id));
+        setLoading(false);
+      } else {
+        fetchCards();
       }
-      const ids = propSelectedCardIds.length > 0 ? propSelectedCardIds.map(String) : (selectedCards.length > 0 ? selectedCards.map(c => String(c.id)) : []);
-      if (!idsEqual(selectedCardIds, ids)) {
-        setSelectedCardIds(ids);
-      }
-      if (loading) setLoading(false);
-      return;
+    } else if (!isOpen) {
+      setCards([]);
+      setSelectedCardIds([]);
     }
+  }, [isOpen, allCards, selectedCards]);
 
-    // Determine effective ids from props (support both `cardIds` and `selectedCardIds` prop names)
-    const effectiveIds = (propSelectedCardIds && propSelectedCardIds.length > 0)
-      ? propSelectedCardIds.map(String)
-      : (cardIds && cardIds.length > 0)
-        ? cardIds.map(String)
-        : (selectedCards && selectedCards.length > 0)
-          ? selectedCards.map(c => String(c.id))
-          : [];
-
-    const key = effectiveIds.length > 0 ? JSON.stringify([...effectiveIds].sort()) : 'ALL';
-    if (lastRequestedRef.current === key && cards.length > 0) {
-      // already fetched for these ids — nothing to update
-      return;
-    }
-
-    lastRequestedRef.current = key;
-    if (effectiveIds.length > 0) {
-      fetchCards(effectiveIds);
-    } else {
-      fetchCards();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen, allCards, cardIds, propSelectedCardIds, selectedCards]);
-
-  const fetchCards = async (filterIds?: string[]) => {
+  const fetchCards = async () => {
     setLoading(true);
     try {
       const response = await fetch(`${API_BASE_URL}/api/debit-cards`);
       const data = await response.json();
-
-      let cardsArray: any[] = [];
+      
+      let cardsArray = [];
       if (Array.isArray(data)) cardsArray = data;
       else if (data.products && Array.isArray(data.products)) cardsArray = data.products;
       else if (data.data && Array.isArray(data.data)) cardsArray = data.data;
@@ -131,23 +82,17 @@ export default function DebitCardComparisonModal({ isOpen, onClose, selectedCard
         offers: card.offers?.map((o: any) => o.title || o.description || o) || [],
       }));
 
-      if (filterIds && filterIds.length > 0) {
-        const filtered = processedCards.filter(pc => filterIds.includes(String(pc.id)));
-        setCards(filtered);
-        setSelectedCardIds(filterIds.map(String));
-      } else if (showAllCards) {
+      if (showAllCards) {
+        // Show all cards for comparison
         setCards(processedCards);
-        setSelectedCardIds([]);
-      } else if (selectedCards && selectedCards.length > 0) {
-        const ids = selectedCards.map(c => String(c.id));
-        const filtered = processedCards.filter(pc => ids.includes(String(pc.id)));
-        setCards(filtered);
-        setSelectedCardIds(ids);
       } else {
-        // fallback to a small subset to avoid huge lists
-        setCards(processedCards.slice(0, 6));
-        setSelectedCardIds([]);
+        // Show only selected cards
+        const selectedCardData = processedCards.filter((card: any) =>
+          selectedCards.some(selectedCard => selectedCard.id === card.id?.toString())
+        );
+        setCards(selectedCardData);
       }
+      setSelectedCardIds(selectedCardIds);
     } catch (error) {
       console.error('Failed to fetch debit cards:', error);
     } finally {
@@ -173,14 +118,7 @@ export default function DebitCardComparisonModal({ isOpen, onClose, selectedCard
   };
 
   const getSelectedCardData = () => {
-    // Build selected card list from local cache using selectedCardIds state
-    if (selectedCardIds && selectedCardIds.length > 0) {
-      const found = selectedCardIds.map(id => cards.find(c => String(c.id) === String(id))).filter(Boolean) as UniversalCardInfo[];
-      return found;
-    }
-    // fallback to provided selectedCards prop
-    if (selectedCards && selectedCards.length > 0) return selectedCards;
-    return [] as UniversalCardInfo[];
+    return selectedCards;
   };
 
   const formatFee = (fee: string | number) => {
@@ -222,9 +160,7 @@ export default function DebitCardComparisonModal({ isOpen, onClose, selectedCard
   };
 
   const getBulletPoints = (card: UniversalCardInfo) => {
-    if (Array.isArray(card.bulletPoints) && card.bulletPoints.length > 0) return card.bulletPoints;
-    if (Array.isArray((card as any).bullets) && (card as any).bullets.length > 0) return (card as any).bullets;
-    return [] as any[];
+    return card.bulletPoints || [];
   };
 
   if (!isOpen) return null;
@@ -521,15 +457,12 @@ export default function DebitCardComparisonModal({ isOpen, onClose, selectedCard
                         <div key={`${card.id}-bullets`} className="p-4">
                           {bulletPoints.length > 0 ? (
                             <ul className="space-y-2">
-                              {bulletPoints.map((bullet: any, i: number) => {
-                                const text = typeof bullet === 'string' ? bullet : (bullet.text || bullet || '');
-                                return (
-                                  <li key={`${card.id}-bullet-${i}`} className="flex items-start gap-2 text-sm text-slate-700">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 flex-shrink-0"></div>
-                                    <span>{text}</span>
-                                  </li>
-                                );
-                              })}
+                              {bulletPoints.slice(0, 5).map((bullet, i) => (
+                                <li key={`${card.id}-bullet-${i}`} className="flex items-start gap-2 text-sm text-slate-700">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 flex-shrink-0"></div>
+                                  <span>{bullet.text}</span>
+                                </li>
+                              ))}
                             </ul>
                           ) : (
                             <p className="text-slate-400 text-sm">No key points available</p>
