@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import CategorySection from "@/component/creditcards/CategorySection";
 import CreditCardDetailsDrawer, { CreditCardDetailsData } from "@/component/creditcards/CreditCardDetailsDrawer";
 import { FiInfo } from "react-icons/fi";
@@ -28,7 +28,7 @@ const CREDIT_CARD_CATEGORIES = [
   { slug: "secured", title: "Secured Credit Cards", description: "Build credit with secured credit cards." },
 ];
 
-export default function BestCreditCardsPage() {
+function BestCreditCardsPageInner() {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [selectedCard, setSelectedCard] = useState<CreditCardDetailsData | null>(null);
   const [showApplicationModal, setShowApplicationModal] = useState(false);
@@ -324,5 +324,13 @@ export default function BestCreditCardsPage() {
         categoryName={applicationCard?.name}
       />
     </div>
+  );
+}
+
+export default function BestCreditCardsPage() {
+  return (
+    <Suspense>
+      <BestCreditCardsPageInner />
+    </Suspense>
   );
 }
