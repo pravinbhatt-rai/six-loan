@@ -32,6 +32,62 @@ import LoanGuide from '@/component/PersonalLoan/LoanGuide';
 import LoanComparisonGuide from '@/component/PersonalLoan/LoanComparisonGuide';
 import SuccessStories from '@/component/PersonalLoan/SuccessStories';
 import LoanInformation from '@/component/PersonalLoan/LoanInformation';
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl =
+    "https://sixfinance.app/transferHomeLoan";
+
+  return {
+    title:
+      "Home Loan Balance Transfer | Lower Interest Rate & EMI – Six Finance",
+
+    description:
+      "Transfer your existing home loan to Six Finance partner banks and reduce your EMI. Get lower interest rates, better terms, and hassle-free home loan balance transfer.",
+
+    keywords: [
+      "home loan balance transfer",
+      "home loan transfer",
+      "home loan balance transfer india",
+      "transfer home loan to lower interest rate",
+      "home loan transfer interest rates",
+      "home loan balance transfer eligibility",
+      "home loan balance transfer documents",
+      "home loan transfer process",
+      "reduce home loan emi",
+      "switch home loan bank",
+      "home loan refinancing india",
+      "six finance home loan transfer",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Home Loan Balance Transfer | Six Finance",
+      description:
+        "Reduce your home loan EMI by transferring your loan to lower interest rates. Simple, fast, and transparent home loan balance transfer.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Home Loan Balance Transfer | Six Finance",
+      description:
+        "Switch your existing home loan to lower interest rates and save lakhs with Six Finance.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 
 export default function Page() {
     return (

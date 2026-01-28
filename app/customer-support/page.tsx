@@ -1,16 +1,71 @@
-import React from 'react';
-import { 
-  Phone, 
-  Mail, 
-  MessageSquare, 
-  Handshake, 
-  Clock, 
-  CheckCircle, 
+import {
+  Phone,
+  Mail,
+  MessageSquare,
+  Handshake,
+  Clock,
+  CheckCircle,
   HelpCircle,
   Users,
   ChevronRight,
   ExternalLink
 } from 'lucide-react';
+
+import type { Metadata } from "next";
+import React from "react";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/customer-support";
+
+  return {
+    title:
+      "Six Finance Customer Support | Contact, Complaints & Help Desk",
+    description:
+      "Contact Six Finance customer support for assistance with loans, accounts, complaints, partnerships, and general inquiries. Reach us via phone or email for fast, reliable help.",
+
+    keywords: [
+      "six finance support",
+      "six finance customer support",
+      "six finance contact details",
+      "six finance helpline number",
+      "six finance customer care",
+      "loan customer support india",
+      "financial services support",
+      "six finance complaints",
+      "six finance email support",
+      "dsa partner support",
+      "contact six finance",
+      "six finance help desk",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Six Finance Customer Support & Contact",
+      description:
+        "Reach Six Finance customer care for support, complaints, and partner inquiries. Dedicated help for all financial service needs.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Six Finance Customer Support",
+      description:
+        "Need help? Contact Six Finance customer care via phone or email for quick assistance.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 
 /**
  * Six Finance Customer Support - Server Side Component
@@ -33,7 +88,7 @@ export default function CustomerSupportPage() {
       </header>
 
       <main className="max-w-7xl mx-auto px-6 py-16">
-        
+
         {/* Why Contact Us Section */}
         <section className="mb-20">
           <h2 className="text-3xl font-bold text-center mb-12 text-slate-800 underline decoration-teal-500 underline-offset-8">
@@ -73,9 +128,9 @@ export default function CustomerSupportPage() {
             </div>
             <h3 className="text-2xl font-black text-teal-600 mb-2 uppercase">Customer Care</h3>
             <p className="text-slate-500 text-sm mb-8 italic">Your first point of contact for all financial needs.</p>
-            
-            <a 
-              href={`tel:${primaryPhone}`} 
+
+            <a
+              href={`tel:${primaryPhone}`}
               className="flex items-center gap-6 mb-8 group/phone cursor-pointer hover:opacity-80 transition-all"
               aria-label="Call Six Finance Customer Care"
             >
@@ -117,9 +172,9 @@ export default function CustomerSupportPage() {
               <h4 className="font-black text-teal-700 mb-2 uppercase text-xs tracking-widest">General Support</h4>
               <p className="text-slate-800 font-bold mb-4">support@sixfinance.app</p>
               <ul className="text-xs text-slate-500 space-y-2 mb-4">
-                <li className="flex items-center gap-2"><ChevronRight size={12} className="text-teal-500"/> Technical troubleshooting</li>
-                <li className="flex items-center gap-2"><ChevronRight size={12} className="text-teal-500"/> Account management assistance</li>
-                <li className="flex items-center gap-2"><ChevronRight size={12} className="text-teal-500"/> Product questions & feedback</li>
+                <li className="flex items-center gap-2"><ChevronRight size={12} className="text-teal-500" /> Technical troubleshooting</li>
+                <li className="flex items-center gap-2"><ChevronRight size={12} className="text-teal-500" /> Account management assistance</li>
+                <li className="flex items-center gap-2"><ChevronRight size={12} className="text-teal-500" /> Product questions & feedback</li>
               </ul>
             </div>
             <div className="bg-slate-50 p-8 rounded-3xl hover:bg-teal-50 transition-colors border border-slate-100">
@@ -195,7 +250,7 @@ export default function CustomerSupportPage() {
         <div className="max-w-2xl mx-auto">
           <h3 className="text-2xl font-bold text-slate-800 mb-4 italic underline decoration-teal-300 decoration-4">We Value Your Trust</h3>
           <p className="text-slate-600 mb-10 leading-relaxed text-lg font-medium">
-            Your confidence in Six Finance drives us to deliver exceptional service every day. 
+            Your confidence in Six Finance drives us to deliver exceptional service every day.
             Your feedback and partnership are invaluable to our continued growth.
           </p>
           <div className="flex flex-wrap justify-center gap-6">

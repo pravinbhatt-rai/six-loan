@@ -22,6 +22,64 @@ import LoanGuide from '@/component/PersonalLoan/LoanGuide';
 import LoanComparisonGuide from '@/component/PersonalLoan/LoanComparisonGuide';
 import SuccessStories from '@/component/PersonalLoan/SuccessStories';
 import LoanInformation from '@/component/PersonalLoan/LoanInformation';
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/professionalLoan";
+
+  return {
+    title:
+      "Professional Loan for Doctors, CAs & Engineers | Interest Rates – Six Finance",
+
+    description:
+      "Apply for a Professional Loan with Six Finance. Exclusive offers for doctors, chartered accountants, engineers & architects with low interest rates and minimal documentation.",
+
+    keywords: [
+      "professional loan",
+      "professional loan india",
+      "professional loan for doctors",
+      "professional loan for ca",
+      "professional loan for engineers",
+      "professional loan for architects",
+      "doctor loan",
+      "ca loan",
+      "engineer loan",
+      "professional loan interest rates",
+      "professional loan eligibility",
+      "professional loan documents required",
+      "professional loan emi calculator",
+      "collateral free professional loan",
+      "six finance professional loan",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Professional Loan | Doctors, CAs & Engineers – Six Finance",
+      description:
+        "Get customized professional loans designed for doctors, CAs & engineers. Faster approvals, higher limits, and flexible repayment.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Professional Loan | Six Finance",
+      description:
+        "Exclusive professional loans for doctors, CAs, engineers & architects with minimal paperwork.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 
 export default function Page() {
     return (

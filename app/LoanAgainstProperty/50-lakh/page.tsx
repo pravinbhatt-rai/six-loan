@@ -3,6 +3,62 @@ import LAPHero from "@/component/LoanAgainstProperty/LAPHero";
 import { LoanSection } from '@/component/PersonalLoan/LoanSection';
 import UniversalLoanCard from "@/component/loan/UniversalLoanCard";
 import PropertyLoanGuide from "@/component/LoanAgainstProperty/PropertyLoanGuide";
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl =
+    "https://sixfinance.app/LoanAgainstProperty/50-lakh";
+
+  return {
+    title:
+      "₹50 Lakh Loan Against Property | EMI, Interest Rate & Eligibility – Six Finance",
+    description:
+      "Apply for a ₹50 lakh loan against property with Six Finance. Check interest rates, EMI, eligibility, documents required, and flexible repayment options for residential or commercial property loans.",
+
+    keywords: [
+      "50 lakh loan against property",
+      "₹50 lakh lap",
+      "loan against property 50 lakh",
+      "lap loan 50 lakh",
+      "loan against property interest rate",
+      "loan against property emi calculator",
+      "loan against property eligibility",
+      "loan against property documents required",
+      "property loan 50 lakh",
+      "loan on residential property",
+      "loan on commercial property",
+      "loan against property for business",
+      "high value lap loan india",
+      "six finance loan against property",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "₹50 Lakh Loan Against Property | Six Finance",
+      description:
+        "Get a ₹50 lakh loan against property with competitive interest rates, low EMI, and flexible tenure from Six Finance.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "₹50 Lakh Loan Against Property | Six Finance",
+      description:
+        "Apply online for a ₹50 lakh loan against property with fast approval and flexible repayment options.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default function LakhLAPPage() {
     return (

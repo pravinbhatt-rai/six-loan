@@ -24,6 +24,64 @@ import LoanGuide from '@/component/PersonalLoan/LoanGuide';
 import LoanComparisonGuide from '@/component/PersonalLoan/LoanComparisonGuide';
 import SuccessStories from '@/component/PersonalLoan/SuccessStories';
 import LoanInformation from '@/component/PersonalLoan/LoanInformation';
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/loanAgainstSecurity";
+
+  return {
+    title:
+      "Loan Against Securities (LAS) | Interest Rates, Eligibility – Six Finance",
+
+    description:
+      "Apply for a Loan Against Securities with Six Finance. Get instant funds against shares, mutual funds, bonds, or ETFs without selling your investments.",
+
+    keywords: [
+      "loan against securities",
+      "loan against shares",
+      "loan against mutual funds",
+      "loan against bonds",
+      "loan against securities india",
+      "las loan",
+      "loan against security",
+      "secured loan against investments",
+      "loan against securities interest rate",
+      "loan against securities eligibility",
+      "loan against securities documents required",
+      "loan against securities emi calculator",
+      "high value loan against securities",
+      "instant loan against securities",
+      "six finance loan against securities",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Loan Against Securities | Six Finance",
+      description:
+        "Leverage your investments with a Loan Against Securities. Get funding against shares, mutual funds, or bonds while staying invested.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Loan Against Securities | Six Finance",
+      description:
+        "Get instant liquidity against your investments with Six Finance’s Loan Against Securities.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 
 export default function Page() {
     return (
