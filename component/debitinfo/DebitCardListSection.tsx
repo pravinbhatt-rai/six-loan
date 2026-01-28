@@ -219,8 +219,12 @@ export default function DebitCardListSection({
   };
 
   const handleApply = (card: UniversalCardInfo) => {
-    setApplicationCard(card);
-    setShowApplicationModal(true);
+    if (card.applyUrl) {
+      window.open(card.applyUrl, '_blank', 'noopener,noreferrer');
+    } else {
+      setApplicationCard(card);
+      setShowApplicationModal(true);
+    }
   };
 
   const clearSelection = () => {
@@ -315,14 +319,7 @@ export default function DebitCardListSection({
         />
       )}
 
-      {/* Application Modal */}
-      {showApplicationModal && applicationCard && (
-        <CreditCardApplicationModal
-          isOpen={showApplicationModal}
-          onClose={() => setShowApplicationModal(false)}
-          card={applicationCard}
-        />
-      )}
+      {/* Application Modal intentionally disabled for DebitCardListSection */}
     </div>
   );
 }

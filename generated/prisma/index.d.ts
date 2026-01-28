@@ -74257,39 +74257,6 @@ export namespace Prisma {
     productId?: IntFilter<"LoanOffer"> | number
   }
 
-  export type LoanOfferUpsertWithWhereUniqueWithoutProductInput = {
-    where: LoanOfferWhereUniqueInput
-    update: XOR<LoanOfferUpdateWithoutProductInput, LoanOfferUncheckedUpdateWithoutProductInput>
-    create: XOR<LoanOfferCreateWithoutProductInput, LoanOfferUncheckedCreateWithoutProductInput>
-  }
-
-  export type LoanOfferUpdateWithWhereUniqueWithoutProductInput = {
-    where: LoanOfferWhereUniqueInput
-    data: XOR<LoanOfferUpdateWithoutProductInput, LoanOfferUncheckedUpdateWithoutProductInput>
-  }
-
-  export type LoanOfferUpdateManyWithWhereWithoutProductInput = {
-    where: LoanOfferScalarWhereInput
-    data: XOR<LoanOfferUpdateManyMutationInput, LoanOfferUncheckedUpdateManyWithoutProductInput>
-  }
-
-  export type LoanOfferScalarWhereInput = {
-    AND?: LoanOfferScalarWhereInput | LoanOfferScalarWhereInput[]
-    OR?: LoanOfferScalarWhereInput[]
-    NOT?: LoanOfferScalarWhereInput | LoanOfferScalarWhereInput[]
-    id?: IntFilter<"LoanOffer"> | number
-    merchant?: StringFilter<"LoanOffer"> | string
-    offerType?: StringFilter<"LoanOffer"> | string
-    title?: StringFilter<"LoanOffer"> | string
-    description?: StringFilter<"LoanOffer"> | string
-    offerValue?: StringFilter<"LoanOffer"> | string
-    validFrom?: DateTimeNullableFilter<"LoanOffer"> | Date | string | null
-    validTill?: DateTimeNullableFilter<"LoanOffer"> | Date | string | null
-    isActive?: BoolFilter<"LoanOffer"> | boolean
-    displayOrder?: IntFilter<"LoanOffer"> | number
-    productId?: IntFilter<"LoanOffer"> | number
-  }
-
   export type LoanProductCreateWithoutBulletsInput = {
     title: string
     slug: string
@@ -76445,39 +76412,6 @@ export namespace Prisma {
     createdInsurances?: InsuranceProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdApps?: AppProductUncheckedUpdateManyWithoutCreatedByNestedInput
     createdBlogs?: BlogUncheckedUpdateManyWithoutCreatedByNestedInput
-  }
-
-  export type CreditCardOfferUpsertWithWhereUniqueWithoutProductInput = {
-    where: CreditCardOfferWhereUniqueInput
-    update: XOR<CreditCardOfferUpdateWithoutProductInput, CreditCardOfferUncheckedUpdateWithoutProductInput>
-    create: XOR<CreditCardOfferCreateWithoutProductInput, CreditCardOfferUncheckedCreateWithoutProductInput>
-  }
-
-  export type CreditCardOfferUpdateWithWhereUniqueWithoutProductInput = {
-    where: CreditCardOfferWhereUniqueInput
-    data: XOR<CreditCardOfferUpdateWithoutProductInput, CreditCardOfferUncheckedUpdateWithoutProductInput>
-  }
-
-  export type CreditCardOfferUpdateManyWithWhereWithoutProductInput = {
-    where: CreditCardOfferScalarWhereInput
-    data: XOR<CreditCardOfferUpdateManyMutationInput, CreditCardOfferUncheckedUpdateManyWithoutProductInput>
-  }
-
-  export type CreditCardOfferScalarWhereInput = {
-    AND?: CreditCardOfferScalarWhereInput | CreditCardOfferScalarWhereInput[]
-    OR?: CreditCardOfferScalarWhereInput[]
-    NOT?: CreditCardOfferScalarWhereInput | CreditCardOfferScalarWhereInput[]
-    id?: IntFilter<"CreditCardOffer"> | number
-    merchant?: StringFilter<"CreditCardOffer"> | string
-    offerType?: StringFilter<"CreditCardOffer"> | string
-    title?: StringFilter<"CreditCardOffer"> | string
-    description?: StringFilter<"CreditCardOffer"> | string
-    offerValue?: StringFilter<"CreditCardOffer"> | string
-    validFrom?: DateTimeNullableFilter<"CreditCardOffer"> | Date | string | null
-    validTill?: DateTimeNullableFilter<"CreditCardOffer"> | Date | string | null
-    isActive?: BoolFilter<"CreditCardOffer"> | boolean
-    displayOrder?: IntFilter<"CreditCardOffer"> | number
-    productId?: IntFilter<"CreditCardOffer"> | number
   }
 
   export type CreditCardOfferUpsertWithWhereUniqueWithoutProductInput = {
