@@ -57,7 +57,7 @@ const BenefitCard: FC<Benefit> = ({ IconComponent, title, description }) => (
 // 4. Main Component
 const CreditProductBenefits: FC = () => {
     return (
-        <div className="bg-white font-inter py-10 sm:py-16 md:py-20">
+        <div className="bg-white font-inter ">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header Section */}
                 <header className="text-center mb-10 sm:mb-16">

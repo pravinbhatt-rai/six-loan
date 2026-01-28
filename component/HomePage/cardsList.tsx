@@ -118,7 +118,7 @@ const ProductSection: FC<{ product: ProductItem }> = ({ product }) => {
 
 const TailorMadeProducts: FC = () => {
     return (
-        <div className="bg-white font-inter relative py-16 md:py-24">
+        <div className="bg-white font-inter relative ">
             <div className="max-w-7xl mx-auto px-6 sm:px-8">
                 <header className="text-center ">
                     <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">Tailor Made Products Exclusively</h1>

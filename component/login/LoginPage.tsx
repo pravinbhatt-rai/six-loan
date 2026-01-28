@@ -452,9 +452,9 @@ const LoginForm: React.FC = () => {
         }}
       />
 
-      <div className="min-h-screen flex flex-col lg:flex-row bg-slate-50 font-sans text-slate-800">
+      <div className="min-h-screen w-full overflow-x-hidden flex flex-col lg:flex-row bg-slate-50 font-sans text-slate-800">
         {/* Left Panel (Marketing / Visuals) */}
-        <div className="w-full h-52 lg:h-auto lg:w-5/12 relative flex flex-col overflow-hidden lg:min-h-screen bg-teal-900 text-white transition-all duration-500 shrink-0">
+        <div className="w-full min-h-[220px] sm:min-h-[260px] lg:h-auto lg:w-5/12 relative flex flex-col overflow-hidden lg:min-h-screen bg-teal-900 text-white transition-all duration-500 shrink-0">
           {/* Background Overlay Image */}
           <div className="absolute inset-0 z-0 opacity-40">
             <img
@@ -509,22 +509,34 @@ const LoginForm: React.FC = () => {
         </div>
 
         {/* Right Panel (Form) */}
-        <div className="w-full lg:w-7/12 flex items-start lg:items-center justify-center p-4 lg:p-12 -mt-24 lg:mt-0 relative z-20">
-          <div className="w-full max-w-2xl bg-white p-8 lg:p-12 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100">
+        <div className="w-full lg:w-7/12 flex items-start lg:items-center justify-center px-4 py-6 lg:p-12 mt-[-5rem] sm:mt-[-6rem] lg:mt-0 relative z-20">
+          <div className="w-full max-w-2xl bg-white p-6 sm:p-8 lg:p-12 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100">
             {/* Header */}
-            <div className="mb-8 lg:mb-10 text-center lg:text-left">
-              <h2 className="font-serif text-3xl text-teal-950 mb-2">
-                {isSignup ? "Create Account" : "Welcome Back"}
-              </h2>
-              <p className="text-slate-500 text-sm">
-                {isSignup ? "Enter your details to get started." : "Please enter your details to sign in."}
-              </p>
+            <div className="mb-6 sm:mb-8 lg:mb-10">
+              <div className="flex items-start justify-between gap-3">
+                <div className="text-center sm:text-left flex-1">
+                  <h2 className="font-serif text-2xl sm:text-3xl text-teal-950 mb-1 sm:mb-2">
+                    {isSignup ? "Create Account" : "Welcome Back"}
+                  </h2>
+                  <p className="text-slate-500 text-xs sm:text-sm">
+                    {isSignup ? "Enter your details to get started." : "Please enter your details to sign in."}
+                  </p>
+                </div>
+                <button
+                  onClick={() => router.push('/')}
+                  className="text-slate-400 hover:text-slate-600 transition-colors p-1.5 sm:p-2 shrink-0 -mt-1"
+                  title="Close and go to homepage"
+                >
+                  <FiX className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+              </div>
             </div>
 
-            <form className="space-y-5" onSubmit={isSignup ? handleSignup : handleLogin}>
+
+            <form className="space-y-4 sm:space-y-5" onSubmit={isSignup ? handleSignup : handleLogin}>
               {/* Signup Only Fields */}
               {isSignup && (
-                <div className="grid grid-cols-1 gap-5 animate-fadeIn">
+                <div className="grid grid-cols-1 gap-4 sm:gap-5 animate-fadeIn">
                   {/* Name Field */}
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-teal-800 uppercase tracking-wide ml-1 flex items-center gap-2">
@@ -536,7 +548,7 @@ const LoginForm: React.FC = () => {
                       <input
                         type="text"
                         placeholder="Your Full Name"
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-4 py-3 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all placeholder:text-slate-400 capitalize"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-4 py-2.5 sm:py-3 text-sm sm:text-base text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all placeholder:text-slate-400 capitalize"
                         value={name}
                         onChange={(e) => {
                           const val = e.target.value.replace(/\b\w/g, (char) => char.toUpperCase());
@@ -558,7 +570,7 @@ const LoginForm: React.FC = () => {
                       <input
                         type="email"
                         placeholder="email@example.com"
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-4 py-3 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all placeholder:text-slate-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-4 py-2.5 sm:py-3 text-sm sm:text-base text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all placeholder:text-slate-400"
                         value={email}
                         onChange={(e) => setEmail(e.target.value.toLowerCase())}
                         required
@@ -592,7 +604,7 @@ const LoginForm: React.FC = () => {
                           type="text"
                           placeholder="Phone number"
                           maxLength={15}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-4 py-3 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all placeholder:text-slate-400"
+                          className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-4 py-2.5 sm:py-3 text-sm sm:text-base text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all placeholder:text-slate-400"
                           value={phone}
                           onChange={(e) => handlePhoneChange(e.target.value)}
                           required
@@ -609,7 +621,7 @@ const LoginForm: React.FC = () => {
                     <input
                       type="text"
                       placeholder="user@example.com or phone"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-4 py-3 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all placeholder:text-slate-400"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-4 py-2.5 sm:py-3 text-sm sm:text-base text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all placeholder:text-slate-400"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       required
@@ -629,7 +641,7 @@ const LoginForm: React.FC = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     placeholder="••••••••"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-12 py-3 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all placeholder:text-slate-400"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-12 py-2.5 sm:py-3 text-sm sm:text-base text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all placeholder:text-slate-400"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -664,7 +676,7 @@ const LoginForm: React.FC = () => {
                     <input
                       type={showConfirmPassword ? "text" : "password"}
                       placeholder="••••••••"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-12 py-3 text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all placeholder:text-slate-400"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-12 py-2.5 sm:py-3 text-sm sm:text-base text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500 transition-all placeholder:text-slate-400"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       required
@@ -706,7 +718,7 @@ const LoginForm: React.FC = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3.5 px-6 rounded-lg shadow-lg shadow-teal-600/30 hover:shadow-teal-600/40 transform active:scale-[0.98] transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 sm:py-3.5 px-4 sm:px-6 rounded-lg shadow-lg shadow-teal-600/30 hover:shadow-teal-600/40 transform active:scale-[0.98] transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
                 >
                   {loading ? (
                     <>
@@ -721,6 +733,7 @@ const LoginForm: React.FC = () => {
                       {isSignup ? (
                         <>
                           Create Account
+
                           <FiArrowRight className="w-5 h-5" />
                         </>
                       ) : (
@@ -736,8 +749,8 @@ const LoginForm: React.FC = () => {
             </form>
 
             {/* Toggle Login/Signup */}
-            <div className="mt-8 text-center border-t border-slate-100 pt-6">
-              <p className="text-slate-500 text-sm">
+            <div className="mt-6 sm:mt-8 text-center border-t border-slate-100 pt-4 sm:pt-6">
+              <p className="text-slate-500 text-xs sm:text-sm">
                 {isSignup ? "Already have an account?" : "Don't have an account?"}{" "}
                 <button
                   onClick={() => {
@@ -775,19 +788,31 @@ const LoginForm: React.FC = () => {
       {/* OTP Verification Modal - Only shown during signup */}
       {showOtpModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 animate-fadeIn">
-            <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FiMail className="w-8 h-8 text-teal-600" />
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-5 sm:p-8 max-h-[85vh] sm:max-h-[90vh] overflow-y-auto animate-fadeIn relative">
+            <button
+              onClick={() => {
+                setShowOtpModal(false);
+                setOtp("");
+                setOtpTimer(0);
+                toast.error("Registration cancelled. Please try again.");
+              }}
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 text-slate-400 hover:text-slate-600 transition-colors p-1"
+              title="Close"
+            >
+              <FiX className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+            <div className="text-center mb-4 sm:mb-6 pt-2">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <FiMail className="w-7 h-7 sm:w-8 sm:h-8 text-teal-600" />
               </div>
-              <h3 className="text-2xl font-serif font-bold text-teal-950 mb-2">Verify Your Email</h3>
-              <p className="text-slate-600 text-sm">
+              <h3 className="text-xl sm:text-2xl font-serif font-bold text-teal-950 mb-1 sm:mb-2">Verify Your Email</h3>
+              <p className="text-slate-600 text-xs sm:text-sm">
                 Enter the 6-digit code sent to<br />
                 <span className="font-semibold text-teal-600">{email}</span>
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div className="relative">
                 <FiShield className="absolute left-3 top-1/2 -translate-y-1/2 text-teal-500 w-5 h-5" />
                 <input
@@ -861,7 +886,21 @@ const LoginForm: React.FC = () => {
       {/* Forgot Password Modal */}
       {showForgotPasswordModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 animate-fadeIn">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 sm:p-8 max-h-[90vh] overflow-y-auto animate-fadeIn relative">
+            <button
+              onClick={() => {
+                setShowForgotPasswordModal(false);
+                setForgotPasswordStep(1);
+                setResetIdentifier("");
+                setResetOtp("");
+                setNewPassword("");
+                setConfirmNewPassword("");
+              }}
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors p-1"
+              title="Close"
+            >
+              <FiX className="w-6 h-6" />
+            </button>
             {/* Step 1: Enter Email/Phone */}
             {forgotPasswordStep === 1 && (
               <>
