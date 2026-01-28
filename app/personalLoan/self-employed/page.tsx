@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Self-Employed Personal Loan | Best Offers 2026',
+    description: 'Find the best personal loans for self-employed in India 2026. Compare interest rates, EMI, eligibility, and apply online for instant approval. Special offers for business owners, freelancers, and professionals.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/self-employed',
+    },
+    keywords: [
+        'self-employed personal loan', 'personal loan for self employed', 'business owner personal loan', 'freelancer personal loan', 'professional personal loan', 'personal loan for entrepreneurs', 'personal loan for consultants', 'personal loan for contractors', 'personal loan for traders', 'personal loan for shop owners', 'personal loan for manufacturers', 'personal loan for service sector', 'personal loan for business expenses', 'personal loan for quick disbursal self employed', 'personal loan for instant approval self employed', 'personal loan for low interest self employed', 'personal loan for flexible EMI self employed', 'personal loan for minimum documents self employed', 'personal loan for eligibility check self employed', 'personal loan for apply online self employed', 'personal loan for review self employed', 'personal loan for tips self employed', 'personal loan for best offers self employed', 'personal loan for 2026 self employed', 'personal loan for best banks self employed', 'personal loan for online self employed', 'personal loan for collateral free self employed', 'personal loan for top up self employed', 'personal loan for overdraft self employed', 'personal loan for balance transfer self employed', 'personal loan for pre approved self employed', 'personal loan for self employed India', 'personal loan for self employed 2026', 'personal loan for business growth', 'personal loan for business finance', 'personal loan for business working capital', 'personal loan for self employed professionals', 'personal loan for self employed eligibility', 'personal loan for self employed apply online'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Self-Employed Personal Loan | Best Offers 2026',
+        description: 'Find the best personal loans for self-employed in India 2026. Compare interest rates, EMI, eligibility, and apply online for instant approval. Special offers for business owners, freelancers, and professionals.',
+        url: 'https://sixfinance.app/personalLoan/self-employed',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import { Percent, Wallet, Zap, CalendarDays } from "lucide-react";

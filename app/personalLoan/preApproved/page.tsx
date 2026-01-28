@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Pre-Approved Personal Loan | Instant Offers 2026',
+    description: 'Get pre-approved personal loans in India 2026. Enjoy instant approval, low interest rates, and flexible EMI. Apply online for top pre-approved loan offers and quick disbursal.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/preApproved',
+    },
+    keywords: [
+        'pre-approved personal loan', 'personal loan pre approved', 'instant personal loan', 'personal loan instant approval', 'personal loan quick disbursal', 'personal loan low interest', 'personal loan flexible EMI', 'personal loan minimum documents', 'personal loan eligibility check', 'personal loan apply online', 'personal loan review', 'personal loan tips', 'personal loan best offers', 'personal loan 2026', 'personal loan best banks', 'personal loan online', 'personal loan collateral free', 'personal loan top up', 'personal loan overdraft', 'personal loan balance transfer', 'personal loan pre approved India', 'personal loan pre approved 2026', 'personal loan for salaried', 'personal loan for self employed', 'personal loan for women', 'personal loan for doctors', 'personal loan for seniors', 'personal loan for low cibil', 'personal loan for wedding', 'personal loan for travel', 'personal loan for medical', 'personal loan for education', 'personal loan for business', 'personal loan for professionals', 'personal loan for short term', 'personal loan for flexi', 'personal loan for consolidation', 'personal loan for term', 'personal loan for pre approved customers', 'personal loan for pre approved offers'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Pre-Approved Personal Loan | Instant Offers 2026',
+        description: 'Get pre-approved personal loans in India 2026. Enjoy instant approval, low interest rates, and flexible EMI. Apply online for top pre-approved loan offers and quick disbursal.',
+        url: 'https://sixfinance.app/personalLoan/preApproved',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import { CheckCircle2, Clock, ShieldCheck, Zap } from "lucide-react";

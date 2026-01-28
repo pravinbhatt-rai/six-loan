@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Travel Personal Loan | Holiday & Vacation Loan 2026',
+    description: 'Apply for travel personal loans in India 2026. Get instant approval, low interest rates, and flexible EMI for holiday, vacation, honeymoon, or international travel. Compare top travel loan offers.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/travel',
+    },
+    keywords: [
+        'travel personal loan', 'personal loan for travel', 'holiday loan', 'vacation loan', 'honeymoon loan', 'international travel loan', 'domestic travel loan', 'personal loan for trip', 'personal loan for tour', 'personal loan for family vacation', 'personal loan for destination wedding', 'personal loan for cruise', 'personal loan for flight tickets', 'personal loan for hotel booking', 'personal loan for travel expenses', 'personal loan for travel abroad', 'personal loan for Europe trip', 'personal loan for USA trip', 'personal loan for Asia trip', 'personal loan for adventure travel', 'personal loan for group travel', 'personal loan for solo travel', 'personal loan for urgent travel', 'personal loan for last minute travel', 'personal loan for travel EMI', 'personal loan for travel eligibility', 'personal loan for travel apply online', 'personal loan for travel instant approval', 'personal loan for travel low interest', 'personal loan for travel flexible tenure', 'personal loan for travel minimum documents', 'personal loan for travel best banks', 'personal loan for travel 2026', 'personal loan for travel review', 'personal loan for travel tips', 'personal loan for travel offers', 'personal loan for travel online', 'personal loan for travel collateral free', 'personal loan for travel quick disbursal', 'personal loan for travel best rates'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Travel Personal Loan | Holiday & Vacation Loan 2026',
+        description: 'Apply for travel personal loans in India 2026. Get instant approval, low interest rates, and flexible EMI for holiday, vacation, honeymoon, or international travel. Compare top travel loan offers.',
+        url: 'https://sixfinance.app/personalLoan/travel',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import { CheckCircle2, Clock, ShieldCheck, Zap } from "lucide-react";

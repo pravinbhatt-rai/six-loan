@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Wedding Personal Loan | Marriage Loan Offers 2026',
+    description: 'Compare wedding personal loans in India 2026. Get instant approval, low interest rates, and flexible EMI for marriage expenses, destination weddings, and more. Apply online for top wedding loan offers.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/wedding',
+    },
+    keywords: [
+        'wedding personal loan', 'personal loan for wedding', 'marriage loan', 'personal loan for marriage', 'personal loan for destination wedding', 'personal loan for wedding expenses', 'personal loan for marriage hall', 'personal loan for wedding jewellery', 'personal loan for wedding shopping', 'personal loan for wedding decoration', 'personal loan for wedding catering', 'personal loan for wedding photography', 'personal loan for honeymoon', 'personal loan for wedding gifts', 'personal loan for wedding invitation', 'personal loan for wedding planner', 'personal loan for wedding event', 'personal loan for wedding EMI', 'personal loan for wedding eligibility', 'personal loan for wedding apply online', 'personal loan for wedding instant approval', 'personal loan for wedding low interest', 'personal loan for wedding flexible tenure', 'personal loan for wedding minimum documents', 'personal loan for wedding best banks', 'personal loan for wedding 2026', 'personal loan for wedding review', 'personal loan for wedding tips', 'personal loan for wedding offers', 'personal loan for wedding online', 'personal loan for wedding collateral free', 'personal loan for wedding quick disbursal', 'personal loan for wedding best rates', 'personal loan for wedding budget', 'personal loan for wedding finance', 'personal loan for wedding cost', 'personal loan for wedding India', 'personal loan for wedding couple', 'personal loan for wedding family', 'personal loan for wedding ceremony', 'personal loan for wedding party'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Wedding Personal Loan | Marriage Loan Offers 2026',
+        description: 'Compare wedding personal loans in India 2026. Get instant approval, low interest rates, and flexible EMI for marriage expenses, destination weddings, and more. Apply online for top wedding loan offers.',
+        url: 'https://sixfinance.app/personalLoan/wedding',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import { CheckCircle2, Clock, ShieldCheck, Zap } from "lucide-react";

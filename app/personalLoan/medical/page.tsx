@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Medical Emergency Personal Loan | Fast Approval 2026',
+    description: 'Get instant personal loans for medical emergencies in India 2026. Compare interest rates, EMI, eligibility, and apply online for quick disbursal. Cover hospital bills, surgery, and healthcare expenses.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/medical',
+    },
+    keywords: [
+        'medical emergency personal loan', 'personal loan for medical emergency', 'medical loan', 'emergency loan for hospital', 'personal loan for surgery', 'personal loan for healthcare', 'personal loan for hospital bills', 'personal loan for treatment', 'personal loan for medical expenses', 'personal loan for health', 'personal loan for urgent medical need', 'personal loan for critical illness', 'personal loan for accident', 'personal loan for operation', 'personal loan for medical bills', 'personal loan for doctor fees', 'personal loan for medicine', 'personal loan for hospitalisation', 'personal loan for ICU', 'personal loan for ambulance', 'personal loan for medical tests', 'personal loan for diagnostics', 'personal loan for therapy', 'personal loan for recovery', 'personal loan for surgery cost', 'personal loan for medical insurance gap', 'personal loan for health emergency', 'personal loan for quick disbursal medical', 'personal loan for instant approval medical', 'personal loan for low interest medical', 'personal loan for flexible EMI medical', 'personal loan for minimum documents medical', 'personal loan for eligibility check medical', 'personal loan for apply online medical', 'personal loan for review medical', 'personal loan for tips medical', 'personal loan for best offers medical', 'personal loan for 2026 medical', 'personal loan for best banks medical', 'personal loan for online medical', 'personal loan for collateral free medical'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Medical Emergency Personal Loan | Fast Approval 2026',
+        description: 'Get instant personal loans for medical emergencies in India 2026. Compare interest rates, EMI, eligibility, and apply online for quick disbursal. Cover hospital bills, surgery, and healthcare expenses.',
+        url: 'https://sixfinance.app/personalLoan/medical',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import { CheckCircle2, Clock, ShieldCheck, Zap } from "lucide-react";

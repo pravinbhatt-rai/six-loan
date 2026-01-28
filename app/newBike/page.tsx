@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'New Bike Loan India 2026 | Best Two Wheeler Loan Offers',
+    description: 'Compare new bike loan offers in India 2026. Find the best two wheeler loan interest rates, eligibility, EMI, and apply online for your dream bike.',
+    alternates: {
+        canonical: 'https://sixfinance.app/newBike',
+    },
+    keywords: [
+        'new bike loan', 'two wheeler loan', 'bike loan india', 'best bike loan', 'bike loan interest rate', 'bike loan eligibility', 'bike loan EMI', 'bike loan apply online', 'bike loan offers', 'bike loan documents', 'bike loan for salaried', 'bike loan for self employed', 'bike loan for students', 'bike loan 2026', 'compare bike loans', 'bike loan process', 'bike loan approval', 'bike loan guide', 'bike loan tips', 'bike loan calculator', 'bike loan instant approval', 'bike loan low interest', 'bike loan zero down payment', 'bike loan best banks', 'bike loan online', 'bike loan India 2026'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'New Bike Loan India 2026 | Best Two Wheeler Loan Offers',
+        description: 'Compare new bike loan offers in India 2026. Find the best two wheeler loan interest rates, eligibility, EMI, and apply online for your dream bike.',
+        url: 'https://sixfinance.app/newBike',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import BikeHero from "@/component/NewBike/BikeHero";
 import FeatureSection from "@/component/PersonalLoan/FeatureSection";
 import { LoanSection } from "@/component/PersonalLoan/LoanSection";

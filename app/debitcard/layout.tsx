@@ -10,6 +10,17 @@ export const metadata: Metadata = {
 	alternates: {
 		canonical: 'https://sixfinance.app/debitcard',
 	},
+	robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 	openGraph: {
 		title: 'Best Debit Cards in India 2026 | Compare & Apply Online',
 		description: 'Find, compare, and apply for the best debit cards in India. Explore features, cashback, lounge access, and more. Updated for 2026.',

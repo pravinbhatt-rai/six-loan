@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Doctor Personal Loan | Best Offers 2026',
+    description: 'Find the best personal loans for doctors in India 2026. Compare interest rates, EMI, eligibility, and apply online for instant approval. Special offers for medical professionals and healthcare workers.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/doctors',
+    },
+    keywords: [
+        'doctor personal loan', 'personal loan for doctors', 'medical professional loan', 'personal loan for healthcare workers', 'personal loan for medical expenses', 'personal loan for clinic setup', 'personal loan for medical equipment', 'personal loan for doctors India', 'personal loan for medical practice', 'personal loan for hospital staff', 'personal loan for nurses', 'personal loan for healthcare professionals', 'personal loan for low interest doctors', 'personal loan for flexible EMI doctors', 'personal loan for minimum documents doctors', 'personal loan for eligibility check doctors', 'personal loan for apply online doctors', 'personal loan for review doctors', 'personal loan for tips doctors', 'personal loan for best offers doctors', 'personal loan for 2026 doctors', 'personal loan for best banks doctors', 'personal loan for online doctors', 'personal loan for collateral free doctors', 'personal loan for top up doctors', 'personal loan for overdraft doctors', 'personal loan for pre approved doctors', 'personal loan for doctors India', 'personal loan for doctors 2026', 'personal loan for financial planning doctors', 'personal loan for credit improvement doctors', 'personal loan for loan settlement doctors', 'personal loan for quick disbursal doctors', 'personal loan for instant approval doctors', 'personal loan for high loan value doctors', 'personal loan for attractive interest doctors', 'personal loan for extended tenure doctors'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Doctor Personal Loan | Best Offers 2026',
+        description: 'Find the best personal loans for doctors in India 2026. Compare interest rates, EMI, eligibility, and apply online for instant approval. Special offers for medical professionals and healthcare workers.',
+        url: 'https://sixfinance.app/personalLoan/doctors',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import { Percent, Wallet, Zap, CalendarDays } from "lucide-react";

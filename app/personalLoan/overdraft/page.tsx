@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Overdraft Personal Loan | Flexible Credit 2026',
+    description: 'Get overdraft personal loans in India 2026. Enjoy flexible credit limits, pay interest only on what you use, and get instant approval. Apply online for top overdraft loan offers.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/overdraft',
+    },
+    keywords: [
+        'overdraft personal loan', 'personal loan with overdraft', 'overdraft facility', 'personal loan for flexible credit', 'personal loan for credit line', 'personal loan for cash withdrawal', 'personal loan for emergency', 'personal loan for urgent need', 'personal loan for business', 'personal loan for travel', 'personal loan for medical', 'personal loan for wedding', 'personal loan for home renovation', 'personal loan for education', 'personal loan for low interest overdraft', 'personal loan for flexible EMI overdraft', 'personal loan for minimum documents overdraft', 'personal loan for eligibility check overdraft', 'personal loan for apply online overdraft', 'personal loan for review overdraft', 'personal loan for tips overdraft', 'personal loan for best offers overdraft', 'personal loan for 2026 overdraft', 'personal loan for best banks overdraft', 'personal loan for online overdraft', 'personal loan for collateral free overdraft', 'personal loan for top up overdraft', 'personal loan for overdraft India', 'personal loan for overdraft 2026', 'personal loan for quick disbursal overdraft', 'personal loan for instant approval overdraft', 'personal loan for high loan value overdraft', 'personal loan for attractive interest overdraft', 'personal loan for extended tenure overdraft', 'personal loan for overdraft limit', 'personal loan for overdraft interest', 'personal loan for overdraft repayment', 'personal loan for overdraft eligibility', 'personal loan for overdraft apply online'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Overdraft Personal Loan | Flexible Credit 2026',
+        description: 'Get overdraft personal loans in India 2026. Enjoy flexible credit limits, pay interest only on what you use, and get instant approval. Apply online for top overdraft loan offers.',
+        url: 'https://sixfinance.app/personalLoan/overdraft',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import { CheckCircle2, Clock, ShieldCheck, Zap } from "lucide-react";

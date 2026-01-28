@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'New Car Loan up to 5 Lakh | Best Offers 2026',
+    description: 'Find and compare new car loans up to 5 lakh in India 2026. Get the best interest rates, EMI, eligibility, and apply online for your new car.',
+    alternates: {
+        canonical: 'https://sixfinance.app/newCar/5-lakh',
+    },
+    keywords: [
+        'new car loan 5 lakh', 'car loan up to 5 lakh', 'car loan EMI 5 lakh', 'car loan interest rate', 'car loan eligibility', 'car loan apply online', 'car loan offers', 'car loan 2026', 'compare car loans', 'car loan approval', 'car loan guide', 'car loan calculator', 'car loan instant approval', 'car loan low interest', 'car loan zero down payment', 'car loan best banks', 'car loan online', 'car loan India 2026'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'New Car Loan up to 5 Lakh | Best Offers 2026',
+        description: 'Find and compare new car loans up to 5 lakh in India 2026. Get the best interest rates, EMI, eligibility, and apply online for your new car.',
+        url: 'https://sixfinance.app/newCar/5-lakh',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import HeroContainer from '@/component/HomeLoan/HeroContainer';
 import { LoanSection } from '@/component/PersonalLoan/LoanSection';
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';

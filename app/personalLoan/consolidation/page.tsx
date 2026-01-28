@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Debt Consolidation Personal Loan | Best Offers 2026',
+    description: 'Compare debt consolidation personal loans in India 2026. Get instant approval, low interest rates, and flexible EMI to combine multiple debts into one easy repayment. Apply online for top consolidation loan offers.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/consolidation',
+    },
+    keywords: [
+        'debt consolidation personal loan', 'personal loan for debt consolidation', 'consolidation loan', 'loan to combine debts', 'personal loan for credit card debt', 'personal loan for multiple loans', 'personal loan for loan closure', 'personal loan for balance transfer', 'personal loan for EMI consolidation', 'personal loan for financial planning', 'personal loan for debt management', 'personal loan for reducing EMI', 'personal loan for single EMI', 'personal loan for easy repayment', 'personal loan for low interest consolidation', 'personal loan for quick disbursal consolidation', 'personal loan for instant approval consolidation', 'personal loan for flexible tenure consolidation', 'personal loan for minimum documents consolidation', 'personal loan for eligibility check consolidation', 'personal loan for apply online consolidation', 'personal loan for review consolidation', 'personal loan for tips consolidation', 'personal loan for best offers consolidation', 'personal loan for 2026 consolidation', 'personal loan for best banks consolidation', 'personal loan for online consolidation', 'personal loan for collateral free consolidation', 'personal loan for top up consolidation', 'personal loan for overdraft consolidation', 'personal loan for pre approved consolidation', 'personal loan for consolidation India', 'personal loan for consolidation 2026', 'personal loan for debt relief', 'personal loan for financial freedom', 'personal loan for credit improvement', 'personal loan for loan settlement'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Debt Consolidation Personal Loan | Best Offers 2026',
+        description: 'Compare debt consolidation personal loans in India 2026. Get instant approval, low interest rates, and flexible EMI to combine multiple debts into one easy repayment. Apply online for top consolidation loan offers.',
+        url: 'https://sixfinance.app/personalLoan/consolidation',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import { CheckCircle2, Clock, ShieldCheck, Zap } from "lucide-react";

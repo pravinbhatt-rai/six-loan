@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'New Car Loan India 2026 | Best Car Loan Offers',
+    description: 'Compare new car loan offers in India 2026. Find the best car loan interest rates, eligibility, EMI, and apply online for your dream car.',
+    alternates: {
+        canonical: 'https://sixfinance.app/newCar',
+    },
+    keywords: [
+        'new car loan', 'car loan india', 'best car loan', 'car loan interest rate', 'car loan eligibility', 'car loan EMI', 'car loan apply online', 'car loan offers', 'car loan documents', 'car loan for salaried', 'car loan for self employed', 'car loan for students', 'car loan 2026', 'compare car loans', 'car loan process', 'car loan approval', 'car loan guide', 'car loan tips', 'car loan calculator', 'car loan instant approval', 'car loan low interest', 'car loan zero down payment', 'car loan best banks', 'car loan online', 'car loan India 2026'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'New Car Loan India 2026 | Best Car Loan Offers',
+        description: 'Compare new car loan offers in India 2026. Find the best car loan interest rates, eligibility, EMI, and apply online for your dream car.',
+        url: 'https://sixfinance.app/newCar',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import NewCarHero from "@/component/NewCar/NewCarHero";
 import FeatureSection from "@/component/PersonalLoan/FeatureSection";
 import { LoanSection } from "@/component/PersonalLoan/LoanSection";

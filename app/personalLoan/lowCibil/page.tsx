@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Low CIBIL Personal Loan | Bad Credit Loan Offers 2026',
+    description: 'Get personal loans for low CIBIL or bad credit in India 2026. Compare lenders, interest rates, and eligibility. Apply online for instant approval and flexible EMI, even with a low credit score.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/lowCibil',
+    },
+    keywords: [
+        'low cibil personal loan', 'personal loan for low cibil', 'bad credit personal loan', 'personal loan for bad credit', 'personal loan for low credit score', 'personal loan for cibil score 600', 'personal loan for cibil score 500', 'personal loan for cibil score 650', 'personal loan for poor credit', 'personal loan for no cibil', 'personal loan for cibil improvement', 'personal loan for cibil repair', 'personal loan for cibil defaulter', 'personal loan for cibil settlement', 'personal loan for cibil correction', 'personal loan for cibil update', 'personal loan for cibil dispute', 'personal loan for cibil check', 'personal loan for cibil eligibility', 'personal loan for cibil apply online', 'personal loan for cibil instant approval', 'personal loan for cibil low interest', 'personal loan for cibil flexible tenure', 'personal loan for cibil minimum documents', 'personal loan for cibil best banks', 'personal loan for cibil 2026', 'personal loan for cibil review', 'personal loan for cibil tips', 'personal loan for cibil offers', 'personal loan for cibil online', 'personal loan for cibil collateral free', 'personal loan for cibil quick disbursal', 'personal loan for cibil best rates', 'personal loan for cibil India', 'personal loan for cibil improvement tips', 'personal loan for cibil score boost', 'personal loan for cibil 2026', 'personal loan for cibil eligibility check', 'personal loan for cibil apply 2026'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Low CIBIL Personal Loan | Bad Credit Loan Offers 2026',
+        description: 'Get personal loans for low CIBIL or bad credit in India 2026. Compare lenders, interest rates, and eligibility. Apply online for instant approval and flexible EMI, even with a low credit score.',
+        url: 'https://sixfinance.app/personalLoan/lowCibil',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import UniversalLoanCard from "@/component/loan/UniversalLoanCard";

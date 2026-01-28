@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Used Car Loan ₹15 Lakh | Pre-Owned Car Finance 2026',
+    description: 'Get a used car loan of ₹15 lakh in India 2026. Instant approval, low interest rates, and flexible EMI for pre-owned cars. Apply online for top used car loan offers and certified car finance.',
+    alternates: {
+        canonical: 'https://sixfinance.app/usedCar/15-lakh',
+    },
+    keywords: [
+        'used car loan 15 lakh', 'pre-owned car loan 15 lakh', 'second hand car loan 15 lakh', 'loan for used car 15 lakh', 'loan for pre-owned car 15 lakh', 'car finance 15 lakh', 'used car loan interest rate 15 lakh', 'used car loan EMI 15 lakh', 'used car loan eligibility 15 lakh', 'used car loan apply online 15 lakh', 'used car loan instant approval 15 lakh', 'used car loan documents 15 lakh', 'used car loan offers 15 lakh', 'used car loan 2026 15 lakh', 'compare used car loans 15 lakh', 'used car loan process 15 lakh', 'used car loan approval 15 lakh', 'used car loan guide 15 lakh', 'used car loan calculator 15 lakh', 'used car loan quick disbursal 15 lakh', 'used car loan low interest 15 lakh', 'used car loan flexible tenure 15 lakh', 'used car loan minimum documents 15 lakh', 'used car loan eligibility check 15 lakh', 'used car loan review 15 lakh', 'used car loan tips 15 lakh', 'used car loan best banks 15 lakh', 'used car loan online 15 lakh', 'used car loan without collateral 15 lakh', 'used car loan quick approval 15 lakh', 'used car loan best rates 15 lakh', 'used car loan India 15 lakh', 'used car loan 2026 15 lakh', 'second hand car finance 15 lakh', 'pre-owned car finance 15 lakh', 'certified used car loan 15 lakh', 'certified pre-owned car finance 15 lakh'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Used Car Loan ₹15 Lakh | Pre-Owned Car Finance 2026',
+        description: 'Get a used car loan of ₹15 lakh in India 2026. Instant approval, low interest rates, and flexible EMI for pre-owned cars. Apply online for top used car loan offers and certified car finance.',
+        url: 'https://sixfinance.app/usedCar/15-lakh',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import HeroContainer from '@/component/HomeLoan/HeroContainer';
 import { LoanSection } from '@/component/PersonalLoan/LoanSection';
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';

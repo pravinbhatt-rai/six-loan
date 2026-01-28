@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Used Car Loan ₹8 Lakh | Pre-Owned Car Finance 2026',
+    description: 'Get a used car loan of ₹8 lakh in India 2026. Instant approval, low interest rates, and flexible EMI for pre-owned cars. Apply online for top used car loan offers and certified car finance.',
+    alternates: {
+        canonical: 'https://sixfinance.app/usedCar/8-lakh',
+    },
+    keywords: [
+        'used car loan 8 lakh', 'pre-owned car loan 8 lakh', 'second hand car loan 8 lakh', 'loan for used car 8 lakh', 'loan for pre-owned car 8 lakh', 'car finance 8 lakh', 'used car loan interest rate 8 lakh', 'used car loan EMI 8 lakh', 'used car loan eligibility 8 lakh', 'used car loan apply online 8 lakh', 'used car loan instant approval 8 lakh', 'used car loan documents 8 lakh', 'used car loan offers 8 lakh', 'used car loan 2026 8 lakh', 'compare used car loans 8 lakh', 'used car loan process 8 lakh', 'used car loan approval 8 lakh', 'used car loan guide 8 lakh', 'used car loan calculator 8 lakh', 'used car loan quick disbursal 8 lakh', 'used car loan low interest 8 lakh', 'used car loan flexible tenure 8 lakh', 'used car loan minimum documents 8 lakh', 'used car loan eligibility check 8 lakh', 'used car loan review 8 lakh', 'used car loan tips 8 lakh', 'used car loan best banks 8 lakh', 'used car loan online 8 lakh', 'used car loan without collateral 8 lakh', 'used car loan quick approval 8 lakh', 'used car loan best rates 8 lakh', 'used car loan India 8 lakh', 'used car loan 2026 8 lakh', 'second hand car finance 8 lakh', 'pre-owned car finance 8 lakh', 'certified used car loan 8 lakh', 'certified pre-owned car finance 8 lakh'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Used Car Loan ₹8 Lakh | Pre-Owned Car Finance 2026',
+        description: 'Get a used car loan of ₹8 lakh in India 2026. Instant approval, low interest rates, and flexible EMI for pre-owned cars. Apply online for top used car loan offers and certified car finance.',
+        url: 'https://sixfinance.app/usedCar/8-lakh',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import HeroContainer from '@/component/HomeLoan/HeroContainer';
 import { LoanSection } from '@/component/PersonalLoan/LoanSection';
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';

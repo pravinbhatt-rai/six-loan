@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Personal Loan Interest Rates | Compare 2026 Offers',
+    description: 'Compare personal loan interest rates in India 2026. Find the lowest rates, best banks, and special offers. Calculate EMI and apply online for instant approval.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/InterestRates',
+    },
+    keywords: [
+        'personal loan interest rates', 'lowest personal loan rates', 'compare personal loan rates', 'personal loan EMI calculator', 'personal loan best banks', 'personal loan offers 2026', 'personal loan rate comparison', 'personal loan interest 2026', 'personal loan apply online', 'personal loan instant approval', 'personal loan low EMI', 'personal loan flexible tenure', 'personal loan minimum documents', 'personal loan eligibility check', 'personal loan review', 'personal loan tips', 'personal loan top up', 'personal loan overdraft', 'personal loan balance transfer', 'personal loan pre approved', 'personal loan online', 'personal loan collateral free', 'personal loan quick disbursal', 'personal loan best rates', 'personal loan India', 'personal loan 2026', 'personal loan for salaried', 'personal loan for self employed', 'personal loan for women', 'personal loan for doctors', 'personal loan for seniors', 'personal loan for low cibil', 'personal loan for wedding', 'personal loan for travel', 'personal loan for medical', 'personal loan for education', 'personal loan for business', 'personal loan for professionals', 'personal loan for short term', 'personal loan for flexi', 'personal loan for consolidation'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Personal Loan Interest Rates | Compare 2026 Offers',
+        description: 'Compare personal loan interest rates in India 2026. Find the lowest rates, best banks, and special offers. Calculate EMI and apply online for instant approval.',
+        url: 'https://sixfinance.app/personalLoan/InterestRates',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import RateComparisonContainer from "@/component/PersonalLoan/InterestRates/RateComparsion";

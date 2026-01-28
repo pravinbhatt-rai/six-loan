@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Personal Loan for Women | Best Offers 2026',
+    description: 'Compare personal loans for women in India 2026. Get instant approval, low interest rates, flexible EMI, and apply online for top personal loans for women professionals, homemakers, and entrepreneurs.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/women',
+    },
+    keywords: [
+        'personal loan for women', 'women personal loan', 'personal loan for homemakers', 'personal loan for working women', 'personal loan for female entrepreneurs', 'personal loan for self employed women', 'personal loan for salaried women', 'personal loan for single mothers', 'personal loan for housewives', 'personal loan for women India', 'best personal loan for women', 'personal loan interest rate women', 'personal loan EMI women', 'personal loan eligibility women', 'personal loan apply online women', 'personal loan offers women', 'personal loan documents women', 'personal loan for women 2026', 'compare personal loans for women', 'personal loan process women', 'personal loan approval women', 'personal loan guide women', 'personal loan calculator women', 'personal loan instant approval women', 'personal loan low interest women', 'personal loan zero processing fee women', 'personal loan pre approved women', 'personal loan top up women', 'personal loan overdraft women', 'personal loan balance transfer women', 'personal loan best banks women', 'personal loan online women', 'personal loan without collateral women', 'personal loan quick disbursal women', 'personal loan flexible tenure women', 'personal loan low EMI women', 'personal loan minimum documents women', 'personal loan eligibility check women', 'personal loan apply 2026 women', 'personal loan review women', 'personal loan tips women', 'personal loan offers 2026 women'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Personal Loan for Women | Best Offers 2026',
+        description: 'Compare personal loans for women in India 2026. Get instant approval, low interest rates, flexible EMI, and apply online for top personal loans for women professionals, homemakers, and entrepreneurs.',
+        url: 'https://sixfinance.app/personalLoan/women',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import { Percent, Wallet, Zap, CalendarDays } from "lucide-react";

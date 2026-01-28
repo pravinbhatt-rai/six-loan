@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Personal Loan up to 10 Lakh | Best Offers 2026',
+    description: 'Compare personal loans up to 10 lakh in India 2026. Get instant approval, low interest rates, flexible EMI, and apply online for your ₹10,00,000 personal loan.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/10-lakh',
+    },
+    keywords: [
+        'personal loan 10 lakh', '10 lakh personal loan', 'personal loan EMI 10 lakh', 'personal loan interest rate', 'personal loan eligibility', 'personal loan apply online', 'personal loan offers', 'personal loan documents', 'personal loan for salaried', 'personal loan for self employed', 'personal loan for women', 'personal loan for travel', 'personal loan for wedding', 'personal loan for medical', 'personal loan for home renovation', 'personal loan for education', 'personal loan for debt consolidation', 'personal loan for low cibil', 'personal loan for pensioners', 'personal loan for students', 'personal loan 2026', 'compare personal loans', 'personal loan process', 'personal loan approval', 'personal loan guide', 'personal loan calculator', 'personal loan instant approval', 'personal loan low interest', 'personal loan zero processing fee', 'personal loan pre approved', 'personal loan top up', 'personal loan overdraft', 'personal loan balance transfer', 'personal loan best banks', 'personal loan online', 'personal loan without collateral', 'personal loan quick disbursal', 'personal loan flexible tenure', 'personal loan low EMI', 'personal loan minimum documents', 'personal loan eligibility check', 'personal loan apply 2026', 'personal loan review', 'personal loan tips', 'personal loan offers 2026'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Personal Loan up to 10 Lakh | Best Offers 2026',
+        description: 'Compare personal loans up to 10 lakh in India 2026. Get instant approval, low interest rates, flexible EMI, and apply online for your ₹10,00,000 personal loan.',
+        url: 'https://sixfinance.app/personalLoan/10-lakh',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import { Percent, Wallet, Zap, CalendarDays } from "lucide-react";

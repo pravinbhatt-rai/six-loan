@@ -1,4 +1,33 @@
+import { Metadata } from 'next';
 import React from "react";
+export const metadata: Metadata = {
+    title: 'Short-Term Personal Loan | Quick Funds 2026',
+    description: 'Get instant short-term personal loans in India 2026. Compare lenders, interest rates, and eligibility. Apply online for fast approval, flexible EMI, and quick repayment options.',
+    alternates: {
+        canonical: 'https://sixfinance.app/personalLoan/short-term',
+    },
+    keywords: [
+        'short-term personal loan', 'personal loan for short term', 'quick personal loan', 'instant personal loan', 'personal loan for 6 months', 'personal loan for 12 months', 'personal loan for 24 months', 'personal loan for emergency', 'personal loan for urgent need', 'personal loan for travel', 'personal loan for medical', 'personal loan for wedding', 'personal loan for home renovation', 'personal loan for education', 'personal loan for business', 'personal loan for low interest short term', 'personal loan for flexible EMI short term', 'personal loan for minimum documents short term', 'personal loan for eligibility check short term', 'personal loan for apply online short term', 'personal loan for review short term', 'personal loan for tips short term', 'personal loan for best offers short term', 'personal loan for 2026 short term', 'personal loan for best banks short term', 'personal loan for online short term', 'personal loan for collateral free short term', 'personal loan for top up short term', 'personal loan for overdraft short term', 'personal loan for pre approved short term', 'personal loan for short term India', 'personal loan for short term 2026', 'personal loan for quick disbursal short term', 'personal loan for instant approval short term', 'personal loan for high loan value short term', 'personal loan for attractive interest short term', 'personal loan for fast repayment', 'personal loan for quick closure'
+    ],
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    openGraph: {
+        title: 'Short-Term Personal Loan | Quick Funds 2026',
+        description: 'Get instant short-term personal loans in India 2026. Compare lenders, interest rates, and eligibility. Apply online for fast approval, flexible EMI, and quick repayment options.',
+        url: 'https://sixfinance.app/personalLoan/short-term',
+        siteName: 'SixFinance',
+        type: 'website',
+    },
+};
 import PreHero from "@/component/PersonalLoan/preApproved/PreHero";
 import EMICalculator from "@/component/PersonalLoan/preApproved/EMICalculator";
 import { CheckCircle2, Clock, ShieldCheck, Zap } from "lucide-react";
