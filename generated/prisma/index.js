@@ -739,6 +739,21 @@ exports.Prisma.DebitCardSafetyFeatureScalarFieldEnum = {
   productId: 'productId'
 };
 
+exports.Prisma.BlogScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  category: 'category',
+  subcategory: 'subcategory',
+  keywords: 'keywords',
+  published: 'published',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -849,7 +864,8 @@ exports.Prisma.ModelName = {
   DebitCardBullet: 'DebitCardBullet',
   DebitCardKeyFeature: 'DebitCardKeyFeature',
   DebitCardOffer: 'DebitCardOffer',
-  DebitCardSafetyFeature: 'DebitCardSafetyFeature'
+  DebitCardSafetyFeature: 'DebitCardSafetyFeature',
+  Blog: 'Blog'
 };
 /**
  * Create the Client
@@ -862,7 +878,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\rajan\\OneDrive\\Documents\\new-six-loan\\six-loan\\generated\\prisma",
+      "value": "/Users/bisht/Code/six-loan/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -871,12 +887,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin-arm64",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\rajan\\OneDrive\\Documents\\new-six-loan\\six-loan\\prisma\\schema.prisma",
+    "sourceFilePath": "/Users/bisht/Code/six-loan/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
