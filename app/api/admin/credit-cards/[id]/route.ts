@@ -66,7 +66,6 @@ export async function PUT(
       effectiveFree,
       recommended,
       rating,
-      isActive,
       videoUrl,
       termsConditionsUrl,
       firstYearFee,
@@ -150,7 +149,6 @@ export async function PUT(
         ...(effectiveFree !== undefined && { effectiveFree }),
         ...(recommended !== undefined && { recommended }),
         ...(rating !== undefined && { rating: parseFloat(rating) }),
-        ...(isActive !== undefined && { isActive }),
         ...(videoUrl !== undefined && { videoUrl }),
         ...(termsConditionsUrl !== undefined && { termsConditionsUrl }),
         ...(firstYearFee !== undefined && { firstYearFee }),
@@ -284,9 +282,9 @@ export async function DELETE(
 
     if (applicationsCount > 0) {
       return NextResponse.json(
-        { 
+        {
           error: 'Cannot delete credit card with existing applications',
-          details: `This credit card has ${applicationsCount} application(s)` 
+          details: `This credit card has ${applicationsCount} application(s)`
         },
         { status: 400 }
       );
