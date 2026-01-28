@@ -8,7 +8,9 @@ import {
     Gauge, Landmark, Briefcase, HeartHandshake, Percent, Headset,
     Home, Building2, Coins, MoreHorizontal, ChevronRight, Phone,
     Car,
-    Bike
+    Bike,
+    User,
+    PackageXIcon
 } from 'lucide-react';
 import { Label } from 'recharts';
 
@@ -817,6 +819,12 @@ const Navbar: FC = () => {
                                                     <button onClick={() => { router.push('/user/dashboard'); setShowMobileUserMenu(false); }} className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-teal-50">
                                                         <LayoutDashboard className="w-4 h-4" /> Dashboard
                                                     </button>
+                                                     <button onClick={() => { router.push('/user/profile'); setShowMobileUserMenu(false); }} className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-teal-50">
+                                                        <User className="w-4 h-4" /> Profile
+                                                    </button>
+                                                       <button onClick={() => { router.push('/user/application'); setShowMobileUserMenu(false); }} className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-teal-50">
+                                                        <PackageXIcon className="w-4 h-4" /> Application
+                                                    </button>
                                                     <div className="border-t border-gray-100" />
                                                     <button onClick={() => { handleLogout(); setShowMobileUserMenu(false); }} className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50">
                                                         <LogOut className="w-4 h-4" /> Logout
@@ -858,8 +866,21 @@ const Navbar: FC = () => {
                                     </button>
                                     <div className="absolute top-full right-0 pt-2 w-56 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 z-50">
                                         <div className="rounded-xl shadow-xl bg-white border border-gray-100 p-2">
+                                             {(userRole === 'ADMIN' || userRole === 'MODERATOR') && (
+                                                        <button onClick={() => { router.push('/dashboard'); setShowMobileUserMenu(false); }} className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-purple-50">
+                                                            <Shield className="w-4 h-4" /> Admin
+                                                        </button>
+                                                    )}
+                                                    
                                             <button onClick={() => router.push('/user/dashboard')} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-teal-50 rounded-lg">
                                                 <LayoutDashboard className="w-4 h-4" /> Dashboard
+                                            </button>
+
+                                                <button onClick={() => router.push('/user/profile')} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-teal-50 rounded-lg">
+                                                <User className="w-4 h-4" /> Profile
+                                            </button>
+                                                <button onClick={() => router.push('/user/application')} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-teal-50 rounded-lg">
+                                                <PackageXIcon  className="w-4 h-4" /> Application
                                             </button>
                                             <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg">
                                                 <LogOut className="w-4 h-4" /> Logout
