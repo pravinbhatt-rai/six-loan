@@ -766,6 +766,21 @@ exports.Prisma.DebitCardSafetyFeatureScalarFieldEnum = {
   productId: 'productId'
 };
 
+exports.Prisma.BlogScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  category: 'category',
+  subcategory: 'subcategory',
+  keywords: 'keywords',
+  published: 'published',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -867,7 +882,8 @@ exports.Prisma.ModelName = {
   DebitCardBullet: 'DebitCardBullet',
   DebitCardKeyFeature: 'DebitCardKeyFeature',
   DebitCardOffer: 'DebitCardOffer',
-  DebitCardSafetyFeature: 'DebitCardSafetyFeature'
+  DebitCardSafetyFeature: 'DebitCardSafetyFeature',
+  Blog: 'Blog'
 };
 
 /**

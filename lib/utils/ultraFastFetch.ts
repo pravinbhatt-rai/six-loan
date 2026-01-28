@@ -77,10 +77,16 @@ async function executeRequest<T>(
   retries: number
 ): Promise<T | null> {
   for (let attempt = 0; attempt <= retries; attempt++) {
+    let controller: AbortController | null = null;
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => {
-        controller.abort(new Error(`Request timeout after ${timeout}ms`));
+      controller = new AbortController();
+      timeoutId = setTimeout(() => {
+        try {
+          controller?.abort();
+        } catch (_) {
+          // ignore
+        }
       }, timeout);
 
       const response = await fetch(url, {
@@ -89,35 +95,46 @@ async function executeRequest<T>(
         next: { revalidate: 0 } // Disable Next.js caching for fresh data
       });
 
-      clearTimeout(timeoutId);
-
       if (!response.ok) {
-        if (attempt < retries) continue;
-        throw new Error(`HTTP ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data as T;
-    } catch (error: any) {
-      // Handle timeout and other errors
-      if (error.name === 'AbortError' || error.message?.includes('timeout')) {
-        console.warn(`Request timed out for ${url} (attempt ${attempt + 1}/${retries + 1})`);
+        // Read response body for debugging (best-effort)
+        const text = await response.text().catch(() => null);
         if (attempt < retries) {
           await new Promise(resolve => setTimeout(resolve, 200 * (attempt + 1)));
           continue;
         }
-        return null; // Return null instead of throwing on final timeout
+        console.error(`Request failed for ${url}: HTTP ${response.status}${text ? ' - ' + text : ''}`);
+        return null;
       }
-      
+
+      const data = await response.json().catch(() => null);
+      return data as T;
+    } catch (error: any) {
+      // Handle timeout and other errors
+      const isAbort = error && (error.name === 'AbortError' || String(error).toLowerCase().includes('aborted') || (error.message && error.message.toLowerCase().includes('timeout')));
+      if (isAbort) {
+        console.warn(`Request timed out or aborted for ${url} (attempt ${attempt + 1}/${retries + 1})`);
+        if (attempt < retries) {
+          await new Promise(resolve => setTimeout(resolve, 200 * (attempt + 1)));
+          continue;
+        }
+        return null; // Return null instead of throwing on final timeout/abort
+      }
+
       if (attempt < retries) {
         // Wait before retry with exponential backoff
         await new Promise(resolve => setTimeout(resolve, 200 * (attempt + 1)));
         continue;
       }
-      
-      // Log error but don't crash the app
-      console.error(`Request failed for ${url}:`, error.message);
+
+      // Log error but don't crash the app. Log the whole error if message is not present.
+      if (error && error.message) {
+        console.error(`Request failed for ${url}:`, error.message);
+      } else {
+        console.error(`Request failed for ${url}:`, String(error));
+      }
       return null;
+    } finally {
+      if (timeoutId) clearTimeout(timeoutId);
     }
   }
   return null;
