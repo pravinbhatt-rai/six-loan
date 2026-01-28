@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Check, CreditCard, Smartphone, Mail, User, Building, DollarSign, Calendar, FileText, TrendingUp, AlertCircle, CheckCircle2 } from "lucide-react";
 import { fastFetch } from "@/lib/utils/ultraFastFetch";
 import { useRouter } from "next/navigation";
-import { InlineLoader } from "@/component/commonComponent/SixFinanceLoader";
+import InlineLoader from "@/component/commonComponent/SixFinanceLoader";
 
 interface EligibilityFormProps {
   onClose: () => void;

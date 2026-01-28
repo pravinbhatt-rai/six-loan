@@ -494,6 +494,7 @@ exports.Prisma.CreditCardProductScalarFieldEnum = {
   name: 'name',
   slug: 'slug',
   bankName: 'bankName',
+  bankLogoUrl: 'bankLogoUrl',
   imageUrl: 'imageUrl',
   category: 'category',
   annualFee: 'annualFee',
@@ -503,7 +504,6 @@ exports.Prisma.CreditCardProductScalarFieldEnum = {
   effectiveFree: 'effectiveFree',
   recommended: 'recommended',
   rating: 'rating',
-  isActive: 'isActive',
   videoUrl: 'videoUrl',
   termsConditionsUrl: 'termsConditionsUrl',
   firstYearFee: 'firstYearFee',
@@ -691,6 +691,7 @@ exports.Prisma.DebitCardProductScalarFieldEnum = {
   slug: 'slug',
   bankName: 'bankName',
   imageUrl: 'imageUrl',
+  bankLogoUrl: 'bankLogoUrl',
   accountType: 'accountType',
   cardNetwork: 'cardNetwork',
   cardType: 'cardType',
@@ -763,6 +764,21 @@ exports.Prisma.DebitCardSafetyFeatureScalarFieldEnum = {
   howToUse: 'howToUse',
   displayOrder: 'displayOrder',
   productId: 'productId'
+};
+
+exports.Prisma.BlogScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  category: 'category',
+  subcategory: 'subcategory',
+  keywords: 'keywords',
+  published: 'published',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -866,7 +882,8 @@ exports.Prisma.ModelName = {
   DebitCardBullet: 'DebitCardBullet',
   DebitCardKeyFeature: 'DebitCardKeyFeature',
   DebitCardOffer: 'DebitCardOffer',
-  DebitCardSafetyFeature: 'DebitCardSafetyFeature'
+  DebitCardSafetyFeature: 'DebitCardSafetyFeature',
+  Blog: 'Blog'
 };
 
 /**
