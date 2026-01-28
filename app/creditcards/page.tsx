@@ -161,6 +161,12 @@ function CreditCardsContent() {
     fetchCards();
   }, []);
 
+  // Dynamic lists for sidebar filters derived from fetched cards
+  const categoriesList = Array.from(new Set(cards.flatMap((c) => c.categories || []))).sort();
+  const banksList = Array.from(new Set(cards.map((c) => c.bank).filter(Boolean))).sort();
+  const feesList = Array.from(new Set(cards.map((c) => c.fee).filter(Boolean))).sort();
+  const cardTypesList = Array.from(new Set(cards.map((c) => c.cardType).filter(Boolean))).sort();
+
   const mapToDetails = (card: CardInfo): CreditCardDetailsData | null => {
     const full = cards.find((c) => c.id === card.id);
     if (!full) return null;
@@ -292,6 +298,11 @@ function CreditCardsContent() {
               active={activeFilters}
               onToggle={handleToggle}
               onClearAll={handleClearAll}
+              categories={categoriesList}
+              banks={banksList}
+              fees={feesList}
+              cardTypes={cardTypesList}
+              trendingLabel="Effective Free Card"
             />
           </div>
           
@@ -367,6 +378,11 @@ function CreditCardsContent() {
                   onToggle={(k, v) => handleToggle(k, v)}
                   onClearAll={handleClearAll}
                   className="border-none p-0"
+                  categories={categoriesList}
+                  banks={banksList}
+                  fees={feesList}
+                  cardTypes={cardTypesList}
+                  trendingLabel="Effective Free Card"
                 />
               </div>
             </div>
@@ -405,14 +421,13 @@ function CreditCardsContent() {
           slug: card.slug,
           imageUrl: card.image,
           bankName: card.bank,
-          bankLogoUrl: undefined,
           category: card.category,
-          annualFee: card.fee,
+          annualFee: typeof card.fee === 'string' ? card.fee : (card.fee != null ? String(card.fee) : ''),
           cardNetwork: card.cardType,
           cardType: card.cardType,
-          bestSuitedFor: card.bullets || [],
+          bestSuitedFor: Array.isArray(card.bullets) ? card.bullets.join(', ') : (card.bullets || ''),
           effectiveFree: card.effectiveFree,
-          recommended: card.recommended,
+          recommended: !!card.recommended,
           rating: card.rating,
           firstYearFee: card.firstYearFee?.toString(),
           secondYearFee: card.secondYearFee?.toString(),
@@ -420,13 +435,12 @@ function CreditCardsContent() {
           categories: card.categories?.map(cat => ({ name: cat, slug: cat.toLowerCase().replace(/\s+/g, '-') })) || [],
           bulletPoints: card.bullets || [],
           keyFeatures: card.keyFeatures || [],
-          offers: card.offers || [],
           summaryCharges: card.summaryCharges || [],
           requiredDocuments: card.requiredDocuments || [],
           processSteps: card.processSteps || [],
           cardBenefits: card.cardBenefits || [],
           benefitSections: card.benefitSections || [],
-          feeWaiverCondition: card.fee,
+          feeWaiverCondition: typeof card.fee === 'string' ? card.fee : (card.fee != null ? String(card.fee) : ''),
           specialOffers: card.specialOffers || [],
         }))}
         onApply={(cardId) => {

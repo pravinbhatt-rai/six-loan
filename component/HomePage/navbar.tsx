@@ -392,7 +392,7 @@ const NAV_DATA: NavItem[] = [
                     { name: 'Debit Card Finder', href: '/debitinfo/finder' },
                     { name: 'Live Offers', href: '/debitinfo/offers' },
                     { name: 'ATM Finder', href: '/debitinfo/atm-finder' },
-                    { name: 'Compare Debit Cards', href: '/debitcard' },
+                    { name: 'Compare Debit Cards', href: '/debitinfo/compare' },
                     { name: 'Upgrade Card', href: '/debitinfo/upgrade' },
                 ]
             },
