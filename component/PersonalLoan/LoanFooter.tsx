@@ -144,15 +144,16 @@ const Footer = memo(() => {
           logo: '/sixlogo1.png' // Update with your actual asset path
         },
         {
-          label: 'DISCONNECT',
-          href: 'https://www.disconnect.in',
-
-        },
-        {
           label: 'DOCTAR',
           href: 'https://www.doctar.in',
           logo: '/Doctor.png'
         },
+        {
+          label: 'DISCONNECT',
+          href: 'https://www.disconnect.in',
+
+        },
+       
       ],
     },
     {
