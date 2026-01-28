@@ -24,6 +24,64 @@ import LoanGuide from '@/component/PersonalLoan/LoanGuide';
 import LoanComparisonGuide from '@/component/PersonalLoan/LoanComparisonGuide';
 import SuccessStories from '@/component/PersonalLoan/SuccessStories';
 import LoanInformation from '@/component/PersonalLoan/LoanInformation';
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/usedBike";
+
+  return {
+    title:
+      "Used Bike Loan in India | Second Hand Two Wheeler Loan – Six Finance",
+
+    description:
+      "Apply for a used bike loan in India with Six Finance. Get easy financing for second-hand bikes and scooters with low EMIs, minimal documents, and quick approval.",
+
+    keywords: [
+      "used bike loan",
+      "second hand bike loan",
+      "used two wheeler loan",
+      "used scooter loan",
+      "second hand bike finance",
+      "used bike loan EMI",
+      "used bike loan eligibility",
+      "documents for used bike loan",
+      "used bike loan interest rate",
+      "low EMI used bike loan",
+      "used bike loan online",
+      "used bike loan near me",
+      "six finance used bike loan",
+      "used motorcycle loan",
+      "used bike loan without collateral"
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Used Bike Loan in India | Second Hand Bike Finance – Six Finance",
+      description:
+        "Finance your second-hand bike or scooter with affordable EMIs. Trusted used bike loan platform across India.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Used Bike Loan in India | Six Finance",
+      description:
+        "Affordable used bike loans with quick approval and minimal paperwork.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 
 export default function Page() {
     return (

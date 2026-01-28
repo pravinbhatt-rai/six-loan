@@ -15,6 +15,62 @@ import {
   Twitter,
   ExternalLink,
 } from "lucide-react";
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/about-us";
+
+  return {
+    title: "About Six Finance | Trusted Financial Partner Across India",
+    description:
+      "Learn about Six Finance—India’s transparent financial marketplace powered by 20+ years of banking expertise, nationwide reach, and customer-first technology.",
+
+    keywords: [
+      "Six Finance",
+      "about six finance",
+      "financial services company india",
+      "loan marketplace india",
+      "personal loan experts",
+      "business loan consultants",
+      "DSA network india",
+      "digital lending platform",
+      "banking professionals india",
+      "transparent finance platform",
+      "fintech company india",
+      "loan comparison platform",
+      "credit solutions india",
+      "trusted financial partner",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "About Six Finance | Trusted Financial Partner",
+      description:
+        "Meet the leadership, vision, and mission behind Six Finance—helping Indians access transparent, affordable financial services.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "About Six Finance",
+      description:
+        "Discover the story, leadership, and values behind Six Finance—India’s growing financial services platform.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+
 
 export default function AboutUsPage() {
   return (

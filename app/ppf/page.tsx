@@ -1,5 +1,59 @@
 import InfoPageTemplate, { PageData } from '@/component/InfoPageTemplate/InfoPageTemplate';
 import { PiggyBank, TrendingUp, Calculator, Clock } from 'lucide-react';
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/ppf"; 
+  // Use one common OG image for all govt scheme pages
+
+  return {
+    title: "PPF Account – Interest Rate, Benefits & Calculator | Six Finance",
+
+    description:
+      "Understand Public Provident Fund (PPF) interest rates, tax benefits, maturity rules, withdrawal options, and returns. A government-backed, risk-free investment option.",
+
+    keywords: [
+      "PPF account",
+      "public provident fund",
+      "PPF interest rate",
+      "PPF calculator",
+      "PPF tax benefits",
+      "PPF maturity rules",
+      "PPF withdrawal rules",
+      "PPF investment India",
+      "government saving scheme",
+      "tax free investment India"
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+
+    openGraph: {
+      type: "article",
+      url: canonicalUrl,
+      title: "Public Provident Fund (PPF) – Interest, Benefits & Rules",
+      description:
+        "Explore PPF features, interest rates, tax-free returns, withdrawal rules, and long-term wealth creation benefits with Six Finance.",
+      siteName: "Six Finance",
+      
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Public Provident Fund (PPF) – Interest & Tax Benefits",
+      description:
+        "Learn how PPF helps you build tax-free wealth with government-backed safety and long-term compounding.",
+      site: "@sixfinance", // optional
+    },
+  };
+}
+
 
 const ppfData: PageData = {
   hero: {

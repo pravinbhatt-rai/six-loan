@@ -1,5 +1,61 @@
-import InfoPageTemplate, { PageData } from '@/component/InfoPageTemplate/InfoPageTemplate';
-import { Calculator, FileCheck, Coins, Landmark } from 'lucide-react';
+import type { Metadata } from "next";
+import InfoPageTemplate, { PageData } from "@/component/InfoPageTemplate/InfoPageTemplate";
+import { Calculator, FileCheck, Coins, Landmark } from "lucide-react";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/incometax";
+
+  return {
+    title:
+      "Income Tax India | ITR Filing, Tax Slabs & PAN Services – Six Finance",
+    description:
+      "Complete guide to Income Tax in India. Learn about ITR filing, tax slabs, new vs old tax regime, Form 26AS, PAN–Aadhaar linking, refunds, and e-verification.",
+
+    keywords: [
+      "income tax india",
+      "income tax",
+      "itr filing",
+      "income tax return",
+      "itr filing online",
+      "new tax regime",
+      "old tax regime",
+      "income tax slabs india",
+      "form 26as",
+      "pan aadhaar link",
+      "e verify itr",
+      "income tax refund",
+      "income tax portal india",
+      "six finance income tax guide",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Income Tax India | ITR Filing & Tax Slabs – Six Finance",
+      description:
+        "Understand income tax in India. File ITR, compare tax regimes, check slabs, verify returns, and manage PAN–Aadhaar with Six Finance.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "article",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Income Tax India | Six Finance",
+      description:
+        "Everything you need to know about Income Tax in India — ITR filing, slabs, regimes, and refunds.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 
 const taxData: PageData = {
   hero: {
@@ -13,6 +69,7 @@ const taxData: PageData = {
     points: ["Instant Processing", "Pre-filled Forms", "Faceless Assessment", "Quick Refunds"],
     mainIcon: <Calculator size={120} className="text-teal-600 opacity-80" />
   },
+
   services: [
     { icon: <FileCheck size={24} />, title: "File ITR", desc: "File your Income Tax Return (ITR-1 to ITR-4) online.", action: "File Now" },
     { icon: <Coins size={24} />, title: "View Form 26AS", desc: "Check tax deducted at source (TDS) against your PAN.", action: "View Credit" },

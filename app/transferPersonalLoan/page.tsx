@@ -24,6 +24,63 @@ import LoanGuide from '@/component/PersonalLoan/LoanGuide';
 import LoanComparisonGuide from '@/component/PersonalLoan/LoanComparisonGuide';
 import SuccessStories from '@/component/PersonalLoan/SuccessStories';
 import LoanInformation from '@/component/PersonalLoan/LoanInformation';
+import type { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl =
+    "https://sixfinance.app/transferPersonalLoan";
+
+  return {
+    title:
+      "Personal Loan Balance Transfer | Lower EMI & Interest – Six Finance",
+
+    description:
+      "Transfer your existing personal loan to Six Finance partner banks and reduce your EMI instantly. Get lower interest rates, better tenure, and quick approval.",
+
+    keywords: [
+      "personal loan balance transfer",
+      "personal loan transfer",
+      "personal loan balance transfer india",
+      "transfer personal loan to lower interest rate",
+      "personal loan transfer interest rates",
+      "personal loan balance transfer eligibility",
+      "personal loan transfer documents",
+      "personal loan refinancing",
+      "reduce personal loan emi",
+      "switch personal loan bank",
+      "low interest personal loan transfer",
+      "six finance personal loan transfer",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "Personal Loan Balance Transfer | Six Finance",
+      description:
+        "Lower your personal loan EMI by transferring to better interest rates. Simple, fast, and transparent personal loan balance transfer.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "Personal Loan Balance Transfer | Six Finance",
+      description:
+        "Reduce your personal loan EMI with a hassle-free balance transfer through Six Finance.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 
 export default function Page() {
     return (

@@ -3,6 +3,60 @@ import HeroContainer from '@/component/HomeLoan/HeroContainer';
 import { LoanSection } from '@/component/PersonalLoan/LoanSection';
 import UniversalLoanCard from '@/component/loan/UniversalLoanCard';
 import HomeLoanGuide from "@/component/HomeLoan/HomeLoanGuide";
+import type { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://sixfinance.app/homeLoan/10-lakh";
+
+  return {
+    title:
+      "₹10 Lakh Home Loan EMI, Interest Rate & Eligibility – Six Finance",
+    description:
+      "Apply for a ₹10 lakh home loan with Six Finance. Check EMI, interest rates, eligibility, documents required, and repayment options for buying or constructing your dream home.",
+
+    keywords: [
+      "10 lakh home loan",
+      "10 lakh home loan emi",
+      "home loan 10 lakh interest rate",
+      "₹10 lakh home loan",
+      "10 lakh home loan eligibility",
+      "10 lakh home loan documents",
+      "home loan emi calculator 10 lakh",
+      "home loan for house purchase",
+      "low interest home loan india",
+      "six finance home loan",
+      "housing loan 10 lakh",
+    ],
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: "₹10 Lakh Home Loan | EMI, Interest & Eligibility – Six Finance",
+      description:
+        "Explore EMI, interest rates, and eligibility for a ₹10 lakh home loan. Get low rates and quick approval with Six Finance.",
+      url: canonicalUrl,
+      siteName: "Six Finance",
+      type: "website",
+      locale: "en_IN",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: "₹10 Lakh Home Loan | Six Finance",
+      description:
+        "Check EMI, eligibility, and apply online for a ₹10 lakh home loan with flexible repayment options.",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 
 export default function Page() {
     return (
